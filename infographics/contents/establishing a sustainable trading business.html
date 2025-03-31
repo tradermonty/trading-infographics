@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>トレーディング・ビジネス成功の4つの柱</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Yomogi&family=Zen+Kurenaido&family=Kaisei+Decol:wght@400;700&display=swap');
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'Kaisei Decol', serif;
+      background-color: #f8f9fa;
+      color: #334155;
+      line-height: 1.4;
+      padding: 20px;
+      background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23593c47' fill-opacity='0.03' fill-rule='evenodd'/%3E%3C/svg%3E");
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      background-color: rgba(255, 255, 255, 0.9);
+      border-radius: 15px;
+      box-shadow: 0 4px 20px rgba(89, 60, 71, 0.1);
+      padding: 30px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 30px;
+      border-bottom: 3px dashed #F2C53D;
+      padding-bottom: 15px;
+    }
+    
+    .title-area {
+      flex: 1;
+    }
+    
+    h1 {
+      font-family: 'Zen Kurenaido', sans-serif;
+      font-size: 32px;
+      font-weight: bold;
+      background: linear-gradient(45deg, #593C47, #F24405);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      position: relative;
+      margin-bottom: 10px;
+      line-height: 1.2;
+    }
+    
+    h1::after {
+      content: "";
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, #F2C53D, #F25C05);
+      border-radius: 3px;
+    }
+    
+    .subtitle {
+      font-family: 'Kaisei Decol', serif;
+      font-size: 16px;
+      color: #475569;
+      margin-top: 10px;
+      font-style: italic;
+    }
+    
+    .date-source {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      font-family: 'Yomogi', cursive;
+      font-size: 14px;
+      color: #64748b;
+    }
+    
+    .main-content {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 25px;
+      justify-content: space-between;
+    }
+    
+    .introduction-card {
+      width: 100%;
+      background-color: rgba(242, 230, 61, 0.1);
+      border: 2px solid #F2C53D;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 30px;
+      position: relative;
+      box-shadow: 0 4px 10px rgba(242, 196, 61, 0.2);
+    }
+    
+    .intro-content {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    
+    .intro-icon {
+      font-size: 40px;
+      color: #F24405;
+      text-align: center;
+      flex-shrink: 0;
+    }
+    
+    .intro-text {
+      flex: 1;
+      font-family: 'Kaisei Decol', serif;
+    }
+    
+    .column {
+      width: calc(33% - 20px);
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+    }
+    
+    .card {
+      background-color: white;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+      position: relative;
+      border-left: 5px solid;
+      transition: transform 0.3s;
+    }
+    
+    .card:hover {
+      transform: translateY(-5px);
+    }
+    
+    .card.capital {
+      border-left-color: #593C47;
+    }
+    
+    .card.product {
+      border-left-color: #F2C53D;
+    }
+    
+    .card.factory {
+      border-left-color: #F25C05;
+    }
+    
+    .card.marketing {
+      border-left-color: #F24405;
+    }
+    
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+    
+    .card-icon {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      border-radius: 50%;
+      color: white;
+    }
+    
+    .capital .card-icon {
+      background-color: #593C47;
+    }
+    
+    .product .card-icon {
+      background-color: #F2C53D;
+    }
+    
+    .factory .card-icon {
+      background-color: #F25C05;
+    }
+    
+    .marketing .card-icon {
+      background-color: #F24405;
+    }
+    
+    h2 {
+      font-family: 'Zen Kurenaido', sans-serif;
+      font-size: 20px;
+      color: #1e40af;
+      margin: 0;
+      position: relative;
+    }
+    
+    h3 {
+      font-family: 'Kaisei Decol', serif;
+      font-size: 18px;
+      color: #1e40af;
+      margin-bottom: 10px;
+      position: relative;
+      padding-left: 20px;
+    }
+    
+    h3::before {
+      content: "●";
+      position: absolute;
+      left: 0;
+      color: #F25C05;
+      font-size: 14px;
+    }
+    
+    ul {
+      list-style: none;
+      margin-left: 10px;
+    }
+    
+    li {
+      position: relative;
+      padding-left: 25px;
+      margin-bottom: 10px;
+      font-family: 'Kaisei Decol', serif;
+      font-size: 14px;
+    }
+    
+    li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: #F2C53D;
+      font-weight: bold;
+    }
+    
+    .highlight {
+      background: linear-gradient(transparent 60%, rgba(242, 196, 61, 0.4) 40%);
+      padding: 0 2px;
+      font-weight: bold;
+    }
+    
+    .example-box {
+      background-color: rgba(242, 91, 5, 0.05);
+      border: 1px dashed #F25C05;
+      border-radius: 8px;
+      padding: 15px;
+      margin-top: 15px;
+      position: relative;
+    }
+    
+    .example-title {
+      position: absolute;
+      top: -10px;
+      left: 15px;
+      background-color: white;
+      padding: 0 10px;
+      font-family: 'Yomogi', cursive;
+      color: #F24405;
+      font-size: 14px;
+    }
+    
+    .example-content {
+      font-size: 13px;
+      font-style: italic;
+    }
+    
+    .conclusion-card {
+      width: 100%;
+      background: linear-gradient(135deg, rgba(89, 60, 71, 0.05), rgba(242, 68, 5, 0.05));
+      border-radius: 12px;
+      padding: 25px;
+      margin-top: 20px;
+      border: 2px solid rgba(242, 68, 5, 0.3);
+      position: relative;
+    }
+    
+    .conclusion-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+    
+    .conclusion-icon {
+      font-size: 24px;
+      color: #F24405;
+    }
+    
+    .conclusion-title {
+      font-family: 'Zen Kurenaido', sans-serif;
+      font-size: 22px;
+      color: #593C47;
+      font-weight: bold;
+    }
+    
+    .key-takeaways {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+    
+    .takeaway-item {
+      flex: 1 1 45%;
+      background-color: white;
+      border-radius: 8px;
+      padding: 15px;
+      border-left: 3px solid #F2C53D;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    }
+    
+    .arrow-connection {
+      position: absolute;
+      width: 50px;
+      height: 30px;
+    }
+    
+    footer {
+      margin-top: 30px;
+      text-align: right;
+      font-size: 12px;
+      color: #64748b;
+      font-family: 'Kaisei Decol', serif;
+      padding-top: 15px;
+      border-top: 1px dashed #F2C53D;
+    }
+    
+    /* 手書き風の要素 */
+    .hand-drawn-circle {
+      display: inline-block;
+      position: relative;
+    }
+    
+    .hand-drawn-circle::after {
+      content: "";
+      position: absolute;
+      top: -5px;
+      left: -5px;
+      right: -5px;
+      bottom: -5px;
+      border: 2px solid #F25C05;
+      border-radius: 50%;
+      opacity: 0.7;
+      transform: rotate(-3deg);
+    }
+    
+    .hand-drawn-underline {
+      position: relative;
+      display: inline-block;
+    }
+    
+    .hand-drawn-underline::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -3px;
+      width: 100%;
+      height: 2px;
+      background-color: #F2C53D;
+      transform: rotate(-0.5deg);
+    }
+    
+    .speech-bubble {
+      position: relative;
+      background-color: white;
+      border-radius: 10px;
+      padding: 10px 15px;
+      margin: 15px 0;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+      border: 1px solid #F2C53D;
+    }
+    
+    .speech-bubble::after {
+      content: "";
+      position: absolute;
+      top: -10px;
+      left: 20px;
+      border-width: 0 10px 10px;
+      border-style: solid;
+      border-color: transparent transparent #F2C53D transparent;
+    }
+    
+    @media (max-width: 900px) {
+      .column {
+        width: 100%;
+      }
+      
+      .main-content {
+        flex-direction: column;
+      }
+      
+      .key-takeaways {
+        flex-direction: column;
+      }
+      
+      .takeaway-item {
+        flex: 1 1 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="title-area">
+        <h1>トレーディング・ビジネス成功の4つの柱</h1>
+        <div class="subtitle">継続的な収益を生み出す持続可能なトレードビジネスのフレームワーク</div>
+      </div>
+      <div class="date-source">
+        <div>2025年3月31日</div>
+        <div>出典: @goshawktrades</div>
+      </div>
+    </header>
+    
+    <div class="introduction-card">
+      <div class="intro-content">
+        <div class="intro-icon">📊</div>
+        <div class="intro-text">
+          トレードを<span class="highlight">個人の趣味や短期的な利益追求</span>ではなく、<span class="highlight">継続的な収益を生み出す持続可能なビジネス</span>として考える場合、4つの柱を明確に意識し、それぞれの領域でベストプラクティスを適用することが重要です。
+        </div>
+      </div>
+    </div>
+    
+    <div class="main-content">
+      <div class="column">
+        <div class="card capital">
+          <div class="card-header">
+            <div class="card-icon">💰</div>
+            <h2>【1】資本 (Capital)</h2>
+          </div>
+          <p>トレードビジネスの存続可能性は、資本管理能力に左右されます。</p>
+          
+          <h3>重要ポイント</h3>
+          <ul>
+            <li><span class="hand-drawn-underline">明確なリスク管理ルール</span>の設定（総資本の1～2%以内）</li>
+            <li><span class="hand-drawn-underline">資金配分の最適化</span>（戦略ごとの資金配分比率を明確化）</li>
+            <li><span class="hand-drawn-underline">資本の定期的な補充・再投資</span>（利益の一定割合を再投資）</li>
+          </ul>
+          
+          <div class="example-box">
+            <div class="example-title">成功事例</div>
+            <div class="example-content">
+              著名トレーダーのバン・K・タープ博士が提唱する「資金管理の方程式」（R倍数理論）に基づくリスク・リワード評価の仕組みを導入し、各トレードのリスク・リターンを体系的に評価する。
+            </div>
+          </div>
+        </div>
+        
+        <div class="card product">
+          <div class="card-header">
+            <div class="card-icon">🎯</div>
+            <h2>【2】商品 (Product)</h2>
+          </div>
+          <p>トレードの成功に欠かせないのは、明確で再現可能な「エッジ」を持つことです。</p>
+          
+          <h3>重要ポイント</h3>
+          <ul>
+            <li><span class="hand-drawn-underline">戦略・エッジの定量化・明文化</span>（優位性を明確に定義）</li>
+            <li><span class="hand-drawn-underline">競合優位性の定期的な検証と調整</span>（市場環境変化への対応）</li>
+            <li><span class="hand-drawn-underline">アルゴリズムやルールの継続的改善</span>（市場に合わせた戦略調整）</li>
+          </ul>
+          
+          <div class="example-box">
+            <div class="example-title">成功事例</div>
+            <div class="example-content">
+              米国著名トレーダーのマーク・ミネルヴィニは、トレードする銘柄を自身のVCP（ボラティリティ収縮パターン）に厳格に限定している。定期的なパフォーマンスレビューを通じて、エッジが市場環境にフィットしているかを検証し、調整を繰り返している。
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="column">
+        <div class="card factory">
+          <div class="card-header">
+            <div class="card-icon">⚙️</div>
+            <h2>【3】工場 (Factory)</h2>
+          </div>
+          <p>エッジを持っていても、それを継続的に安定して市場に投入する仕組みがなければ、長期的成功は困難です。</p>
+          
+          <h3>重要ポイント</h3>
+          <ul>
+            <li><span class="hand-drawn-underline">トレードプロセスの自動化・標準化</span>（人的ミス・心理的要素の最小化）</li>
+            <li><span class="hand-drawn-underline">執行プロセスの安定稼働監視</span>（問題発生時の迅速対応策の事前策定）</li>
+            <li><span class="hand-drawn-underline">スケーラブルな運用体制</span>（システムトレードのスケールアップ準備）</li>
+          </ul>
+          
+          <div class="example-box">
+            <div class="example-title">成功事例</div>
+            <div class="example-content">
+              米大手ヘッジファンドのルネッサンス・テクノロジーズは、自動化されたシステムに莫大な資金を投入しても安定して運用できるスケーラブルなプロセスを構築し、長年安定したリターンを出している。
+            </div>
+          </div>
+        </div>
+        
+        <div class="speech-bubble">
+          <p><span class="highlight">「エッジ」を定義し、それを安定して市場に投入するプロセスを構築する</span>ことこそがトレーディングビジネスの根幹です</p>
+        </div>
+        
+        <div class="card marketing">
+          <div class="card-header">
+            <div class="card-icon">📣</div>
+            <h2>【4】マーケティング (Marketing)</h2>
+          </div>
+          <p>トレーディングビジネスは、自身の資金だけでなく、外部から資金を調達することでスケールアップします。</p>
+          
+          <h3>重要ポイント</h3>
+          <ul>
+            <li><span class="hand-drawn-underline">透明性あるパフォーマンス報告</span>（月次レポートや第三者機関による検証）</li>
+            <li><span class="hand-drawn-underline">戦略の差別化とストーリー性</span>（ユニークなストーリーの提示）</li>
+            <li><span class="hand-drawn-underline">適切な規制対応とコンプライアンス</span>（法的リスクの管理）</li>
+          </ul>
+          
+          <div class="example-box">
+            <div class="example-title">成功事例</div>
+            <div class="example-content">
+              トレーディング関連ファンドのARKインベストメント（Cathie Wood氏主催）は、明確なテーマ（破壊的イノベーション）と徹底した情報公開を行い、多くの資金を集めてきました。
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="column">
+        <svg width="100%" height="150" style="margin-bottom: -50px;">
+          <defs>
+            <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+              <polygon points="0 0, 10 3.5, 0 7" fill="#F25C05" />
+            </marker>
+          </defs>
+          <path d="M10,75 C50,30 100,120 140,75" stroke="#F25C05" stroke-width="2" fill="none" stroke-dasharray="5,5" marker-end="url(#arrowhead)"/>
+          <text x="70" y="55" font-family="Yomogi, cursive" fill="#F25C05" font-size="14">継続的なサイクル</text>
+        </svg>
+        
+        <div style="text-align: center; margin-bottom: 20px;">
+          <div style="font-family: 'Zen Kurenaido', sans-serif; font-size: 24px; color: #593C47; transform: rotate(-3deg); display: inline-block; border: 2px dashed #F2C53D; padding: 10px 20px; border-radius: 10px;">
+            4つの柱が相互に作用
+          </div>
+        </div>
+        
+        <div style="background-color: rgba(242, 230, 61, 0.15); border-radius: 12px; padding: 20px; margin-bottom: 20px;">
+          <div style="display: flex; justify-content: center; margin-bottom: 15px;">
+            <div style="text-align: center; margin: 0 10px;">
+              <div style="width: 50px; height: 50px; background-color: #593C47; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto;">💰</div>
+              <div style="font-family: 'Kaisei Decol', serif; font-size: 12px; margin-top: 5px;">資本</div>
+            </div>
+            <div style="text-align: center; margin: 0 10px;">
+              <div style="width: 50px; height: 50px; background-color: #F2C53D; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto;">🎯</div>
+              <div style="font-family: 'Kaisei Decol', serif; font-size: 12px; margin-top: 5px;">商品</div>
+            </div>
+            <div style="text-align: center; margin: 0 10px;">
+              <div style="width: 50px; height: 50px; background-color: #F25C05; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto;">⚙️</div>
+              <div style="font-family: 'Kaisei Decol', serif; font-size: 12px; margin-top: 5px;">工場</div>
+            </div>
+            <div style="text-align: center; margin: 0 10px;">
+              <div style="width: 50px; height: 50px; background-color: #F24405; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto;">📣</div>
+              <div style="font-family: 'Kaisei Decol', serif; font-size: 12px; margin-top: 5px;">マーケティング</div>
+            </div>
+          </div>
+          
+          <p style="text-align: center; font-family: 'Yomogi', cursive; font-size: 16px;">
+            「<span class="highlight">裁量</span>」と「<span class="highlight">システム</span>」の区別を超えた<br>
+            <span class="hand-drawn-underline">統合的なビジネスフレームワーク</span>
+          </p>
+        </div>
+        
+        <div style="background-color: white; border-radius: 12px; padding: 20px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); border-left: 5px solid #593C47;">
+          <div style="display: flex; align-items: center; margin-bottom: 10px;">
+            <div style="font-size: 24px; margin-right: 10px;">📈</div>
+            <div style="font-family: 'Zen Kurenaido', sans-serif; font-size: 18px; color: #593C47;">実践ステップ</div>
+          </div>
+          <ol style="padding-left: 25px;">
+            <li style="margin-bottom: 10px; font-family: 'Kaisei Decol', serif; font-size: 14px;">
+              各柱のベストプラクティスを自分のトレードに適用
+            </li>
+            <li style="margin-bottom: 10px; font-family: 'Kaisei Decol', serif; font-size: 14px;">
+              定期的なパフォーマンス分析とフィードバック
+            </li>
+            <li style="margin-bottom: 10px; font-family: 'Kaisei Decol', serif; font-size: 14px;">
+              市場環境の変化に合わせた戦略の調整
+            </li>
+            <li style="font-family: 'Kaisei Decol', serif; font-size: 14px;">
+              長期的視点で継続的改善サイクルを回す
+            </li>
+          </ol>
+        </div>
+      </div>
+    </div>
+    
+    <div class="conclusion-card">
+      <div class="conclusion-header">
+        <div class="conclusion-icon">🔑</div>
+        <div class="conclusion-title">結論とまとめ（Key Takeaways）</div>
+      </div>
+      
+      <div class="key-takeaways">
+        <div class="takeaway-item">
+          <p>トレーディングを<span class="highlight">持続可能なビジネス</span>として捉え、資本・商品（エッジ）・工場（継続的な執行プロセス）・マーケティングという4つの柱を構造的に確立し、それぞれでベストプラクティスを適用することが重要である。</p>
+        </div>
+        
+        <div class="takeaway-item">
+          <p
