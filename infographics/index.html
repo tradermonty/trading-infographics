@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trading Infographics Collection</title>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .search-container {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .search-input {
+            width: 80%;
+            max-width: 600px;
+            padding: 10px;
+            font-size: 16px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+        }
+        .category {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .category h2 {
+            color: #333;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+        .content-list {
+            list-style: none;
+            padding: 0;
+        }
+        .content-item {
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        .content-item:last-child {
+            border-bottom: none;
+        }
+        .content-item a {
+            color: #0066cc;
+            text-decoration: none;
+        }
+        .content-item a:hover {
+            text-decoration: underline;
+        }
+        .language-switch {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+        }
+        .language-switch button {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            background: #0066cc;
+            color: white;
+            cursor: pointer;
+        }
+        .language-switch button:hover {
+            background: #0052a3;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="language-switch">
+        <button onclick="toggleLanguage()">English</button>
+    </div>
+
+    <div class="container">
+        <div class="header">
+            <h1 class="ja">トレーディングインフォグラフィックスコレクション</h1>
+            <h1 class="en hidden">Trading Infographics Collection</h1>
+        </div>
+
+        <div class="search-container">
+            <input type="text" class="search-input" placeholder="キーワードで検索..." onkeyup="filterContent(this.value)">
+        </div>
+
+        <div class="category">
+            <h2 class="ja">市場分析と展望</h2>
+            <h2 class="en hidden">Market Analysis & Outlook</h2>
+            <ul class="content-list">
+                <li class="content-item"><a href="sp500-outlook_2025-03-30.html">S&P500展望 2025年3月30日</a></li>
+                <li class="content-item"><a href="rotation from US momentum stocks to undervalued global markets.html">米国モメンタム株からグローバル割安市場へのローテーション</a></li>
+            </ul>
+        </div>
+
+        <div class="category">
+            <h2 class="ja">トレーディング戦略</h2>
+            <h2 class="en hidden">Trading Strategies</h2>
+            <ul class="content-list">
+                <li class="content-item"><a href="trading-strategy-infographic.html">トレーディング戦略インフォグラフィック</a></li>
+                <li class="content-item"><a href="reverse engineering for trading consistency.html">トレーディング一貫性のためのリバースエンジニアリング</a></li>
+            </ul>
+        </div>
+
+        <div class="category">
+            <h2 class="ja">投資家の知恵と教訓</h2>
+            <h2 class="en hidden">Investor Wisdom & Lessons</h2>
+            <ul class="content-list">
+                <li class="content-item"><a href="billionaire hedge fund managers wisdom.html">億万長者ヘッジファンドマネージャーの知恵</a></li>
+                <li class="content-item"><a href="qullamaggie's 7 trading lessons.html">Qullamaggieの7つのトレーディングレッスン</a></li>
+                <li class="content-item"><a href="6 lessons from the man who beat the market for 30 years.html">市場を30年間打ち負かした男からの6つの教訓</a></li>
+            </ul>
+        </div>
+
+        <div class="category">
+            <h2 class="ja">リスク管理</h2>
+            <h2 class="en hidden">Risk Management</h2>
+            <ul class="content-list">
+                <li class="content-item"><a href="lessons from cycling safety - managing investment risks.html">自転車安全から学ぶ投資リスク管理</a></li>
+                <li class="content-item"><a href="accepting market uncertainty in stock trading.html">株式トレーディングにおける市場の不確実性を受け入れる</a></li>
+            </ul>
+        </div>
+
+        <div class="category">
+            <h2 class="ja">心理とマインドセット</h2>
+            <h2 class="en hidden">Psychology & Mindset</h2>
+            <ul class="content-list">
+                <li class="content-item"><a href="knowledge alone won't bring trading success.html">知識だけではトレーディング成功はもたらされない</a></li>
+                <li class="content-item"><a href="trusting the market's feedback.html">市場のフィードバックを信頼する</a></li>
+                <li class="content-item"><a href="debunking the myth of easy beginner profits.html">初心者でも簡単に利益が出るという神話を解明</a></li>
+            </ul>
+        </div>
+
+        <div class="category">
+            <h2 class="ja">アルゴリズムトレーディング</h2>
+            <h2 class="en hidden">Algorithmic Trading</h2>
+            <ul class="content-list">
+                <li class="content-item"><a href="algo-trading-commodity-future-infographic.html">アルゴリズムトレーディング商品先物インフォグラフィック</a></li>
+                <li class="content-item"><a href="lessons from 5 years of algorithmic trading.html">5年間のアルゴリズムトレーディングからの教訓</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        function filterContent(keyword) {
+            const items = document.querySelectorAll('.content-item');
+            keyword = keyword.toLowerCase();
+            
+            items.forEach(item => {
+                const text = item.textContent.toLowerCase();
+                item.style.display = text.includes(keyword) ? '' : 'none';
+            });
+        }
+
+        function toggleLanguage() {
+            const jaElements = document.querySelectorAll('.ja');
+            const enElements = document.querySelectorAll('.en');
+            const button = document.querySelector('.language-switch button');
+            
+            jaElements.forEach(el => el.classList.toggle('hidden'));
+            enElements.forEach(el => el.classList.toggle('hidden'));
+            
+            button.textContent = button.textContent === 'English' ? '日本語' : 'English';
+        }
+    </script>
+</body>
+</html> 

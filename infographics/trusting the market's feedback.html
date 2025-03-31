@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>トレーダーの気づき - グラフィックレコーディング</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Yomogi&family=Zen+Kurenaido&family=Kaisei+Decol&display=swap');
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Kaisei Decol', serif;
+            background-color: #f8f9fa;
+            color: #334155;
+            line-height: 1.4;
+            padding: 20px;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23593c47' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 16px;
+            box-shadow: 0 4px 15px rgba(89, 60, 71, 0.1);
+            padding: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 30px;
+            border-bottom: 3px solid #F2C53D;
+            padding-bottom: 15px;
+            position: relative;
+        }
+        
+        .date {
+            font-family: 'Zen Kurenaido', sans-serif;
+            color: #475569;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+        
+        h1 {
+            font-family: 'Yomogi', cursive;
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            background: linear-gradient(90deg, #593C47, #F24405);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+            display: inline-block;
+        }
+        
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, #F2E63D, #F25C05);
+            border-radius: 2px;
+        }
+        
+        .content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .column {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .card {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(89, 60, 71, 0.08);
+            padding: 20px;
+            margin-bottom: 20px;
+            position: relative;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(89, 60, 71, 0.12);
+            border-color: #F2C53D;
+        }
+        
+        h2 {
+            font-family: 'Zen Kurenaido', sans-serif;
+            font-size: 18px;
+            color: #1e40af;
+            margin-bottom: 15px;
+            position: relative;
+            padding-left: 28px;
+            line-height: 1.3;
+        }
+        
+        h2::before {
+            content: '📝';
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        
+        .insight-1 h2::before { content: '👀'; }
+        .insight-2 h2::before { content: '🤔'; }
+        .insight-3 h2::before { content: '👦'; }
+        .insight-4 h2::before { content: '🧠'; }
+        .insight-5 h2::before { content: '😤'; }
+        .insight-6 h2::before { content: '📊'; }
+        
+        p {
+            font-size: 14px;
+            line-height: 1.6;
+            position: relative;
+        }
+        
+        .highlight {
+            background: linear-gradient(transparent 60%, #F2E63D 60%);
+            font-weight: bold;
+            padding: 0 3px;
+        }
+        
+        .emphasize {
+            color: #F25C05;
+            font-weight: bold;
+            font-family: 'Yomogi', cursive;
+        }
+        
+        .arrow-container {
+            display: flex;
+            justify-content: center;
+            margin: 15px 0;
+        }
+        
+        .arrow {
+            width: 40px;
+            height: 40px;
+            position: relative;
+        }
+        
+        .arrow::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 30px;
+            height: 10px;
+            background-color: #F24405;
+            transform: translateY(-50%);
+        }
+        
+        .arrow::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: 0;
+            width: 0;
+            height: 0;
+            border-top: 10px solid transparent;
+            border-bottom: 10px solid transparent;
+            border-left: 10px solid #F24405;
+            transform: translateY(-50%);
+        }
+        
+        .connection {
+            position: absolute;
+            border: 2px dashed #593C47;
+            z-index: 1;
+        }
+        
+        .bubble {
+            position: relative;
+            background-color: #fff;
+            border: 2px solid #593C47;
+            padding: 10px 15px;
+            border-radius: 15px;
+            margin: 15px 0;
+            font-family: 'Yomogi', cursive;
+        }
+        
+        .bubble::before {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            left: 20px;
+            width: 0;
+            height: 0;
+            border-left: 12px solid transparent;
+            border-right: 12px solid transparent;
+            border-top: 12px solid #593C47;
+        }
+        
+        .bubble::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 22px;
+            width: 0;
+            height: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-top: 10px solid #fff;
+        }
+        
+        .icon-row {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 0;
+            font-size: 24px;
+        }
+        
+        .caption {
+            font-size: 12px;
+            color: #475569;
+            text-align: center;
+            margin-top: 5px;
+            font-family: 'Zen Kurenaido', sans-serif;
+        }
+        
+        .tag {
+            display: inline-block;
+            background-color: #F2C53D;
+            color: #593C47;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            margin-right: 8px;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        
+        .banner {
+            position: relative;
+            background-color: #F2E63D;
+            color: #593C47;
+            padding: 10px 15px;
+            margin: 20px 0;
+            text-align: center;
+            font-weight: bold;
+            font-family: 'Yomogi', cursive;
+            transform: rotate(-1deg);
+            box-shadow: 3px 3px 0 rgba(89, 60, 71, 0.2);
+        }
+        
+        .banner::before, .banner::after {
+            content: '';
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #F2E63D;
+            bottom: -5px;
+        }
+        
+        .banner::before {
+            left: 0;
+            transform: skew(0, 45deg);
+        }
+        
+        .banner::after {
+            right: 0;
+            transform: skew(0, -45deg);
+        }
+        
+        .quote {
+            font-style: italic;
+            border-left: 3px solid #F25C05;
+            padding-left: 15px;
+            margin: 15px 0;
+        }
+        
+        .circle-highlight {
+            position: absolute;
+            width: 70px;
+            height: 70px;
+            border: 2px solid #F24405;
+            border-radius: 50%;
+            top: -20px;
+            right: -20px;
+            opacity: 0.6;
+        }
+        
+        .footer {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid #F2C53D;
+            text-align: center;
+            font-size: 12px;
+            color: #475569;
+        }
+        
+        .hand-drawn {
+            font-family: 'Yomogi', cursive;
+        }
+        
+        /* 手書き風の線 */
+        .squiggle {
+            position: relative;
+        }
+        
+        .squiggle::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: url("data:image/svg+xml,%3Csvg width='100' height='10' viewBox='0 0 100 10' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 5 Q 10 10, 20 5 T 40 5 T 60 5 T 80 5 T 100 5' stroke='%23F25C05' fill='none' stroke-width='2'/%3E%3C/svg%3E");
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>トレーダーとしての成長の記録</h1>
+            <div class="date">2025年3月8日</div>
+        </div>
+        
+        <div class="content">
+            <div class="column">
+                <div class="card insight-1">
+                    <div class="circle-highlight"></div>
+                    <h2>期待と現実のギャップ</h2>
+                    <p>先月、<span class="highlight">無限の「完璧な」セットアップ</span>を見ました。でも見た目がどれだけ良くても、私のトレードは<span class="emphasize">失敗し続けていた</span>。</p>
+                    <div class="icon-row">
+                        <div>
+                            <div>📊</div>
+                            <div class="caption">完璧な分析</div>
+                        </div>
+                        <div>
+                            <div>❌</div>
+                            <div class="caption">失敗するトレード</div>
+                        </div>
+                        <div>
+                            <div>🤷‍♂️</div>
+                            <div class="caption">混乱</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card insight-2">
+                    <h2>心理的な葛藤</h2>
+                    <p>チャンスを見続けているのに何も上手くいかないと、<span class="highlight">頭が混乱し</span>、自分が問題だと感じてしまいます。</p>
+                    <div class="bubble">
+                        「何度も同じパターンを繰り返しているのに、なぜ上手くいかないのだろう？」
+                    </div>
+                    <div class="tags">
+                        <span class="tag">自己不信</span>
+                        <span class="tag">メンタルブロック</span>
+                        <span class="tag">認知バイアス</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="column">
+                <div class="card insight-3">
+                    <h2>過去の自分の反応</h2>
+                    <p>若かった頃の私なら、それを<span class="emphasize">信じていた</span>でしょう。目に見えるものを信頼し、<span class="highlight">フィードバックを無視して</span>、トレードを続けていました。</p>
+                    <div class="banner">
+                        トレードが上手くいかなかったら、もっと強く押し進めていた
+                    </div>
+                    <div class="arrow-container">
+                        <div class="arrow"></div>
+                    </div>
+                    <p class="quote">「見えているものが正しい」という思い込み</p>
+                </div>
+                
+                <div class="card insight-4">
+                    <h2>現在の自分の気づき</h2>
+                    <p>今の私は知っています。トレードが上手くいかない時は、<span class="highlight">自分が愚かに感じても</span>、フィードバックを信頼します。</p>
+                    <div class="icon-row">
+                        <div>
+                            <div>👁️</div>
+                            <div class="caption">観察</div>
+                        </div>
+                        <div>
+                            <div>🧠</div>
+                            <div class="caption">分析</div>
+                        </div>
+                        <div>
+                            <div>🔄</div>
+                            <div class="caption">調整</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="column">
+                <div class="card insight-5">
+                    <h2>感情との向き合い方</h2>
+                    <p>完璧なセットアップが失敗するのを見るのは<span class="emphasize">本当にイライラする</span>ことですが、トレードが上手くいかないとき、市場は好きか嫌いかに関わらず<span class="highlight">何かを教えてくれている</span>ことを学びました。</p>
+                    <div class="bubble">
+                        「不快な真実を受け入れる勇気が成長につながる」
+                    </div>
+                </div>
+                
+                <div class="card insight-6">
+                    <h2>最も信頼できる指標</h2>
+                    <p>どんなに状況が良く見えても、どんなに自分が愚かに感じても、<span class="highlight">フィードバックを信頼して調整</span>します。それが<span class="emphasize">常に最も信頼できる指標</span>でした。</p>
+                    <div class="banner">
+                        市場からのフィードバック = 最良の教師
+                    </div>
+                    <div class="tags">
+                        <span class="tag">謙虚さ</span>
+                        <span class="tag">適応力</span>
+                        <span class="tag">成長マインド</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer hand-drawn">
+            「マーケットは常に正しい。あなたの理論ではなく、結果を信じなさい」
+        </div>
+    </div>
+</body>
+</html>

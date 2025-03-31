@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>初心者が稼ぐ方法は神話 - グラフィックレコーディング</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Yomogi&family=Zen+Kurenaido&family=Kaisei+Decol:wght@400;700&display=swap');
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'Kaisei Decol', serif;
+      background-color: #f8f9fa;
+      color: #334155;
+      line-height: 1.4;
+      padding: 2rem;
+    }
+    
+    .container {
+      max-width: 100%;
+      margin: 0 auto;
+      background-color: white;
+      border-radius: 16px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+      padding: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .container::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23593C47' fill-opacity='0.03' fill-rule='evenodd'/%3E%3C/svg%3E");
+      opacity: 0.3;
+      pointer-events: none;
+    }
+    
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 3px solid #F25C05;
+      border-bottom-style: wavy;
+    }
+    
+    .title {
+      font-family: 'Yomogi', cursive;
+      font-size: 32px;
+      font-weight: bold;
+      background: linear-gradient(to right, #593C47, #F24405);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      position: relative;
+      margin-bottom: 0.5rem;
+    }
+    
+    .title-accent {
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 100%;
+      height: 10px;
+      background-image: url("data:image/svg+xml,%3Csvg width='100' height='10' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,5 C15,2 35,8 50,5 C65,2 85,8 100,5' stroke='%23F2C53D' stroke-width='3' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: repeat-x;
+      z-index: -1;
+    }
+    
+    .date {
+      font-family: 'Zen Kurenaido', sans-serif;
+      font-size: 16px;
+      color: #475569;
+    }
+    
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+    
+    .card {
+      background-color: rgba(255, 255, 255, 0.9);
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      position: relative;
+      backdrop-filter: blur(10px);
+      border: 2px solid;
+      border-color: #F2E63D;
+      border-style: dashed;
+    }
+    
+    .section-title {
+      font-family: 'Yomogi', cursive;
+      font-size: 18px;
+      color: #1e40af;
+      margin-bottom: 1rem;
+      position: relative;
+      display: inline-block;
+      padding-left: 2rem;
+    }
+    
+    .section-title::before {
+      content: "✏️";
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+    
+    .myth-title::before {
+      content: "🧠";
+    }
+    
+    .market-title::before {
+      content: "📊";
+    }
+    
+    .pro-title::before {
+      content: "🏆";
+    }
+    
+    .warning-title::before {
+      content: "⚠️";
+    }
+    
+    .advice-title::before {
+      content: "📚";
+    }
+    
+    p {
+      font-size: 14px;
+      margin-bottom: 1rem;
+    }
+    
+    .highlight {
+      font-weight: bold;
+      color: #F24405;
+      position: relative;
+      display: inline;
+    }
+    
+    .highlight::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 8px;
+      background-color: rgba(242, 196, 60, 0.4);
+      z-index: -1;
+      transform: rotate(-1deg);
+    }
+    
+    .arrow {
+      position: absolute;
+      width: 50px;
+      height: 40px;
+    }
+    
+    .arrow-1 {
+      top: 20%;
+      right: -30px;
+      transform: rotate(15deg);
+    }
+    
+    .arrow-2 {
+      bottom: -20px;
+      left: 40%;
+      transform: rotate(100deg);
+    }
+    
+    .arrow-3 {
+      bottom: 20%;
+      left: -30px;
+      transform: rotate(165deg);
+    }
+    
+    .quote {
+      background-color: rgba(242, 230, 60, 0.1);
+      border-left: 3px solid #F2C53D;
+      padding: 0.8rem;
+      font-style: italic;
+      margin: 1rem 0;
+      position: relative;
+    }
+    
+    .quote::before {
+      content: """;
+      font-size: 32px;
+      color: #F2C53D;
+      position: absolute;
+      left: 5px;
+      top: -10px;
+    }
+    
+    .bubble {
+      position: relative;
+      background-color: #fff;
+      border: 2px solid #593C47;
+      border-radius: 10px;
+      padding: 10px;
+      margin: 15px 0;
+    }
+    
+    .bubble::after {
+      content: "";
+      position: absolute;
+      bottom: -12px;
+      left: 20px;
+      border-width: 12px 12px 0;
+      border-style: solid;
+      border-color: #593C47 transparent;
+      display: block;
+      width: 0;
+    }
+    
+    .pro-list {
+      list-style: none;
+      margin: 1rem 0;
+    }
+    
+    .pro-list li {
+      position: relative;
+      padding-left: 1.5rem;
+      margin-bottom: 0.5rem;
+      font-size: 14px;
+    }
+    
+    .pro-list li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: #F25C05;
+      font-weight: bold;
+    }
+    
+    .emotion-box {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin: 1rem 0;
+    }
+    
+    .emotion {
+      background-color: rgba(89, 60, 71, 0.1);
+      border-radius: 20px;
+      padding: 0.3rem 0.8rem;
+      font-size: 12px;
+      display: inline-block;
+    }
+    
+    .conclusion {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 1.5rem;
+      background-color: rgba(242, 91, 5, 0.1);
+      border-radius: 12px;
+      border: 2px dashed #F25C05;
+      margin-top: 1rem;
+    }
+    
+    .conclusion p {
+      font-size: 16px;
+      font-weight: bold;
+      font-family: 'Yomogi', cursive;
+    }
+    
+    .footer {
+      text-align: right;
+      margin-top: 2rem;
+      font-size: 12px;
+      color: #64748b;
+      font-style: italic;
+    }
+    
+    .hand-drawn {
+      filter: url(#marker-effect);
+    }
+    
+    /* SVGフィルター */
+    svg {
+      position: absolute;
+      width: 0;
+      height: 0;
+    }
+  </style>
+</head>
+<body>
+  <!-- SVGフィルター -->
+  <svg xmlns="http://www.w3.org/2000/svg">
+    <filter id="marker-effect">
+      <feTurbulence type="turbulence" baseFrequency="0.05" numOctaves="2" result="turbulence"/>
+      <feDisplacementMap in2="turbulence" in="SourceGraphic" scale="2" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </svg>
+
+  <div class="container">
+    <div class="header">
+      <div>
+        <h1 class="title">初心者が稼ぐ方法は神話 🧵</h1>
+        <div class="title-accent"></div>
+      </div>
+      <div class="date">2025年3月28日</div>
+    </div>
+    
+    <div class="grid">
+      <!-- 左カラム -->
+      <div class="card">
+        <h2 class="section-title myth-title">神話の真実</h2>
+        <p>初心者が稼ぐための方法など<span class="highlight">存在しません</span>。</p>
+        <p>もし稼ぎたいなら、あなたは<span class="highlight">プロの方法を</span>、<span class="highlight">プロレベルの精度で</span>、<span class="highlight">プロのように一貫して</span>実行しなければなりません。</p>
+        <p>つまり—あなた自身がプロになる必要があるのです。</p>
+        
+        <svg class="arrow arrow-1" viewBox="0 0 50 20" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0,10 C10,10 30,10 40,10 L35,5 M40,10 L35,15" stroke="#F25C05" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        
+        <div class="quote">
+          インターネットには「初心者でも勝てる」「簡単に稼げる方法」といった甘い言葉があふれています。
+        </div>
+        
+        <p>しかしそれらの約束を信じて市場に参入する人は、<span class="highlight">ほとんど生き残れません</span>。</p>
+      </div>
+      
+      <!-- 中央カラム -->
+      <div class="card">
+        <h2 class="section-title market-title">確率の世界</h2>
+        <p>確率の世界では、「勝ち方」の知識や戦略そのものが結果を生み出すのではなく、<span class="highlight">「一貫性」</span>が結果を生み出します。</p>
+        <p>一貫性を生み出すのは<span class="highlight">深い理解と圧倒的な練習</span>です。そして初心者はそれらを持ち合わせていません。</p>
+        
+        <div class="bubble">
+          どんなに良い方法を手に入れても、<br>
+          「なぜこれが機能するのか？」<br>
+          「負けが続いても従えるか？」<br>
+          といった質問に答えられなければ、それをマスターすることはできず、成功しないでしょう。
+        </div>
+        
+        <p>「初心者が稼ぐ方法」を求めるとき、あなたが実際に求めているのは：</p>
+        
+        <div class="quote">
+          「プロ選手が試合中にやることをコピーすれば、練習もせずに勝てるはず—そうでしょ？」
+        </div>
+        
+        <p>これが<span class="highlight">不可能なのは明らか</span>です。それなのに、トレードについては多くの人がそれを期待します。</p>
+        
+        <svg class="arrow arrow-2" viewBox="0 0 50 20" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0,10 C10,10 30,10 40,10 L35,5 M40,10 L35,15" stroke="#F25C05" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      
+      <!-- 右カラム -->
+      <div class="card">
+        <h2 class="section-title pro-title">プロフェッショナルとは</h2>
+        <p>市場は<span class="highlight">準備不足で練習していない人を容赦なく破壊します</span>。この世界は確率、統計、行動心理学で構成されています。</p>
+        <p>知識だけでは不十分です。それらの要素を行動に反映させるには、<span class="highlight">堅実な準備と絶え間ない練習</span>が必要です。</p>
+        
+        <h3 class="section-title" style="font-size: 16px;">プロの特徴：</h3>
+        <ul class="pro-list">
+          <li>確率的思考を理解している人</li>
+          <li>その基礎に基づいてトレーダーの仕事を理解している人</li>
+          <li>長期的に広い視点から自分の行動を観察できる人</li>
+          <li>エッジを持つシステム（戦略）を持っている人</li>
+          <li>目の前の勝ち負けに価値を置かない人</li>
+          <li>適切なリスクを取り、冷静にルールに従ってサンプルサイズを増やすことでしか稼げないことを理解している人</li>
+          <li>長期にわたって一貫した行動を繰り返す人</li>
+        </ul>
+        
+        <svg class="arrow arrow-3" viewBox="0 0 50 20" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0,10 C10,10 30,10 40,10 L35,5 M40,10 L35,15" stroke="#F25C05" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      
+      <!-- 左下カラム -->
+      <div class="card">
+        <h2 class="section-title warning-title">感情に支配されていませんか？</h2>
+        
+        <div class="emotion-box">
+          <span class="emotion">「勝ちたい」</span>
+          <span class="emotion">「取り戻したい」</span>
+          <span class="emotion">「これは有望そうだ」</span>
+        </div>
+        
+        <p>このような感情に駆り立てられているなら、<span class="highlight">あなたはまだ準備ができていません</span>。</p>
+        
+        <p>この世界で勝ちたいなら、<span class="highlight">プロフェッショナルになる以外に選択肢はありません</span>。</p>
+      </div>
+      
+      <!-- 中央下カラム -->
+      <div class="card">
+        <h2 class="section-title advice-title">真実を受け入れる</h2>
+        
+        <p>トレードは「<span class="highlight">簡単に稼げる</span>」世界ではありません。</p>
+        <p>「<span class="highlight">プロにならなければ稼げない</span>」世界なのです。</p>
+        
+        <div class="quote">
+          「初心者が稼ぐ方法」のような甘い言葉に飛びつくのをやめ、本気で覚悟を決めて取り組みましょう。
+        </div>
+      </div>
+      
+      <!-- 右下カラム -->
+      <div class="card">
+        <h2 class="section-title advice-title">自己投資の道</h2>
+        
+        <p>トレードへの理解を深めるために以下の本を読みましょう。それらはあなたのトレード旅行の<span class="highlight">真の地図</span>となるでしょう。</p>
+        
+        <div style="text-align: center; margin-top: 1rem;">
+          <span style="font-size: 24px; color: #593C47;">📚</span>
+          <span style="font-size: 30px; color: #F25C05;">📊</span>
+          <span style="font-size: 24px; color: #593C47;">📈</span>
+        </div>
+      </div>
+      
+      <!-- 結論 -->
+      <div class="conclusion">
+        <p>初心者が稼ぐ方法を探すことは、プロになることなく結果を期待することです。<br>
+        <span style="font-size: 20px; color: #F24405;">真の成功への道は、プロフェッショナルへの成長の旅です。</span></p>
+      </div>
+    </div>
+    
+    <div class="footer">
+      出典: トレーダー向けのアドバイス集 (2025)
+    </div>
+  </div>
+</body>
+</html>

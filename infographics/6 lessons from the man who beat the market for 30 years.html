@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>市場を30年間制した男からの6つの教訓</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Yomogi&family=Zen+Kurenaido&family=Kaisei+Decol:wght@400;700&display=swap');
+    
+    :root {
+      --fashion-1: #593C47;
+      --fashion-2: #F2E63D;
+      --fashion-3: #F2C53D;
+      --fashion-4: #F25C05;
+      --fashion-5: #F24405;
+      --text-main: #334155;
+      --text-title: #1e40af;
+      --text-subtitle: #475569;
+      --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      --glass-bg: rgba(255, 255, 255, 0.7);
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'Kaisei Decol', serif;
+      color: var(--text-main);
+      line-height: 1.4;
+      background-color: #f8f9fa;
+      padding: 20px;
+    }
+    
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: var(--card-shadow);
+      padding: 30px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+      padding-bottom: 15px;
+      border-bottom: 2px dashed var(--fashion-1);
+    }
+    
+    .title {
+      font-family: 'Zen Kurenaido', sans-serif;
+      font-size: 32px;
+      font-weight: bold;
+      background: linear-gradient(to right, var(--fashion-1), var(--fashion-4));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      display: inline-block;
+      position: relative;
+    }
+    
+    .title::after {
+      content: "";
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(to right, var(--fashion-3), var(--fashion-5));
+      border-radius: 3px;
+    }
+    
+    .date {
+      font-family: 'Yomogi', cursive;
+      color: var(--text-subtitle);
+      font-size: 14px;
+    }
+    
+    .intro {
+      margin-bottom: 30px;
+      padding: 15px;
+      background-color: var(--glass-bg);
+      border-radius: 12px;
+      border-left: 4px solid var(--fashion-2);
+      position: relative;
+      backdrop-filter: blur(5px);
+    }
+    
+    .story-box {
+      padding: 15px;
+      background-color: rgba(242, 198, 61, 0.1);
+      border-radius: 10px;
+      margin-bottom: 20px;
+      position: relative;
+    }
+    
+    .story-box::before {
+      content: "📚";
+      position: absolute;
+      top: -10px;
+      left: 10px;
+      font-size: 24px;
+    }
+    
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 40px;
+    }
+    
+    .lesson-card {
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: var(--card-shadow);
+      padding: 20px;
+      position: relative;
+      overflow: hidden;
+      border: 2px solid transparent;
+      transition: transform 0.3s ease;
+    }
+    
+    .lesson-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--fashion-3);
+    }
+    
+    .lesson-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(to right, var(--fashion-2), var(--fashion-4));
+    }
+    
+    .lesson-number {
+      font-family: 'Yomogi', cursive;
+      font-size: 24px;
+      color: var(--fashion-5);
+      margin-bottom: 10px;
+      display: inline-block;
+      position: relative;
+    }
+    
+    .lesson-number::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: var(--fashion-3);
+      border-radius: 2px;
+    }
+    
+    .lesson-title {
+      font-family: 'Zen Kurenaido', sans-serif;
+      font-size: 18px;
+      color: var(--fashion-1);
+      margin-bottom: 15px;
+      font-weight: bold;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .lesson-content {
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    
+    .highlight {
+      background: linear-gradient(transparent 60%, var(--fashion-2) 40%);
+      font-weight: bold;
+    }
+    
+    .keyword {
+      color: var(--fashion-4);
+      font-weight: bold;
+      border-bottom: 2px dotted var(--fashion-4);
+      padding: 0 2px;
+    }
+    
+    .footer {
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 2px dashed var(--fashion-1);
+      text-align: center;
+      font-size: 12px;
+      color: var(--text-subtitle);
+    }
+    
+    .arrow {
+      position: absolute;
+      width: 50px;
+      height: 30px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 50 30' fill='none' stroke='%23F25C05' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2 15 L40 15 M30 5 L40 15 L30 25'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+    }
+    
+    .stats-box {
+      background-color: rgba(242, 230, 61, 0.2);
+      border-radius: 10px;
+      padding: 15px;
+      margin: 20px 0;
+      position: relative;
+      font-weight: bold;
+      text-align: center;
+    }
+    
+    .stats-box::before {
+      content: "📊";
+      position: absolute;
+      top: -10px;
+      left: 10px;
+      font-size: 24px;
+    }
+    
+    .handdrawn-border {
+      border: 2px solid var(--fashion-1);
+      border-radius: 12px;
+      position: relative;
+    }
+    
+    .handdrawn-border::before {
+      content: "";
+      position: absolute;
+      top: -5px;
+      right: -5px;
+      bottom: -5px;
+      left: -5px;
+      border: 2px solid var(--fashion-3);
+      border-radius: 15px;
+      z-index: -1;
+    }
+    
+    /* 手描き風の装飾 */
+    .handdrawn-icon {
+      display: inline-block;
+      margin-right: 5px;
+      font-size: 1.2em;
+    }
+    
+    .bubble {
+      position: relative;
+      background-color: white;
+      border-radius: 15px;
+      padding: 10px 15px;
+      margin: 10px 0;
+      border: 2px solid var(--fashion-3);
+    }
+    
+    .bubble::after {
+      content: "";
+      position: absolute;
+      bottom: -10px;
+      left: 20px;
+      border-width: 10px 10px 0;
+      border-style: solid;
+      border-color: var(--fashion-3) transparent;
+    }
+    
+    .handdrawn-line {
+      height: 2px;
+      background-color: var(--fashion-1);
+      position: relative;
+      margin: 20px 0;
+      border-radius: 2px;
+    }
+    
+    .handdrawn-line::before {
+      content: "";
+      position: absolute;
+      top: -2px;
+      left: 10%;
+      width: 80%;
+      height: 1px;
+      background-color: var(--fashion-3);
+      border-radius: 2px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1 class="title">市場を30年間制した男からの6つの教訓 📈</h1>
+      <div class="date">2025年3月18日</div>
+    </div>
+    
+    <div class="intro handdrawn-border">
+      <p>
+        <span class="handdrawn-icon">✏️</span>
+        トレード歴5年。かつては<span class="highlight">ローソク足パターン</span>で損失を出し、成功は<span class="keyword">直感</span>からと考えていました。
+      </p>
+      <p>
+        そんな時「<span class="highlight">The Man Who Solved the Market</span>」を発見。それが私のトレード人生を永遠に変えました。
+      </p>
+      <p>
+        <span class="handdrawn-icon">🔍</span>
+        <span class="keyword">データを活用</span>して30年間市場を制した男からの教訓をご紹介します。
+      </p>
+    </div>
+    
+    <div class="story-box">
+      <p><span class="handdrawn-icon">📚</span> <span class="highlight">ジム・サイモンズ</span>はいつもクオントだったわけではありません。</p>
+      <p>私たちの多くと同じく、純粋な裁量トレードから始めました。</p>
+      <p>彼の最初のトレード事業はしばらくうまくいきましたが、<span class="keyword">苦痛</span>で<span class="keyword">一貫性がない</span>ものでした。</p>
+    </div>
+    
+    <div class="stats-box">
+      <p>サイモンズがモデルベースに完全移行してから...</p>
+      <p>✨ 30年間で<span class="highlight">年平均リターン66%</span>（手数料前）</p>
+      <p>✨ 手数料後の<span class="highlight">純リターン39%</span></p>
+      <p>すべて<span class="keyword">データを活用</span>した取引判断によるものです</p>
+    </div>
+    
+    <div class="grid">
+      <div class="lesson-card">
+        <div class="lesson-number">1</div>
+        <h3 class="lesson-title"><span class="handdrawn-icon">📊</span> データへの執着</h3>
+        <div class="lesson-content">
+          <p>初期の頃、サイモンズは文字通り<span class="highlight">連邦準備制度理事会に人を送り</span>、手作業でデータをコピーさせました。</p>
+          <div class="bubble">
+            他のトレーダーがニュースティッカーを読んでいる間に、ルネサンス・テクノロジーズは<span class="keyword">何十年もの清潔なデータ</span>を収集していました。
+          </div>
+          <p>この優位性だけで何十億ドルもの価値がありました。</p>
+          <p>当時、<span class="highlight">データへの注目</span>は画期的で、一人がデータの収集と清掃に専念しました。</p>
+          <p>月の満ち欠けから気象データまで、<span class="keyword">わずかな優位性</span>を与えるパターンを探しました。</p>
+        </div>
+      </div>
+      
+      <div class="lesson-card">
+        <div class="lesson-number">2</div>
+        <h3 class="lesson-title"><span class="handdrawn-icon">🤖</span> "モデルに従う"</h3>
+        <div class="lesson-content">
+          <p>1988年に100%システマティックになってから、サイモンズには厳格なルールがありました：</p>
+          <div class="bubble">
+            その瞬間にどれほど賢く見えるか愚かに見えるかに関わらず、<span class="highlight">モデルの言うことに従う</span>
+          </div>
+          <p><span class="keyword">上書きなし</span>、<span class="keyword">疑いの余地なし</span>。</p>
+          <p>サイモンズがモデルを上書きしたのは次の2回だけと言われています：</p>
+          <ul style="list-style: none; padding-left: 20px;">
+            <li>- ドットコムバブル崩壊</li>
+            <li>- クオント・クエイク</li>
+          </ul>
+          <p>30年間モデルを上書きせずにいられる人はほとんどいないでしょう。</p>
+        </div>
+      </div>
+      
+      <div class="lesson-card">
+        <div class="lesson-number">3</div>
+        <h3 class="lesson-title"><span class="handdrawn-icon">🏗️</span> インフラへの投資</h3>
+        <div class="lesson-content">
+          <p>他の人々が戦略のみに焦点を当てている間に、サイモンズは<span class="highlight">世界クラスのコンピューティングと実行システム</span>に執着的に取り組みました。</p>
+          <div class="bubble">
+            これによりチームは技術的制限と戦うのではなく、<span class="keyword">研究に集中</span>できました。
+          </div>
+          <p>インフラ自体が<span class="highlight">優位性</span>になりえます。</p>
+          <p>テクノロジーの限界に悩まされるのではなく、研究に集中できる環境を整備しました。</p>
+        </div>
+      </div>
+      
+      <div class="lesson-card">
+        <div class="lesson-number">4</div>
+        <h3 class="lesson-title"><span class="handdrawn-icon">🌎</span> 新しい市場を探る</h3>
+        <div class="lesson-content">
+          <div class="bubble">
+            「公開取引されており、流動性があり、モデル化に適しているものであれば、我々はそれを取引する」
+          </div>
+          <p>裁量トレーダーが特定の市場に執着する一方で、ルネサンスは<span class="keyword">アルファ</span>があるかどうかだけを気にしていました。</p>
+          <p>十分な<span class="highlight">データと流動性</span>があれば、彼らはそれを取引しました。</p>
+          <p>市場への執着はなく、純粋に<span class="keyword">優位性</span>があるかどうかだけを基準にしていました。</p>
+        </div>
+      </div>
+      
+      <div class="lesson-card">
+        <div class="lesson-number">5</div>
+        <h3 class="lesson-title"><span class="handdrawn-icon">🔢</span> 大きなサンプルサイズ</h3>
+        <div class="lesson-content">
+          <p>データは市場でのアルファを発見するだけでなく、<span class="highlight">検証</span>にも不可欠でした。</p>
+          <div class="bubble">
+            サイモンズが理解していたように、<span class="keyword">大数の法則</span>は十分なサンプル数があれば、結果は真の期待値に収束することを意味します。
+          </div>
+          <p>統計的に有意な結果を得るために、膨大な量のデータと十分なサンプルサイズが必要だと理解していました。</p>
+          <p>一時的な変動ではなく、<span class="highlight">長期的な法則</span>を探していました。</p>
+        </div>
+      </div>
+      
+      <div class="lesson-card">
+        <div class="lesson-number">6</div>
+        <h3 class="lesson-title"><span class="handdrawn-icon">🔄</span> "システムは常に漏れている"</h3>
+        <div class="lesson-content">
+          <p>最高のモデルでさえ、時間とともに<span class="highlight">劣化</span>します。</p>
+          <div class="bubble">
+            継続的な研究が非常に価値があり、他のファンドが遅れを取る中でも彼らを先行させました。
+          </div>
+          <p>これはまた、ファンド内での<span class="keyword">コラボレーション</span>を彼が推進した理由でもあります。</p>
+          <p>創造性と好奇心を育みました。</p>
+          <p>最高の戦略でも時間とともに効果は薄れるという<span class="highlight">謙虚さ</span>を持ち続けました。</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="handdrawn-line"></div>
+    
+    <div class="footer">
+      <p>出典: "The Man Who Solved the Market" | グラフィックレコーディング風インフォグラフィック | 2025年3月18日作成</p>
+    </div>
+  </div>
+</body>
+</html>

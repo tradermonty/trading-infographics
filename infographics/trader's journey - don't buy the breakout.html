@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DON'T Buy the Breakout? - グラフィックレコーディング</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Yomogi&family=Zen+Kurenaido&family=Kaisei+Decol:wght@400;700&display=swap');
+    
+    :root {
+      --fashion-1: #593C47;
+      --fashion-2: #F2E63D;
+      --fashion-3: #F2C53D;
+      --fashion-4: #F25C05;
+      --fashion-5: #F24405;
+      --gray-600: #475569;
+      --gray-700: #334155;
+      --blue-800: #1e40af;
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'Kaisei Decol', serif;
+      background-color: #f8f9fa;
+      color: var(--gray-700);
+      line-height: 1.4;
+      padding: 15px;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      background-color: white;
+      border-radius: 24px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      overflow: hidden;
+      position: relative;
+    }
+    
+    .header {
+      background: linear-gradient(120deg, var(--fashion-1), var(--fashion-5));
+      padding: 20px;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      border-bottom: 4px dashed var(--fashion-3);
+    }
+    
+    @media (min-width: 768px) {
+      .header {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 30px;
+      }
+      
+      body {
+        padding: 30px;
+      }
+    }
+    
+    .title-container {
+      position: relative;
+      margin-bottom: 15px;
+    }
+    
+    @media (min-width: 768px) {
+      .title-container {
+        margin-bottom: 0;
+      }
+    }
+    
+    .title {
+      font-family: 'Zen Kurenaido', sans-serif;
+      font-size: 28px;
+      font-weight: bold;
+      display: inline-block;
+      position: relative;
+      margin-bottom: 10px;
+      padding-bottom: 5px;
+      z-index: 2;
+    }
+    
+    @media (min-width: 768px) {
+      .title {
+        font-size: 32px;
+      }
+    }
+    
+    .title::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 8px;
+      background-color: var(--fashion-2);
+      border-radius: 4px;
+      z-index: -1;
+      transform: rotate(-1deg);
+    }
+    
+    .subtitle {
+      font-family: 'Yomogi', cursive;
+      font-size: 16px;
+      color: rgba(255, 255, 255, 0.9);
+    }
+    
+    .date {
+      font-family: 'Kaisei Decol', serif;
+      font-size: 16px;
+      color: white;
+      text-align: left;
+    }
+    
+    @media (min-width: 768px) {
+      .date {
+        text-align: right;
+      }
+    }
+    
+    .author {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      background-color: var(--fashion-3);
+      padding: 4px 10px;
+      border-radius: 20px;
+      color: var(--fashion-1);
+      font-weight: bold;
+      transform: rotate(3deg);
+      box-shadow: 3px 3px 0 rgba(0,0,0,0.2);
+      font-size: 14px;
+    }
+    
+    @media (min-width: 768px) {
+      .author {
+        top: 15px;
+        right: 30px;
+        padding: 6px 14px;
+        font-size: 16px;
+      }
+    }
+    
+    .content {
+      display: flex;
+      flex-direction: column;
+      padding: 15px;
+      gap: 15px;
+    }
+    
+    @media (min-width: 768px) {
+      .content {
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding: 30px;
+        gap: 20px;
+      }
+    }
+    
+    .column {
+      flex: 1;
+      min-width: 100%;
+    }
+    
+    @media (min-width: 768px) {
+      .column {
+        min-width: 0;
+        flex: 1;
+        min-width: 300px;
+      }
+    }
+    
+    .section {
+      margin-bottom: 25px;
+      position: relative;
+    }
+    
+    .section-title {
+      font-family: 'Zen Kurenaido', sans-serif;
+      font-size: 18px;
+      color: var(--blue-800);
+      margin-bottom: 15px;
+      padding-left: 30px;
+      position: relative;
+      font-weight: bold;
+    }
+    
+    .section-title::before {
+      content: "✏️";
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+    
+    .section:nth-child(2) .section-title::before {
+      content: "📝";
+    }
+    
+    .section:nth-child(3) .section-title::before {
+      content: "🔍";
+    }
+    
+    .section:nth-child(4) .section-title::before {
+      content: "📊";
+    }
+    
+    .card {
+      background-color: white;
+      border-radius: 12px;
+      padding: 15px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      border: 2px solid rgba(0,0,0,0.05);
+      position: relative;
+      overflow-x: hidden;
+    }
+    
+    .hand-drawn {
+      position: relative;
+    }
+    
+    .hand-drawn::after {
+      content: "";
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background-color: var(--fashion-3);
+      border-radius: 2px;
+      transform: rotate(-0.5deg);
+    }
+    
+    .highlight {
+      background-color: rgba(242, 196, 60, 0.3);
+      padding: 0 3px;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .highlight::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: var(--fashion-4);
+    }
+    
+    .callout {
+      background-color: rgba(242, 230, 60, 0.2);
+      padding: 15px;
+      border-radius: 10px;
+      border-left: 4px solid var(--fashion-3);
+      margin: 15px 0;
+      position: relative;
+    }
+    
+    .callout::before {
+      content: "💡";
+      position: absolute;
+      top: -10px;
+      left: -10px;
+      background-color: white;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    .quote {
+      background-color: rgba(89, 60, 71, 0.05);
+      padding: 15px;
+      border-radius: 10px;
+      margin: 15px 0;
+      position: relative;
+      font-style: italic;
+    }
+    
+    .quote::before {
+      content: """;
+      font-family: sans-serif;
+      font-size: 60px;
+      color: var(--fashion-1);
+      opacity: 0.2;
+      position: absolute;
+      top: -20px;
+      left: 5px;
+    }
+    
+    .arrow {
+      width: 100px;
+      height: 30px;
+      background-color: transparent;
+      position: relative;
+      margin: 20px auto;
+    }
+    
+    .arrow::before {
+      content: "";
+      width: 100%;
+      height: 5px;
+      background-color: var(--fashion-4);
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+    }
+    
+    .arrow::after {
+      content: "";
+      width: 0;
+      height: 0;
+      border-left: 15px solid var(--fashion-4);
+      border-top: 15px solid transparent;
+      border-bottom: 15px solid transparent;
+      position: absolute;
+      right: -15px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    
+    .chart {
+      background-color: rgba(255,255,255,0.7);
+      border-radius: 10px;
+      border: 2px dashed var(--fashion-1);
+      padding: 10px;
+      margin: 15px 0;
+      position: relative;
+      overflow-x: auto;
+    }
+    
+    .chart-title {
+      font-family: 'Yomogi', cursive;
+      font-size: 16px;
+      color: var(--fashion-5);
+      margin-bottom: 10px;
+      text-align: center;
+    }
+    
+    .key-point {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+    }
+    
+    .key-point::before {
+      content: "📌";
+      margin-right: 10px;
+      flex-shrink: 0;
+    }
+    
+    .step {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+    }
+    
+    .step-number {
+      background-color: var(--fashion-3);
+      color: var(--fashion-1);
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 10px;
+      font-weight: bold;
+      flex-shrink: 0;
+    }
+    
+    .tips {
+      background-color: rgba(242, 92, 5, 0.1);
+      border-radius: 10px;
+      padding: 15px;
+      margin: 15px 0;
+    }
+    
+    .tips-title {
+      font-family: 'Zen Kurenaido', sans-serif;
+      font-size: 16px;
+      color: var(--fashion-4);
+      margin-bottom: 10px;
+      position: relative;
+      padding-left: 25px;
+    }
+    
+    .tips-title::before {
+      content: "💼";
+      position: absolute;
+      left: 0;
+    }
+    
+    .connection {
+      position: absolute;
+      transform: rotate(45deg);
+      border-top: 3px dashed var(--fashion-3);
+      width: 100px;
+      z-index: 1;
+    }
+    
+    .glass-card {
+      background-color: rgba(255,255,255,0.8);
+      backdrop-filter: blur(10px);
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.2);
+      box-shadow: 0 4px 30px rgba(0,0,0,0.1);
+      padding: 20px;
+      margin: 15px 0;
+    }
+    
+    svg {
+      max-width: 100%;
+      height: auto;
+    }
+    
+    .footer {
+      background-color: var(--fashion-1);
+      color: white;
+      padding: 15px;
+      text-align: center;
+      font-size: 12px;
+    }
+    
+    @media (min-width: 768px) {
+      .footer {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="title-container">
+        <h1 class="title">DON'T Buy the Breakout?</h1>
+        <p class="subtitle">トレーダーの旅路と市場適応の知恵</p>
+      </div>
+      <div class="date">2025年3月8日</div>
+    </div>
+    
+    <div class="author">KYNA KOSLING</div>
+    
+    <div class="content">
+      <!-- 左カラム -->
+      <div class="column">
+        <div class="section">
+          <h2 class="section-title">私のトレード旅路</h2>
+          
+          <div class="card">
+            <p>2020年4月、<span class="highlight">コロナ相場の底</span>からトレードを開始</p>
+            <p>親の勧めで<span class="hand-drawn">「バリュー株」の長期投資</span>から始める</p>
+            
+            <div class="callout">
+              <p>初めての取引：ロンドン上場の<span class="highlight">高級学生寮REIT</span></p>
+              <p>結果：<span class="hand-drawn">ほぼ底値で購入し、2週間で月収の倍に</span>！</p>
+            </div>
+            
+            <p>しかし、すぐに気づいたことは...</p>
+            <div class="key-point">全く何をしているのか分からなかった</div>
+            <div class="key-point">アイデア生成や売買タイミングのシステムがなかった</div>
+            <div class="key-point">自信がないため、少しでも逆行すればすぐにパニックに</div>
+          </div>
+          
+          <div class="glass-card">
+            <h3 style="color:var(--fashion-5);margin-bottom:10px;">幸運だったこと</h3>
+            <div class="key-point">利益が出ても天才とは思わなかった</div>
+            <div class="key-point">すぐにストップロスを使い始めた</div>
+            <div class="key-point">最初の取引から2ヶ月でシステムを探し始めた</div>
+          </div>
+          
+          <div class="card">
+            <p>本から学び始める：</p>
+            <ul style="list-style:none;margin-left:20px;">
+              <li>📚 マーク・ミネルヴィニの本</li>
+              <li>📚 ウィリアム・オニールの「株で富を築く方法」</li>
+              <li>📚 デイビッド・ライアン、スタン・ワインスタイン、リーフ・ソーライドなど</li>
+            </ul>
+            
+            <div class="callout">
+              <p>当時、<span class="highlight">羞明（光過敏症）</span>に苦しんでいた</p>
+              <p>チャートを見る方が文字を読むより楽で、トレードが<span class="hand-drawn">代替キャリア</span>に</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="section">
+          <h2 class="section-title">教科書の問題</h2>
+          
+          <div class="card">
+            <p>「理想的な」歴史的セットアップは、<span class="highlight">今日の混沌とした現実を反映していない</span></p>
+            
+            <div class="quote">
+              教科書通りのセットアップは「自然界」ではめったに現れない
+            </div>
+            
+            <p>問題点：</p>
+            <div class="key-point">教科書的なセットアップも失敗する</div>
+            <div class="key-point">「雑然とした」パターンもブレイクアウトする</div>
+            <div class="key-point">市場は変化し、エッジが浸食される</div>
+            <div class="key-point">新しい現象が発生することもある</div>
+          </div>
+          
+          <div class="glass-card">
+            <div class="quote">
+              「適応力がトレーダー（または投資家）として重要」- クリスチャン
+            </div>
+            <div class="quote">
+              「多くのトレーダーはCAN SLIMを盲目的に従っている」- プラディープ
+            </div>
+          </div>
+          
+          <div class="callout">
+            <p><span class="hand-drawn">パターン背後の心理</span>を理解せず、伝統的なセットアップを単に採用するのは危険</p>
+          </div>
+          
+          <div class="quote">
+            「深さがエッジを生み出す」- プラディープ
+          </div>
+          
+          <div class="card">
+            <p>「なぜ」を理解しなければ：</p>
+            <div class="key-point">確信を持てない</div>
+            <div class="key-point">どの原則が普遍的かを理解できない</div>
+            <div class="key-point">市場環境や自分の性格に適応する微妙な違いを理解できない</div>
+            <div class="key-point">適応するための「レバー」を引けない</div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 中央カラム -->
+      <div class="column">
+        <div class="section">
+          <h2 class="section-title">リスク・リワード改善</h2>
+          
+          <div class="card">
+            <p class="chart-title">従来の知恵を疑問視する</p>
+            
+            <div class="key-point">なぜストップを7〜8%も広く設定するべきなのか？</div>
+            
+            <div class="quote">
+              「私が最初にセットしたアメリカ株での7%ストップは、トリガーされるまで永遠のように感じた」
+            </div>
+            
+            <div class="glass-card">
+              <p>MAE（最大不利な変動）を計算する：</p>
+              <p>勝ちトレードは、勝ちに転じる前にどれだけ逆行するか？</p>
+              
+              <div class="step">
+                <div class="step-number">1</div>
+                <div>MAEが小さい → ストップを狭くする</div>
+              </div>
+              <div class="step">
+                <div class="step-number">2</div>
+                <div>MAEが大きい → エントリーを改善する</div>
+              </div>
+            </div>
+            
+            <div class="quote">
+              「私の勝ちトレードは、2%以上逆行したものはゼロだった。ほとんどは1%未満の逆行だった」
+            </div>
+          </div>
+          
+          <div class="chart">
+            <p class="chart-title">プロトレーダーの洞察</p>
+            
+            <div class="quote">
+              「買った最初の日に利益が出ているべき。実際、初日の利益はそのトレードで儲かる最良の指標の一つ」- デイビッド・ライアン
+            </div>
+            
+            <div class="quote">
+              「良い約定を得られないことを望む。良い約定は致命的な一撃だ」- マーク・ミネルヴィニ
+            </div>
+            
+            <div class="quote">
+              「エッジ浸食（低勝率）に対するヘッジは、リスク・リワード比率を改善することだけ」- マリオス・スタマトゥディス
+            </div>
+          </div>
+          
+          <div class="card">
+            <p>リスク・リワードを改善するもう一つの方法：<span class="highlight">エントリーを改善する</span></p>
+            
+            <div class="callout">
+              <p>様々なトレーダーの共通点（異なる用語だが同じ概念）：</p>
+              <div class="key-point">ブライアン・シャノン：「どこから来たのか？」</div>
+              <div class="key-point">ミネルヴィニの「チート」と「ロー・チート」セットアップ</div>
+              <div class="key-point">Stockbeeの「モメンタムバースト」（レンジ拡大に焦点）</div>
+            </div>
+          </div>
+          
+          <div class="glass-card">
+            <h3 style="color:var(--fashion-5);margin-bottom:10px;">JUNOのトレード時間帯洞察</h3>
+            <p>取引日の3つのセグメント：</p>
+            <ul style="list-style:none;margin-left:20px;">
+              <li>🕘 9:30〜11:00</li>
+              <li>🕚 11:00〜14:30</li>
+              <li>🕞 14:30〜16:00 EST</li>
+            </ul>
+            
+            <div class="quote">
+              「複数日のトレンド銘柄において、最初の日の正確なエントリーはそれほど重要ではない。はるかに重要なのは、初日に意味のあるエクスポージャーで参入すること」- JUNO
+            </div>
+          </div>
+        </div>
+        
+        <div class="section">
+          <h2 class="section-title">あなたの宿題</h2>
+          
+          <div class="card">
+            <p><span class="highlight">他人の言葉を鵜呑みにしない</span> - 自分で情報を検証する</p>
+            
+            <div class="callout">
+              <p>Stockbeeの日次学習はその優れた例：</p>
+              <div class="quote">
+                「これを毎日行うことで、現在の市場で何が機能するかの動作モデルが得られる。そして、それらを見つけるためのスキャンを設計し始められる」
+              </div>
+            </div>
+            
+            <div class="quote">
+              「十分な経験を積むと、多くの従来の知恵や市場の話を割り引くことができる。なぜなら、Twitterや本で『グル』が言っていることが、実際に市場で起きていることと一致していないのが見えるから」
+            </div>
+          </div>
+          
+          <div class="glass-card">
+            <h3 style="color:var(--fashion-5);margin-bottom:10px;">最終的な考察</h3>
+            
+            <p>多くのトレーダーが：</p>
+            <div class="key-point">「古典的な」本から手掛かりを得て始める</div>
+            <div class="key-point">徐々にそれらを自分のニーズと市場環境に適応させる</div>
+            <div class="key-point">「一般的な知恵」を微調整して効率性を高める方法を見つける</div>
+            
+            <div class="callout">
+              <p><span class="hand-drawn">ブレイクアウトは明白な出発点</span>だが、50年前と同じ方法でトレードすべきではない</p>
+            </div>
+            
+            <div class="key-point">より早く参入することで、より狭いストップとより大きなリワードが可能に</div>
+            <div class="key-point">これにより銘柄選択がさらに重要に</div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 右カラム -->
+      <div class="column">
+        <div class="card" style="background:linear-gradient(45deg, rgba(242,230,61,0.1), rgba(242,196,61,0.1));">
+          <div style="font-family:'Zen Kurenaido';font-size:20px;color:var(--fashion-1);margin-bottom:15px;text-align:center;font-weight:bold;">
+            チャートパターンの真実
+          </div>
+          
+          <div class="callout">
+            <p>チャートパターンが機能する理由：<span class="highlight">需要と供給を反映するから</span></p>
+            <p>それらは<span class="hand-drawn">原因ではなく結果</span> - 人間の心理を反映</p>
+          </div>
+          
+          <div class="quote">
+            基本的なパターンは普遍的
+          </div>
+          
+          <p>しかし、チャートパターンをトレードすることは別問題</p>
+          <div class="key-point">過去に機能したものは、今日機能させるために適応が必要かもしれない</div>
+          
+          <div class="chart">
+            <p class="chart-title">初心者トレーダーの典型的な問題</p>
+            <svg width="400" height="230" viewBox="0 0 400 230">
+              <!-- 背景 -->
+              <rect width="400" height="230" fill="#f9f9f9" rx="5" ry="5"/>
+              
+              <!-- チャートの基本構造 -->
+              <line x1="20" y1="20" x2="20" y2="180" stroke="#333" stroke-width="2" stroke-linecap="round" />
+              <line x1="20" y1="180" x2="340" y2="180" stroke="#333" stroke-width="2" stroke-linecap="round" />
+              
+              <!-- 価格線（理想的なブレイクアウト） -->
+              <path d="M30,150 L60,140 L90,145 L130,125 L160,120 L195,95 L235,60 L270,40" stroke="#1e40af" stroke-width="2" fill="none" stroke-dasharray="4,2"/>
+              
+              <!-- ブレイクアウトポイント -->
+              <circle cx="195" cy="95" r="5" fill="#F24405"/>
+              <text x="180" y="80" font-family="'Zen Kurenaido', sans-serif" font-size="12" fill="#F24405">理想的な</text>
+              <text x="175" y="95" font-family="'Zen Kurenaido', sans-serif" font-size="12" fill="#F24405">ブレイクアウト</text>
+              
+              <!-- 初心者の遅いエントリー -->
+              <circle cx="235" cy="60" r="5" fill="#F25C05"/>
+              <text x="205" y="45" font-family="'Zen Kurenaido', sans-serif" font-size="12" fill="#F25C05">初心者の</text>
+              <text x="200" y="60" font-family="'Zen Kurenaido', sans-serif" font-size="12" fill="#F25C05">遅いエントリー</text>
+              
+              <!-- 実際の価格の動き -->
+              <path d="M270,40 L310,75" stroke="#F24405" stroke-width="2" fill="none"/>
+              
+              <!-- 注釈 -->
+              <text x="270" y="100" font-family="'Zen Kurenaido', sans-serif" font-size="12" fill="#593C47">高値で買い</text>
+              <text x="260" y="115" font-family="'Zen Kurenaido', sans-serif" font-size="12" fill="#593C47">調整に巻き込まれる</text>
+              
+              <!-- 手書き風の注釈 -->
+              <path d="M275,50 C285,30 295,25 305,20" stroke="#F2C53D" stroke-width="2" fill="none"/>
+              <text x="240" y="20" font-family="'Yomogi', cursive" font-size="12" fill="#593C47" transform="rotate(-5,240,20)">大きな損失リスク！</text>
+              
+              <!-- 適切なエントリーポイント -->
+              <circle cx="160" cy="120" r="5" fill="#F2C53D"/>
+              <text x="110" y="110" font-family="'Zen Kurenaido', sans-serif" font-size="12" fill="#F2C53D">適切な早期エントリー</text>
+              
+              <!-- 説明文 -->
+              <text x="180" y="200" font-family="'Kaisei Decol', serif" font-size="14" fill="#593C47" text-anchor="middle">初心者は教科書通りのブレイクアウト後に参入してしまう</text>
+              <text x="180" y="220" font-family="'Kaisei Decol', serif" font-size="14" fill="#593C47" text-anchor="middle">高値掴みしてしまうのが典型的な問題</text>
+            </svg>
+            <p style="font-size:12px;text-align:center;margin-top:5px;">教科書を盲目的に従う未経験トレーダーの典型例</p>
+          </div>
+          
+          <div class="quote">
+            「エッジに取り組んでいないなら、誰か他の人がそうしている」- トム・ダンテ
+          </div>
+          
+          <div class="callout">
+            <p>微妙な違いを理解することの重要性：</p>
+            <p>例：ブレイクアウトトレードでは、大量出来高に注意するよう言われる</p>
+            <p>しかし、現実は：</p>
+            <div class="key-point">少ない出来高でもブレイクアウトは機能する</div>
+            <div class="key-point">大量出来高のブレイクアウトでトップを形成する銘柄もある</div>
+          </div>
+          
+          <div class="quote">
+            「大量出来高では、ブレイクアウトよりも値動きの頂点を見つけることに注目している」- マーティン・ルーク
+          </div>
+        </div>
+        
+        <div class="chart">
+          <p class="chart-title">ブローオフトップのチャート例</p>
+          <svg width="400" height="200" viewBox="0 0 400 200">
+            <!-- 背景 -->
+            <rect width="400" height="200" fill="#f9f9f9" rx="5" ry="5"/>
+            
+            <!-- チャート基本構造 -->
+            <line x1="20" y1="30" x2="20" y2="170" stroke="#333" stroke-width="2" stroke-linecap="round" />
+            <line x1="20" y1="170" x2="340" y2="170" stroke="#333" stroke-width="2" stroke-linecap="round" />
+            
+            <!-- 価格線 - 放物線的上昇 -->
+            <path d="M30,160 L50,155 L70,150 L90,145 L110,135 L130,125 L150,110 L170,90 L190,65 L210,45 L230,30 L250,45 L270,80 L290,120 L310,160" 
+                  stroke="#F24405" stroke-width="3" fill="none"/>
+            
+            <!-- 出来高バー -->
+            <rect x="30" y="175" width="10" height="5" fill="#593C47" opacity="0.5"/>
+            <rect x="50" y="175" width="10" height="5" fill="#593C47" opacity="0.5"/>
+            <rect x="70" y="175" width="10" height="6" fill="#593C47" opacity="0.5"/>
+            <rect x="90" y="175" width="10" height="7" fill="#593C47" opacity="0.5"/>
+            <rect x="110" y="175" width="10" height="8" fill="#593C47" opacity="0.5"/>
+            <rect x="130" y="175" width="10" height="10" fill="#593C47" opacity="0.6"/>
+            <rect x="150" y="175" width="10" height="12" fill="#593C47" opacity="0.6"/>
+            <rect x="170" y="175" width="10" height="15" fill="#593C47" opacity="0.7"/>
+            <rect x="190" y="175" width="10" height="18" fill="#593C47" opacity="0.7"/>
+            <rect x="210" y="175" width="10" height="23" fill="#593C47" opacity="0.8"/>
+            <rect x="230" y="175" width="10" height="30" fill="#593C47" opacity="1"/>
+            <rect x="250" y="175" width="10" height="20" fill="#593C47" opacity="0.7"/>
+            <rect x="270" y="175" width="10" height="15" fill="#593C47" opacity="0.6"/>
+            <rect x="290" y="175" width="10" height="10" fill="#593C47" opacity="0.5"/>
+            <rect x="310" y="175" width="10" height="8" fill="#593C47" opacity="0.5"/>
+            
+            <!-- ブローオフトップのポイント -->
+            <circle cx="230" cy="30" r="5" fill="#F25C05"/>
+            
+            <!-- 手書き風の注釈 -->
+            <path d="M230,15 C240,5 250,0 260,3" stroke="#F2C53D" stroke-width="2" fill="none"/>
+            <text x="250" y="15" font-family="'Yomogi', cursive" font-size="12" fill="#593C47" transform="rotate(-5,250,15)">トップ</text>
+            
+            <!-- 注釈 -->
+            <text x="210" y="60" font-family="'Zen Kurenaido', sans-serif" font-size="12" fill="#F24405">最大出来高</text>
+            <text x="200" y="75" font-family="'Zen Kurenaido', sans-serif" font-size="12" fill="#F24405">と価格トップ</text>
+            
+            <text x="270" y="80" font-family="'Zen Kurenaido', sans-serif" font-size="12" fill="#593C47">急速な</text>
+            <text x="270" y="95" font-family="'Zen Kurenaido', sans-serif" font-size="12" fill="#593C47">下落</text>
+            
+            <text x="160" y="120" font-family="'Zen Kurenaido', sans-serif" font-size="12" fill="#F2C53D">放物線的</text>
+            <text x="160" y="135" font-family="'Zen Kurenaido', sans-serif" font-size="12" fill="#F2C53D">上昇</text>
+            
+            <!-- 出来高ラベル -->
+            <text x="30" y="195" font-family="'Kaisei Decol', serif" font-size="10" fill="#593C47">出来高</text>
+          </svg>
+          <p style="font-size:12px;text-align:center;margin-top:5px;">放物線的な価格上昇と放物線的な出来高スパイクを伴うブローオフトップ</p>
+        </div>
+        
+        <div class="glass-card">
+          <div style="font-family:'Zen Kurenaido';font-size:18px;color:var(--fashion-1);margin-bottom:15px;text-align:center;font-weight:bold;">
+            覚えておくべきポイント
+          </div>
+          
+          <div class="key-point">チャートパターンは単に暗記するものではなく、理解するもの</div>
+          <div class="key-point">教科書的でない設定でも価格行動を解釈できるようになる</div>
+          <div class="key-point">「なぜ」を問うことは、一般的に役立つ練習</div>
+          <div class="key-point">問題の根本原因を特定し、解決するのに役立つ</div>
+        </div>
+        
+        <div class="card">
+          <div style="font-family:'Zen Kurenaido';font-size:20px;color:var(--fashion-5);margin-bottom:15px;text-align:center;font-weight:bold;">
+            ブライアン・シャノンの洞察
+          </div>
+          
+          <div class="quote">
+            「ギャップアップする銘柄を購入するのは通常、素人の賭けだ」
+          </div>
+          
+          <p>代わりに、ブライアンは：</p>
+          <div class="step">
+            <div class="step-number">1</div>
+            <div>プルバック（調整）を待つ</div>
+          </div>
+          <div class="step">
+            <div class="step-number">2</div>
+            <div>価格がVWAPを再び上回るのを待つ</div>
+          </div>
+          <div class="step">
+            <div class="step-number">3</div>
+            <div>買い手が短期トレンドを再び制御していることを確認</div>
+          </div>
+          
+          <div class="callout">
+            <p>これにより削減されるリスク：</p>
+            <div class="key-point">負けトレードを買うリスク</div>
+            <div class="key-point">勝ちトレードから振り落とされるリスク</div>
+          </div>
+          
+          <div class="quote">
+            「なぜ株が調整して買い手が再出現するのを待つのか？なぜ買い手が現れるのを待つのか？代わりに、買い手が制御を取り戻した証拠を待ち、株がモメンタムを取り戻した直後に強さで買うほうが良い賭けだ」- ブライアン・シャノン
+          </div>
+        </div>
+        
+        <div class="glass-card">
+          <div style="font-family:'Zen Kurenaido';font-size:18px;color:var(--fashion-1);margin-bottom:15px;text-align:center;font-weight:bold;">
+            結論：点と点を繋げる
+          </div>
+          
+          <p>より多くのトレーダーを研究し、話すほど、多くの人がこの問題に遭遇し、解決策を見つけていることに気づく</p>
+          <p><span class="highlight">創造性が重要</span>だ！</p>
+          <p>彼らは同じパズルの異なるピースを持っている</p>
+          <p>この記事があなた自身の<span class="hand-drawn">トレード旅路</span>の手助けになれば幸いです</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer">
+      <p>出典: The Trading Resource Hub | KYNA KOSLING | 2025年3月8日</p>
+    </div>
+  </div>
+</body>
+</html>

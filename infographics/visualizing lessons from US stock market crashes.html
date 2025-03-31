@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>相場の暴落と個人投資家の心得</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Yomogi&family=Zen+Kurenaido&family=Kaisei+Decol:wght@400;700&display=swap');
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'Kaisei Decol', serif;
+      background-color: #fcfcfc;
+      color: #334155;
+      line-height: 1.4;
+      padding: 20px;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      background-color: white;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    }
+    
+    .header {
+      background-color: rgba(89, 60, 71, 0.1);
+      padding: 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 3px solid #593C47;
+    }
+    
+    .title-area {
+      max-width: 70%;
+    }
+    
+    .title {
+      font-family: 'Yomogi', cursive;
+      font-size: 32px;
+      font-weight: bold;
+      margin-bottom: 10px;
+      background: linear-gradient(45deg, #593C47, #F24405);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      position: relative;
+    }
+    
+    .title::after {
+      content: "";
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(45deg, #F2E63D, #F25C05);
+      border-radius: 4px;
+    }
+    
+    .subtitle {
+      font-family: 'Zen Kurenaido', sans-serif;
+      font-size: 16px;
+      color: #475569;
+    }
+    
+    .date-source {
+      text-align: right;
+      font-size: 14px;
+      color: #64748b;
+    }
+    
+    .main-content {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 30px;
+    }
+    
+    .column {
+      width: 33.33%;
+      padding: 15px;
+    }
+    
+    .intro-card {
+      background-color: rgba(242, 196, 60, 0.1);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 25px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      border-left: 4px solid #F2C53D;
+      position: relative;
+    }
+    
+    .intro-card::before {
+      content: "📊";
+      position: absolute;
+      top: -15px;
+      right: 15px;
+      font-size: 28px;
+      transform: rotate(10deg);
+    }
+    
+    .card {
+      background-color: white;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 25px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .card::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, #F2E63D, #F25C05);
+    }
+    
+    .event-card {
+      background-color: rgba(242, 92, 5, 0.03);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 25px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      border-top: 3px dashed #F25C05;
+      border-bottom: 3px dashed #F25C05;
+    }
+    
+    .event-card-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+      border-bottom: 2px solid rgba(242, 92, 5, 0.2);
+      padding-bottom: 10px;
+    }
+    
+    .event-year {
+      font-family: 'Kaisei Decol', serif;
+      font-weight: bold;
+      font-size: 24px;
+      color: #F24405;
+      margin-right: 15px;
+      background: rgba(242, 92, 5, 0.1);
+      padding: 5px 10px;
+      border-radius: 50px;
+    }
+    
+    .event-title {
+      font-family: 'Zen Kurenaido', sans-serif;
+      font-size: 18px;
+      color: #593C47;
+      font-weight: bold;
+    }
+    
+    .strategy-card {
+      background-color: rgba(89, 60, 71, 0.05);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 25px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      position: relative;
+    }
+    
+    .strategy-card::before {
+      content: "💡";
+      position: absolute;
+      top: -10px;
+      left: 15px;
+      font-size: 24px;
+    }
+    
+    .section-title {
+      font-family: 'Zen Kurenaido', sans-serif;
+      font-size: 18px;
+      color: #1e40af;
+      margin-bottom: 15px;
+      padding-left: 26px;
+      position: relative;
+    }
+    
+    .section-title::before {
+      content: "✏️";
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+    
+    .strategy-title {
+      font-family: 'Kaisei Decol', serif;
+      font-size: 18px;
+      font-weight: bold;
+      color: #593C47;
+      border-left: 4px solid #F24405;
+      padding-left: 10px;
+      margin-bottom: 10px;
+    }
+    
+    .highlight {
+      background: linear-gradient(transparent 60%, rgba(242, 230, 60, 0.6) 40%);
+      font-weight: bold;
+    }
+    
+    .text-bubble {
+      background-color: white;
+      border-radius: 10px;
+      padding: 12px;
+      margin: 10px 0;
+      position: relative;
+      border: 2px solid #F2C53D;
+    }
+    
+    .text-bubble::after {
+      content: "";
+      position: absolute;
+      bottom: -10px;
+      left: 20px;
+      border-width: 10px 10px 0;
+      border-style: solid;
+      border-color: #F2C53D transparent;
+    }
+    
+    .icon-text {
+      display: flex;
+      align-items: center;
+      margin: 10px 0;
+    }
+    
+    .icon-text span {
+      margin-left: 10px;
+    }
+    
+    .arrow-connector {
+      text-align: center;
+      margin: 15px 0;
+      color: #F25C05;
+      font-size: 24px;
+    }
+    
+    .stat-box {
+      display: inline-block;
+      background-color: rgba(242, 196, 60, 0.2);
+      padding: 3px 8px;
+      border-radius: 4px;
+      margin: 0 2px;
+      font-weight: bold;
+      color: #593C47;
+    }
+    
+    .divider {
+      height: 3px;
+      background: linear-gradient(90deg, #F2E63D, #F24405);
+      margin: 20px 0;
+      border-radius: 3px;
+    }
+    
+    .footer {
+      background-color: rgba(89, 60, 71, 0.1);
+      padding: 20px;
+      text-align: center;
+      font-size: 14px;
+      border-top: 3px solid #593C47;
+    }
+    
+    .hand-drawn-border {
+      position: relative;
+    }
+    
+    .hand-drawn-border::before {
+      content: "";
+      position: absolute;
+      top: -5px;
+      left: -5px;
+      right: -5px;
+      bottom: -5px;
+      border: 2px solid #F25C05;
+      border-radius: 15px;
+      z-index: -1;
+      opacity: 0.7;
+      transform: rotate(-0.5deg);
+    }
+    
+    .marker-effect {
+      position: relative;
+      z-index: 1;
+    }
+    
+    .marker-effect::after {
+      content: "";
+      position: absolute;
+      left: -5px;
+      right: -5px;
+      bottom: 0;
+      height: 10px;
+      background-color: rgba(242, 92, 5, 0.2);
+      z-index: -1;
+      transform: rotate(-0.5deg);
+    }
+    
+    .glassmorphism {
+      background: rgba(255, 255, 255, 0.25);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="header">
+    <div class="title-area">
+      <h1 class="title">相場の暴落と個人投資家の心得</h1>
+      <p class="subtitle">歴史から学ぶ市場の波と賢明な対応策</p>
+    </div>
+    <div class="date-source">
+      <p>2025年3月7日</p>
+    </div>
+  </div>
+  
+  <div class="main-content">
+    <div class="column">
+      <div class="intro-card">
+        <div class="section-title">はじめに</div>
+        <p>米国相場で<span class="highlight">10%超の調整相場は2年に1回</span>、<span class="highlight">20%超の弱気相場は10年に1回</span>の頻度で発生しています。</p>
+        <p>2022年10月から始まった上昇トレンドは<span class="highlight">2年5ヶ月が経過</span>しており、調整や下落が発生する確率は高まっています。</p>
+        
+        <div class="text-bubble">
+          長期投資をしているポートフォリオを慌てて売ってしまうことのないよう心の準備をしておくことはとても大切です。
+        </div>
+      </div>
+      
+      <div class="event-card">
+        <div class="event-card-header">
+          <div class="event-year">1929</div>
+          <div class="event-title">世界大恐慌の暴落</div>
+        </div>
+        
+        <div class="icon-text">
+          📈 <span><span class="highlight">「狂騒の20年代」</span>に株式市場が大きく上昇</span>
+        </div>
+        <div class="icon-text">
+          💰 <span>一般市民が生活費や借入金を株式に投資</span>
+        </div>
+        <div class="icon-text">
+          ⚠️ <span>株価が企業の実態価値を超える水準に</span>
+        </div>
+        
+        <div class="arrow-connector">↓</div>
+        
+        <div class="icon-text">
+          📉 <span><span class="stat-box">ブラックマンデー</span>で株価が急落</span>
+        </div>
+        <div class="icon-text">
+          📉 <span>ダウ平均は<span class="stat-box">10月28日に約13%下落</span></span>
+        </div>
+        <div class="icon-text">
+          📉 <span>1932年までに<span class="stat-box">90%もの価値を喪失</span></span>
+        </div>
+        
+        <div class="arrow-connector">↓</div>
+        
+        <p>経済への信認を<span class="highlight">深刻に打ち砕き</span>、銀行取り付け騒ぎが相次ぎ、<span class="highlight">世界恐慌</span>の引き金となりました。</p>
+      </div>
+      
+      <div class="event-card">
+        <div class="event-card-header">
+          <div class="event-year">1987</div>
+          <div class="event-title">ブラックマンデーの暴落</div>
+        </div>
+        
+        <div class="icon-text">
+          🖥️ <span><span class="highlight">プログラム売買</span>の台頭</span>
+        </div>
+        <div class="icon-text">
+          📊 <span>コンピュータを利用した取引戦略の普及</span>
+        </div>
+        <div class="icon-text">
+          ⚠️ <span>株価の<span class="highlight">過大評価</span>と過度の楽観</span>
+        </div>
+        
+        <div class="arrow-connector">↓</div>
+        
+        <div class="icon-text">
+          📉 <span>ダウ平均株価は<span class="stat-box">1日で約22%下落</span></span>
+        </div>
+        <div class="icon-text">
+          😱 <span>これまでにない規模の<span class="highlight">パニック売り</span></span>
+        </div>
+        <div class="icon-text">
+          🌊 <span>アジア→ヨーロッパ→米国→アジアへと連鎖</span>
+        </div>
+        
+        <div class="arrow-connector">↓</div>
+        
+        <p>FRBの迅速な対応で<span class="highlight">実体経済へのダメージは限定的</span>でした。<span class="stat-box">サーキットブレーカー</span>の導入など市場改革が進みました。</p>
+      </div>
+    </div>
+    
+    <div class="column">
+      <div class="event-card">
+        <div class="event-card-header">
+          <div class="event-year">2000</div>
+          <div class="event-title">ドットコム・バブルの崩壊</div>
+        </div>
+        
+        <div class="icon-text">
+          🌐 <span>インターネットとテクノロジーセクターの台頭</span>
+        </div>
+        <div class="icon-text">
+          💻 <span><span class="highlight">".com"企業</span>への莫大な資金流入</span>
+        </div>
+        <div class="icon-text">
+          📈 <span>ナスダック総合指数が<span class="stat-box">約800%上昇</span>（1995-2000）</span>
+        </div>
+        
+        <div class="arrow-connector">↓</div>
+        
+        <div class="icon-text">
+          📉 <span>ナスダックは<span class="stat-box">約78%下落</span></span>
+        </div>
+        <div class="icon-text">
+          💸 <span><span class="stat-box">5兆ドル以上</span>の株式時価総額が消失</span>
+        </div>
+        <div class="icon-text">
+          🏢 <span>ドットコム企業の倒産が相次ぐ</span>
+        </div>
+        
+        <div class="arrow-connector">↓</div>
+        
+        <p>米国は2001年に<span class="highlight">軽度の景気後退</span>に突入。ナスダックの完全回復には<span class="stat-box">約15年</span>かかりました。</p>
+      </div>
+      
+      <div class="event-card">
+        <div class="event-card-header">
+          <div class="event-year">2008</div>
+          <div class="event-title">リーマン・ショック（世界金融危機）</div>
+        </div>
+        
+        <div class="icon-text">
+          🏠 <span>米国の<span class="highlight">住宅バブル</span>が原因</span>
+        </div>
+        <div class="icon-text">
+          🏦 <span><span class="highlight">サブプライムローン</span>の急増</span>
+        </div>
+        <div class="icon-text">
+          📉 <span>住宅ローンを束ねた証券の価値暴落</span>
+        </div>
+        
+        <div class="arrow-connector">↓</div>
+        
+        <div class="icon-text">
+          🏛️ <span><span class="highlight">リーマン・ブラザーズ</span>の破綻</span>
+        </div>
+        <div class="icon-text">
+          📉 <span>S&P 500は<span class="stat-box">約57%下落</span></span>
+        </div>
+        <div class="icon-text">
+          😱 <span><span class="highlight">システミックな恐怖</span>が市場を支配</span>
+        </div>
+        
+        <div class="arrow-connector">↓</div>
+        
+        <p><span class="highlight">世界恐慌以来最悪</span>の景気後退を招きました。各国政府・中央銀行の未曾有の対策で、金融システムは徐々に安定を取り戻しました。</p>
+      </div>
+      
+      <div class="event-card">
+        <div class="event-card-header">
+          <div class="event-year">2020</div>
+          <div class="event-title">COVID-19ショック（コロナショック）</div>
+        </div>
+        
+        <div class="icon-text">
+          🦠 <span>新型コロナウイルスの世界的流行</span>
+        </div>
+        <div class="icon-text">
+          🔒 <span>ロックダウンと渡航制限で産業活動が停止</span>
+        </div>
+        <div class="icon-text">
+          📊 <span>企業収益への打撃と景気後退懸念</span>
+        </div>
+        
+        <div class="arrow-connector">↓</div>
+        
+        <div class="icon-text">
+          📉 <span>S&P 500は<span class="stat-box">約34%下落</span></span>
+        </div>
+        <div class="icon-text">
+          ⏱️ <span>わずか<span class="stat-box">22営業日</span>での急落</span>
+        </div>
+        <div class="icon-text">
+          💰 <span><span class="highlight">キャッシュが最優先</span>の行動</span>
+        </div>
+        
+        <div class="arrow-connector">↓</div>
+        
+        <p>政策対応が早期に打ち出され、<span class="highlight">回復も非常に速かった</span>ことが特徴です。<span class="stat-box">1カ月ほど</span>で底を打ち、2020年後半には反発しました。</p>
+      </div>
+    </div>
+    
+    <div class="column">
+      <div class="card hand-drawn-border">
+        <div class="section-title">暴落の共通点</div>
+        
+        <div class="icon-text">
+          📝 <span>投資家の楽観ムードが過度に高まり、<span class="highlight">バブル状態</span>から恐怖・パニックへ転じる</span>
+        </div>
+        
+        <div class="icon-text">
+          📝 <span>資産の<span class="highlight">過大評価</span>やレバレッジの増大が引き金になりやすい</span>
+        </div>
+        
+        <div class="icon-text">
+          📝 <span>「<span class="highlight">欲望→過信→悪材料→パニック</span>」という流れが多い</span>
+        </div>
+        
+        <div class="icon-text">
+          📝 <span>投機と過剰な自信が一転して不信と恐怖に変わり、売りが連鎖</span>
+        </div>
+      </div>
+      
+      <div class="divider"></div>
+      
+      <div class="section-title">個人投資家が学ぶべき教訓と戦略</div>
+      
+      <div class="strategy-card">
+        <div class="strategy-title">1. 資産を分散させる</div>
+        <p>複数の資産クラス（株・債券・海外市場・不動産・金など）に分散投資することで、<span class="highlight">ダメージを和らげられる</span>。</p>
+        <p>セクターや地域も幅広く分散し、一つの下落要因に過度に巻き込まれないようにする。</p>
+      </div>
+      
+      <div class="strategy-card">
+        <div class="strategy-title">2. パニック売りを避ける</div>
+        <p>暴落時に最悪なのは、恐怖だけで保有資産を投げ売りすること。<span class="highlight">含み損を確定損にしてしまう</span>。</p>
+        <p>歴史的に、株式市場はある程度の期間を経れば下落から回復する傾向がある。</p>
+      </div>
+      
+      <div class="strategy-card">
+        <div class="strategy-title">3. 長期的視点を維持する</div>
+        <p>暴落は一時的な障害であり、恒久的な損失ではない。株式市場は数度の危機を経ても<span class="highlight">長期的には右肩上がり</span>を続けてきた。</p>
+        <p>時間を味方につけ、短期的な上下動に振り回されないことが肝心。</p>
+      </div>
+      
+      <div class="strategy-card">
+        <div class="strategy-title">4. ファンダメンタル分析とテクニカル分析を賢く併用する</div>
+        <p><span class="highlight">ファンダメンタル分析</span>で企業の基礎体力や価値を見極め、<span class="highlight">テクニカル分析</span>で市場心理や過熱感をチェック。</p>
+        <p>暴落時は、テクニカルで売りの勢いが弱まるポイントを確認し、ファンダメンタルから見て割安な銘柄を狙う。</p>
+      </div>
+      
+      <div class="strategy-card">
+        <div class="strategy-title">5. リスク管理の徹底（下値リスクを守る）</div>
+        <p>リスク許容度に応じたアセット・アロケーションを設定。<span class="highlight">ストップロス注文</span>やプットオプションを活用。</p>
+        <p>現金や流動性の高い資産をある程度確保し、<span class="highlight">暴落時の買いチャンス</span>に備える。</p>
+      </div>
+      
+      <div class="strategy-card">
+        <div class="strategy-title">6. マクロ経済指標をウォッチする</div>
+        <p>金利・インフレ率・信用成長・<span class="highlight">イールドカーブ</span>などの指標を観察し、警戒すべきリスク要因を早期に捉える。</p>
+        <p>景気悪化の兆候が強まれば、ポートフォリオをより防御的にするよう調整を検討。</p>
+      </div>
+    </div>
+  </div>
+  
+  <div class="footer">
+    <p>出典: モンティの米国株</p>
+    <p>※この記事を読んでくださった方々の資産が長期的に増えていくことに少しでも役立てば幸いです。</p>
+  </div>
+</div>
+
+</body>
+</html>

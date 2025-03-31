@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>アルゴリズム取引：5年間の取引経験から学んだ教訓</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Yomogi&family=Zen+Kurenaido&family=Kaisei+Decol:wght@400;700&display=swap');
+        
+        :root {
+            --fashion-1: #593C47;
+            --fashion-2: #F2E63D;
+            --fashion-3: #F2C53D;
+            --fashion-4: #F25C05;
+            --fashion-5: #F24405;
+            --text-dark: #334155;
+            --text-section: #1e40af;
+            --text-subtitle: #475569;
+        }
+        
+        body {
+            font-family: 'Kaisei Decol', serif;
+            background-color: #f8f9fa;
+            color: var(--text-dark);
+            line-height: 1.4;
+            margin: 0;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            border-bottom: 3px solid var(--fashion-3);
+            padding-bottom: 10px;
+            position: relative;
+        }
+        
+        .title {
+            font-family: 'Zen Kurenaido', sans-serif;
+            font-size: 32px;
+            font-weight: bold;
+            background: linear-gradient(45deg, var(--fashion-1), var(--fashion-5));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin: 0;
+            padding-left: 10px;
+            border-left: 5px solid var(--fashion-4);
+        }
+        
+        .date {
+            font-family: 'Yomogi', cursive;
+            font-size: 14px;
+            color: var(--text-subtitle);
+        }
+        
+        .content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .column {
+            flex: 1;
+            min-width: 30%;
+        }
+        
+        .card {
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            border: 2px dashed var(--fashion-3);
+            position: relative;
+            backdrop-filter: blur(5px);
+        }
+        
+        .card::before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: 20px;
+            width: 30px;
+            height: 10px;
+            background-color: var(--fashion-2);
+            clip-path: polygon(0% 0%, 100% 0%, 80% 100%, 20% 100%);
+        }
+        
+        .section-title {
+            font-family: 'Zen Kurenaido', sans-serif;
+            font-size: 18px;
+            color: var(--text-section);
+            margin-top: 0;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            border-bottom: 2px dotted var(--fashion-4);
+            padding-bottom: 5px;
+        }
+        
+        .section-title::before {
+            content: '✏️';
+            margin-right: 8px;
+        }
+        
+        .intro {
+            background-color: rgba(242, 230, 60, 0.2);
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        .intro::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            right: 30px;
+            width: 20px;
+            height: 20px;
+            background-color: rgba(242, 230, 60, 0.2);
+            transform: rotate(45deg);
+        }
+        
+        .bullet {
+            display: flex;
+            margin-bottom: 10px;
+            align-items: flex-start;
+        }
+        
+        .bullet::before {
+            content: '•';
+            color: var(--fashion-4);
+            font-size: 18px;
+            margin-right: 8px;
+            flex-shrink: 0;
+        }
+        
+        .key-point {
+            font-weight: bold;
+            color: var(--fashion-5);
+            background: linear-gradient(transparent 60%, var(--fashion-2) 60%);
+            display: inline;
+        }
+        
+        .arrow {
+            position: relative;
+            margin: 15px 0;
+            height: 30px;
+        }
+        
+        .arrow::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 20%;
+            width: 60%;
+            height: 2px;
+            background-color: var(--fashion-4);
+        }
+        
+        .arrow::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: 20%;
+            width: 10px;
+            height: 10px;
+            border-top: 2px solid var(--fashion-4);
+            border-right: 2px solid var(--fashion-4);
+            transform: translateY(-50%) rotate(45deg);
+        }
+        
+        .banner {
+            background-color: var(--fashion-1);
+            color: white;
+            text-align: center;
+            padding: 8px 15px;
+            border-radius: 30px;
+            margin: 15px 0;
+            font-family: 'Yomogi', cursive;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent 49%, rgba(255,255,255,0.2) 50%, transparent 51%);
+            background-size: 10px 10px;
+        }
+        
+        .quote {
+            font-style: italic;
+            padding: 10px 15px;
+            border-left: 3px solid var(--fashion-3);
+            background-color: rgba(242, 196, 60, 0.1);
+            margin: 10px 0;
+        }
+        
+        .note {
+            background-color: rgba(242, 91, 4, 0.1);
+            border-radius: 8px;
+            padding: 10px;
+            margin: 10px 0;
+            position: relative;
+        }
+        
+        .note::before {
+            content: '📝';
+            position: absolute;
+            top: -10px;
+            left: 10px;
+            background-color: white;
+            border-radius: 50%;
+            padding: 2px;
+        }
+        
+        .connection-line {
+            position: absolute;
+            border: 1px dashed var(--fashion-5);
+            z-index: -1;
+        }
+        
+        .tag {
+            display: inline-block;
+            background-color: var(--fashion-2);
+            color: var(--fashion-1);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            margin-right: 5px;
+            margin-bottom: 5px;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 10px;
+            border-top: 1px solid var(--fashion-3);
+            font-size: 12px;
+            color: var(--text-subtitle);
+        }
+        
+        .bubble {
+            position: relative;
+            background-color: white;
+            border: 2px solid var(--fashion-4);
+            border-radius: 10px;
+            padding: 10px;
+            margin: 15px 0;
+        }
+        
+        .bubble::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 20px;
+            width: 0;
+            height: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-top: 10px solid var(--fashion-4);
+        }
+        
+        @media (max-width: 768px) {
+            .content {
+                flex-direction: column;
+            }
+            .column {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="title">アルゴリズム取引：5年間の取引経験から学んだ教訓</h1>
+            <div class="date">2025年3月作成</div>
+        </div>
+        
+        <div class="intro">
+            <p>私は<span class="key-point">5年間</span>取引を続けてきました。以前は常にストレスを感じ、手動取引の完璧を目指して何ヶ月も無駄にしていました...そして<span class="key-point">アルゴリズム取引</span>と出会いました。</p>
+            <p>これが私が<span class="key-point">6桁以上</span>の収益を上げるのにどう役立ったか、機関投資家からの指導原則と共にご紹介します。</p>
+        </div>
+        
+        <div class="bubble">
+            <p><strong>背景:</strong> 私は先物市場と小型株で<span class="key-point">8つ以上</span>の自動化戦略ポートフォリオを運用しています。これらの教訓は私の経験と、この分野の優れた人々から学んだ<span class="key-point">1000時間以上</span>に基づいています。元機関投資家である<span class="key-point">ロバート・カーバー</span>からの洞察も含まれています。</p>
+        </div>
+        
+        <div class="content">
+            <div class="column">
+                <div class="card">
+                    <h2 class="section-title">1. アイデアから始める</h2>
+                    <p>アルゴリズム取引は<span class="key-point">アイデアまたはデータ</span>から始まります。</p>
+                    <p>後で触れるように、データ優先のアプローチは多くの場合<span class="key-point">オーバーフィッティング</span>につながり、戦略が実際には機能しなくなります。</p>
+                    <div class="note">
+                        <p>私の最高のアイデア源：</p>
+                        <div class="bullet">📚 書籍</div>
+                        <div class="bullet">🎧 ポッドキャスト</div>
+                        <div class="bullet">🧠 経験</div>
+                        <div class="bullet">🎓 コース</div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h2 class="section-title">2. オーバーフィッティングを理解する</h2>
+                    <p>これは戦略が過去データに過度に最適化され、実際には<span class="key-point">収益性がなくなる</span>ときに発生します。</p>
+                    <div class="note">
+                        <p>原因：</p>
+                        <div class="bullet">パラメータが多すぎる</div>
+                        <div class="bullet">データが不十分</div>
+                        <div class="bullet">過度な最適化</div>
+                    </div>
+                    <p>アルゴリズム戦略を作成する際に知っておくべき<span class="key-point">重要な知識</span>です。</p>
+                </div>
+            </div>
+            
+            <div class="column">
+                <div class="card">
+                    <h2 class="section-title">3. 可能な限り自動化する</h2>
+                    <p>取引を自動化することで<span class="key-point">3つの主な利点</span>があります：</p>
+                    <div class="bullet"><span class="key-point">一貫した実行</span> - 人間の感情に左右されない</div>
+                    <div class="bullet"><span class="key-point">複数の戦略を実行する能力</span> - より良い分散投資</div>
+                    <div class="bullet"><span class="key-point">個々の取引から感情を排除</span> - 冷静な判断</div>
+                    <div class="quote">人間の決断の不整合性を取り除きます。</div>
+                    <div class="arrow"></div>
+                    <div class="banner">感情ではなくロジックで取引</div>
+                </div>
+                
+                <div class="card">
+                    <h2 class="section-title">4. 「聖杯」を活用する</h2>
+                    <div class="quote">レイ・ダリオやジム・サイモンズのようなヘッジファンドマネージャーが強調しているように、<span class="key-point">相関のない戦略/資産</span>は最高のリスク調整後リターンをもたらします。</div>
+                    <p>これは、異なる市場、時間枠などを通じて行うことができます。</p>
+                    <p>これは私が<span class="key-point">自動化を始めて初めて可能</span>になりました。</p>
+                    <div class="tag">多様化</div>
+                    <div class="tag">相関なし</div>
+                    <div class="tag">リスク調整</div>
+                </div>
+            </div>
+            
+            <div class="column">
+                <div class="card">
+                    <h2 class="section-title">5. 現実的な期待を持つ</h2>
+                    <p>すべての取引と同様に、<span class="key-point">ドローダウンと損失取引</span>があります。</p>
+                    <p>自動化するだけ、または異なるアプローチを取るだけでは、これを回避することはできません。</p>
+                    <div class="note">
+                        <p>最後のポイントに触れると、私が見つけた最良の方法は<span class="key-point">ポートフォリオを分散させる</span>ことです。</p>
+                    </div>
+                    <div class="arrow"></div>
+                    <div class="banner">一貫性と忍耐が鍵</div>
+                </div>
+                
+                <div class="card">
+                    <h2 class="section-title">まとめ</h2>
+                    <p>アルゴリズム取引は私の取引スタイルを変え、以下のように改善しました：</p>
+                    <div class="bullet"><span class="key-point">感情的な取引からの解放</span></div>
+                    <div class="bullet"><span class="key-point">複数の戦略の効率的な管理</span></div>
+                    <div class="bullet"><span class="key-point">より体系的なアプローチ</span></div>
+                    <div class="bullet"><span class="key-point">リスク管理の向上</span></div>
+                    <p>重要なのは、アイデアから始め、オーバーフィッティングを理解し、可能な限り自動化し、多様化し、そして現実的な期待を持つことです。</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>出典：個人の取引経験と機関投資家からの洞察に基づくグラフィックレコーディング</p>
+        </div>
+    </div>
+</body>
+</html>

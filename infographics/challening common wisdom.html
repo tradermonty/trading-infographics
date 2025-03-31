@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>コウヘイ・ヤマダの一般的な常識への挑戦</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Yomogi&family=Zen+Kurenaido&family=Kaisei+Decol:wght@400;700&display=swap');
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'Kaisei Decol', serif;
+      background-color: #fafafa;
+      color: #334155;
+      line-height: 1.4;
+      padding: 20px;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      background-color: white;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      overflow: hidden;
+      position: relative;
+    }
+    
+    header {
+      padding: 25px 30px;
+      background: linear-gradient(135deg, #593C47 0%, #F24405 100%);
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 3px solid #F2C53D;
+    }
+    
+    .title-container {
+      flex: 2;
+    }
+    
+    .title {
+      font-family: 'Yomogi', cursive;
+      font-size: 32px;
+      font-weight: bold;
+      background: linear-gradient(90deg, #F2E63D 0%, #F24405 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+      margin-bottom: 5px;
+      max-width: 600px;
+    }
+    
+    .subtitle {
+      font-family: 'Zen Kurenaido', sans-serif;
+      font-size: 16px;
+      color: #F2E63D;
+      max-width: 600px;
+    }
+    
+    .meta {
+      flex: 1;
+      text-align: right;
+      font-family: 'Zen Kurenaido', sans-serif;
+      font-size: 14px;
+      color: #F2E63D;
+    }
+    
+    .content {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 30px;
+      gap: 25px;
+    }
+    
+    .column {
+      flex: 1 1 30%;
+      min-width: 300px;
+    }
+    
+    .card {
+      background-color: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(10px);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+      padding: 20px;
+      margin-bottom: 25px;
+      border: 2px solid transparent;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(90deg, #F2C53D 0%, #F24405 100%);
+    }
+    
+    .card-intro {
+      border-color: #593C47;
+    }
+    
+    .card-wrong {
+      border-color: #F24405;
+    }
+    
+    .card-conclusion {
+      border-color: #F2C53D;
+    }
+    
+    h2 {
+      font-family: 'Yomogi', cursive;
+      font-size: 20px;
+      color: #593C47;
+      margin-bottom: 15px;
+      padding-bottom: 5px;
+      border-bottom: 2px dotted #F2C53D;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    h3 {
+      font-family: 'Zen Kurenaido', sans-serif;
+      font-size: 18px;
+      color: #F25C05;
+      margin: 15px 0 10px;
+      display: flex;
+      align-items: center;
+    }
+    
+    p {
+      font-size: 14px;
+      margin-bottom: 15px;
+      line-height: 1.6;
+    }
+    
+    .highlight {
+      background: linear-gradient(transparent 75%, #F2E63D 75%);
+      font-weight: bold;
+    }
+    
+    .box {
+      border: 2px solid #F2C53D;
+      border-radius: 8px;
+      padding: 10px;
+      margin: 15px 0;
+      background-color: rgba(242, 230, 61, 0.1);
+    }
+    
+    .box-title {
+      font-family: 'Yomogi', cursive;
+      font-size: 16px;
+      color: #F25C05;
+      margin-bottom: 8px;
+      text-align: center;
+    }
+    
+    .quote {
+      font-style: italic;
+      border-left: 3px solid #F2C53D;
+      padding-left: 10px;
+      margin: 15px 0;
+      color: #593C47;
+    }
+    
+    .arrow {
+      display: inline-block;
+      width: 0;
+      height: 0;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      border-top: 15px solid #F25C05;
+      margin: 10px auto;
+    }
+    
+    .hand-drawn {
+      font-family: 'Yomogi', cursive;
+    }
+    
+    .hand-circle {
+      display: inline-block;
+      width: 25px;
+      height: 25px;
+      border: 2px solid #F24405;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Yomogi', cursive;
+      font-weight: bold;
+      color: #F24405;
+      margin-right: 8px;
+    }
+    
+    .connection {
+      border-left: 2px dashed #593C47;
+      padding-left: 15px;
+      margin-left: 10px;
+    }
+    
+    ul {
+      list-style-type: none;
+      margin: 15px 0;
+    }
+    
+    li {
+      position: relative;
+      padding-left: 25px;
+      margin-bottom: 10px;
+      line-height: 1.4;
+    }
+    
+    li::before {
+      content: "✏️";
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+    
+    .bubble {
+      background-color: #F2E63D;
+      border-radius: 15px;
+      padding: 10px 15px;
+      position: relative;
+      margin: 15px 0;
+      color: #593C47;
+    }
+    
+    .bubble::after {
+      content: "";
+      position: absolute;
+      bottom: -10px;
+      left: 20px;
+      width: 0;
+      height: 0;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      border-top: 10px solid #F2E63D;
+    }
+    
+    .graph-placeholder {
+      width: 100%;
+      height: 150px;
+      background-color: #f8f8f8;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 15px 0;
+      font-family: 'Yomogi', cursive;
+      color: #593C47;
+      border: 1px solid #ddd;
+    }
+    
+    footer {
+      padding: 20px 30px;
+      background: linear-gradient(135deg, #593C47 0%, #F24405 100%);
+      color: white;
+      font-size: 12px;
+      text-align: center;
+      border-top: 3px solid #F2C53D;
+    }
+    
+    .emoji-icon {
+      font-size: 20px;
+      margin-right: 5px;
+      vertical-align: middle;
+    }
+    
+    .banner {
+      background-color: #F2C53D;
+      padding: 8px 15px;
+      border-radius: 25px;
+      font-family: 'Yomogi', cursive;
+      font-weight: bold;
+      color: #593C47;
+      display: inline-block;
+      margin: 10px 0;
+      transform: rotate(-2deg);
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+    }
+    
+    .key-point {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      margin: 15px 0;
+    }
+    
+    .key-point-number {
+      flex: 0 0 30px;
+      height: 30px;
+      background-color: #F25C05;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Yomogi', cursive;
+      font-weight: bold;
+    }
+    
+    .key-point-content {
+      flex: 1;
+    }
+    
+    .wavy-underline {
+      text-decoration: underline wavy #F24405;
+    }
+    
+    .arrow-connector {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 15px 0;
+    }
+    
+    .arrow-line {
+      height: 2px;
+      flex: 1;
+      background-color: #593C47;
+      position: relative;
+    }
+    
+    .arrow-line::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      top: -4px;
+      width: 0;
+      height: 0;
+      border-top: 5px solid transparent;
+      border-bottom: 5px solid transparent;
+      border-left: 8px solid #593C47;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="title-container">
+        <h1 class="title">コウヘイ・ヤマダの一般的な常識への挑戦</h1>
+        <div class="subtitle">他人にあなたにとって最適なことを決めさせないでください</div>
+      </div>
+      <div class="meta">
+        KYNA KOSLING<br>
+        2025年3月29日
+      </div>
+    </header>
+    
+    <div class="content">
+      <!-- 左カラム -->
+      <div class="column">
+        <div class="card card-intro">
+          <h2>📝 はじめに</h2>
+          <p>教育目的のみ — 私は金融アドバイスをしていません。</p>
+          <p>今年初め、トリプルUSIC競争者のコウヘイ・ヤマダと繋がりました。彼はKinfoにもいて、𝕏で日々の損益を投稿しています。</p>
+          
+          <div class="bubble">
+            <span class="highlight">既存の信念に挑戦する。「もう一方の側面」について学ぶ。</span>
+          </div>
+          
+          <p>コウヘイは定期的に議論を呼ぶ意見や不人気な意見を共有しています。私は彼の言うことすべてに同意するわけではありませんが、彼が多くの有効な論点と良い質問を提起していると感じています。</p>
+        </div>
+        
+        <div class="card">
+          <h2>🎯 トレードの現実</h2>
+          <div class="banner">トレードは難しい</div>
+          <p>成功するための唯一のチャンスは、途方もない量の努力を投入することです。（最高の中の最高になることを目指すなら、執筆と変わりません！）</p>
+          
+          <div class="key-point">
+            <div class="key-point-number">1</div>
+            <div class="key-point-content">
+              <p>ほとんどの人はショートカットを探しますが、それらは通常、偽装された長い道のりです。</p>
+            </div>
+          </div>
+          
+          <div class="key-point">
+            <div class="key-point-number">2</div>
+            <div class="key-point-content">
+              <p>トレードでは、確信がなければ成功できません。</p>
+            </div>
+          </div>
+          
+          <div class="key-point">
+            <div class="key-point-number">3</div>
+            <div class="key-point-content">
+              <p>確信を持つには自分自身でリサーチを行う必要があります。</p>
+            </div>
+          </div>
+          
+          <div class="arrow-connector">
+            <div class="arrow-line"></div>
+          </div>
+          
+          <p class="hand-drawn">あなたは確立する必要があります：</p>
+          <ul>
+            <li>それらのアイデアがあなたの戦略やシステムに合うかどうか</li>
+            <li>もし合うなら、最良の結果を得るためにどのような調整が必要か</li>
+          </ul>
+        </div>
+        
+        <div class="card card-wrong">
+          <h2>❌ 間違った常識 #1</h2>
+          <h3><span class="hand-circle">1</span>統計的に有意なトレード数が必要</h3>
+          
+          <div class="box">
+            <div class="box-title">「統計的に有意」とは？</div>
+            <p>あなたのトレード結果が偶然によって発生する確率（p値）が閾値（通常0.05）を下回ることを意味します。</p>
+          </div>
+          
+          <p class="highlight">必要なトレード数は固定されていません</p>
+          <p>むしろ、エフェクトサイズ（つまり、あなたの戦略のエッジの強さ）に依存します。</p>
+          
+          <div class="quote">
+            一般的に、30〜100トレードはp値の分析を開始するための妥当なガイドラインですが、戦略のエッジの明確さがトレード数よりも重要です。
+          </div>
+          
+          <p>あなたの戦略が：</p>
+          <ul>
+            <li>特定の市場環境に大きく依存している場合（連続した勝ちと負けにつながる）</li>
+            <li>一貫性のないリスクやポジションサイジングを持っている場合、例えば「適切なタイミングで」大きく賭ける場合（より多くの変動性をもたらす）</li>
+          </ul>
+          
+          <p>…私は1,000トレードであっても、p値が0.05を下回らない可能性があると考えています。</p>
+        </div>
+      </div>
+      
+      <!-- 中央カラム -->
+      <div class="column">
+        <div class="card card-wrong">
+          <h2>❌ 間違った常識 #2</h2>
+          <h3><span class="hand-circle">2</span>トレード回数を減らす方が良い</h3>
+          
+          <p>トレードは確率に関するものです - これには本当の確率を実現するために最低限の発生回数が必要です。</p>
+          
+          <div class="bubble">
+            より少ないトレードは、より少ない発生回数を意味し、真の確率に到達するのに時間がかかることを意味します。
+          </div>
+          
+          <p>より少ないトレードでは、意味のあるリターンを生み出すために各トレードでより大きなサイズが必要になり、これはシーケンスリスクとリスク調整後のリターンの低下につながります。</p>
+          
+          <div class="key-point">
+            <div class="key-point-content">
+              <p>同じ原則は単純なコイントスにも適用されます：</p>
+              <p>コイントス（またはトレード）が多いほど、真の確率に近づきます。</p>
+            </div>
+          </div>
+          
+          <div class="graph-placeholder">
+            コイントスの試行回数と確率の収束を示すグラフ
+          </div>
+          
+          <p class="highlight">ただし...</p>
+          <p>トレードが多ければ常に良いというわけではありません。</p>
+          <p>発生回数が多い戦略は、当然、手数料やスリッページの影響を受けやすくなります。</p>
+          
+          <div class="quote">
+            「より良い」または「より悪い」というものはありません。バランスが重要だということを知る必要があるだけです。
+          </div>
+        </div>
+        
+        <div class="card card-wrong">
+          <h2>❌ 間違った常識 #3</h2>
+          <h3><span class="hand-circle">3</span>期待値は勝率とリスク・リワード比で計算する</h3>
+          
+          <p>実行面は別として、期待値の最も重要な側面を見落としています：<span class="wavy-underline">ポジションサイジング</span></p>
+          
+          <div class="box">
+            <div class="box-title">ボラティリティドラッグ(変動性の抵抗)</div>
+            <p>長期的な時間軸では、ボラティリティドラッグが複利リターンに悪影響を与えます。</p>
+            <p>つまり、勝率と負率のパーセンテージが同じであっても、常に失うものの方が多いのです。</p>
+          </div>
+          
+          <p>例えば：</p>
+          <ul>
+            <li>10%勝ち、次に10%負けると、正味1%の損失</li>
+            <li>20%勝ち、次に20%負けると、正味4%の損失</li>
+          </ul>
+          
+          <div class="bubble">
+            最適なサイズを見つけるには<span class="highlight">ケリー基準</span>を使用できます
+          </div>
+          
+          <p>この式は、以下を実現する最適なベットサイズを返します：</p>
+          <ul>
+            <li>長期的な成長を最大化</li>
+            <li>リスクとリワードのバランスを取る</li>
+            <li>ボラティリティドラッグによる破滅を避ける</li>
+          </ul>
+        </div>
+        
+        <div class="card card-wrong">
+          <h2>❌ 間違った常識 #4</h2>
+          <h3><span class="hand-circle">4</span>1つのセットアップや戦略に集中する</h3>
+          
+          <p>1つのセットアップや戦略だけに依存することは非常にリスクが高い場合があります：</p>
+          
+          <div class="key-point">
+            <div class="key-point-content">
+              <p>唯一の戦略が機能しなくなった場合、損失を相殺する代替のリターンソースがなく、回復が困難になります。</p>
+            </div>
+          </div>
+          
+          <div class="key-point">
+            <div class="key-point-content">
+              <p>市場はダイナミックで、レジームは時々シフトします。歴史的データは、条件が変化すると、非常に成功した戦略でさえ長期的な下落に直面したり、完全に失敗したりすることを証明しています。</p>
+            </div>
+          </div>
+          
+          <div class="quote">
+            単一の壊れやすいエッジに全ての未来を賭けることは、簡単に失敗につながる可能性があります。
+          </div>
+          
+          <p class="highlight">分散投資は、より安全なポートフォリオを構築するための最も強力なツールの1つです。</p>
+          
+          <p>複数の戦略を持つことはリスクを軽減し、1つの戦略がパフォーマンス不振であっても、ポートフォリオ全体が自動的にパフォーマンス不振になることはないことを保証します。</p>
+        </div>
+      </div>
+      
+      <!-- 右カラム -->
+      <div class="column">
+        <div class="card card-wrong">
+          <h2>❌ 間違った常識 #5</h2>
+          <h3><span class="hand-circle">5</span>ストップロスを設定すれば保護が保証される</h3>
+          
+          <div class="box">
+            <div class="box-title">ストップロスの限界</div>
+            <p>1. 極端なボラティリティではストップロス注文がキャンセルまたはスキップされる場合があります。</p>
+            <p>2. 市場が停止しているときはストップロス注文が機能しません。</p>
+          </div>
+          
+          <p>理論的に機能することや賢明に聞こえることが、必ずしも実際の結果に変換されるとは限りません。</p>
+          
+          <div class="bubble">
+            「利益を守るためにストップを上げる」または「リスクを最小限に抑えるために厳密なストップを設定する」などのアドバイスを盲目的に従うことは、害をもたらす可能性があります。
+          </div>
+          
+          <p>繰り返しになりますが、自分自身でリサーチをしましょう：</p>
+          <p>ストップロスシステムがあなたの収益性にどのように影響するかを確認するために徹底的にバックテストしてください。</p>
+          
+          <p>考慮すべき要素：</p>
+          <ul>
+            <li>スリッページ</li>
+            <li>手数料/コミッション</li>
+            <li>利益でストップアウトされた場合の税金</li>
+          </ul>
+          
+          <div class="quote">
+            これらのコストは積み重なり、全体的なリターンに大きな影響を与える可能性があるため、戦略を開発する際には考慮してください。
+          </div>
+        </div>
+        
+        <div class="card">
+          <h2>🔍 リスク管理の真実</h2>
+          
+          <p>最後に、真のリスク管理はストップロス以上のものです。</p>
+          
+          <div class="key-point">
+            <div class="key-point-content">
+              <p>唯一の保護として1つのツールに依存することは、プロフェッショナルなリスク管理ではありません。</p>
+            </div>
+          </div>
+          
+          <p>リスク管理は以下の組み合わせです：</p>
+          <ul>
+            <li>ヘッジング</li>
+            <li>ポジションサイジング</li>
+            <li>分散投資</li>
+            <li>複数の制御レイヤーを持つこと</li>
+          </ul>
+          
+          <div class="bubble">
+            トレーダーとしてのあなたの仕事は、すべてを失うリスクをできるだけゼロに近づけることです。
+          </div>
+          
+          <p>すべてを失う可能性がわずかでもある場合、あなたがどれだけ稼いだかは関係ありません。あなたはただラッキーなだけであり、ラックは永遠に続きません。</p>
+          
+          <div class="banner">長いキャリアを望むなら、何十年も先を考えましょう</div>
+        </div>
+        
+        <div class="card card-conclusion">
+          <h2>📊 結論：自分自身の判断を信じる</h2>
+          
+          <p>トレーディングビジネスでの成功の鍵は、自分自身の意思決定プロセスを開発することです。</p>
+          
+          <div class="quote">
+            <span class="highlight">他人にあなたの貴重な資産で何をするかを決めさせないでください。</span>
+          </div>
+          
+          <p>上記は、他のトレーダーが言うこと、または、あなたが信じていることが必ずしも現実と一致しないことの例のほんの一部です。</p>
+          
+          <div class="box">
+            <div class="box-title">自分自身でリサーチをしましょう</div>
+            <p>𝕏の気に入ったトレーダーが特定の指標、セットアップ、または方法論の使用を提案している場合は、以下を提供していることを確認してください：</p>
+            <ul>
+              <li>検証された実際のトレードの結果</li>
+              <li>または、自分で事実確認できる十分な情報</li>
+            </ul>
+          </div>
+          
+          <p>あなたには証拠が必要です。そうでなければ、この種の情報は何の意味もありません。</p>
+          
+          <p>残念ながら、安全に取引していると信じている人もいますが、実際には気づかずに常に過度のリスクを取っています。</p>
+          
+          <div class="bubble">
+            ガイダンスとして私が指摘していることは「考えるための食べ物」です。
+          </div>
+          
+          <p>ここで何か価値あるものを見つけることを願っています。そうでなくても、それも大丈夫です。ただ、あなたが正しい方向に進んでいることを確認してください。</p>
+          
+          <div class="banner">あなたの成功を願っています</div>
+        </div>
+      </div>
+    </div>
+    
+    <footer>
+      <p>出典: The Trading Resource Hub | コウヘイ・ヤマダ on Challenging Common Wisdom | 2025年3月29日</p>
+    </footer>
+  </div>
+</body>
+</html>

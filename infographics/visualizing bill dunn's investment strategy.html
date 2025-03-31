@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ビル・ダン氏の投資戦略：シンプルさの勝利</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Yomogi&family=Zen+Kurenaido&family=Kaisei+Decol:wght@400;700&display=swap');
+    
+    :root {
+      --fashion-1: #593C47;
+      --fashion-2: #F2E63D;
+      --fashion-3: #F2C53D;
+      --fashion-4: #F25C05;
+      --fashion-5: #F24405;
+      --text-primary: #334155;
+      --text-title: #1e40af;
+      --bg-card: rgba(255, 255, 255, 0.85);
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'Zen Kurenaido', sans-serif;
+      background-color: #f8f9fa;
+      color: var(--text-primary);
+      line-height: 1.4;
+      background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23${593C47.toString(16)}' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+    }
+    
+    .container {
+      width: 100%;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+    
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+      border-bottom: 3px solid var(--fashion-3);
+      padding-bottom: 1rem;
+      position: relative;
+    }
+    
+    .header-title {
+      font-family: 'Kaisei Decol', serif;
+      font-size: 32px;
+      font-weight: 700;
+      background: linear-gradient(45deg, var(--fashion-1), var(--fashion-5));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      position: relative;
+    }
+    
+    .header-date {
+      font-family: 'Yomogi', cursive;
+      font-size: 16px;
+      color: #475569;
+    }
+    
+    .content {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+    
+    .column {
+      flex: 1;
+      min-width: 300px;
+    }
+    
+    .card {
+      background-color: var(--bg-card);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      position: relative;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+    }
+    
+    .section-title {
+      font-family: 'Kaisei Decol', serif;
+      font-size: 18px;
+      color: var(--text-title);
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px dashed var(--fashion-3);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .highlight {
+      background: linear-gradient(transparent 60%, var(--fashion-2) 60%);
+      font-weight: bold;
+    }
+    
+    .keyword {
+      display: inline-block;
+      border: 2px solid var(--fashion-4);
+      border-radius: 20px;
+      padding: 0.2rem 0.5rem;
+      margin: 0.2rem;
+      font-weight: bold;
+      color: var(--fashion-5);
+      transform: rotate(-2deg);
+    }
+    
+    .arrow {
+      display: inline-block;
+      color: var(--fashion-4);
+      margin: 0 0.5rem;
+      font-weight: bold;
+    }
+    
+    .handdrawn-box {
+      border: 3px solid var(--fashion-1);
+      border-radius: 15px;
+      padding: 1rem;
+      margin: 1rem 0;
+      position: relative;
+      transform: rotate(0.5deg);
+    }
+    
+    .handdrawn-box::before {
+      content: "";
+      position: absolute;
+      top: -10px;
+      left: 20px;
+      background: #f8f9fa;
+      padding: 0 10px;
+      font-family: 'Yomogi', cursive;
+      color: var(--fashion-5);
+      font-weight: bold;
+    }
+    
+    .quote {
+      font-family: 'Yomogi', cursive;
+      font-style: italic;
+      background-color: rgba(242, 230, 60, 0.2);
+      border-left: 4px solid var(--fashion-3);
+      padding: 0.5rem 1rem;
+      margin: 1rem 0;
+      position: relative;
+    }
+    
+    .quote::before {
+      content: """;
+      font-size: 2rem;
+      position: absolute;
+      left: -15px;
+      top: -10px;
+      color: var(--fashion-3);
+    }
+    
+    .bullet-point {
+      margin-left: 2rem;
+      position: relative;
+      margin-bottom: 0.5rem;
+    }
+    
+    .bullet-point::before {
+      content: "✦";
+      position: absolute;
+      left: -1.5rem;
+      color: var(--fashion-4);
+    }
+    
+    .icon {
+      display: inline-block;
+      margin-right: 0.5rem;
+      font-size: 1.2em;
+    }
+    
+    .conclusion {
+      background: linear-gradient(135deg, rgba(89, 60, 71, 0.1), rgba(242, 68, 4, 0.1));
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-top: 2rem;
+      position: relative;
+    }
+    
+    .data-graph {
+      width: 100%;
+      height: 200px;
+      background-color: rgba(255, 255, 255, 0.7);
+      border-radius: 8px;
+      margin: 1rem 0;
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      padding: 1rem;
+    }
+    
+    .bar {
+      width: 20px;
+      background-color: var(--fashion-4);
+      border-radius: 4px 4px 0 0;
+      position: relative;
+    }
+    
+    .bar::after {
+      content: attr(data-value);
+      position: absolute;
+      bottom: -25px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 12px;
+    }
+    
+    .line {
+      border-top: 2px dashed var(--fashion-1);
+      width: 100%;
+      margin: 1rem 0;
+    }
+    
+    .connector {
+      position: absolute;
+      width: 80px;
+      height: 40px;
+      border-radius: 50%;
+      border-top: 3px solid var(--fashion-3);
+      border-right: 3px solid var(--fashion-3);
+      transform: rotate(-45deg);
+    }
+    
+    .strategy-box {
+      background-color: white;
+      border: 2px solid var(--fashion-4);
+      border-radius: 10px;
+      padding: 0.8rem;
+      margin: 1rem 0;
+      position: relative;
+    }
+    
+    .strategy-box-title {
+      position: absolute;
+      top: -12px;
+      left: 20px;
+      background-color: white;
+      padding: 0 10px;
+      font-family: 'Kaisei Decol', serif;
+      color: var(--fashion-4);
+      font-weight: bold;
+    }
+    
+    footer {
+      margin-top: 2rem;
+      text-align: center;
+      font-size: 14px;
+      color: #64748b;
+      border-top: 2px dashed var(--fashion-1);
+      padding-top: 1rem;
+    }
+    
+    /* 手書き風の要素 */
+    .handdrawn-circle {
+      display: inline-block;
+      width: 40px;
+      height: 40px;
+      border: 3px solid var(--fashion-5);
+      border-radius: 50%;
+      text-align: center;
+      line-height: 34px;
+      font-weight: bold;
+      color: var(--fashion-5);
+      transform: rotate(5deg);
+      margin-right: 10px;
+    }
+    
+    .handdrawn-arrow {
+      position: relative;
+      display: inline-block;
+      width: 100%;
+      text-align: center;
+      margin: 1rem 0;
+    }
+    
+    .handdrawn-arrow::after {
+      content: "→";
+      font-size: 2rem;
+      color: var(--fashion-4);
+    }
+    
+    /* スマートフォン対応 */
+    @media (max-width: 768px) {
+      .column {
+        flex: 100%;
+      }
+      
+      .header-title {
+        font-size: 24px;
+      }
+      
+      .container {
+        padding: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1 class="header-title">ビル・ダン氏の投資戦略：シンプルさの勝利 📈</h1>
+      <div class="header-date">2025.03.16 | @GH trades 分析より</div>
+    </header>
+    
+    <div class="content">
+      <!-- 左のカラム -->
+      <div class="column">
+        <div class="card">
+          <h2 class="section-title">📝 概要</h2>
+          <p>物理学者から<span class="highlight">トレーダーへ転身</span>したビル・ダン氏は、シンプルなアルゴリズム取引戦略を用いて<span class="highlight">10万ドルを約400万ドル</span>に増やしました。</p>
+          <div class="handdrawn-box">
+            <p>成功の3つの鍵 🔑</p>
+            <div class="bullet-point">複雑化を避け、一貫してトレンドフォロー戦略を実践</div>
+            <div class="bullet-point">市場との低い相関性を維持</div>
+            <div class="bullet-point">徹底的なシステムへの信頼</div>
+          </div>
+        </div>
+        
+        <div class="card">
+          <h2 class="section-title">🧩 シンプルなトレンドフォロー戦略</h2>
+          <div class="strategy-box">
+            <div class="strategy-box-title">戦略の特徴</div>
+            <p>わずか<span class="keyword">2つのパラメータ</span>を用いたシンプルな設計</p>
+            <div class="quote">「While others kept adding complexity dun maintained his simple Trend following approach.」</div>
+          </div>
+          
+          <div class="handdrawn-arrow"></div>
+          
+          <div class="strategy-box">
+            <div class="strategy-box-title">トレンドフォローとは</div>
+            <p>平均回帰戦略とは異なり、<span class="highlight">市場のトレンドを捉え</span>、そのトレンドに乗っていく戦略</p>
+            <div class="quote">「in Trend following we're trying to just catch the trend and follow the trend... a lot of these very simplistic Trend following approaches do work obviously in Trend markets.」</div>
+          </div>
+          
+          <div class="handdrawn-arrow"></div>
+          
+          <div class="strategy-box">
+            <div class="strategy-box-title">有効な市場</div>
+            <p>トレンドが発生しやすい市場（株式指数など）で特に有効</p>
+            <div class="quote">「obviously equities is a trending market indices Etc um so those are where those are approaches where Trend flowing can be very advantageous.」</div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 中央のカラム -->
+      <div class="column">
+        <div class="card">
+          <h2 class="section-title">📊 驚異的なリターンと低い市場相関性</h2>
+          <p><span class="handdrawn-circle">↑</span> 年平均<span class="highlight">16.19%のリターン</span>を達成</p>
+          <p><span class="handdrawn-circle">✓</span> 長期間にわたりS&P 500（SPY）を上回る成績</p>
+          
+          <div class="quote">「his fund generated an average of 16.19% on an annual return basis beating the Spy consistently... consistently see he is above the uh spy returns which is just amazing...」</div>
+          
+          <div class="line"></div>
+          
+          <p><span class="handdrawn-circle">↓</span> <span class="highlight">S&P 500との低い相関性</span>（負の相関係数）</p>
+          
+          <div class="quote">「another thing I want to point out is his correlation coefficient he has a negative correlation coefficient to spy... this was an incredible um achievement...」</div>
+          
+          <p>S&P 500が大きく下落する局面でも、比較的安定したパフォーマンスを維持</p>
+          
+          <div class="quote">「during the 25 worst months of S&P 500 when it lost more than 6% you can look at at the performance difference compared to Dun fund and as you can see it's pretty stock like he is pretty much beating it every single time...」</div>
+        </div>
+        
+        <div class="card">
+          <h2 class="section-title">⏳ ドローダウンの存在と長期的な視点</h2>
+          <p>驚異的な成績の裏には、<span class="highlight">数年におよぶドローダウン期間</span>も存在しました。</p>
+          
+          <div class="quote">「as you can see it didn't come without draw Downs... his longest period was about a six-year period of being in a draw down... you know 30% draw down 29% draw down 34 or Etc...」</div>
+          
+          <p><span class="handdrawn-circle">!</span> 成功のためには、<span class="highlight">短期的な損失に動揺せず</span>、長期的な視点を持つことが重要です。</p>
+          
+          <div class="quote">「in the short term but when you zoom out over his complete performance you know you wouldn't really notice them that much.」</div>
+        </div>
+      </div>
+      
+      <!-- 右のカラム -->
+      <div class="column">
+        <div class="card">
+          <h2 class="section-title">🤖 100%システマティックな取引</h2>
+          <p>ダン氏は、<span class="highlight">完全にシステムに基づいた取引</span>を行い、一切の裁量的な判断を排除していました。</p>
+          
+          <div class="quote">「Dunn was also 100% systematic with zero discretion... he never overrided his models... we're 100% systematic and we have zero um discretion...」</div>
+          
+          <div class="handdrawn-box">
+            <p>なぜ難しいか？</p>
+            <div class="quote">「that by the way is a very difficult thing to live with when you just get started because there's all sorts of information is coming into you from the market...」</div>
+          </div>
+          
+          <p><span class="keyword">信念</span>：「Bill you trade the system and nothing else and so I traded the system.」</p>
+        </div>
+        
+        <div class="card">
+          <h2 class="section-title">🧠 トレンドフォロー戦略の基本原則</h2>
+          
+          <div class="strategy-box">
+            <div class="strategy-box-title">「トレンドはあなたの味方」</div>
+            <p>トレンドが発生している局面では、その流れに乗ることが有利です。</p>
+            <div class="quote">「if Trend falling then you can definitely apply this.」</div>
+          </div>
+          
+          <div class="strategy-box">
+            <div class="strategy-box-title">「大きなトレンドに乗る」</div>
+            <p>少数の大きな利益と多数の小さな損失で構成されます。</p>
+            <div class="quote">「you're looking for few Big Winners and a lot of small losses so it's a low win rate high R strategy...」</div>
+          </div>
+          
+          <div class="strategy-box">
+            <div class="strategy-box-title">「損失を素早く切る」</div>
+            <p>トレンドが予測と反した場合、早めに損失を確定させる。</p>
+            <div class="quote">「if you're wrong on that Trend ideally you want to cut that as quickly as possible...」</div>
+          </div>
+          
+          <div class="strategy-box">
+            <div class="strategy-box-title">「生き残って次の取引をする」</div>
+            <p>一度の取引に全資金を投じるような過度なリスクを取らない。</p>
+            <div class="quote">「it is never worth betting all your capital or risking all your capit capital for any single trade...」</div>
+          </div>
+        </div>
+        
+        <div class="card">
+          <h2 class="section-title">🔍 バックテスティングによる信念の構築</h2>
+          <p>困難な時期を乗り越えるためには、<span class="highlight">事前に徹底的なバックテスティング</span>を行い、システムに対する深い信念を持つことが不可欠です。</p>
+          
+          <div class="quote">「when draw Downs inevitably occur only those with deep conviction in their tested systems will stay the course...」</div>
+          
+          <p>ダン氏の言葉：</p>
+          <div class="quote">「the new aspiring technician needs to build the model... and then he has to do whatever test Tes in is necessary to convince him that he has a um a sound grip on what his model will do...」</div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="conclusion">
+      <h2 class="section-title">🎯 結論</h2>
+      <p>ビル・ダン氏の成功事例は、<span class="highlight">シンプルな戦略を長期間にわたって一貫して実行すること</span>の重要性を示唆しています。</p>
+      
+      <div class="handdrawn-box">
+        <p>成功の鍵 🗝️</p>
+        <div class="bullet-point">シンプルなトレンドフォロー戦略</div>
+        <div class="bullet-point">S&P 500との低い相関性</div>
+        <div class="bullet-point">システムへの絶対的な信頼</div>
+        <div class="bullet-point">徹底的なバックテスティングによる強固な信念</div>
+      </div>
+      
+      <p><span class="keyword">短期的なノイズ</span>に惑わされることなく、<span class="keyword">長期的な視点</span>で資産を成長させるための重要な教訓と言えるでしょう。</p>
+    </div>
+    
+    <footer>
+      出典：Twitterの@GH tradesによる、ビル・ダン氏の投資手法に関する分析動画 | グラフィックレコーディング：2025.03.16
+    </footer>
+  </div>
+</body>
+</html>

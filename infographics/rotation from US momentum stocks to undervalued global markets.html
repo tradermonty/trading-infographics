@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>グローバル投資シナリオ：資金ローテーションとバリュエーション調整</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Yomogi&family=Zen+Kurenaido&family=Kaisei+Decol:wght@400;700&display=swap');
+        
+        :root {
+            --fashion-1: #593C47;
+            --fashion-2: #F2E63D;
+            --fashion-3: #F2C53D;
+            --fashion-4: #F25C05;
+            --fashion-5: #F24405;
+            --text-dark: #334155;
+            --text-title: #1e40af;
+            --bg-light: #fff;
+            --shadow: rgba(0, 0, 0, 0.1);
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Kaisei Decol', serif;
+            background-color: #f8f9fa;
+            color: var(--text-dark);
+            line-height: 1.4;
+            padding: 20px;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: var(--bg-light);
+            border-radius: 16px;
+            box-shadow: 0 4px 12px var(--shadow);
+            overflow: hidden;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 30px;
+            background: linear-gradient(135deg, var(--fashion-1), var(--fashion-5));
+            color: white;
+            border-bottom: 3px dashed var(--fashion-3);
+        }
+        
+        .header h1 {
+            font-family: 'Zen Kurenaido', sans-serif;
+            font-size: 32px;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            background: linear-gradient(to right, white, var(--fashion-2));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .date {
+            font-family: 'Yomogi', cursive;
+            font-size: 16px;
+            color: var(--fashion-2);
+        }
+        
+        .content {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 20px;
+            gap: 20px;
+        }
+        
+        .column {
+            flex: 1;
+            min-width: 300px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .card {
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            border: 2px solid var(--fashion-1);
+            border-style: dashed;
+            position: relative;
+        }
+        
+        .section-title {
+            font-family: 'Zen Kurenaido', sans-serif;
+            font-size: 18px;
+            color: var(--fashion-1);
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--fashion-3);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .section-title::before {
+            content: "✏️";
+            display: inline-block;
+        }
+        
+        .card.timeline {
+            border-left: 4px solid var(--fashion-4);
+            border-style: solid;
+        }
+        
+        .timeline-item {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 15px;
+        }
+        
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            left: -2px;
+            top: 6px;
+            width: 12px;
+            height: 12px;
+            background-color: var(--fashion-4);
+            border-radius: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .keyword {
+            font-weight: bold;
+            background: linear-gradient(transparent 60%, var(--fashion-2) 60%);
+            padding: 0 2px;
+        }
+        
+        .highlight {
+            font-weight: bold;
+            color: var(--fashion-5);
+        }
+        
+        .bubble {
+            background-color: rgba(242, 197, 61, 0.2);
+            border-radius: 20px;
+            padding: 15px;
+            margin: 10px 0;
+            position: relative;
+            font-family: 'Yomogi', cursive;
+        }
+        
+        .bubble::after {
+            content: "";
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-top: 15px solid rgba(242, 197, 61, 0.2);
+            bottom: -15px;
+            left: 20px;
+        }
+        
+        .flow-arrow {
+            text-align: center;
+            margin: 10px 0;
+            font-size: 24px;
+            color: var(--fashion-4);
+        }
+        
+        .chart {
+            background-color: white;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 15px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .chart-bar {
+            height: 30px;
+            margin: 8px 0;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            padding-left: 10px;
+            color: white;
+            font-weight: bold;
+            position: relative;
+        }
+        
+        .bar-label {
+            position: absolute;
+            right: 10px;
+            color: white;
+        }
+        
+        .tag {
+            display: inline-block;
+            background-color: var(--fashion-3);
+            color: var(--fashion-1);
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.8em;
+            margin-right: 5px;
+            font-family: 'Yomogi', cursive;
+        }
+        
+        .strategy-box {
+            border: 2px solid var(--fashion-4);
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 12px;
+            background-color: rgba(242, 92, 5, 0.1);
+        }
+        
+        .strategy-title {
+            text-align: center;
+            margin-bottom: 10px;
+            color: var(--fashion-5);
+            font-weight: bold;
+        }
+        
+        .note {
+            font-size: 0.9em;
+            font-style: italic;
+            color: #666;
+            margin-top: 10px;
+        }
+        
+        .banner {
+            background-color: var(--fashion-1);
+            color: white;
+            text-align: center;
+            padding: 10px;
+            margin: 15px 0;
+            border-radius: 8px;
+            font-weight: bold;
+            transform: rotate(-1deg);
+            box-shadow: 3px 3px 0 var(--fashion-5);
+        }
+        
+        .connector {
+            position: relative;
+            height: 40px;
+        }
+        
+        .connector::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 2px;
+            background-color: var(--fashion-4);
+            transform: translateX(-50%);
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 15px;
+            font-size: 14px;
+            color: #666;
+            border-top: 2px dashed var(--fashion-3);
+        }
+        
+        .hand-drawn {
+            border: 2px solid;
+            border-radius: 12px;
+            padding: 10px;
+            position: relative;
+            margin: 15px 0;
+        }
+        
+        .hand-drawn::before {
+            content: "";
+            position: absolute;
+            top: -8px;
+            left: 20px;
+            width: 30px;
+            height: 16px;
+            background-color: #f8f9fa;
+            border-left: 2px solid;
+            border-right: 2px solid;
+        }
+        
+        /* ディグラム描画用スタイル */
+        .diagram {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px 0;
+            position: relative;
+        }
+        
+        .diagram::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(to right, var(--fashion-3), var(--fashion-4), var(--fashion-5));
+            z-index: 0;
+        }
+        
+        .diagram-item {
+            width: 80px;
+            height: 80px;
+            background-color: white;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border: 2px dashed var(--fashion-1);
+            position: relative;
+            z-index: 1;
+            font-family: 'Yomogi', cursive;
+            font-size: 12px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .diagram-item span {
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(to right, var(--fashion-1), var(--fashion-5));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: bold;
+        }
+        
+        @media (max-width: 960px) {
+            .content {
+                flex-direction: column;
+            }
+            
+            .column {
+                flex: none;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>グローバル投資シナリオ：資金ローテーションとバリュエーション調整</h1>
+            <div class="date">2025年3月26日</div>
+        </div>
+        
+        <div class="content">
+            <!-- 第1カラム -->
+            <div class="column">
+                <div class="card">
+                    <div class="section-title">シナリオの全体像 🌐</div>
+                    <p>米国株の一部セクターから資金が抜け、<span class="keyword">割安に見える海外市場へ資金回転</span>（ローテーション）が進む。その一方で米国のバリュエーション（特に半導体などのハイリスク・ハイモメンタム銘柄）が調整される間に、<span class="highlight">海外が大幅に上昇しやすい</span>。</p>
+                    
+                    <div class="bubble">
+                        「グローバルでの資金のローテーションと、米国バリュエーションの調整サイクルが重なり合う」
+                    </div>
+                    
+                    <div class="diagram">
+                        <div class="diagram-item" style="background-color: rgba(242, 92, 5, 0.1);">
+                            <span>📍</span>
+                            米国株
+                        </div>
+                        <div class="diagram-item" style="background-color: rgba(242, 197, 61, 0.1);">
+                            <span>🌏</span>
+                            海外市場
+                        </div>
+                        <div class="diagram-item" style="background-color: rgba(242, 230, 61, 0.1);">
+                            <span>💰</span>
+                            ポジション縮小
+                        </div>
+                        <div class="diagram-item" style="background-color: rgba(89, 59, 70, 0.1);">
+                            <span>🔄</span>
+                            米国再投資
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card timeline">
+                    <div class="section-title">投資シナリオのタイムライン ⏱️</div>
+                    
+                    <div class="timeline-item">
+                        <h3>現在 〜 Q3</h3>
+                        <p>米国の高バリュエーション銘柄（特に<span class="keyword">半導体</span>や<span class="keyword">ハイモメンタム系</span>）から資金が抜け始める</p>
+                        <div class="chart">
+                            <div class="chart-bar" style="width: 90%; background-color: var(--fashion-5);">
+                                半導体セクター <span class="bar-label">高騰中</span>
+                            </div>
+                            <div class="chart-bar" style="width: 80%; background-color: var(--fashion-4);">
+                                ハイテク銘柄 <span class="bar-label">高バリュエーション</span>
+                            </div>
+                            <div class="chart-bar" style="width: 50%; background-color: var(--fashion-3);">
+                                外国市場 <span class="bar-label">割安感あり</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="flow-arrow">↓</div>
+                    
+                    <div class="timeline-item">
+                        <h3>Q3まで</h3>
+                        <p><span class="keyword">海外の割安水準銘柄や市場に資金が流入</span>し、第3四半期頃まで大幅上昇が継続</p>
+                        <div class="tag">中国リオープン</div>
+                        <div class="tag">欧州観光回復</div>
+                        <div class="tag">通貨安メリット</div>
+                    </div>
+                    
+                    <div class="flow-arrow">↓</div>
+                    
+                    <div class="timeline-item">
+                        <h3>年末にかけて</h3>
+                        <p>米国の高バリュエーションセクター（半導体など）が<span class="keyword">バブル調整</span>を経験</p>
+                        <div class="note">✓ 過去の平均的なPER/PBRに回帰</div>
+                        <div class="note">✓ リセッション懸念や金利上昇リスクの織り込み</div>
+                        <div class="note">✓ 需給の正常化</div>
+                    </div>
+                    
+                    <div class="flow-arrow">↓</div>
+                    
+                    <div class="timeline-item">
+                        <h3>ユーフォリア後</h3>
+                        <p>海外市場が<span class="keyword">過熱状態</span>（ユーフォリア）に到達したら、ポジション縮小して利益確定</p>
+                        <p>→ 米国の優良企業が<span class="highlight">値頃感を取り戻すタイミング</span>で再投資</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 第2カラム -->
+            <div class="column">
+                <div class="card">
+                    <div class="section-title">米国半導体からの資金流出 💸</div>
+                    <div class="banner">「米国株の中でも半導体や高モメンタム系セクターから資金が抜けつつある」</div>
+                    
+                    <h3 class="gradient-text">背景要因:</h3>
+                    <ul style="list-style-type: none; padding-left: 20px;">
+                        <li>📈 米国主要インデックスのバリュエーション<span class="highlight">高止まり</span></li>
+                        <li>🔥 インフレ・金利・地政学リスクへの懸念</li>
+                        <li>🔍 投資家による<span class="keyword">次の投資先</span>の模索</li>
+                        <li>💹 相対的に割安な外国株への注目度上昇</li>
+                    </ul>
+                    
+                    <div class="hand-drawn" style="border-color: var(--fashion-1);">
+                        <div style="text-align: center; font-weight: bold; margin-bottom: 10px;">バリュエーション比較</div>
+                        <div style="display: flex; justify-content: space-between;">
+                            <div style="text-align: center;">
+                                <div style="font-size: 24px; color: var(--fashion-5);">30倍</div>
+                                <div>米国ハイテク</div>
+                                <div style="font-size: 12px;">PER</div>
+                            </div>
+                            <div style="text-align: center;">
+                                <div style="font-size: 24px; color: var(--fashion-3);">15倍</div>
+                                <div>欧州市場</div>
+                                <div style="font-size: 12px;">PER</div>
+                            </div>
+                            <div style="text-align: center;">
+                                <div style="font-size: 24px; color: var(--fashion-2);">10倍</div>
+                                <div>新興国</div>
+                                <div style="font-size: 12px;">PER</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="section-title">海外市場への資金流入 📊</div>
+                    <p>「外国市場への大量の資金流入が続き、<span class="keyword">少なくとも第3四半期（Q3）頃まで</span>は大幅なラリーが期待できる」</p>
+                    
+                    <div class="bubble">
+                        米国から海外への資金ローテーションが鮮明になると、海外市場での過熱（いわゆる"ユーフォリア"）が起こる可能性がある
+                    </div>
+                    
+                    <h3 class="gradient-text">海外市場の魅力:</h3>
+                    <div style="display: flex; flex-wrap: wrap; gap: 10px; margin: 15px 0;">
+                        <div style="flex: 1; min-width: 120px; padding: 10px; background-color: rgba(242, 197, 61, 0.1); border-radius: 10px; text-align: center;">
+                            <div style="font-size: 24px;">🇨🇳</div>
+                            <div>中国リオープン</div>
+                            <div style="font-size: 12px;">景気刺激策期待</div>
+                        </div>
+                        <div style="flex: 1; min-width: 120px; padding: 10px; background-color: rgba(242, 197, 61, 0.1); border-radius: 10px; text-align: center;">
+                            <div style="font-size: 24px;">🇪🇺</div>
+                            <div>欧州復活</div>
+                            <div style="font-size: 12px;">エネルギー価格安定</div>
+                        </div>
+                        <div style="flex: 1; min-width: 120px; padding: 10px; background-color: rgba(242, 197, 61, 0.1); border-radius: 10px; text-align: center;">
+                            <div style="font-size: 24px;">✈️</div>
+                            <div>観光回復</div>
+                            <div style="font-size: 12px;">アジア各国恩恵</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="section-title">米国半導体バブルの調整 📉</div>
+                    <p>「米国株式市場（特に半導体関連銘柄）のバリュエーションが<span class="highlight">実力以上に高騰</span>しており、年末頃まではそのバブルが徐々に調整しそう」</p>
+                    
+                    <div class="hand-drawn" style="border-color: var(--fashion-4); margin-top: 15px;">
+                        <div style="font-weight: bold;">半導体セクターの調整要因</div>
+                        <div style="display: flex; align-items: center; margin: 10px 0;">
+                            <div style="width: 40px; text-align: center; font-size: 20px;">📊</div>
+                            <div>ヒストリカルな<span class="keyword">評価レンジ</span>への回帰</div>
+                        </div>
+                        <div style="display: flex; align-items: center; margin: 10px 0;">
+                            <div style="width: 40px; text-align: center; font-size: 20px;">⚠️</div>
+                            <div>リセッション懸念や金利上昇リスク</div>
+                        </div>
+                        <div style="display: flex; align-items: center; margin: 10px 0;">
+                            <div style="width: 40px; text-align: center; font-size: 20px;">🔄</div>
+                            <div>需給の正常化による株価調整</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 第3カラム -->
+            <div class="column">
+                <div class="card">
+                    <div class="section-title">投資戦略：タイミングの活用 🎯</div>
+                    
+                    <div class="strategy-box">
+                        <div class="strategy-title">基本戦略</div>
+                        <ol style="padding-left: 25px;">
+                            <li>海外市場での<span class="keyword">大幅上昇</span>（ユーフォリア期）を狙ってリスクオン</li>
+                            <li>ピークを感じたら<span class="highlight">売却</span>してキャッシュを確保</li>
+                            <li>割安になった米国優良企業に<span class="keyword">再投資</span></li>
+                        </ol>
+                        <div style="text-align: center; margin: 15px 0;">
+                            <div style="display: inline-block; padding: 5px 15px; background-color: var(--fashion-1); color: white; border-radius: 20px; transform: rotate(-2deg);">
+                                グローバル資金ローテーションの周期に合わせる
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bubble">
+                        「海外市場がユーフォリア状態に到達したら、ポジションを縮小・利益確定して、米国市場での割安感が出てくる銘柄（お気に入りのビジネス）を買う」
+                    </div>
+                    
+                    <div style="margin: 20px 0; padding: 15px; border: 2px dashed var(--fashion-3); border-radius: 10px;">
+                        <div style="font-weight: bold; color: var(--fashion-5); margin-bottom: 10px;">♨️ 短期売買で追加のアルファを獲得</div>
+                        <p>途中で生じる過度な下落（<span class="keyword">パニック</span>）や上昇（<span class="keyword">ユーフォリア</span>）局面で短期売買を行い、追加のアルファを狙う</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="section-title">リスク要因と注意点 ⚠️</div>
+                    
+                    <div style="display: flex; flex-direction: column; gap: 15px;">
+                        <div style="padding: 10px; background-color: rgba(242, 68, 5, 0.1); border-radius: 10px;">
+                            <div style="font-weight: bold;">🇨🇳 中国の回復が不発</div>
+                            <p>中国の回復が不発に終われば、資金のローテーションが想定ほど強く起こらず、<span class="keyword">リスクオフで米国債に資金が還流</span>する可能性</p>
+                        </div>
+                        
+                        <div style="padding: 10px; background-color: rgba(242, 68, 5, 0.1); border-radius: 10px;">
+                            <div style="font-weight: bold;">💻 米国テック企業の堅調な決算</div>
+                            <p>米国のテック企業決算が意外と堅調で、<span class="keyword">ハイテクセクターの押し目買い</span>が先行する展開となれば、ローテーションのタイミングがずれる</p>
+                        </div>
+                        
+                        <div style="padding: 10px; background-color: rgba(242, 68, 5, 0.1); border-radius: 10px;">
+                            <div style="font-weight: bold;">📈 外部環境の変化</div>
+                            <p>インフレ、金利、地政学リスクなどの<span class="keyword">外部環境の変化</span>がシナリオに大きく影響</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="section-title">まとめと監視ポイント 📝</div>
+                    
+                    <div class="banner" style="transform: rotate(1deg);">
+                        柔軟なポジション調整がカギ
+                    </div>
+                    
+                    <ul style="list-style-type: none; padding-left: 10px;">
+                        <li style="margin-bottom: 10px;">✅ <span class="keyword">海外への資金ローテーション</span>と<span class="keyword">米国のバリュエーション調整</span>が同時進行</li>
+                        <li style="margin-bottom: 10px;">✅ Q3までは<span class="highlight">海外市場が強く</span>、年末にかけて<span class="highlight">米国半導体バブルが収束</span></li>
+                        <li style="margin-bottom: 10px;">✅ 海外の<span class="keyword">過熱感到達時</span>でポジション縮小し、<span class="keyword">割安な米国株</span>への再投資</li>
+                        <li style="margin-bottom: 10px;">✅ 短期売買も駆使し、相場の<span class="keyword">過剰反応</span>を利用</li>
+                    </ul>
+                    
+                    <div class="hand-drawn" style="border-color: var(--fashion-5); margin-top: 20px;">
+                        <div style="font-weight: bold; text-align: center; margin-bottom: 10px;">重点監視項目</div>
+                        <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px;">
+                            <div style="flex: 1; min-width: 100px; text-align: center;">
+                                <div style="font-size: 20px;">🇨🇳</div>
+                                <div>中国・欧州の景気刺激策</div>
+                            </div>
+                            <div style="flex: 1; min-width: 100px; text-align: center;">
+                                <div style="font-size: 20px;">💹</div>
+                                <div>米国の利上げペース</div>
+                            </div>
+                            <div style="flex: 1; min-width: 100px; text-align: center;">
+                                <div style="font-size: 20px;">📊</div>
+                                <div>企業決算の内容</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            グラフィックレコーディング風インフォグラフィック © 2025年3月26日 作成
+        </div>
+    </div>
+</body>
+</html>
