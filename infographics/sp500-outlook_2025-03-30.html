@@ -3,468 +3,647 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>S&P 500 中長期市場展望レポート</title>
+    <title>S&P 500 中長期市場展望レポート グラフィックレコーディング</title>
     <style>
-        body {
-            font-family: 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif;
-            background-color: #f5f5f5;
-            color: #333;
+        @import url('https://fonts.googleapis.com/css2?family=Yomogi&family=Zen+Kurenaido&family=Kaisei+Decol:wght@400;700&display=swap');
+        
+        :root {
+            --color-1: #593C47;
+            --color-2: #F2E63D;
+            --color-3: #F2C53D;
+            --color-4: #F25C05;
+            --color-5: #F24405;
+            --text-color: #334155;
+            --bg-color: #fdfcf8;
+            --section-bg: rgba(255, 255, 255, 0.85);
+        }
+        
+        * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            line-height: 1.6;
+        }
+        
+        body {
+            font-family: 'Zen Kurenaido', 'Kaisei Decol', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            padding: 20px;
+            line-height: 1.4;
         }
         
         .container {
             max-width: 100%;
-            padding: 15px;
+            margin: 0 auto;
+            overflow: hidden;
+            position: relative;
         }
         
-        .summary {
+        /* 手書き風の装飾 */
+        .handdrawn-box {
+            border: 3px solid var(--color-1);
+            border-radius: 12px;
+            padding: 15px;
+            background-color: var(--section-bg);
+            position: relative;
+            box-shadow: 3px 3px 5px rgba(0,0,0,0.1);
+        }
+        
+        .handdrawn-box::before {
+            content: "";
+            position: absolute;
+            top: -8px;
+            left: 20px;
+            width: 40px;
+            height: 15px;
+            background-color: var(--section-bg);
+            border-top: 3px solid var(--color-1);
+            border-left: 3px solid var(--color-1);
+            border-right: 3px solid var(--color-1);
+            border-radius: 8px 8px 0 0;
+        }
+        
+        .note-tag {
+            position: absolute;
+            top: -10px;
+            right: 20px;
+            transform: rotate(5deg);
+            background-color: var(--color-2);
+            padding: 2px 10px;
+            border-radius: 5px;
+            font-family: 'Yomogi', cursive;
+            font-weight: bold;
+            font-size: 12px;
+            color: var(--color-1);
+            box-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+        }
+        
+        .arrow {
+            position: absolute;
+            width: 60px;
+            height: 20px;
+            background-color: transparent;
+            z-index: 1;
+        }
+        
+        .arrow::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 3px;
+            background-color: var(--color-4);
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        
+        .arrow::after {
+            content: "";
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 0;
+            height: 0;
+            border-top: 8px solid transparent;
+            border-bottom: 8px solid transparent;
+            border-left: 15px solid var(--color-4);
+        }
+        
+        .wiggly-underline {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .wiggly-underline::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -3px;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(45deg, var(--color-3) 25%, var(--color-4) 25%, var(--color-4) 50%, var(--color-3) 50%, var(--color-3) 75%, var(--color-4) 75%, var(--color-4) 100%);
+            background-size: 8px 8px;
+        }
+        
+        .marker-highlight {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .marker-highlight::before {
+            content: "";
+            position: absolute;
+            left: -2px;
+            right: -2px;
+            top: 0;
+            bottom: 0;
+            background-color: var(--color-2);
+            opacity: 0.5;
+            z-index: -1;
+            transform: rotate(-1deg);
+        }
+        
+        .bubble {
+            position: relative;
             background-color: white;
-            border-radius: 8px;
-            padding: 20px;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            border: 2px solid var(--color-1);
+            border-radius: 20px;
+            padding: 10px 15px;
+            box-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .bubble::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 20px;
+            width: 0;
+            height: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-top: 10px solid white;
+        }
+        
+        .bubble::before {
+            content: "";
+            position: absolute;
+            bottom: -13px;
+            left: 17px;
+            width: 0;
+            height: 0;
+            border-left: 13px solid transparent;
+            border-right: 13px solid transparent;
+            border-top: 13px solid var(--color-1);
+            z-index: -1;
+        }
+        
+        /* ヘッダー */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px dashed var(--color-1);
+        }
+        
+        .title {
+            font-family: 'Kaisei Decol', serif;
+            font-size: 32px;
+            font-weight: bold;
+            background: linear-gradient(45deg, var(--color-1), var(--color-5));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+            position: relative;
+        }
+        
+        .title::after {
+            content: "📊";
+            position: absolute;
+            right: -40px;
+            top: 0;
+            font-size: 28px;
+            -webkit-text-fill-color: initial;
+            text-fill-color: initial;
+        }
+        
+        .date {
+            font-family: 'Yomogi', cursive;
+            color: #475569;
+            font-size: 16px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+        
+        /* メインコンテンツレイアウト */
+        .content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .column {
+            flex: 1;
+            min-width: 30%;
         }
         
         .section {
-            background-color: white;
-            border-radius: 8px;
-            padding: 20px;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 25px;
+            position: relative;
         }
         
-        h1 {
-            font-size: 24px;
-            color: #003366;
-            margin-bottom: 15px;
-            text-align: center;
-        }
-        
-        h2 {
-            font-size: 20px;
-            color: #003366;
-            margin-top: 0;
-            margin-bottom: 15px;
-            border-bottom: 2px solid #003366;
-            padding-bottom: 5px;
-        }
-        
-        h3 {
+        /* セクションスタイル */
+        .section-title {
             font-size: 18px;
-            color: #003366;
-            margin-top: 15px;
-            margin-bottom: 10px;
+            color: #1e40af;
+            margin-bottom: 15px;
+            padding-left: 25px;
+            position: relative;
+            font-family: 'Kaisei Decol', serif;
+            font-weight: bold;
         }
         
-        .highlight {
-            background-color: #ffffc5;
-            padding: 2px 4px;
-            border-radius: 3px;
+        .section-title::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 18px;
+            height: 18px;
+            background-color: var(--color-3);
+            border-radius: 50%;
         }
         
-        .underline {
-            border-bottom: 2px solid #003366;
-            padding-bottom: 2px;
+        .section-title::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--color-3), transparent);
         }
         
         .big-text {
-            font-size: 24px;
+            font-family: 'Kaisei Decol', serif;
+            font-size: 22px;
             font-weight: bold;
-            color: #003366;
-            margin: 15px 0;
+            color: var(--color-1);
             text-align: center;
+            margin: 20px 0;
+            padding: 10px;
+            background: linear-gradient(90deg, transparent, var(--color-2), transparent);
+            border-radius: 8px;
+            position: relative;
         }
         
-        .small-text {
-            font-size: 14px;
+        .summary-box {
+            background-color: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(5px);
+            border-radius: 12px;
+            border: 2px solid var(--color-1);
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
         
-        .icon {
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            background-color: #003366;
-            border-radius: 50%;
-            margin-right: 8px;
-            vertical-align: middle;
-        }
-        
+        /* リストスタイル */
         ul, ol {
-            margin-top: 10px;
-            margin-bottom: 10px;
             padding-left: 25px;
+            margin: 10px 0;
         }
         
         li {
             margin-bottom: 8px;
-        }
-        
-        hr {
-            border: 0;
-            height: 1px;
-            background-color: #ddd;
-            margin: 20px 0;
-        }
-        
-        .qa-container {
-            margin-top: 15px;
-        }
-        
-        .question {
-            background-color: #f0f4f8;
-            padding: 10px 15px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-            margin-bottom: 5px;
             position: relative;
         }
         
-        .question:after {
-            content: '+';
-            position: absolute;
-            right: 15px;
-            top: 10px;
+        li::marker {
+            color: var(--color-4);
+            font-weight: bold;
         }
         
-        .answer {
-            background-color: #f9f9f9;
-            padding: 0;
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease, padding 0.3s ease;
-            border-radius: 0 0 5px 5px;
-            margin-bottom: 10px;
-        }
-        
-        .question:focus + .answer {
-            max-height: 500px;
-            padding: 10px 15px;
+        /* テーブル */
+        .table-container {
+            margin: 15px 0;
+            overflow-x: auto;
         }
         
         table {
             width: 100%;
             border-collapse: collapse;
-            margin: 15px 0;
-        }
-        
-        table, th, td {
-            border: 1px solid #ddd;
-        }
-        
-        th, td {
-            padding: 10px;
-            text-align: left;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
         
         th {
-            background-color: #f0f4f8;
-            color: #003366;
+            background-color: var(--color-1);
+            color: white;
+            text-align: left;
+            padding: 10px;
+            font-family: 'Kaisei Decol', serif;
         }
         
+        td {
+            background-color: white;
+            padding: 10px;
+            border-bottom: 1px dashed #ccc;
+        }
+        
+        tr:last-child td {
+            border-bottom: none;
+        }
+        
+        /* 色付きテキスト */
         .positive {
-            color: #006400;
+            color: #10b981;
             font-weight: bold;
+            position: relative;
+        }
+        
+        .positive::before {
+            content: "↑";
+            margin-right: 3px;
         }
         
         .negative {
-            color: #8b0000;
+            color: #ef4444;
             font-weight: bold;
+            position: relative;
+        }
+        
+        .negative::before {
+            content: "↓";
+            margin-right: 3px;
         }
         
         .neutral {
-            color: #666;
+            color: #6b7280;
+            font-weight: bold;
+            position: relative;
         }
         
+        .neutral::before {
+            content: "→";
+            margin-right: 3px;
+        }
+        
+        /* アイコン */
+        .icon {
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            margin-right: 5px;
+            vertical-align: middle;
+        }
+        
+        /* フッター */
         .footer {
-            font-size: 12px;
             text-align: center;
+            font-size: 12px;
+            color: #6b7280;
             margin-top: 30px;
-            color: #666;
+            padding-top: 15px;
+            border-top: 2px dashed var(--color-1);
+        }
+        
+        /* レスポンシブデザイン */
+        @media (max-width: 768px) {
+            .content {
+                flex-direction: column;
+            }
+            
+            .column {
+                width: 100%;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>S&P 500 中長期市場展望レポート by Gemini 2.5 Pro</h1>
+        <!-- ヘッダー -->
+        <div class="header">
+            <h1 class="title">S&P 500 中長期市場展望レポート</h1>
+            <div class="date">
+                <span>2025年3月29日</span>
+                <span>by Gemini 2.5 Pro</span>
+            </div>
+        </div>
         
-        <div class="summary">
-            <h2>レポートサマリー</h2>
-            <p>米国経済は今後18ヶ月で<span class="highlight">緩やかに減速</span>し、<span class="underline">インフレは高止まり</span>する見通し。FRBは金利を「Higher for Longer（高止まり）」で維持、地政学リスクも継続。</p>
+        <!-- サマリー -->
+        <div class="summary-box">
+            <div class="section-title" style="color: var(--color-1);">📝 レポートサマリー</div>
+            <p>米国経済は今後18ヶ月で<span class="marker-highlight">緩やかに減速</span>し、<span class="wiggly-underline">インフレは高止まり</span>する見通し。FRBは金利を「Higher for Longer（高止まり）」で維持、地政学リスクも継続。</p>
+            
             <div class="big-text">「緩やかな減速とインフレの高止まり」</div>
-            <p>この環境下では<span class="highlight">ディフェンシブセクター（ヘルスケア、生活必需品）</span>や<span class="highlight">エネルギー、防衛関連</span>に投資機会がある一方、<span class="underline">半導体、EV、高価格消費財</span>はリスクが高い。</p>
+            
+            <p>この環境下では<span class="marker-highlight">ディフェンシブセクター（ヘルスケア、生活必需品）</span>や<span class="marker-highlight">エネルギー、防衛関連</span>に投資機会がある一方、<span class="wiggly-underline">半導体、EV、高価格消費財</span>はリスクが高い。</p>
         </div>
         
-        <div class="section">
-            <h2>1. 直近のニュース動向</h2>
-            <p>2025年3月末時点の市場環境を反映した主要メディアのヘッドライン：</p>
-            <ul>
-                <li>FRBはインフレデータの粘着性を警戒し、利下げに慎重な姿勢 (Bloomberg)</li>
-                <li>労働市場に冷却の兆しがあるが、賃金上昇は依然として懸念材料 (Reuters)</li>
-                <li>東欧・中東の地政学的緊張により原油価格は80ドル超を維持 (Financial Times)</li>
-                <li>米中テクノロジー分断が継続し、半導体サプライチェーンに影響 (WSJ)</li>
-                <li>AI導入は加速するが、生産性向上効果はまだマクロデータに完全に現れず (Bloomberg)</li>
-                <li>消費者支出は底堅いがサービスと必需品にシフト (Reuters)</li>
-            </ul>
-            
-            <hr>
-            
-            <div class="qa-container">
-                <div class="question" tabindex="0">Q. なぜ今回のレポートは18ヶ月という期間に焦点を当てているのか？</div>
-                <div class="answer">
-                    <p>18ヶ月は、短期的な市場変動を超えつつも、長期的な構造変化にはまだ至らない「中期」として適切な期間です。この期間は現在の経済サイクルの方向性を見極め、戦術的な資産配分を調整するのに適しています。</p>
+        <!-- メインコンテンツ -->
+        <div class="content">
+            <!-- 左カラム -->
+            <div class="column">
+                <div class="section">
+                    <div class="handdrawn-box">
+                        <div class="note-tag">最新情報</div>
+                        <div class="section-title">📰 直近のニュース動向</div>
+                        <ul>
+                            <li>FRBはインフレデータの粘着性を警戒し、利下げに慎重な姿勢 <span style="color:#6b7280;">(Bloomberg)</span></li>
+                            <li>労働市場に冷却の兆しがあるが、賃金上昇は依然として懸念材料 <span style="color:#6b7280;">(Reuters)</span></li>
+                            <li>東欧・中東の地政学的緊張により原油価格は80ドル超を維持 <span style="color:#6b7280;">(FT)</span></li>
+                            <li>米中テクノロジー分断が継続し、半導体サプライチェーンに影響 <span style="color:#6b7280;">(WSJ)</span></li>
+                            <li>AI導入は加速するが、生産性向上効果はまだマクロデータに現れず <span style="color:#6b7280;">(Bloomberg)</span></li>
+                        </ul>
+                        
+                        <div class="bubble" style="margin-top: 15px;">
+                            <strong>18ヶ月の予測期間について</strong><br>
+                            短期的な市場変動を超えつつも、長期的な構造変化にはまだ至らない「中期」として適切な期間
+                        </div>
+                    </div>
                 </div>
                 
-                <div class="question" tabindex="0">Q. レポート作成時点での市場環境はどうだったのか？</div>
-                <div class="answer">
-                    <p>2025年3月末時点では、インフレの粘り強さ、FRBの金利政策維持、地政学リスクの継続、AI導入の加速と生産性向上への期待が主要テーマとなっていました。消費者支出は底堅いものの、サービスと必需品へのシフトが見られ、企業の収益見通しもやや下方修正されていました。</p>
+                <div class="section">
+                    <div class="handdrawn-box">
+                        <div class="section-title">🔮 今後18ヶ月の想定シナリオ</div>
+                        
+                        <div style="display: flex; align-items: center; margin-bottom: 10px;">
+                            <div style="background-color: var(--color-3); border-radius: 50%; width: 30px; height: 30px; display: flex; justify-content: center; align-items: center; margin-right: 10px;">📉</div>
+                            <div>
+                                <strong>経済成長</strong>：<span class="marker-highlight">緩やかに減速</span>。リセッションは回避するものの、潜在成長率を下回る状態が続く
+                            </div>
+                        </div>
+                        
+                        <div style="display: flex; align-items: center; margin-bottom: 10px;">
+                            <div style="background-color: var(--color-4); border-radius: 50%; width: 30px; height: 30px; display: flex; justify-content: center; align-items: center; margin-right: 10px;">🔥</div>
+                            <div>
+                                <strong>インフレ</strong>：FRBの目標2%を上回る<span class="wiggly-underline">3%前後</span>で高止まり。特に<span class="marker-highlight">サービス価格の粘着性</span>が課題
+                            </div>
+                        </div>
+                        
+                        <div style="display: flex; align-items: center; margin-bottom: 10px;">
+                            <div style="background-color: var(--color-2); border-radius: 50%; width: 30px; height: 30px; display: flex; justify-content: center; align-items: center; margin-right: 10px;">💰</div>
+                            <div>
+                                <strong>金融政策</strong>：FRBは現行金利を維持（<span class="marker-highlight">Higher for Longer</span>）。利下げは2025年後半以降
+                            </div>
+                        </div>
+                        
+                        <div style="display: flex; align-items: center; margin-bottom: 10px;">
+                            <div style="background-color: var(--color-5); border-radius: 50%; width: 30px; height: 30px; display: flex; justify-content: center; align-items: center; margin-right: 10px;">🌐</div>
+                            <div>
+                                <strong>地政学リスク</strong>：東欧や中東の緊張は継続。エネルギー価格やサプライチェーンに不確実性
+                            </div>
+                        </div>
+                        
+                        <div style="display: flex; align-items: center; margin-bottom: 10px;">
+                            <div style="background-color: var(--color-3); border-radius: 50%; width: 30px; height: 30px; display: flex; justify-content: center; align-items: center; margin-right: 10px;">⛽</div>
+                            <div>
+                                <strong>コモディティ</strong>：原油価格は<span class="wiggly-underline">$75-$90レンジ</span>で推移。他のコモディティも高止まり傾向
+                            </div>
+                        </div>
+                        
+                        <div style="display: flex; align-items: center;">
+                            <div style="background-color: var(--color-2); border-radius: 50%; width: 30px; height: 30px; display: flex; justify-content: center; align-items: center; margin-right: 10px;">🤖</div>
+                            <div>
+                                <strong>技術動向</strong>：AI技術の導入は進むが、マクロレベルでの生産性向上効果が顕在化するには時間を要する
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-        
-        <div class="section">
-            <h2>2. 今後18ヶ月の想定シナリオ</h2>
-            <div class="big-text">基本シナリオ：「緩やかな減速とインフレの高止まり」</div>
             
-            <h3>経済成長</h3>
-            <p>米国経済は<span class="highlight">緩やかに減速</span>。リセッションは回避するものの、潜在成長率を下回る状態が続く可能性が高い（ソフトランディング基調）。</p>
-            
-            <h3>インフレ</h3>
-            <p>インフレ率はピークアウト後も、FRBの目標である2%を上回る水準（<span class="underline">3%前後</span>）で高止まり。特に<span class="highlight">サービス価格の粘着性</span>が課題。</p>
-            
-            <h3>金融政策</h3>
-            <p>FRBは現行の政策金利を当面維持（<span class="highlight">Higher for Longer</span>）。インフレの根強さから利下げ開始は2025年後半以降にずれ込み、利下げペースも緩慢。</p>
-            
-            <h3>地政学リスク</h3>
-            <p>東欧や中東における地政学的緊張は継続し、エネルギー価格やサプライチェーンへの不確実性要因に。米中対立も継続。</p>
-            
-            <h3>コモディティ</h3>
-            <p>原油価格は地政学リスクと需給バランスから<span class="underline">$75-$90レンジ</span>で推移。他のコモディティも供給制約や地政学要因で高止まり傾向。</p>
-            
-            <h3>技術動向</h3>
-            <p>AI技術の導入は進むが、マクロレベルでの生産性向上効果が顕在化するには時間を要する。</p>
-            
-            <hr>
-            
-            <div class="qa-container">
-                <div class="question" tabindex="0">Q. このシナリオが崩れるリスク要因は何か？</div>
-                <div class="answer">
-                    <p>主なリスク要因としては、①インフレの急激な再加速、②予想以上の景気減速によるリセッション入り、③地政学的緊張のさらなる高まり、④FRBの政策ミス（金融引き締め過剰または不足）が考えられます。また、新たな金融システム不安の発生も潜在的リスクです。</p>
+            <!-- 中央カラム -->
+            <div class="column">
+                <div class="section">
+                    <div class="handdrawn-box">
+                        <div class="section-title">🔍 セクター・業種への影響</div>
+                        
+                        <div style="margin-bottom: 15px;">
+                            <strong style="color: var(--color-1); border-bottom: 2px dashed var(--color-4);">金利高止まりの影響</strong>
+                            <ul>
+                                <li class="negative">グロース株（特に高PERのテクノロジー、バイオテクノロジー）</li>
+                                <li class="positive">金融（銀行）：純金利マージン（NIM）は高水準維持可能</li>
+                                <li class="neutral">不動産（REIT）、公益：ディフェンシブ性から資金流入も</li>
+                            </ul>
+                        </div>
+                        
+                        <div style="margin-bottom: 15px;">
+                            <strong style="color: var(--color-1); border-bottom: 2px dashed var(--color-4);">景気減速の影響</strong>
+                            <ul>
+                                <li class="negative">景気敏感セクター（一般消費財、資本財、素材）</li>
+                                <li class="positive">ディフェンシブセクター（ヘルスケア、生活必需品、通信）</li>
+                            </ul>
+                        </div>
+                        
+                        <div style="margin-bottom: 15px;">
+                            <strong style="color: var(--color-1); border-bottom: 2px dashed var(--color-4);">エネルギー価格高止まりの影響</strong>
+                            <ul>
+                                <li class="positive">エネルギーセクター：収益性の維持</li>
+                                <li class="negative">輸送、航空、エネルギー多消費型製造業</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bubble" style="margin-top: 20px;">
+                            <strong>AI技術の恩恵セクター</strong><br>
+                            ①半導体・ハードウェア（特にGPUやAI特化型チップ）<br>
+                            ②クラウドサービス提供者<br>
+                            ③AIソフトウェア開発企業<br>
+                            ④金融（リスク管理、詐欺検出）<br>
+                            ⑤ヘルスケア（診断支援、創薬）
+                        </div>
+                    </div>
                 </div>
                 
-                <div class="question" tabindex="0">Q. AI技術の生産性向上効果はいつ頃顕在化するか？</div>
-                <div class="answer">
-                    <p>AI技術の生産性向上効果は、一部の先進的企業では既に現れ始めていますが、経済全体への波及には通常2〜3年以上かかると見られています。技術の導入、業務プロセスの再設計、人材のスキル獲得などに時間を要するためです。ただし、業種・企業間で導入スピードに大きな差が生じる可能性があります。</p>
+                <div class="section">
+                    <div class="handdrawn-box">
+                        <div class="section-title">📈 有望な銘柄</div>
+                        <div class="table-container">
+                            <table>
+                                <tr>
+                                    <th>銘柄</th>
+                                    <th>セクター</th>
+                                    <th>投資ポイント</th>
+                                </tr>
+                                <tr>
+                                    <td><strong>CVS Health</strong><br>(CVS)</td>
+                                    <td>ヘルスケア</td>
+                                    <td>ディフェンシブ性が高く、景気減速下でも安定需要</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Exxon Mobil</strong><br>(XOM)</td>
+                                    <td>エネルギー</td>
+                                    <td>エネルギー価格の高止まり、株主還元姿勢</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>UnitedHealth</strong><br>(UNH)</td>
+                                    <td>ヘルスケア</td>
+                                    <td>安定収益成長とキャッシュフロー、Optum部門の成長</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>RTX Corp</strong><br>(RTX)</td>
+                                    <td>航空宇宙・防衛</td>
+                                    <td>地政学リスク高まりから世界的な防衛費増額</td>
+                                </tr>
+                            </table>
+                        </div>
+                        
+                        <div style="background-color: var(--color-2); border-radius: 8px; padding: 10px; margin-top: 15px; font-size: 14px;">
+                            💡 <strong>バリュエーション</strong>：上記銘柄は概ね適正か、やや割安な水準。特にエネルギーセクター(XOM)や一部のヘルスケア銘柄(CVS)はS&P 500平均と比較して割安
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-        
-        <div class="section">
-            <h2>3. セクター・業種への影響</h2>
             
-            <h3>金利高止まりの影響</h3>
-            <ul>
-                <li class="negative">グロース株（特に高PERのテクノロジー、バイオテクノロジー）：割引率上昇によるバリュエーション低下圧力</li>
-                <li class="positive">金融（銀行）：純金利マージン（NIM）は高水準維持可能だが、貸倒コスト増加や融資需要鈍化が懸念</li>
-                <li class="neutral">不動産（REIT）、公益：配当利回りの魅力は相対的に低下する一方、ディフェンシブ性から資金流入も</li>
-            </ul>
-            
-            <h3>景気減速の影響</h3>
-            <ul>
-                <li class="negative">景気敏感セクター（一般消費財、資本財、素材）：需要鈍化懸念</li>
-                <li class="positive">ディフェンシブセクター（ヘルスケア、生活必需品、通信サービス）：相対的に需要が底堅い</li>
-            </ul>
-            
-            <h3>エネルギー価格高止まりの影響</h3>
-            <ul>
-                <li class="positive">エネルギーセクター：収益性の維持</li>
-                <li class="negative">輸送、航空、エネルギー多消費型製造業：コスト増圧力</li>
-            </ul>
-            
-            <h3>関連産業・バリューチェーンへの影響</h3>
-            <ul>
-                <li class="negative">自動車、住宅関連（建材、家具）：金利上昇と景気減速による需要減退</li>
-                <li class="negative">半導体：PC・スマホ需要の一巡に加え、景気減速による産業向け需要鈍化の可能性（ただしAI向けは底堅い）</li>
-                <li class="positive">防衛関連：地政学リスクの高まりによる需要増</li>
-                <li class="neutral">ソフトウェア・サービス：企業のコスト削減圧力と効率化ニーズのバランス</li>
-            </ul>
-            
-            <hr>
-            
-            <div class="qa-container">
-                <div class="question" tabindex="0">Q. 金利高止まりの環境でも強いセクターはどこか？</div>
-                <div class="answer">
-                    <p>金利高止まり環境に強いセクターは、①低負債・高キャッシュフロー企業、②価格決定力の高い企業（高いブランド力や必須サービスを提供する企業）、③ディフェンシブセクター（ヘルスケア、生活必需品、公益）、④エネルギーなどが挙げられます。これらのセクターは高金利環境でも相対的に業績への影響が小さいか、価格転嫁が可能です。</p>
+            <!-- 右カラム -->
+            <div class="column">
+                <div class="section">
+                    <div class="handdrawn-box">
+                        <div class="section-title">⚠️ リスクの高い銘柄</div>
+                        <div class="table-container">
+                            <table>
+                                <tr>
+                                    <th>銘柄/セクター</th>
+                                    <th>区分</th>
+                                    <th>リスクポイント</th>
+                                </tr>
+                                <tr>
+                                    <td><strong>半導体セクター</strong><br>(NVIDIA, AMD)</td>
+                                    <td>テクノロジー</td>
+                                    <td>金利高止まりによるバリュエーション圧力、AIブーム一巡後の需要減速リスク</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Tesla</strong><br>(TSLA)</td>
+                                    <td>自動車</td>
+                                    <td>金利上昇によるローン負担増、景気減速による高価格帯製品の需要鈍化</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>一般消費財</strong><br>(Ford, GM)</td>
+                                    <td>高価格・耐久財</td>
+                                    <td>金利上昇と景気減速のダブルパンチ、消費者の支出抑制</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>赤字SaaS企業</strong></td>
+                                    <td>ソフトウェア</td>
+                                    <td>資金調達コストの上昇、収益化へのプレッシャー増大</td>
+                                </tr>
+                            </table>
+                        </div>
+                        
+                        <div style="background-color: rgba(242, 92, 5, 0.2); border-radius: 8px; padding: 10px; margin-top: 15px; font-size: 14px; border-left: 4px solid var(--color-4);">
+                            ⚠️ <strong>ショートについての注意</strong>：特にテクノロジー銘柄やEV関連は、ボラティリティが高く、短期的なポジティブニュースで急反発するリスクあり。ショートよりも保有比率の引き下げやオプションを活用したヘッジが適切
+                        </div>
+                    </div>
                 </div>
                 
-                <div class="question" tabindex="0">Q. AIの普及は具体的にどのセクターに恩恵をもたらすか？</div>
-                <div class="answer">
-                    <p>AIの普及から直接恩恵を受けるのは、①半導体・ハードウェア（特にGPUやAI特化型チップメーカー）、②クラウドサービス提供者、③AIソフトウェア開発企業です。間接的には、④金融（リスク管理、詐欺検出）、⑤ヘルスケア（診断支援、創薬）、⑥小売（需要予測、パーソナライゼーション）、⑦製造業（予知保全、自動化）などが恩恵を受けると予想されます。</p>
-                </div>
-            </div>
-        </div>
-        
-        <div class="section">
-            <h2>4. 有望な銘柄</h2>
-            <p>今後18ヶ月、ポジティブな影響が期待できる代表的な銘柄：</p>
-            
-            <table>
-                <tr>
-                    <th>銘柄</th>
-                    <th>セクター</th>
-                    <th>投資ポイント</th>
-                </tr>
-                <tr>
-                    <td>CVS Health (CVS)</td>
-                    <td>ヘルスケア</td>
-                    <td>ディフェンシブ性が高く、景気減速下でも安定した需要。ヘルスケアサービスへのシフトも追い風。</td>
-                </tr>
-                <tr>
-                    <td>Exxon Mobil (XOM)</td>
-                    <td>エネルギー</td>
-                    <td>エネルギー価格の高止まり、株主還元への積極姿勢。バランスシート健全化で景気減速耐性も向上。</td>
-                </tr>
-                <tr>
-                    <td>UnitedHealth (UNH)</td>
-                    <td>ヘルスケア</td>
-                    <td>安定した収益成長とキャッシュフロー。Optum部門の成長も期待。ディフェンシブ性が魅力。</td>
-                </tr>
-                <tr>
-                    <td>RTX Corp (RTX)</td>
-                    <td>航空宇宙・防衛</td>
-                    <td>地政学リスク高まりから世界的な防衛費増額の流れ。航空需要回復による民間航空機部門の回復も。</td>
-                </tr>
-                <tr>
-                    <td>JPMorgan (JPM)</td>
-                    <td>金融</td>
-                    <td>多様な収益源を持つ大手銀行。金利高止まりによるNIM恩恵。ただし景気減速リスクには注意。</td>
-                </tr>
-            </table>
-            
-            <hr>
-            
-            <div class="qa-container">
-                <div class="question" tabindex="0">Q. 上記銘柄のバリュエーションはどうか？</div>
-                <div class="answer">
-                    <p>2025年3月末時点で、これらの銘柄は概ね適正なバリュエーションか、やや割安な水準にあります。特にエネルギーセクター（XOM）や一部のヘルスケア銘柄（CVS）は、S&P 500平均と比較して割安な水準にあります。ただし、金融セクター（JPM）については、景気減速懸念から割安に見えるものの、信用コスト増加リスクを織り込んでいる可能性があります。</p>
-                </div>
-            </div>
-        </div>
-        
-        <div class="section">
-            <h2>5. リスクの高い銘柄</h2>
-            <p>今後18ヶ月、ネガティブな影響が懸念される代表的な銘柄・セクター：</p>
-            
-            <table>
-                <tr>
-                    <th>銘柄/セクター</th>
-                    <th>区分</th>
-                    <th>リスクポイント</th>
-                </tr>
-                <tr>
-                    <td>半導体セクター<br>(NVIDIA, AMD)</td>
-                    <td>テクノロジー</td>
-                    <td>金利高止まりによるバリュエーション圧力。AIブーム一巡後の需要減速リスク。</td>
-                </tr>
-                <tr>
-                    <td>Tesla (TSLA)</td>
-                    <td>自動車</td>
-                    <td>金利上昇によるローン負担増、景気減速による高価格帯製品の需要鈍化、競争激化。</td>
-                </tr>
-                <tr>
-                    <td>一般消費財<br>(Ford, GM)</td>
-                    <td>高価格・耐久財</td>
-                    <td>金利上昇と景気減速のダブルパンチ。消費者の支出抑制の影響。</td>
-                </tr>
-                <tr>
-                    <td>赤字SaaS企業</td>
-                    <td>ソフトウェア</td>
-                    <td>資金調達コストの上昇、収益化へのプレッシャー増大。</td>
-                </tr>
-                <tr>
-                    <td>再生可能エネルギー<br>(ENPH, FSLR)</td>
-                    <td>エネルギー</td>
-                    <td>高金利によるプロジェクトコスト増、政策支援の不確実性、競争激化。</td>
-                </tr>
-            </table>
-            
-            <hr>
-            
-            <div class="qa-container">
-                <div class="question" tabindex="0">Q. これらリスク銘柄のショートは推奨されるか？</div>
-                <div class="answer">
-                    <p>一概にショートを推奨するものではありません。特にテクノロジー銘柄（NVIDIA、AMD）やEV関連（Tesla）は、ボラティリティが高く、短期的なポジティブニュース（例：AI関連の進展や新製品発表）で急反発するリスクがあります。また、FRBが想定より早く利下げに転じた場合、グロース株全般が急回復する可能性もあります。ショートよりも、保有比率の引き下げや、オプションを活用したヘッジが適切かもしれません。</p>
-                </div>
-            </div>
-        </div>
-        
-        <div class="section">
-            <h2>6. 投資判断・戦略</h2>
-            <div class="big-text">「バランス重視の慎重な姿勢」</div>
-            
-            <h3>ポートフォリオのバランス</h3>
-            <p>景気減速と金利高止まりに備え、<span class="highlight">ディフェンシブセクター（ヘルスケア、生活必需品）</span>や、<span class="highlight">エネルギー、防衛関連</span>への配分を重視。</p>
-            
-            <h3>金利感応度の管理</h3>
-            <p>ポートフォリオ全体の金利感応度を意識し、<span class="underline">高PERグロース株への過度な集中は避ける</span>。ただし、FRBの早期利下げ転換リスクも念頭に、<span class="highlight">質の高いテクノロジー株</span>は大きく調整した局面での選択的買い増しも検討。</p>
-            
-            <h3>銘柄選別を重視</h3>
-            <p>セクター全体への投資だけでなく、<span class="highlight">各セクター内での銘柄選別</span>がより重要。特に金融セクターでは、景気減速耐性や資産の質を見極める必要あり。</p>
-            
-            <h3>リスク管理の徹底</h3>
-            <p>地政学リスクのエスカレーションや、想定以上の景気後退の可能性を念頭に、<span class="highlight">リスクヘッジ手段</span>（オプション活用、現金比率調整）も検討。</p>
-            
-            <hr>
-            
-            <div class="qa-container">
-                <div class="question" tabindex="0">Q. 現金比率はどの程度が適切か？</div>
-                <div class="answer">
-                    <p>今後18ヶ月の不確実性の高い環境では、通常より高めの現金比率（ポートフォリオの10〜15%程度）を維持することも検討に値します。これにより、市場が大きく調整した場合の買い増し余力を確保し、ポートフォリオのボラティリティも抑制できます。ただし、インフレが予想以上に加速した場合、現金の実質価値が目減りするリスクもあるため、インフレ動向を注視しながら調整することが望ましいでしょう。</p>
-                </div>
-                
-                <div class="question" tabindex="0">Q. S&P 500全体の見通しはどうか？</div>
-                <div class="answer">
-                    <p>基本シナリオでは、S&P 500全体としては今後18ヶ月でレンジ相場が継続すると予想されます。上値は金利高止まりとバリュエーション圧力で抑えられる一方、下値は企業の底堅い収益力とソフトランディングへの期待で支えられる展開が想定されます。ただし、セクター間・銘柄間のパフォーマンス格差は拡大する可能性が高く、インデックス投資よりもアクティブ運用の優位性が高まる環境と言えるでしょう。</p>
-                </div>
-            </div>
-        </div>
-        
-        <div class="section">
-            <h2>重要用語・概念解説</h2>
-            
-            <table>
-                <tr>
-                    <th>用語</th>
-                    <th>解説</th>
-                </tr>
-                <tr>
-                    <td>Higher for Longer</td>
-                    <td>「より高く、より長く」という金融政策の姿勢。高い政策金利が長期間維持されるという意味。</td>
-                </tr>
-                <tr>
-                    <td>ソフトランディング</td>
-                    <td>景気後退（リセッション）を引き起こさずにインフレを抑制すること。緩やかな減速にとどまる状態。</td>
-                </tr>
-                <tr>
-                    <td>NIM (純金利マージン)</td>
-                    <td>銀行の運用資産と調達負債の金利差。金利上昇局面では通常拡大する。</td>
-                </tr>
-                <tr>
-                    <td>ディフェンシブセクター</td>
-                    <td>景気変動の影響を受けにくいセクター。ヘルスケア、生活必需品、公益など。</td>
-                </tr>
-                <tr>
-                    <td>PER (株価収益率)</td>
-                    <td>株価÷1株当たり利益。数値が高いほど割高と見なされ、金利上昇に弱い傾向がある。</td>
-                </tr>
-            </table>
-        </div>
-        
-        <div class="footer">
-            <p>作成日: 2025年3月29日 | 作成者: Gemini 2.5 Pro</p>
-        </div>
-    </div>
-</body>
-</html>
+                <div class="section">
+                    <div class="handdrawn-box">
+                        <div class="section-title">🧠 投資判断・戦略</div>
+                        
+                        <div class="big-text" style="transform: rotate(-1deg);">「バランス重視の慎重な姿勢」</div>
+                        
+                        <div style="display: flex; align-items: flex-start; margin-bottom: 15px;">
+                            <div style="min-width: 35px; font-size: 24px; margin-right: 10px; color: var(--color-5);">①</div>
+                            <div>
+                                <strong>ポートフォリオのバランス</strong>：景気減速と金利高止まりに備え、<span class="marker-highlight">ディフェンシブセクター</span>や<span class="marker-highlight">エネルギー、防衛関連</span>への配分を重視
+                            </div>
+                        </div>
+                        
+                        <div style="display: flex; align-items: flex-start; margin-bottom: 15px;">
+                            <div style="min-width: 35px; font-size: 24px; margin-right: 10px; color: var(--color-5);">②</div>
+                            <div>
+                                <strong>金利感応度の管理</strong>：<span class="wiggly-underline">高PERグロース株への過度な集中は避ける</span>。ただし、FRBの早期利下げ転換リスクも念頭に
+                            </div>
+                        </div>
+                        
+                        <div style="display: flex; align-items: flex-start; margin-bottom: 15px;">
+                            <div style="min-width: 35px; font-size: 24px; margin-right: 10px; color: var(--color-5);">③</div>
+                            <div>
+                                <strong>銘柄選別を重視</strong>：セクター全体への投資だけでなく、<span class="marker-highlight">各セクター内での銘柄選別</span>がより重要
+                            </div>
+                        </div>

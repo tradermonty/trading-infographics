@@ -5,307 +5,535 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>シンプルな投資哲学：市場の不確実性を味方につける</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Yomogi&family=Zen+Kurenaido&family=Kaisei+Decol:wght@400;700&display=swap');
+        
         * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-            font-family: 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'メイリオ', sans-serif;
         }
         
         body {
-            background-color: #f5f5f5;
-            color: #333;
-            line-height: 1.6;
-            padding: 16px;
+            background-color: #f8f9fa;
+            font-family: 'Kaisei Decol', 'Yomogi', sans-serif;
+            line-height: 1.4;
+            color: #334155;
+            padding: 20px;
         }
         
         .container {
-            max-width: 600px;
+            max-width: 100%;
             margin: 0 auto;
-        }
-        
-        header {
-            text-align: center;
-            margin-bottom: 24px;
-        }
-        
-        h1 {
-            font-size: 24px;
-            color: #0d47a1;
-            margin-bottom: 16px;
-        }
-        
-        .summary {
             background-color: white;
-            padding: 16px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            margin-bottom: 24px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            overflow: hidden;
+            position: relative;
+        }
+        
+        /* ヘッダースタイル */
+        .header {
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(135deg, #F2E63D 0%, #F25C05 100%);
+            position: relative;
+            border-bottom: 3px solid #593C47;
+        }
+        
+        .header::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 30px;
+            width: 80%;
+            height: 3px;
+            background: #F24405;
+            border-radius: 50%;
+            filter: blur(2px);
+        }
+        
+        .title {
+            font-size: 32px;
+            font-weight: bold;
+            color: #593C47;
+            text-shadow: 2px 2px 0 rgba(255,255,255,0.5);
+            font-family: 'Yomogi', cursive;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .date {
+            font-size: 14px;
+            color: #593C47;
+            font-family: 'Zen Kurenaido', sans-serif;
+        }
+        
+        /* サマリーセクション */
+        .summary {
+            margin: 20px;
+            padding: 15px;
+            background-color: rgba(242, 230, 61, 0.2);
+            border: 2px dashed #F25C05;
+            border-radius: 12px;
+            position: relative;
+        }
+        
+        .summary::before {
+            content: "📌";
+            position: absolute;
+            top: -15px;
+            left: 20px;
+            font-size: 24px;
+            transform: rotate(-15deg);
         }
         
         .summary p {
             font-size: 16px;
+            color: #475569;
             font-weight: bold;
+            font-family: 'Kaisei Decol', serif;
         }
         
-        section {
+        /* メインコンテンツ */
+        .content {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 20px;
+            gap: 20px;
+        }
+        
+        .column {
+            flex: 1;
+            min-width: 30%;
+        }
+        
+        /* セクションスタイル */
+        .section {
             background-color: white;
-            padding: 16px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            margin-bottom: 24px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            padding: 20px;
+            margin-bottom: 20px;
+            position: relative;
+            border-left: 4px solid #F2C53D;
         }
         
-        h2 {
-            font-size: 20px;
-            color: #0d47a1;
-            margin-bottom: 12px;
-            border-bottom: 2px solid #0d47a1;
-            padding-bottom: 8px;
+        .section-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .section-icon {
+            margin-right: 10px;
+            font-size: 24px;
+        }
+        
+        .section-title {
+            font-size: 18px;
+            color: #1e40af;
+            font-weight: bold;
+            font-family: 'Yomogi', cursive;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, #F25C05, transparent);
         }
         
         .section-summary {
             font-weight: bold;
-            margin-bottom: 16px;
+            margin-bottom: 15px;
+            padding: 5px;
+            background-color: rgba(242, 196, 61, 0.2);
+            border-radius: 8px;
+            font-family: 'Kaisei Decol', serif;
         }
         
-        ul {
-            padding-left: 20px;
-            margin-bottom: 16px;
+        /* リストスタイル */
+        .point-list {
+            list-style-type: none;
+            margin-bottom: 15px;
         }
         
-        li {
-            margin-bottom: 8px;
-        }
-        
-        .key-term {
-            background-color: #e6f2ff;
-            border-bottom: 2px solid #0d47a1;
-            padding: 0 2px;
-            font-weight: bold;
-        }
-        
-        hr {
-            border: 0;
-            height: 1px;
-            background-color: #ddd;
-            margin: 24px 0;
-        }
-        
-        .qa-container {
-            margin-top: 16px;
-        }
-        
-        .qa-item {
-            margin-bottom: 8px;
-        }
-        
-        .question {
-            background-color: #e6f2ff;
-            padding: 8px;
-            border-radius: 4px;
-            cursor: pointer;
+        .point-list li {
+            margin-bottom: 12px;
+            padding-left: 25px;
             position: relative;
-            font-weight: bold;
         }
         
-        .question::after {
-            content: "+";
+        .point-list li::before {
+            content: "✏️";
             position: absolute;
-            right: 10px;
+            left: 0;
+            top: 2px;
+        }
+        
+        /* キーワードスタイル */
+        .key-term {
+            font-weight: bold;
+            background: linear-gradient(transparent 60%, #F2C53D 60%);
+            padding: 0 2px;
+        }
+        
+        /* 吹き出しスタイル */
+        .bubble {
+            background-color: rgba(242, 91, 4, 0.1);
+            border-radius: 12px;
+            padding: 10px 15px;
+            margin: 15px 0;
+            position: relative;
+            font-family: 'Zen Kurenaido', sans-serif;
+        }
+        
+        .bubble::before {
+            content: "";
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            border-width: 0 10px 10px 10px;
+            border-style: solid;
+            border-color: transparent transparent rgba(242, 91, 4, 0.1) transparent;
+        }
+        
+        .bubble-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #593C47;
+        }
+        
+        /* テーブルスタイル */
+        .table-container {
+            margin-top: 20px;
+            overflow-x: auto;
+        }
+        
+        .concept-table {
+            width: 100%;
+            border-collapse: collapse;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(0,0,0,0.05);
+        }
+        
+        .concept-table th {
+            background-color: #593C47;
+            color: white;
+            text-align: left;
+            padding: 10px;
+            font-family: 'Kaisei Decol', serif;
+        }
+        
+        .concept-table td {
+            padding: 10px;
+            border-bottom: 1px dashed #ddd;
+        }
+        
+        .concept-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        /* 3ステップ特別スタイル */
+        .steps-container {
+            position: relative;
+            margin: 30px 0;
+            padding-left: 30px;
+        }
+        
+        .step-line {
+            position: absolute;
+            left: 10px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(to bottom, #F2E63D, #F25C05);
+        }
+        
+        .step {
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        .step-number {
+            position: absolute;
+            left: -30px;
+            top: -2px;
+            width: 25px;
+            height: 25px;
+            background-color: #F25C05;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            font-size: 14px;
+            z-index: 1;
+        }
+        
+        .step-title {
+            font-weight: bold;
+            color: #593C47;
+            margin-bottom: 5px;
+            font-family: 'Yomogi', cursive;
+        }
+        
+        .step-desc {
+            font-size: 14px;
+        }
+        
+        /* フッタースタイル */
+        .footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 12px;
+            color: #666;
+            border-top: 1px dashed #ddd;
+            font-family: 'Zen Kurenaido', sans-serif;
+        }
+        
+        /* 手書き風コネクター */
+        .connector {
+            position: relative;
+            height: 30px;
+            margin: 10px 0;
+        }
+        
+        .connector-line {
+            position: absolute;
             top: 50%;
+            left: 10%;
+            width: 80%;
+            height: 2px;
+            background-color: #F24405;
             transform: translateY(-50%);
         }
         
-        .answer {
-            background-color: #f9f9f9;
-            padding: 8px;
-            display: none;
-            margin-top: 4px;
-            border-radius: 4px;
+        .connector-arrow {
+            position: absolute;
+            right: 10%;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 0;
+            height: 0;
+            border-left: 8px solid #F24405;
+            border-top: 6px solid transparent;
+            border-bottom: 6px solid transparent;
         }
         
-        .qa-item input {
-            display: none;
+        /* グラスモーフィズム効果 */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 15px;
+            margin: 15px 0;
         }
         
-        .qa-item input:checked + .question::after {
-            content: "-";
-        }
-        
-        .qa-item input:checked ~ .answer {
-            display: block;
-        }
-        
-        .important-concepts {
-            margin-top: 24px;
-        }
-        
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 16px;
-        }
-        
-        th, td {
-            padding: 8px;
-            border: 1px solid #ddd;
-            text-align: left;
-        }
-        
-        th {
-            background-color: #0d47a1;
-            color: white;
-        }
-        
-        footer {
-            text-align: center;
-            font-size: 12px;
-            color: #666;
-            margin-top: 32px;
+        /* レスポンシブデザイン */
+        @media (max-width: 768px) {
+            .content {
+                flex-direction: column;
+            }
+            
+            .column {
+                width: 100%;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <header>
-            <h1>シンプルな投資哲学：市場の不確実性を味方につける</h1>
-        </header>
+        <!-- ヘッダー -->
+        <div class="header">
+            <h1 class="title">シンプルな投資哲学</h1>
+            <div class="date">2025年3月30日</div>
+        </div>
         
+        <!-- サマリー -->
         <div class="summary">
             <p>株式市場の不確実性を恐れるのではなく、それを味方につけるシンプルな投資哲学。努力に報い、ポジションを守り、市場のランダム性を活用する3ステップの方法で、感情と自我の圧力から解放されます。</p>
         </div>
         
-        <section>
-            <h2>従来の投資アプローチからの脱却</h2>
-            <p class="section-summary">株価の一つ一つのローソク足を監視して判断することをやめ、シンプルな投資哲学へ転換しました。</p>
-            
-            <ul>
-                <li>株を購入した後、各<span class="key-term">ローソク足</span>の動きを監視して判断することをやめました</li>
-                <li>銘柄の潜在的な価値を自分で判断する立場ではないと受け入れました</li>
-                <li>過度な介入は<span class="key-term">自我</span>と<span class="key-term">感情</span>にさらなる圧力をかけるだけだと気づきました</li>
-                <li>市場のランダム性を尊重し、それを味方につけることを決意しました</li>
-            </ul>
-            
-            <hr>
-            
-            <div class="qa-container">
-                <div class="qa-item">
-                    <input type="checkbox" id="q1">
-                    <label class="question" for="q1">Q. なぜローソク足の監視をやめたのですか？</label>
-                    <div class="answer">
-                        <p>一つ一つのローソク足を監視し続けると、短期的な変動に過剰に反応してしまいます。これにより感情的な判断が増え、長期的な値動きを見失うリスクがあります。経験を積むことで、大きな値動きは数日または数週間かけて展開することを学びました。</p>
+        <!-- メインコンテンツ -->
+        <div class="content">
+            <!-- 左カラム -->
+            <div class="column">
+                <div class="section">
+                    <div class="section-header">
+                        <div class="section-icon">🔍</div>
+                        <h2 class="section-title">従来の投資アプローチからの脱却</h2>
+                    </div>
+                    <p class="section-summary">株価の一つ一つのローソク足を監視して判断することをやめ、シンプルな投資哲学へ転換しました。</p>
+                    
+                    <ul class="point-list">
+                        <li>株を購入した後、各<span class="key-term">ローソク足</span>の動きを監視して判断することをやめました</li>
+                        <li>銘柄の潜在的な価値を自分で判断する立場ではないと受け入れました</li>
+                        <li>過度な介入は<span class="key-term">自我</span>と<span class="key-term">感情</span>にさらなる圧力をかけるだけだと気づきました</li>
+                        <li>市場のランダム性を尊重し、それを味方につけることを決意しました</li>
+                    </ul>
+                    
+                    <div class="bubble">
+                        <p class="bubble-title">🤔 なぜローソク足の監視をやめたのか？</p>
+                        <p>一つ一つのローソク足を監視し続けると、短期的な変動に過剰に反応してしまいます。大きな値動きは数日または数週間かけて展開することを学びました。</p>
                     </div>
                 </div>
                 
-                <div class="qa-item">
-                    <input type="checkbox" id="q2">
-                    <label class="question" for="q2">Q. 市場のランダム性とはどういう意味ですか？</label>
-                    <div class="answer">
-                        <p>株式市場は短期的には予測不可能な動きをすることがあります。この不確実性やランダム性を敵とみなすのではなく、自分の投資戦略に組み込むことで、感情的な判断から解放され、より客観的な投資判断ができるようになります。</p>
-                    </div>
+                <div class="connector">
+                    <div class="connector-line"></div>
+                    <div class="connector-arrow"></div>
+                </div>
+                
+                <div class="glass-card">
+                    <p style="text-align: center; font-weight: bold; color: #F24405;">💡 投資の心理的負担を軽減するには？</p>
+                    <p style="text-align: center; font-style: italic;">「自分にはわからない」という事実を受け入れること</p>
                 </div>
             </div>
-        </section>
-        
-        <section>
-            <h2>マーケットに判断を委ねる</h2>
-            <p class="section-summary">自分で価値を判断するのではなく、市場と銘柄自体にその価値を示してもらう姿勢への転換。</p>
             
-            <ul>
-                <li>ボールを市場に投げ、銘柄自身に価値を証明してもらう方法を選びました</li>
-                <li>研究と経験を重ねるほど、大きな値動きには時間がかかることを受け入れられるようになりました</li>
-                <li>「自分にはわからない」という事実を深く受け入れることで、<span class="key-term">投資心理学</span>に頼る必要がなくなりました</li>
-                <li>銘柄の価値を自分で決めるのではなく、市場の動きから判断するようになりました</li>
-            </ul>
-            
-            <hr>
-            
-            <div class="qa-container">
-                <div class="qa-item">
-                    <input type="checkbox" id="q3">
-                    <label class="question" for="q3">Q. 「ボールを市場に投げる」とはどういう意味ですか？</label>
-                    <div class="answer">
+            <!-- 中央カラム -->
+            <div class="column">
+                <div class="section">
+                    <div class="section-header">
+                        <div class="section-icon">📊</div>
+                        <h2 class="section-title">マーケットに判断を委ねる</h2>
+                    </div>
+                    <p class="section-summary">自分で価値を判断するのではなく、市場と銘柄自体にその価値を示してもらう姿勢への転換。</p>
+                    
+                    <ul class="point-list">
+                        <li>ボールを市場に投げ、銘柄自身に価値を証明してもらう方法を選びました</li>
+                        <li>研究と経験を重ねるほど、大きな値動きには時間がかかることを受け入れられるようになりました</li>
+                        <li>「自分にはわからない」という事実を深く受け入れることで、<span class="key-term">投資心理学</span>に頼る必要がなくなりました</li>
+                        <li>銘柄の価値を自分で決めるのではなく、市場の動きから判断するようになりました</li>
+                    </ul>
+                    
+                    <div class="bubble">
+                        <p class="bubble-title">🎯 「ボールを市場に投げる」とは？</p>
                         <p>自分自身が積極的に銘柄の価値を判断しようとするのではなく、市場の動きに委ねるという意味です。自分の予測や判断ではなく、市場の実際の反応によって投資判断を行うアプローチです。</p>
                     </div>
                 </div>
                 
-                <div class="qa-item">
-                    <input type="checkbox" id="q4">
-                    <label class="question" for="q4">Q. なぜ「自分にはわからない」と受け入れることが重要なのですか？</label>
-                    <div class="answer">
-                        <p>市場の将来の動きを正確に予測することは誰にもできません。この不確実性を受け入れることで、過度な自信や根拠のない希望に基づく判断を避け、より客観的なシステムに従った投資が可能になります。これにより感情的なストレスも軽減されます。</p>
+                <div class="section">
+                    <div class="section-header">
+                        <div class="section-icon">📝</div>
+                        <h2 class="section-title">シンプルな3ステップ投資法</h2>
                     </div>
+                    <p class="section-summary">最終的に辿り着いた方法は「努力に報いる → 守る → ランダム性を活用する」の3ステップ。</p>
+                    
+                    <div class="steps-container">
+                        <div class="step-line"></div>
+                        
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div class="step-title">努力に報いる</div>
+                            <div class="step-desc">投資分析や銘柄選定など、事前の努力に対して自分を褒める</div>
+                        </div>
+                        
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-title">守る</div>
+                            <div class="step-desc">資金を保護するために損切りラインを設定する</div>
+                        </div>
+                        
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <div class="step-title">ランダム性を活用する</div>
+                            <div class="step-desc">市場の不確実性を利用し、長期的なトレンドに乗る</div>
+                        </div>
+                    </div>
+                    
+                    <ul class="point-list">
+                        <li><span class="key-term">強い上昇時に売却</span>し、需要と流動性が高い状態で利益を確定</li>
+                        <li><span class="key-term">損益分岐点に移動</span>して元本を保護</li>
+                        <li><span class="key-term">移動平均線をトレース</span>してトレンドの転換点を客観的に判断</li>
+                    </ul>
                 </div>
             </div>
-        </section>
-        
-        <section>
-            <h2>シンプルな3ステップ投資法</h2>
-            <p class="section-summary">最終的に辿り着いた方法は「努力に報いる → 守る → ランダム性を活用する」の3ステップ。</p>
             
-            <ul>
-                <li><span class="key-term">努力に報いる</span>：投資分析や銘柄選定など、事前の努力に対して自分を褒める</li>
-                <li><span class="key-term">守る</span>：資金を保護するために損切りラインを設定する</li>
-                <li><span class="key-term">ランダム性を活用する</span>：市場の不確実性を利用し、長期的なトレンドに乗る</li>
-                <li>そのため、<span class="key-term">強い上昇時に売却</span>し、<span class="key-term">損益分岐点に移動</span>し、<span class="key-term">移動平均線をトレース</span>する戦略を採用しています</li>
-            </ul>
-            
-            <hr>
-            
-            <div class="qa-container">
-                <div class="qa-item">
-                    <input type="checkbox" id="q5">
-                    <label class="question" for="q5">Q. 「強い上昇時に売却」するのはなぜですか？</label>
-                    <div class="answer">
-                        <p>値動きが強い上昇を見せているときは、市場に需要があり流動性が高い状態です。このような状況で売却することで、より良い価格で利益を確定できる可能性が高まります。また、「欲張りすぎない」という心理的な規律も保てます。</p>
+            <!-- 右カラム -->
+            <div class="column">
+                <div class="section">
+                    <div class="section-header">
+                        <div class="section-icon">📚</div>
+                        <h2 class="section-title">重要な概念と用語</h2>
+                    </div>
+                    
+                    <div class="table-container">
+                        <table class="concept-table">
+                            <tr>
+                                <th>用語</th>
+                                <th>解説</th>
+                            </tr>
+                            <tr>
+                                <td><span class="key-term">ローソク足</span></td>
+                                <td>一定期間の株価の始値・高値・安値・終値を一つの図形で表した指標。形状から相場の強弱を読み取ることができる</td>
+                            </tr>
+                            <tr>
+                                <td><span class="key-term">移動平均線</span></td>
+                                <td>一定期間の平均株価を線で表したもの。トレンドの方向性や転換点を判断するのに役立つ</td>
+                            </tr>
+                            <tr>
+                                <td><span class="key-term">損益分岐点</span></td>
+                                <td>投資金額と同額になるポイント。このレベルに移動することで元本を保護する</td>
+                            </tr>
+                            <tr>
+                                <td><span class="key-term">投資心理学</span></td>
+                                <td>投資における感情や心理的バイアスの影響を研究し、より合理的な判断を目指す学問</td>
+                            </tr>
+                        </table>
                     </div>
                 </div>
                 
-                <div class="qa-item">
-                    <input type="checkbox" id="q6">
-                    <label class="question" for="q6">Q. 「移動平均線をトレース」するとはどういう意味ですか？</label>
-                    <div class="answer">
-                        <p>移動平均線を利用して、利益を確保しながらトレンドに乗り続ける方法です。株価が移動平均線（例：20日移動平均線や50日移動平均線）の上にある限り保有を続け、下回ったら売却するなどの戦略です。これによりトレンドの転換点を客観的に判断できます。</p>
+                <div class="glass-card">
+                    <p style="text-align: center; font-weight: bold; color: #593C47; font-size: 16px;">💼 投資の本質</p>
+                    <div style="display: flex; justify-content: center; margin: 15px 0;">
+                        <div style="text-align: center; margin: 0 10px;">
+                            <div style="font-size: 24px;">🧠</div>
+                            <p>分析</p>
+                        </div>
+                        <div style="text-align: center; margin: 0 10px;">
+                            <div style="font-size: 24px;">➡️</div>
+                            <p></p>
+                        </div>
+                        <div style="text-align: center; margin: 0 10px;">
+                            <div style="font-size: 24px;">⚙️</div>
+                            <p>システム</p>
+                        </div>
+                        <div style="text-align: center; margin: 0 10px;">
+                            <div style="font-size: 24px;">➡️</div>
+                            <p></p>
+                        </div>
+                        <div style="text-align: center; margin: 0 10px;">
+                            <div style="font-size: 24px;">📈</div>
+                            <p>成果</p>
+                        </div>
                     </div>
                 </div>
+                
+                <div class="bubble">
+                    <p class="bubble-title">🎯 「移動平均線をトレース」するとは？</p>
+                    <p>移動平均線を利用して、利益を確保しながらトレンドに乗り続ける方法です。株価が移動平均線（例：20日移動平均線や50日移動平均線）の上にある限り保有を続け、下回ったら売却するなどの戦略です。</p>
+                </div>
+                
+                <div class="bubble">
+                    <p class="bubble-title">💡 「強い上昇時に売却」するのはなぜ？</p>
+                    <p>値動きが強い上昇を見せているときは、市場に需要があり流動性が高い状態です。このような状況で売却することで、より良い価格で利益を確定できる可能性が高まります。</p>
+                </div>
             </div>
-        </section>
+        </div>
         
-        <section class="important-concepts">
-            <h2>重要な概念と用語</h2>
-            
-            <table>
-                <tr>
-                    <th>用語</th>
-                    <th>解説</th>
-                </tr>
-                <tr>
-                    <td>ローソク足</td>
-                    <td>一定期間の株価の始値・高値・安値・終値を一つの図形で表した指標。形状から相場の強弱を読み取ることができる</td>
-                </tr>
-                <tr>
-                    <td>移動平均線</td>
-                    <td>一定期間の平均株価を線で表したもの。トレンドの方向性や転換点を判断するのに役立つ</td>
-                </tr>
-                <tr>
-                    <td>損益分岐点</td>
-                    <td>投資金額と同額になるポイント。このレベルに移動することで元本を保護する</td>
-                </tr>
-                <tr>
-                    <td>投資心理学</td>
-                    <td>投資における感情や心理的バイアスの影響を研究し、より合理的な判断を目指す学問</td>
-                </tr>
-            </table>
-        </section>
-        
-        <footer>
-            <p>「シンプルな投資哲学：市場の不確実性を味方につける」</p>
-        </footer>
+        <!-- フッター -->
+        <div class="footer">
+            <p>「シンプルな投資哲学：市場の不確実性を味方につける」 2025年3月30日</p>
+        </div>
     </div>
-
-<script>
-    // QAアコーディオンの動作は純粋なCSS（:checkedセレクタ）で実装済み
-</script>
 </body>
 </html>
