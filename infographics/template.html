@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>インフォグラフィック</title>
+    <title>{%TITLE%}</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Yomogi&family=Zen+Kurenaido&family=Kaisei+Decol:wght@400;700&display=swap');
         
@@ -111,6 +111,45 @@
             box-shadow: 0 4px 8px rgba(0,0,0,0.3);
         }
 
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(135deg, var(--fashion-1), var(--fashion-5));
+            color: white;
+            margin-top: 40px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-logo {
+            font-family: 'Zen Kurenaido', sans-serif;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 15px;
+        }
+
+        .footer-social a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .footer-social a:hover {
+            color: var(--fashion-2);
+            transform: translateY(-2px);
+        }
+
         @media (max-width: 768px) {
             .fixed-header h1 {
                 font-size: 20px;
@@ -124,6 +163,11 @@
             .language-switch {
                 top: 10px;
                 right: 10px;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                gap: 10px;
             }
         }
     </style>
@@ -141,8 +185,17 @@
     </div>
 
     <div class="main-content">
-        <!-- ここにインフォグラフィックのコンテンツを配置 -->
+        {%CONTENT%}
     </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">Monty Trader</div>
+            <div class="footer-social">
+                <a href="https://x.com/monty_investor" target="_blank">@monty_investor</a>
+            </div>
+        </div>
+    </footer>
 
     <script>
         function toggleLanguage() {
