@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loar Holdings Inc. グラフィックレコーディング</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Yomogi&family=Zen+Kurenaido&family=Kaisei+Decol:wght@400;700&display=swap');
+        
+        :root {
+            --fashion-1: #593C47;
+            --fashion-2: #F2E63D;
+            --fashion-3: #F2C53D;
+            --fashion-4: #F25C05;
+            --fashion-5: #F24405;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Kaisei Decol', serif;
+            background-color: #f8f9fa;
+            color: #334155;
+            line-height: 1.4;
+            padding: 20px;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23593c47' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(89, 60, 71, 0.1);
+            overflow: hidden;
+            padding: 40px;
+        }
+        
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            border-bottom: 3px dashed var(--fashion-3);
+            padding-bottom: 20px;
+        }
+        
+        .title-container {
+            display: flex;
+            align-items: center;
+        }
+        
+        .title-container img {
+            width: 80px;
+            height: 80px;
+            margin-right: 20px;
+        }
+        
+        h1 {
+            font-family: 'Yomogi', cursive;
+            font-size: 32px;
+            font-weight: bold;
+            text-shadow: 2px 2px 0px rgba(242, 196, 60, 0.5);
+            background: linear-gradient(45deg, var(--fashion-1), var(--fashion-5));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+            position: relative;
+        }
+        
+        h1::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--fashion-2), var(--fashion-4));
+            border-radius: 3px;
+        }
+        
+        .date-source {
+            font-family: 'Zen Kurenaido', sans-serif;
+            font-size: 16px;
+            color: #475569;
+        }
+        
+        .content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .column {
+            flex: 1 1 calc(33% - 20px);
+            min-width: 300px;
+        }
+        
+        .card {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 2px solid transparent;
+            border-image: linear-gradient(45deg, var(--fashion-2), var(--fashion-4));
+            border-image-slice: 1;
+            position: relative;
+        }
+        
+        .card-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .card-header .icon {
+            width: 36px;
+            height: 36px;
+            margin-right: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--fashion-3);
+            border-radius: 50%;
+            color: white;
+            font-size: 18px;
+        }
+        
+        h2 {
+            font-family: 'Zen Kurenaido', sans-serif;
+            font-size: 18px;
+            color: #1e40af;
+            position: relative;
+            padding-bottom: 8px;
+        }
+        
+        h2::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--fashion-4);
+            border-radius: 2px;
+        }
+        
+        .card-content {
+            font-size: 14px;
+        }
+        
+        .tag-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin-top: 10px;
+        }
+        
+        .tag {
+            background-color: var(--fashion-2);
+            padding: 4px 8px;
+            border-radius: 20px;
+            font-size: 12px;
+            color: var(--fashion-1);
+            white-space: nowrap;
+            font-weight: bold;
+        }
+        
+        .highlight {
+            font-weight: bold;
+            color: var(--fashion-5);
+            position: relative;
+            z-index: 1;
+            display: inline-block;
+        }
+        
+        .highlight::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 5px;
+            background-color: var(--fashion-3);
+            opacity: 0.5;
+            z-index: -1;
+        }
+        
+        .bubble {
+            position: relative;
+            background-color: rgba(242, 230, 60, 0.2);
+            padding: 10px 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+        
+        .bubble::before {
+            content: "";
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            border-width: 0 10px 10px 10px;
+            border-style: solid;
+            border-color: transparent transparent rgba(242, 230, 60, 0.2) transparent;
+        }
+        
+        .timeline {
+            margin: 20px 0;
+            position: relative;
+        }
+        
+        .timeline::before {
+            content: "";
+            position: absolute;
+            left: 10px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(to bottom, var(--fashion-3), var(--fashion-5));
+            border-radius: 3px;
+        }
+        
+        .timeline-item {
+            padding-left: 40px;
+            margin-bottom: 15px;
+            position: relative;
+        }
+        
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            left: 5px;
+            top: 5px;
+            width: 13px;
+            height: 13px;
+            background-color: white;
+            border: 3px solid var(--fashion-4);
+            border-radius: 50%;
+        }
+        
+        .timeline-date {
+            font-weight: bold;
+            color: var(--fashion-1);
+        }
+        
+        .timeline-content {
+            margin-top: 5px;
+        }
+        
+        .data-row {
+            display: flex;
+            margin-bottom: 10px;
+            align-items: baseline;
+        }
+        
+        .data-label {
+            font-weight: bold;
+            min-width: 120px;
+        }
+        
+        .data-value {
+            flex: 1;
+        }
+        
+        .arrow {
+            margin: 0 10px;
+            color: var(--fashion-4);
+            font-weight: bold;
+        }
+        
+        .hand-drawn-box {
+            border: 2px solid var(--fashion-1);
+            border-radius: 15px;
+            padding: 15px;
+            margin: 10px 0;
+            position: relative;
+        }
+        
+        .hand-drawn-box::before {
+            content: "";
+            position: absolute;
+            left: -5px;
+            top: -5px;
+            width: 10px;
+            height: 10px;
+            background-color: var(--fashion-2);
+            border-radius: 50%;
+        }
+        
+        .hand-drawn-box::after {
+            content: "";
+            position: absolute;
+            right: -5px;
+            bottom: -5px;
+            width: 10px;
+            height: 10px;
+            background-color: var(--fashion-3);
+            border-radius: 50%;
+        }
+        
+        .kpi-chart {
+            display: flex;
+            align-items: center;
+            margin: 15px 0;
+        }
+        
+        .kpi-bar {
+            height: 20px;
+            background: linear-gradient(90deg, var(--fashion-3), var(--fashion-4));
+            border-radius: 10px;
+            position: relative;
+        }
+        
+        .kpi-label {
+            margin-right: 10px;
+            min-width: 100px;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 3px dashed var(--fashion-3);
+            font-size: 12px;
+            color: #64748b;
+        }
+        
+        .emoji-bullet {
+            margin-right: 8px;
+        }
+        
+        @media (max-width: 1000px) {
+            .column {
+                flex: 1 1 calc(50% - 20px);
+            }
+        }
+        
+        @media (max-width: 700px) {
+            .column {
+                flex: 1 1 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="title-container">
+                <div style="font-size: 56px;">✈️</div>
+                <div>
+                    <h1>Loar Holdings Inc. 企業概要</h1>
+                    <p class="date-source">2025年3月31日</p>
+                </div>
+            </div>
+            <div class="date-source">
+                出典: Investor's Business Daily, PitchBook, TradingView, simplywall.st, StockAnalysis
+            </div>
+        </header>
+        
+        <div class="content">
+            <!-- 左カラム -->
+            <div class="column">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="icon">🏢</div>
+                        <h2>企業プロフィール</h2>
+                    </div>
+                    <div class="card-content">
+                        <div class="data-row">
+                            <div class="data-label">企業名:</div>
+                            <div class="data-value highlight">Loar Holdings Inc.</div>
+                        </div>
+                        <div class="data-row">
+                            <div class="data-label">設立年:</div>
+                            <div class="data-value">2017年</div>
+                        </div>
+                        <div class="data-row">
+                            <div class="data-label">本社所在地:</div>
+                            <div class="data-value">ニューヨーク州ホワイトプレーンズ</div>
+                        </div>
+                        <div class="bubble">
+                            <span class="emoji-bullet">💼</span><span class="highlight">事業内容:</span> 航空宇宙および防衛システム向けのニッチなコンポーネントの設計、製造、販売
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <div class="icon">🛫</div>
+                        <h2>主要製品/サービス</h2>
+                    </div>
+                    <div class="card-content">
+                        <div class="hand-drawn-box">
+                            <div class="tag-list">
+                                <div class="tag">機体部品</div>
+                                <div class="tag">構造部品</div>
+                                <div class="tag">アビオニクス</div>
+                                <div class="tag">複合材</div>
+                                <div class="tag">ブレーキシステム</div>
+                                <div class="tag">除氷・防氷システム</div>
+                                <div class="tag">電気機械装置</div>
+                                <div class="tag">エンジニアードマテリアル</div>
+                                <div class="tag">飛行制御装置</div>
+                                <div class="tag">流体制御装置</div>
+                                <div class="tag">モーション制御装置</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <div class="icon">👥</div>
+                        <h2>ターゲット顧客</h2>
+                    </div>
+                    <div class="card-content">
+                        <div class="data-row">
+                            <div class="data-label">主要ターゲット:</div>
+                            <div class="data-value">
+                                <span class="emoji-bullet">✈️</span>商業航空<br>
+                                <span class="emoji-bullet">🛩️</span>ビジネスジェット<br>
+                                <span class="emoji-bullet">🚁</span>一般航空<br>
+                                <span class="emoji-bullet">🛡️</span>防衛市場の企業
+                            </div>
+                        </div>
+                        <div class="bubble">
+                            <span class="emoji-bullet">🔍</span><span class="highlight">セグメンテーション:</span> 航空宇宙および防衛関連のOEM（オリジナル機器メーカー）やティア1サプライヤー
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 中央カラム -->
+            <div class="column">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="icon">📈</div>
+                        <h2>売上と利益</h2>
+                    </div>
+                    <div class="card-content">
+                        <div class="data-row">
+                            <div class="data-label">売上高:</div>
+                            <div class="data-value highlight">約3億7,881万ドル (2024年)</div>
+                        </div>
+                        <div class="data-row">
+                            <div class="data-label">売上成長率:</div>
+                            <div class="data-value">前年同期比 <span class="highlight">31%増加</span> 📈</div>
+                        </div>
+                        <div class="data-row">
+                            <div class="data-label">EPS:</div>
+                            <div class="data-value">0.13ドル (2024年第2四半期)</div>
+                        </div>
+                        <div class="data-row">
+                            <div class="data-label">四半期売上高:</div>
+                            <div class="data-value">9,700万ドル (2024年第2四半期)</div>
+                        </div>
+                        <div class="data-row">
+                            <div class="data-label">配当利回り:</div>
+                            <div class="data-value">現在、配当は行っていません</div>
+                        </div>
+                        <div class="kpi-chart">
+                            <div class="kpi-label">売上高成長:</div>
+                            <div class="kpi-bar" style="width: 80%;"></div>
+                            <div style="margin-left: 10px;">31%</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <div class="icon">💰</div>
+                        <h2>バリュエーション</h2>
+                    </div>
+                    <div class="card-content">
+                        <div class="data-row">
+                            <div class="data-label">PER:</div>
+                            <div class="data-value highlight">約337.52倍</div>
+                        </div>
+                        <div class="bubble">
+                            <span class="emoji-bullet">💡</span>高いPERは将来の成長期待を反映している可能性がありますが、同時に割高感も示しています。
+                        </div>
+                        
+                        <div class="data-row">
+                            <div class="data-label">IPO価格:</div>
+                            <div class="data-value">28ドル (2024年4月)</div>
+                        </div>
+                        <div class="data-row">
+                            <div class="data-label">IPO調達額:</div>
+                            <div class="data-value">約3億ドル</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <div class="icon">🚀</div>
+                        <h2>成長要因</h2>
+                    </div>
+                    <div class="card-content">
+                        <div class="hand-drawn-box">
+                            <p><span class="emoji-bullet">🌐</span><span class="highlight">市場環境:</span> 航空宇宙および防衛産業は、技術革新や安全性向上の需要が高まっており、ニッチなコンポーネントへの需要も増加しています。</p>
+                        </div>
+                        
+                        <div class="hand-drawn-box">
+                            <p><span class="emoji-bullet">🏆</span><span class="highlight">競争優位性:</span> 多様な製品ポートフォリオと主要OEMとの確立された関係性</p>
+                        </div>
+                        
+                        <div class="hand-drawn-box">
+                            <p><span class="emoji-bullet">📊</span><span class="highlight">主要戦略:</span> 戦略的な買収を通じて製品ラインを拡充し、市場シェアを拡大</p>
+                        </div>
+                        
+                        <div class="hand-drawn-box">
+                            <p><span class="emoji-bullet">✅</span><span class="highlight">成功要因:</span> 高品質な製品提供と顧客ニーズへの迅速な対応</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 右カラム -->
+            <div class="column">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="icon">📆</div>
+                        <h2>これまでの歩み</h2>
+                    </div>
+                    <div class="card-content">
+                        <div class="timeline">
+                            <div class="timeline-item">
+                                <div class="timeline-date">2017年</div>
+                                <div class="timeline-content">会社設立</div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-date">2024年4月</div>
+                                <div class="timeline-content">
+                                    <span class="highlight">ニューヨーク証券取引所に上場</span><br>
+                                    IPO価格: 28ドル<br>
+                                    調達額: 約3億ドル
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-date">2024年8月</div>
+                                <div class="timeline-content">
+                                    <span class="highlight">Applied Avionics社を買収</span><br>
+                                    アビオニクス製品ラインの強化
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <div class="icon">🔮</div>
+                        <h2>今後の見通し</h2>
+                    </div>
+                    <div class="card-content">
+                        <div class="bubble">
+                            <span class="emoji-bullet">🔄</span><span class="highlight">事業拡大戦略:</span> さらなる買収を通じて製品ラインと市場シェアの拡大を目指しています。
+                        </div>
+                        
+                        <div class="bubble">
+                            <span class="emoji-bullet">🔬</span><span class="highlight">技術開発戦略:</span> 最新技術の導入と製品開発に注力しています。
+                        </div>
+                        
+                        <div class="bubble">
+                            <span class="emoji-bullet">📱</span><span class="highlight">市場トレンドへの対応:</span> 航空宇宙および防衛産業の最新トレンドに適応するため、製品の多様化と品質向上を進めています。
+                        </div>
+                        
+                        <div class="hand-drawn-box">
+                            <p>航空宇宙および防衛産業のニッチなプレイヤーとして、戦略的買収と製品ラインの拡充を通じた成長が期待されます。</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <div class="icon">💡</div>
+                        <h2>まとめ</h2>
+                    </div>
+                    <div class="card-content">
+                        <div class="hand-drawn-box">
+                            <p><span class="emoji-bullet">🔑</span><span class="highlight">Loar Holdingsの強み:</span></p>
+                            <ul style="list-style-type: none; padding-left: 20px;">
+                                <li>✅ 航空宇宙・防衛産業向けニッチ製品に特化</li>
+                                <li>✅ 高い売上成長率（31%）</li>
+                                <li>✅ 戦略的買収による事業拡大</li>
+                                <li>✅ 多様な製品ポートフォリオ</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="hand-drawn-box">
+                            <p><span class="emoji-bullet">⚠️</span><span class="highlight">注意点:</span></p>
+                            <ul style="list-style-type: none; padding-left: 20px;">
+                                <li>⚠️ 高いPER（337倍超）</li>
+                                <li>⚠️ 配当なし</li>
+                                <li>⚠️ 比較的新しい上場企業（2024年4月上場）</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>このグラフィックレコーディングは、Investor's Business Daily、PitchBook、TradingView、simplywall.st、StockAnalysisなどの公開情報に基づいて作成されています。投資判断の参考にする際は、必ず最新の情報を確認し、専門家にご相談ください。</p>
+            <p>作成日: 2025年3月31日</p>
+        </footer>
+    </div>
+</body>
+</html>

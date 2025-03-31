@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Language Switch Demo</title>
+    <style>
+        .language-switch {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            display: none;  /* デフォルトで非表示 */
+        }
+        
+        /* 言語切り替えボタンの表示制御を削除 */
+        /* .content.active .language-switch {
+            display: block;
+        } */
+
+        .content {
+            display: none;
+            padding: 20px;
+        }
+
+        .content.active {
+            display: block;
+        }
+
+        .language-switch button {
+            padding: 8px 16px;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+
+        [data-lang="en"] {
+            display: none;
+        }
+
+        [data-lang="ja"] {
+            display: block;
+        }
+
+        .lang-en [data-lang="en"] {
+            display: block;
+        }
+
+        .lang-en [data-lang="ja"] {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="content" id="content1">
+        <div class="language-switch">
+            <button onclick="switchLanguage('ja')">日本語</button>
+            <button onclick="switchLanguage('en')">English</button>
+        </div>
+        <h1 data-lang="ja">コンテンツ1</h1>
+        <h1 data-lang="en">Content 1</h1>
+        <p data-lang="ja">これはコンテンツ1の説明です。</p>
+        <p data-lang="en">This is the description for Content 1.</p>
+    </div>
+
+    <div class="content" id="content2">
+        <div class="language-switch">
+            <button onclick="switchLanguage('ja')">日本語</button>
+            <button onclick="switchLanguage('en')">English</button>
+        </div>
+        <h1 data-lang="ja">コンテンツ2</h1>
+        <h1 data-lang="en">Content 2</h1>
+        <p data-lang="ja">これはコンテンツ2の説明です。</p>
+        <p data-lang="en">This is the description for Content 2.</p>
+    </div>
+
+    <script>
+        // コンテンツ切り替え関数
+        function showContent(contentId) {
+            // すべてのコンテンツを非表示
+            document.querySelectorAll('.content').forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // 指定されたコンテンツを表示
+            document.getElementById(contentId).classList.add('active');
+        }
+
+        // 言語切り替え関数
+        function switchLanguage(lang) {
+            const activeContent = document.querySelector('.content.active');
+            if (lang === 'en') {
+                activeContent.classList.add('lang-en');
+            } else {
+                activeContent.classList.remove('lang-en');
+            }
+        }
+
+        // 初期表示
+        showContent('content1');
+    </script>
+</body>
+</html> 
