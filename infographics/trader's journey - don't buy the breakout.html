@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DON'T Buy the Breakout?</title>
+    <link rel="icon" type="image/png" href="../images/monty.png">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Yomogi&family=Zen+Kurenaido&family=Kaisei+Decol:wght@400;700&display=swap');
         
@@ -55,8 +56,16 @@
             max-width: 1200px;
             margin: 0 auto;
             display: flex;
-            justify-content: space-between;
+            justify-content: flex-start;
             align-items: center;
+            gap: 20px;
+        }
+
+        .header-logo {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
         }
 
         .fixed-header h1 {
@@ -179,8 +188,9 @@
 
     <div class="fixed-header" onclick="window.location.href='../index.html'">
         <div class="fixed-header-content">
-            <h1 class="ja">株式トレードインフォグラフィックスコレクション</h1>
-            <h1 class="en hidden">Stock Trading Infographics Collection</h1>
+            <img src="../images/monty.png" alt="Monty Trader Logo" class="header-logo">
+            <h1 class="ja">モンティの株式トレードインフォグラフィックス集</h1>
+            <h1 class="en hidden">Monty's Stock Trading Infographics Collection</h1>
         </div>
     </div>
 
