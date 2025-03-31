@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S&P 500 価格推移とブレッドス指標 📊</title>
+    <link rel="icon" type="image/png" href="../images/monty.png">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Yomogi&family=Zen+Kurenaido&family=Kaisei+Decol:wght@400;700&display=swap');
+        
+        :root {
+            --fashion-1: #593C47;
+            --fashion-2: #F2E63D;
+            --fashion-3: #F2C53D;
+            --fashion-4: #F25C05;
+            --fashion-5: #F24405;
+            --text-dark: #334155;
+            --text-title: #1e40af;
+            --bg-light: #fff;
+            --shadow: rgba(0, 0, 0, 0.1);
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Kaisei Decol', serif;
+            background-color: #f8f9fa;
+            color: var(--text-dark);
+            line-height: 1.4;
+            padding: 0;
+            margin: 0;
+        }
+
+        .fixed-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: linear-gradient(135deg, var(--fashion-1), var(--fashion-5));
+            padding: 10px 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .fixed-header:hover {
+            background: linear-gradient(135deg, var(--fashion-5), var(--fashion-1));
+        }
+
+        .fixed-header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .header-logo {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .fixed-header h1 {
+            font-family: 'Zen Kurenaido', sans-serif;
+            font-size: 24px;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            background: linear-gradient(to right, white, var(--fashion-2));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin: 0;
+            pointer-events: none;
+        }
+
+        .main-content {
+            margin-top: 60px;
+            padding: 20px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hidden {
+            display: none !important;
+            visibility: hidden;
+            opacity: 0;
+        }
+
+        .language-switch {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1001;
+            display: none;
+        }
+        
+        .language-switch button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 20px;
+            background: linear-gradient(135deg, var(--fashion-1), var(--fashion-5));
+            color: white;
+            cursor: pointer;
+            font-family: 'Yomogi', cursive;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .language-switch button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(135deg, var(--fashion-1), var(--fashion-5));
+            color: white;
+            margin-top: 40px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-logo {
+            font-family: 'Zen Kurenaido', sans-serif;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 15px;
+        }
+
+        .footer-social a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .footer-social a:hover {
+            color: var(--fashion-2);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .fixed-header h1 {
+                font-size: 20px;
+            }
+            
+            .main-content {
+                margin-top: 50px;
+                padding: 10px;
+            }
+
+            .language-switch {
+                top: 10px;
+                right: 10px;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="language-switch">
+        <button onclick="toggleLanguage()">English</button>
+    </div>
+
+    <div class="fixed-header" onclick="window.location.href='../index.html'">
+        <div class="fixed-header-content">
+            <img src="../images/monty.png" alt="Monty Trader Logo" class="header-logo">
+            <h1 class="ja">モンティの株式トレードインフォグラフィックス集</h1>
+            <h1 class="en hidden">Monty's Stock Trading Infographics Collection</h1>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>S&P 500 価格推移とブレッドス指標 グラフィックレコーディング</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Yomogi&family=Zen+Kurenaido&family=Kaisei+Decol:wght@400;700&display=swap');
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'Kaisei Decol', serif;
+      background-color: #f8f9fa;
+      color: #334155;
+      line-height: 1.4;
+      padding: 20px;
+    }
+    
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+      padding: 30px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 30px;
+      border-bottom: 3px solid #593C47;
+      padding-bottom: 15px;
+      position: relative;
+    }
+    
+    .title {
+      font-family: 'Zen Kurenaido', sans-serif;
+      font-size: 32px;
+      font-weight: bold;
+      background: linear-gradient(90deg, #593C47, #F24405);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+      position: relative;
+    }
+    
+    .title::after {
+      content: "";
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, #F2E63D, #F24405);
+      border-radius: 2px;
+    }
+    
+    .date {
+      font-family: 'Yomogi', cursive;
+      font-size: 14px;
+      color: #475569;
+    }
+    
+    .content {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    
+    .column {
+      flex: 1 1 30%;
+      min-width: 300px;
+    }
+    
+    .card {
+      background-color: rgba(255, 255, 255, 0.9);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+      position: relative;
+      border: 2px solid transparent;
+      background-clip: padding-box;
+      backdrop-filter: blur(10px);
+    }
+    
+    .card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: -1;
+      margin: -2px;
+      border-radius: inherit;
+      background: linear-gradient(45deg, #F2E63D, #F25C05);
+      opacity: 0.3;
+    }
+    
+    .section-title {
+      font-family: 'Zen Kurenaido', sans-serif;
+      font-size: 18px;
+      color: #1e40af;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding-bottom: 5px;
+      border-bottom: 2px dashed #593C47;
+    }
+    
+    .icon {
+      display: inline-block;
+      font-size: 22px;
+    }
+    
+    .highlight {
+      background: linear-gradient(transparent 60%, #F2C53D 40%);
+      font-weight: bold;
+    }
+    
+    .marker {
+      position: relative;
+      display: inline-block;
+    }
+    
+    .marker::after {
+      content: "";
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background-color: #F25C05;
+      border-radius: 2px;
+      opacity: 0.7;
+    }
+    
+    .handdrawn-box {
+      border: 3px solid #593C47;
+      border-radius: 12px;
+      padding: 15px;
+      margin: 15px 0;
+      position: relative;
+    }
+    
+    .handdrawn-box::before {
+      content: "";
+      position: absolute;
+      top: -10px;
+      left: 20px;
+      background-color: white;
+      padding: 0 10px;
+      font-family: 'Yomogi', cursive;
+      font-weight: bold;
+      color: #F24405;
+    }
+    
+    .arrow {
+      width: 100%;
+      height: 30px;
+      position: relative;
+      margin: 20px 0;
+    }
+    
+    .arrow::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 85%;
+      height: 3px;
+      background-color: #593C47;
+      transform: translateY(-50%);
+    }
+    
+    .arrow::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      right: 15%;
+      width: 15px;
+      height: 15px;
+      border-top: 3px solid #593C47;
+      border-right: 3px solid #593C47;
+      transform: translateY(-50%) rotate(45deg);
+    }
+    
+    .tag {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: bold;
+      margin-right: 5px;
+      margin-bottom: 5px;
+    }
+    
+    .tag-1 {
+      background-color: #593C47;
+      color: white;
+    }
+    
+    .tag-2 {
+      background-color: #F2E63D;
+      color: #593C47;
+    }
+    
+    .tag-3 {
+      background-color: #F2C53D;
+      color: #593C47;
+    }
+    
+    .tag-4 {
+      background-color: #F25C05;
+      color: white;
+    }
+    
+    .tag-5 {
+      background-color: #F24405;
+      color: white;
+    }
+    
+    .speech-bubble {
+      position: relative;
+      background-color: #F2E63D;
+      border-radius: 10px;
+      padding: 10px 15px;
+      margin: 15px 0;
+      color: #593C47;
+      font-family: 'Yomogi', cursive;
+      font-weight: bold;
+      max-width: 90%;
+    }
+    
+    .speech-bubble::after {
+      content: "";
+      position: absolute;
+      bottom: -10px;
+      left: 20px;
+      border-width: 10px 10px 0;
+      border-style: solid;
+      border-color: #F2E63D transparent;
+    }
+    
+    .chart-visual {
+      width: 100%;
+      height: 120px;
+      background-color: #f8f9fa;
+      border-radius: 8px;
+      margin: 15px 0;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid #e2e8f0;
+    }
+    
+    .chart-line {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      path {
+        stroke: #38bdf8;
+        stroke-width: 2;
+        fill: none;
+      }
+    }
+    
+    .pink-zone {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 40%;
+      height: 100%;
+      background-color: rgba(242, 68, 4, 0.1);
+      border-left: 2px dashed #F24405;
+    }
+    
+    .breadth-visual {
+      width: 100%;
+      height: 120px;
+      background-color: #f8f9fa;
+      border-radius: 8px;
+      margin: 15px 0;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid #e2e8f0;
+    }
+    
+    .green-line {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: #22c55e;
+    }
+    
+    .orange-line {
+      position: absolute;
+      top: 60%;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: #F25C05;
+      transform: translateY(-50%) rotate(-5deg);
+    }
+    
+    .red-dotted {
+      position: absolute;
+      top: 30%;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      border-top: 2px dotted #ef4444;
+    }
+    
+    .blue-dotted {
+      position: absolute;
+      top: 70%;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      border-top: 2px dotted #3b82f6;
+    }
+    
+    .footer {
+      margin-top: 30px;
+      padding-top: 15px;
+      border-top: 1px solid #e2e8f0;
+      font-size: 12px;
+      color: #64748b;
+      text-align: right;
+    }
+    
+    .divider {
+      width: 100%;
+      height: 20px;
+      background-image: url("data:image/svg+xml,%3Csvg width='100' height='20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,10 Q25,20 50,10 T100,10' fill='none' stroke='%23593C47' stroke-width='2'/%3E%3C/svg%3E");
+      background-repeat: repeat-x;
+      margin: 30px 0;
+    }
+    
+    .note-tag {
+      position: absolute;
+      top: -10px;
+      right: 20px;
+      transform: rotate(5deg);
+      background-color: #F2C53D;
+      padding: 5px 10px;
+      font-family: 'Yomogi', cursive;
+      font-size: 14px;
+      color: #593C47;
+      box-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+    }
+    
+    .strategy-list {
+      padding-left: 25px;
+    }
+    
+    .strategy-list li {
+      margin-bottom: 8px;
+      position: relative;
+    }
+    
+    .strategy-list li::before {
+      content: "✦";
+      position: absolute;
+      left: -20px;
+      color: #F25C05;
+    }
+    
+    .signal-icon {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      background-color: #1e40af;
+      color: white;
+      text-align: center;
+      line-height: 20px;
+      border-radius: 50%;
+      margin-right: 5px;
+      font-size: 14px;
+      transform: rotate(180deg);
+    }
+    
+    @media (max-width: 768px) {
+      .column {
+        flex: 1 1 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1 class="title">S&P 500 価格推移とブレッドス指標 📊</h1>
+      <div class="date">2025年3月31日</div>
+      <div style="margin-top: 10px; font-size: 14px; background-color: #f2f8ff; padding: 8px 12px; border-radius: 8px; border-left: 4px solid #F25C05; display: inline-block;">
+        📈 元チャート: <a href="https://tradermonty.github.io/market-breadth-analysis/" style="color: #F25C05; text-decoration: underline; font-weight: bold;">Market Breadth Analysis</a> 🔍
+      </div>
+    </div>
+    
+    <div class="content">
+      <!-- 左カラム：概要説明 -->
+      <div class="column">
+        <div class="card">
+          <span class="note-tag">解説</span>
+          <h2 class="section-title"><span class="icon">📈</span>このチャートとは？</h2>
+          <p>このチャートは、<span class="highlight">S&P 500 の「価格推移」と「市場の広がり具合（ブレッドス）」</span>を同時にチェックするためのものです。初心者向けにポイントを整理しました。</p>
+          
+          <div class="speech-bubble">
+            株価の動きだけでなく、<span class="marker">相場全体の強さ</span>がわかるよ！
+          </div>
+        </div>
+        
+        <div class="card">
+          <h2 class="section-title"><span class="icon">🔍</span>上段のグラフ解説</h2>
+          <p>S&P 500の株価推移を表すグラフです。</p>
+          
+          <div class="chart-visual">
+            <svg class="chart-line" viewBox="0 0 200 100">
+              <path d="M0,80 Q30,70 50,75 T100,60 T150,40 T200,30" stroke="#38bdf8" stroke-width="3" fill="none"/>
+            </svg>
+            <div class="pink-zone"></div>
+            <div style="position:absolute; bottom:20px; right:30px; font-size:24px; color:#1e40af;">▼</div>
+          </div>
+          
+          <ul style="list-style-type: none; padding-left: 10px;">
+            <li><span class="tag tag-1">水色ライン</span> S&P 500の株価推移</li>
+            <li><span class="tag tag-5">ピンク背景</span> 弱気相場シグナル</li>
+            <li><span class="tag tag-1">青三角▼</span> 底・反転の目安ポイント</li>
+          </ul>
+          
+          <div class="speech-bubble" style="margin-left: auto;">
+            ピンク背景は「大きな下落リスク」の警告！
+          </div>
+        </div>
+        
+        <div class="card">
+          <h2 class="section-title"><span class="icon">📉</span>下段のグラフ解説</h2>
+          <p>ブレッドス指標（<span class="highlight">市場全体の広がり・勢い</span>）を示すグラフです。</p>
+          
+          <div class="breadth-visual">
+            <div class="green-line"></div>
+            <div class="orange-line"></div>
+            <div class="red-dotted"></div>
+            <div class="blue-dotted"></div>
+          </div>
+          
+          <ul style="list-style-type: none; padding-left: 10px;">
+            <li><span class="tag tag-3">緑線</span> 200日移動平均（長期傾向）</li>
+            <li><span class="tag tag-4">オレンジ線</span> 20日移動平均（短期傾向）</li>
+            <li><span class="tag tag-5">赤点線</span> 平均ピーク水準（高値）</li>
+            <li><span class="tag tag-1">青点線</span> 平均トラフ水準（底値）</li>
+          </ul>
+          
+          <p style="margin-top: 10px;">
+            S&P 500構成銘柄のうち<span class="marker">どれくらいが上昇トレンドに乗っているか</span>を示します。
+          </p>
+        </div>
+      </div>
+      
+      <!-- 中央カラム：全体の見方・注意点 -->
+      <div class="column">
+        <div class="card">
+          <h2 class="section-title"><span class="icon">👀</span>全体をどう見るか</h2>
+          
+          <div class="handdrawn-box" style="border-color: #F25C05;">
+            <p style="font-weight: bold;">チェックの手順</p>
+            <ol style="padding-left: 25px;">
+              <li>上段の株価が上昇か下落かを確認</li>
+              <li>ピンク背景の弱気シグナル期間をチェック</li>
+              <li>下段のブレッドス指標の強さを分析</li>
+              <li>長期線と短期線の位置関係に注目</li>
+            </ol>
+          </div>
+          
+          <div class="arrow"></div>
+          
+          <p><span class="signal-icon">▼</span>三角マークと共にブレッドス指標が回復し始めると、<span class="highlight">反転の初期サイン</span>かもしれません。</p>
+          
+          <div class="speech-bubble">
+            相場の「広がり」と「深さ」を一緒に見ることがポイント！
+          </div>
+        </div>
+        
+        <div class="card">
+          <h2 class="section-title"><span class="icon">⚠️</span>初心者への注意点</h2>
+          
+          <ul style="list-style-type: none; padding-left: 5px;">
+            <li style="margin-bottom: 10px;">
+              <span style="font-weight: bold; color: #F24405;">❶</span> チャート上のシグナルや指標は「<span class="marker">可能性</span>」を示すもので、必ず当たるわけではありません。
+            </li>
+            <li style="margin-bottom: 10px;">
+              <span style="font-weight: bold; color: #F24405;">❷</span> 弱気シグナルが出ていても必ず大暴落するとは限りませんし、底打ちサインがあってもすぐに上昇するとは限りません。
+            </li>
+            <li style="margin-bottom: 10px;">
+              <span style="font-weight: bold; color: #F24405;">❸</span> 自分の投資スタイル（短期・長期など）に合わせて、<span class="highlight">参考程度に活用</span>するのが大切です。
+            </li>
+          </ul>
+          
+          <div class="speech-bubble" style="background-color: #F25C05; color: white;">
+            複数の指標やファンダメンタルズ分析と組み合わせると精度アップ！
+          </div>
+        </div>
+        
+        <div class="card">
+          <h2 class="section-title"><span class="icon">🔄</span>最新のチャート状況分析</h2>
+          
+          <div class="handdrawn-box">
+            <p style="font-weight: bold;">株価（上段グラフ）</p>
+            <ul style="list-style-type: none; padding-left: 5px;">
+              <li><span class="tag tag-5">◆</span> ピンク色の背景（弱気シグナル期間）が継続中</li>
+              <li><span class="tag tag-5">◆</span> 200日移動平均線が下向き傾向</li>
+              <li><span class="tag tag-5">◆</span> 短期移動平均線が200日線を下回る</li>
+              <li><span class="tag tag-5">◆</span> 大きな反転サインはまだ明確に出ていない</li>
+            </ul>
+          </div>
+          
+          <div class="handdrawn-box">
+            <p style="font-weight: bold;">ブレッドス指標（下段グラフ）</p>
+            <ul style="list-style-type: none; padding-left: 5px;">
+              <li><span class="tag tag-3">◆</span> 200日移動平均（緑線）はやや下降～横ばい</li>
+              <li><span class="tag tag-4">◆</span> 20日移動平均（オレンジ線）は下に推移</li>
+              <li><span class="tag tag-5">◆</span> 上昇銘柄の数（強さ）が減少傾向</li>
+              <li><span class="tag tag-1">◆</span> 青点線（0.18付近）まで落ちると危険信号</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 右カラム：シナリオと戦略 -->
+      <div class="column">
+        <div class="card">
+          <h2 class="section-title"><span class="icon">🔮</span>想定される主なシナリオ</h2>
+          
+          <div class="handdrawn-box" style="border-color: #593C47;">
+            <p style="font-weight: bold; color: #593C47;">シナリオA: 調整継続（下落またはレンジ）</p>
+            <p>ブレッドスが弱含みで推移し、株価も反発力に欠けるまま緩やかに下落または狭いレンジで推移</p>
+          </div>
+          
+          <div class="handdrawn-box" style="border-color: #F2C53D;">
+            <p style="font-weight: bold; color: #F25C05;">シナリオB: 早期のリバウンド</p>
+            <p>一時的な調整後、良好な指標発表や好決算などにより市場が意外と早く回復。ブレッドスの短期平均が急回復</p>
+          </div>
+          
+          <div class="handdrawn-box" style="border-color: #F24405;">
+            <p style="font-weight: bold; color: #F24405;">シナリオC: 一旦大きく下げて強反発</p>
+            <p>投げ売り(capitulation)で大きく売られた後、需給好転や資金流入を機に急反発するパターン</p>
+          </div>
+        </div>
+        
+        <div class="divider"></div>
+        
+        <div class="card">
+          <h2 class="section-title"><span class="icon">🛡️</span>シナリオ別投資戦略例</h2>
+          
+          <p style="font-size: 16px; font-weight: bold; color: #593C47;">シナリオA（調整継続）に備える戦略</p>
+          <ul class="strategy-list">
+            <li>株式比率を下げるか低ベータ銘柄中心に</li>
+            <li>ディフェンシブセクター（生活必需品・ヘルスケア）の比率を上げる</li>
+            <li>VIXオプションやインバースETFを少量組み入れ</li>
+            <li>ブレッドスが底水準に近づいたタイミングで少しずつ買い</li>
+          </ul>
+          
+          <p style="font-size: 16px; font-weight: bold; color: #F25C05; margin-top: 15px;">シナリオB（早期リバウンド）に向けた戦略</p>
+          <ul class="strategy-list">
+            <li>20日ブレッドスが上昇転換、株価が200日線超えを確認</li>
+            <li>確認後に順張りで買い増し（ダマシ回避）</li>
+            <li>成長セクター・ハイベータ銘柄へウェイト移行</li>
+            <li>小さな資金から段階的にポジション構築</li>
+          </ul>
+          
+          <p style="font-size: 16px; font-weight: bold; color: #F24405; margin-top: 15px;">シナリオC（急落→強反発）に備える戦略</p>
+          <ul class="strategy-list">
+            <li>現金ポジションを一定量確保しておく</li>
+            <li>大きな急落でブレッドスが極端に低水準に達した時に買い</li>
+            <li>PUTオプションで暴落ヘッジを検討</li>
+            <li>下げた後にCALLで反発を狙う手法も</li>
+          </ul>
+        </div>
+        
+        <div class="card">
+          <h2 class="section-title"><span class="icon">💡</span>総合的なポイント</h2>
+          
+          <div style="background-color: rgba(242, 230, 60, 0.2); padding: 15px; border-radius: 8px; margin-bottom: 15px;">
+            <p style="font-weight: bold; font-size: 16px; color: #593C47; margin-bottom: 10px;">ブレッドス指標のトレンド変化をウォッチ</p>
+            <p>短期（20日）指標が底打ちし、長期（200日）に向かって回復し始めるかがポイント</p>
+          </div>
+          
+          <div style="background-color: rgba(242, 196, 60, 0.2); padding: 15px; border-radius: 8px; margin-bottom: 15px;">
+            <p style="font-weight: bold; font-size: 16px; color: #593C47; margin-bottom: 10px;">移動平均線の交差・傾き</p>
+            <p>S&P 500の価格が200日線を上回ると地合い改善。ただし200日線が下向きなら要注意</p>
+          </div>
+          
+          <div style="background-color: rgba(242, 91, 4, 0.2); padding: 15px; border-radius: 8px;">
+            <p style="font-weight: bold; font-size: 16px; color: #593C47; margin-bottom: 10px;">ファンダメンタルズとの合わせ技</p>
+            <p>企業決算・経済指標（インフレ率、金利動向、雇用統計など）の確認も重要</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="divider"></div>
+    
+    <div style="background-color: rgba(89, 60, 70, 0.1); padding: 20px; border-radius: 12px; margin-top: 30px;">
+      <h2 style="font-family: 'Zen Kurenaido', sans-serif; font-size: 24px; color: #593C47; margin-bottom: 15px; text-align: center;">
+        まとめ 📝
+      </h2>
+      
+      <ul style="list-style-type: none; max-width: 800px; margin: 0 auto;">
+        <li style="margin-bottom: 12px; display: flex; align-items: flex-start;">
+          <span style="min-width: 30px; color: #F24405; font-weight: bold; font-size: 20px;">✓</span>
+          <span><span class="highlight">現状は弱気シグナル下での調整局面</span>が続いており、ブレッドス指標も今のところ顕著な底打ちサインや大きな上昇傾向を示していません。</span>
+        </li>
+        <li style="margin-bottom: 12px; display: flex; align-items: flex-start;">
+          <span style="min-width: 30px; color: #F24405; font-weight: bold; font-size: 20px;">✓</span>
+          <span>見極めポイントは、<span class="marker">①ブレッドス短期の反転</span>、<span class="marker">②株価と200日移動平均線の位置関係</span>、<span class="marker">③ファンダメンタルズの改善シグナル</span>です。</span>
+        </li>
+        <li style="margin-bottom: 12px; display: flex; align-items: flex-start;">
+          <span style="min-width: 30px; color: #F24405; font-weight: bold; font-size: 20px;">✓</span>
+          <span>投資戦略は、<span class="highlight">守備的スタンスをベース</span>に「シナリオごとのエントリー条件やタイミング」をあらかじめ決めておくことで感情的な売買を減らせます。</span>
+        </li>
+        <li style="display: flex; align-items: flex-start;">
+          <span style="min-width: 30px; color: #F24405; font-weight: bold; font-size: 20px;">✓</span>
+          <span><span class="highlight">リスク管理を徹底</span>しながら、シグナルに応じて段階的に売買を行う方針が堅実です。</span>
+        </li>
+      </ul>
+    </div>
+    
+    <div class="footer">
+      出典: S&P 500価格推移とブレッドス指標解説 | 2025年3月31日作成
+    </div>
+  </div>
+</body>
+</html>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">Monty Trader</div>
+            <div class="footer-social">
+                <a href="https://x.com/monty_investor" target="_blank">@monty_investor</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleLanguage() {
+            const jaElements = document.querySelectorAll('.ja');
+            const enElements = document.querySelectorAll('.en');
+            const button = document.querySelector('.language-switch button');
+            
+            jaElements.forEach(el => el.classList.toggle('hidden'));
+            enElements.forEach(el => el.classList.toggle('hidden'));
+            
+            button.textContent = button.textContent === 'English' ? '日本語' : 'English';
+        }
+    </script>
+</body>
+</html> 
