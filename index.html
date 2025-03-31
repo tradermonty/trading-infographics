@@ -56,6 +56,7 @@
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             cursor: pointer;
             transition: all 0.3s ease;
+            min-height: fit-content;
         }
 
         .fixed-header:hover {
@@ -69,6 +70,7 @@
             justify-content: flex-start;
             align-items: center;
             gap: 20px;
+            flex-wrap: wrap;
         }
 
         .header-logo {
@@ -76,6 +78,7 @@
             height: 40px;
             border-radius: 50%;
             object-fit: cover;
+            flex-shrink: 0;
         }
 
         .fixed-header h1 {
@@ -89,6 +92,7 @@
             color: transparent;
             margin: 0;
             pointer-events: none;
+            flex: 1;
         }
 
         .main-content {
@@ -97,14 +101,10 @@
         }
 
         .search-container {
-            position: fixed;
-            top: 60px;
-            left: 0;
-            right: 0;
-            z-index: 999;
-            background: rgba(255, 255, 255, 0.95);
-            padding: 10px 20px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            width: 100%;
+            max-width: 1200px;
+            margin: 80px auto 20px;
+            padding: 0 20px;
         }
 
         .search-container-content {
@@ -277,18 +277,32 @@
         }
         
         @media (max-width: 768px) {
-            .fixed-header h1 {
-                font-size: 20px;
-            }
-            
-            .main-content {
-                margin-top: 100px;
+            .fixed-header {
                 padding: 10px;
             }
 
+            .fixed-header h1 {
+                font-size: 20px;
+            }
+
+            .header-logo {
+                width: 32px;
+                height: 32px;
+            }
+
             .search-container {
-                top: 50px;
-                padding: 5px 10px;
+                margin-top: calc(80px + 1em);
+                padding: 0 10px;
+            }
+
+            .search-input {
+                font-size: 14px;
+                padding: 8px 12px;
+            }
+
+            .main-content {
+                margin-top: 100px;
+                padding: 10px;
             }
 
             .categories-container {
