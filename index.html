@@ -53,6 +53,12 @@
             background: linear-gradient(135deg, var(--fashion-1), var(--fashion-5));
             padding: 10px 20px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .fixed-header:hover {
+            background: linear-gradient(135deg, var(--fashion-5), var(--fashion-1));
         }
 
         .fixed-header-content {
@@ -73,6 +79,7 @@
             background-clip: text;
             color: transparent;
             margin: 0;
+            pointer-events: none;
         }
 
         .main-content {
@@ -287,7 +294,7 @@
         <button onclick="toggleLanguage()">English</button>
     </div>
 
-    <div class="fixed-header">
+    <div class="fixed-header" onclick="window.location.href='index.html'">
         <div class="fixed-header-content">
             <h1 class="ja">株式トレードインフォグラフィックスコレクション</h1>
             <h1 class="en hidden">Stock Trading Infographics Collection</h1>
@@ -322,8 +329,8 @@
                 <h2 class="en hidden">Trading Strategies</h2>
                 <ul class="content-list">
                     <li class="content-item">
-                        <a href="infographics/trading-strategy-infographic.html" class="ja">トレーディング戦略インフォグラフィック</a>
-                        <a href="infographics/trading-strategy-infographic.html" class="en hidden">Trading Strategy Infographic</a>
+                        <a href="infographics/trading-strategy-infographic.html" class="ja">株式トレードのアイディア創出プロセス</a>
+                        <a href="infographics/trading-strategy-infographic.html" class="en hidden">Stock Trading Idea Generation Process</a>
                     </li>
                     <li class="content-item">
                         <a href="infographics/reverse engineering for trading consistency.html" class="ja">トレーディング一貫性のためのリバースエンジニアリング</a>
