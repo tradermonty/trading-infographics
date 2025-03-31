@@ -5,82 +5,280 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trading Infographics Collection</title>
     <style>
-        body {
-            font-family: 'Helvetica Neue', Arial, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 20px;
-            background-color: #f5f5f5;
+        @import url('https://fonts.googleapis.com/css2?family=Yomogi&family=Zen+Kurenaido&family=Kaisei+Decol:wght@400;700&display=swap');
+        
+        :root {
+            --fashion-1: #593C47;
+            --fashion-2: #F2E63D;
+            --fashion-3: #F2C53D;
+            --fashion-4: #F25C05;
+            --fashion-5: #F24405;
+            --text-dark: #334155;
+            --text-title: #1e40af;
+            --bg-light: #fff;
+            --shadow: rgba(0, 0, 0, 0.1);
         }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Kaisei Decol', serif;
+            background-color: #f8f9fa;
+            color: var(--text-dark);
+            line-height: 1.4;
+            padding: 0;
+            margin: 0;
+        }
+        
         .container {
+            width: 100%;
             max-width: 1200px;
             margin: 0 auto;
+            background-color: var(--bg-light);
+            border-radius: 16px;
+            box-shadow: 0 4px 12px var(--shadow);
+            overflow: hidden;
         }
-        .header {
-            text-align: center;
-            margin-bottom: 40px;
+
+        .fixed-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: linear-gradient(135deg, var(--fashion-1), var(--fashion-5));
+            padding: 10px 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
+
+        .fixed-header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .fixed-header h1 {
+            font-family: 'Zen Kurenaido', sans-serif;
+            font-size: 24px;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            background: linear-gradient(to right, white, var(--fashion-2));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin: 0;
+        }
+
+        .main-content {
+            margin-top: 120px;
+            padding: 20px;
+        }
+
         .search-container {
-            margin-bottom: 30px;
+            position: fixed;
+            top: 60px;
+            left: 0;
+            right: 0;
+            z-index: 999;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 10px 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .search-container-content {
+            max-width: 1200px;
+            margin: 0 auto;
             text-align: center;
         }
+
         .search-input {
             width: 80%;
             max-width: 600px;
-            padding: 10px;
+            padding: 12px;
             font-size: 16px;
-            border: 2px solid #ddd;
-            border-radius: 5px;
-        }
-        .category {
-            background: white;
+            border: 2px dashed var(--fashion-1);
             border-radius: 8px;
+            font-family: 'Yomogi', cursive;
+            background-color: rgba(255, 255, 255, 0.8);
+            transition: all 0.3s ease;
+        }
+
+        .categories-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
             padding: 20px;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
+
+        .category {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            border: 2px solid var(--fashion-1);
+            border-style: dashed;
+            height: fit-content;
+        }
+        
         .category h2 {
-            color: #333;
-            border-bottom: 2px solid #eee;
+            font-family: 'Zen Kurenaido', sans-serif;
+            color: var(--fashion-1);
+            border-bottom: 2px solid var(--fashion-3);
             padding-bottom: 10px;
-            margin-top: 0;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
+        
+        .category h2::before {
+            content: "📊";
+            display: inline-block;
+        }
+        
         .content-list {
             list-style: none;
             padding: 0;
         }
+        
         .content-item {
-            padding: 10px;
-            border-bottom: 1px solid #eee;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.5);
+            transition: all 0.3s ease;
         }
-        .content-item:last-child {
-            border-bottom: none;
+        
+        .content-item:hover {
+            transform: translateX(5px);
+            background: rgba(242, 197, 61, 0.1);
         }
+        
         .content-item a {
-            color: #0066cc;
+            color: var(--fashion-1);
             text-decoration: none;
+            font-family: 'Yomogi', cursive;
+            display: block;
         }
+        
         .content-item a:hover {
-            text-decoration: underline;
+            color: var(--fashion-4);
         }
+        
         .language-switch {
             position: fixed;
             top: 20px;
             right: 20px;
         }
+        
         .language-switch button {
-            padding: 8px 16px;
+            padding: 10px 20px;
             border: none;
-            border-radius: 4px;
-            background: #0066cc;
+            border-radius: 20px;
+            background: linear-gradient(135deg, var(--fashion-1), var(--fashion-5));
             color: white;
             cursor: pointer;
+            font-family: 'Yomogi', cursive;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
         }
+        
         .language-switch button:hover {
-            background: #0052a3;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
         }
+        
         .hidden {
-            display: none;
+            display: none !important;
+            visibility: hidden;
+            opacity: 0;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 14px;
+            color: #666;
+            border-top: 2px dashed var(--fashion-3);
+            font-family: 'Yomogi', cursive;
+            background: linear-gradient(135deg, rgba(89, 59, 70, 0.05), rgba(242, 68, 5, 0.05));
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .footer-text {
+            font-family: 'Zen Kurenaido', sans-serif;
+            font-size: 18px;
+            color: var(--fashion-1);
+            font-weight: bold;
+        }
+        
+        .footer-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-link {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            color: var(--fashion-1);
+            padding: 5px 12px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.8);
+            transition: all 0.3s ease;
+        }
+        
+        .social-link:hover {
+            transform: translateY(-2px);
+            background: rgba(242, 197, 61, 0.2);
+            color: var(--fashion-4);
+        }
+        
+        .social-icon {
+            font-weight: bold;
+            font-size: 16px;
+        }
+        
+        .social-text {
+            font-family: 'Yomogi', cursive;
+        }
+        
+        @media (max-width: 768px) {
+            .fixed-header h1 {
+                font-size: 20px;
+            }
+            
+            .main-content {
+                margin-top: 100px;
+                padding: 10px;
+            }
+
+            .search-container {
+                top: 50px;
+                padding: 5px 10px;
+            }
+
+            .categories-container {
+                grid-template-columns: 1fr;
+                padding: 10px;
+            }
         }
     </style>
 </head>
@@ -89,70 +287,130 @@
         <button onclick="toggleLanguage()">English</button>
     </div>
 
-    <div class="container">
-        <div class="header">
-            <h1 class="ja">トレーディングインフォグラフィックスコレクション</h1>
-            <h1 class="en hidden">Trading Infographics Collection</h1>
+    <div class="fixed-header">
+        <div class="fixed-header-content">
+            <h1 class="ja">株式トレードインフォグラフィックスコレクション</h1>
+            <h1 class="en hidden">Stock Trading Infographics Collection</h1>
         </div>
+    </div>
 
-        <div class="search-container">
+    <div class="search-container">
+        <div class="search-container-content">
             <input type="text" class="search-input" placeholder="キーワードで検索..." onkeyup="filterContent(this.value)">
         </div>
+    </div>
 
-        <div class="category">
-            <h2 class="ja">市場分析と展望</h2>
-            <h2 class="en hidden">Market Analysis & Outlook</h2>
-            <ul class="content-list">
-                <li class="content-item"><a href="infographics/sp500-outlook_2025-03-30.html">S&P500展望 2025年3月30日</a></li>
-                <li class="content-item"><a href="infographics/rotation from US momentum stocks to undervalued global markets.html">米国モメンタム株からグローバル割安市場へのローテーション</a></li>
-            </ul>
+    <div class="main-content">
+        <div class="categories-container">
+            <div class="category">
+                <h2 class="ja">市場分析と展望</h2>
+                <h2 class="en hidden">Market Analysis & Outlook</h2>
+                <ul class="content-list">
+                    <li class="content-item">
+                        <a href="infographics/sp500-outlook_2025-03-30.html" class="ja">S&P500展望 2025年3月30日</a>
+                        <a href="infographics/sp500-outlook_2025-03-30.html" class="en hidden">S&P500 Outlook March 30, 2025</a>
+                    </li>
+                    <li class="content-item">
+                        <a href="infographics/rotation from US momentum stocks to undervalued global markets.html" class="ja">米国モメンタム株からグローバル割安市場へのローテーション</a>
+                        <a href="infographics/rotation from US momentum stocks to undervalued global markets.html" class="en hidden">Rotation from US Momentum Stocks to Undervalued Global Markets</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="category">
+                <h2 class="ja">トレーディング戦略</h2>
+                <h2 class="en hidden">Trading Strategies</h2>
+                <ul class="content-list">
+                    <li class="content-item">
+                        <a href="infographics/trading-strategy-infographic.html" class="ja">トレーディング戦略インフォグラフィック</a>
+                        <a href="infographics/trading-strategy-infographic.html" class="en hidden">Trading Strategy Infographic</a>
+                    </li>
+                    <li class="content-item">
+                        <a href="infographics/reverse engineering for trading consistency.html" class="ja">トレーディング一貫性のためのリバースエンジニアリング</a>
+                        <a href="infographics/reverse engineering for trading consistency.html" class="en hidden">Reverse Engineering for Trading Consistency</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="category">
+                <h2 class="ja">投資家の知恵と教訓</h2>
+                <h2 class="en hidden">Investor Wisdom & Lessons</h2>
+                <ul class="content-list">
+                    <li class="content-item">
+                        <a href="infographics/billionaire hedge fund managers wisdom.html" class="ja">億万長者ヘッジファンドマネージャーの知恵</a>
+                        <a href="infographics/billionaire hedge fund managers wisdom.html" class="en hidden">Billionaire Hedge Fund Managers' Wisdom</a>
+                    </li>
+                    <li class="content-item">
+                        <a href="infographics/qullamaggie's 7 trading lessons.html" class="ja">Qullamaggieの7つのトレーディングレッスン</a>
+                        <a href="infographics/qullamaggie's 7 trading lessons.html" class="en hidden">Qullamaggie's 7 Trading Lessons</a>
+                    </li>
+                    <li class="content-item">
+                        <a href="infographics/6 lessons from the man who beat the market for 30 years.html" class="ja">市場を30年間打ち負かした男からの6つの教訓</a>
+                        <a href="infographics/6 lessons from the man who beat the market for 30 years.html" class="en hidden">6 Lessons from the Man Who Beat the Market for 30 Years</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="category">
+                <h2 class="ja">リスク管理</h2>
+                <h2 class="en hidden">Risk Management</h2>
+                <ul class="content-list">
+                    <li class="content-item">
+                        <a href="infographics/lessons from cycling safety - managing investment risks.html" class="ja">自転車安全から学ぶ投資リスク管理</a>
+                        <a href="infographics/lessons from cycling safety - managing investment risks.html" class="en hidden">Lessons from Cycling Safety - Managing Investment Risks</a>
+                    </li>
+                    <li class="content-item">
+                        <a href="infographics/accepting market uncertainty in stock trading.html" class="ja">株式トレーディングにおける市場の不確実性を受け入れる</a>
+                        <a href="infographics/accepting market uncertainty in stock trading.html" class="en hidden">Accepting Market Uncertainty in Stock Trading</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="category">
+                <h2 class="ja">心理とマインドセット</h2>
+                <h2 class="en hidden">Psychology & Mindset</h2>
+                <ul class="content-list">
+                    <li class="content-item">
+                        <a href="infographics/knowledge alone won't bring trading success.html" class="ja">知識だけではトレーディング成功はもたらされない</a>
+                        <a href="infographics/knowledge alone won't bring trading success.html" class="en hidden">Knowledge Alone Won't Bring Trading Success</a>
+                    </li>
+                    <li class="content-item">
+                        <a href="infographics/trusting the market's feedback.html" class="ja">市場のフィードバックを信頼する</a>
+                        <a href="infographics/trusting the market's feedback.html" class="en hidden">Trusting the Market's Feedback</a>
+                    </li>
+                    <li class="content-item">
+                        <a href="infographics/debunking the myth of easy beginner profits.html" class="ja">初心者でも簡単に利益が出るという神話を解明</a>
+                        <a href="infographics/debunking the myth of easy beginner profits.html" class="en hidden">Debunking the Myth of Easy Beginner Profits</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="category">
+                <h2 class="ja">アルゴリズムトレーディング</h2>
+                <h2 class="en hidden">Algorithmic Trading</h2>
+                <ul class="content-list">
+                    <li class="content-item">
+                        <a href="infographics/algo-trading-commodity-future-infographic.html" class="ja">アルゴリズムトレーディング商品先物インフォグラフィック</a>
+                        <a href="infographics/algo-trading-commodity-future-infographic.html" class="en hidden">Algorithmic Trading Commodity Future Infographic</a>
+                    </li>
+                    <li class="content-item">
+                        <a href="infographics/lessons from 5 years of algorithmic trading.html" class="ja">5年間のアルゴリズムトレーディングからの教訓</a>
+                        <a href="infographics/lessons from 5 years of algorithmic trading.html" class="en hidden">Lessons from 5 Years of Algorithmic Trading</a>
+                    </li>
+                </ul>
+            </div>
         </div>
+    </div>
 
-        <div class="category">
-            <h2 class="ja">トレーディング戦略</h2>
-            <h2 class="en hidden">Trading Strategies</h2>
-            <ul class="content-list">
-                <li class="content-item"><a href="infographics/trading-strategy-infographic.html">トレーディング戦略インフォグラフィック</a></li>
-                <li class="content-item"><a href="infographics/reverse engineering for trading consistency.html">トレーディング一貫性のためのリバースエンジニアリング</a></li>
-            </ul>
-        </div>
-
-        <div class="category">
-            <h2 class="ja">投資家の知恵と教訓</h2>
-            <h2 class="en hidden">Investor Wisdom & Lessons</h2>
-            <ul class="content-list">
-                <li class="content-item"><a href="infographics/billionaire hedge fund managers wisdom.html">億万長者ヘッジファンドマネージャーの知恵</a></li>
-                <li class="content-item"><a href="infographics/qullamaggie's 7 trading lessons.html">Qullamaggieの7つのトレーディングレッスン</a></li>
-                <li class="content-item"><a href="infographics/6 lessons from the man who beat the market for 30 years.html">市場を30年間打ち負かした男からの6つの教訓</a></li>
-            </ul>
-        </div>
-
-        <div class="category">
-            <h2 class="ja">リスク管理</h2>
-            <h2 class="en hidden">Risk Management</h2>
-            <ul class="content-list">
-                <li class="content-item"><a href="infographics/lessons from cycling safety - managing investment risks.html">自転車安全から学ぶ投資リスク管理</a></li>
-                <li class="content-item"><a href="infographics/accepting market uncertainty in stock trading.html">株式トレーディングにおける市場の不確実性を受け入れる</a></li>
-            </ul>
-        </div>
-
-        <div class="category">
-            <h2 class="ja">心理とマインドセット</h2>
-            <h2 class="en hidden">Psychology & Mindset</h2>
-            <ul class="content-list">
-                <li class="content-item"><a href="infographics/knowledge alone won't bring trading success.html">知識だけではトレーディング成功はもたらされない</a></li>
-                <li class="content-item"><a href="infographics/trusting the market's feedback.html">市場のフィードバックを信頼する</a></li>
-                <li class="content-item"><a href="infographics/debunking the myth of easy beginner profits.html">初心者でも簡単に利益が出るという神話を解明</a></li>
-            </ul>
-        </div>
-
-        <div class="category">
-            <h2 class="ja">アルゴリズムトレーディング</h2>
-            <h2 class="en hidden">Algorithmic Trading</h2>
-            <ul class="content-list">
-                <li class="content-item"><a href="infographics/algo-trading-commodity-future-infographic.html">アルゴリズムトレーディング商品先物インフォグラフィック</a></li>
-                <li class="content-item"><a href="infographics/lessons from 5 years of algorithmic trading.html">5年間のアルゴリズムトレーディングからの教訓</a></li>
-            </ul>
+    <div class="footer">
+        <div class="footer-content">
+            <div class="footer-text">Monty Trader</div>
+            <div class="footer-links">
+                <a href="https://x.com/monty_investor" target="_blank" class="social-link">
+                    <span class="social-icon">𝕏</span>
+                    <span class="social-text">@monty_investor</span>
+                </a>
+            </div>
         </div>
     </div>
 
