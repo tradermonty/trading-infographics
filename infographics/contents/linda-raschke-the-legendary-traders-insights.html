@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>リンダ・ラシュケ氏インタビュー - グラフィックレコーディング</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Yomogi&family=Zen+Kurenaido&family=Kaisei+Decol:wght@400;700&display=swap');
+        
+        :root {
+            --color-1: #593C47;
+            --color-2: #F2E63D;
+            --color-3: #F2C53D;
+            --color-4: #F25C05;
+            --color-5: #F24405;
+            --bg-color: #FDF6E3;
+            --text-color: #334155;
+            --title-color: #1E293B;
+            --header-color: #1e40af;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Kaisei Decol', serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.4;
+            padding: 20px;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h100v100H0z' fill='%23FDF6E3' fill-opacity='.08'/%3E%3C/svg%3E");
+            opacity: 0.3;
+            pointer-events: none;
+        }
+        
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            border-bottom: 3px solid var(--color-3);
+            padding-bottom: 20px;
+            position: relative;
+        }
+        
+        header::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--color-4);
+            border-radius: 50%;
+        }
+        
+        .title {
+            font-family: 'Zen Kurenaido', sans-serif;
+            font-size: 32px;
+            font-weight: bold;
+            color: var(--title-color);
+            background: linear-gradient(90deg, var(--color-1) 0%, var(--color-5) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+            padding-left: 20px;
+        }
+        
+        .title::before {
+            content: "✨";
+            position: absolute;
+            left: -5px;
+            top: 0;
+            font-size: 24px;
+        }
+        
+        .meta {
+            text-align: right;
+            font-size: 14px;
+            color: #475569;
+        }
+        
+        .meta p {
+            margin-bottom: 5px;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        
+        .section {
+            margin-bottom: 30px;
+            position: relative;
+        }
+        
+        .card {
+            background-color: rgba(255,255,255,0.9);
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            height: 100%;
+            border: 2px solid transparent;
+            border-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,0 L100,0 L100,100 L0,100 Z' fill='none' stroke='%23F2C53D' stroke-width='4' stroke-dasharray='10,5' stroke-linecap='round'/%3E%3C/svg%3E") 1;
+            transition: transform 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .card.highlight {
+            border-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,0 L100,0 L100,100 L0,100 Z' fill='none' stroke='%23F25C05' stroke-width='4' stroke-dasharray='10,5' stroke-linecap='round'/%3E%3C/svg%3E") 1;
+        }
+        
+        .section-title {
+            font-family: 'Zen Kurenaido', sans-serif;
+            font-size: 18px;
+            color: var(--header-color);
+            margin-bottom: 15px;
+            padding-bottom: 5px;
+            border-bottom: 2px dashed var(--color-3);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .section-title .icon {
+            font-size: 22px;
+        }
+        
+        .content {
+            font-size: 14px;
+        }
+        
+        .keyword {
+            font-weight: bold;
+            color: var(--color-1);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .keyword::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 2px;
+            width: 100%;
+            height: 6px;
+            background-color: var(--color-2);
+            z-index: -1;
+            opacity: 0.5;
+        }
+        
+        .quote {
+            font-family: 'Yomogi', cursive;
+            font-style: italic;
+            background-color: rgba(242, 197, 61, 0.1);
+            padding: 10px 15px;
+            margin: 10px 0;
+            border-left: 3px solid var(--color-3);
+            border-radius: 0 8px 8px 0;
+            position: relative;
+            font-size: 13px;
+        }
+        
+        .quote::before {
+            content: "❝";
+            position: absolute;
+            left: 5px;
+            top: 0;
+            font-size: 20px;
+            color: var(--color-3);
+            opacity: 0.5;
+        }
+        
+        .arrows {
+            position: absolute;
+            pointer-events: none;
+        }
+        
+        .arrow-1 {
+            top: 250px;
+            left: 350px;
+            transform: rotate(30deg);
+        }
+        
+        .arrow-2 {
+            top: 450px;
+            right: 350px;
+            transform: rotate(-30deg);
+        }
+        
+        .bullet-list {
+            list-style: none;
+            margin-left: 5px;
+        }
+        
+        .bullet-list li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 8px;
+        }
+        
+        .bullet-list li::before {
+            content: "◆";
+            position: absolute;
+            left: 0;
+            color: var(--color-4);
+            font-size: 12px;
+        }
+        
+        .tag {
+            display: inline-block;
+            background-color: var(--color-2);
+            color: var(--color-1);
+            padding: 2px 8px;
+            border-radius: 20px;
+            font-size: 12px;
+            margin-right: 5px;
+            margin-bottom: 5px;
+        }
+        
+        .banner {
+            position: relative;
+            padding: 10px 15px;
+            background-color: var(--color-1);
+            color: white;
+            margin: 20px 0;
+            border-radius: 5px;
+            font-family: 'Zen Kurenaido', sans-serif;
+            text-align: center;
+        }
+        
+        .banner::before,
+        .banner::after {
+            content: "";
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: var(--color-5);
+            border-radius: 50%;
+        }
+        
+        .banner::before {
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        
+        .banner::after {
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px dashed var(--color-3);
+            font-size: 12px;
+            color: #64748b;
+            text-align: center;
+        }
+        
+        /* 手書き風の要素 */
+        .hand-drawn {
+            position: relative;
+        }
+        
+        .hand-drawn::after {
+            content: "";
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: url("data:image/svg+xml,%3Csvg width='300' height='10' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,5 C50,0 250,10 300,5' fill='none' stroke='%23F25C05' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
+            background-size: 100% 100%;
+        }
+        
+        /* 手書き風の矢印 */
+        .arrow-connector {
+            position: absolute;
+            width: 100px;
+            height: 50px;
+            pointer-events: none;
+        }
+        
+        /* 注釈 */
+        .note {
+            position: relative;
+            background-color: rgba(255, 255, 240, 0.9);
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 3px 3px 8px rgba(0,0,0,0.1);
+            transform: rotate(-1deg);
+            margin: 15px 0;
+        }
+        
+        .note::before {
+            content: "📌";
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 20px;
+        }
+        
+        /* パーセンテージ表示 */
+        .percentage {
+            display: inline-block;
+            font-weight: bold;
+            font-size: 16px;
+            color: var(--color-5);
+        }
+        
+        /* 適応力図 */
+        .adaptation-diagram {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            gap: 10px;
+            margin: 15px 0;
+        }
+        
+        .diagram-item {
+            text-align: center;
+            padding: 10px;
+            background-color: rgba(242, 230, 61, 0.2);
+            border-radius: 8px;
+            font-size: 12px;
+        }
+        
+        .diagram-arrow {
+            font-size: 20px;
+            color: var(--color-4);
+        }
+        
+        /* 吹き出し */
+        .bubble {
+            position: relative;
+            background-color: rgba(242, 196, 61, 0.2);
+            padding: 10px 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+        
+        .bubble::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 20px;
+            width: 0;
+            height: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-top: 10px solid rgba(242, 196, 61, 0.2);
+        }
+        
+        /* モバイル対応 */
+        @media (max-width: 992px) {
+            .grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+            
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+            
+            .meta {
+                text-align: left;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1 class="title">リンダ・ラシュケ氏 - 伝説のトレーダーの知恵</h1>
+            <div class="meta">
+                <p>📅 作成日: 2025年4月1日</p>
+                <p>📚 出典: Linda Raschke - The REAL Founder Of The Turtle Soup Trading Strategy</p>
+            </div>
+        </header>
+        
+        <!-- 矢印装飾 -->
+        <svg class="arrows arrow-1" width="120" height="60" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0,30 C40,10 80,50 120,30" fill="none" stroke="#F25C05" stroke-width="3" stroke-dasharray="5,5" />
+            <polygon points="120,30 110,25 110,35" fill="#F25C05" />
+        </svg>
+        
+        <svg class="arrows arrow-2" width="120" height="60" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0,30 C40,50 80,10 120,30" fill="none" stroke="#F25C05" stroke-width="3" stroke-dasharray="5,5" />
+            <polygon points="120,30 110,25 110,35" fill="#F25C05" />
+        </svg>
+        
+        <div class="grid">
+            <!-- プロフィール -->
+            <div class="section">
+                <div class="card highlight">
+                    <h2 class="section-title"><span class="icon">👩‍💼</span>リンダ・ラシュケのプロフィール</h2>
+                    <div class="content">
+                        <ul class="bullet-list">
+                            <li><span class="keyword">40年以上</span>の取引経験を持つ伝説のトレーダー</li>
+                            <li><span class="keyword">3億ドル以上</span>の資産を運用</li>
+                            <li>『Street Smarts』(1996)の共同執筆者</li>
+                            <li>「タートルスープ」戦略の真の創始者</li>
+                            <li>純粋なテクニカル分析の信奉者</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- タートルスープの起源 -->
+            <div class="section">
+                <div class="card">
+                    <h2 class="section-title"><span class="icon">🐢</span>「タートルスープ」の真実</h2>
+                    <div class="content">
+                        <p>1996年、ラリー・コナー氏との共著『Street Smarts』執筆時に<span class="keyword">冗談半分</span>で生まれた言葉。</p>
+                        <div class="quote">
+                            「当時流行していたトレンドフォロー型の『タートル戦略』が失敗した場合を指す、皮肉を込めた表現でした」
+                        </div>
+                        <div class="note">
+                            最近になって他者によって新しいコンセプトのように喧伝されていることについて、特に懸念は示していません。
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 純粋なテクニカル分析 -->
+            <div class="section">
+                <div class="card">
+                    <h2 class="section-title"><span class="icon">📊</span>純粋なテクニカル分析の力</h2>
+                    <div class="content">
+                        <p>自身を「<span class="keyword">純粋なテクニシャン</span>」と呼び、ニュースやオーダーフローなど余計な情報なしに取引判断を行うことの有効性を強調。</p>
+                        <div class="quote">
+                            「純粋なテクニカル分析だけで十分。ニュースもオーダーフローも、余計な情報は必要ありません」
+                        </div>
+                        <div class="bubble">
+                            市場は「ゼロサムゲームではなく、<span class="keyword">マイナスサムゲーム</span>」
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 市場での成功要因 -->
+            <div class="section">
+                <div class="card highlight">
+                    <h2 class="section-title"><span class="icon">🏆</span>市場における成功要因</h2>
+                    <div class="content">
+                        <div class="tag">集中力</div>
+                        <div class="tag">逆境の克服</div>
+                        <div class="tag">自己信頼</div>
+                        <div class="tag">適応力</div>
+                        <div class="tag">関係性の理解</div>
+                        
+                        <p class="hand-drawn">ピアノ練習の経験から、<span class="keyword">一点集中の能力</span>の重要性を学ぶ</p>
+                        
+                        <div class="quote">
+                            「若年期の逆境体験が人格形成に役立ち、後のストレスへの耐性を養う」
+                        </div>
+                        
+                        <p>他者の意見に左右されず、<span class="keyword">自己信頼</span>と試行錯誤を通じて自分だけの道を見つける</p>
+                        
+                        <div class="adaptation-diagram">
+                            <div class="diagram-item">市場の変化</div>
+                            <div class="diagram-arrow">→</div>
+                            <div class="diagram-item">適応</div>
+                            <div class="diagram-arrow">→</div>
+                            <div class="diagram-item">成功</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- ソーシャルメディアとの向き合い方 -->
+            <div class="section">
+                <div class="card">
+                    <h2 class="section-title"><span class="icon">📱</span>ソーシャルメディアとの向き合い方</h2>
+                    <div class="content">
+                        <ul class="bullet-list">
+                            <li><span class="keyword">ビジネス目的</span>と<span class="keyword">社交目的</span>を明確に区別</li>
+                            <li>SNSの<span class="keyword">ドーパミン</span>中毒性を認識し、意識的に距離を置く</li>
+                        </ul>
+                        
+                        <div class="quote">
+                            「彼らはドーパミンを出すように操作されています。あなたは操り人形のように操作されているのです」
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 取引への情熱 -->
+            <div class="section">
+                <div class="card">
+                    <h2 class="section-title"><span class="icon">🔥</span>取引への情熱</h2>
+                    <div class="content">
+                        <p>現在はフルタイムでの取引は行っていないものの、<span class="keyword">ほぼ常にポジション</span>を持っている。</p>
+                        
+                        <div class="quote">
+                            「ほとんど常にポジションを持っています。それは歩道に落ちた1ドル札を見つけたら拾うようなもの」
+                        </div>
+                        
+                        <p>自身の知識や経験を共有することで、他のトレーダーの成長を促したいという思い。</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 直感の役割 -->
+            <div class="section">
+                <div class="card">
+                    <h2 class="section-title"><span class="icon">🧠</span>直感の役割</h2>
+                    <div class="content">
+                        <p>「<span class="keyword">直感はすべての経験の集大成</span>」であると定義</p>
+                        
+                        <div class="note">
+                            ニュースやマクロ分析における直感は当てにならないことが多いが、長年の経験で蓄積されたパターン認識は取引判断の助けになる
+                        </div>
+                        
+                        <div class="quote">
+                            「直感は技術的には、すべての経験の複合体です」
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 過去の失敗経験 -->
+            <div class="section">
+                <div class="card">
+                    <h2 class="section-title"><span class="icon">⚠️</span>過去の失敗経験</h2>
+                    <div class="content">
+                        <p>初期の取引で<span class="keyword">大きな損失</span>を経験：</p>
+                        <ul class="bullet-list">
+                            <li>ストラドルの売り</li>
+                            <li>仕手株への投資</li>
+                        </ul>
+                        
+                        <div class="quote">
+                            「破産を避けるために、5年間稼いだお金をすべて清算会社への返済に充てた」
+                        </div>
+                        
+                        <p>この苦い経験が、その後のリスク管理に対する意識を高めた</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 目標設定とプロセス -->
+            <div class="section">
+                <div class="card">
+                    <h2 class="section-title"><span class="icon">🎯</span>目標設定とプロセス</h2>
+                    <div class="content">
+                        <p>通常は長期的な目標設定よりも<span class="keyword">日々の業務</span>に集中するタイプ。</p>
+                        
+                        <p>取引の<span class="keyword">ルーティンと儀式</span>の重要性：</p>
+                        <ul class="bullet-list">
+                            <li>日々の記録</li>
+                            <li>取引計画の作成</li>
+                            <li>チャート分析</li>
+                        </ul>
+                        
+                        <div class="quote">
+                            「プロセスとはルーティンと儀式のことです。とても重要なものです」
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 教育コンテンツの限界 -->
+            <div class="section">
+                <div class="card highlight">
+                    <h2 class="section-title"><span class="icon">📚</span>教育コンテンツの限界</h2>
+                    <div class="content">
+                        <div class="quote">
+                            「市場が最高の教師であり、学習はフォワード・テスティングを通じて行われるべき」
+                        </div>
+                        
+                        <div class="banner">
+                            シンプルな手法に集中し、実践を通じて学ぶ
+                        </div>
+                        
+                        <p>『マーケットの魔術師』シリーズの成功理由：</p>
+                        <p>テクニカル分析や取引手法ではなく、<span class="keyword">多様な成功者の事例</span>を示すことで可能性を示唆</p>
+                        
+                        <div class="note">
+                            「一つのことを学び、6ヶ月間はそれだけに集中する。データや感覚的な情報に圧倒されないこと」
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 市場参加者の収益性 -->
+            <div class="section">
+                <div class="card">
+                    <h2 class="section-title"><span class="icon">💰</span>市場参加者の収益性</h2>
+                    <div class="content">
+                        <p>大手清算会社の調査結果：</p>
+                        <ul class="bullet-list">
+                            <li>年間で利益を上げた口座は<span class="percentage">10%未満</span></li>
+                            <li>生活できる利益を上げているのは<span class="percentage">約2%</span></li>
+                        </ul>
+                        
+                        <p>個人投資家が不利な理由：</p>
+                        <ul class="bullet-list">
+                            <li>情報格差</li>
+                            <li>実行力の差</li>
+                            <li>コスト面での不利</li>
+                            <li>認知バイアス</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 機械的取引と裁量取引 -->
+            <div class="section">
+                <div class="card">
+                    <h2 class="section-title"><span class="icon">🤖</span>機械的取引 vs 裁量取引</h2>
+                    <div class="content">
+                        <p>自身の取引は<span class="keyword">100%裁量取引</span>と明言</p>
+                        
+                        <div class="quote">
+                            「100%裁量取引です。はい、100%です」
+                        </div>
+                        
+                        <p>過去のヘッジファンド運用時には：</p>
+                        <ul class="bullet-list">
+                            <li>ボラティリティブレイクアウトシステム導入</li>
+                            <li>コストや労力に見合うリターンが得られず廃止</li>
+                        </ul>
+                        
+                        <p>裁量取引でも<span class="keyword">自身のモデル</span>に基づく判断＋コンピューター比較</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- リスク管理の多角的側面 -->
+            <div class="section">
+                <div class="card highlight">
+                    <h2 class="section-title"><span class="icon">⚖️</span>リスク管理の多角的側面</h2>
+                    <div class="content">
+                        <p>リスク管理は多面的：</p>
+                        <ul class="bullet-list">
+                            <li>レバレッジ制限</li>
+                            <li>ストップロス設定</li>
+                            <li><span class="keyword">市場滞在時間</span>の管理</li>
+                            <li>精神的資本の保全</li>
+                        </ul>
+                        
+                        <div class="note">
+                            市場に滞在する時間が短いほど、イベントリスクへの暴露が少なく、リスクが低い
+                        </div>
+                        
+                        <p>取引サイズの進化：</p>
+                        <p>若い頃ほど<span class="keyword">リスク許容度が高く</span>、取引サイズも大きかった</p>
+                        
+                        <div class="quote">
+                            「若い頃ほど取引サイズは大きかったです。ええ、その通りです」
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>© 2025 グラフィックレコーディング | 出典: Linda Raschke - The REAL Founder Of The Turtle Soup Trading Strategy</p>
+            <p>動画ソース: <a href="https://youtu.be/RSAEh1qKjxo?si=tp3BqleyCg85N1iA" target="_blank" rel="noopener noreferrer">YouTube</a></p>
+        </div>
+        
+        <!-- 総括セクション -->
+        <div class="section">
+            <div class="banner" style="background-color: var(--color-1); margin-top: 40px;">
+                <h2 style="color: white; font-size: 20px;">リンダ・ラシュケ氏の知恵 - 要点まとめ</h2>
+            </div>
+            
+            <div class="content" style="margin: 20px 0; padding: 0 20px;">
+                <div class="card highlight" style="border-image: url('data:image/svg+xml,%3Csvg width=\'100\' height=\'100\' viewBox=\'0 0 100 100\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath d=\'M0,0 L100,0 L100,100 L0,100 Z\' fill=\'none\' stroke=\'%23F25C05\' stroke-width=\'4\' stroke-dasharray=\'10,5\' stroke-linecap=\'round\'/%3E%3C/svg%3E') 1;">
+                    <div class="grid" style="grid-template-columns: repeat(2, 1fr); gap: 20px;">
+                        <div>
+                            <h3 class="section-title"><span class="icon">💡</span>トレード哲学</h3>
+                            <ul class="bullet-list">
+                                <li><span class="keyword">純粋なテクニカル分析</span>の力を信頼</li>
+                                <li>市場は最高の教師であり、<span class="keyword">実践</span>を通じて学ぶ</li>
+                                <li>シンプルな手法に集中し、長期間それのみを実践</li>
+                                <li>データ分析より<span class="keyword">市場の基本的な特性</span>を理解</li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <h3 class="section-title"><span class="icon">🛡️</span>リスク管理の知恵</h3>
+                            <ul class="bullet-list">
+                                <li>レバレッジ、ストップロス、<span class="keyword">市場滞在時間</span>を管理</li>
+                                <li>ポートフォリオの相関関係に注意</li>
+                                <li>異常事態発生時の相関崩壊に備える</li>
+                                <li><span class="keyword">精神的資本</span>の保全も重要な要素</li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <h3 class="section-title"><span class="icon">🧘‍♀️</span>精神的アプローチ</h3>
+                            <ul class="bullet-list">
+                                <li><span class="keyword">集中力</span>と一点集中の重要性</li>
+                                <li>逆境を乗り越える経験がストレス耐性を養う</li>
+                                <li>自己信頼と<span class="keyword">他者の意見</span>に左右されない姿勢</li>
+                                <li>常に<span class="keyword">適応と変化</span>を受け入れる柔軟性</li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <h3 class="section-title"><span class="icon">⚠️</span>市場の現実</h3>
+                            <ul class="bullet-list">
+                                <li>市場参加者の<span class="keyword">約2%のみ</span>が生活できる利益を上げている</li>
+                                <li>情報へのアクセスが増えても収益性は向上しない</li>
+                                <li>市場は<span class="keyword">マイナスサムゲーム</span></li>
+                                <li>失敗から学び、<span class="keyword">長期的視点</span>を持つことの重要性</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="quote" style="margin-top: 20px; font-size: 16px; text-align: center; background-color: rgba(242, 197, 61, 0.2); padding: 15px;">
+                        「市場は常に変化します。成功するための最後の特性は、<span class="keyword">適応する能力</span>を持つことです」
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
