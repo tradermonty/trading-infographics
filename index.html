@@ -247,6 +247,13 @@
             padding: 0 15px;
             max-height: none;
             overflow: visible;
+            transition: max-height 0.3s ease-out;
+        }
+
+        .category:not(.active) .category-content {
+            max-height: 0;
+            overflow: hidden;
+            padding: 0;
         }
 
         .content-list {
@@ -733,10 +740,14 @@
             const categories = document.querySelectorAll('.category');
             const container = document.querySelector('.categories-container');
             
+            // 初期状態で全てのカテゴリを開く
+            categories.forEach(category => {
+                category.classList.add('active');
+            });
+            
             // カテゴリヘッダーのクリックイベントを設定
             categories.forEach(category => {
                 const header = category.querySelector('.category-header');
-                const toggle = category.querySelector('.category-toggle');
                 
                 header.addEventListener('click', function(e) {
                     if (!e.target.classList.contains('sort-handle')) {
@@ -789,7 +800,6 @@
         function filterContent(keyword) {
             const items = document.querySelectorAll('.content-item');
             keyword = keyword.toLowerCase();
-            let firstMatchFound = false;
             
             if (keyword === '') {
                 items.forEach(item => {
@@ -797,7 +807,6 @@
                 });
                 document.querySelectorAll('.category').forEach(category => {
                     category.style.display = 'block';
-                    category.classList.remove('active');
                 });
                 return;
             }
@@ -816,13 +825,6 @@
                 });
                 
                 category.style.display = hasVisibleItems ? 'block' : 'none';
-                
-                if (hasVisibleItems && !firstMatchFound) {
-                    category.classList.add('active');
-                    firstMatchFound = true;
-                } else {
-                    category.classList.remove('active');
-                }
             });
         }
     </script>
