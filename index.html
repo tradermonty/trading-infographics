@@ -243,21 +243,75 @@
         }
 
         .category-content {
-            display: none; /* 初期状態では非表示 */
+            display: block;
             padding: 0 15px;
+            max-height: none;
+            overflow: visible;
         }
 
-        .category.active .category-content {
+        .content-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .content-item {
+            margin-bottom: 10px;
+            opacity: 1;
+            transform: none;
             display: block;
         }
 
-        .category-toggle {
-            font-size: 20px;
-            transition: transform 0.3s ease;
+        .content-item a {
+            color: var(--text-dark);
+            text-decoration: none;
+            display: block;
+            padding: 8px 12px;
+            border-radius: 6px;
+            transition: all 0.3s ease;
         }
 
-        .category.active .category-toggle {
-            transform: rotate(180deg);
+        .content-item a:hover {
+            background: rgba(242, 197, 61, 0.1);
+            transform: translateX(5px);
+        }
+
+        .category-toggle {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(242, 197, 61, 0.1);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .category-toggle::before,
+        .category-toggle::after {
+            content: '';
+            position: absolute;
+            background-color: var(--fashion-1);
+            transition: all 0.3s ease;
+        }
+
+        .category-toggle::before {
+            width: 12px;
+            height: 2px;
+        }
+
+        .category-toggle::after {
+            width: 2px;
+            height: 12px;
+        }
+
+        .category.active .category-toggle::after {
+            transform: rotate(90deg);
+        }
+
+        .category-toggle:hover {
+            background: rgba(242, 197, 61, 0.2);
         }
 
         .language-switch {
@@ -402,7 +456,7 @@
     <div class="main-content">
         <div class="categories-container">
             <div class="category" data-category="market-analysis" draggable="true">
-                <div class="category-header" onclick="toggleCategory(this)">
+                <div class="category-header">
                     <span class="sort-handle">⋮⋮</span>
                     <h2 class="ja">市場分析</h2>
                     <h2 class="en hidden">Market Analysis</h2>
@@ -435,7 +489,7 @@
             </div>
 
             <div class="category" data-category="trading-strategy" draggable="true">
-                <div class="category-header" onclick="toggleCategory(this)">
+                <div class="category-header">
                     <span class="sort-handle">⋮⋮</span>
                     <h2 class="ja">トレーディング戦略</h2>
                     <h2 class="en hidden">Trading Strategies</h2>
@@ -468,7 +522,7 @@
             </div>
 
             <div class="category" data-category="investor-wisdom" draggable="true">
-                <div class="category-header" onclick="toggleCategory(this)">
+                <div class="category-header">
                     <span class="sort-handle">⋮⋮</span>
                     <h2 class="ja">投資家の知恵と教訓</h2>
                     <h2 class="en hidden">Investor Wisdom & Lessons</h2>
@@ -525,7 +579,7 @@
             </div>
 
             <div class="category" data-category="risk-management" draggable="true">
-                <div class="category-header" onclick="toggleCategory(this)">
+                <div class="category-header">
                     <span class="sort-handle">⋮⋮</span>
                     <h2 class="ja">リスク管理</h2>
                     <h2 class="en hidden">Risk Management</h2>
@@ -550,7 +604,7 @@
             </div>
 
             <div class="category" data-category="psychology" draggable="true">
-                <div class="category-header" onclick="toggleCategory(this)">
+                <div class="category-header">
                     <span class="sort-handle">⋮⋮</span>
                     <h2 class="ja">心理とマインドセット</h2>
                     <h2 class="en hidden">Psychology & Mindset</h2>
@@ -579,7 +633,7 @@
             </div>
 
             <div class="category" data-category="algo-trading" draggable="true">
-                <div class="category-header" onclick="toggleCategory(this)">
+                <div class="category-header">
                     <span class="sort-handle">⋮⋮</span>
                     <h2 class="ja">アルゴリズムトレーディング</h2>
                     <h2 class="en hidden">Algorithmic Trading</h2>
@@ -604,7 +658,7 @@
             </div>
 
             <div class="category" data-category="market-insights" draggable="true">
-                <div class="category-header" onclick="toggleCategory(this)">
+                <div class="category-header">
                     <span class="sort-handle">⋮⋮</span>
                     <h2 class="ja">市場の洞察</h2>
                     <h2 class="en hidden">Market Insights</h2>
@@ -621,7 +675,7 @@
             </div>
 
             <div class="category" data-category="investment-strategy" draggable="true">
-                <div class="category-header" onclick="toggleCategory(this)">
+                <div class="category-header">
                     <span class="sort-handle">⋮⋮</span>
                     <h2 class="ja">投資戦略</h2>
                     <h2 class="en hidden">Investment Strategies</h2>
@@ -638,7 +692,7 @@
             </div>
 
             <div class="category" data-category="company-analysis" draggable="true">
-                <div class="category-header" onclick="toggleCategory(this)">
+                <div class="category-header">
                     <span class="sort-handle">⋮⋮</span>
                     <h2 class="ja">企業分析</h2>
                     <h2 class="en hidden">Company Analysis</h2>
@@ -670,72 +724,28 @@
 
     <script>
         function toggleCategory(header) {
-            const category = header.parentElement;
-            const content = category.querySelector('.category-content');
+            const category = header.closest('.category');
             category.classList.toggle('active');
-            content.classList.toggle('active');
-        }
-
-        function filterContent(keyword) {
-            const items = document.querySelectorAll('.content-item');
-            keyword = keyword.toLowerCase();
-            let firstMatchFound = false;
-            
-            // キーワードが空の場合は全て表示
-            if (keyword === '') {
-                items.forEach(item => {
-                    item.style.display = '';
-                });
-                document.querySelectorAll('.category').forEach(category => {
-                    category.style.display = 'block';
-                    category.classList.remove('active');
-                    const content = category.querySelector('.category-content');
-                    if (content) content.classList.remove('active');
-                });
-                return;
-            }
-            
-            // 各カテゴリの表示状態をリセット
-            document.querySelectorAll('.category').forEach(category => {
-                let hasVisibleItems = false;
-                
-                // カテゴリ内の各アイテムをチェック
-                category.querySelectorAll('.content-item').forEach(item => {
-                    const text = item.textContent.toLowerCase();
-                    if (text.includes(keyword)) {
-                        item.style.display = '';
-                        hasVisibleItems = true;
-                    } else {
-                        item.style.display = 'none';
-                    }
-                });
-                
-                // カテゴリの表示/非表示を設定
-                category.style.display = hasVisibleItems ? 'block' : 'none';
-                
-                // 最初にマッチしたカテゴリを開く
-                if (hasVisibleItems && !firstMatchFound) {
-                    // 他のすべてのカテゴリを閉じる
-                    document.querySelectorAll('.category').forEach(cat => {
-                        cat.classList.remove('active');
-                        const content = cat.querySelector('.category-content');
-                        if (content) content.classList.remove('active');
-                    });
-                    
-                    // マッチしたカテゴリを開く
-                    category.classList.add('active');
-                    const content = category.querySelector('.category-content');
-                    if (content) content.classList.add('active');
-                    firstMatchFound = true;
-                }
-            });
         }
 
         // ドラッグ&ドロップ機能の実装
         document.addEventListener('DOMContentLoaded', function() {
             const categories = document.querySelectorAll('.category');
             const container = document.querySelector('.categories-container');
+            
+            // カテゴリヘッダーのクリックイベントを設定
+            categories.forEach(category => {
+                const header = category.querySelector('.category-header');
+                const toggle = category.querySelector('.category-toggle');
+                
+                header.addEventListener('click', function(e) {
+                    if (!e.target.classList.contains('sort-handle')) {
+                        toggleCategory(this);
+                    }
+                });
+            });
 
+            // ドラッグ&ドロップ機能の実装
             categories.forEach(category => {
                 category.addEventListener('dragstart', function(e) {
                     this.classList.add('dragging');
@@ -774,14 +784,47 @@
                     }
                 });
             });
-
-            // 初期表示時は最初のカテゴリを表示
-            const firstCategory = document.querySelector('.category');
-            if (firstCategory) {
-                firstCategory.classList.add('active');
-                firstCategory.querySelector('.category-content').classList.add('active');
-            }
         });
+
+        function filterContent(keyword) {
+            const items = document.querySelectorAll('.content-item');
+            keyword = keyword.toLowerCase();
+            let firstMatchFound = false;
+            
+            if (keyword === '') {
+                items.forEach(item => {
+                    item.style.display = '';
+                });
+                document.querySelectorAll('.category').forEach(category => {
+                    category.style.display = 'block';
+                    category.classList.remove('active');
+                });
+                return;
+            }
+            
+            document.querySelectorAll('.category').forEach(category => {
+                let hasVisibleItems = false;
+                
+                category.querySelectorAll('.content-item').forEach(item => {
+                    const text = item.textContent.toLowerCase();
+                    if (text.includes(keyword)) {
+                        item.style.display = '';
+                        hasVisibleItems = true;
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+                
+                category.style.display = hasVisibleItems ? 'block' : 'none';
+                
+                if (hasVisibleItems && !firstMatchFound) {
+                    category.classList.add('active');
+                    firstMatchFound = true;
+                } else {
+                    category.classList.remove('active');
+                }
+            });
+        }
     </script>
 </body>
 </html> 
