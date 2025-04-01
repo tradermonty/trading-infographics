@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>トレードの真実：感情は原因ではなく結果</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Yomogi&family=Zen+Kurenaido&family=Kaisei+Decol:wght@400;700&display=swap');
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'Kaisei Decol', serif;
+      background-color: #f8f9fa;
+      color: #334155;
+      line-height: 1.4;
+      padding: 2rem;
+    }
+    
+    .container {
+      width: 100%;
+      margin: 0 auto;
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      position: relative;
+    }
+    
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 2rem;
+      border-bottom: 2px dashed #593C47;
+      background-color: rgba(242, 230, 60, 0.1);
+    }
+    
+    .title {
+      font-family: 'Zen Kurenaido', sans-serif;
+      font-size: 32px;
+      font-weight: bold;
+      background: linear-gradient(45deg, #593C47, #F24405);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      position: relative;
+    }
+    
+    .title::after {
+      content: "";
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, #F2C53D, #F25C05);
+      border-radius: 3px;
+    }
+    
+    .date {
+      font-family: 'Yomogi', cursive;
+      font-size: 14px;
+      color: #475569;
+    }
+    
+    .content {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 1.5rem;
+    }
+    
+    .column {
+      width: 33.33%;
+      padding: 1rem;
+    }
+    
+    .card {
+      background-color: white;
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      border: 2px solid transparent;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .card.highlight {
+      border-color: #F2C53D;
+    }
+    
+    .card.glass {
+      background-color: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .section-title {
+      font-family: 'Zen Kurenaido', sans-serif;
+      font-size: 18px;
+      color: #1e40af;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .badge {
+      display: inline-block;
+      background-color: #593C47;
+      color: white;
+      font-size: 12px;
+      padding: 0.25rem 0.5rem;
+      border-radius: 20px;
+      margin-left: 0.5rem;
+    }
+    
+    .text {
+      font-size: 14px;
+      color: #334155;
+      margin-bottom: 1rem;
+    }
+    
+    .highlight-text {
+      font-family: 'Yomogi', cursive;
+      font-size: 16px;
+      color: #F24405;
+      font-weight: bold;
+      background-color: rgba(242, 196, 60, 0.2);
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+      display: inline-block;
+      transform: rotate(-1deg);
+    }
+    
+    .quote {
+      font-family: 'Yomogi', cursive;
+      font-style: italic;
+      color: #593C47;
+      padding-left: 1rem;
+      border-left: 3px solid #F2C53D;
+      margin: 1rem 0;
+    }
+    
+    .list {
+      margin: 1rem 0;
+      padding-left: 1.5rem;
+    }
+    
+    .list-item {
+      position: relative;
+      margin-bottom: 0.75rem;
+      padding-left: 1rem;
+    }
+    
+    .list-item::before {
+      content: "•";
+      color: #F25C05;
+      font-weight: bold;
+      position: absolute;
+      left: -1rem;
+    }
+    
+    .connector {
+      position: absolute;
+      border: 2px dashed #593C47;
+      z-index: 1;
+    }
+    
+    .arrow {
+      position: absolute;
+      width: 30px;
+      height: 20px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 20'%3E%3Cpath d='M0,10 C10,5 20,5 30,10 L25,0 M25,20 L30,10' stroke='%23593C47' stroke-width='2' fill='none'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      z-index: 2;
+    }
+    
+    .bubble {
+      position: relative;
+      background-color: rgba(242, 230, 60, 0.2);
+      border-radius: 20px;
+      padding: 1rem;
+      margin: 1rem 0;
+    }
+    
+    .bubble::after {
+      content: "";
+      position: absolute;
+      top: 20px;
+      left: -10px;
+      border-width: 10px 10px 10px 0;
+      border-style: solid;
+      border-color: transparent rgba(242, 230, 60, 0.2) transparent transparent;
+    }
+    
+    .tag {
+      display: inline-block;
+      background-color: #F2C53D;
+      color: #593C47;
+      font-size: 12px;
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+      margin-right: 0.5rem;
+      margin-bottom: 0.5rem;
+      transform: rotate(1deg);
+    }
+    
+    .footnote {
+      font-size: 12px;
+      color: #64748b;
+      text-align: center;
+      padding: 1rem;
+      border-top: 1px dashed #593C47;
+    }
+    
+    .hand-drawn {
+      border: 2px solid #593C47;
+      border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+    }
+    
+    .marker {
+      background: linear-gradient(transparent 60%, rgba(242, 196, 60, 0.6) 40%);
+      padding: 0 0.2rem;
+    }
+    
+    .icon {
+      display: inline-block;
+      width: 24px;
+      height: 24px;
+      vertical-align: middle;
+      margin-right: 0.5rem;
+    }
+    
+    .box-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin: 1rem 0;
+    }
+    
+    .small-box {
+      flex: 1;
+      min-width: 100px;
+      padding: 0.75rem;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      border: 1px dashed #F25C05;
+    }
+    
+    @media (max-width: 768px) {
+      .column {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1 class="title">トレードの真実：感情は原因ではなく結果</h1>
+      <div class="date">2025年3月10日</div>
+    </div>
+    
+    <div class="content">
+      <!-- 左カラム -->
+      <div class="column">
+        <div class="card highlight">
+          <h2 class="section-title">
+            <span class="icon">🎭</span>感情のせいにしていませんか？
+          </h2>
+          <div class="bubble">
+            <p class="quote">"欲が出て大きなポジションを取ってしまった。"</p>
+            <p class="quote">"恐怖で損切りができなかった。"</p>
+            <p class="quote">"怒りからリベンジトレードをしてしまった。"</p>
+          </div>
+          <p class="text">多くのトレーダーは<span class="marker">感情のせいにしますが</span>、それは本当の問題点を見逃しています。</p>
+          
+          <div class="hand-drawn" style="padding: 1rem; margin: 1rem 0;">
+            <p class="highlight-text">感情はトレードを台無しにすることがあります。</p>
+            <p class="highlight-text">しかし、それは<span style="color: #F24405; font-size: 18px;">「原因」</span>ではなく<span style="color: #F24405; font-size: 18px;">「結果」</span>なのです。</p>
+          </div>
+        </div>
+        
+        <div class="card">
+          <h2 class="section-title">
+            <span class="icon">🧠</span>感情の暴走の真の原因
+          </h2>
+          <p class="text">感情が制御不能になるのは、<span class="marker">トレードの本質を深く理解していない</span>ことと、適切な準備がないことが原因です。</p>
+          <p class="text">表面的な感情コントロールに焦点を当てても、根本的な問題に対処しなければ何も変わりません。</p>
+        </div>
+        
+        <div class="card glass">
+          <h2 class="section-title">
+            <span class="icon">🔍</span>感情的行動のトリガー
+          </h2>
+          <ul class="list">
+            <li class="list-item">勝つことが良く、負けることが悪いという強い信念</li>
+            <li class="list-item">自分のシステムが統計的優位性を持っていることを理解・検証・信頼していない</li>
+            <li class="list-item">トレードが確率のゲームであることを本当に受け入れていない</li>
+          </ul>
+        </div>
+      </div>
+      
+      <!-- 中央カラム -->
+      <div class="column">
+        <div class="card">
+          <h2 class="section-title">
+            <span class="icon">📊</span>感情の原因となる知識不足
+          </h2>
+          <ul class="list">
+            <li class="list-item">システムのパフォーマンスに基づいた適切なポジションサイズを知らない</li>
+            <li class="list-item">「利益は大きなサンプルサイズから生まれる」ことを理解していない</li>
+            <li class="list-item">長期的なルールよりも「今良い気分になること」を優先している</li>
+          </ul>
+          
+          <div class="bubble" style="background-color: rgba(242, 91, 4, 0.1);">
+            <p class="text" style="font-weight: bold;">トレーダーの仕事は「結果をコントロールすること」ではなく「ルールに従うこと」です。</p>
+          </div>
+          
+          <ul class="list">
+            <li class="list-item">ルールが短期的な勝ち負けよりも重要である理由を確信していない</li>
+            <li class="list-item">「損失」と利益がどのように関連しているかを理解していない</li>
+          </ul>
+        </div>
+        
+        <div class="card highlight">
+          <h2 class="section-title">
+            <span class="icon">⚠️</span>トレードの本質の理解不足
+          </h2>
+          <p class="text">トレードに関する<span class="marker">根本的な知識不足</span>が、あなたを感情的にさせ、リスクの高いトレードにつながります。</p>
+          <p class="text">トレードの本質を理解せずに感情をコントロールしようとしても無意味です。</p>
+          <p class="text" style="font-weight: bold;">感情の爆発は単に、あなたの<span class="marker">理解不足、準備不足、誤った信念や思考パターン</span>の結果です。</p>
+        </div>
+        
+        <div class="card glass">
+          <h2 class="section-title">
+            <span class="icon">😨</span>恐怖の永続化
+          </h2>
+          <p class="text">この理解不足が続く限り、「目の前のトレード」に対して常に恐怖を感じるでしょう。</p>
+          <div class="hand-drawn" style="padding: 0.75rem; margin: 1rem 0; background-color: rgba(242, 230, 60, 0.1);">
+            <p class="text">瞑想や呼吸法は一時的にあなたを落ち着かせるかもしれませんが、<span class="marker">それは表面的な対処法にすぎません。</span></p>
+          </div>
+          <p class="text">根本的な問題に対処するまで、危険な行動を繰り返すでしょう。</p>
+        </div>
+      </div>
+      
+      <!-- 右カラム -->
+      <div class="column">
+        <div class="card">
+          <h2 class="section-title">
+            <span class="icon">🚫</span>表面的な対処の限界
+          </h2>
+          <div class="bubble">
+            <p class="quote">"私は感情コントロールのマスターだから、この破産は痛くない"</p>
+          </div>
+          <p class="text">口座を吹き飛ばした後にこう言っても何の意味もありません。</p>
+        </div>
+        
+        <div class="card highlight">
+          <h2 class="section-title">
+            <span class="icon">✅</span>本当に必要なこと
+            <span class="badge">解決策</span>
+          </h2>
+          <div class="box-container">
+            <div class="small-box">
+              <p class="text" style="font-weight: bold;">トレードの本質と確率的思考を学ぶ</p>
+            </div>
+            <div class="small-box">
+              <p class="text" style="font-weight: bold;">戦略の優位性を十分なサンプルサイズでテスト・実践する</p>
+            </div>
+          </div>
+          <div class="box-container">
+            <div class="small-box">
+              <p class="text" style="font-weight: bold;">資金管理とポジションサイジングの基本を習得・適用する</p>
+            </div>
+            <div class="small-box">
+              <p class="text" style="font-weight: bold;">ルールを守ることの重要性を完全に受け入れる</p>
+            </div>
+          </div>
+          <div class="hand-drawn" style="padding: 1rem; margin: 1rem 0; text-align: center; background-color: rgba(242, 196, 60, 0.2);">
+            <p class="highlight-text" style="font-size: 18px;">自分自身に正直に向き合う</p>
+          </div>
+        </div>
+        
+        <div class="card glass">
+          <h2 class="section-title">
+            <span class="icon">🧘</span>安定したマインドセットの本質
+          </h2>
+          <p class="text">トレードのための安定したマインドセットは、<span class="marker">理解と準備を築くことから自然に生まれる</span>ものです。</p>
+          <p class="text">それは、根本的な原因に取り組まずに瞑想や感情コントロールをマスターすることから得られるものではありません。</p>
+          
+          <div style="margin-top: 1.5rem; text-align: center;">
+            <div class="tag">確率思考</div>
+            <div class="tag">システム検証</div>
+            <div class="tag">資金管理</div>
+            <div class="tag">ルール遵守</div>
+            <div class="tag">自己認識</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footnote">
+      <p>出典: トレードの真実 - 2025年3月版</p>
+    </div>
+  </div>
+</body>
+</html>

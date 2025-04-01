@@ -1,0 +1,1419 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>米国高配当株投資の始め方 - 初心者向け完全ガイド</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Yomogi&family=Zen+Kurenaido&family=Kaisei+Decol&display=swap');
+        
+        :root {
+            --color-1: #593C47;
+            --color-2: #F2E63D;
+            --color-3: #F2C53D;
+            --color-4: #F25C05;
+            --color-5: #F24405;
+            --bg-color: #fefefe;
+            --text-main: #334155;
+            --text-subtitle: #475569;
+            --text-heading: #1e40af;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Yomogi', 'Zen Kurenaido', 'Kaisei Decol', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.4;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .container::before {
+            content: "";
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            width: 180px;
+            height: 180px;
+            background-color: rgba(242, 230, 61, 0.15);
+            border-radius: 50%;
+            z-index: 0;
+        }
+        
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .title-container {
+            width: 70%;
+        }
+        
+        h1 {
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            font-family: 'Kaisei Decol', serif;
+            position: relative;
+            display: inline-block;
+            background: linear-gradient(to right, var(--color-1), var(--color-5));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            padding-bottom: 5px;
+        }
+        
+        h1::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(to right, var(--color-2), var(--color-4));
+            border-radius: 3px;
+        }
+        
+        .date {
+            font-size: 14px;
+            color: var(--text-subtitle);
+            text-align: right;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-top: 20px;
+        }
+        
+        .section {
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+            position: relative;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+        
+        .section:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+        
+        .section.full-width {
+            grid-column: span 3;
+        }
+        
+        .section.half-width {
+            grid-column: span 2;
+        }
+        
+        .section-1 {
+            border-color: var(--color-1);
+        }
+        
+        .section-2 {
+            border-color: var(--color-2);
+        }
+        
+        .section-3 {
+            border-color: var(--color-3);
+        }
+        
+        .section-4 {
+            border-color: var(--color-4);
+        }
+        
+        .section-5 {
+            border-color: var(--color-5);
+        }
+        
+        h2 {
+            font-size: 20px;
+            color: var(--color-1);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            font-family: 'Kaisei Decol', serif;
+            position: relative;
+        }
+        
+        h2::before {
+            content: "✏️";
+            margin-right: 8px;
+            font-size: 22px;
+        }
+        
+        h3 {
+            font-size: 18px;
+            color: var(--text-heading);
+            margin: 15px 0 10px;
+            display: flex;
+            align-items: center;
+            font-family: 'Zen Kurenaido', sans-serif;
+        }
+        
+        h3::before {
+            content: "📌";
+            margin-right: 8px;
+            font-size: 16px;
+        }
+        
+        p {
+            font-size: 14px;
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+        
+        .intro-text {
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        
+        .highlight {
+            background: linear-gradient(transparent 60%, var(--color-2) 40%);
+            font-weight: bold;
+            padding: 0 2px;
+        }
+        
+        .highlight-red {
+            background: linear-gradient(transparent 60%, var(--color-5) 40%);
+            font-weight: bold;
+            padding: 0 2px;
+        }
+        
+        .highlight-orange {
+            background: linear-gradient(transparent 60%, var(--color-4) 40%);
+            font-weight: bold;
+            padding: 0 2px;
+        }
+        
+        .bubble {
+            background-color: white;
+            border: 2px dashed var(--color-3);
+            padding: 12px 15px;
+            border-radius: 15px;
+            position: relative;
+            margin: 15px 0;
+        }
+        
+        .bubble::before {
+            content: "";
+            position: absolute;
+            top: -10px;
+            left: 15px;
+            width: 20px;
+            height: 20px;
+            background-color: white;
+            border-top: 2px dashed var(--color-3);
+            border-left: 2px dashed var(--color-3);
+            transform: rotate(45deg);
+            z-index: -1;
+        }
+        
+        .arrow {
+            display: block;
+            text-align: center;
+            margin: 15px 0;
+            font-size: 24px;
+            color: var(--color-4);
+        }
+        
+        .note {
+            background-color: rgba(242, 230, 61, 0.15);
+            border-left: 4px solid var(--color-3);
+            padding: 12px 15px;
+            border-radius: 0 8px 8px 0;
+            margin: 15px 0;
+        }
+        
+        .note::before {
+            content: "💡";
+            margin-right: 8px;
+            font-size: 16px;
+        }
+        
+        .vs-container {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px 0;
+            position: relative;
+        }
+        
+        .vs-container::after {
+            content: "VS";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: var(--color-1);
+            color: white;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-weight: bold;
+            z-index: 2;
+        }
+        
+        .vs-item {
+            width: 48%;
+            padding: 15px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+        
+        .vs-item h4 {
+            font-size: 16px;
+            color: var(--text-heading);
+            margin-bottom: 10px;
+            text-align: center;
+            padding-bottom: 5px;
+            border-bottom: 2px dashed var(--color-2);
+        }
+        
+        ul {
+            list-style-type: none;
+            padding-left: 20px;
+            margin: 10px 0;
+        }
+        
+        ul li {
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 22px;
+            font-size: 14px;
+        }
+        
+        ul li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--color-4);
+            font-weight: bold;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 14px;
+        }
+        
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px 12px;
+            text-align: left;
+        }
+        
+        th {
+            background-color: rgba(89, 60, 71, 0.1);
+            color: var(--color-1);
+            font-weight: bold;
+        }
+        
+        tr:nth-child(even) {
+            background-color: rgba(242, 230, 61, 0.05);
+        }
+        
+        .tag {
+            display: inline-block;
+            padding: 3px 8px;
+            background-color: var(--color-2);
+            color: var(--color-1);
+            border-radius: 15px;
+            font-size: 12px;
+            margin-right: 5px;
+            margin-bottom: 5px;
+        }
+        
+        .tag-orange {
+            background-color: var(--color-4);
+            color: white;
+        }
+        
+        .hand-drawn-box {
+            border: 2px solid var(--color-1);
+            border-radius: 15px;
+            padding: 15px;
+            margin: 15px 0;
+            position: relative;
+            background-color: white;
+        }
+        
+        .hand-drawn-box::before {
+            content: "";
+            position: absolute;
+            top: -8px;
+            left: 15px;
+            background-color: white;
+            padding: 0 10px;
+            font-weight: bold;
+            color: var(--color-1);
+        }
+        
+        .step-container {
+            counter-reset: step;
+            margin: 20px 0;
+        }
+        
+        .step {
+            margin-bottom: 15px;
+            padding-left: 40px;
+            position: relative;
+        }
+        
+        .step::before {
+            counter-increment: step;
+            content: counter(step);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 30px;
+            height: 30px;
+            background-color: var(--color-3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .point-box {
+            background-color: rgba(242, 230, 61, 0.15);
+            border-radius: 12px;
+            padding: 15px;
+            margin: 15px 0;
+            position: relative;
+        }
+        
+        .point-box::before {
+            content: "🌟 ポイント";
+            position: absolute;
+            top: -10px;
+            left: 15px;
+            background-color: white;
+            padding: 0 10px;
+            font-weight: bold;
+            color: var(--color-4);
+            border-radius: 15px;
+            border: 1px solid var(--color-4);
+            font-size: 12px;
+        }
+        
+        .callout {
+            background-color: rgba(242, 196, 61, 0.15);
+            border-left: 4px solid var(--color-4);
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .callout::before {
+            content: "🔔";
+            margin-right: 8px;
+        }
+        
+        .two-columns {
+            display: flex;
+            justify-content: space-between;
+            margin: 15px 0;
+        }
+        
+        .column {
+            width: 48%;
+        }
+        
+        .divider {
+            position: relative;
+            text-align: center;
+            margin: 30px 0;
+        }
+        
+        .divider::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(to right, transparent, var(--color-3), transparent);
+            z-index: 0;
+        }
+        
+        .divider span {
+            background-color: white;
+            padding: 0 15px;
+            position: relative;
+            z-index: 1;
+            color: var(--color-1);
+            font-weight: bold;
+        }
+        
+        .card {
+            background-color: white;
+            border-radius: 12px;
+            padding: 15px;
+            margin: 10px 0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            border-left: 4px solid var(--color-3);
+        }
+        
+        .card-title {
+            font-weight: bold;
+            color: var(--color-1);
+            margin-bottom: 8px;
+            font-size: 16px;
+        }
+        
+        .definition-box {
+            background-color: rgba(89, 60, 71, 0.05);
+            border-radius: 8px;
+            padding: 12px;
+            margin: 10px 0;
+        }
+        
+        .definition-term {
+            font-weight: bold;
+            color: var(--color-1);
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        .quote {
+            font-style: italic;
+            padding-left: 15px;
+            border-left: 3px solid var(--color-2);
+            margin: 15px 0;
+        }
+        
+        footer {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px dashed var(--color-3);
+            font-size: 12px;
+            color: var(--text-subtitle);
+            text-align: center;
+        }
+        
+        .icon-large {
+            font-size: 24px;
+            margin: 0 5px;
+        }
+        
+        .squiggle-underline {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .squiggle-underline::after {
+            content: "";
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='6' viewBox='0 0 100 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M 0 3 Q 10 6 20 3 T 40 3 T 60 3 T 80 3 T 100 3' stroke='%23F25C05' fill='none' stroke-width='2'/%3E%3C/svg%3E");
+            background-size: 100px 6px;
+            background-repeat: repeat-x;
+        }
+        
+        .hand-arrow {
+            position: relative;
+            display: inline-block;
+            margin: 0 15px;
+            transform: rotate(20deg);
+        }
+        
+        .hand-arrow::before {
+            content: "➡️";
+            font-size: 20px;
+        }
+        
+        .investment-calculator {
+            background-color: white;
+            border: 2px solid var(--color-3);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            position: relative;
+        }
+        
+        .investment-calculator::before {
+            content: "📊 投資シミュレーション";
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            background-color: white;
+            padding: 0 10px;
+            font-weight: bold;
+            color: var(--color-1);
+        }
+        
+        .stocks-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 15px 0;
+        }
+        
+        .stock-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 12px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+            border-left: 3px solid var(--color-4);
+        }
+        
+        .stock-name {
+            font-weight: bold;
+            color: var(--color-1);
+            margin-bottom: 5px;
+            font-size: 15px;
+        }
+        
+        .stock-ticker {
+            color: var(--color-4);
+            font-size: 12px;
+            margin-bottom: 8px;
+        }
+        
+        .stock-description {
+            font-size: 13px;
+        }
+        
+        .faq-item {
+            margin-bottom: 15px;
+        }
+        
+        .faq-question {
+            font-weight: bold;
+            color: var(--color-1);
+            margin-bottom: 5px;
+        }
+        
+        .faq-answer {
+            padding-left: 20px;
+        }
+        
+        .emoji-list {
+            list-style-type: none;
+            padding-left: 5px;
+        }
+        
+        .emoji-list li {
+            padding-left: 25px;
+            position: relative;
+            margin-bottom: 8px;
+        }
+        
+        .emoji-list li::before {
+            position: absolute;
+            left: 0;
+            font-size: 16px;
+        }
+        
+        .emoji-list li:nth-child(1)::before { content: "💰"; }
+        .emoji-list li:nth-child(2)::before { content: "📈"; }
+        .emoji-list li:nth-child(3)::before { content: "🏆"; }
+        .emoji-list li:nth-child(4)::before { content: "🔄"; }
+        
+        .connect-line {
+            position: relative;
+        }
+        
+        .connect-line::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            width: 2px;
+            height: 20px;
+            background-color: var(--color-3);
+            transform: translateX(-50%);
+        }
+        
+        .simulation-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        
+        .simulation-table th {
+            background-color: rgba(242, 196, 61, 0.2);
+            padding: 8px;
+            text-align: center;
+        }
+        
+        .simulation-table td {
+            padding: 8px;
+            text-align: center;
+            border: 1px solid #eee;
+        }
+        
+        .simulation-table tr:last-child {
+            font-weight: bold;
+            background-color: rgba(242, 92, 5, 0.1);
+        }
+
+        .tax-info-box {
+            background-color: rgba(89, 60, 71, 0.05);
+            border-radius: 12px;
+            padding: 15px;
+            margin: 15px 0;
+            border: 1px dashed var(--color-1);
+        }
+        
+        .tax-info-title {
+            font-weight: bold;
+            color: var(--color-1);
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        
+        .tools-list {
+            margin: 15px 0;
+        }
+        
+        .tool-item {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px dotted #ddd;
+        }
+        
+        .tool-name {
+            font-weight: bold;
+            color: var(--color-4);
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+        
+        .tool-url {
+            font-style: italic;
+            color: var(--text-subtitle);
+            margin-bottom: 5px;
+            font-size: 13px;
+        }
+        
+        .tool-url a {
+            color: var(--color-4);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        
+        .tool-url a:hover {
+            text-decoration: underline;
+            color: var(--color-5);
+        }
+        
+        .warning-box {
+            background-color: rgba(242, 68, 5, 0.1);
+            border-left: 4px solid var(--color-5);
+            padding: 15px 15px 15px 35px;
+            margin: 15px 0;
+            border-radius: 0 8px 8px 0;
+            position: relative;
+        }
+        
+        .warning-box::before {
+            content: "⚠️";
+            position: absolute;
+            left: 10px;
+            top: 15px;
+        }
+
+        @media (max-width: 768px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .section.full-width, .section.half-width {
+                grid-column: span 1;
+            }
+            
+            .vs-container {
+                flex-direction: column;
+            }
+            
+            .vs-item {
+                width: 100%;
+                margin-bottom: 30px;
+            }
+            
+            .vs-container::after {
+                top: calc(50% - 15px);
+            }
+            
+            .two-columns {
+                flex-direction: column;
+            }
+            
+            .column {
+                width: 100%;
+                margin-bottom: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="title-container">
+                <h1>米国高配当株投資の始め方</h1>
+                <p class="intro-text">初心者向け完全ガイド</p>
+            </div>
+            <div class="date">2025年3月9日</div>
+        </header>
+        
+        <div class="grid">
+            <!-- 導入セクション -->
+            <div class="section section-1 full-width">
+                <h2>なぜ米国高配当株なのか？</h2>
+                <div class="bubble">
+                    <p>「投資を始めたいけど、何から手をつければいいのかわからない...」</p>
+                    <p>「インデックス投資と高配当株投資、どっちがいいの？」</p>
+                    <p>「高配当株って聞くけど、実際どうやって選べばいいの？」</p>
+                </div>
+                
+                <p class="intro-text">米国高配当株投資は、<span class="highlight">定期的な収入（配当）を得ながら資産を成長</span>させられる魅力的な投資方法です。特に近年、米国市場の長期的な強さと安定した配当の組み合わせが、多くの日本人投資家の注目を集めています。</p>
+                
+                <p>この記事では、インデックス投資との違いから始め、高配当株の探し方、実際の購入方法、そして長期保有のコツまで、初心者の方でも楽しく学べるように解説していきます。さあ、一緒に「<span class="highlight-orange">株主優待</span>」ならぬ「<span class="highlight-orange">配当優待</span>」の世界を探検しましょう！</p>
+            </div>
+            
+            <!-- インデックスVS高配当株セクション -->
+            <div class="section section-2 full-width">
+                <h2>インデックス投資VS高配当株投資</h2>
+                <p>あなたに合うのはどっち？</p>
+                
+                <div class="vs-container">
+                    <div class="vs-item">
+                        <h4>インデックス投資の特徴</h4>
+                        <ul>
+                            <li><strong>シンプル</strong>：S&P500などの指数に連動するETFを買うだけ</li>
+                            <li><strong>分散投資</strong>：一度に多くの企業に投資できる</li>
+                            <li><strong>低コスト</strong>：運用コストが低い（年0.03%〜0.3%程度）</li>
+                            <li><strong>パッシブ運用</strong>：「市場平均」のリターンを目指す</li>
+                            <li><strong>主な目的</strong>：長期的な値上がり益（キャピタルゲイン）</li>
+                        </ul>
+                    </div>
+                    <div class="vs-item">
+                        <h4>高配当株投資の特徴</h4>
+                        <ul>
+                            <li><strong>アクティブ</strong>：自分で銘柄を選ぶ楽しさがある</li>
+                            <li><strong>インカムゲイン</strong>：定期的な現金収入が得られる</li>
+                            <li><strong>リアルな株主体験</strong>：特定の企業のオーナーになった実感</li>
+                            <li><strong>複利効果</strong>：配当再投資による「雪だるま式」資産形成</li>
+                            <li><strong>心理的安定</strong>：市場が下落しても配当収入は比較的安定</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <h3>配当金が魅力的な理由</h3>
+                <div class="emoji-list">
+                    <li><strong>現金が定期的に手に入る</strong>：四半期ごとに配当金が口座に振り込まれる喜び</li>
+                    <li><strong>インフレ対策</strong>：多くの優良企業は配当を毎年増やす傾向がある</li>
+                    <li><strong>下落相場でも収入</strong>：株価が下がっても配当は比較的安定している</li>
+                    <li><strong>複利の力</strong>：配当を再投資することで資産が雪だるま式に増える</li>
+                </div>
+                
+                <div class="point-box">
+                    <p>両方の投資スタイルを組み合わせるのもアリ！例えば資産の70%をインデックスに、30%を高配当株に配分するバランス戦略も人気です。</p>
+                </div>
+            </div>
+            
+            <!-- 高配当株の探し方セクション -->
+            <div class="section section-3 half-width">
+                <h2>米国高配当株の探し方</h2>
+                <p class="intro-text">宝探しの始め方 📝</p>
+                
+                <h3>高配当株を見つける基本指標</h3>
+                
+                <div class="card">
+                    <div class="card-title">1. 配当利回り（Dividend Yield）</div>
+                    <div class="definition-box">
+                        <span class="definition-term">定義：</span>
+                        <p>年間配当金÷株価×100</p>
+                    </div>
+                    <p><strong>目安</strong>：一般的に3%以上が「高配当」と言われる</p>
+                    <p><strong>注意点</strong>：高すぎる利回り（8%以上）は要注意（配当削減リスク）</p>
+                </div>
+                
+                <div class="card">
+                    <div class="card-title">2. 配当成長率（Dividend Growth Rate）</div>
+                    <div class="definition-box">
+                        <span class="definition-term">定義：</span>
+                        <p>過去5年間の配当金の年平均成長率</p>
+                    </div>
+                    <p><strong>目安</strong>：5%以上あれば理想的</p>
+                    <p><strong>意味</strong>：毎年配当を増やし続ける企業は財務的に健全な傾向がある</p>
+                </div>
+                
+                <div class="card">
+                    <div class="card-title">3. 配当性向（Payout Ratio）</div>
+                    <div class="definition-box">
+                        <span class="definition-term">定義：</span>
+                        <p>配当金÷純利益×100</p>
+                    </div>
+                    <p><strong>目安</strong>：60%以下が健全（成長余地あり）</p>
+                    <p><strong>意味</strong>：低すぎても高すぎても良くない（20%以下は成長志向、80%以上は持続性に疑問）</p>
+                </div>
+                
+                <div class="card">
+                    <div class="card-title">4. 連続増配年数（Consecutive Dividend Increases）</div>
+                    <p><strong>特徴</strong>：25年以上連続増配の企業は「<span class="highlight">配当貴族</span>」と呼ばれる</p>
+                    <p><strong>意味</strong>：長期間配当を増やし続けられる企業は強靭なビジネスモデルを持つ</p>
+                </div>
+            </div>
+            
+            <!-- 高配当株を探すツール -->
+            <div class="section section-3">
+                <h3>高配当株を探すためのツールとサイト</h3>
+                
+                <div class="card">
+                    <div class="card-title">1. スクリーニングツール 🔍</div>
+                    <ul>
+                        <li><a href="https://finviz.com/" target="_blank">Finviz</a>：無料で使える米国株スクリーナー</li>
+                        <li><a href="https://seekingalpha.com/" target="_blank">Seeking Alpha</a>：配当関連の情報が充実</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <div class="card-title">2. ETFの保有銘柄を参考にする 📊</div>
+                    <ul>
+                        <li>VYM（バンガード・高配当株ETF）</li>
+                        <li>SCHD（シュワブ米国配当株式ETF）</li>
+                        <li>HDV（iシェアーズ・コア高配当ETF）</li>
+                    </ul>
+                    <p>これらのETFが保有している上位銘柄は、プロが選んだ優良高配当株と言えます。</p>
+                </div>
+                
+                <div class="card">
+                    <div class="card-title">3. 配当貴族リスト 👑</div>
+                    <p>S&P500配当貴族インデックスに含まれる企業をチェック</p>
+                    <p>例：P&G、コカ・コーラ、ジョンソン&ジョンソン、3M など</p>
+                </div>
+                
+                <div class="note">
+                    <p>初心者におすすめの方法：まずはSCHDなどの高配当ETFを購入し、その保有銘柄を少しずつ研究して個別株に移行していくステップアップ法！</p>
+                </div>
+            </div>
+            
+            <!-- 米国高配当株の買い方セクション -->
+            <div class="section section-4">
+                <h2>米国高配当株の買い方</h2>
+                <p class="intro-text">実践編 💹</p>
+                
+                <div class="step-container">
+                    <div class="step">
+                        <h4>証券口座の開設</h4>
+                        <ul>
+                            <li><strong>ネット証券がおすすめ</strong>：SBI証券、楽天証券、マネックス証券など</li>
+                            <li><strong>必要書類</strong>：本人確認書類、マイナンバー</li>
+                            <li><strong>口座の種類</strong>：特定口座（源泉徴収あり）が初心者には便利</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="step">
+                        <h4>米ドルの準備</h4>
+                        <ul>
+                            <li><strong>為替手数料に注意</strong>：証券会社の為替レートは不利な場合も</li>
+                            <li><strong>裏技</strong>：外貨両替所やワイズ（Wise）などで両替すると手数料が安い場合も</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="step">
+                        <h4>注文方法</h4>
+                        <p><strong>指値注文vs成行注文</strong>：</p>
+                        <ul>
+                            <li>指値：「〇〇ドル以下なら買う」と価格を指定</li>
+                            <li>成行：「今の市場価格で即買う」（初心者は指値がおすすめ）</li>
+                        </ul>
+                        <p><strong>取引時間</strong>：日本時間22:30～翌5:00（夏時間は21:30～翌4:00）</p>
+                    </div>
+                    
+                    <div class="step">
+                        <h4>配当課税と確定申告</h4>
+                        <ul>
+                            <li><strong>米国での源泉徴収</strong>：10%（日米租税条約による軽減税率）</li>
+                            <li><strong>日本での課税</strong>：20.315%（所得税15%、住民税5%、復興特別所得税0.315%）</li>
+                            <li><strong>二重課税の調整</strong>：外国税額控除の適用可能</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="callout">
+                    <p>米国株の配当は四半期ごと（年4回）が一般的。企業ごとに「配当月」が決まっており、例えば「2,5,8,11月企業」「3,6,9,12月企業」などと呼ばれます。毎月配当を受け取りたい場合は、異なる配当月の企業に分散投資するのがコツです！</p>
+                </div>
+            </div>
+            
+            <!-- おすすめ銘柄セクション -->
+            <div class="section section-4 half-width">
+                <h2>おすすめの米国高配当銘柄10選</h2>
+                <p class="intro-text">（※市場状況により変動するため、必ず最新情報と自己分析を行ってください）</p>
+                
+                <div class="stocks-grid">
+                    <div class="stock-card">
+                        <div class="stock-name">マイクロソフト</div>
+                        <div class="stock-ticker">MSFT</div>
+                        <div class="stock-description">テクノロジー企業の中では珍しい堅実な配当成長企業</div>
+                    </div>
+                    
+                    <div class="stock-card">
+                        <div class="stock-name">ジョンソン&ジョンソン</div>
+                        <div class="stock-ticker">JNJ</div>
+                        <div class="stock-description">60年以上の連続増配記録を持つヘルスケアの王様</div>
+                    </div>
+                    
+                    <div class="stock-card">
+                        <div class="stock-name">プロクター&ギャンブル</div>
+                        <div class="stock-ticker">PG</div>
+                        <div class="stock-description">日用品の王者、66年超の連続増配記録</div>
+                    </div>
+                    
+                    <div class="stock-card">
+                        <div class="stock-name">コカ・コーラ</div>
+                        <div class="stock-ticker">KO</div>
+                        <div class="stock-description">60年以上の連続増配と安定したキャッシュフロー</div>
+                    </div>
+                    
+                    <div class="stock-card">
+                        <div class="stock-name">ビザ</div>
+                        <div class="stock-ticker">V</div>
+                        <div class="stock-description">高い成長性と配当成長率を誇る決済テクノロジー企業</div>
+                    </div>
+                    
+                    <div class="stock-card">
+                        <div class="stock-name">マクドナルド</div>
+                        <div class="stock-ticker">MCD</div>
+                        <div class="stock-description">不況に強いファストフード王者</div>
+                    </div>
+                    
+                    <div class="stock-card">
+                        <div class="stock-name">アボットラボラトリーズ</div>
+                        <div class="stock-ticker">ABT</div>
+                        <div class="stock-description">医療機器・診断薬の大手、高い配当成長率</div>
+                    </div>
+                    
+                    <div class="stock-card">
+                        <div class="stock-name">ウォルマート</div>
+                        <div class="stock-ticker">WMT</div>
+                        <div class="stock-description">小売りの巨人、景気後退に強い</div>
+                    </div>
+                    
+                    <div class="stock-card">
+                        <div class="stock-name">ブラックロック</div>
+                        <div class="stock-ticker">BLK</div>
+                        <div class="stock-description">世界最大の資産運用会社、高配当と高成長の両立</div>
+                    </div>
+                    
+                    <div class="stock-card">
+                        <div class="stock-name">ネクステラ・エナジー</div>
+                        <div class="stock-ticker">NEE</div>
+                        <div class="stock-description">再生可能エナジーのリーダー、高い配当成長率</div>
+                    </div>
+                </div>
+                
+                <div class="note">
+                    <p>業種分散のコツ：上記10銘柄は意図的に異なる業種から選んでいます。実際の投資では5〜10業種に分散させると安定します。</p>
+                </div>
+            </div>
+            
+            <!-- ポートフォリオ構築例 -->
+            <div class="section section-5 half-width">
+                <h2>高配当株投資の実践的なポートフォリオ構築例</h2>
+                
+                <h3>初心者向け「月次配当」ポートフォリオ例</h3>
+                <p>（投資金額：100万円の場合）</p>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th>銘柄</th>
+                            <th>配当月</th>
+                            <th>配分</th>
+                            <th>投資額</th>
+                            <th>期待年間配当</th>
+                            <th>特徴</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>MSFT</td>
+                            <td>3,6,9,12月</td>
+                            <td>20%</td>
+                            <td>20万円</td>
+                            <td>約5,000円</td>
+                            <td>成長性と配当のバランス</td>
+                        </tr>
+                        <tr>
+                            <td>JNJ</td>
+                            <td>3,6,9,12月</td>
+                            <td>20%</td>
+                            <td>20万円</td>
+                            <td>約8,000円</td>
+                            <td>安定した配当と値動き</td>
+                        </tr>
+                        <tr>
+                            <td>KO</td>
+                            <td>4,7,10,1月</td>
+                            <td>20%</td>
+                            <td>20万円</td>
+                            <td>約8,000円</td>
+                            <td>景気後退に強い</td>
+                        </tr>
+                        <tr>
+                            <td>PG</td>
+                            <td>2,5,8,11月</td>
+                            <td>20%</td>
+                            <td>20万円</td>
+                            <td>約7,000円</td>
+                            <td>堅実な配当貴族</td>
+                        </tr>
+                        <tr>
+                            <td>SCHD</td>
+                            <td>3,6,9,12月</td>
+                            <td>20%</td>
+                            <td>20万円</td>
+                            <td>約8,000円</td>
+                            <td>高配当ETFで分散効果</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <p>このポートフォリオなら毎月いずれかの銘柄から配当が入ってきて、年間配当は約36,000円（利回り約3.6%）。配当の再投資と値上がりを考えると、5年後には資産と年間配当がどちらも大きく成長している可能性があります。</p>
+            </div>
+            
+            <!-- 配当再投資の力セクション -->
+            <div class="section section-5 full-width">
+                <h2>配当再投資の力：20年後のシミュレーション（税金考慮）</h2>
+                
+                <p class="intro-text">配当再投資による複利効果は、長期投資において最も強力な味方となります。ただし、実際の投資では税金の影響も無視できません。ここでは、100万円から始めた高配当株投資が20年後にどのように成長するかを、税金も考慮してシミュレーションしてみましょう。</p>
+                
+                <div class="investment-calculator">
+                    <h3>基本パラメータ設定</h3>
+                    <ul>
+                        <li><strong>初期投資額</strong>：100万円（株価1万円の株を100株）</li>
+                        <li><strong>平均配当利回り</strong>：3.5%（初年度）</li>
+                        <li><strong>平均配当成長率</strong>：年間6%（多くの配当貴族の平均的な増配率）</li>
+                        <li><strong>株価上昇率</strong>：年間平均7%（過去の米国株式市場の長期平均に近い水準）</li>
+                        <li><strong>配当再投資</strong>：すべての配当金を再投資（税引後）</li>
+                        <li><strong>配当課税</strong>：20%（日米の源泉徴収税の合計を簡略化）</li>
+                        <li><strong>追加投資</strong>：なし（配当再投資のみの複利効果を見るため）</li>
+                    </ul>
+                    
+                    <h3>20年間のシミュレーション結果（税金考慮）</h3>
+                    
+                    <table class="simulation-table">
+                        <thead>
+                            <tr>
+                                <th>年数</th>
+                                <th>資産評価額</th>
+                                <th>保有株数</th>
+                                <th>配当金(税引前)</th>
+                                <th>配当金(税引後)</th>
+                                <th>1株配当</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>初年度</td>
+                                <td>100万円</td>
+                                <td>100株</td>
+                                <td>3.5万円</td>
+                                <td>2.8万円</td>
+                                <td>350円</td>
+                            </tr>
+                            <tr>
+                                <td>5年後</td>
+                                <td>約160万円</td>
+                                <td>114株</td>
+                                <td>5.2万円</td>
+                                <td>4.2万円</td>
+                                <td>468円</td>
+                            </tr>
+                            <tr>
+                                <td>10年後</td>
+                                <td>約256万円</td>
+                                <td>130株</td>
+                                <td>7.9万円</td>
+                                <td>6.4万円</td>
+                                <td>627円</td>
+                            </tr>
+                            <tr>
+                                <td>15年後</td>
+                                <td>約405万円</td>
+                                <td>147株</td>
+                                <td>12.0万円</td>
+                                <td>9.6万円</td>
+                                <td>839円</td>
+                            </tr>
+                            <tr>
+                                <td>20年後</td>
+                                <td>約639万円</td>
+                                <td>165株</td>
+                                <td>18.1万円</td>
+                                <td>14.5万円</td>
+                                <td>1,123円</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="tax-info-box">
+                        <div class="tax-info-title">20年後の姿（税金考慮）：</div>
+                        <ul>
+                            <li><strong>初期投資の6.4倍</strong>：100万円が約639万円に（税金なしの場合は7.2倍の723万円）</li>
+                            <li><strong>年間配当金は初年度の5.2倍</strong>：3.5万円→18.1万円（税引前）</li>
+                            <li><strong>20年間の累計配当受取額</strong>：185万円（税引前）、148万円（税引後）</li>
+                            <li><strong>累計納税額</strong>：約37万円</li>
+                            <li><strong>税金による資産減少効果</strong>：税金がない場合と比べて約12%少ない</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="callout">
+                    <p><strong>税金の影響</strong>: 配当金への20%の課税により、20年後の資産は税金がない場合と比べて約12%少なくなります。これは配当再投資可能額が減少することで複利効果が弱まるためです。しかし、それでも6.4倍という高い成長率を実現できています。</p>
+                </div>
+                
+                <h3>配当再投資の複利効果（税金考慮）</h3>
+                
+                <p>シミュレーション結果を見ると、税金を考慮しても以下のような特徴があります：</p>
+                
+                <div class="card">
+                    <div class="card-title">1. 複利効果は健在</div>
+                    <ul>
+                        <li>最初の5年間（160万円）より、後半の5年間（639万円→405万円=234万円）の方が資産増加額が大きい</li>
+                        <li>これは複利効果が時間とともに加速することを示している</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <div class="card-title">2. 配当の二重の成長（税引後も）</div>
+                    <ul>
+                        <li>1株あたりの配当金が増える（350円→1,123円）</li>
+                        <li>保有株数も増える（100株→165株）、ただし税金なしの場合（187株）より少ない</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <div class="card-title">3. 税金の複利的なマイナス効果</div>
+                    <ul>
+                        <li>単年度では20%の税金だが、長期的には約12%の資産減少効果</li>
+                        <li>これは、失われた「再投資機会」の影響が複利的に現れるため</li>
+                    </ul>
+                </div>
+                
+                <div class="note">
+                    <p><strong>税金対策のヒント</strong>: 米国株の配当に対する日米の源泉徴収税は、特定口座（源泉徴収あり）で投資する場合、約20%かかります。税金の影響を抑えるためには、つみたてNISAやiDeCoなどの非課税制度の活用を検討しましょう。</p>
+                </div>
+                
+                <h3>自分でシミュレーションする方法とツール</h3>
+                
+                <div class="tools-list">
+                    <div class="tool-item">
+                        <div class="tool-name">1. Portfolio Visualizer</div>
+                        <div class="tool-url">URL: <a href="https://www.portfoliovisualizer.com/" target="_blank">https://www.portfoliovisualizer.com/</a></div>
+                        <p><strong>特徴</strong>: 米国でもっとも人気のポートフォリオ分析ツール。過去の実績に基づいたバックテストや、モンテカルロ・シミュレーションが可能</p>
+                        <p><strong>使い方</strong>: 「Backtest Portfolio」で過去のデータを基にポートフォリオの成績を検証するか、「Monte Carlo Simulation」で将来の可能性を確率的に分析できます</p>
+                        <p>無料版でも十分活用可能</p>
+                    </div>
+                    
+                    <div class="tool-item">
+                        <div class="tool-name">2. MarketBeat Dividend Calculator</div>
+                        <div class="tool-url">URL: <a href="https://www.marketbeat.com/dividends/calculator/" target="_blank">https://www.marketbeat.com/dividends/calculator/</a></div>
+                        <p><strong>特徴</strong>: 配当成長を考慮した将来価値を簡単に計算できるオンラインツール</p>
+                        <p><strong>使い方</strong>: 初期投資額、配当利回り、配当成長率、株価上昇率、期間などを入力するだけで将来価値がグラフ表示される</p>
+                        <p>配当再投資の有無も選択可能で、視覚的に効果を確認できる</p>
+                    </div>
+                    
+                    <div class="tool-item">
+                        <div class="tool-name">3. Excel/Googleスプレッドシートでの自作シミュレーション</div>
+                        <p><strong>メリット</strong>: 完全にカスタマイズ可能で、自分の投資戦略に合わせた詳細なシミュレーションが可能</p>
+                        <div class="definition-box">
+                            <p><strong>シミュレーションの基本数式：</strong></p>
+                            <pre>
+A列: 年(t)
+B列: 年末株価(P_t) = 前年株価 × 1.07
+C列: 1株配当(D_t) = 前年配当 × 1.06
+D列: 期首株数(N_t-1)
+E列: 年間配当合計 = 期首株数 × 1株配当
+F列: 追加購入株数 = 年間配当合計 ÷ 年末株価
+G列: 期末株数 = 期首株数 + 追加購入株数
+H列: 資産評価額 = 期末株数 × 年末株価
+                            </pre>
+                        </div>
+                    </div>
+                    
+                    <div class="tool-item">
+                        <div class="tool-name">4. Dividend.com のツール</div>
+                        <div class="tool-url">URL: <a href="https://www.dividend.com/" target="_blank">https://www.dividend.com/</a></div>
+                        <p><strong>特徴</strong>: 米国高配当株の詳細データと配当履歴、簡易シミュレーターを提供</p>
+                        <p>無料会員登録で基本機能が使えます</p>
+                    </div>
+                </div>
+                
+                <div class="note">
+                    <p><strong>シミュレーションのコツ</strong>: 楽観的すぎる数値設定は避け、過去の長期平均より少し控えめな数値でシミュレーションするのが賢明です。例えば、過去の平均が8%なら6-7%程度に設定するなど、余裕をもった予測を心がけましょう。</p>
+                </div>
+                
+                <div class="warning-box">
+                    <h4>シミュレーション結果を読み解く際の注意点</h4>
+                    <ol style="padding-left: 20px;">
+                        <li><strong>四捨五入による誤差</strong>: 計算過程で四捨五入を行っているため、細かな数値は多少の誤差が生じます</li>
+                        <li><strong>理想的条件下でのモデル</strong>: このシミュレーションは一定の成長率を前提としており、実際の市場の変動（暴落や急騰）は考慮していません</li>
+                        <li><strong>税金の簡略化</strong>: 実際の税金は日米の源泉徴収税や為替の影響など、より複雑です。また特定口座と一般口座で扱いが異なる場合もあります</li>
+                        <li><strong>手数料の影響</strong>: 取引手数料や為替手数料は考慮していません</li>
+                    </ol>
+                </div>
+                
+                <h3>複利効果を最大化するための税金対策</h3>
+                
+                <div class="card">
+                    <div class="card-title">1. 非課税投資枠の活用</div>
+                    <ul>
+                        <li><strong>NISA（新NISA）</strong>: 年間の投資上限額（最大360万円）の範囲内で非課税</li>
+                        <li><strong>iDeCo（個人型確定拠出年金）</strong>: 老後資金として運用する場合に税制優遇あり</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <div class="card-title">2. 配当課税の軽減</div>
+                    <ul>
+                        <li>確定申告による外国税額控除の活用（二重課税の調整）</li>
+                        <li>税引後配当を再投資に回すことで、複利効果の減少を最小限に</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <div class="card-title">3. 長期保有の重要性</div>
+                    <ul>
+                        <li>税金があっても、長期保有による複利効果は依然として非常に強力</li>
+                        <li>20年間で資産が6.4倍になるというシミュレーション結果は、税引後でも十分魅力的</li>
+                    </ul>
+                </div>
+                
+                <div class="divider"><span>複利の力</span></div>
+                
+                <div class="quote">
+                    「複利は世界第8の不思議である。それを理解する者は利息を得、理解しない者は利息を払う。」<br>
+                    <span style="font-size: 12px;">- アインシュタインの言葉とされる名言</span>
+                </div>
+                
+                <p>配当再投資による複利効果は、税金があっても、時間をかけるほどに力を発揮します。初期の配当金は大きく感じられないかもしれませんが、20年後には当初の投資額の約15%程度の年間配当収入（税引前）が期待できる可能性があります。これは普通預金の約30倍の金利に相当します。</p>
+            </div>
+            
+            <!-- 長期保有のコツセクション -->
+            <div class="section section-1">
+                <h2>長期保有のコツと心構え</h2>
+                
+                <h3>高配当株投資を成功させる5つの鉄則</h3>
+                
+                <div class="card">
+                    <div class="card-title">1. 経済ニュースに一喜一憂しない</div>
+                    <p>短期的な株価変動より、長期的な配当成長に注目しましょう</p>
+                </div>
+                
+                <div class="card">
+                    <div class="card-title">2. 配当再投資プログラム（DRIP）の活用</div>
+                    <p>配当金で自動的に株を買い増すサービス（一部証券会社で可能）</p>
+                    <p>複利効果を最大化できる</p>
+                </div>
+                
+                <div class="card">
+                    <div class="card-title">3. 定期的なポートフォリオ見直し</div>
+                    <p>年に1〜2回、保有銘柄の財務状況をチェック</p>
+                    <p>配当削減や業績悪化の兆候があれば入れ替えを検討</p>
+                </div>
+                
+                <div class="card">
+                    <div class="card-title">4. ドルコスト平均法の活用</div>
+                    <p>毎月決まった金額を投資することで、価格変動リスクを抑制</p>
+                    <p>特に下落時の買い増しが長期的リターンを高める</p>
+                </div>
+                
+                <div class="card">
+                    <div class="card-title">5. 配当カレンダーの作成</div>
+                    <p>自分の保有銘柄の権利確定日と支払日をカレンダーに記入</p>
+                    <p>配当金の可視化でモチベーションアップ！</p>
+                </div>
+            </div>
+            
+            <!-- FAQセクション -->
+            <div class="section section-2">
+                <h2>よくある質問（FAQ）</h2>
+                
+                <div class="faq-item">
+                    <div class="faq-question">Q. 米国株の最低投資金額はいくら？</div>
+                    <div class="faq-answer">A. 1株から購入可能。1株100ドル前後の銘柄が多いので、まずは10〜20万円から始めるのがおすすめです。</div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">Q. 配当金はどうやって受け取る？</div>
+                    <div class="faq-answer">A. 証券会社の口座に自動的に入金されます。米ドルのまま受け取るか、円に自動両替するか選べる場合もあります。</div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">Q. 高配当株と優待株はどう違う？</div>
+                    <div class="faq-answer">A. 日本の株主優待は商品やサービスが中心ですが、米国では現金配当が一般的。配当は「世界共通の優待」と考えるとわかりやすいでしょう。</div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">Q. インデックス投資と併用できる？</div>
+                    <div class="faq-answer">A. もちろん可能です。例えば「コア・サテライト戦略」として、資産の中心（コア）をインデックスに、周辺（サテライト）を高配当株に配分する方法が人気です。</div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">Q. 最低何年くらい保有すべき？</div>
+                    <div class="faq-answer">A. 高配当株投資は10年以上の長期保有がベスト。複利効果が本領を発揮するのは5年以上経過してからです。</div>
+                </div>
+            </div>
+            
+            <!-- まとめセクション -->
+            <div class="section section-3 full-width">
+                <h2>まとめ：高配当株投資は「オーナーシップ」の第一歩</h2>
+                
+                <p class="intro-text">米国高配当株投資の魅力は、単なる値上がり益を狙うだけでなく、<span class="highlight">世界有数の優良企業のオーナーとして定期的な利益配分（配当）を受け取れる</span>ことにあります。</p>
+                
+                <p>毎四半期、世界中の株主に利益を還元し続ける企業こそ、長期的に生き残る優良企業と言えるでしょう。そして、そんな企業のオーナーになれることは、投資の本質的な喜びでもあります。</p>
+                
+                <p>インデックス投資は確かに手軽で効率的ですが、高配当株投資には「<span class="highlight-orange">特定の企業と長く付き合い、成長を共に喜ぶ</span>」という醍醐味があります。自分の価値観や信念に合った企業を見つけ、長期的なパートナーシップを結ぶ—それが高配当株投資の真の魅力ではないでしょうか。</p>
+                
+                <div class="bubble">
+                    <p>さあ、明日から始める「おいしい」投資生活。あなたも世界有数の企業からの「配当おこづかい」生活を始めてみませんか？</p>
+                </div>
+                
+                <footer>
+                    <p>※本記事は投資の教育目的で書かれたものであり、特定の投資行動を推奨するものではありません。投資は自己責任で行ってください。</p>
+                    <p>作成日：2025年3月9日</p>
+                </footer>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

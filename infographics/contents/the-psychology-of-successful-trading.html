@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>トレーディングにおける心理学</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Kaisei+Decol:wght@400;700&family=Yomogi&family=Zen+Kurenaido&display=swap');
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'Zen Kurenaido', sans-serif;
+      background-color: #f8f9fa;
+      color: #334155;
+      line-height: 1.4;
+      padding: 20px;
+    }
+    
+    .container {
+      max-width: 100%;
+      margin: 0 auto;
+      background: #fff;
+      border-radius: 15px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+      overflow: hidden;
+      position: relative;
+    }
+    
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 30px;
+      background: linear-gradient(135deg, #593C47 0%, #F24405 100%);
+      color: white;
+      position: relative;
+    }
+    
+    .header::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 8px;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 30" preserveAspectRatio="none"><path d="M0,0 C300,30 600,30 900,20 C1000,15 1100,5 1200,0 L1200,30 L0,30 Z" fill="%23F2C53D"/></svg>');
+      background-size: cover;
+    }
+    
+    .title {
+      font-family: 'Kaisei Decol', serif;
+      font-size: 32px;
+      font-weight: 700;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+      background: linear-gradient(90deg, #fff, #F2E63D);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 5px;
+    }
+    
+    .subtitle {
+      font-size: 16px;
+      color: rgba(255, 255, 255, 0.9);
+      font-family: 'Yomogi', cursive;
+    }
+    
+    .date {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.8);
+      text-align: right;
+    }
+    
+    .content {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 20px;
+      gap: 20px;
+    }
+    
+    .column {
+      flex: 1 0 30%;
+      min-width: 300px;
+    }
+    
+    .card {
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+      padding: 20px;
+      margin-bottom: 20px;
+      position: relative;
+      border: 2px solid transparent;
+      transition: all 0.3s ease;
+    }
+    
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      border-color: #F2C53D;
+    }
+    
+    .card::before {
+      content: "";
+      position: absolute;
+      top: -8px;
+      left: 20px;
+      width: 40px;
+      height: 16px;
+      background-color: #593C47;
+      clip-path: polygon(0% 0%, 100% 0%, 85% 100%, 15% 100%);
+    }
+    
+    .section-title {
+      font-family: 'Kaisei Decol', serif;
+      font-size: 18px;
+      color: #1e40af;
+      margin-bottom: 10px;
+      padding-bottom: 8px;
+      border-bottom: 2px dotted #F25C05;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .content-text {
+      font-size: 14px;
+      color: #334155;
+      margin-bottom: 10px;
+    }
+    
+    .quote {
+      font-family: 'Yomogi', cursive;
+      font-style: italic;
+      color: #593C47;
+      padding: 10px;
+      background: rgba(242, 230, 60, 0.1);
+      border-left: 3px solid #F2C53D;
+      margin: 10px 0;
+      border-radius: 0 8px 8px 0;
+    }
+    
+    .highlight {
+      background: linear-gradient(transparent 60%, #F2C53D 60%);
+      font-weight: 700;
+    }
+    
+    .tag {
+      display: inline-block;
+      padding: 3px 10px;
+      background: #F25C05;
+      color: white;
+      border-radius: 20px;
+      font-size: 12px;
+      margin-right: 5px;
+      margin-bottom: 5px;
+    }
+    
+    .icon {
+      font-size: 24px;
+      margin-right: 8px;
+      color: #F24405;
+    }
+    
+    .arrow {
+      position: relative;
+      padding-left: 20px;
+    }
+    
+    .arrow::before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      color: #F25C05;
+    }
+    
+    .connector {
+      position: relative;
+      margin: 15px 0;
+      height: 30px;
+    }
+    
+    .connector::after {
+      content: "";
+      position: absolute;
+      top: 15px;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="6"><path d="M0,3 C20,10 40,-4 60,3 C80,10 100,-4 120,3" stroke="%23F25C05" fill="none" stroke-width="2" stroke-dasharray="1, 6"/></svg>');
+      background-repeat: repeat-x;
+    }
+    
+    .footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 12px;
+      color: #64748b;
+      border-top: 1px dashed #cbd5e1;
+    }
+    
+    /* 手書き風の装飾要素 */
+    .hand-drawn-circle {
+      display: inline-block;
+      position: relative;
+    }
+    
+    .hand-drawn-circle::after {
+      content: "";
+      position: absolute;
+      top: -5px;
+      left: -5px;
+      right: -5px;
+      bottom: -5px;
+      border: 2px solid #F25C05;
+      border-radius: 50%;
+      transform: rotate(-3deg);
+    }
+    
+    .hand-drawn-underline {
+      position: relative;
+    }
+    
+    .hand-drawn-underline::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -3px;
+      height: 2px;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="120" height="4"><path d="M0,2 C20,5 40,0 60,2 C80,4 100,1 120,2" stroke="%23F24405" fill="none" stroke-width="2"/></svg>');
+      background-size: 120px 4px;
+      background-repeat: repeat-x;
+    }
+    
+    .note-paper {
+      background-color: white;
+      padding: 15px;
+      position: relative;
+      box-shadow: 3px 3px 5px rgba(0,0,0,0.1);
+      border-radius: 0 0 5px 5px;
+    }
+    
+    .note-paper::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      border-width: 0 20px 20px 0;
+      border-style: solid;
+      border-color: #f8f9fa #f8f9fa #F2C53D #F2C53D;
+      box-shadow: -2px 2px 2px rgba(0,0,0,0.1);
+    }
+    
+    .bubble {
+      position: relative;
+      background: #F2E63D;
+      border-radius: 12px;
+      padding: 10px 15px;
+      margin: 15px 0;
+      color: #593C47;
+    }
+    
+    .bubble::after {
+      content: "";
+      position: absolute;
+      bottom: -10px;
+      left: 20px;
+      border-width: 10px 10px 0;
+      border-style: solid;
+      border-color: #F2E63D transparent;
+    }
+    
+    .ribbon {
+      position: absolute;
+      top: 15px;
+      right: -10px;
+      padding: 3px 10px;
+      background: #F24405;
+      color: white;
+      font-size: 12px;
+      transform: rotate(3deg);
+    }
+    
+    .ribbon::before {
+      content: "";
+      position: absolute;
+      top: 100%;
+      right: 0;
+      border-style: solid;
+      border-width: 0 10px 10px 0;
+      border-color: transparent #593C47 transparent transparent;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div>
+        <h1 class="title">トレーディングにおける心理学</h1>
+        <p class="subtitle">～成功するトレーダーの思考と習慣～</p>
+      </div>
+      <div class="date">2025年3月9日 📅</div>
+    </div>
+    
+    <div class="content">
+      <!-- 左カラム -->
+      <div class="column">
+        <div class="card note-paper">
+          <h2 class="section-title">📝 概要</h2>
+          <p class="content-text">
+            このインフォグラフィックはジェイソン・シャピロ（Crow market report）とマイケル・マーティン（著書「The Inner Voice of Trading」の著者）の対談から、トレーディングにおける心理的な側面、成功するために必要な思考プロセス、経験から得られる教訓などをまとめたものです。
+          </p>
+          <div class="bubble">
+            <span class="highlight">トレーディングは数学的期待値のゲーム</span> - 短期的な正確性よりも長期的な収益性が重要
+          </div>
+        </div>
+        
+        <div class="card">
+          <div class="ribbon">重要ポイント</div>
+          <h2 class="section-title">⏳ 忍耐と待つことの重要性</h2>
+          <p class="content-text">
+            良い取引機会がないときは、無理に取引をせず、辛抱強く待つことが重要です。焦りは最大の敵になります。
+          </p>
+          <div class="quote">
+            "being patient and realizing that it's life on life's terms"
+          </div>
+          <div class="quote">
+            "if there's no trade there also sit on your hands and stay flat"
+          </div>
+          <div class="connector"></div>
+          <p class="arrow content-text">
+            <span class="hand-drawn-underline">無理に取引をしない勇気</span>を持つことが、長期的な成功に繋がります
+          </p>
+        </div>
+        
+        <div class="card">
+          <h2 class="section-title">😌 感情的なニーズと取引</h2>
+          <p class="content-text">
+            感情的なニーズを満たすために取引をすることは、しばしば損失につながります。自分の感情状態を常に意識しましょう。
+          </p>
+          <div class="quote">
+            "if you push you're really serving an emotional need more than a financial one"
+          </div>
+          <div class="tag">退屈からの取引 ❌</div>
+          <div class="tag">焦りからの取引 ❌</div>
+          <div class="tag">復讐心からの取引 ❌</div>
+        </div>
+      </div>
+      
+      <!-- 中央カラム -->
+      <div class="column">
+        <div class="card">
+          <h2 class="section-title">💰 お金との関係</h2>
+          <p class="content-text">
+            お金との健全な関係を築き、自分の金融に対する信念と行動が調和しているかを確認することが大切です。
+          </p>
+          <div class="quote">
+            "money is like a human being you have a relationship"
+          </div>
+          <div class="connector"></div>
+          <p class="arrow content-text">
+            お金への恐れや執着が、合理的な判断を妨げることがあります
+          </p>
+        </div>
+        
+        <div class="card">
+          <h2 class="section-title">📊 規律を守ることの重要性</h2>
+          <p class="content-text">
+            利益だけでなく、<span class="highlight">自分の規律を守れたかどうか</span>で一日を評価しましょう。規律は長期的な成功の基盤です。
+          </p>
+          <div class="quote">
+            "did I follow my discipline and that's how I look to like did I win the day did I stick to my discipline"
+          </div>
+          <div class="connector"></div>
+          <div class="bubble">
+            <span class="hand-drawn-circle">毎日の自己評価</span>
+            <ul style="list-style-type: none; margin-top: 10px;">
+              <li>✅ ルールを守れたか</li>
+              <li>✅ 感情に流されなかったか</li>
+              <li>✅ リスク管理ができたか</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="card">
+          <h2 class="section-title">🎓 教育の落とし穴</h2>
+          <p class="content-text">
+            高い教育を受けていることが、必ずしもトレーディングの成功に繋がるとは限りません。むしろ、教育によって培われた「正確さ」へのこだわりが、トレーディングにおいては邪魔になる場合もあります。
+          </p>
+          <div class="quote">
+            "higher education that people get is somewhat of a detriment to success in trading"
+          </div>
+          <div class="connector"></div>
+          <p class="arrow content-text">
+            <span class="hand-drawn-underline">完璧主義</span>よりも<span class="hand-drawn-underline">確率思考</span>が重要
+          </p>
+        </div>
+      </div>
+      
+      <!-- 右カラム -->
+      <div class="column">
+        <div class="card">
+          <h2 class="section-title">🧠 経験と直感</h2>
+          <p class="content-text">
+            経験は直感を養いますが、それは単なる当て推量ではなく、無意識のパターンの認識です。経験を積むことで、市場の微妙な変化に気づく能力が磨かれます。
+          </p>
+          <div class="quote">
+            "experience builds intuition but it must be trained and refined intuition is not guessing it's a subconscious recognition of patterns"
+          </div>
+        </div>
+        
+        <div class="card">
+          <h2 class="section-title">🔍 自己分析の重要性</h2>
+          <p class="content-text">
+            自分の心理的な状態を深く分析し、バイアスを取り除き、客観的に自分自身を観察することが重要です。
+          </p>
+          <div class="quote">
+            "the whole introspection and the whole examination of oneself is incredibly important"
+          </div>
+          <div class="connector"></div>
+          <div class="bubble">
+            <span class="hand-drawn-circle">自己認識のポイント</span>
+            <ul style="list-style-type: none; margin-top: 10px;">
+              <li>🔹 自分の感情パターンを知る</li>
+              <li>🔹 トリガーとなる状況を特定する</li>
+              <li>🔹 自分の強みと弱みを理解する</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="card">
+          <h2 class="section-title">💫 損失を受け入れること</h2>
+          <p class="content-text">
+            損失はトレーディングの一部であり、損失が出てもゲームから脱落しないように、リスク管理を徹底することが重要です。
+          </p>
+          <div class="quote">
+            "you have to be alive to play the game right"
+          </div>
+          <div class="quote">
+            "losing money says nothing about you and your intellect nothing whatsoever"
+          </div>
+          <div class="connector"></div>
+          <p class="arrow content-text">
+            <span class="highlight">損失は情報であり、人格の否定ではない</span>
+          </p>
+        </div>
+        
+        <div class="card">
+          <h2 class="section-title">📚 実践のためのツール</h2>
+          <div class="content-text">
+            <p><span class="tag">📝 ジャーナリング</span> 過去の取引を振り返り、意思決定を改善する</p>
+            <p><span class="tag">🔍 ノイズのフィルタリング</span> 重要な情報を選別する能力</p>
+            <div class="quote">
+              "develop a filter and develop your bullshit meter"
+            </div>
+            <p><span class="tag">🤝 ギブアンドテイク</span> 成功には与えることの大切さを理解する</p>
+            <div class="quote">
+              "your success is a function of how much you give not how much you take"
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer">
+      <p>出典: ジェイソン・シャピロ（Crow market report）とマイケル・マーティン（「The Inner Voice of Trading」著者）の対談</p>
+      <p>📺 動画リンク: <a href="https://www.youtube.com/watch?v=AmKfvbKATZM&t=28s" target="_blank" style="color: #F25C05; text-decoration: none; font-weight: bold;">https://www.youtube.com/watch?v=AmKfvbKATZM&t=28s</a></p>
+      <p>補足: マイケル・マーティンは、自身のYouTubeチャンネル（Trader mindset）で、トレーダー向けの心理的なアドバイスを提供しています。また、著書「The Inner Voice of Trading」のオーディオブック版を無料で提供しています（Trader mindset.com/Jason）。</p>
+    </div>
+  </div>
+</body>
+</html>
