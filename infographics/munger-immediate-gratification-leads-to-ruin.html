@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>チャーリー・マンガーの知恵 📝</title>
+    <link rel="icon" type="image/png" href="../images/monty.png">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Yomogi&family=Zen+Kurenaido&family=Kaisei+Decol:wght@400;700&display=swap');
+        
+        :root {
+            --fashion-1: #593C47;
+            --fashion-2: #F2E63D;
+            --fashion-3: #F2C53D;
+            --fashion-4: #F25C05;
+            --fashion-5: #F24405;
+            --text-dark: #334155;
+            --text-title: #1e40af;
+            --bg-light: #fff;
+            --shadow: rgba(0, 0, 0, 0.1);
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Kaisei Decol', serif;
+            background-color: #f8f9fa;
+            color: var(--text-dark);
+            line-height: 1.4;
+            padding: 0;
+            margin: 0;
+        }
+
+        .fixed-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: linear-gradient(135deg, var(--fashion-1), var(--fashion-5));
+            padding: 10px 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .fixed-header:hover {
+            background: linear-gradient(135deg, var(--fashion-5), var(--fashion-1));
+        }
+
+        .fixed-header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .header-logo {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .fixed-header h1 {
+            font-family: 'Zen Kurenaido', sans-serif;
+            font-size: 24px;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            background: linear-gradient(to right, white, var(--fashion-2));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin: 0;
+            pointer-events: none;
+        }
+
+        .main-content {
+            margin-top: 60px;
+            padding: 20px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hidden {
+            display: none !important;
+            visibility: hidden;
+            opacity: 0;
+        }
+
+        .language-switch {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1001;
+            display: none;
+        }
+        
+        .language-switch button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 20px;
+            background: linear-gradient(135deg, var(--fashion-1), var(--fashion-5));
+            color: white;
+            cursor: pointer;
+            font-family: 'Yomogi', cursive;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .language-switch button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(135deg, var(--fashion-1), var(--fashion-5));
+            color: white;
+            margin-top: 40px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-logo {
+            font-family: 'Zen Kurenaido', sans-serif;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 15px;
+        }
+
+        .footer-social a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .footer-social a:hover {
+            color: var(--fashion-2);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .fixed-header h1 {
+                font-size: 20px;
+            }
+            
+            .main-content {
+                margin-top: 50px;
+                padding: 10px;
+            }
+
+            .language-switch {
+                top: 10px;
+                right: 10px;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="language-switch">
+        <button onclick="toggleLanguage()">English</button>
+    </div>
+
+    <div class="fixed-header" onclick="window.location.href='../index.html'">
+        <div class="fixed-header-content">
+            <img src="../images/monty.png" alt="Monty Trader Logo" class="header-logo">
+            <h1 class="ja">モンティの株式トレードインフォグラフィックス集</h1>
+            <h1 class="en hidden">Monty's Stock Trading Infographics Collection</h1>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>チャーリー・マンガーの名言 - グラフィックレコーディング</title>
+  <link href="https://fonts.googleapis.com/css2?family=Yomogi&family=Zen+Kurenaido&family=Kaisei+Decol:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'Kaisei Decol', serif;
+      background-color: #f8f9fa;
+      color: #334155;
+      line-height: 1.4;
+      padding: 2rem;
+    }
+    
+    .container {
+      max-width: 1200px;
+      width: 100%;
+      margin: 0 auto;
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      position: relative;
+    }
+    
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 2rem 2rem 1rem;
+      border-bottom: 3px dashed #593C47;
+      position: relative;
+    }
+    
+    .title {
+      font-family: 'Zen Kurenaido', sans-serif;
+      font-size: 32px;
+      font-weight: bold;
+      background: linear-gradient(90deg, #593C47, #F24405);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      transform: rotate(-1deg);
+      padding-bottom: 0.5rem;
+    }
+    
+    .date {
+      font-family: 'Yomogi', cursive;
+      font-size: 14px;
+      color: #475569;
+      margin-top: 0.5rem;
+    }
+    
+    .content {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 2rem;
+      gap: 1.5rem;
+    }
+    
+    .column {
+      flex: 1 1 30%;
+      min-width: 300px;
+      position: relative;
+    }
+    
+    .card {
+      background-color: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(10px);
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      border: 2px solid transparent;
+      border-image: linear-gradient(to right, #F2C53D, #F25C05);
+      border-image-slice: 1;
+      position: relative;
+    }
+    
+    .quote-card {
+      background-color: rgba(242, 230, 60, 0.1);
+      border: 2px dashed #593C47;
+      padding: 2rem;
+      position: relative;
+    }
+    
+    .quote-mark {
+      font-family: 'Kaisei Decol', serif;
+      font-size: 60px;
+      position: absolute;
+      top: -20px;
+      left: 10px;
+      color: rgba(242, 68, 4, 0.3);
+    }
+    
+    .quote-text {
+      font-family: 'Zen Kurenaido', sans-serif;
+      font-size: 24px;
+      font-weight: bold;
+      line-height: 1.4;
+      color: #593C47;
+      padding-left: 1rem;
+      padding-right: 1rem;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .section-title {
+      font-family: 'Yomogi', cursive;
+      font-size: 18px;
+      color: #1e40af;
+      margin-bottom: 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .keyword {
+      position: relative;
+      display: inline-block;
+    }
+    
+    .highlight {
+      position: relative;
+      display: inline-block;
+      z-index: 1;
+    }
+    
+    .highlight::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 2px;
+      width: 100%;
+      height: 8px;
+      background-color: rgba(242, 196, 60, 0.5);
+      z-index: -1;
+      transform: rotate(-1deg);
+    }
+    
+    .highlight-red::after {
+      background-color: rgba(242, 68, 4, 0.5);
+    }
+    
+    .bubble {
+      position: relative;
+      background-color: white;
+      border-radius: 12px;
+      padding: 1rem;
+      margin-top: 1.5rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+    
+    .bubble::before {
+      content: '';
+      position: absolute;
+      top: -10px;
+      left: 20px;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      border-bottom: 10px solid white;
+    }
+    
+    .handwritten {
+      font-family: 'Yomogi', cursive;
+      transform: rotate(-1deg);
+    }
+    
+    .icon {
+      display: inline-block;
+      margin-right: 0.5rem;
+      transform: rotate(-5deg);
+    }
+    
+    .arrow {
+      position: absolute;
+      width: 90px;
+      height: 30px;
+    }
+    
+    .arrow-right {
+      top: 50%;
+      right: -45px;
+      transform: translateY(-50%);
+    }
+    
+    .arrow-down {
+      bottom: -35px;
+      left: 50%;
+      transform: translateX(-50%) rotate(90deg);
+    }
+    
+    .dashed-line {
+      border-top: 2px dashed #593C47;
+      margin: 1.5rem 0;
+    }
+    
+    .consequence {
+      margin-top: 2rem;
+      padding: 1rem;
+      background-color: rgba(242, 91, 4, 0.1);
+      border-radius: 8px;
+      border-left: 4px solid #F24405;
+    }
+    
+    .footer {
+      padding: 1rem 2rem;
+      text-align: center;
+      font-size: 12px;
+      color: #64748b;
+      border-top: 1px dashed #593C47;
+    }
+    
+    .hand-drawn-box {
+      border: 2px solid #593C47;
+      border-radius: 12px;
+      position: relative;
+    }
+    
+    .hand-drawn-box::before,
+    .hand-drawn-box::after {
+      content: '';
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      background-color: white;
+      border: 2px solid #593C47;
+      border-radius: 50%;
+    }
+    
+    .hand-drawn-box::before {
+      top: -6px;
+      left: 20%;
+    }
+    
+    .hand-drawn-box::after {
+      bottom: -6px;
+      right: 20%;
+    }
+    
+    @media (max-width: 768px) {
+      .content {
+        flex-direction: column;
+      }
+      
+      .column {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1 class="title">チャーリー・マンガーの知恵 📝</h1>
+      <div class="date">2025年3月8日</div>
+    </div>
+    
+    <div class="content">
+      <div class="column">
+        <div class="quote-card">
+          <div class="quote-mark">"</div>
+          <p class="quote-text">
+            <span class="handwritten">
+              「<span class="highlight">衝動的な人間</span>でいて、すぐに満足を得なければならない人は、おそらく良い人生を送ることはできないでしょう — そしてそれは私たちには修正できません。」
+            </span>
+          </p>
+        </div>
+        
+        <div class="card">
+          <h3 class="section-title">
+            <span class="icon">✏️</span>チャーリー・マンガーとは
+          </h3>
+          <p>
+            ウォーレン・バフェットの右腕として知られる投資家。
+            バークシャー・ハサウェイの副会長を務め、長期的思考と
+            <span class="highlight">規律ある投資</span>のアプローチで有名。
+          </p>
+          <div class="bubble handwritten">
+            賢明な投資家であり哲学者でもある
+          </div>
+        </div>
+      </div>
+      
+      <div class="column">
+        <div class="card">
+          <h3 class="section-title">
+            <span class="icon">🔍</span>名言の本質
+          </h3>
+          <p>
+            マンガーは<span class="highlight">長期的な視点</span>の重要性を説いています。
+            <span class="highlight highlight-red">即時満足</span>を求める衝動が、人生の成功を妨げる
+            大きな要因であると指摘しています。
+          </p>
+          
+          <div class="dashed-line"></div>
+          
+          <div class="hand-drawn-box" style="padding: 1rem; margin-top: 1rem;">
+            <h4 style="font-family: 'Zen Kurenaido', sans-serif; color: #593C47; margin-bottom: 0.5rem;">
+              <span class="icon">⚠️</span>衝動的な行動の特徴
+            </h4>
+            <ul style="list-style: none; padding-left: 1rem;">
+              <li style="margin-bottom: 0.5rem;">
+                <span class="icon">➤</span>短期的な満足を優先する
+              </li>
+              <li style="margin-bottom: 0.5rem;">
+                <span class="icon">➤</span>じっくり考えずに行動する
+              </li>
+              <li>
+                <span class="icon">➤</span>将来の結果を軽視する
+              </li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="quote-card" style="margin-top: 2rem;">
+          <div class="quote-mark">"</div>
+          <p class="quote-text">
+            <span class="handwritten">
+              「<span class="highlight highlight-red">即時満足への欲求</span>は破滅への道です。それはまた、梅毒をもたらすかもしれません。」
+            </span>
+          </p>
+        </div>
+      </div>
+      
+      <div class="column">
+        <div class="card">
+          <h3 class="section-title">
+            <span class="icon">📊</span>長期思考の価値
+          </h3>
+          <p>
+            マンガーの投資哲学は<span class="highlight">遅延満足</span>に基づいています。
+            短期的な喜びよりも長期的な成功を重視し、
+            <span class="highlight">忍耐</span>と<span class="highlight">規律</span>が富の構築に不可欠と考えています。
+          </p>
+          
+          <div style="display: flex; justify-content: space-between; margin-top: 1.5rem;">
+            <div style="text-align: center; width: 45%;">
+              <div style="font-family: 'Yomogi', cursive; color: #F24405; font-weight: bold;">
+                即時満足
+              </div>
+              <div style="font-size: 40px; margin: 0.5rem 0; color: #F24405;">
+                📉
+              </div>
+              <div style="font-size: 12px; color: #475569;">
+                短期的な喜び<br>
+                長期的な損失
+              </div>
+            </div>
+            
+            <div style="text-align: center; width: 45%;">
+              <div style="font-family: 'Yomogi', cursive; color: #593C47; font-weight: bold;">
+                遅延満足
+              </div>
+              <div style="font-size: 40px; margin: 0.5rem 0; color: #593C47;">
+                📈
+              </div>
+              <div style="font-size: 12px; color: #475569;">
+                短期的な我慢<br>
+                長期的な成功
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="consequence">
+          <h4 style="font-family: 'Zen Kurenaido', sans-serif; margin-bottom: 0.5rem; color: #F24405;">
+            <span class="icon">⚡</span>警告の本質
+          </h4>
+          <p style="font-size: 13px;">
+            マンガーの発言は<span class="highlight">極端な譬え</span>を使って
+            衝動的な行動が将来的に深刻な問題を引き起こす可能性を強調しています。
+            自制心の欠如がもたらす様々な悪影響に警鐘を鳴らしています。
+          </p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer">
+      出典: チャーリー・マンガーの講演より抜粋 | グラフィックレコーディング風デザイン
+    </div>
+  </div>
+</body>
+</html>
+
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">Monty Trader</div>
+            <div class="footer-social">
+                <a href="https://x.com/monty_investor" target="_blank">@monty_investor</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleLanguage() {
+            const jaElements = document.querySelectorAll('.ja');
+            const enElements = document.querySelectorAll('.en');
+            const button = document.querySelector('.language-switch button');
+            
+            jaElements.forEach(el => el.classList.toggle('hidden'));
+            enElements.forEach(el => el.classList.toggle('hidden'));
+            
+            button.textContent = button.textContent === 'English' ? '日本語' : 'English';
+        }
+    </script>
+</body>
+</html> 
