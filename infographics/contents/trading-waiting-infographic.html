@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>トレードは「待つこと」- グラフィックレコーディング</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Yomogi&family=Zen+Kurenaido&family=Kaisei+Decol:wght@400;700&display=swap');
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'Kaisei Decol', serif;
+      background-color: #f8f9fa;
+      color: #334155;
+      line-height: 1.4;
+      padding: 20px;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      background-color: white;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      padding: 40px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+      border-bottom: 2px dashed #593C47;
+      padding-bottom: 20px;
+    }
+    
+    h1 {
+      font-family: 'Zen Kurenaido', sans-serif;
+      font-size: 32px;
+      font-weight: 700;
+      background: linear-gradient(90deg, #F25C05, #F24405);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+      position: relative;
+    }
+    
+    h1::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, #F2C53D, #F2E63D);
+      border-radius: 2px;
+    }
+    
+    .date-source {
+      font-family: 'Yomogi', cursive;
+      font-size: 14px;
+      color: #475569;
+    }
+    
+    .content {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    
+    .column {
+      flex: 1;
+      min-width: 300px;
+    }
+    
+    .section {
+      margin-bottom: 30px;
+      position: relative;
+    }
+    
+    h2 {
+      font-family: 'Zen Kurenaido', sans-serif;
+      font-size: 18px;
+      color: #1e40af;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      position: relative;
+    }
+    
+    h2::before {
+      content: '✏️';
+      margin-right: 8px;
+    }
+    
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 28px;
+      width: calc(100% - 28px);
+      height: 2px;
+      background: #F2C53D;
+      border-radius: 1px;
+    }
+    
+    p {
+      font-size: 14px;
+      margin-bottom: 15px;
+    }
+    
+    .card {
+      background-color: white;
+      border-radius: 12px;
+      padding: 15px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+      border: 1px solid rgba(89, 60, 71, 0.2);
+      position: relative;
+    }
+    
+    .card::before {
+      content: '';
+      position: absolute;
+      top: -5px;
+      right: -5px;
+      width: 25px;
+      height: 25px;
+      background-color: #F2E63D;
+      border-radius: 50%;
+      z-index: -1;
+    }
+    
+    .highlight {
+      font-weight: bold;
+      color: #F24405;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .highlight::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 6px;
+      background-color: rgba(242, 197, 61, 0.4);
+      z-index: -1;
+      border-radius: 3px;
+    }
+    
+    .bubble {
+      background-color: rgba(242, 230, 61, 0.2);
+      border: 2px dashed #593C47;
+      border-radius: 20px;
+      padding: 15px;
+      margin: 15px 0;
+      position: relative;
+    }
+    
+    .bubble::before {
+      content: '📌';
+      position: absolute;
+      top: -12px;
+      left: 20px;
+      background-color: white;
+      padding: 0 10px;
+    }
+    
+    .arrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 15px 0;
+      position: relative;
+    }
+    
+    .arrow::before {
+      content: '↓';
+      font-size: 24px;
+      color: #F25C05;
+    }
+    
+    .icon-text {
+      display: flex;
+      align-items: center;
+    }
+    
+    .icon-text span {
+      margin-right: 8px;
+      font-size: 18px;
+    }
+    
+    .box {
+      border: 2px solid #593C47;
+      border-radius: 10px;
+      padding: 12px;
+      margin: 15px 0;
+      background-color: rgba(255, 255, 255, 0.8);
+    }
+    
+    .glass-card {
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(10px);
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      margin: 20px 0;
+    }
+    
+    .timeline {
+      display: flex;
+      align-items: center;
+      margin: 20px 0;
+    }
+    
+    .timeline-point {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background-color: #F25C05;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: bold;
+      font-size: 12px;
+    }
+    
+    .timeline-line {
+      flex-grow: 1;
+      height: 3px;
+      background: linear-gradient(90deg, #F25C05, #F2C53D);
+    }
+    
+    .handwritten {
+      font-family: 'Yomogi', cursive;
+    }
+    
+    .emphasis {
+      font-size: 20px;
+      font-weight: bold;
+      color: #593C47;
+      text-align: center;
+      margin: 20px 0;
+      padding: 10px;
+      background: linear-gradient(90deg, rgba(242, 230, 61, 0.2), rgba(242, 196, 61, 0.2));
+      border-radius: 8px;
+    }
+    
+    .note {
+      font-family: 'Yomogi', cursive;
+      font-size: 14px;
+      padding: 10px;
+      background-color: rgba(242, 230, 61, 0.1);
+      border-left: 3px solid #F2C53D;
+      margin: 15px 0;
+    }
+    
+    footer {
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 2px dashed #593C47;
+      text-align: center;
+      font-size: 12px;
+      color: #475569;
+    }
+    
+    .decoration {
+      position: absolute;
+      font-size: 100px;
+      opacity: 0.05;
+      color: #593C47;
+      z-index: -1;
+    }
+    
+    .decoration.top-right {
+      top: 10px;
+      right: 30px;
+    }
+    
+    .decoration.bottom-left {
+      bottom: 30px;
+      left: 30px;
+    }
+    
+    .connect-line {
+      position: absolute;
+      border-left: 2px dashed #F25C05;
+      height: 50px;
+      left: 20px;
+      top: 100%;
+    }
+    
+    @media (max-width: 768px) {
+      .container {
+        padding: 20px;
+      }
+      
+      .column {
+        flex: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="decoration top-right">⏱️</div>
+    <div class="decoration bottom-left">⚖️</div>
+    
+    <header>
+      <h1>トレードは「待つこと」</h1>
+      <div class="date-source"><a href="https://x.com/samuraipips358" target="_blank">@samuraipips358</a></div>
+    </header>
+    
+    <div class="content">
+      <!-- 左カラム -->
+      <div class="column">
+        <div class="section">
+          <h2>トレードの本質</h2>
+          <div class="bubble">
+            <p class="icon-text"><span>⏳</span> トレードの大部分は<span class="highlight">待つこと</span>である</p>
+            <p class="icon-text"><span>❌</span> 待てない人はトレーダーに向いていない</p>
+          </div>
+          
+          <div class="card">
+            <p>短期的な結果は<span class="highlight">ランダム性</span>に強く影響されるため、一貫した行動を繰り返し、サンプルサイズを通じて<span class="highlight">確率を働かせる</span>必要がある。</p>
+          </div>
+          
+          <div class="arrow"></div>
+          
+          <div class="box">
+            <p class="handwritten">一貫したルールに従い続けるためには<span class="highlight">「待つ」</span>ことが必要だが、多くの人は待てない</p>
+          </div>
+        </div>
+        
+        <div class="section">
+          <h2>間違った考え方</h2>
+          <div class="card">
+            <p>市場環境がアクションに適していないときでも、</p>
+            <p class="note">「どう考えればトレードできるだろう？」と心配したり</p>
+            <p class="note">「トレードしていれば利益が出ていたのに」と後悔したりする</p>
+          </div>
+          
+          <div class="glass-card">
+            <p class="icon-text"><span>🚫</span> あなたのルールが「現在の市場環境ではトレードしない」と言っているなら、チャートがどれだけ動いても、何もしてはいけない</p>
+            <p class="icon-text"><span>⚠️</span> 実際には正しいことをしているのに後悔することは、それ自体が<span class="highlight">根本的な間違い</span>である</p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 中央カラム -->
+      <div class="column">
+        <div class="section">
+          <h2>勝ち負けゲーム vs 確率のゲーム</h2>
+          <div class="bubble">
+            <p>「利益を得ること」が「良いこと」で「正解」だと誤解している</p>
+            <p>その考え方こそが「<span class="highlight">勝ち負けゲーム</span>」の定義であり、「<span class="highlight">確率のゲーム</span>」と真っ向から対立している</p>
+          </div>
+          
+          <div class="emphasis">ルールに従うことよりも「利益を得ること」を優先した瞬間、不確実なトレードの世界で絶対に成功できないことが保証される</div>
+          
+          <div class="box">
+            <p class="icon-text"><span>📊</span> 戦略がエッジを持っていることを大きなサンプルサイズを通じて事前に徹底的にテストしたなら、何があってもそのルールに従うべき</p>
+          </div>
+        </div>
+        
+        <div class="section">
+          <h2>待てない理由</h2>
+          <div class="timeline">
+            <div class="timeline-point">1</div>
+            <div class="timeline-line"></div>
+            <div class="timeline-point">2</div>
+            <div class="timeline-line"></div>
+            <div class="timeline-point">3</div>
+          </div>
+          
+          <div class="card">
+            <p>1. <span class="highlight">ルールが明確でない</span>から</p>
+            <p>2. ルールに従い続けることで<span class="highlight">大数の法則</span>が働くという基本原則を理解していないから</p>
+            <p>3. まだ目の前の<span class="highlight">即時の勝ち負け</span>を優先しているから</p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 右カラム -->
+      <div class="column">
+        <div class="section">
+          <h2>シナリオとルールの重要性</h2>
+          <div class="card">
+            <p>「次にこうなったらどうするか」が明確であれば、チャートがその状態に達するまでにどれくらいの時間が必要かは少なくとも知っているはずである</p>
+            <p class="note">1時間の足を形成するには、当然1時間かかる</p>
+            <p>例えば、1時間足でトレードするトレーダーであれば、常にチャートを見つめる必要はないはずだ</p>
+          </div>
+          
+          <div class="bubble">
+            <p class="icon-text"><span>🔑</span> 「次にこうなったら、これをする」というシナリオは非常に重要</p>
+            <p>ルールが明確でなければ、何を待つべきか分からず、待つことができない</p>
+          </div>
+          
+          <div class="emphasis">待てない人はトレードが本当に何であるかを理解していない</div>
+        </div>
+        
+        <div class="section">
+          <h2>シナリオと予測の違い</h2>
+          <div class="card">
+            <p>シナリオは「予測」ではなく、<span class="highlight">行動計画</span>である</p>
+            <p>「これが起きたら、それをする」は、「これは絶対に起きるはず」という予測とは全く異なる</p>
+            <p class="note">「雨が降ったら傘を使う」という計画を持っているだけで、「絶対に雨が降る」と予測しているわけではない</p>
+            <p>雨が降らなければ、傘を使ってはいけない</p>
+          </div>
+          
+          <div class="glass-card">
+            <p>しかし、多くの人は予測や願望にしがみつき、最初の計画が無効になっても、「絶対に上がるはずだ」と考え、必要なロスカットを無期限に行わない、または予測に基づいて適切なエントリーポイントよりも早く、まだ入るべきではないときに早期にエントリーする</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="glass-card" style="margin-top: 40px;">
+      <h2 style="text-align: center;">トレードの基礎は「待つこと」</h2>
+      <div style="display: flex; flex-wrap: wrap; justify-content: space-between; margin-top: 20px;">
+        <div style="flex: 1; min-width: 200px; padding: 10px;">
+          <p class="icon-text"><span>⏱️</span> トレードには何をするにしても<span class="highlight">時間がかかる</span></p>
+          <p>・適切なタイミングを待つ</p>
+          <p>・適切な出口タイミングまで待つ</p>
+          <p>・次のトレードを待つ</p>
+        </div>
+        <div style="flex: 1; min-width: 200px; padding: 10px;">
+          <p class="icon-text"><span>📈</span> <span class="highlight">時間がかかるもの</span>：</p>
+          <p>・大きなサンプルサイズの構築</p>
+          <p>・複利効果の働き</p>
+          <p>・トレーダーとしての成熟</p>
+        </div>
+      </div>
+      <div class="emphasis" style="margin-top: 20px;">
+        待つことができない人や今すぐお金が欲しい人が簡単に稼ごうとするものではない
+      </div>
+      <p style="text-align: center; margin-top: 20px;">トレードを理解すればするほど、いかに<span class="highlight">待たなければならないか</span>を実感するだろう</p>
+    </div>
+    
+    <footer>
+      <p>Source: <a href="https://x.com/samuraipips358" target="_blank">@samuraipips358</a> "Trading is 'waiting'"</p>
+    </footer>
+  </div>
+</body>
+</html>
