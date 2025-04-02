@@ -699,32 +699,33 @@
         });
 
         function filterContent(keyword) {
-            const items = document.querySelectorAll('.content-item');
+            const listItems = document.querySelectorAll('.content-list li');
             keyword = keyword.toLowerCase();
-            
+
             if (keyword === '') {
-                items.forEach(item => {
-                    item.style.display = '';
+                listItems.forEach(li => {
+                    li.style.display = '';
                 });
                 document.querySelectorAll('.category').forEach(category => {
                     category.style.display = 'block';
                 });
                 return;
             }
-            
+
             document.querySelectorAll('.category').forEach(category => {
                 let hasVisibleItems = false;
-                
-                category.querySelectorAll('.content-item').forEach(item => {
-                    const text = item.textContent.toLowerCase();
+                const categoryListItems = category.querySelectorAll('.content-list li');
+
+                categoryListItems.forEach(li => {
+                    const text = li.textContent.toLowerCase();
                     if (text.includes(keyword)) {
-                        item.style.display = '';
+                        li.style.display = '';
                         hasVisibleItems = true;
                     } else {
-                        item.style.display = 'none';
+                        li.style.display = 'none';
                     }
                 });
-                
+
                 category.style.display = hasVisibleItems ? 'block' : 'none';
             });
         }
