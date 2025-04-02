@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2025年3月ISM製造業指数レポート - セクター別企業コメント</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Yomogi&family=Zen+Kurenaido&family=Kaisei+Decol:wght@400;700&display=swap');
+    
+    :root {
+      --fashion-1: #593C47;
+      --fashion-2: #F2E63D;
+      --fashion-3: #F2C53D;
+      --fashion-4: #F25C05;
+      --fashion-5: #F24405;
+      --light-bg: rgba(255, 255, 255, 0.8);
+    }
+    
+    body {
+      font-family: 'Kaisei Decol', 'Zen Kurenaido', sans-serif;
+      background: #f8f9fa;
+      background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23593c47' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+      margin: 0;
+      padding: 20px;
+      color: #334155;
+      line-height: 1.4;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      background: var(--light-bg);
+      border-radius: 24px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+      backdrop-filter: blur(10px);
+      padding: 30px;
+      overflow: hidden;
+    }
+    
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 30px;
+      padding-bottom: 15px;
+      border-bottom: 3px dashed var(--fashion-3);
+    }
+    
+    .title-container {
+      flex: 1;
+    }
+    
+    h1 {
+      font-family: 'Yomogi', cursive;
+      font-size: 32px;
+      margin: 0 0 10px;
+      font-weight: 700;
+      background: linear-gradient(90deg, var(--fashion-1), var(--fashion-5));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      display: inline-block;
+      padding-bottom: 5px;
+      position: relative;
+    }
+    
+    h1::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: url("data:image/svg+xml,%3Csvg width='100' height='4' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M 0,2 Q 25,0 50,2 T 100,2' stroke='%23F25C05' fill='none' stroke-width='2'/%3E%3C/svg%3E") repeat-x;
+      background-size: 100px 4px;
+    }
+    
+    .date-source {
+      font-family: 'Zen Kurenaido', sans-serif;
+      font-size: 16px;
+      color: #475569;
+      text-align: right;
+      background: white;
+      padding: 8px 12px;
+      border-radius: 12px;
+      border: 2px solid var(--fashion-3);
+      transform: rotate(1deg);
+      box-shadow: 2px 2px 0 rgba(0,0,0,0.1);
+    }
+    
+    .content {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+    
+    .column {
+      flex: 1;
+      min-width: 350px;
+    }
+    
+    .sector-card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 3px 3px 8px rgba(0,0,0,0.05);
+      padding: 20px;
+      margin-bottom: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .sector-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 8px;
+      height: 100%;
+    }
+    
+    .sector-card h2 {
+      font-family: 'Kaisei Decol', serif;
+      font-size: 18px;
+      color: var(--fashion-1);
+      margin: 0 0 15px;
+      padding-left: 32px;
+      position: relative;
+    }
+    
+    .sector-card h2::before {
+      content: attr(data-emoji);
+      position: absolute;
+      left: 0;
+      font-size: 22px;
+    }
+    
+    .sector-card p {
+      font-size: 14px;
+      color: #334155;
+      line-height: 1.6;
+      margin: 0;
+      position: relative;
+      padding-left: 25px;
+    }
+    
+    .sector-card p::before {
+      content: '💬';
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+    
+    .keyword {
+      font-weight: bold;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .keyword.important {
+      color: var(--fashion-5);
+    }
+    
+    .keyword.highlight {
+      position: relative;
+    }
+    
+    .keyword.highlight::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 8px;
+      background-color: var(--fashion-2);
+      z-index: -1;
+      opacity: 0.6;
+      transform: rotate(-1deg);
+    }
+    
+    .keyword.underline {
+      border-bottom: 2px dashed var(--fashion-4);
+    }
+    
+    /* Sector specific colors */
+    .chemical { --sector-color: var(--fashion-3); }
+    .transportation { --sector-color: var(--fashion-4); }
+    .computer { --sector-color: var(--fashion-5); }
+    .food { --sector-color: var(--fashion-3); }
+    .machinery { --sector-color: var(--fashion-1); }
+    .metal { --sector-color: var(--fashion-4); }
+    .electrical { --sector-color: var(--fashion-3); }
+    .misc { --sector-color: var(--fashion-5); }
+    .petroleum { --sector-color: var(--fashion-4); }
+    .primary-metal { --sector-color: var(--fashion-1); }
+    
+    .sector-card.chemical::before { background-color: var(--fashion-3); }
+    .sector-card.transportation::before { background-color: var(--fashion-4); }
+    .sector-card.computer::before { background-color: var(--fashion-5); }
+    .sector-card.food::before { background-color: var(--fashion-3); }
+    .sector-card.machinery::before { background-color: var(--fashion-1); }
+    .sector-card.metal::before { background-color: var(--fashion-4); }
+    .sector-card.electrical::before { background-color: var(--fashion-3); }
+    .sector-card.misc::before { background-color: var(--fashion-5); }
+    .sector-card.petroleum::before { background-color: var(--fashion-4); }
+    .sector-card.primary-metal::before { background-color: var(--fashion-1); }
+    
+    .trend-marker {
+      display: inline-block;
+      margin-left: 5px;
+      transform: rotate(10deg);
+    }
+    
+    .trend-marker.up { color: #10b981; }
+    .trend-marker.down { color: #ef4444; }
+    .trend-marker.neutral { color: #6b7280; }
+    
+    .key-insights {
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      margin-top: 30px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      position: relative;
+    }
+    
+    .key-insights h2 {
+      font-family: 'Yomogi', cursive;
+      font-size: 24px;
+      color: var(--fashion-1);
+      margin: 0 0 15px;
+      padding-left: 35px;
+      position: relative;
+    }
+    
+    .key-insights h2::before {
+      content: '🔍';
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+    
+    .insights-container {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    
+    .insight-item {
+      flex: 1;
+      min-width: 250px;
+      background: #f8f9fa;
+      padding: 15px;
+      border-radius: 8px;
+      position: relative;
+    }
+    
+    .insight-item::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: var(--fashion-3);
+      border-radius: 8px 8px 0 0;
+    }
+    
+    .insight-title {
+      font-weight: bold;
+      color: var(--fashion-5);
+      margin-bottom: 10px;
+      position: relative;
+      padding-left: 25px;
+    }
+    
+    .insight-title::before {
+      content: attr(data-emoji);
+      position: absolute;
+      left: 0;
+    }
+    
+    .arrow-connector {
+      position: absolute;
+      display: none; /* Will be shown in larger screens */
+    }
+    
+    .handdrawn-arrow {
+      width: 80px;
+      height: 40px;
+      position: absolute;
+      display: none; /* Will be shown in larger screens */
+    }
+    
+    .footer {
+      margin-top: 30px;
+      font-size: 14px;
+      color: #64748b;
+      text-align: center;
+      font-family: 'Zen Kurenaido', sans-serif;
+      border-top: 2px dashed var(--fashion-1);
+      padding-top: 15px;
+    }
+    
+    /* Hand-drawn elements styles */
+    .hand-circle {
+      display: inline-block;
+      width: 30px;
+      height: 30px;
+      border: 2px solid var(--fashion-5);
+      border-radius: 50%;
+      transform: rotate(5deg);
+      margin: 0 5px;
+      vertical-align: middle;
+    }
+    
+    @media (min-width: 992px) {
+      .arrow-connector, .handdrawn-arrow {
+        display: block;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .column {
+        flex: 100%;
+      }
+      
+      .date-source {
+        margin-top: 15px;
+      }
+      
+      header {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="title-container">
+        <h1>2025年3月ISM製造業指数レポート</h1>
+        <div style="font-size: 16px; color: #475569; margin-top: 5px;">セクター別企業コメント要約</div>
+      </div>
+      <div class="date-source">
+        <div>📅 2025年4月1日発表</div>
+        <div>📊 ISM製造業指数レポートより</div>
+      </div>
+    </header>
+    
+    <div class="content">
+      <div class="column">
+        <div class="sector-card chemical">
+          <h2 data-emoji="🧪">化学製品</h2>
+          <p>「複雑な市場では、<span class="keyword highlight">2024年よりも2025年の方がやや良くなる</span>と見込んだボリューム買いが急増しました。しかし3月には、<span class="keyword important">潜在的な危機に備えて在庫を積み増す動き</span>や不安が広がり、すべての市場で<span class="keyword underline">減速</span><span class="trend-marker down">↓</span>が見られました。」</p>
+        </div>
+        
+        <div class="sector-card transportation">
+          <h2 data-emoji="🚢">輸送用機器</h2>
+          <p>「<span class="keyword important">深刻な供給不足</span>がサプライチェーンの継続性に影響を与えています。特にドイツなどの国々での原材料（ゲルマニウムなど）に関する制限措置が主要な不足を引き起こし、<span class="keyword highlight">2025年分の供給はすでに取り合い</span>になり、価格上昇を招いています。現在の<span class="keyword underline">関税</span>は確保が難しい状況に小さな影響を及ぼし、購入条件が不透明さを理由により厳格化しています。堅調だった航空・防衛（A&D）分野も、政府方針による外国の報復措置などで需要の先行きがやや不透明になっています。」</p>
+        </div>
+        
+        <div class="sector-card computer">
+          <h2 data-emoji="💻">コンピューター・電子機器</h2>
+          <p>「顧客は、<span class="keyword important">継続中の関税と価格圧力</span>を懸念し、<span class="keyword highlight">注文を前倒し</span>にしています。」</p>
+        </div>
+        
+        <div class="sector-card food">
+          <h2 data-emoji="🍔">食品・飲料・たばこ製品</h2>
+          <p>「カナダで通常よりも売上が落ち始めています。<span class="keyword important">カナダ人による米国製品のボイコット</span>が現実化するのではないかと懸念しています。」<span class="trend-marker down">↓</span></p>
+        </div>
+      </div>
+      
+      <div class="column">
+        <div class="sector-card machinery">
+          <h2 data-emoji="⚙️">機械</h2>
+          <p>「景況感は<span class="keyword important">急速に悪化</span>しています。<span class="keyword highlight">関税や経済的な不確実性</span>が、現在のビジネス環境を非常に困難にしています。」<span class="trend-marker down">↓↓</span></p>
+        </div>
+        
+        <div class="sector-card metal">
+          <h2 data-emoji="🔨">金属製品</h2>
+          <p>「新規受注は想定以上に増加しており、好調です。おそらく顧客は、<span class="keyword highlight">今後予想される関税やコスト上昇に先んじて在庫を確保</span>しようとしているとみています。ただし、この<span class="keyword underline">需要の高まりは長く続かない</span>と予想しています。」<span class="trend-marker up">↑</span></p>
+        </div>
+        
+        <div class="sector-card electrical">
+          <h2 data-emoji="⚡">電気機器・家電・部品</h2>
+          <p>「需要は昨年と同等で安定しており、需要拡大の兆しは見られません。<span class="keyword important">関税の影響や対応策</span>が日々の議題に上がっています。」<span class="trend-marker neutral">→</span></p>
+        </div>
+        
+        <div class="sector-card misc">
+          <h2 data-emoji="🔧">その他製造業</h2>
+          <p>「新規に導入された関税の影響で、<span class="keyword important">粗利益が大きく圧迫</span>されています。カナダが米国製品に対して新たに課した関税も、同国からの受注に大きな影響を与えています。<span class="keyword highlight">欧州における報復的関税の脅威</span>により、見積依頼や売上も落ち込みを見せています。」<span class="trend-marker down">↓</span></p>
+        </div>
+      </div>
+      
+      <div class="column">
+        <div class="sector-card petroleum">
+          <h2 data-emoji="🛢️">石油・石炭製品</h2>
+          <p>「<span class="keyword important">世界的な経済の不安定性</span>が、当社の石油・ガス関連事業にかなりの影響を与え始めました。米国の政権交代に加え、<span class="keyword highlight">中国・インド・欧州の経済状況</span>が、今後の景気サイクルにおける落ち込みを助長しているように見受けられます。」<span class="trend-marker down">↓</span></p>
+        </div>
+        
+        <div class="sector-card primary-metal">
+          <h2 data-emoji="🏭">一次金属</h2>
+          <p>「<span class="keyword underline">弱気な市場心理</span>と<span class="keyword important">関税の適用・コストに関する議論</span>がこの1カ月を席巻しており、今後もしばらくはこの不透明な状況が続くでしょう。最大の懸念は、<span class="keyword highlight">価格上昇による需要破壊</span>が起こるかどうかという点です。」<span class="trend-marker down">↓</span></p>
+        </div>
+        
+        <div class="key-insights">
+          <h2>業界横断的な主要トレンド</h2>
+          <div class="insights-container">
+            <div class="insight-item">
+              <div class="insight-title" data-emoji="⚠️">関税問題</div>
+              <p>多くのセクターで関税に関する懸念が共通して表明されており、コスト上昇や供給の制約要因となっている。特に国際関係の複雑化による報復的関税の可能性も憂慮されている。</p>
+            </div>
+            <div class="insight-item">
+              <div class="insight-title" data-emoji="📉">景気先行き不透明感</div>
+              <p>世界経済の不安定性への言及が多く、特に米国の政権交代や中国・インド・欧州の経済状況などが不確実性要因として挙げられている。多くのセクターで減速傾向が見られる。</p>
+            </div>
+            <div class="insight-item">
+              <div class="insight-title" data-emoji="📦">在庫の戦略的調整</div>
+              <p>将来の不確実性に備えた在庫積み増しや、関税・価格上昇前の前倒し発注など、企業の予防的行動が見られる。ただし、この需要増は一時的との見方も。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer">
+      出典: 2025年4月1日発表「2025年3月のISM製造業指数レポート」セクター別（業種別）企業コメント<br>
+      注: 英語原文から翻訳した内容です。正確なニュアンスは原文をご参照ください。
+    </div>
+  </div>
+</body>
+</html>
