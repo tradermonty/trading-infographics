@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>トランプ大統領「解放の日」関税発表に関する中長期影響分析</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Yomogi&family=Zen+Kurenaido&family=Kaisei+Decol:wght@400;700&display=swap');
+    
+    :root {
+      --fashion-1: #593C47;
+      --fashion-2: #F2E63D;
+      --fashion-3: #F2C53D;
+      --fashion-4: #F25C05;
+      --fashion-5: #F24405;
+      --dark-text: #334155;
+      --light-text: #f8fafc;
+      --section-title: #1e40af;
+      --subtitle: #475569;
+      --card-bg: rgba(255, 255, 255, 0.8);
+      --shadow: rgba(0, 0, 0, 0.1);
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'Zen Kurenaido', 'Kaisei Decol', sans-serif;
+      line-height: 1.4;
+      color: var(--dark-text);
+      background-color: #f8fafc;
+      padding: 20px;
+    }
+    
+    .container {
+      max-width: 100%;
+      margin: 0 auto;
+      background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+      border-radius: 12px;
+      box-shadow: 0 4px 12px var(--shadow);
+      overflow: hidden;
+      position: relative;
+    }
+    
+    /* 手書き風の効果 */
+    .hand-drawn {
+      position: relative;
+      display: inline-block;
+    }
+    
+    .hand-drawn::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      bottom: -2px;
+      left: 0;
+      background-color: var(--fashion-3);
+      transform: skew(-12deg) rotate(-0.5deg);
+    }
+    
+    /* ヘッダー */
+    .header {
+      padding: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      background: linear-gradient(90deg, var(--fashion-1) 0%, var(--fashion-5) 100%);
+      border-bottom: 3px solid var(--fashion-3);
+      position: relative;
+    }
+    
+    .header::after {
+      content: "";
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: repeating-linear-gradient(
+        45deg,
+        var(--fashion-2),
+        var(--fashion-2) 10px,
+        var(--fashion-3) 10px,
+        var(--fashion-3) 20px
+      );
+    }
+    
+    .title {
+      font-family: 'Kaisei Decol', serif;
+      font-size: 32px;
+      font-weight: bold;
+      color: white;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+      background: linear-gradient(90deg, var(--fashion-2), var(--fashion-4));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      padding: 5px;
+      line-height: 1.2;
+    }
+    
+    .date {
+      font-family: 'Yomogi', cursive;
+      color: white;
+      font-size: 16px;
+      text-align: right;
+      background: rgba(255, 255, 255, 0.2);
+      padding: 6px 10px;
+      border-radius: 20px;
+      margin-top: 5px;
+    }
+    
+    /* メインコンテンツ */
+    .content {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 20px;
+      gap: 20px;
+    }
+    
+    .column {
+      flex: 1 1 30%;
+      min-width: 300px;
+    }
+    
+    .card {
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 8px var(--shadow);
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+    }
+    
+    .card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(90deg, var(--fashion-3), var(--fashion-4));
+    }
+    
+    .section-title {
+      font-size: 18px;
+      color: var(--section-title);
+      margin-bottom: 12px;
+      padding-bottom: 6px;
+      border-bottom: 2px dashed var(--fashion-4);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .section-content {
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    
+    /* 項目リスト */
+    .item-list {
+      list-style: none;
+    }
+    
+    .item-list li {
+      position: relative;
+      padding-left: 24px;
+      margin-bottom: 10px;
+    }
+    
+    .item-list li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: var(--fashion-4);
+      font-weight: bold;
+    }
+    
+    /* キーワード強調 */
+    .highlight {
+      position: relative;
+      font-weight: bold;
+      color: var(--fashion-5);
+      display: inline-block;
+    }
+    
+    .highlight::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 5px;
+      background-color: var(--fashion-2);
+      opacity: 0.5;
+      z-index: -1;
+    }
+    
+    /* 矢印 */
+    .arrow {
+      display: flex;
+      justify-content: center;
+      margin: 15px 0;
+    }
+    
+    .arrow svg {
+      width: 40px;
+      height: 40px;
+      fill: var(--fashion-4);
+      transform: rotate(12deg);
+    }
+    
+    /* 吹き出し */
+    .bubble {
+      position: relative;
+      background: var(--fashion-2);
+      border-radius: 10px;
+      padding: 10px 15px;
+      margin: 15px 0;
+      font-family: 'Yomogi', cursive;
+      font-weight: bold;
+      box-shadow: 2px 2px 5px var(--shadow);
+    }
+    
+    .bubble::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 20px;
+      border-width: 10px 10px 0;
+      border-style: solid;
+      border-color: var(--fashion-2) transparent;
+    }
+    
+    /* 銘柄カード */
+    .stock-card {
+      display: flex;
+      align-items: center;
+      background: white;
+      border-radius: 8px;
+      padding: 10px;
+      margin-bottom: 10px;
+      box-shadow: 0 2px 5px var(--shadow);
+      transition: transform 0.2s;
+    }
+    
+    .stock-card:hover {
+      transform: translateY(-2px);
+    }
+    
+    .stock-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 10px;
+      font-weight: bold;
+      color: white;
+    }
+    
+    .positive .stock-icon {
+      background: linear-gradient(135deg, #22c55e, #16a34a);
+    }
+    
+    .negative .stock-icon {
+      background: linear-gradient(135deg, #ef4444, #dc2626);
+    }
+    
+    .stock-info {
+      flex: 1;
+    }
+    
+    .stock-name {
+      font-weight: bold;
+      font-size: 15px;
+    }
+    
+    .stock-reason {
+      font-size: 12px;
+      color: var(--subtitle);
+    }
+    
+    /* フッター */
+    .footer {
+      padding: 15px;
+      text-align: center;
+      font-size: 12px;
+      color: var(--subtitle);
+      border-top: 1px dashed var(--fashion-1);
+      background: rgba(255, 255, 255, 0.7);
+    }
+    
+    /* 手書き風の図形 */
+    .hand-drawn-shape {
+      stroke: var(--fashion-1);
+      stroke-width: 2;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    
+    .filled-shape {
+      fill: rgba(242, 197, 61, 0.2);
+    }
+    
+    /* レスポンシブ対応 */
+    @media (max-width: 768px) {
+      .column {
+        flex: 1 1 100%;
+      }
+      
+      .title {
+        font-size: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- ヘッダー -->
+    <div class="header">
+      <h1 class="title">トランプ大統領「解放の日」関税発表に関する<br>中長期影響分析レポート</h1>
+      <div class="date">2025年4月2日～2026年10月（18ヶ月）</div>
+    </div>
+    
+    <!-- サブヘッダー情報バー -->
+    <div style="background: rgba(89, 60, 71, 0.1); padding: 10px 24px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px;">
+      <div style="display: flex; align-items: center; gap: 5px;">
+        <span style="background: var(--fashion-2); width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold;">!</span>
+        <span style="font-size: 14px;"><strong>関税基本:</strong> 輸入品全体10%＋国別・品目別追加関税</span>
+      </div>
+      <div style="display: flex; align-items: center; gap: 5px;">
+        <span style="background: var(--fashion-3); width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold;">$</span>
+        <span style="font-size: 14px;"><strong>影響期間:</strong> 18ヶ月（中長期シナリオ）</span>
+      </div>
+      <div style="display: flex; align-items: center; gap: 5px;">
+        <span style="background: var(--fashion-4); width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; color: white;">↗</span>
+        <span style="font-size: 14px;"><strong>市場への影響:</strong> ボラティリティ増加</span>
+      </div>
+    </div>
+    
+    <!-- メインコンテンツ -->
+    <div class="content">
+      <!-- 左カラム -->
+      <div class="column">
+        <!-- ニュース記事のヘッドライン -->
+        <div class="card">
+          <h2 class="section-title">
+            <span>📰</span>注目のニュースヘッドライン
+          </h2>
+          <div class="section-content">
+            <ul class="item-list">
+              <li>トランプ大統領、「解放の日」イベントで<span class="highlight">広範な相互関税</span>を発表</li>
+              <li><span class="highlight">輸入品全体に10%</span>の普遍的ベースライン関税を導入</li>
+              <li>中国、EU、日本、アジア諸国などに<span class="highlight">国別相互関税</span>を発動</li>
+              <li>自動車・部品に<span class="highlight">新たな25%関税</span>、5月には部品関税も発効へ</li>
+              <li>エコノミスト、新関税による<span class="highlight">インフレ圧力</span>と景気後退リスクを警告</li>
+              <li>USMCAの一部免除措置が失効、カナダ・メキシコ産品への影響も</li>
+              <li>ベースライン関税、<span class="highlight">エネルギー・医薬品・半導体</span>は除外対象</li>
+            </ul>
+            
+            <div style="display: flex; justify-content: center; margin-top: 10px;">
+              <svg width="250" height="70" viewBox="0 0 250 70">
+                <path d="M10,35 C40,15 70,55 100,35 C130,15 160,55 190,35 C220,15 250,55 280,35" class="hand-drawn-shape" stroke-width="3" stroke-dasharray="3,3" />
+                <text x="10" y="20" font-size="11" fill="#F24405">「親切な相互主義」</text>
+                <text x="150" y="20" font-size="11" fill="#F24405">米国関税率は相手国の半分程度？</text>
+              </svg>
+            </div>
+          </div>
+        </div>
+        
+        <!-- シナリオ概要 -->
+        <div class="card">
+          <h2 class="section-title">
+            <span>🔮</span>想定シナリオ概要
+          </h2>
+          <div class="section-content">
+            <div class="bubble">
+              普遍的ベースライン関税（10%）及び国別相互関税が今後18ヶ月間維持・施行
+            </div>
+            
+            <p><strong>🔥 経済指標の予測:</strong></p>
+            <svg width="100%" height="150" viewBox="0 0 300 150">
+              <!-- インフレ率 -->
+              <g transform="translate(30, 40)">
+                <text x="-20" y="-15" font-size="12" fill="#334155">インフレ率</text>
+                <path d="M0,0 C5,-5 10,20 20,15 C30,10 40,20 50,10 C60,0 70,5 80,-10" class="hand-drawn-shape" stroke="#F24405" stroke-width="3" fill="none"/>
+                <text x="85" y="-10" font-size="12" fill="#F24405">↗︎上昇</text>
+              </g>
+              
+              <!-- GDP成長率 -->
+              <g transform="translate(30, 90)">
+                <text x="-20" y="-15" font-size="12" fill="#334155">GDP成長率</text>
+                <path d="M0,0 C10,-5 20,5 30,10 C40,15 50,10 60,20 C70,30 80,25 90,40" class="hand-drawn-shape" stroke="#1e40af" stroke-width="3" fill="none"/>
+                <text x="95" y="40" font-size="12" fill="#1e40af">↘︎鈍化</text>
+              </g>
+              
+              <!-- 金利 -->
+              <g transform="translate(180, 40)">
+                <text x="-20" y="-15" font-size="12" fill="#334155">金利動向</text>
+                <path d="M0,0 C10,10 20,-5 30,5 C40,15 50,10 60,25 C70,10 80,20 90,5" class="hand-drawn-shape" stroke="#F2C53D" stroke-width="3" fill="none"/>
+                <text x="95" y="5" font-size="12" fill="#F2C53D">不透明</text>
+              </g>
+              
+              <!-- 雇用 -->
+              <g transform="translate(180, 90)">
+                <text x="-20" y="-15" font-size="12" fill="#334155">雇用</text>
+                <path d="M0,0 C10,5 20,0 30,10 C40,15 50,20 60,25 C70,30 80,25 90,35" class="hand-drawn-shape" stroke="#593C47" stroke-width="3" fill="none"/>
+                <text x="95" y="35" font-size="12" fill="#593C47">伸び悩み</text>
+              </g>
+            </svg>
+            
+            <div class="bubble" style="background-color: rgba(242, 196, 61, 0.3); margin: 15px 0;">
+              <strong>⚠️ スタグフレーションリスク</strong>: インフレ高止まり+景気後退の可能性
+            </div>
+            
+            <p><strong>🧮 政策・規制:</strong> 保護主義的な通商政策が継続・強化される可能性。関税対象品目の予見可能性が低く、地政学的な緊張も高まる。</p>
+            
+            <p><strong>🌾 コモディティ影響:</strong></p>
+            <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 5px;">
+              <div style="background: rgba(242, 196, 61, 0.2); padding: 5px 10px; border-radius: 20px; font-size: 12px;">
+                <strong>鉄鋼・アルミ</strong> ↗️ 国内価格上昇
+              </div>
+              <div style="background: rgba(242, 92, 5, 0.2); padding: 5px 10px; border-radius: 20px; font-size: 12px;">
+                <strong>農業関連</strong> ↘️ 報復関税リスク
+              </div>
+              <div style="background: rgba(89, 60, 71, 0.2); padding: 5px 10px; border-radius: 20px; font-size: 12px;">
+                <strong>エネルギー</strong> 🔄 状況次第
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 中央カラム -->
+      <div class="column">
+        <!-- インパクト分析 -->
+        <div class="card">
+          <h2 class="section-title">
+            <span>🎯</span>インパクト分析
+          </h2>
+          <div class="section-content">
+            <!-- 1次的インパクト -->
+            <div style="margin-bottom: 15px;">
+              <h3 style="color: var(--fashion-5); font-size: 16px;">⚡️ 1次的インパクト（直接的影響）</h3>
+              <svg width="100%" height="80">
+                <path d="M10,20 C30,5 50,35 70,20 C90,5 110,35 130,20 C150,5 170,35 190,20" class="hand-drawn-shape" />
+                <g transform="translate(20, 40)">
+                  <circle cx="0" cy="0" r="15" class="hand-drawn-shape filled-shape" />
+                  <text x="-9" y="4" font-size="12">輸入</text>
+                </g>
+                <g transform="translate(80, 40)">
+                  <circle cx="0" cy="0" r="15" class="hand-drawn-shape filled-shape" />
+                  <text x="-9" y="4" font-size="12">自動</text>
+                </g>
+                <g transform="translate(140, 40)">
+                  <circle cx="0" cy="0" r="15" class="hand-drawn-shape filled-shape" />
+                  <text x="-9" y="4" font-size="12">鉄鋼</text>
+                </g>
+                <g transform="translate(200, 40)">
+                  <circle cx="0" cy="0" r="15" class="hand-drawn-shape filled-shape" />
+                  <text x="-9" y="4" font-size="12">輸出</text>
+                </g>
+              </svg>
+              
+              <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 10px;">
+                <div style="flex: 1; min-width: 200px; background: rgba(242, 68, 5, 0.1); padding: 8px; border-radius: 8px;">
+                  <div style="font-weight: bold; border-bottom: 1px dashed var(--fashion-4); padding-bottom: 3px; margin-bottom: 5px;">🚨 最も影響大</div>
+                  <ul style="list-style: none; margin: 0; padding: 0;">
+                    <li style="margin-bottom: 3px; font-size: 13px;">• 中国からの輸入依存企業</li>
+                    <li style="margin-bottom: 3px; font-size: 13px;">• 自動車・同部品メーカー</li>
+                    <li style="font-size: 13px;">• アジア生産拠点企業</li>
+                  </ul>
+                </div>
+                <div style="flex: 1; min-width: 200px; background: rgba(89, 60, 71, 0.1); padding: 8px; border-radius: 8px;">
+                  <div style="font-weight: bold; border-bottom: 1px dashed var(--fashion-1); padding-bottom: 3px; margin-bottom: 5px;">💡 関税対象相手国</div>
+                  <div style="display: flex; flex-wrap: wrap; gap: 3px; font-size: 12px;">
+                    <span style="background: rgba(242, 230, 60, 0.3); padding: 2px 6px; border-radius: 10px;">中国🇨🇳</span>
+                    <span style="background: rgba(242, 196, 61, 0.3); padding: 2px 6px; border-radius: 10px;">EU🇪🇺</span>
+                    <span style="background: rgba(242, 92, 5, 0.3); padding: 2px 6px; border-radius: 10px;">日本🇯🇵</span>
+                    <span style="background: rgba(242, 68, 5, 0.3); padding: 2px 6px; border-radius: 10px;">ベトナム🇻🇳</span>
+                    <span style="background: rgba(89, 60, 71, 0.3); padding: 2px 6px; border-radius: 10px;">アジア諸国</span>
+                  </div>
+                </div>
+              </div>
+              
+              <ul class="item-list">
+                <li><span class="highlight">輸入業者全般:</span> 10%のベースライン関税によりコストが直接増加</li>
+                <li><span class="highlight">自動車・部品:</span> 25%関税でコスト大幅増加</li>
+                <li><span class="highlight">鉄鋼・アルミ生産者:</span> 輸入品に対する競争力向上</li>
+                <li><span class="highlight">輸出産業:</span> 報復関税により収益悪化リスク、特に農業・航空機・ハイテク製品</li>
+              </ul>
+            </div>
+            
+            <!-- 2次的インパクト -->
+            <div style="margin-bottom: 15px;">
+              <h3 style="color: var(--fashion-4); font-size: 16px;">🔄 2次的インパクト（関連産業）</h3>
+              <div class="arrow">
+                <svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+              </div>
+              <ul class="item-list">
+                <li><span class="highlight">小売:</span> 仕入れコスト上昇と利益率圧迫</li>
+                <li><span class="highlight">製造業:</span> 部品や原材料のコスト上昇</li>
+                <li><span class="highlight">運輸・物流:</span> 貿易量減少とサプライチェーン混乱</li>
+                <li><span class="highlight">テクノロジー:</span> アジアのサプライチェーン依存度の高さが課題</li>
+              </ul>
+            </div>
+            
+            <!-- 3次的インパクト -->
+            <div>
+              <h3 style="color: var(--fashion-3); font-size: 16px;">🌐 3次的インパクト（広範な影響）</h3>
+              <div class="arrow">
+                <svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+              </div>
+              <ul class="item-list">
+                <li><span class="highlight">個人消費:</span> インフレで実質所得減、裁量消費財が低迷</li>
+                <li><span class="highlight">設備投資:</span> 不透明感増大で計画延期・縮小</li>
+                <li><span class="highlight">金融市場:</span> ボラティリティ上昇、下押し圧力</li>
+                <li><span class="highlight">サプライチェーン:</span> リショアリング・ニアショアリング加速</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+        <!-- レビューとコメント -->
+        <div class="card">
+          <h2 class="section-title">
+            <span>🔎</span>第三者レビューとコメント
+          </h2>
+          <div class="section-content">
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px; background: rgba(242, 230, 61, 0.1); padding: 8px; border-radius: 8px;">
+              <div style="min-width: 40px; height: 40px; border-radius: 50%; background: var(--fashion-1); color: white; display: flex; align-items: center; justify-content: center; font-weight: bold;">FM</div>
+              <div style="font-size: 12px; font-style: italic;">
+                「全体的な分析の方向性（関税 → インフレ・成長鈍化 → セクター影響）は妥当。ただし、いくつか考慮すべき点がある...」
+              </div>
+            </div>
+            
+            <div class="bubble" style="background-color: rgba(89, 60, 71, 0.2);">
+              政策の持続性・変更リスクは要注視
+            </div>
+            
+            <ul class="item-list">
+              <li>「親切な相互主義」による税率変更可能性</li>
+              <li>報復措置の具体的内容がセクターへの影響を左右</li>
+              <li>サプライチェーン再編には時間とコストが必要</li>
+              <li>除外品目（エネルギー・医薬品・半導体）の影響度</li>
+              <li>消費者の反応（価格弾力性）が不透明</li>
+            </ul>
+            
+            <div style="margin-top: 10px; border-left: 3px solid var(--fashion-4); padding-left: 10px; font-size: 13px;">
+              18ヶ月という期間では、サプライチェーンの抜本的な変更は難しい可能性があり、多くの企業がコスト増に苦しむ期間が長引くリスクがある。
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 右カラム -->
+      <div class="column">
+        <!-- ポジティブ影響銘柄 -->
+        <div class="card">
+          <h2 class="section-title">
+            <span>📈</span>ポジティブ影響銘柄
+          </h2>
+          <div class="section-content">
+            <div class="stock-card positive">
+              <div class="stock-icon">NUE</div>
+              <div class="stock-info">
+                <div class="stock-name">ニューコア (Nucor)</div>
+                <div class="stock-reason">米国最大の鉄鋼メーカー。関税で輸入品に対する競争力維持。</div>
+              </div>
+            </div>
+            
+            <div class="stock-card positive">
+              <div class="stock-icon">STLD</div>
+              <div class="stock-info">
+                <div class="stock-name">スチール・ダイナミクス</div>
+                <div class="stock-reason">関税による保護と効率的なミニミル運営によるコスト競争力。</div>
+              </div>
+            </div>
+            
+            <div class="stock-card positive">
+              <div class="stock-icon">LMT</div>
+              <div class="stock-info">
+                <div class="stock-name">ロッキード・マーチン</div>
+                <div class="stock-reason">米国政府向け売上が多く、貿易関税の直接影響を受けにくい。</div>
+              </div>
+            </div>
+            
+            <div class="stock-card positive">
+              <div class="stock-icon">FAST</div>
+              <div class="stock-info">
+                <div class="stock-name">ファスナル</div>
+                <div class="stock-reason">リショアリングやインフラ投資が本格化すれば需要増。</div>
+              </div>
+            </div>
+            
+            <div class="stock-card positive">
+              <div class="stock-icon">UNH</div>
+              <div class="stock-info">
+                <div class="stock-name">ユナイテッドヘルス</div>
+                <div class="stock-reason">ヘルスケアは景気変動や貿易摩擦の影響を受けにくい。</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- ネガティブ影響銘柄 -->
+        <div class="card">
+          <h2 class="section-title">
+            <span>📉</span>ネガティブ影響銘柄
+          </h2>
+          <div class="section-content">
+            <div class="stock-card negative">
+              <div class="stock-icon">GM</div>
+              <div class="stock-info">
+                <div class="stock-name">ゼネラル・モーターズ</div>
+                <div class="stock-reason">自動車部品関税とグローバルサプライチェーン混乱の影響大。</div>
+              </div>
+            </div>
+            
+            <div class="stock-card negative">
+              <div class="stock-icon">TGT</div>
+              <div class="stock-info">
+                <div class="stock-name">ターゲット</div>
+                <div class="stock-reason">アジアからの輸入品依存度が高く、コスト上昇リスク。</div>
+              </div>
+            </div>
+            
+            <div class="stock-card negative">
+              <div class="stock-icon">AAPL</div>
+              <div class="stock-info">
+                <div class="stock-name">アップル</div>
+                <div class="stock-reason">中国での生産比率が高く、対中関税の影響を直接受ける。</div>
+              </div>
+            </div>
+            
+            <div class="stock-card negative">
+              <div class="stock-icon">NKE</div>
+              <div class="stock-info">
+                <div class="stock-name">ナイキ</div>
+                <div class="stock-reason">アジア生産比率が高く、相互関税の影響が大きい。</div>
+              </div>
+            </div>
+            
+            <div class="stock-card negative">
+              <div class="stock-icon">ADM</div>
+              <div class="stock-info">
+                <div class="stock-name">アーチャー・ダニエルズ</div>
+                <div class="stock-reason">米国産農産物の輸出業者、報復関税のターゲットに。</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- 最終的な投資判断 -->
+        <div class="card">
+          <h2 class="section-title">
+            <span>🧠</span>投資判断と示唆
+          </h2>
+          <div class="section-content">
+            <div style="background: linear-gradient(90deg, rgba(242, 92, 5, 0.1), rgba(242, 230, 61, 0.1)); padding: 15px; border-radius: 8px; margin-bottom: 15px; position: relative;">
+              <div style="font-weight: bold; text-align: center; font-size: 16px; margin-bottom: 5px; color: var(--fashion-5);">
+                慎重かつディフェンシブなスタンスを推奨
+              </div>
+              <div style="font-size: 13px; text-align: center; font-style: italic;">
+                保護主義的な通商政策は今後も継続される見込み
+              </div>
+              <div style="position: absolute; top: 0; right: 10px;">
+                <svg width="30" height="30" viewBox="0 0 24 24">
+                  <path d="M12 2L1 21h22L12 2z" fill="none" stroke="#F24405" stroke-width="2" class="hand-drawn-shape" />
+                  <text x="12" y="17" text-anchor="middle" font-size="15" font-weight="bold" fill="#F24405">!</text>
+                </svg>
+              </div>
+            </div>
+            
+            <p><strong>重点を置くべき要素:</strong></p>
+            <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 10px;">
+              <div style="flex: 1; min-width: 120px; background: rgba(242, 230, 61, 0.2); padding: 8px; border-radius: 8px; text-align: center;">
+                <span class="highlight">国内需要エクスポージャー</span>
+              </div>
+              <div style="flex: 1; min-width: 120px; background: rgba(242, 196, 61, 0.2); padding: 8px; border-radius: 8px; text-align: center;">
+                <span class="highlight">価格決定力</span>
+              </div>
+              <div style="flex: 1; min-width: 120px; background: rgba(242, 92, 5, 0.2); padding: 8px; border-radius: 8px; text-align: center;">
+                <span class="highlight">サプライチェーン強靭性</span>
+              </div>
+              <div style="flex: 1; min-width: 120px; background: rgba(89, 60, 71, 0.2); padding: 8px; border-radius: 8px; text-align: center;">
+                <span class="highlight">財務健全性</span>
+              </div>
+            </div>
+            
+            <p><strong>セクターアロケーション:</strong></p>
+            <div style="margin-top: 10px; display: flex; gap: 10px; flex-wrap: wrap;">
+              <div style="flex: 1; min-width: 150px;">
+                <div style="background: rgba(34, 197, 94, 0.2); padding: 8px; border-radius: 8px; margin-bottom: 5px;">
+                  <div style="font-weight: bold; text-align: center; color: #16a34a; font-size: 14px;">オーバーウェイト</div>
+                </div>
+                <div style="background: white; padding: 8px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); font-size: 13px;">
+                  <ul style="margin: 0; padding-left: 15px;">
+                    <li>ヘルスケア</li>
+                    <li>生活必需品</li>
+                    <li>インフラ関連</li>
+                    <li>防衛</li>
+                    <li>鉄鋼・素材（国内向け）</li>
+                  </ul>
+                </div>
+              </div>
+              <div style="flex: 1; min-width: 150px;">
+                <div style="background: rgba(239, 68, 68, 0.2); padding: 8px; border-radius: 8px; margin-bottom: 5px;">
+                  <div style="font-weight: bold; text-align: center; color: #dc2626; font-size: 14px;">アンダーウェイト</div>
+                </div>
+                <div style="background: white; padding: 8px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); font-size: 13px;">
+                  <ul style="margin: 0; padding-left: 15px;">
+                    <li>自動車・自動車部品</li>
+                    <li>一般消費財（小売、アパレル）</li>
+                    <li>テクノロジー・ハードウェア</li>
+                    <li>農業関連</li>
+                    <li>輸出依存度の高い企業</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- フッター -->
+              <!-- 中長期展望 -->
+          <div style="background: rgba(89, 60, 71, 0.05); padding: 15px; border-radius: 12px; margin: 20px;">
+            <h2 style="text-align: center; font-size: 18px; color: var(--fashion-1); margin-bottom: 10px; border-bottom: 2px dashed var(--fashion-3);">
+              📅 中長期展望（18ヶ月）
+            </h2>
+            <div style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;">
+              <div style="flex: 1; min-width: 250px; background: white; padding: 12px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                <h3 style="font-size: 15px; color: var(--fashion-4); margin-bottom: 8px;">
+                  サプライチェーン再編
+                </h3>
+                <p style="font-size: 13px;">
+                  企業はリスク回避のため生産拠点を<span class="highlight">国内回帰（リショアリング）</span>、<span class="highlight">近隣国（メキシコ・カナダ等）</span>、または関税の影響を受けない国へ移管する動きを加速させる
+                </p>
+              </div>
+              <div style="flex: 1; min-width: 250px; background: white; padding: 12px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                <h3 style="font-size: 15px; color: var(--fashion-4); margin-bottom: 8px;">
+                  投資機会の見極め
+                </h3>
+                <p style="font-size: 13px;">
+                  状況の変化（政策変更、報復措置、マクロ指標）を注意深く監視し、ポートフォリオを<span class="highlight">機動的に調整</span>する必要がある
+                </p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="footer">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
+              <div style="font-size: 12px;">作成日: 2025年4月</div>
+              <div style="font-size: 12px;">分析期間: 2025年4月〜2026年10月（18ヶ月）</div>
+            </div>
+            出典：トランプ大統領「解放の日」関税発表に関する中長期影響分析レポート
+          </div>
+  </div>
+</body>
+</html>
