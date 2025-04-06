@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>市場の急落と今後の見通し</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Yomogi&family=Zen+Kurenaido&family=Kaisei+Decol:wght@400;700&display=swap');
+        
+        :root {
+            --fashion-1: #593C47;
+            --fashion-2: #F2E63D;
+            --fashion-3: #F2C53D;
+            --fashion-4: #F25C05;
+            --fashion-5: #F24405;
+            --text-main: #334155;
+            --text-subtitle: #475569;
+            --text-heading: #1e40af;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Kaisei Decol', serif;
+            line-height: 1.4;
+            color: var(--text-main);
+            background-color: #f8f9fa;
+            padding: 20px;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            padding: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 30px;
+            border-bottom: 3px solid var(--fashion-3);
+            padding-bottom: 15px;
+            position: relative;
+        }
+        
+        .header::after {
+            content: "";
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: var(--fashion-4);
+            border-radius: 3px;
+        }
+        
+        .title-container {
+            flex: 1;
+        }
+        
+        .title {
+            font-family: 'Zen Kurenaido', sans-serif;
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            background: linear-gradient(to right, var(--fashion-1), var(--fashion-5));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: inline-block;
+            position: relative;
+        }
+        
+        .title::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(to right, var(--fashion-2), var(--fashion-4));
+            border-radius: 2px;
+        }
+        
+        .subtitle {
+            font-family: 'Yomogi', cursive;
+            font-size: 16px;
+            color: var(--text-subtitle);
+            margin-bottom: 5px;
+        }
+        
+        .date-source {
+            text-align: right;
+            font-size: 14px;
+            color: var(--text-subtitle);
+            font-family: 'Kaisei Decol', serif;
+            background-color: rgba(242, 198, 61, 0.2);
+            padding: 8px 12px;
+            border-radius: 8px;
+            border-left: 3px solid var(--fashion-3);
+        }
+        
+        .date {
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+        }
+        
+        .date::before {
+            content: "📅";
+            margin-right: 5px;
+        }
+        
+        .source::before {
+            content: "📚";
+            margin-right: 5px;
+        }
+        
+        .main-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .column {
+            flex: 1;
+            min-width: calc(33% - 20px);
+        }
+        
+        .card {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            padding: 20px;
+            margin-bottom: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card.glass {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 6px;
+            height: 100%;
+            background-color: var(--fashion-3);
+        }
+        
+        .card.danger::before {
+            background-color: var(--fashion-5);
+        }
+        
+        .card.warning::before {
+            background-color: var(--fashion-4);
+        }
+        
+        .card.opportunity::before {
+            background-color: var(--fashion-2);
+        }
+        
+        .section-heading {
+            font-family: 'Zen Kurenaido', sans-serif;
+            font-size: 18px;
+            color: var(--text-heading);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            border-bottom: 2px dashed var(--fashion-1);
+            padding-bottom: 8px;
+        }
+        
+        .section-heading::before {
+            margin-right: 8px;
+            font-size: 20px;
+        }
+        
+        .abnormal-heading::before {
+            content: "⚠️";
+        }
+        
+        .bottom-heading::before {
+            content: "⚓";
+        }
+        
+        .opportunity-heading::before {
+            content: "💡";
+        }
+        
+        .retail-heading::before {
+            content: "👥";
+        }
+        
+        .geopolitics-heading::before {
+            content: "🌏";
+        }
+        
+        .market-reaction-heading::before {
+            content: "📊";
+        }
+        
+        .quotes-heading::before {
+            content: "💬";
+        }
+        
+        .conclusion-heading::before {
+            content: "🎯";
+        }
+        
+        .overview-heading::before {
+            content: "📋";
+        }
+        
+        .hand-drawn-border {
+            border: 3px solid;
+            border-color: var(--fashion-3);
+            border-radius: 12px;
+            padding: 15px;
+            position: relative;
+            margin: 15px 0;
+        }
+        
+        .hand-drawn-border.warning {
+            border-color: var(--fashion-4);
+            background-color: rgba(242, 92, 5, 0.05);
+        }
+        
+        .hand-drawn-border.danger {
+            border-color: var(--fashion-5);
+            background-color: rgba(242, 68, 4, 0.05);
+        }
+        
+        .hand-drawn-border.info {
+            border-color: var(--fashion-1);
+            background-color: rgba(89, 60, 71, 0.05);
+        }
+        
+        .hand-drawn-border.highlight {
+            border-color: var(--fashion-2);
+            background-color: rgba(242, 230, 61, 0.1);
+        }
+        
+        .keyword {
+            font-weight: bold;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .keyword.highlight {
+            background: linear-gradient(transparent 60%, var(--fashion-2) 40%);
+            padding: 0 2px;
+        }
+        
+        .keyword.warning {
+            background: linear-gradient(transparent 60%, rgba(242, 91, 4, 0.6) 40%);
+            padding: 0 2px;
+        }
+        
+        .keyword.danger {
+            background: linear-gradient(transparent 60%, rgba(242, 68, 4, 0.6) 40%);
+            padding: 0 2px;
+        }
+        
+        .keyword.primary {
+            background: linear-gradient(transparent 60%, var(--fashion-3) 40%);
+            padding: 0 2px;
+        }
+        
+        .quote-bubble {
+            background-color: rgba(242, 198, 61, 0.1);
+            border-radius: 15px;
+            padding: 12px 15px;
+            margin: 15px 0;
+            position: relative;
+            font-family: 'Yomogi', cursive;
+            font-size: 15px;
+            color: var(--fashion-1);
+        }
+        
+        .quote-bubble::before {
+            content: """;
+            position: absolute;
+            top: -10px;
+            left: 10px;
+            font-size: 40px;
+            color: var(--fashion-3);
+        }
+        
+        .quote-bubble::after {
+            content: """;
+            position: absolute;
+            bottom: -30px;
+            right: 10px;
+            font-size: 40px;
+            color: var(--fashion-3);
+        }
+        
+        .arrow {
+            font-size: 24px;
+            color: var(--fashion-4);
+            margin: 0 5px;
+        }
+        
+        .warning-label {
+            display: inline-block;
+            background-color: var(--fashion-4);
+            color: white;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            margin-right: 5px;
+            transform: rotate(-2deg);
+        }
+        
+        .danger-label {
+            display: inline-block;
+            background-color: var(--fashion-5);
+            color: white;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            margin-right: 5px;
+            transform: rotate(2deg);
+        }
+        
+        .icon-box {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 15px 0;
+        }
+        
+        .icon-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            width: calc(50% - 10px);
+        }
+        
+        .icon-item .icon {
+            font-size: 30px;
+            margin-bottom: 5px;
+        }
+        
+        .icon-item .text {
+            font-size: 12px;
+            color: var(--text-subtitle);
+        }
+        
+        .summary-list {
+            list-style: none;
+            padding-left: 20px;
+        }
+        
+        .summary-list li {
+            position: relative;
+            margin-bottom: 10px;
+            padding-left: 15px;
+        }
+        
+        .summary-list li::before {
+            content: "✦";
+            position: absolute;
+            left: -15px;
+            color: var(--fashion-3);
+        }
+        
+        .hand-drawn-arrow {
+            position: relative;
+            width: 100%;
+            height: 30px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        
+        .hand-drawn-arrow::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--fashion-4);
+            transform: translateY(-50%);
+        }
+        
+        .hand-drawn-arrow::after {
+            content: "▶";
+            position: absolute;
+            top: 50%;
+            right: 0;
+            color: var(--fashion-4);
+            font-size: 20px;
+            transform: translateY(-50%);
+        }
+        
+        .scenario-box {
+            display: flex;
+            justify-content: space-between;
+            margin: 15px 0;
+        }
+        
+        .scenario {
+            flex: 1;
+            background-color: rgba(242, 198, 61, 0.1);
+            border-radius: 8px;
+            padding: 10px;
+            margin: 0 5px;
+            text-align: center;
+            font-size: 13px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+        
+        .scenario:first-child {
+            margin-left: 0;
+        }
+        
+        .scenario:last-child {
+            margin-right: 0;
+        }
+        
+        .scenario-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: var(--fashion-1);
+        }
+        
+        .market-reaction {
+            display: flex;
+            align-items: center;
+            margin: 15px 0;
+        }
+        
+        .reaction-item {
+            flex: 1;
+            text-align: center;
+            position: relative;
+        }
+        
+        .reaction-item::after {
+            content: "→";
+            position: absolute;
+            right: -10px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 20px;
+            color: var(--fashion-4);
+        }
+        
+        .reaction-item:last-child::after {
+            display: none;
+        }
+        
+        .quotes-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 15px 0;
+        }
+        
+        .quote-card {
+            flex: 1;
+            min-width: calc(50% - 10px);
+            background-color: white;
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            border-left: 3px solid var(--fashion-3);
+            font-family: 'Yomogi', cursive;
+            font-size: 14px;
+            position: relative;
+        }
+        
+        .quote-card::before {
+            content: """;
+            position: absolute;
+            top: -5px;
+            left: 5px;
+            font-size: 30px;
+            color: var(--fashion-3);
+            opacity: 0.3;
+        }
+        
+        footer {
+            margin-top: 30px;
+            text-align: center;
+            font-size: 12px;
+            color: var(--text-subtitle);
+            border-top: 1px solid #eaeaea;
+            padding-top: 20px;
+        }
+        
+        /* レスポンシブ対応 */
+        @media (max-width: 768px) {
+            .main-content {
+                flex-direction: column;
+            }
+            
+            .column {
+                width: 100%;
+            }
+            
+            .icon-item, .quote-card {
+                min-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="title-container">
+                <h1 class="title">市場の急落と今後の見通し</h1>
+                <p class="subtitle">異常な市場状況での投資判断とリスク分析</p>
+            </div>
+            <div class="date-source">
+                <div class="date">2025年4月6日</div>
+                <div class="source">MARKET MELTDOWN: CAN WE BOUNCE BACK?</div>
+                <div class="source" style="margin-top: 5px;">Jason Shapiro - Crowded Market Report</div>
+            </div>
+        </div>
+        
+        <div class="main-content">
+            <!-- 左カラム -->
+            <div class="column">
+                <div class="card glass">
+                    <h2 class="section-heading overview-heading">概要</h2>
+                    <p>この週刊市場分析コールからの抜粋は、最近の市場の急激な下落と、トレーダーや投資家が直面している<span class="keyword warning">不確実性</span>に焦点を当てています。過去の指標やテクニカル分析が現在の<span class="keyword danger">異常な市場環境</span>では有効でない可能性を強調し、過度な悲観や安易な底打ち狙いを戒めています。</p>
+                    
+                    <div class="hand-drawn-border info">
+                        <div class="icon-box">
+                            <div class="icon-item">
+                                <div class="icon">📉</div>
+                                <div class="text">急激な市場下落</div>
+                            </div>
+                            <div class="icon-item">
+                                <div class="icon">❓</div>
+                                <div class="text">指標の限界</div>
+                            </div>
+                            <div class="icon-item">
+                                <div class="icon">⚠️</div>
+                                <div class="text">底打ち狙いの危険性</div>
+                            </div>
+                            <div class="icon-item">
+                                <div class="icon">💡</div>
+                                <div class="text">新たな投資機会</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card danger">
+                    <h2 class="section-heading abnormal-heading">異常な市場状況と指標の限界</h2>
+                    
+                    <div class="warning-label">危険地帯</div>
+                    <p>スピーカーは、現在の市場は<span class="keyword danger">「危険地帯」</span>であり、「すべての指標を窓から投げ捨てる」必要があると述べています。</p>
+                    
+                    <div class="quote-bubble">
+                        こんな市場は今まで見たことがない。テープを読むことさえ、今は少しランダムになっていると思う。清算が至る所で起こっているからだ。
+                    </div>
+                    
+                    <div class="hand-drawn-border danger">
+                        <div class="danger-label">前例なし</div>
+                        <p>S&P500が2日連続で5%以上下落したのは<span class="keyword danger">史上初</span>である可能性が指摘されており、これが「正常ではない」状況です。</p>
+                    </div>
+                    
+                    <p>過去の統計データ（下落後の一定期間での上昇確率など）も、過去のブルマーケットに基づいているため、現在の状況には<span class="keyword warning">当てはまらない可能性</span>があると警告しています。</p>
+                </div>
+                
+                <div class="card warning">
+                    <h2 class="section-heading bottom-heading">底打ち狙いの危険性</h2>
+                    
+                    <div class="quote-bubble">
+                        市場が大きく下落したからといって、安易に底を拾おうとしない。
+                    </div>
+                    
+                    <div class="hand-drawn-border warning">
+                        <p><span class="keyword warning">「時間の経過とともに、そうしたことはうまくいかない。一度うまくいったとしても、それが悪癖を生み出す。」</span></p>
+                    </div>
+                    
+                    <div class="market-reaction">
+                        <div class="reaction-item">
+                            <div class="icon">📉</div>
+                            <div class="text">下がったから買う</div>
+                        </div>
+                        <div class="reaction-item">
+                            <div class="icon">📈</div>
+                            <div class="text">上がったから売る</div>
+                        </div>
+                        <div class="reaction-item">
+                            <div class="icon">⏳</div>
+                            <div class="text">市場が教えるまで待つ</div>
+                        </div>
+                    </div>
+                    
+                    <p>過去の自身の経験（アジア通貨危機など）を引用し、<span class="keyword primary">市場が確認を与えるまで行動しないこと</span>の重要性を説いています。</p>
+                </div>
+            </div>
+            
+            <!-- 中央カラム -->
+            <div class="column">
+                <div class="card opportunity">
+                    <h2 class="section-heading opportunity-heading">「赤子を風呂水と一緒に捨てる」状況と新たな機会</h2>
+                    
+                    <div class="hand-drawn-border highlight">
+                        <p>市場の全面的な清算（<span class="keyword highlight">「赤子を風呂水と一緒に捨てる」</span>）によって、本来<span class="keyword primary">ファンダメンタルズの良い銘柄</span>まで売られる状況が生まれており、ここに<span class="keyword highlight">投資機会</span>が生じる可能性があると示唆しています。</p>
+                    </div>
+                    
+                    <div class="quote-bubble">
+                        もし突然、赤子を風呂水と一緒に捨てるようなことが起こり始めたら、それはいくつかの機会を生み出すはずだ。
+                    </div>
+                    
+                    <div class="hand-drawn-arrow">
+                        <span style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: white; padding: 0 10px;">事例</span>
+                    </div>
+                    
+                    <p>例として、<span class="keyword primary">ベトナムの好材料</span>が出た可能性を理由に上昇したNike株を挙げて、個別銘柄の動向を注意深く観察することの重要性を示唆しています。</p>
+                </div>
+                
+                <div class="card warning">
+                    <h2 class="section-heading retail-heading">小売投資家の動向への懸念</h2>
+                    
+                    <div class="warning-label">警告サイン</div>
+                    <p><span class="keyword danger">過去10年間で最大の小売投資家の買い</span>が入ったというデータに強い懸念を示しています。これは、真の「ポジションの降伏（capitulation）」がまだ起こっていない可能性を示唆しています。</p>
+                    
+                    <div class="quote-bubble">
+                        昨日、過去10年間で最大の買いが小売投資家によって行われた。これはまさに我々が過去2年間ずっと話してきたことだ。危険は、これらの人々が最終的に押し目を買う場合だ。さて、彼らはそれをやっている。
+                    </div>
+                    
+                    <div class="hand-drawn-border warning">
+                        <p><span class="keyword warning">「価格の降伏はあるかもしれないが、ポジションの降伏ではない。」</span></p>
+                    </div>
+                    
+                    <div class="hand-drawn-border danger">
+                        <div class="icon-box">
+                            <div class="icon-item">
+                                <div class="icon">👥</div>
+                                <div class="text">小売投資家の大量買い</div>
+                            </div>
+                            <div class="icon-item">
+                                <div class="icon">⚠️</div>
+                                <div class="text">真の降伏の欠如</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h2 class="section-heading geopolitics-heading">地政学的な不確実性と市場への影響</h2>
+                    
+                    <p><span class="keyword primary">米中間の貿易摩擦（関税）</span>が市場の主要な推進要因となっていると指摘しており、今後の展開が市場の方向性を大きく左右する可能性があると述べています。</p>
+                    
+                    <div class="quote-bubble">
+                        経済指標はもはや意味がない。重要なのは、彼（トランプ大統領）が常に望んでいたことだ。悪いニュースの機会はいくらでもある。
+                    </div>
+                    
+                    <div class="scenario-box">
+                        <div class="scenario">
+                            <div class="scenario-title">交渉シナリオ</div>
+                            <p>ベトナムとの貿易交渉</p>
+                        </div>
+                        <div class="scenario">
+                            <div class="scenario-title">政策変更</div>
+                            <p>関税政策の修正</p>
+                        </div>
+                        <div class="scenario">
+                            <div class="scenario-title">司法判断</div>
+                            <p>議会による関税阻止</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 右カラム -->
+            <div class="column">
+                <div class="card">
+                    <h2 class="section-heading market-reaction-heading">市場の反応を重視する姿勢</h2>
+                    
+                    <p>いかなるニュースや出来事に対しても、<span class="keyword primary">市場がどのように反応するか</span>を観察することが重要であると強調しています。</p>
+                    
+                    <div class="hand-drawn-border info">
+                        <p>例として、もしベトナムが米国に対して関税を撤廃するという<span class="keyword highlight">「理論的には大きな勝利」</span>となるニュースが出たとしても、市場が下落して引けた事実を挙げ、<span class="keyword warning">「良い反応ではなかった」</span>と指摘しています。</p>
+                    </div>
+                    
+                    <div class="market-reaction">
+                        <div class="reaction-item">
+                            <div class="icon">📰</div>
+                            <div class="text">ニュース</div>
+                        </div>
+                        <div class="reaction-item">
+                            <div class="icon">📊</div>
+                            <div class="text">市場の反応</div>
+                        </div>
+                        <div class="reaction-item">
+                            <div class="icon">🔍</div>
+                            <div class="text">分析</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card glass">
+                    <h2 class="section-heading quotes-heading">注目すべき引用</h2>
+                    
+                    <div class="quotes-container">
+                        <div class="quote-card">
+                            今は本当に奇妙な時間だ。過去に起こったことと似たようなことが起こると期待することはできない。
+                        </div>
+                        <div class="quote-card">
+                            このクソッタレなデータや、こういった類のものに関して言えば、そういう種類のことを念頭に置いておくことが非常に重要だと思う。
+                        </div>
+                        <div class="quote-card">
+                            誰もが弱気だが、誰も売っていない。それが違いだ。
+                        </div>
+                        <div class="quote-card">
+                            これは違うんだ。本当に多くの点で違うんだ。
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h2 class="section-heading conclusion-heading">結論</h2>
+                    
+                    <div class="hand-drawn-border info">
+                        <p>現在の市場は<span class="keyword danger">極めて不安定</span>であり、過去の経験や指標に頼ることは危険であるとこの分析は示唆しています。</p>
+                    </div>
+                    
+                    <ul class="summary-list">
+                        <li><span class="keyword warning">安易な底打ち</span>を避ける</li>
+                        <li><span class="keyword primary">市場の動向と反応</span>を注意深く観察する</li>
+                        <li>真の降伏の兆候や新たなファンダメンタルズの変化が現れるまで<span class="keyword primary">慎重に行動</span>する</li>
+                        <li>過剰に売られた優良銘柄に<span class="keyword highlight">投資機会</span>が生まれる可能性も念頭に置く</li>
+                        <li><span class="keyword primary">地政学的な動向</span>、特に米中間の貿易政策が市場の主要な推進要因</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            出典: 「MARKET MELTDOWN: CAN WE BOUNCE BACK? MARKET INSIGHTS YOU NEED TO HEAR!」からの抜粋・分析<br>
+            Jason Shapiroが運営するCrowded Market ReportのYouTube動画 | <a href="https://youtu.be/Uqr9qOGsrhA?si=hEJganoh_3wT12u3" style="color: var(--fashion-4); text-decoration: none;">https://youtu.be/Uqr9qOGsrhA</a><br>
+            グラフィックレコーディング: 2025年4月6日
+        </footer>
+    </div>
+</body>
+</html>
