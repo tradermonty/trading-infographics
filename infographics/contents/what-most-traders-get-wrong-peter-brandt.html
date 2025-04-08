@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ピーター・ブラント氏に学ぶトレーダーの真髄</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Yomogi&family=Zen+Kurenaido&family=Kaisei+Decol:wght@400;700&display=swap');
+        
+        :root {
+            --fashion-1: #593C47;
+            --fashion-2: #F2E63D;
+            --fashion-3: #F2C53D;
+            --fashion-4: #F25C05;
+            --fashion-5: #F24405;
+            --text-dark: #334155;
+            --text-heading: #1e40af;
+            --text-subheading: #475569;
+            --bg-light: #f8fafc;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Kaisei Decol', serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.4;
+            font-size: 14px;
+            overflow-x: hidden;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            padding: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .container::before {
+            content: "";
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 200px;
+            height: 200px;
+            background-color: rgba(242, 230, 60, 0.1);
+            border-radius: 50%;
+            z-index: 0;
+        }
+        
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .title {
+            font-family: 'Yomogi', cursive;
+            font-size: 32px;
+            font-weight: bold;
+            position: relative;
+            display: inline-block;
+            background: linear-gradient(45deg, var(--fashion-1), var(--fashion-5));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            padding-bottom: 5px;
+        }
+        
+        .title::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--fashion-2), var(--fashion-4));
+            border-radius: 3px;
+        }
+        
+        .date {
+            font-family: 'Zen Kurenaido', sans-serif;
+            color: var(--text-subheading);
+            font-size: 16px;
+            text-align: right;
+        }
+        
+        .main-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .column {
+            flex: 1;
+            min-width: 30%;
+        }
+        
+        .section {
+            margin-bottom: 25px;
+            position: relative;
+        }
+        
+        .card {
+            background-color: white;
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+        
+        .card.highlight {
+            border-color: var(--fashion-3);
+        }
+        
+        .card.glassmorphism {
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .hand-drawn-border {
+            position: relative;
+        }
+        
+        .hand-drawn-border::before {
+            content: "";
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border: 2px solid var(--fashion-1);
+            border-radius: 15px;
+            z-index: -1;
+            transform: rotate(-0.5deg);
+        }
+        
+        h2 {
+            font-family: 'Zen Kurenaido', sans-serif;
+            color: var(--text-heading);
+            font-size: 18px;
+            margin-bottom: 15px;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        h2::before {
+            content: "✏️";
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        
+        h3 {
+            font-family: 'Yomogi', cursive;
+            color: var(--fashion-5);
+            font-size: 16px;
+            margin-bottom: 10px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        h3::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--fashion-3);
+            transform: rotate(-0.5deg);
+        }
+        
+        .keyword {
+            font-weight: bold;
+            color: var(--fashion-1);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .keyword.highlight {
+            background: linear-gradient(transparent 60%, var(--fashion-2) 60%);
+        }
+        
+        .quote {
+            font-family: 'Kaisei Decol', serif;
+            font-style: italic;
+            color: var(--fashion-4);
+            padding: 10px;
+            margin: 10px 0;
+            position: relative;
+            padding-left: 20px;
+        }
+        
+        .quote::before {
+            content: """;
+            font-size: 30px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: var(--fashion-3);
+        }
+        
+        .arrow {
+            position: relative;
+            padding-left: 20px;
+            margin: 10px 0;
+        }
+        
+        .arrow::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: var(--fashion-4);
+        }
+        
+        .bubble {
+            background-color: rgba(242, 196, 60, 0.1);
+            border-radius: 20px;
+            padding: 10px 15px;
+            margin: 10px 0;
+            position: relative;
+        }
+        
+        .bubble::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 20px;
+            width: 0;
+            height: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-top: 10px solid rgba(242, 196, 60, 0.1);
+        }
+        
+        .icon-text {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin: 8px 0;
+        }
+        
+        .connection-line {
+            position: absolute;
+            z-index: -1;
+        }
+        
+        .marker {
+            background: linear-gradient(transparent 60%, var(--fashion-2) 60%);
+            padding: 0 2px;
+        }
+        
+        footer {
+            margin-top: 30px;
+            text-align: right;
+            font-size: 12px;
+            color: var(--text-subheading);
+            border-top: 1px dashed var(--fashion-3);
+            padding-top: 15px;
+        }
+        
+        .hand-drawn-arrow {
+            position: absolute;
+            width: 50px;
+            height: 30px;
+            z-index: 0;
+        }
+        
+        .hand-drawn-arrow svg {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .emoji {
+            font-size: 18px;
+            margin-right: 5px;
+        }
+        
+        @media (max-width: 768px) {
+            .main-content {
+                flex-direction: column;
+            }
+            
+            .column {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1 class="title">ピーター・ブラント氏に学ぶトレーダーの真髄</h1>
+            <div class="date">50年の経験から語る市場の真実 | 2025年4月</div>
+        </header>
+        
+        <div class="main-content">
+            <!-- 左カラム -->
+            <div class="column">
+                <div class="section">
+                    <h2>プロップファームへの懸念 📊</h2>
+                    <div class="card hand-drawn-border">
+                        <h3>シミュレーション取引の問題点</h3>
+                        <div class="quote">「報酬目的のシミュレーション取引は法的境界線を超えていると思います」</div>
+                        <p>シミュレーション取引によるペイアウトモデルは<span class="keyword highlight">法的境界線を超える可能性</span>がある</p>
+                        <div class="icon-text">
+                            <span class="emoji">⚠️</span>
+                            <p>オンラインポーカーやスポーツベッティングと同様の<span class="keyword">規制と課税</span>が必要</p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <h3>誇張された宣伝</h3>
+                        <div class="quote">「根拠のない過大な主張や誇張された宣伝が横行しています」</div>
+                        <div class="bubble">
+                            <p>規制の緩さから<span class="keyword">非現実的な主張が横行</span>している</p>
+                        </div>
+                        <div class="arrow">
+                            <p>透明性の欠如が大きな問題</p>
+                        </div>
+                    </div>
+                    
+                    <div class="card highlight">
+                        <h3>トレーダーの個性を阻害</h3>
+                        <div class="quote">「彼らは四角い穴に丸い杭を無理やり押し込むような制限を課しています」</div>
+                        <p>画一的なルールが<span class="keyword">独自の取引手法の発達を妨げる</span></p>
+                        <div class="icon-text">
+                            <span class="emoji">🎮</span>
+                            <p>真のトレーディングではなく「<span class="marker">ゲーム遊び</span>」である</p>
+                        </div>
+                    </div>
+                    
+                    <div class="card glassmorphism">
+                        <h3>失敗へと最適化されたビジネスモデル</h3>
+                        <div class="quote">「失敗するように最適化されている」「ある程度仕組まれたゲームです」</div>
+                        <div class="icon-text">
+                            <span class="emoji">💰</span>
+                            <p>トレーダーが<span class="keyword highlight">手数料を払い続ける</span>ことに最適化されている</p>
+                        </div>
+                        <div class="icon-text">
+                            <span class="emoji">🎯</span>
+                            <p>取引の相手がファーム自身である場合も</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 中央カラム -->
+            <div class="column">
+                <div class="section">
+                    <h2>成功するトレーダーの条件 🏆</h2>
+                    <div class="card hand-drawn-border">
+                        <h3>現実的な期待値の設定</h3>
+                        <div class="quote">「10倍どころか2倍の利益すら考えるべきではない、期待値は現実的に設定すべきです」</div>
+                        <div class="bubble">
+                            <p>暗号資産市場の高収益例が<span class="keyword highlight">不当に期待値を高めている</span></p>
+                        </div>
+                        <p>現実的な目標設定が長期的成功の鍵</p>
+                    </div>
+                    
+                    <div class="card">
+                        <h3>メンターと学習意欲</h3>
+                        <div class="quote">「単にお金のためではなく、関わるすべてのことの卓越性を追求したいと思えなければ、あなたは困ることになるでしょう」</div>
+                        <div class="icon-text">
+                            <span class="emoji">👨‍🏫</span>
+                            <p><span class="keyword">信頼できるメンター</span>の存在が不可欠</p>
+                        </div>
+                        <div class="icon-text">
+                            <span class="emoji">📚</span>
+                            <p>金儲けよりも<span class="marker">トレーディングへの挑戦や卓越性</span>を追求する姿勢</p>
+                        </div>
+                    </div>
+                    
+                    <div class="card highlight">
+                        <h3>信頼できる情報源の選択</h3>
+                        <p>ソーシャルメディア上の誇張された情報に惑わされない</p>
+                        <div class="icon-text">
+                            <span class="emoji">🔍</span>
+                            <p><span class="keyword">少数の信頼できる情報源</span>を選び、深く学ぶ</p>
+                        </div>
+                        <div class="icon-text">
+                            <span class="emoji">⛔</span>
+                            <p>高収益のスクリーンショットを公開する人物は避ける</p>
+                        </div>
+                    </div>
+                    
+                    <div class="card glassmorphism">
+                        <h3>リスク管理の原則</h3>
+                        <div class="quote">「損失は早めに切り上げ、利益は伸ばしなさい」</div>
+                        <div class="bubble">
+                            <p>トレーディングの<span class="keyword highlight">普遍的な原則</span></p>
+                        </div>
+                        <div class="icon-text">
+                            <span class="emoji">✂️</span>
+                            <p>損失は<span class="marker">素早く小さく</span>抑える</p>
+                        </div>
+                        <div class="icon-text">
+                            <span class="emoji">🚀</span>
+                            <p>利益は<span class="marker">伸ばす</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 右カラム -->
+            <div class="column">
+                <div class="section">
+                    <h2>ブラント氏の教訓 💎</h2>
+                    <div class="card hand-drawn-border">
+                        <h3>デイトレーディングへの警鐘</h3>
+                        <div class="quote">「最初からデイトレーダーになるべきではないというのが私の助言です。デイトレードは罠だと思います」</div>
+                        <div class="bubble">
+                            <p>デイトレーディングは<span class="keyword highlight">罠である</span></p>
+                        </div>
+                        <p>スイングトレードやポジショントレードを推奨</p>
+                    </div>
+                    
+                    <div class="card">
+                        <h3>自身のトレード手法の確立</h3>
+                        <div class="icon-text">
+                            <span class="emoji">🧪</span>
+                            <p><span class="keyword">試行錯誤</span>を通じて独自の手法を確立する</p>
+                        </div>
+                        <div class="icon-text">
+                            <span class="emoji">🔄</span>
+                            <p>確立した手法に<span class="marker">コミット</span>し続ける</p>
+                        </div>
+                    </div>
+                    
+                    <div class="card highlight">
+                        <h3>データ分析の重要性</h3>
+                        <div class="quote">「これを知らないのであれば、トレードするべきではありません」</div>
+                        <p>自身のトレードデータを<span class="keyword">詳細に分析</span>することが重要</p>
+                        <div class="icon-text">
+                            <span class="emoji">📊</span>
+                            <p>勝率だけでなく<span class="marker">ゲイン・トゥ・ペイン・レシオ</span>などの指標を理解</p>
+                        </div>
+                        <div class="icon-text">
+                            <span class="emoji">📈</span>
+                            <p>プロフィットファクターの把握は必須</p>
+                        </div>
+                    </div>
+                    
+                    <div class="card glassmorphism">
+                        <h3>規律とメンタルコントロール</h3>
+                        <p>感情的な判断を避け、<span class="keyword highlight">事前に定めたルールを遵守</span>する</p>
+                        <div class="icon-text">
+                            <span class="emoji">🧠</span>
+                            <p>自身の弱点を認識し、それを克服するための工夫</p>
+                        </div>
+                        <div class="bubble">
+                            <p>例：日中の取引を避け、前日の夕方に注文を出す</p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <h3>新世代トレーダーへのメッセージ</h3>
+                        <div class="quote">「新しいトレーダーが市場で夢を追求することを決して妨げたくありません。市場へようこそ。あなたが市場にいることを嬉しく思いますし、これから得られる成功を楽しみにしています」</div>
+                        <div class="icon-text">
+                            <span class="emoji">✨</span>
+                            <p>新しい世代のトレーダーの成功を期待</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>出典: ピーター・ブラント氏による「市場の暴落に関する真実 | ほとんどのトレーダーが間違えていること」からの抜粋</p>
+            <p>元動画: <a href="https://youtu.be/02tMCQLFIjg?si=T9vsnDEQxt5RPMch" target="_blank">The TRUTH About MARKET CRASHES | What Most Traders Get Wrong - Peter Brandt</a></p>
+        </footer>
+        
+        <!-- 手書き風の接続要素 -->
+        <svg class="hand-drawn-arrow" style="top: 250px; left: 300px;" viewBox="0 0 100 50">
+            <path d="M10,25 C30,5 70,45 90,25" fill="none" stroke="#F25C05" stroke-width="2" stroke-linecap="round" />
+            <polygon points="90,25 85,20 85,30" fill="#F25C05" />
+        </svg>
+        
+        <svg class="hand-drawn-arrow" style="top: 450px; left: 450px;" viewBox="0 0 100 50">
+            <path d="M10,25 C30,45 70,5 90,25" fill="none" stroke="#F2C53D" stroke-width="2" stroke-linecap="round" />
+            <polygon points="90,25 85,20 85,30" fill="#F2C53D" />
+        </svg>
+        
+        <svg class="hand-drawn-arrow" style="top: 650px; left: 600px;" viewBox="0 0 100 50">
+            <path d="M10,25 C30,5 70,45 90,25" fill="none" stroke="#593C47" stroke-width="2" stroke-linecap="round" />
+            <polygon points="90,25 85,20 85,30" fill="#593C47" />
+        </svg>
+    </div>
+</body>
+</html>
