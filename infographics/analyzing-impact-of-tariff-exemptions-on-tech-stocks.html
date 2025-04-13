@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>特定ハイテク製品の関税除外シナリオと株式市場への影響</title>
+    <link rel="icon" type="image/png" href="../images/monty.png">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Yomogi&family=Zen+Kurenaido&family=Kaisei+Decol:wght@400;700&display=swap');
+        
+        :root {
+            --fashion-1: #593C47;
+            --fashion-2: #F2E63D;
+            --fashion-3: #F2C53D;
+            --fashion-4: #F25C05;
+            --fashion-5: #F24405;
+            --text-dark: #334155;
+            --text-title: #1e40af;
+            --bg-light: #fff;
+            --shadow: rgba(0, 0, 0, 0.1);
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Kaisei Decol', serif;
+            background-color: #f8f9fa;
+            color: var(--text-dark);
+            line-height: 1.4;
+            padding: 0;
+            margin: 0;
+        }
+
+        .fixed-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: linear-gradient(135deg, var(--fashion-1), var(--fashion-5));
+            padding: 10px 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .fixed-header:hover {
+            background: linear-gradient(135deg, var(--fashion-5), var(--fashion-1));
+        }
+
+        .fixed-header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .header-logo {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .fixed-header h1 {
+            font-family: 'Zen Kurenaido', sans-serif;
+            font-size: 24px;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            background: linear-gradient(to right, white, var(--fashion-2));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin: 0;
+            pointer-events: none;
+        }
+
+        .main-content {
+            margin-top: 60px;
+            padding: 20px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hidden {
+            display: none !important;
+            visibility: hidden;
+            opacity: 0;
+        }
+
+        .language-switch {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1001;
+            display: none;
+        }
+        
+        .language-switch button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 20px;
+            background: linear-gradient(135deg, var(--fashion-1), var(--fashion-5));
+            color: white;
+            cursor: pointer;
+            font-family: 'Yomogi', cursive;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .language-switch button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(135deg, var(--fashion-1), var(--fashion-5));
+            color: white;
+            margin-top: 40px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-logo {
+            font-family: 'Zen Kurenaido', sans-serif;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 15px;
+        }
+
+        .footer-social a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .footer-social a:hover {
+            color: var(--fashion-2);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .fixed-header h1 {
+                font-size: 20px;
+            }
+            
+            .main-content {
+                margin-top: 50px;
+                padding: 10px;
+            }
+
+            .language-switch {
+                top: 10px;
+                right: 10px;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="language-switch">
+        <button onclick="toggleLanguage()">English</button>
+    </div>
+
+    <div class="fixed-header" onclick="window.location.href='../index.html'">
+        <div class="fixed-header-content">
+            <img src="../images/monty.png" alt="Monty Trader Logo" class="header-logo">
+            <h1 class="ja">モンティの株式トレードインフォグラフィックス集</h1>
+            <h1 class="en hidden">Monty's Stock Trading Infographics Collection</h1>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>特定ハイテク製品の関税除外シナリオと株式市場への影響</title>
+  <link href="https://fonts.googleapis.com/css2?family=Yomogi&family=Zen+Kurenaido&family=Kaisei+Decol:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --fashion-1: #593C47;
+      --fashion-2: #F2E63D;
+      --fashion-3: #F2C53D;
+      --fashion-4: #F25C05;
+      --fashion-5: #F24405;
+      --text-dark: #334155;
+      --text-title: #1e293b;
+      --text-subtitle: #475569;
+      --text-section: #1e40af;
+      --bg-light: #f8fafc;
+      --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    }
+    
+    body {
+      font-family: 'Kaisei Decol', serif;
+      background-color: var(--bg-light);
+      color: var(--text-dark);
+      margin: 0;
+      padding: 20px;
+      line-height: 1.4;
+    }
+    
+    .container {
+      max-width: 100%;
+      margin: 0 auto;
+      background-color: white;
+      border-radius: 16px;
+      padding: 30px;
+      box-shadow: var(--card-shadow);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    /* ヘッダー */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 30px;
+      border-bottom: 2px dashed var(--fashion-1);
+      padding-bottom: 15px;
+    }
+    
+    .title-container {
+      flex: 1;
+    }
+    
+    h1 {
+      font-family: 'Yomogi', cursive;
+      font-size: 32px;
+      font-weight: bold;
+      margin: 0 0 10px 0;
+      background: linear-gradient(45deg, var(--fashion-1), var(--fashion-4));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline-block;
+      position: relative;
+    }
+    
+    h1::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, var(--fashion-2), var(--fashion-3));
+      border-radius: 3px;
+    }
+    
+    .date-source {
+      text-align: right;
+      font-family: 'Zen Kurenaido', sans-serif;
+      font-size: 14px;
+      color: var(--text-subtitle);
+      background-color: rgba(255, 255, 255, 0.8);
+      padding: 8px 15px;
+      border-radius: 10px;
+      border: 1px solid #e2e8f0;
+      backdrop-filter: blur(5px);
+    }
+
+    /* メインコンテンツ */
+    .content {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+    }
+    
+    .section {
+      background-color: white;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: var(--card-shadow);
+      position: relative;
+      border: 2px solid #f1f5f9;
+      margin-bottom: 20px;
+    }
+    
+    .section::before {
+      content: '';
+      position: absolute;
+      top: -8px;
+      left: 20px;
+      width: 70%;
+      height: 8px;
+      background-color: var(--fashion-2);
+      border-radius: 4px 4px 0 0;
+      opacity: 0.7;
+    }
+    
+    .news-section {
+      grid-column: 1 / -1;
+    }
+    
+    h2 {
+      font-family: 'Yomogi', cursive;
+      font-size: 22px;
+      color: var(--fashion-1);
+      margin: 0 0 15px 0;
+      padding-bottom: 8px;
+      border-bottom: 2px dotted var(--fashion-3);
+      display: flex;
+      align-items: center;
+    }
+    
+    h2::before {
+      content: '✏️';
+      margin-right: 10px;
+    }
+    
+    h3 {
+      font-family: 'Zen Kurenaido', sans-serif;
+      font-size: 18px;
+      color: var(--text-section);
+      margin: 15px 0 10px 0;
+      display: flex;
+      align-items: center;
+    }
+    
+    h3::before {
+      content: '📌';
+      margin-right: 8px;
+      font-size: 16px;
+    }
+    
+    ul {
+      list-style-type: none;
+      padding-left: 10px;
+      margin: 10px 0;
+    }
+    
+    li {
+      position: relative;
+      padding-left: 20px;
+      margin-bottom: 8px;
+      line-height: 1.5;
+    }
+    
+    li::before {
+      content: '•';
+      color: var(--fashion-4);
+      font-weight: bold;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+    
+    .news-item {
+      padding: 8px 12px;
+      margin-bottom: 10px;
+      border-left: 3px solid var(--fashion-3);
+      background-color: rgba(242, 230, 61, 0.1);
+      font-size: 14px;
+    }
+    
+    /* 特殊表現 */
+    .highlight {
+      background: linear-gradient(transparent 60%, var(--fashion-2) 60%);
+      font-weight: bold;
+    }
+    
+    .bubble {
+      background-color: white;
+      border: 2px solid var(--fashion-1);
+      border-radius: 15px;
+      padding: 10px 15px;
+      position: relative;
+      margin: 15px 0;
+      font-family: 'Zen Kurenaido', sans-serif;
+    }
+    
+    .bubble::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 20px;
+      border-width: 10px 10px 0;
+      border-style: solid;
+      border-color: white transparent;
+      display: block;
+      width: 0;
+    }
+    
+    .bubble::before {
+      content: '';
+      position: absolute;
+      bottom: -12px;
+      left: 19px;
+      border-width: 11px 11px 0;
+      border-style: solid;
+      border-color: var(--fashion-1) transparent;
+      display: block;
+      width: 0;
+    }
+    
+    .company {
+      display: inline-block;
+      padding: 3px 8px;
+      border-radius: 5px;
+      background-color: var(--fashion-3);
+      margin: 3px 5px 3px 0;
+      font-weight: bold;
+      color: var(--fashion-1);
+    }
+
+    .arrow-connection {
+      display: flex;
+      align-items: center;
+      margin: 10px 0;
+      font-size: 14px;
+    }
+    
+    .arrow {
+      flex-grow: 1;
+      height: 2px;
+      background-color: var(--fashion-4);
+      position: relative;
+      margin: 0 10px;
+    }
+    
+    .arrow::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: -4px;
+      width: 0;
+      height: 0;
+      border-top: 5px solid transparent;
+      border-bottom: 5px solid transparent;
+      border-left: 8px solid var(--fashion-4);
+    }
+    
+    .positive {
+      color: #047857;
+      font-weight: bold;
+    }
+    
+    .negative {
+      color: #b91c1c;
+      font-weight: bold;
+    }
+    
+    .note {
+      font-size: 12px;
+      color: var(--text-subtitle);
+      font-style: italic;
+      margin-top: 5px;
+    }
+    
+    .hand-drawn-box {
+      border: 2px solid var(--fashion-1);
+      border-radius: 12px;
+      padding: 15px;
+      margin: 15px 0;
+      position: relative;
+      background-color: rgba(255, 255, 255, 0.7);
+    }
+    
+    .hand-drawn-box::after {
+      content: '';
+      position: absolute;
+      top: -5px;
+      left: 20px;
+      right: 20px;
+      height: 10px;
+      background-color: white;
+    }
+    
+    /* フッター */
+    .footer {
+      margin-top: 30px;
+      padding-top: 15px;
+      border-top: 2px dashed var(--fashion-1);
+      font-size: 12px;
+      color: var(--text-subtitle);
+      text-align: center;
+    }
+    
+    /* 手書き風線 */
+    .scribble-border {
+      border: 0;
+      height: 3px;
+      background-image: repeating-linear-gradient(
+        90deg,
+        var(--fashion-1),
+        var(--fashion-1) 5px,
+        transparent 5px,
+        transparent 7px
+      );
+      margin: 20px 0;
+    }
+    
+    /* レスポンシブ対応 */
+    @media (max-width: 1024px) {
+      .content {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .content {
+        grid-template-columns: 1fr;
+      }
+      
+      .header {
+        flex-direction: column;
+      }
+      
+      .date-source {
+        margin-top: 10px;
+        text-align: left;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="title-container">
+        <h1>特定ハイテク製品の関税除外シナリオと株式市場への影響</h1>
+      </div>
+      <div class="date-source">
+        <div>分析日: 2025年4月13日</div>
+        <div>作成者: 中長期株式ポートフォリオファンドマネージャー</div>
+      </div>
+    </div>
+    
+    <div class="content">
+      <div class="section news-section">
+        <h2>関連ニュースヘッドライン（直近2週間より抽出）</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 15px;">
+          <div class="news-item">
+            <strong>📰 Trump exempts smartphones, computers from 'reciprocal' tariffs</strong>
+            <div>トランプ政権は中国などからの輸入品に対する高率の「相互関税」（最大125%超）の対象から、<span class="highlight">スマートフォン、PC、半導体</span>などを除外。4月5日に遡及適用。</div>
+          </div>
+          
+          <div class="news-item">
+            <strong>📰 Exemptions seen as relief for tech giants</strong>
+            <div>関税除外は、中国での生産比率が高い<span class="highlight">Apple</span>や<span class="highlight">半導体メーカー</span>等にとって、コスト増や消費者価格への転嫁懸念を和らげるものと評価。</div>
+          </div>
+          
+          <div class="news-item">
+            <strong>📰 Trump says he will provide more information on semiconductor tariffs on Monday</strong>
+            <div>トランプ大統領は<span class="highlight">半導体関税に関する新たな情報</span>を月曜日に示すと発言。</div>
+          </div>
+          
+          <div class="news-item">
+            <strong>📰 Trump administration will not spare electronics products from tariffs</strong>
+            <div>ルーニック商務長官は、エレクトロニクス（半導体含む）は今後導入される<span class="highlight">「セクター別関税」の対象</span>になると発言。1ヶ月以内の導入を示唆。</div>
+          </div>
+          
+          <div class="news-item">
+            <strong>📰 White House emphasizes goal of reducing reliance on China</strong>
+            <div>ホワイトハウスは、<span class="highlight">重要技術の中国依存脱却</span>と<span class="highlight">国内製造（オンショアリング）推進</span>の方針を改めて強調。</div>
+          </div>
+          
+          <div class="news-item">
+            <strong>📰 US-China trade tensions remain high despite exemptions</strong>
+            <div>中国側も米国製品への報復関税（125%）を発表するなど、<span class="highlight">貿易戦争の緊張は継続</span>。</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="section">
+        <h2>想定シナリオ概要（今後18ヶ月）</h2>
+        
+        <div class="bubble">
+          <strong>前提:</strong> 米国の保護主義的な通商政策は継続。ただし、国内経済（インフレ、消費）や特定産業への影響を考慮し、政策手段や対象は変動する。
+        </div>
+        
+        <h3>短期的展望（〜3ヶ月）</h3>
+        <div class="hand-drawn-box">
+          <ul>
+            <li>直近の発表通り、<span class="highlight">スマホ・PC・半導体等の特定ハイテク製品は高率の「相互関税」から除外</span>される。</li>
+            <li>関連企業のコスト急増や消費者物価への打撃は<span class="positive">一時的に回避</span>される。</li>
+            <li>市場の不透明感は残るものの、最悪シナリオ（超高関税）回避による安堵感が広がる可能性。</li>
+          </ul>
+        </div>
+        
+        <div class="arrow-connection">
+          <span>短期</span>
+          <div class="arrow"></div>
+          <span>中期</span>
+        </div>
+        
+        <h3>中期的展望（3ヶ月〜18ヶ月）</h3>
+        <div class="hand-drawn-box">
+          <ul>
+            <li>ルーニック商務長官の発言通り、エレクトロニクス・半導体セクターを対象とした<span class="negative">新たな関税（セクター別関税）</span>が導入される可能性が高い。</li>
+            <li>CHIPS法などに代表される国内製造業支援策と関税政策が連動し、<span class="highlight">サプライチェーンの国内回帰・多様化（脱中国依存）が加速</span>。</li>
+            <li>輸出規制（特に先端技術）など、関税以外の手段による米中間のデカップリング圧力が強まる可能性。</li>
+          </ul>
+        </div>
+        
+        <h3>経済指標予想</h3>
+        <ul>
+          <li><strong>インフレ:</strong> 短期的な抑制効果は限定的。中期的には新関税、サプライチェーン再編コスト等からインフレ圧力は継続・再燃リスク。</li>
+          <li><strong>金利:</strong> FRBは高金利を維持、あるいは状況次第で追加利上げの可能性も排除できない。</li>
+          <li><strong>GDP:</strong> 国内投資のプラス効果と、輸入コスト増・消費抑制のマイナス効果が綱引き状態。</li>
+        </ul>
+      </div>
+      
+      <div class="section">
+        <h2>影響が及ぶセクター・業種</h2>
+        
+        <h3>1次的インパクト（直接的影響）</h3>
+        <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 15px;">
+          <div class="company">半導体</div>
+          <div class="company">半導体製造装置</div>
+          <div class="company">テクノロジー・ハードウェア</div>
+          <div class="company">ソフトウェア＆サービス</div>
+        </div>
+        
+        <div style="display: flex; align-items: center; margin-bottom: 10px;">
+          <div style="flex: 1; text-align: center;">
+            <div style="font-weight: bold; color: var(--fashion-4);">短期的効果</div>
+            <div class="positive">ポジティブ ↑</div>
+            <div>高率関税回避によるコスト増リスクの後退</div>
+          </div>
+          <div style="flex: 1; text-align: center;">
+            <div style="font-weight: bold; color: var(--fashion-4);">中期的効果</div>
+            <div class="negative">ネガティブ ↓</div>
+            <div>新たなセクター別関税導入によるコスト増</div>
+          </div>
+        </div>
+        
+        <h3>2次的インパクト（関連産業・バリューチェーン）</h3>
+        <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 15px;">
+          <div class="company">小売（家電量販店）</div>
+          <div class="company">通信サービス</div>
+          <div class="company">電子部品</div>
+          <div class="company">物流</div>
+        </div>
+        
+        <div style="display: flex; align-items: center; margin-bottom: 10px;">
+          <div style="flex: 1; text-align: center;">
+            <div style="font-weight: bold; color: var(--fashion-4);">短期的効果</div>
+            <div class="positive">やや安定 →</div>
+            <div>関税除外対象製品の価格安定による販売下支え</div>
+          </div>
+          <div style="flex: 1; text-align: center;">
+            <div style="font-weight: bold; color: var(--fashion-4);">中期的効果</div>
+            <div class="negative">やや下落 ↓</div>
+            <div>新関税による製品価格上昇に伴う需要減退リスク</div>
+          </div>
+        </div>
+        
+        <h3>3次的インパクト（マクロ・規制・技術）</h3>
+        <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 15px;">
+          <div class="company">消費関連</div>
+          <div class="company">金融</div>
+          <div class="company">製造業</div>
+          <div class="company">建設・エンジニアリング</div>
+        </div>
+        
+        <div class="bubble">
+          <div><strong>短期:</strong> 特定製品の価格上昇懸念後退による消費者心理への一時的なプラス効果</div>
+          <div><strong>中期:</strong> インフレ再燃・高金利継続リスク、米中対立激化による地政学リスク上昇</div>
+        </div>
+      </div>
+      
+      <div class="section">
+        <h2>ポジティブ影響が期待される銘柄</h2>
+        
+        <div class="hand-drawn-box" style="background-color: rgba(242, 230, 61, 0.2);">
+          <h3>Apple (AAPL) 📱</h3>
+          <ul>
+            <li><span class="positive">短期プラス:</span> 最大の懸念材料であったiPhone等への超高関税が回避された</li>
+            <li><span class="highlight">強み:</span> ブランド力、価格決定力、サービス事業の成長</li>
+            <li><span class="negative">リスク:</span> 中期的な新関税リスクと中国依存には注意が必要</li>
+          </ul>
+        </div>
+        
+        <div class="hand-drawn-box" style="background-color: rgba(242, 197, 61, 0.2);">
+          <h3>NVIDIA (NVDA) 🖥️</h3>
+          <ul>
+            <li><span class="positive">短期プラス:</span> 関税除外に加え、AI向け半導体の圧倒的な需要が継続</li>
+            <li><span class="highlight">強み:</span> データセンター投資拡大の恩恵</li>
+            <li><span class="negative">リスク:</span> 先端半導体の対中輸出規制強化リスク</li>
+          </ul>
+        </div>
+        
+        <div class="hand-drawn-box" style="background-color: rgba(242, 92, 5, 0.1);">
+          <h3>半導体製造装置メーカー 🔧</h3>
+          <ul>
+            <li><strong>代表銘柄:</strong> Applied Materials (AMAT), Lam Research (LRCX)</li>
+            <li><span class="positive">成長要因:</span> 関税除外に加え、米国のCHIPS法による国内半導体工場建設の恩恵</li>
+            <li><span class="highlight">ポイント:</span> サプライチェーン国内回帰の流れを捉える</li>
+          </ul>
+        </div>
+        
+        <div class="hand-drawn-box" style="background-color: rgba(242, 68, 4, 0.1);">
+          <h3>Dell Technologies (DELL) 💻</h3>
+          <ul>
+            <li><span class="positive">短期プラス:</span> PC・サーバーメーカーとして関税除外の恩恵</li>
+            <li><span class="highlight">強み:</span> AIサーバー需要の拡大が追い風</li>
+            <li><span class="positive">ポイント:</span> 比較的、生産拠点の分散も進めている</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="section">
+        <h2>ネガティブ影響が予想される銘柄・セクター</h2>
+        
+        <div class="hand-drawn-box" style="background-color: rgba(89, 60, 71, 0.1);">
+          <h3>半導体（中国市場依存度が高い企業）</h3>
+          <ul>
+            <li><strong>代表例:</strong> Micron Technology (MU) など</li>
+            <li><span class="negative">リスク要因:</span> 中期的なセクター別関税導入、輸出規制リスク</li>
+            <li><span class="negative">懸念点:</span> サプライチェーン再編に伴うコスト増</li>
+          </ul>
+        </div>
+        
+        <div class="hand-drawn-box" style="background-color: rgba(89, 60, 71, 0.1);">
+          <h3>家電小売</h3>
+          <ul>
+            <li><strong>代表例:</strong> Best Buy (BBY)</li>
+            <li><span class="negative">リスク要因:</span> 中期的に新関税導入で製品価格が上昇した場合</li>
+            <li><span class="negative">懸念点:</span> 消費者の裁量的支出抑制の影響を受けやすい</li>
+          </ul>
+        </div>
+        
+        <div class="hand-drawn-box" style="background-color: rgba(89, 60, 71, 0.1);">
+          <h3>Apple (ネガティブ側面)</h3>
+          <ul>
+            <li><span class="negative">懸念点:</span> 依然として中国での生産・販売への依存度が高い</li>
+            <li><span class="negative">リスク要因:</span> サプライチェーン移行には時間とコストがかかる</li>
+          </ul>
+        </div>
+        
+        <div class="hand-drawn-box" style="background-color: rgba(89, 60, 71, 0.1);">
+          <h3>広範な中国関連輸入企業</h3>
+          <ul>
+            <li><span class="negative">懸念点:</span> 今回のハイテク除外は例外的措置であり、他の消費財、工業製品などでは関税が強化・維持される可能性</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="section" style="grid-column: 1 / -1;">
+        <h2>レビューコメントと最終的な投資判断・示唆</h2>
+        
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+          <div>
+            <h3>別のファンドマネージャーの観点</h3>
+            <div class="bubble" style="background-color: rgba(242, 230, 61, 0.1);">
+              <ul>
+                <li>今回の関税除外は「<span class="highlight">一時しのぎ</span>」感が強く、中期的な「セクター別関税」導入の可能性が濃厚</li>
+                <li>関税だけでなく、<span class="highlight">輸出管理規制（EAR）</span>など、他の政策手段も重要</li>
+                <li>サプライチェーン再編のコストと時間軸の評価が楽観的すぎないか？</li>
+                <li>同盟国（日・韓・台・欧）との連携・対立による影響も考慮必要</li>
+              </ul>
+            </div>
+          </div>
+          
+          <div>
+            <h3>誤解の有無</h3>
+            <div class="bubble" style="background-color: rgba(242, 230, 61, 0.1);">
+              <ul>
+                <li>「関税除外＝自由貿易への転換」という誤解を与えかねない表現に注意</li>
+                <li>あくまで選択的・戦略的な措置であり、<span class="highlight">保護主義の基調は変わらない</span></li>
+                <li>個別企業の価格転嫁能力やサプライチェーンの柔軟性による影響度の差異についての分析が必要</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+        <div class="scribble-border"></div>
+        
+        <h3>最終的な投資判断・示唆</h3>
+        <div class="hand-drawn-box" style="background-color: rgba(242, 197, 61, 0.2); grid-column: 1 / -1;">
+          <strong>投資判断: </strong>
+          <p>短期的には特定ハイテク株への安堵感が広がる可能性があるが、中長期（18ヶ月）では米国の保護主義政策（新たな関税リスク含む）と米中対立の継続が主要テーマとなる。ポートフォリオ戦略としては、短期的な変動に惑わされず、<span class="highlight">構造変化への耐性と成長性を持つ分野へのシフト</span>を検討すべき。</p>
+        </div>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 15px; margin-top: 20px;">
+          <div class="hand-drawn-box" style="background-color: rgba(242, 92, 5, 0.1);">
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">Monty Trader</div>
+            <div class="footer-social">
+                <a href="https://x.com/monty_investor" target="_blank">@monty_investor</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleLanguage() {
+            const jaElements = document.querySelectorAll('.ja');
+            const enElements = document.querySelectorAll('.en');
+            const button = document.querySelector('.language-switch button');
+            
+            jaElements.forEach(el => el.classList.toggle('hidden'));
+            enElements.forEach(el => el.classList.toggle('hidden'));
+            
+            button.textContent = button.textContent === 'English' ? '日本語' : 'English';
+        }
+    </script>
+</body>
+</html> 
