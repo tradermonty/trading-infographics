@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Byrna Technologies グラフィックレコーディング</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Yomogi&family=Zen+Kurenaido&family=Kaisei+Decol:wght@400;700&display=swap');
+        
+        :root {
+            --color-1: #593C47;
+            --color-2: #F2E63D;
+            --color-3: #F2C53D;
+            --color-4: #F25C05;
+            --color-5: #F24405;
+            --gray-600: #475569;
+            --gray-700: #334155;
+            --blue-800: #1e40af;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Kaisei Decol', serif;
+            background-color: #f8f9fa;
+            line-height: 1.4;
+            color: var(--gray-700);
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid var(--color-3);
+            position: relative;
+        }
+        
+        .header::after {
+            content: "";
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--color-3), var(--color-4), var(--color-5));
+            border-radius: 3px;
+        }
+        
+        .title {
+            font-family: 'Zen Kurenaido', sans-serif;
+            font-size: 32px;
+            font-weight: bold;
+            background: linear-gradient(45deg, var(--color-1), var(--color-5));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .title::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--color-3), var(--color-4));
+            border-radius: 1.5px;
+        }
+        
+        .date {
+            font-family: 'Yomogi', cursive;
+            font-size: 16px;
+            color: var(--gray-600);
+        }
+        
+        .content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .column {
+            flex: 1;
+            min-width: 30%;
+        }
+        
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            border: 2px solid transparent;
+            background-clip: padding-box;
+            position: relative;
+        }
+        
+        .card::before {
+            content: "";
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            z-index: -1;
+            border-radius: 14px;
+            background: linear-gradient(45deg, var(--color-2), var(--color-3), var(--color-4));
+            opacity: 0.6;
+        }
+        
+        .section-title {
+            font-family: 'Zen Kurenaido', sans-serif;
+            font-size: 18px;
+            color: var(--blue-800);
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px dashed var(--color-3);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .body-text {
+            font-family: 'Kaisei Decol', serif;
+            font-size: 14px;
+            color: var(--gray-700);
+        }
+        
+        .highlight {
+            font-weight: bold;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .highlight::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 2px;
+            width: 100%;
+            height: 6px;
+            background-color: var(--color-3);
+            opacity: 0.3;
+            z-index: -1;
+        }
+        
+        .marker {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .marker::after {
+            content: "";
+            position: absolute;
+            left: -2px;
+            right: -2px;
+            top: 0;
+            bottom: 0;
+            background-color: var(--color-2);
+            opacity: 0.2;
+            z-index: -1;
+            transform: rotate(-1deg);
+        }
+        
+        .arrow {
+            position: relative;
+            margin: 15px 0;
+        }
+        
+        .arrow::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--color-4);
+            transform: translateY(-50%);
+        }
+        
+        .arrow::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            right: -5px;
+            width: 10px;
+            height: 10px;
+            border-top: 2px solid var(--color-4);
+            border-right: 2px solid var(--color-4);
+            transform: translateY(-50%) rotate(45deg);
+        }
+        
+        .tag {
+            display: inline-block;
+            padding: 3px 8px;
+            background-color: var(--color-3);
+            color: var(--color-1);
+            font-size: 12px;
+            border-radius: 30px;
+            margin-right: 5px;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        .data-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 5px 0;
+            border-bottom: 1px dashed #ccc;
+        }
+        
+        .data-label {
+            font-weight: bold;
+        }
+        
+        .data-value {
+            font-family: 'Zen Kurenaido', sans-serif;
+        }
+        
+        .product-item {
+            margin-bottom: 15px;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .product-item::before {
+            content: "✦";
+            position: absolute;
+            left: 0;
+            color: var(--color-4);
+        }
+        
+        .footer {
+            margin-top: 30px;
+            text-align: center;
+            font-size: 12px;
+            color: var(--gray-600);
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+        }
+        
+        .connector {
+            position: absolute;
+            z-index: -1;
+        }
+        
+        .hand-drawn {
+            filter: url(#hand-drawn);
+        }
+        
+        .bubble {
+            position: absolute;
+            background-color: var(--color-2);
+            padding: 10px 15px;
+            border-radius: 20px;
+            font-family: 'Yomogi', cursive;
+            font-size: 14px;
+            transform: rotate(-3deg);
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+            z-index: 2;
+            opacity: 0.85;
+        }
+        
+        .bubble::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 20px;
+            width: 20px;
+            height: 20px;
+            background-color: var(--color-2);
+            transform: rotate(45deg);
+            z-index: -1;
+        }
+        
+        .price-change {
+            font-weight: bold;
+            color: #22c55e;
+        }
+        
+        .stock-graph {
+            height: 60px;
+            width: 100%;
+            position: relative;
+            margin: 15px 0;
+        }
+        
+        .stock-line {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            stroke: var(--color-4);
+            stroke-width: 3;
+            fill: none;
+            filter: url(#hand-drawn);
+        }
+        
+        .stock-line-fill {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            fill: var(--color-3);
+            opacity: 0.2;
+            filter: url(#hand-drawn);
+        }
+        
+        .annotate {
+            position: absolute;
+            font-family: 'Yomogi', cursive;
+            font-size: 12px;
+            color: var(--color-5);
+            transform: rotate(-5deg);
+        }
+        
+        .circle-highlight {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            border: 2px dashed var(--color-4);
+            border-radius: 50%;
+            transform: rotate(10deg);
+        }
+        
+        @media (max-width: 900px) {
+            .content {
+                flex-direction: column;
+            }
+            
+            .column {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <svg width="0" height="0" style="position: absolute;">
+        <filter id="hand-drawn">
+            <feTurbulence type="fractalNoise" baseFrequency="0.01" numOctaves="3" result="noise" />
+            <feDisplacementMap in="SourceGraphic" in2="noise" scale="2" xChannelSelector="R" yChannelSelector="G" />
+        </filter>
+    </svg>
+    
+    <div class="container">
+        <div class="header">
+            <div class="title">Byrna Technologies Inc.</div>
+            <div class="date">2025年4月14日現在</div>
+        </div>
+        
+        <div class="content">
+            <div class="column">
+                <div class="card">
+                    <div class="section-title">
+                        <span>🏢</span> 会社概要
+                    </div>
+                    <div class="body-text">
+                        <p>Byrna Technologies Inc.（NASDAQ: <span class="highlight">BYRN</span>）は非致死性個人用セキュリティソリューションを専門とする米国企業です。</p>
+                        <p>製品ラインナップには<span class="marker">ハンドヘルド発射装置、化学刺激物発射体、自己防衛スプレー</span>などがあります。</p>
+                        <p>一般市民向けとプロフェッショナルなセキュリティ用途のどちらにも対応しています。</p>
+                    </div>
+                    
+                    <div class="bubble" style="right: -20px; top: 10px; transform: rotate(5deg);">
+                        非致死性自己防衛デバイス専門！
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="section-title">
+                        <span>📈</span> 株価パフォーマンス
+                    </div>
+                    <div class="body-text">
+                        <div class="data-row">
+                            <div class="data-label">現在値:</div>
+                            <div class="data-value">$20.30</div>
+                        </div>
+                        <div class="data-row">
+                            <div class="data-label">日次変動:</div>
+                            <div class="data-value price-change">+$13.41</div>
+                        </div>
+                        <div class="data-row">
+                            <div class="data-label">52週レンジ:</div>
+                            <div class="data-value">$7.79 – $34.70</div>
+                        </div>
+                        <div class="data-row">
+                            <div class="data-label">時価総額:</div>
+                            <div class="data-value">$406.42 百万</div>
+                        </div>
+                        <div class="data-row">
+                            <div class="data-label">P/E比率:</div>
+                            <div class="data-value">33.3</div>
+                        </div>
+                        <div class="data-row">
+                            <div class="data-label">EPS:</div>
+                            <div class="data-value">$0.60</div>
+                        </div>
+                        
+                        <div class="stock-graph">
+                            <svg viewBox="0 0 100 30" class="stock-line">
+                                <path d="M0,25 C10,24 15,20 20,18 C25,16 30,15 35,10 C40,5 45,2 50,5 C55,8 60,15 65,12 C70,9 75,4 80,2 C85,0 90,5 100,3" />
+                            </svg>
+                            <svg viewBox="0 0 100 30" class="stock-line-fill">
+                                <path d="M0,25 C10,24 15,20 20,18 C25,16 30,15 35,10 C40,5 45,2 50,5 C55,8 60,15 65,12 C70,9 75,4 80,2 C85,0 90,5 100,3 L100,30 L0,30 Z" />
+                            </svg>
+                            
+                            <div class="annotate" style="top: 0; right: 20px;">
+                                急上昇中！
+                            </div>
+                            
+                            <div class="circle-highlight" style="top: -10px; right: 30px;"></div>
+                        </div>
+                        
+                        <p style="margin-top: 15px;">最近の株価上昇は<span class="highlight">2025年第1四半期の好調な業績発表</span>によるものです。収益は<span class="marker">$26.2百万</span>に達し、前年同期比<span class="marker">57%増</span>を記録しました。</p>
+                        <p>この成長は<span class="highlight">小売パートナーシップの拡大</span>（Sportsman's Warehouseとの大型契約を含む）と<span class="highlight">米国内の生産能力向上</span>によるものです。</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="column">
+                <div class="card">
+                    <div class="section-title">
+                        <span>🛡️</span> 製品ハイライト
+                    </div>
+                    <div class="body-text">
+                        <div class="product-item">
+                            <p><span class="highlight">Byrna SD ペッパーキット</span></p>
+                            <p>拳銃に似た非致死性発射装置。ピンクやオレンジなど様々なカラーで展開。</p>
+                        </div>
+                        
+                        <div class="product-item">
+                            <p><span class="highlight">Mission-4 ランチャー</span></p>
+                            <p>大容量でライフル形状の発射装置。ホームディフェンスやレクリエーション用に設計。</p>
+                        </div>
+                        
+                        <div class="product-item">
+                            <p><span class="highlight">TCR (Tactical Compact Rifle)</span></p>
+                            <p>コンパクトでカスタマイズ可能なランチャー。アクセサリー用のピカティニーレールを装備。</p>
+                        </div>
+                        
+                        <div class="product-item">
+                            <p><span class="highlight">Bad Guy Repellent Max</span></p>
+                            <p>高性能な自己防衛スプレー。催涙ガス、ペッパースプレー、攻撃者識別用のUV染料を組み合わせた製品。</p>
+                        </div>
+                        
+                        <p style="margin-top: 15px;">これらの製品は<span class="marker">Byrnaの公式ウェブサイト</span>と<span class="marker">正規販売店</span>で購入可能です。</p>
+                    </div>
+                    
+                    <div class="bubble" style="left: -30px; bottom: 30px;">
+                        個人向け自己防衛製品のラインナップが充実！
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="section-title">
+                        <span>📅</span> 次回の業績発表
+                    </div>
+                    <div class="body-text">
+                        <p>次回の四半期決算発表は<span class="highlight">2025年7月15日</span>に予定されています。</p>
+                        <p>機関投資家や個人投資家からの注目度が高まっています。</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="column">
+                <div class="card">
+                    <div class="section-title">
+                        <span>🌍</span> グローバル展開
+                    </div>
+                    <div class="body-text">
+                        <p>Byrnaは国際的なプレゼンスを拡大しています。</p>
+                        <p>特に注目すべきは<span class="marker">アルゼンチンのコルドバ州警察</span>からの大型受注です。</p>
+                        <p>以前の<span class="highlight">5,000ユニット</span>の注文に加えて、さらに<span class="highlight">10,000ユニット</span>のランチャー購入の契約を獲得しています。</p>
+                        
+                        <div style="margin-top: 20px; padding: 10px; border: 2px dashed var(--color-1); border-radius: 10px;">
+                            <div style="text-align: center; margin-bottom: 10px; font-weight: bold; color: var(--color-1);">グローバル展開の主要市場</div>
+                            <div style="display: flex; flex-wrap: wrap; gap: 5px; justify-content: center;">
+                                <div class="tag">北米</div>
+                                <div class="tag">南米</div>
+                                <div class="tag">ヨーロッパ</div>
+                                <div class="tag">アジア・太平洋</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="section-title">
+                        <span>💡</span> 投資家情報
+                    </div>
+                    <div class="body-text">
+                        <p>より詳細な情報は以下のリソースでご確認いただけます：</p>
+                        <ul style="list-style-type: none; margin-top: 10px;">
+                            <li style="margin-bottom: 8px; padding-left: 20px; position: relative;">
+                                <span style="position: absolute; left: 0; color: var(--color-4);">→</span>
+                                <span class="highlight">Byrnaの投資家向けページ</span>（ir.byrna.com）
+                            </li>
+                            <li style="margin-bottom: 8px; padding-left: 20px; position: relative;">
+                                <span style="position: absolute; left: 0; color: var(--color-4);">→</span>
+                                <span class="highlight">Yahoo Finance</span>（リアルタイム株価情報）
+                            </li>
+                            <li style="padding-left: 20px; position: relative;">
+                                <span style="position: absolute; left: 0; color: var(--color-4);">→</span>
+                                <span class="highlight">MarketWatch</span>（市場分析と予測）
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="section-title">
+                        <span>📊</span> 業界動向
+                    </div>
+                    <div class="body-text">
+                        <p>非致死性自己防衛製品市場は<span class="highlight">急速に成長</span>しており、2025年も拡大が見込まれています。</p>
+                        <p>個人の安全に対する意識の高まりと、幅広い層への製品アピールが成長を後押ししています。</p>
+                        <p>Byrnaはこの成長市場で<span class="marker">先駆的なポジション</span>を確立しています。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>出典: Byrna Technologies Inc.公式情報、Yahoo Finance、MarketWatch（2025年4月14日時点）</p>
+        </div>
+    </div>
+</body>
+</html>

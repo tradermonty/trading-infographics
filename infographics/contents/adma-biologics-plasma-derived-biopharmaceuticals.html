@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADMA Biologics グラフィックレコーディング</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Yomogi&family=Zen+Kurenaido&family=Kaisei+Decol:wght@400;700&display=swap');
+        
+        :root {
+            --fashion-1: #593C47;
+            --fashion-2: #F2E63D;
+            --fashion-3: #F2C53D;
+            --fashion-4: #F25C05;
+            --fashion-5: #F24405;
+            --text-main: #334155;
+            --text-heading: #1e40af;
+            --text-subheading: #475569;
+            --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+        
+        body {
+            font-family: 'Kaisei Decol', serif;
+            margin: 0;
+            padding: 20px;
+            background: #f8f9fa;
+            color: var(--text-main);
+            line-height: 1.4;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23593c47' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--fashion-3);
+            position: relative;
+        }
+        
+        header:after {
+            content: "";
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: var(--fashion-4);
+            border-radius: 3px;
+        }
+        
+        h1 {
+            font-family: 'Zen Kurenaido', sans-serif;
+            font-size: 32px;
+            font-weight: bold;
+            margin: 0;
+            color: var(--fashion-1);
+            text-shadow: 2px 2px 0 rgba(242, 196, 60, 0.3);
+            position: relative;
+            display: inline-block;
+        }
+        
+        h1:after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 8px;
+            background: linear-gradient(90deg, var(--fashion-2), var(--fashion-4));
+            border-radius: 4px;
+            z-index: -1;
+            opacity: 0.6;
+        }
+        
+        .date {
+            font-family: 'Yomogi', cursive;
+            font-size: 14px;
+            color: var(--text-subheading);
+        }
+        
+        .main-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+        }
+        
+        .card {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: var(--card-shadow);
+            position: relative;
+            overflow: hidden;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            border-color: var(--fashion-3);
+        }
+        
+        .card:before {
+            content: "";
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, transparent 50%, var(--fashion-2) 50%);
+            border-radius: 0 0 0 12px;
+            opacity: 0.7;
+            z-index: 0;
+        }
+        
+        .intro-card {
+            grid-column: 1 / -1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+            padding: 30px;
+        }
+        
+        .intro-icon {
+            font-size: 60px;
+            color: var(--fashion-4);
+            margin-bottom: 15px;
+        }
+        
+        .intro-text {
+            flex: 1;
+        }
+        
+        h2 {
+            font-family: 'Zen Kurenaido', sans-serif;
+            font-size: 24px;
+            color: var(--fashion-1);
+            margin-top: 0;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px dashed var(--fashion-3);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        h3 {
+            font-family: 'Zen Kurenaido', sans-serif;
+            font-size: 20px;
+            color: var(--text-heading);
+            margin-top: 20px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            position: relative;
+        }
+        
+        h3:before {
+            content: "";
+            position: absolute;
+            left: -15px;
+            top: 0;
+            height: 100%;
+            width: 5px;
+            background: var(--fashion-3);
+            border-radius: 2px;
+        }
+        
+        .highlight {
+            background: linear-gradient(transparent 60%, var(--fashion-2) 60%);
+            padding: 0 4px;
+            font-weight: bold;
+        }
+        
+        .tag {
+            display: inline-block;
+            background-color: var(--fashion-3);
+            color: var(--fashion-1);
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 13px;
+            margin-right: 5px;
+            margin-bottom: 5px;
+            font-family: 'Yomogi', cursive;
+        }
+        
+        ul {
+            list-style-type: none;
+            padding-left: 5px;
+            margin-top: 10px;
+        }
+        
+        li {
+            margin-bottom: 12px;
+            position: relative;
+            padding-left: 25px;
+        }
+        
+        li:before {
+            content: "✦";
+            position: absolute;
+            left: 0;
+            color: var(--fashion-4);
+            font-weight: bold;
+        }
+        
+        .note {
+            position: relative;
+            background-color: rgba(242, 196, 60, 0.1);
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid var(--fashion-3);
+            margin: 15px 0;
+        }
+        
+        .note:before {
+            content: "📌";
+            position: absolute;
+            top: -10px;
+            left: 10px;
+            font-size: 20px;
+        }
+        
+        .arrow {
+            position: relative;
+            margin: 15px 0;
+            text-align: center;
+            font-family: 'Yomogi', cursive;
+            color: var(--fashion-4);
+            font-weight: bold;
+        }
+        
+        .arrow:after {
+            content: "↓";
+            display: block;
+            font-size: 24px;
+            margin-top: 5px;
+        }
+        
+        .finance-box {
+            border: 2px solid var(--fashion-4);
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+            position: relative;
+            background: rgba(255, 255, 255, 0.8);
+        }
+        
+        .finance-box:before {
+            content: "💰";
+            position: absolute;
+            top: -12px;
+            left: 10px;
+            background: white;
+            padding: 0 8px;
+        }
+        
+        .finance-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            border-bottom: 1px dashed rgba(89, 60, 71, 0.2);
+            padding-bottom: 8px;
+        }
+        
+        .finance-value {
+            font-weight: bold;
+            color: var(--fashion-5);
+            font-family: 'Kaisei Decol', serif;
+        }
+        
+        .bubble {
+            background-color: white;
+            border: 2px solid var(--fashion-1);
+            border-radius: 20px;
+            padding: 15px;
+            position: relative;
+            margin: 20px 0;
+            display: inline-block;
+        }
+        
+        .bubble:after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 20px;
+            width: 0;
+            height: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-top: 10px solid var(--fashion-1);
+        }
+        
+        footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 2px dashed var(--fashion-3);
+            font-size: 12px;
+            color: var(--text-subheading);
+            text-align: center;
+        }
+        
+        /* 手書き風の要素 */
+        .hand-drawn {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .hand-drawn:after {
+            content: "";
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--fashion-4);
+            border-radius: 2px;
+            transform: rotate(-0.5deg);
+        }
+        
+        .product-box {
+            border: 2px solid var(--fashion-3);
+            border-radius: 12px;
+            padding: 15px;
+            margin: 15px 0;
+            position: relative;
+            background: rgba(255, 255, 255, 0.8);
+        }
+        
+        .product-box:before {
+            content: "💊";
+            position: absolute;
+            top: -12px;
+            left: 10px;
+            background: white;
+            padding: 0 8px;
+        }
+        
+        .product-item {
+            margin-bottom: 12px;
+            padding-bottom: 10px;
+            border-bottom: 1px dashed rgba(89, 60, 71, 0.2);
+        }
+        
+        .product-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .product-name {
+            font-weight: bold;
+            color: var(--fashion-1);
+            font-size: 16px;
+        }
+        
+        .product-desc {
+            font-size: 14px;
+            margin-top: 5px;
+        }
+        
+        .news-box {
+            border: 2px solid var(--fashion-5);
+            border-radius: 12px;
+            padding: 15px;
+            margin: 15px 0;
+            position: relative;
+            background: rgba(255, 255, 255, 0.8);
+        }
+        
+        .news-box:before {
+            content: "🔔";
+            position: absolute;
+            top: -12px;
+            left: 10px;
+            background: white;
+            padding: 0 8px;
+        }
+        
+        .factory-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 10px;
+        }
+        
+        .factory-icon {
+            font-size: 24px;
+            color: var(--fashion-4);
+        }
+        
+        .factory-info {
+            flex: 1;
+        }
+        
+        /* レスポンシブデザイン */
+        @media (max-width: 900px) {
+            .main-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .intro-card {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            header {
+                flex-direction: column;
+            }
+            
+            .date {
+                margin-top: 10px;
+            }
+            
+            .card {
+                padding: 20px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🧬 ADMA Biologics, Inc.</h1>
+            <div class="date">2025年4月14日</div>
+        </header>
+        
+        <div class="main-grid">
+            <!-- イントロカード -->
+            <div class="card intro-card">
+                <div style="text-align: center;">
+                    <div class="intro-icon">🧬</div>
+                    <div class="tag" style="font-size: 16px;">バイオ医薬品企業</div>
+                </div>
+                
+                <div class="intro-text">
+                    <h2 style="border-bottom: none;">ADMA Biologics, Inc.</h2>
+                    <p style="font-size: 16px;">
+                        <span class="highlight">ADMA Biologics</span>はアメリカを拠点とするバイオ医薬品企業で、
+                        血漿由来の生物学的製剤の開発、製造、販売に特化しています。製品は主に免疫不全患者の
+                        感染症の治療と予防を目的としています。
+                    </p>
+                </div>
+            </div>
+            
+            <!-- 製品カード -->
+            <div class="card">
+                <h2>📋 FDA承認済み製品</h2>
+                <div class="tag">製品ラインナップ</div>
+                <div class="tag">治療薬</div>
+                
+                <div class="product-box">
+                    <div class="product-item">
+                        <div class="product-name">ASCENIV™</div>
+                        <div class="product-desc">
+                            原発性免疫不全症に対する静注用免疫グロブリン療法
+                        </div>
+                    </div>
+                    
+                    <div class="product-item">
+                        <div class="product-name">BIVIGAM®</div>
+                        <div class="product-desc">
+                            原発性体液性免疫不全症の治療用のIVIG製品
+                        </div>
+                    </div>
+                    
+                    <div class="product-item">
+                        <div class="product-name">NABI-HB®</div>
+                        <div class="product-desc">
+                            B型肝炎免疫グロブリン
+                        </div>
+                    </div>
+                </div>
+                
+                <h3>🏭 製造とインフラ</h3>
+                
+                <div class="factory-item">
+                    <div class="factory-icon">🏢</div>
+                    <div class="factory-info">
+                        フロリダ州ボカラトンにcGMP準拠の施設を運営
+                    </div>
+                </div>
+                
+                <div class="factory-item">
+                    <div class="factory-icon">⚗️</div>
+                    <div class="factory-info">
+                        血漿分画・精製能力：約<span class="highlight">600,000リットル</span>
+                    </div>
+                </div>
+                
+                <div class="factory-item">
+                    <div class="factory-icon">🔬</div>
+                    <div class="factory-info">
+                        ADMA BioCentersの子会社で<span class="highlight">10の血漿収集センター</span>を管理
+                    </div>
+                </div>
+                
+                <div class="bubble" style="margin-top: 20px;">
+                    <p style="margin: 0; font-family: 'Yomogi', cursive;">
+                        免疫不全患者のための重要な治療薬を提供！
+                    </p>
+                </div>
+            </div>
+            
+            <!-- 財務パフォーマンスカード -->
+            <div class="card">
+                <h2>💰 財務パフォーマンス</h2>
+                <div class="tag">売上データ</div>
+                <div class="tag">予測</div>
+                
+                <div class="finance-box">
+                    <h3 style="margin-top: 0; border-left: none; padding-left: 0;">全体売上</h3>
+                    
+                    <div class="finance-item">
+                        <span>2024年</span>
+                        <span class="finance-value">4億ドル</span>
+                    </div>
+                    
+                    <div class="finance-item">
+                        <span>2025年（予測）</span>
+                        <span class="finance-value">4億9000万ドル</span>
+                    </div>
+                    
+                    <h3 style="margin-top: 15px; border-left: none; padding-left: 0;">主力製品 ASCENIV™</h3>
+                    
+                    <div class="finance-item">
+                        <span>2024年</span>
+                        <span class="finance-value">2億1670万ドル</span>
+                    </div>
+                    
+                    <div class="finance-item">
+                        <span>2025年（予測）</span>
+                        <span class="finance-value">2億8300万ドル</span>
+                    </div>
+                </div>
+                
+                <div class="arrow">注目ニュース</div>
+                
+                <h3>🔔 最近の動向</h3>
+                
+                <div class="news-box">
+                    <p>
+                        2024年後半、監査人である<span class="highlight">CohnReznick LLP</span>の予期せぬ辞任により会計問題に直面。
+                    </p>
+                    <p>
+                        現在は<span class="highlight">KPMG</span>を新たな監査人として任命し、更新された財務申告で投資家を安心させています。
+                    </p>
+                </div>
+                
+                <div style="margin-top: 30px; text-align: center;">
+                    <div class="hand-drawn" style="font-family: 'Yomogi', cursive; font-size: 16px; color: var(--fashion-4);">
+                        詳細は公式ウェブサイトをご覧ください
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>出典: ADMA Biologics社情報に基づく | グラフィックレコーディング風デザイン | 2025年作成</p>
+        </footer>
+    </div>
+</body>
+</html>
