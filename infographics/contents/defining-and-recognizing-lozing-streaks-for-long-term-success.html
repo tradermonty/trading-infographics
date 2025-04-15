@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>負けの連続を避ける戦略は存在しない</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Yomogi&family=Zen+Kurenaido&family=Kaisei+Decol:wght@400;700&display=swap');
+        
+        :root {
+            --fashion-1: #593C47;
+            --fashion-2: #F2E63D;
+            --fashion-3: #F2C53D;
+            --fashion-4: #F25C05;
+            --fashion-5: #F24405;
+            --text-main: #334155;
+            --heading: #1e40af;
+            --subheading: #475569;
+        }
+        
+        body {
+            font-family: 'Zen Kurenaido', 'Kaisei Decol', sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 20px;
+            color: var(--text-main);
+            line-height: 1.4;
+        }
+        
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            padding: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 30px;
+            border-bottom: 3px solid var(--fashion-3);
+            padding-bottom: 15px;
+        }
+        
+        .title {
+            font-family: 'Kaisei Decol', serif;
+            font-size: 32px;
+            font-weight: 700;
+            margin: 0;
+            background: linear-gradient(45deg, var(--fashion-1), var(--fashion-5));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .title::after {
+            content: "";
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--fashion-2), var(--fashion-4));
+            border-radius: 2px;
+        }
+        
+        .date-source {
+            font-size: 14px;
+            color: var(--subheading);
+            text-align: right;
+        }
+        
+        .content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .column {
+            flex: 1 1 30%;
+            min-width: 300px;
+        }
+        
+        .section {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+            position: relative;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+        
+        .section:hover {
+            border-color: var(--fashion-3);
+            transform: translateY(-2px);
+        }
+        
+        .section-title {
+            font-size: 18px;
+            color: var(--heading);
+            margin-top: 0;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            font-family: 'Kaisei Decol', serif;
+            font-weight: 700;
+            position: relative;
+        }
+        
+        .section-title::before {
+            content: "🔍";
+            margin-right: 8px;
+            font-size: 20px;
+        }
+        
+        .section-title.idea::before {
+            content: "💡";
+        }
+        
+        .section-title.warning::before {
+            content: "⚠️";
+        }
+        
+        .section-title.success::before {
+            content: "🎯";
+        }
+        
+        .highlight {
+            position: relative;
+            display: inline;
+        }
+        
+        .highlight::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 8px;
+            background-color: var(--fashion-2);
+            opacity: 0.5;
+            z-index: -1;
+            border-radius: 4px;
+        }
+        
+        .marker-red {
+            position: relative;
+            font-weight: bold;
+            color: var(--fashion-5);
+            z-index: 1;
+        }
+        
+        .marker-yellow {
+            position: relative;
+            font-weight: bold;
+            color: var(--fashion-4);
+            z-index: 1;
+        }
+        
+        .handwritten-box {
+            border: 2px dashed var(--fashion-1);
+            border-radius: 10px;
+            padding: 15px;
+            margin: 15px 0;
+            position: relative;
+            font-family: 'Yomogi', cursive;
+            font-size: 16px;
+            background-color: rgba(242, 230, 61, 0.1);
+        }
+        
+        .handwritten-box::before {
+            content: "📝";
+            position: absolute;
+            top: -10px;
+            left: 10px;
+            background: white;
+            padding: 0 5px;
+        }
+        
+        .arrow {
+            position: relative;
+            margin: 25px 0;
+            text-align: center;
+            font-weight: bold;
+            color: var(--fashion-1);
+        }
+        
+        .arrow::after {
+            content: "↓";
+            display: block;
+            font-size: 24px;
+            color: var(--fashion-4);
+        }
+        
+        .list-item {
+            display: flex;
+            align-items: baseline;
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 25px;
+        }
+        
+        .list-item::before {
+            content: "•";
+            color: var(--fashion-4);
+            font-size: 24px;
+            position: absolute;
+            left: 0;
+            top: -5px;
+        }
+        
+        .bubble {
+            position: relative;
+            background-color: rgba(242, 196, 61, 0.2);
+            padding: 15px;
+            border-radius: 15px;
+            margin: 20px 0;
+        }
+        
+        .bubble::after {
+            content: "";
+            position: absolute;
+            bottom: -15px;
+            left: 50px;
+            border-width: 15px 0 0 15px;
+            border-style: solid;
+            border-color: rgba(242, 196, 61, 0.2) transparent;
+        }
+        
+        .footer {
+            margin-top: 30px;
+            padding-top: 15px;
+            border-top: 1px solid #e2e8f0;
+            font-size: 12px;
+            color: var(--subheading);
+            text-align: right;
+        }
+        
+        .connection-line {
+            position: absolute;
+            border-top: 2px dashed var(--fashion-4);
+            z-index: -1;
+        }
+        
+        .key-concept {
+            background: linear-gradient(135deg, rgba(242, 196, 61, 0.2), rgba(242, 91, 4, 0.2));
+            padding: 10px 15px;
+            border-radius: 8px;
+            display: inline-block;
+            margin: 5px 0;
+            font-weight: bold;
+        }
+        
+        .conclusion {
+            font-family: 'Kaisei Decol', serif;
+            font-size: 20px;
+            text-align: center;
+            margin: 30px 0;
+            color: var(--fashion-1);
+            font-weight: bold;
+            position: relative;
+            padding: 20px;
+        }
+        
+        .conclusion::before, .conclusion::after {
+            content: "—";
+            color: var(--fashion-4);
+            padding: 0 10px;
+        }
+        
+        @media (max-width: 768px) {
+            .content {
+                flex-direction: column;
+            }
+            
+            .column {
+                flex: 1 1 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="title">負けの連続を避ける戦略は存在しない</h1>
+            <div class="date-source">
+                2025年4月15日<br>
+                出典: @samuraipips358
+            </div>
+        </div>
+        
+        <div class="content">
+            <div class="column">
+                <div class="section">
+                    <h2 class="section-title">大切なのは定義と認識</h2>
+                    <p>負けや<span class="marker-red">負けの連続</span>について常に話している理由は、トレーダーにとって<span class="highlight">損失の認識が極めて重要</span>だからです。</p>
+                    
+                    <div class="handwritten-box">
+                        勝っているときは誰でも簡単にルールに従える。<br>
+                        本当にテストされるのは「負けているとき」
+                    </div>
+                    
+                    <p>トレーダーがテストされるのは負けているとき、負けの連続のときであり、この時こそ様々なことがテストされます：</p>
+                    <div class="list-item">トレーダーとしての資質</div>
+                    <div class="list-item">事前の準備</div>
+                    <div class="list-item">システムへの信頼</div>
+                    <div class="list-item">確率の理解</div>
+                    <div class="list-item">注目しているサンプルサイズ</div>
+                    <div class="list-item">長期的な視点を持っているか</div>
+                </div>
+                
+                <div class="section">
+                    <h2 class="section-title warning">誤解：エッジのあるシステムは負けの連続がない</h2>
+                    <div class="bubble">
+                        残念ながら、<span class="marker-red">負けの連続のないシステムや戦略は存在しません</span>。これは短期的な結果のランダム性によって負けの連続が生成されるためです。
+                    </div>
+                    
+                    <p>もし短期的な結果のランダム性に影響されないとしたら、それは負けの連続を避けられるだけでなく、損失自体を避けられることになり、つまり<span class="highlight">100%の勝率を達成できる</span>ということです。</p>
+                    <p>もちろん、そのようなことは不可能であり、目指すべきではありません。</p>
+                </div>
+            </div>
+            
+            <div class="column">
+                <div class="section">
+                    <h2 class="section-title idea">エッジのあるシステムとは</h2>
+                    <p>エッジのあるシステムとは、ルールに従って行動し続ければ、<span class="marker-yellow">結果として生じる「勝ちと負け」をすべて含めると利益が残る</span>ものです。</p>
+                    
+                    <div class="key-concept">
+                        必然的に負けることを受け入れてこそ、一貫性を達成し、大きなサンプルサイズを通じてエッジを抽出することができます。
+                    </div>
+                    
+                    <div class="arrow">
+                        正しい負けの認識を持ちましょう
+                    </div>
+                    
+                    <div class="handwritten-box">
+                        負けるたびに怒ったり、損失を避けようとしたりすることは、最終的にはシステム（戦略のルール）を否定することになります。
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <h2 class="section-title success">エッジを抽出するために</h2>
+                    <div class="list-item">エッジを抽出したいなら、システムの指示通りに行動した結果として生じるすべての結果を受け入れなければなりません。</div>
+                    <div class="list-item">統計的なエッジを持つルールに従っている間に発生する結果はあなたの責任ではなく、そこで発生する結果に問題はありません。</div>
+                    <div class="list-item"><span class="marker-yellow">負けの連続もあれば、勝ちの連続もある</span>。それらは避けられません。</div>
+                    <div class="list-item">損失は失敗を意味するわけではありません。</div>
+                </div>
+            </div>
+            
+            <div class="column">
+                <div class="section">
+                    <h2 class="section-title">大きなサンプルサイズで考える</h2>
+                    <p>要するに、<span class="highlight">「大きなサンプルサイズで考える」</span>ということです。目の前の一つの損失や小さなサンプルサイズでの負けの連続に大きな意味を与えてはいけません。</p>
+                    
+                    <div class="bubble">
+                        ランダム性に意味を与えると、トレードが突然難しくなり、無限の改善ループに陥ります。
+                    </div>
+                    
+                    <p>損失を悪いものと見ている限り、目の前の一回のトレードの結果に対して常に不安、恐怖、苦しみを感じることになります。</p>
+                    
+                    <div class="arrow">
+                        トレードにおいては
+                    </div>
+                    
+                    <div class="key-concept">
+                        損失は絶対に避けられません。まったく損失を出したくないなら、トレードをやめるしかありません。
+                    </div>
+                    
+                    <p>つまり、<span class="marker-red">損失をどう理解し、長期的な成功にどうつなげるか</span>が非常に重要です。</p>
+                    
+                    <div class="handwritten-box">
+                        長期的な視点で大きく考えることが非常に重要です。
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="conclusion">
+            負けの連続を避ける戦略は存在しない
+        </div>
+        
+        <div class="footer">
+            出典: https://x.com/samuraipips358/status/1912113687995056577 by @samuraipips358
+        </div>
+    </div>
+</body>
+</html>
