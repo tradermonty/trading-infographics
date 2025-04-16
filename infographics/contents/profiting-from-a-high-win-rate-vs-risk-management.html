@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>90%勝率の戦略で破産していく人々</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Yomogi&family=Zen+Kurenaido&family=Kaisei+Decol:wght@400;700&display=swap');
+        
+        :root {
+            --color-1: #593C47;
+            --color-2: #F2E63D;
+            --color-3: #F2C53D;
+            --color-4: #F25C05;
+            --color-5: #F24405;
+            --shadow: rgba(0, 0, 0, 0.1);
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Kaisei Decol', serif;
+            background-color: #f8f9fa;
+            color: #334155;
+            line-height: 1.4;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 20px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+            overflow: hidden;
+            position: relative;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--color-1), var(--color-5));
+            padding: 30px;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
+            opacity: 0.3;
+        }
+        
+        .title {
+            font-family: 'Yomogi', cursive;
+            font-size: 32px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .date {
+            font-family: 'Zen Kurenaido', sans-serif;
+            font-size: 14px;
+            opacity: 0.8;
+        }
+        
+        .content {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            padding: 30px;
+        }
+        
+        .card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 15px var(--shadow);
+            position: relative;
+            border: 2px solid transparent;
+            border-image: linear-gradient(to right, var(--color-2), var(--color-4));
+            border-image-slice: 1;
+            transition: transform 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .section-title {
+            font-family: 'Zen Kurenaido', sans-serif;
+            font-size: 18px;
+            color: var(--color-1);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border-bottom: 2px dashed var(--color-3);
+            padding-bottom: 8px;
+        }
+        
+        .highlight {
+            background: linear-gradient(transparent 60%, var(--color-2) 40%);
+            font-weight: bold;
+            padding: 0 2px;
+        }
+        
+        .emphasis {
+            color: var(--color-5);
+            font-weight: bold;
+        }
+        
+        .bubble {
+            background-color: white;
+            border: 2px solid var(--color-3);
+            border-radius: 20px;
+            padding: 12px 18px;
+            position: relative;
+            margin: 15px 0;
+            font-family: 'Kaisei Decol', serif;
+        }
+        
+        .bubble:before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            border-width: 0 10px 10px;
+            border-style: solid;
+            border-color: transparent transparent var(--color-3);
+        }
+        
+        .bubble:after {
+            content: '';
+            position: absolute;
+            top: -7px;
+            left: 22px;
+            border-width: 0 8px 8px;
+            border-style: solid;
+            border-color: transparent transparent white;
+        }
+        
+        .icon {
+            font-size: 24px;
+            line-height: 1;
+        }
+        
+        .arrow {
+            width: 50px;
+            height: 20px;
+            margin: 10px auto;
+            position: relative;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .arrow:before {
+            content: '';
+            height: 3px;
+            width: 100%;
+            background: var(--color-4);
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            border-radius: 3px;
+        }
+        
+        .arrow:after {
+            content: '';
+            width: 12px;
+            height: 12px;
+            border-right: 3px solid var(--color-4);
+            border-bottom: 3px solid var(--color-4);
+            position: absolute;
+            right: -2px;
+            top: 50%;
+            transform: translateY(-50%) rotate(-45deg);
+        }
+        
+        .comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .comparison-item {
+            padding: 12px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .bad {
+            background-color: rgba(242, 68, 5, 0.1);
+            border: 1px dashed var(--color-5);
+        }
+        
+        .good {
+            background-color: rgba(242, 230, 60, 0.1);
+            border: 1px dashed var(--color-2);
+        }
+        
+        .note {
+            font-family: 'Yomogi', cursive;
+            font-size: 15px;
+            padding: 10px 15px;
+            background-color: rgba(89, 60, 71, 0.1);
+            border-left: 4px solid var(--color-1);
+            margin: 15px 0;
+        }
+        
+        .tag {
+            display: inline-block;
+            padding: 3px 10px;
+            background-color: var(--color-2);
+            color: var(--color-1);
+            border-radius: 50px;
+            font-size: 12px;
+            margin: 5px 5px 5px 0;
+            font-family: 'Yomogi', cursive;
+        }
+        
+        .connector {
+            position: absolute;
+            border-top: 2px dashed var(--color-4);
+            width: 30px;
+            transform: rotate(45deg);
+            transform-origin: 0 0;
+        }
+        
+        footer {
+            background-color: var(--color-1);
+            color: white;
+            padding: 15px 30px;
+            text-align: right;
+            font-size: 12px;
+            font-family: 'Zen Kurenaido', sans-serif;
+        }
+        
+        .indicator {
+            width: 80px;
+            height: 80px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 10px auto;
+            position: relative;
+        }
+        
+        .chart {
+            display: flex;
+            justify-content: space-around;
+            margin: 15px 0;
+        }
+        
+        .bar {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 60px;
+        }
+        
+        .bar-chart {
+            width: 40px;
+            background-color: var(--color-3);
+            margin-bottom: 5px;
+            border-radius: 4px 4px 0 0;
+        }
+        
+        .bar-label {
+            font-size: 12px;
+            text-align: center;
+        }
+        
+        #win-90-bar {
+            height: 90px;
+        }
+        
+        #win-45-bar {
+            height: 45px;
+        }
+        
+        #profit-90-bar {
+            height: 10px;
+            background-color: var(--color-5);
+        }
+        
+        #profit-45-bar {
+            height: 45px;
+            background-color: var(--color-2);
+        }
+        
+        .calculation {
+            font-family: 'Kaisei Decol', monospace;
+            font-size: 12px;
+            background-color: rgba(242, 196, 60, 0.1);
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px dashed var(--color-3);
+            margin: 15px 0;
+        }
+
+        @media (max-width: 768px) {
+            .content {
+                grid-template-columns: 1fr;
+            }
+            
+            .title {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1 class="title">90%勝率の戦略で破産していく人々 🧵</h1>
+            <div class="date">2024年4月</div>
+        </header>
+        
+        <div class="content">
+            <!-- Column 1 -->
+            <div class="card">
+                <h2 class="section-title">📊 勝率の真実</h2>
+                <p>未熟なトレーダーは<span class="highlight">90%の勝率でも破産</span>する一方、優れたトレーダーは<span class="highlight">45%の勝率でも利益</span>を出します。</p>
+                
+                <div class="bubble">
+                    トレードで利益を出すには、勝率は重要な問題ではありません。
+                </div>
+                
+                <p>しかし多くのトレーダーは「<span class="emphasis">高勝率の戦略 = 良い戦略</span>」と考え、高い勝率を求めてしまいます。</p>
+                
+                <div class="note">
+                    根底にあるのは「勝つことは良いこと」「負けることは悪いこと」という思考です 🤔
+                </div>
+                
+                <div class="tag">マインドセット</div>
+                <div class="tag">勝率の誤解</div>
+            </div>
+            
+            <!-- Column 2 -->
+            <div class="card">
+                <h2 class="section-title">⚠️ 高勝率の罠</h2>
+                <p>負けを失敗と捉え、極端に避けようとするため、高勝率の戦略を求めます。しかし、そのような思考が根底にある限り、<span class="highlight">どれだけ勝率が高くても成功しません</span>。</p>
+                
+                <div class="arrow"></div>
+                
+                <p>いくら高勝率を求めても、<span class="emphasis">100%の勝率は不可能</span>であり、いつかは負ける必要があります。</p>
+                
+                <div class="bubble">
+                    負けを避け、勝ちを求める行動がトレードに緊張を生み出し、その力はあなた自身の破滅につながります。
+                </div>
+                
+                <p>トレードは勝ち負けの問題ではありません。重要なのは、<span class="highlight">勝ったときにどれだけ勝つか、負けたときにどれだけ負けるか</span>です。</p>
+                
+                <div class="tag">リスク回避</div>
+                <div class="tag">心理的罠</div>
+            </div>
+            
+            <!-- Column 3 -->
+            <div class="card">
+                <h2 class="section-title">🔍 未熟なトレーダーの行動パターン</h2>
+                <p>「勝つことは良い」「負けることは悪い」という認識を持つトレーダーは、<span class="emphasis">ごくわずかな利益でも満足</span>し、ごくわずかな損失も許容できません。</p>
+                
+                <div class="note">
+                    これが次のように表れます：
+                </div>
+                
+                <ul style="list-style: none; padding-left: 15px;">
+                    <li>✓ 含み益を失いたくないから小さな利益を確定</li>
+                    <li>✓ 小さな損失も受け入れられないからストップを広く設定</li>
+                    <li>✓ ストップを設定しない</li>
+                    <li>✓ ナンピンして何とか勝ちトレードで終わらせようとする</li>
+                </ul>
+                
+                <div class="tag">行動パターン</div>
+                <div class="tag">心理的バイアス</div>
+            </div>
+            
+            <!-- Column 4 -->
+            <div class="card">
+                <h2 class="section-title">📉 高リスクの勝率構造</h2>
+                <p>このような高リスクの上に成り立つ高勝率は、<span class="highlight">必ず崩壊します</span>。本当に重要なのは、<span class="emphasis">勝率とリスク/リワードのバランス</span>です。</p>
+                
+                <div class="bubble">
+                    多くの人が誤解していますが、「高勝率 = 安全」は真実ではありません。
+                </div>
+                
+                <div class="calculation">
+                    【例】勝率90%でも、設計が<br>
+                    • 勝ったとき: +1<br>
+                    • 負けたとき: -20<br>
+                    ⇒ 10回中9回勝っても、1回の負けですべて吹き飛ぶ
+                </div>
+                
+                <p>一見安定していても、実態は「偶然に任せた<span class="emphasis">爆弾</span>」であり、残りの10%が「致命傷」になれば、それは戦略ではなく「<span class="highlight">破滅へのカウントダウン</span>」です。</p>
+                
+                <div class="tag">リスク/リワード</div>
+                <div class="tag">期待値</div>
+            </div>
+            
+            <!-- Column 5 -->
+            <div class="card">
+                <h2 class="section-title">📈 真に効果的な戦略</h2>
+                
+                <div class="comparison">
+                    <div class="comparison-item bad">
+                        <div class="indicator">
+                            <div style="position: absolute; width: 100%; height: 100%; border-radius: 50%; border: 3px solid var(--color-5);"></div>
+                            <div style="position: absolute; width: 80%; height: 80%; border-radius: 50%; border: 3px solid var(--color-5); clip-path: polygon(0 0, 100% 0, 100% 90%, 0 90%);"></div>
+                            <div style="font-size: 18px; font-weight: bold;">90%</div>
+                        </div>
+                        <div>勝率: 90%</div>
+                        <div>+1 / -20</div>
+                    </div>
+                    <div class="comparison-item good">
+                        <div class="indicator">
+                            <div style="position: absolute; width: 100%; height: 100%; border-radius: 50%; border: 3px solid var(--color-2);"></div>
+                            <div style="position: absolute; width: 80%; height: 80%; border-radius: 50%; border: 3px solid var(--color-2); clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);"></div>
+                            <div style="font-size: 18px; font-weight: bold;">45%</div>
+                        </div>
+                        <div>勝率: 45%</div>
+                        <div>+2 / -1</div>
+                    </div>
+                </div>
+                
+                <div class="chart">
+                    <div class="bar">
+                        <div class="bar-chart" id="win-90-bar"></div>
+                        <div class="bar-label">90%<br>勝率</div>
+                    </div>
+                    <div class="bar">
+                        <div class="bar-chart" id="profit-90-bar"></div>
+                        <div class="bar-label">長期<br>利益</div>
+                    </div>
+                    <div class="bar">
+                        <div class="bar-chart" id="win-45-bar"></div>
+                        <div class="bar-label">45%<br>勝率</div>
+                    </div>
+                    <div class="bar">
+                        <div class="bar-chart" id="profit-45-bar"></div>
+                        <div class="bar-label">長期<br>利益</div>
+                    </div>
+                </div>
+                
+                <p>一方、勝率が45%でも、<span class="highlight">勝ったとき+2、負けたとき-1</span>という設計であれば、統計的には繰り返せば繰り返すほど利益が積み上がっていきます。</p>
+                
+                <div class="bubble">
+                    これは「負けることを前提」に設計された、目の前の勝ち負けではなく、より全体を考慮した戦略です。
+                </div>
+                
+                <div class="tag">期待値重視</div>
+                <div class="tag">統計的優位性</div>
+            </div>
+            
+            <!-- Column 6 -->
+            <div class="card">
+                <h2 class="section-title">🔑 成功への鍵</h2>
+                <p>重要なのは「<span class="emphasis">負けを避けること</span>」ではなく、「<span class="highlight">負けても破滅しない構造</span>」「<span class="highlight">負けても利益が出る構造</span>」です。</p>
+                
+                <div class="note">
+                    だからこそルールを揺らぐことなく繰り返すことができ、その一貫性がエッジを発揮するカギとなります。
+                </div>
+                
+                <p>本当に目指すべきは「負けを避けること」ではありません。</p>
+                
+                <div class="bubble">
+                    重要なのは、負けることを前提としていながらも、繰り返し続ければ利益が出る構造です。
+                </div>
+                
+                <p>勝率とリスク/リワードのバランスで、<span class="highlight">大きなサンプルサイズを通じて利益を出すこと</span>をしっかり考えてみてください。</p>
+                
+                <div class="tag">一貫性</div>
+                <div class="tag">長期思考</div>
+                <div class="tag">確率思考</div>
+            </div>
+        </div>
+        
+        <footer>
+            出典: <a href="https://x.com/samuraipips358/status/1912476066071081101" style="color: white;">@samuraipips358</a> (Twitter/X)
+        </footer>
+    </div>
+</body>
+</html>
