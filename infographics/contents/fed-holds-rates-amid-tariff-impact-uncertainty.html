@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>トランプ関税政策のインパクト分析</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Yomogi&family=Zen+Kurenaido&family=Kaisei+Decol:wght@400;700&display=swap');
+        
+        :root {
+            --color-1: #593C47;
+            --color-2: #F2E63D;
+            --color-3: #F2C53D;
+            --color-4: #F25C05;
+            --color-5: #F24405;
+            --bg-color: #FFFDF8;
+            --text-color: #334155;
+            --title-color: #1e293b;
+            --section-color: #1e40af;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Kaisei Decol', serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.4;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--color-3);
+            position: relative;
+        }
+        
+        h1 {
+            font-family: 'Zen Kurenaido', sans-serif;
+            font-size: 32px;
+            font-weight: 700;
+            background: linear-gradient(45deg, var(--color-1), var(--color-5));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 5px;
+            position: relative;
+        }
+        
+        h1::after {
+            content: "";
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 90%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--color-3), var(--color-4), var(--color-5));
+            border-radius: 2px;
+        }
+        
+        .date-source {
+            font-family: 'Yomogi', cursive;
+            font-size: 14px;
+            color: #475569;
+            text-align: right;
+        }
+        
+        .content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .column {
+            flex: 1;
+            min-width: calc(33% - 20px);
+        }
+        
+        .card {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            padding: 20px;
+            margin-bottom: 20px;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+        
+        .card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--color-3), var(--color-4));
+            border-radius: 2px;
+        }
+        
+        h2 {
+            font-family: 'Zen Kurenaido', sans-serif;
+            font-size: 22px;
+            color: var(--color-1);
+            margin-bottom: 15px;
+            padding-left: 10px;
+            position: relative;
+        }
+        
+        h2::before {
+            content: "✏️";
+            margin-right: 8px;
+        }
+        
+        h3 {
+            font-family: 'Yomogi', cursive;
+            font-size: 18px;
+            color: var(--section-color);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        h3 i {
+            margin-right: 8px;
+        }
+        
+        p {
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        
+        .highlight {
+            background: linear-gradient(transparent 50%, var(--color-2) 50%);
+            padding: 0 2px;
+            font-weight: bold;
+        }
+        
+        .tag {
+            display: inline-block;
+            background-color: var(--color-3);
+            color: var(--color-1);
+            border-radius: 20px;
+            padding: 3px 10px;
+            font-size: 12px;
+            margin-right: 5px;
+            margin-bottom: 5px;
+            font-family: 'Yomogi', cursive;
+        }
+        
+        .arrow {
+            position: absolute;
+            width: 40px;
+            height: 20px;
+        }
+        
+        .headlines {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            position: relative;
+        }
+        
+        .headline {
+            padding: 10px 15px;
+            background-color: white;
+            border-radius: 8px;
+            border-left: 4px solid var(--color-4);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            font-size: 14px;
+            position: relative;
+            font-weight: bold;
+        }
+        
+        .headline::before {
+            content: "📌";
+            margin-right: 8px;
+        }
+        
+        .quote {
+            font-family: 'Yomogi', cursive;
+            font-style: italic;
+            background-color: #f8f8f8;
+            border-left: 3px solid var(--color-3);
+            padding: 10px 15px;
+            margin: 15px 0;
+            border-radius: 0 8px 8px 0;
+            position: relative;
+        }
+        
+        .quote::before {
+            content: "❝";
+            font-size: 24px;
+            color: var(--color-3);
+            position: absolute;
+            left: -8px;
+            top: -10px;
+        }
+        
+        .quote::after {
+            content: "❞";
+            font-size: 24px;
+            color: var(--color-3);
+            position: absolute;
+            right: 10px;
+            bottom: -15px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        
+        th, td {
+            border: 1px solid #e5e7eb;
+            padding: 8px 12px;
+            text-align: left;
+            font-size: 13px;
+        }
+        
+        th {
+            background-color: var(--color-1);
+            color: white;
+            font-weight: 600;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f9fafb;
+        }
+        
+        .impact-positive {
+            color: #065f46;
+            font-weight: bold;
+        }
+        
+        .impact-negative {
+            color: #991b1b;
+            font-weight: bold;
+        }
+        
+        .banner {
+            position: relative;
+            background-color: var(--color-2);
+            color: var(--color-1);
+            font-weight: bold;
+            padding: 8px 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+            transform: rotate(-1deg);
+            display: inline-block;
+        }
+        
+        .banner::before, .banner::after {
+            content: "";
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            background-color: var(--color-2);
+            border-radius: 50%;
+        }
+        
+        .banner::before {
+            left: -8px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        
+        .banner::after {
+            right: -8px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        
+        .bubble {
+            position: relative;
+            background-color: white;
+            border-radius: 15px;
+            padding: 12px;
+            margin: 15px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .bubble::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 30px;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-top: 10px solid white;
+        }
+        
+        .handdrawn-box {
+            border: 2px solid var(--color-1);
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+            position: relative;
+        }
+        
+        .handdrawn-box::before {
+            content: "";
+            position: absolute;
+            top: -5px;
+            left: 20px;
+            width: 60px;
+            height: 10px;
+            background-color: var(--bg-color);
+        }
+        
+        .handdrawn-title {
+            position: absolute;
+            top: -12px;
+            left: 30px;
+            padding: 0 10px;
+            background-color: var(--bg-color);
+            color: var(--color-1);
+            font-weight: bold;
+            font-size: 14px;
+        }
+        
+        /* Icon-like elements */
+        .icon-wrapper {
+            display: flex;
+            justify-content: center;
+            margin: 15px 0;
+        }
+        
+        .icon {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0 10px;
+        }
+        
+        .icon-circle {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 8px;
+            border: 2px solid var(--color-3);
+            font-size: 24px;
+        }
+        
+        .icon-text {
+            text-align: center;
+            font-size: 12px;
+            max-width: 80px;
+        }
+        
+        .conclusion {
+            background: linear-gradient(135deg, rgba(89, 60, 71, 0.05) 0%, rgba(242, 230, 61, 0.1) 100%);
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 30px;
+            position: relative;
+            border: 1px dashed var(--color-1);
+        }
+        
+        .conclusion h3 {
+            display: inline-block;
+            background-color: var(--color-1);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            margin-top: -30px;
+            margin-bottom: 15px;
+        }
+        
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 12px;
+            color: #64748b;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 15px;
+        }
+        
+        /* Handdrawn arrows */
+        .arrow-container {
+            position: relative;
+            min-height: 20px;
+            margin: 10px 0;
+        }
+        
+        .arrow-line {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background-color: var(--color-1);
+            transform: translateY(-50%);
+        }
+        
+        .arrow-head {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            width: 10px;
+            height: 10px;
+            border-top: 2px solid var(--color-1);
+            border-right: 2px solid var(--color-1);
+            transform: translateY(-50%) rotate(45deg);
+        }
+        
+        /* For up and down effect */
+        .trend-up {
+            color: green;
+            font-weight: bold;
+        }
+        
+        .trend-up::after {
+            content: " ▲";
+        }
+        
+        .trend-down {
+            color: #991b1b;
+            font-weight: bold;
+        }
+        
+        .trend-down::after {
+            content: " ▼";
+        }
+        
+        .trend-neutral {
+            color: #0369a1;
+            font-weight: bold;
+        }
+        
+        .trend-neutral::after {
+            content: " →";
+        }
+        
+        @media (max-width: 900px) {
+            .column {
+                min-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div>
+                <h1>トランプ関税政策のインパクト分析</h1>
+                <p>米国の関税政策強化による経済・市場への影響と投資戦略</p>
+            </div>
+            <div class="date-source">
+                <p>📅 作成日: 2025年4月16日</p>
+                <p>🔍 分析期間: 今後18ヶ月</p>
+            </div>
+        </header>
+        
+        <div class="content">
+            <!-- Column 1 -->
+            <div class="column">
+                <div class="card">
+                    <h2>直近2週間の主要ヘッドライン</h2>
+                    <div class="headlines">
+                        <div class="headline">
+                            "パウエル議長「関税の影響が明確になるまでFRBは様子見」"<br>
+                            <span style="font-size: 12px; color: #64748b;">Reuters, 2025-04-16</span>
+                        </div>
+                        <div class="headline">
+                            "関税で傷ついた株式市場、パウエル発言でも回復せず"<br>
+                            <span style="font-size: 12px; color: #64748b;">Reuters, 2025-04-16</span>
+                        </div>
+                        <div class="headline">
+                            "トランプ関税で今年の米国インフレ率4%に上昇の恐れ、NY連銀総裁が警告"<br>
+                            <span style="font-size: 12px; color: #64748b;">Financial Times, 2025-04-13</span>
+                        </div>
+                        <div class="headline">
+                            "トランプ関税：経済学者らが「壊滅的打撃」と景気後退を警告"<br>
+                            <span style="font-size: 12px; color: #64748b;">Bloomberg, 2025-04-03</span>
+                        </div>
+                        <div class="headline">
+                            "Axios速報：パウエル議長、関税がインフレ加速と成長鈍化を招く恐れを警告"<br>
+                            <span style="font-size: 12px; color: #64748b;">Axios, 2025-04-16</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h2>想定シナリオ前提</h2>
+                    <div class="handdrawn-box">
+                        <div class="handdrawn-title">トランプ政権の関税政策</div>
+                        <ul style="list-style-type: none; padding-left: 15px;">
+                            <li>🔹 <span class="highlight">全輸入品に一律10%関税</span></li>
+                            <li>🔹 対中・対EU: <span class="highlight">最大60%まで上乗せ</span></li>
+                            <li>🔹 報復関税と再構築コストで <span class="highlight">輸入物価+6%上昇</span></li>
+                            <li>🔹 連邦議会の景気対策: 2026年予算で<span class="highlight">0.8%GDP規模</span></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bubble">
+                        <p>FRBは<span class="highlight">「高インフレ下の景気減速」</span>という<span class="highlight">1970年代型スタグフレーション・リスク</span>に直面し、政策判断が後手に回る</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h2>インパクト整理</h2>
+                    <h3>📉 1次的影響</h3>
+                    <table>
+                        <tr>
+                            <th>セクター/業種</th>
+                            <th>影響</th>
+                            <th>理由</th>
+                        </tr>
+                        <tr>
+                            <td>輸入依存型小売<br>(アパレル・家電)/<br>コンシューマIT</td>
+                            <td class="impact-negative">▼</td>
+                            <td>原価上昇→マージン圧迫、<br>価格転嫁に限界</td>
+                        </tr>
+                        <tr>
+                            <td>USスチール・<br>一次金属</td>
+                            <td class="impact-positive">▲</td>
+                            <td>競合輸入品の価格上昇・<br>買替需要</td>
+                        </tr>
+                    </table>
+                    
+                    <h3>📊 2次的影響</h3>
+                    <table>
+                        <tr>
+                            <th>セクター/業種</th>
+                            <th>影響</th>
+                            <th>理由</th>
+                        </tr>
+                        <tr>
+                            <td>ロジスティクス・<br>港湾・通関</td>
+                            <td class="impact-negative">▼</td>
+                            <td>貿易量減少・<br>経路変更コスト増</td>
+                        </tr>
+                        <tr>
+                            <td>製造装置・<br>インフラ建設</td>
+                            <td class="impact-positive">▲</td>
+                            <td>リショアリング投資と<br>公共投資拡大</td>
+                        </tr>
+                    </table>
+                    
+                    <h3>📈 3次的影響</h3>
+                    <table>
+                        <tr>
+                            <th>セクター/業種</th>
+                            <th>影響</th>
+                            <th>理由</th>
+                        </tr>
+                        <tr>
+                            <td>金融<br>(クレジットカード・<br>消費金融)</td>
+                            <td class="impact-negative">▼</td>
+                            <td>実質所得低下による<br>与信コスト増</td>
+                        </tr>
+                        <tr>
+                            <td>再生可能<br>エネルギー素材</td>
+                            <td class="impact-positive">▲</td>
+                            <td>政策優遇＋国内製造奨励で<br>設備投資加速</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            
+            <!-- Column 2 -->
+            <div class="column">
+                <div class="card">
+                    <h2>想定シナリオ概要（今後18か月）</h2>
+                    <table>
+                        <tr>
+                            <th>変数</th>
+                            <th>ベースケース</th>
+                            <th>強気シナリオ</th>
+                            <th>弱気シナリオ</th>
+                        </tr>
+                        <tr>
+                            <td><b>米実質GDP</b></td>
+                            <td class="trend-neutral">2025Q3〜2026Q4<br>年率 +0.5%</td>
+                            <td class="trend-up">+1.5%<br>(在庫復元・財政出動)</td>
+                            <td class="trend-down">-1.0%<br>(関税合戦長期化)</td>
+                        </tr>
+                        <tr>
+                            <td><b>PCEコア<br>インフレ</b></td>
+                            <td class="trend-down">4%→3%へ鈍化</td>
+                            <td class="trend-down">3%割れ</td>
+                            <td class="trend-up">4.5%超で粘着</td>
+                        </tr>
+                        <tr>
+                            <td><b>FF金利</b></td>
+                            <td class="trend-neutral">5.25%で据え置き<br>→2026前半に<br>-25bp×2</td>
+                            <td class="trend-down">2025Q4から<br>緩和開始</td>
+                            <td class="trend-up">追加+50bp</td>
+                        </tr>
+                        <tr>
+                            <td><b>失業率</b></td>
+                            <td class="trend-up">4%→5.3%</td>
+                            <td class="trend-neutral">4.5%止まり</td>
+                            <td class="trend-up">6%超</td>
+                        </tr>
+                        <tr>
+                            <td><b>10Y Treasury<br>利回り</b></td>
+                            <td class="trend-neutral">4.4%±0.3pp</td>
+                            <td class="trend-down">4%割れ</td>
+                            <td class="trend-up">5%台</td>
+                        </tr>
+                    </table>
+                </div>
+                
+                <div class="card">
+                    <h2>ポジティブ影響が見込まれる代表銘柄</h2>
+                    <table>
+                        <tr>
+                            <th>ティッカー</th>
+                            <th>事業概要</th>
+                            <th>根拠</th>
+                        </tr>
+                        <tr>
+                            <td><b>NUE</b></td>
+                            <td>米最大の電炉製鉄</td>
+                            <td>輸入鋼材の価格競争緩和でスプレッド拡大。関税収入を財源にしたインフラ支出も追い風。</td>
+                        </tr>
+                        <tr>
+                            <td><b>FSLR</b></td>
+                            <td>CdTe系太陽光パネル<br>国内生産</td>
+                            <td>中国製パネルへの高関税で相対優位。IRA税額控除も享受。</td>
+                        </tr>
+                        <tr>
+                            <td><b>ETN</b></td>
+                            <td>電力配電・<br>航空宇宙部品</td>
+                            <td>リショア設備投資の高電力需要と国防関連支出増加。</td>
+                        </tr>
+                        <tr>
+                            <td><b>PWR</b></td>
+                            <td>電力・通信<br>インフラEPC</td>
+                            <td>送電線増強・EV充電網構築の受注増。</td>
+                        </tr>
+                        <tr>
+                            <td><b>FCX</b></td>
+                            <td>銅・モリブデン鉱山</td>
+                            <td>インフラと再エネ投資で銅需要逼迫、価格上昇メリット。</td>
+                        </tr>
+                    </table>
+                    <p style="font-size: 12px; color: #64748b; margin-top: 10px;">※バリュエーション、財務健全性、過去の関税局面（2018-19年）のアウトパフォーム実績を確認済み。</p>
+                </div>
+                
+                <div class="card">
+                    <h2>ネガティブ影響が見込まれるセクター・銘柄</h2>
+                    <table>
+                        <tr>
+                            <th>ティッカー/セクター</th>
+                            <th>影響理由</th>
+                        </tr>
+                        <tr>
+                            <td><b>AAPL</b><br>(ハードウェア)</td>
+                            <td>中国組立比率90%超。追加関税が直接ヒット。サプライチェーン再構築コストも巨額。</td>
+                        </tr>
+                        <tr>
+                            <td><b>WMT</b><br>(ディスカウント小売)</td>
+                            <td>低価格戦略と価格転嫁余地の乏しさ。輸入比率高いプライベートブランドも圧迫。</td>
+                        </tr>
+                        <tr>
+                            <td><b>NKE</b><br>(アパレル)</td>
+                            <td>ベトナム・中国生産への10%関税適用。需要弾力性が高く値上げしづらい。</td>
+                        </tr>
+                        <tr>
+                            <td><b>DLTR</b>/<b>DG</b><br>(ドルストア)</td>
+                            <td>生活必需品中心でも客単価が低く、コスト転嫁困難。</td>
+                        </tr>
+                        <tr>
+                            <td><b>SMH ETF</b><br>(半導体指数)</td>
+                            <td>中国向け輸出規制でAIチップ売上が想定比で-10%〜-15%。</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            
+            <!-- Column 3 -->
+            <div class="column">
+                <div class="card">
+                    <h2>第三者ファンドマネージャーによるレビュー</h2>
+                    <div class="quote">
+                        <p>原材料コストの上昇が中下流の工業株に波及する速度を過少評価している可能性がある。特に輸入化学品に依存する<b>製薬・農薬</b>が早期にマージン圧迫を受ける点も補足したい。</p>
+                        <p>加えて、中国・EUの報復関税が<b>航空機・農産物</b>輸出に及ぼす影響シナリオも要観察。長期金利が5%台に定着した場合、<b>REIT</b>や<b>ユーティリティ</b>にもさらなる下押し圧力がかかるだろう。</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h2>最終投資判断・示唆</h2>
+                    <div class="handdrawn-box">
+                        <div class="handdrawn-title">ポジション構築</div>
+                        <ul style="list-style-type: none; padding-left: 10px;">
+                            <li>🔹 タリフ・スタグフレーション耐性の高い <span class="highlight">"国内製造＋インフラ投資恩恵"</span> 銘柄（NUE, FSLR, ETN, PWR, FCX）をコアとし、<span class="highlight">等金額ウエイト</span>で6か月かけて分散取得</li>
+                            <li>🔹 インフレ持続リスクに備え、<span class="highlight">TIPS ETF + コモディティバスケット</span> を10%ポートフォリオヘッジに組み入れ</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="handdrawn-box">
+                        <div class="handdrawn-title">リスク管理</div>
+                        <ul style="list-style-type: none; padding-left: 10px;">
+                            <li>🔹 失業率5.5%を超えた場合に景気後退シナリオへシフトし、景気敏感株（NUEなど）のウエイトを50%削減</li>
+                            <li>🔹 中国・EUの報復関税が米農産物・航空機に波及した場合、SPX EPS コンセンサスを直近比-5%リセットし、防御セクターへローテーション</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="handdrawn-box">
+                        <div class="handdrawn-title">モニタリング</div>
+                        <ul style="list-style-type: none; padding-left: 10px;">
+                            <li>🔹 <span class="highlight">Cleveland Fed Nowcast の PCE トラッカー</span>と<span class="highlight">ISM 新規受注指数</span>を月次で確認し、スタグフレーション悪化度合いを判定</li>
+                            <li>🔹 <span class="highlight">議会での対中関税見直し法案提出</span>をトリガーとしてリバランスを検討</li>
+                        </ul>
