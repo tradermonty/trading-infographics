@@ -1,0 +1,1152 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>長期オプション取引で利益を上げるための原則</title>
+    <link rel="icon" type="image/png" href="../images/monty.png">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Yomogi&family=Zen+Kurenaido&family=Kaisei+Decol:wght@400;700&display=swap');
+        
+        :root {
+            --fashion-1: #593C47;
+            --fashion-2: #F2E63D;
+            --fashion-3: #F2C53D;
+            --fashion-4: #F25C05;
+            --fashion-5: #F24405;
+            --text-dark: #334155;
+            --text-title: #1e40af;
+            --bg-light: #fff;
+            --shadow: rgba(0, 0, 0, 0.1);
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Kaisei Decol', serif;
+            background-color: #f8f9fa;
+            color: var(--text-dark);
+            line-height: 1.4;
+            padding: 0;
+            margin: 0;
+        }
+
+        .fixed-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: linear-gradient(135deg, var(--fashion-1), var(--fashion-5));
+            padding: 10px 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .fixed-header:hover {
+            background: linear-gradient(135deg, var(--fashion-5), var(--fashion-1));
+        }
+
+        .fixed-header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .header-logo {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .fixed-header h1 {
+            font-family: 'Zen Kurenaido', sans-serif;
+            font-size: 24px;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            background: linear-gradient(to right, white, var(--fashion-2));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin: 0;
+            pointer-events: none;
+        }
+
+        .main-content {
+            margin-top: 60px;
+            padding: 20px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hidden {
+            display: none !important;
+            visibility: hidden;
+            opacity: 0;
+        }
+
+        .language-switch {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1001;
+            display: none;
+        }
+        
+        .language-switch button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 20px;
+            background: linear-gradient(135deg, var(--fashion-1), var(--fashion-5));
+            color: white;
+            cursor: pointer;
+            font-family: 'Yomogi', cursive;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .language-switch button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(135deg, var(--fashion-1), var(--fashion-5));
+            color: white;
+            margin-top: 40px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-logo {
+            font-family: 'Zen Kurenaido', sans-serif;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 15px;
+        }
+
+        .footer-social a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .footer-social a:hover {
+            color: var(--fashion-2);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .fixed-header h1 {
+                font-size: 20px;
+            }
+            
+            .main-content {
+                margin-top: 50px;
+                padding: 10px;
+            }
+
+            .language-switch {
+                top: 10px;
+                right: 10px;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="language-switch">
+        <button onclick="toggleLanguage()">English</button>
+    </div>
+
+    <div class="fixed-header" onclick="window.location.href='../index.html'">
+        <div class="fixed-header-content">
+            <img src="../images/monty.png" alt="Monty Trader Logo" class="header-logo">
+            <h1 class="ja">モンティの株式トレードインフォグラフィックス集</h1>
+            <h1 class="en hidden">Monty's Stock Trading Infographics Collection</h1>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>長期オプション取引で利益を上げるための原則</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Yomogi&family=Zen+Kurenaido&family=Kaisei+Decol:wght@400;700&display=swap');
+    
+    :root {
+      --fashion-1: #593C47;
+      --fashion-2: #F2E63D;
+      --fashion-3: #F2C53D;
+      --fashion-4: #F25C05;
+      --fashion-5: #F24405;
+      --text-dark: #334155;
+      --text-title: #1e40af;
+      --text-subtitle: #475569;
+      --card-bg: rgba(255, 255, 255, 0.8);
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'Kaisei Decol', serif;
+      line-height: 1.4;
+      color: var(--text-dark);
+      background-color: #f8f9fa;
+      background-image: 
+        radial-gradient(circle at 20% 30%, rgba(242, 230, 61, 0.05) 0%, transparent 200px),
+        radial-gradient(circle at 70% 60%, rgba(242, 91, 4, 0.05) 0%, transparent 200px);
+    }
+    
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+    
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 3px solid var(--fashion-3);
+      position: relative;
+    }
+    
+    .header::after {
+      content: "";
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background-color: var(--fashion-4);
+      border-radius: 2px;
+    }
+    
+    .title {
+      font-family: 'Yomogi', cursive;
+      font-size: 32px;
+      font-weight: 700;
+      background: linear-gradient(90deg, var(--fashion-1), var(--fashion-4));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+      position: relative;
+      z-index: 1;
+    }
+    
+    .title::before {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 12px;
+      bottom: 0;
+      left: 0;
+      background-color: var(--fashion-2);
+      z-index: -1;
+      opacity: 0.4;
+      transform: skew(-5deg);
+    }
+    
+    .date-source {
+      font-family: 'Zen Kurenaido', sans-serif;
+      font-size: 14px;
+      color: var(--text-subtitle);
+      text-align: right;
+    }
+    
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    
+    .section {
+      background-color: var(--card-bg);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.05), 0 1px 3px rgba(0,0,0,0.1);
+      padding: 1.5rem;
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+    
+    .section::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 8px;
+      height: 100%;
+      background: linear-gradient(to bottom, var(--fashion-3), var(--fashion-4));
+    }
+    
+    .section-title {
+      font-family: 'Zen Kurenaido', sans-serif;
+      font-size: 18px;
+      color: var(--text-title);
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px dashed var(--fashion-4);
+      display: flex;
+      align-items: center;
+      position: relative;
+    }
+    
+    .section-title::before {
+      content: "✏️";
+      margin-right: 0.5rem;
+      font-size: 1.2em;
+    }
+    
+    .concept {
+      margin-bottom: 1rem;
+      position: relative;
+    }
+    
+    .concept-title {
+      font-family: 'Yomogi', cursive;
+      font-weight: 700;
+      color: var(--fashion-1);
+      margin-bottom: 0.5rem;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .concept-title::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 6px;
+      background-color: var(--fashion-2);
+      border-radius: 3px;
+      opacity: 0.4;
+    }
+    
+    .concept-content {
+      font-size: 14px;
+      padding-left: 1rem;
+      border-left: 2px solid var(--fashion-3);
+    }
+    
+    .highlight {
+      background: linear-gradient(transparent 60%, var(--fashion-2) 60%);
+      font-weight: 700;
+      padding: 0 2px;
+    }
+    
+    .quote {
+      font-family: 'Kaisei Decol', serif;
+      font-style: italic;
+      background-color: rgba(242, 196, 61, 0.2);
+      padding: 0.75rem;
+      border-radius: 8px;
+      position: relative;
+      margin: 1rem 0;
+    }
+    
+    .quote::before {
+      content: "❝";
+      position: absolute;
+      top: -0.5rem;
+      left: 0.5rem;
+      font-size: 1.5rem;
+      color: var(--fashion-4);
+    }
+    
+    .quote::after {
+      content: "❞";
+      position: absolute;
+      bottom: -1rem;
+      right: 0.5rem;
+      font-size: 1.5rem;
+      color: var(--fashion-4);
+    }
+    
+    .bubble {
+      background-color: #fff;
+      border: 2px solid var(--fashion-1);
+      border-radius: 20px;
+      padding: 0.75rem;
+      position: relative;
+      margin: 1rem 0;
+      font-family: 'Yomogi', cursive;
+    }
+    
+    .bubble::before {
+      content: "";
+      position: absolute;
+      bottom: -10px;
+      left: 30px;
+      width: 20px;
+      height: 20px;
+      background-color: #fff;
+      border-right: 2px solid var(--fashion-1);
+      border-bottom: 2px solid var(--fashion-1);
+      transform: rotate(45deg);
+    }
+    
+    .hand-drawn-arrow {
+      display: block;
+      width: 100%;
+      height: 30px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 20' fill='none'%3E%3Cpath d='M0,10 C30,5 70,15 90,10 L85,5 M90,10 L85,15' stroke='%23F25C05' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-size: contain;
+      margin: 1rem 0;
+    }
+    
+    .icon {
+      font-size: 1.2em;
+      margin-right: 0.25rem;
+      display: inline-block;
+      vertical-align: middle;
+    }
+    
+    .key-point {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 0.75rem;
+    }
+    
+    .key-point .icon {
+      color: var(--fashion-4);
+      margin-top: 0.2rem;
+      flex-shrink: 0;
+    }
+    
+    .key-point-content {
+      flex: 1;
+    }
+    
+    .banner {
+      background: linear-gradient(90deg, var(--fashion-3), var(--fashion-2));
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      transform: rotate(-1deg);
+      box-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+      margin: 1.5rem 0;
+      text-align: center;
+      font-family: 'Yomogi', cursive;
+      font-weight: 700;
+      color: var(--fashion-1);
+    }
+    
+    .story-box {
+      border: 2px dashed var(--fashion-3);
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0;
+      position: relative;
+    }
+    
+    .story-box::before {
+      content: "ストーリー";
+      position: absolute;
+      top: -10px;
+      left: 10px;
+      background-color: #fff;
+      padding: 0 0.5rem;
+      font-family: 'Yomogi', cursive;
+      color: var(--fashion-4);
+      font-size: 14px;
+    }
+    
+    .footer {
+      text-align: center;
+      margin-top: 2rem;
+      padding-top: 1rem;
+      border-top: 2px solid var(--fashion-3);
+      font-size: 12px;
+      color: var(--text-subtitle);
+    }
+    
+    /* 手書き風のスタイル追加 */
+    .hand-drawn-box {
+      border: 2px solid var(--fashion-1);
+      border-radius: 12px;
+      padding: 1rem;
+      position: relative;
+      background-color: white;
+      margin-bottom: 1rem;
+    }
+    
+    .hand-drawn-box::before {
+      content: "";
+      position: absolute;
+      top: -5px;
+      left: -5px;
+      width: calc(100% + 10px);
+      height: calc(100% + 10px);
+      border: 2px solid var(--fashion-4);
+      border-radius: 15px;
+      z-index: -1;
+      opacity: 0.5;
+      transform: rotate(-0.5deg);
+    }
+    
+    /* レスポンシブデザイン - 改善版 */
+    @media (max-width: 1200px) {
+      .container {
+        padding: 1.5rem;
+      }
+    }
+    
+    /* ---- 改善: 900px以下での表示を修正 ---- */
+    @media (max-width: 900px) {
+      /* グリッド自体を 1 列に */
+      .grid {
+        grid-template-columns: 1fr;
+      }
+      
+      /* 既存で span 指定が無い .section は強制的に 1 行占有 */
+      .grid > .section:not([style*="grid-column"]) {
+        grid-column: 1 / -1;   /* すべての列をまたぐ */
+      }
+      
+      /* 既存プロパティはそのまま */
+      .title {
+        font-size: 28px;
+      }
+      
+      .section {
+        padding: 1.25rem;
+      }
+      
+      /* 「オプション取引の基本概念」の内部グリッドは2列を維持 */
+      .concept-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
+    @media (max-width: 767px) {
+      .hand-drawn-box {
+        margin-bottom: 1rem;
+      }
+      
+      .concept-title {
+        font-size: 16px;
+      }
+      
+      .concept-content {
+        font-size: 14px;
+      }
+      
+      .key-point {
+        margin-bottom: 0.5rem;
+      }
+      
+      .key-point-content {
+        font-size: 13px;
+      }
+      
+      .banner {
+        font-size: 14px;
+        padding: 0.75rem;
+      }
+      
+      .concept-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+    }
+    
+    @media (max-width: 600px) {
+      .grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+      
+      .header {
+        flex-direction: column;
+        align-items: flex-start;
+        margin-bottom: 1.5rem;
+      }
+      
+      .date-source {
+        text-align: left;
+        margin-top: 0.5rem;
+      }
+      
+      .title {
+        font-size: 24px;
+      }
+      
+      .container {
+        padding: 1rem;
+      }
+      
+      .section {
+        padding: 1rem;
+      }
+      
+      .section-title {
+        font-size: 16px;
+      }
+      
+      .concept-title {
+        font-size: 14px;
+      }
+      
+      .concept-content {
+        font-size: 13px;
+      }
+      
+      .quote {
+        padding: 0.5rem;
+        font-size: 13px;
+      }
+      
+      .bubble {
+        padding: 0.5rem;
+        font-size: 13px;
+      }
+      
+      .section[style*="grid-column: span 3"],
+      .section[style*="grid-column: span 2"] {
+        grid-column: span 1;
+      }
+    }
+    
+    /* 特に小さい画面用の最適化 */
+    @media (max-width: 480px) {
+      .hand-drawn-box {
+        padding: 0.75rem;
+      }
+      
+      .concept-title {
+        font-size: 15px;
+      }
+      
+      .concept-content {
+        font-size: 13px;
+      }
+      
+      .section-title::before {
+        font-size: 1em;
+      }
+      
+      .grid {
+        gap: 0.75rem;
+      }
+      
+      .container {
+        padding: 0.75rem;
+      }
+      
+      .title {
+        font-size: 22px;
+      }
+    }
+    
+    /* 内部グリッドのためのスタイル追加 */
+    .concept-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+    }
+    
+    /* タッチフレンドリーな要素の追加 */
+    @media (hover: none) and (pointer: coarse) {
+      .section, .bubble, .quote, .banner, .key-point, .hand-drawn-box {
+        cursor: pointer;
+        transition: transform 0.2s ease;
+      }
+      
+      .section:active, .bubble:active, .quote:active, .banner:active, .key-point:active, .hand-drawn-box:active {
+        transform: scale(0.98);
+      }
+      
+      .key-point {
+        padding: 0.5rem 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <h1 class="title">長期オプション取引で利益を上げるための原則</h1>
+      <div class="date-source">
+        📅 2025年4月18日<br>
+        📚 出典: "CAN YOU REALLY MAKE MONEY TRADING OPTIONS LONG-TERM?"
+      </div>
+    </header>
+    
+    <div class="grid">
+      <!-- 概要セクション -->
+      <div class="section" style="grid-column: span 3;">
+        <h2 class="section-title">📝 概要</h2>
+        <div class="concept-content">
+          このインタビューは、crowdedmarketreport.com のジェイソン・シャピロ氏が、匿名を希望する「ネイサン」というDiscordコミュニティメンバーのトレーダーに行ったものです。主なテーマは、<span class="highlight">リスク管理の重要性</span>、<span class="highlight">感情的な決断を避けるためのプロセス構築</span>、<span class="highlight">市場に対する謙虚な姿勢</span>、そして<span class="highlight">他人のトレードをコピーするのではなく自身のプロセスを持つこと</span>の重要性です。
+        </div>
+      </div>
+
+      <!-- オプション取引の基本概念セクション -->
+      <div class="section" style="grid-column: span 3;">
+        <h2 class="section-title">📚 オプション取引の基本概念</h2>
+        
+        <div class="concept-grid">
+          <!-- 概念1: オプションとは -->
+          <div class="hand-drawn-box">
+            <h3 class="concept-title">🔍 オプションとは</h3>
+            <div class="concept-content">
+              オプションは<span class="highlight">特定の期日までに、あらかじめ決められた価格で原資産を売買する権利</span>を与える契約です。この契約自体にも価格（プレミアム）があり、取引することができます。
+            </div>
+          </div>
+          
+          <!-- 概念2: コールとプット -->
+          <div class="hand-drawn-box">
+            <h3 class="concept-title">📈 コールとプット</h3>
+            <div class="concept-content">
+              <div class="key-point">
+                <span class="icon">🔼</span>
+                <div class="key-point-content">
+                  <strong>コールオプション</strong>: 特定の価格で原資産を<span class="highlight">買う権利</span>
+                </div>
+              </div>
+              <div class="key-point">
+                <span class="icon">🔽</span>
+                <div class="key-point-content">
+                  <strong>プットオプション</strong>: 特定の価格で原資産を<span class="highlight">売る権利</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- 概念3: 重要な用語 -->
+          <div class="hand-drawn-box">
+            <h3 class="concept-title">📋 重要な用語</h3>
+            <div class="concept-content">
+              <div class="key-point">
+                <span class="icon">🎯</span>
+                <div class="key-point-content">
+                  <strong>ストライク価格</strong>: オプションで定められた売買価格
+                </div>
+              </div>
+              <div class="key-point">
+                <span class="icon">⏳</span>
+                <div class="key-point-content">
+                  <strong>満期日</strong>: オプションが失効する日
+                </div>
+              </div>
+              <div class="key-point">
+                <span class="icon">💰</span>
+                <div class="key-point-content">
+                  <strong>プレミアム</strong>: オプション契約自体の価格
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- 概念4: オプション取引の目的 -->
+          <div class="hand-drawn-box">
+            <h3 class="concept-title">🎯 取引の目的</h3>
+            <div class="concept-content">
+              <div class="key-point">
+                <span class="icon">🛡️</span>
+                <div class="key-point-content">
+                  <strong>ヘッジング</strong>: 保有している資産の価格下落リスクから保護
+                </div>
+              </div>
+              <div class="key-point">
+                <span class="icon">💸</span>
+                <div class="key-point-content">
+                  <strong>収入生成</strong>: 保有している資産からプレミアムを獲得
+                </div>
+              </div>
+              <div class="key-point">
+                <span class="icon">🎲</span>
+                <div class="key-point-content">
+                  <strong>投機</strong>: 資産価格の変動から利益を得る
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- 概念5: オプションの特徴 -->
+          <div class="hand-drawn-box">
+            <h3 class="concept-title">✨ オプションの特徴</h3>
+            <div class="concept-content">
+              <div class="key-point">
+                <span class="icon">📊</span>
+                <div class="key-point-content">
+                  <strong>レバレッジ</strong>: 少額の資金で大きなポジションを取れる
+                </div>
+              </div>
+              <div class="key-point">
+                <span class="icon">📉</span>
+                <div class="key-point-content">
+                  <strong>リスク限定</strong>: 買い手の損失はプレミアムに限定される
+                </div>
+              </div>
+              <div class="key-point">
+                <span class="icon">🔄</span>
+                <div class="key-point-content">
+                  <strong>柔軟性</strong>: 様々な市場状況で活用可能
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- 概念6: オプションのグリーク -->
+          <div class="hand-drawn-box">
+            <h3 class="concept-title">🔢 オプションのグリーク</h3>
+            <div class="concept-content">
+              オプション価格の変動を測定する指標で、<span class="highlight">デルタ、シータ、ガンマ、ベガ</span>などがあります。これらはオプションのリスク管理に重要です。
+            </div>
+          </div>
+        </div>
+        
+        <div class="banner" style="margin-top: 1.5rem;">
+          オプション取引は複雑で高度な取引手法です。リスク管理と適切な知識が不可欠です。
+        </div>
+      </div>
+
+      <!-- トレーディングへの道のりセクション -->
+      <div class="section">
+        <h2 class="section-title">🛤️ トレーディングへの道のり</h2>
+        
+        <div class="story-box">
+          <div class="key-point">
+            <span class="icon">🌾</span>
+            <div class="key-point-content">
+              家畜農家の息子として育ち、幼い頃から先物市場に触れる
+            </div>
+          </div>
+          
+          <div class="key-point">
+            <span class="icon">📈</span>
+            <div class="key-point-content">
+              18歳で株式取引を開始、初期は成功
+            </div>
+          </div>
+          
+          <div class="key-point">
+            <span class="icon">📉</span>
+            <div class="key-point-content">
+              ジョーンズ・ソーダ株のショートで大損失を経験
+            </div>
+          </div>
+
+          <div class="bubble">
+            <strong>重要な教訓:</strong> あなたは正しくても清算される可能性がある
+          </div>
+          
+          <div class="hand-drawn-arrow"></div>
+          
+          <div class="key-point">
+            <span class="icon">🔄</span>
+            <div class="key-point-content">
+              その後オプション取引に出会い、現在ではほぼ独占的にオプションを取引
+            </div>
+          </div>
+          
+          <div class="key-point">
+            <span class="icon">💹</span>
+            <div class="key-point-content">
+              2022年から口座残高を14倍に増加<br>
+              （現在はドローダウン中だが損失は3.5%に抑制）
+            </div>
+          </div>
+        </div>
+
+        <div class="concept">
+          <h3 class="concept-title">投機からの脱却</h3>
+          <div class="concept-content">
+            「yolo」的な投機ではなく、<span class="highlight">数学的に小さな優位性</span>を見つけ、リスク調整された適切な利益を得ることを目指している
+          </div>
+        </div>
+      </div>
+
+      <!-- リスク管理の重要性セクション -->
+      <div class="section">
+        <h2 class="section-title">🛡️ リスク管理の重要性</h2>
+        
+        <div class="banner">
+          「純資産の1%」というリスク許容度の設定
+        </div>
+        
+        <div class="concept">
+          <h3 class="concept-title">過去の教訓</h3>
+          <div class="concept-content">
+            過去に大きな損失を経験したことから、リスク管理の重要性を痛感
+          </div>
+        </div>
+        
+        <div class="quote">
+          以前は高い確率で正しかったのですが、間違った時にそれを認めることができず、大きなドローダウンを経験していました。
+        </div>
+        
+        <div class="concept">
+          <h3 class="concept-title">ヘッジの重要性</h3>
+          <div class="concept-content">
+            ポジションが不利になった場合でも、<span class="highlight">含み損を抱えたまま持ち続けたり、ナンピンしたりする傲慢さを排除</span>し、適切にリスクを管理し、ヘッジを行う
+          </div>
+        </div>
+        
+        <div class="quote">
+          日曜の電話でのあなたの発言は非常に適切だと思います。なぜなら、私がいつも言っているように、もし私がマーケットウィザードだとしたら、それは未来を予測する能力とは何の関係もなく、ほとんどの人よりも損失をうまく処理する能力にあるからです。
+        </div>
+      </div>
+
+      <!-- 感情的な決断を避けるためのプロセス構築セクション -->
+      <div class="section">
+        <h2 class="section-title">🧠 感情的な決断を避けるためのプロセス</h2>
+        
+        <div class="hand-drawn-box">
+          <div class="key-point">
+            <span class="icon">🔍</span>
+            <div class="key-point-content">
+              取引前に一般的なマクロビューを持ち、シナリオを想定
+            </div>
+          </div>
+          
+          <div class="key-point">
+            <span class="icon">⏱️</span>
+            <div class="key-point-content">
+              時間差のあるオプションのスプレッド（カレンダースプレッド）の活用
+            </div>
+          </div>
+          
+          <div class="key-point">
+            <span class="icon">🌲</span>
+            <div class="key-point-content">
+              「もし～なら、～する」という<span class="highlight">意思決定ツリー</span>を事前に作成
+            </div>
+          </div>
+        </div>
+        
+        <div class="quote">
+          感情的になったり、誰もが感情的になったりすると、長期的には痛手を受けます。自分自身を疑い始め、なぜこんなことをしているのか、貯金して高利回りの貯蓄口座に入れておけばよかったのではないかと夜中に家の中を歩き回ることになります。
+        </div>
+        
+        <div class="bubble">
+          <strong>重要ポイント:</strong> エントリーした瞬間から、いつエグジットするのか、いつ追加するのか、どのようなパラメータの下で早期にクローズするのかを正確に把握しておく
+        </div>
+      </div>
+
+      <!-- 市場に対する謙虚な姿勢セクション -->
+      <div class="section">
+        <h2 class="section-title">🙏 市場に対する謙虚な姿勢</h2>
+        
+        <div class="concept">
+          <h3 class="concept-title">自己認識</h3>
+          <div class="concept-content">
+            自身をプロのトレーダーや特別な存在だと考えず、人生における一定レベルの成功を望む延長線上にトレーディングを位置づけている
+          </div>
+        </div>
+        
+        <div class="quote">
+          私は、自分がプロのトレーダーになるとか、これまで以上に特別な存在になるとかいう幻想は抱いていません。
+        </div>
+        
+        <div class="concept">
+          <h3 class="concept-title">市場の不確実性の受容</h3>
+          <div class="concept-content">
+            市場の方向性について、他者と同様に<span class="highlight">迷うことがあると認識</span>しており、それを受け入れている
+          </div>
+        </div>
+        
+        <div class="quote">
+          日曜の電話では、多くの場合、あなたも私も、そして誰もが同じように混乱しているように見えることが多いですが、それは非常に心強く、シナリオを概説することで理解を深めることができます。
+        </div>
+      </div>
+      
+      <!-- 自分自身のプロセスを持つことの重要性セクション -->
+      <div class="section">
+        <h2 class="section-title">🔄 自分自身のプロセスを持つ重要性</h2>
+        
+        <div class="concept">
+          <h3 class="concept-title">他者のトレードをコピーしない</h3>
+          <div class="concept-content">
+            他人のトレードをそのまま真似するのではなく、<span class="highlight">自分自身の取引プロセスと理由付け</span>を持つことが重要
+          </div>
+        </div>
+        
+        <div class="bubble">
+          <strong>重要ポイント:</strong> 自分の頭で考え、自分のプロセスに従う
+        </div>
+        
+        <div class="quote">
+          私は誰かのトレードをコピーすることを決して推奨しません。なぜなら、その人が何を考えているのか、どのようなリスク許容度を持っているのか、どのような計画を持っているのかを知らないからです。
+        </div>
+        
+        <div class="concept">
+          <h3 class="concept-title">独自の分析と戦略</h3>
+          <div class="concept-content">
+            他者の意見や分析は参考にしつつも、<span class="highlight">最終的な判断は自分自身で行う</span>ことの重要性を強調
+          </div>
+        </div>
+      </div>
+      
+      <!-- 成功のための実践的アドバイスセクション -->
+      <div class="section">
+        <h2 class="section-title">💡 成功のための実践的アドバイス</h2>
+        
+        <div class="concept-grid">
+          <div class="hand-drawn-box">
+            <h3 class="concept-title">📊 ポートフォリオ管理</h3>
+            <div class="concept-content">
+              <div class="key-point">
+                <span class="icon">⚖️</span>
+                <div class="key-point-content">
+                  資金の適切な配分と分散投資
+                </div>
+              </div>
+              <div class="key-point">
+                <span class="icon">📉</span>
+                <div class="key-point-content">
+                  損失を小さく抑え、利益を伸ばす
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="hand-drawn-box">
+            <h3 class="concept-title">🧠 心理的要素</h3>
+            <div class="concept-content">
+              <div class="key-point">
+                <span class="icon">😌</span>
+                <div class="key-point-content">
+                  感情をコントロールし、冷静な判断を維持
+                </div>
+              </div>
+              <div class="key-point">
+                <span class="icon">🚫</span>
+                <div class="key-point-content">
+                  FOMO（見逃す恐怖）に流されない
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="hand-drawn-box">
+            <h3 class="concept-title">📝 取引記録</h3>
+            <div class="concept-content">
+              <div class="key-point">
+                <span class="icon">📓</span>
+                <div class="key-point-content">
+                  すべての取引を記録し、定期的に振り返る
+                </div>
+              </div>
+              <div class="key-point">
+                <span class="icon">🔍</span>
+                <div class="key-point-content">
+                  成功と失敗から学び、継続的に改善する
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="hand-drawn-box">
+            <h3 class="concept-title">📚 継続的学習</h3>
+            <div class="concept-content">
+              <div class="key-point">
+                <span class="icon">🎓</span>
+                <div class="key-point-content">
+                  市場、商品、戦略についての知識を常に更新
+                </div>
+              </div>
+              <div class="key-point">
+                <span class="icon">🧪</span>
+                <div class="key-point-content">
+                  小さなサイズで新しい戦略をテスト
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="banner" style="margin-top: 1.5rem;">
+          成功は一晩では訪れない！継続的な学習と実践が鍵です
+        </div>
+      </div>
+      
+      <!-- 結論セクション -->
+      <div class="section" style="grid-column: span 3;">
+        <h2 class="section-title">🏁 結論</h2>
+        
+        <div class="concept-content">
+          長期的なオプション取引での成功は、<span class="highlight">適切なリスク管理</span>、<span class="highlight">感情的な決断の排除</span>、<span class="highlight">市場に対する謙虚さ</span>、そして<span class="highlight">自分自身のプロセスを持つこと</span>に依存しています。単なる投機ではなく、数学的に小さな優位性を見つけ、リスク調整された利益を一貫して生み出すことが重要です。
+        </div>
+        
+        <div class="quote">
+          トレーディングは短距離走ではなく、マラソンです。持続可能なプロセスを構築し、感情に流されず、リスクを適切に管理することで、長期的な成功への道が開かれます。
+        </div>
+      </div>
+    </div>
+    
+    <footer class="footer">
+      © 2025 オプション取引インフォグラフィック | 原文出典: "CAN YOU REALLY MAKE MONEY TRADING OPTIONS LONG-TERM?" by Jason Shapiro, crowdedmarketreport.com | 動画リンク: <a href="https://youtu.be/lFjdsgIIwI8?si=7D4HjJSy9m4-CWch" target="_blank">YouTube</a> | 作成日: 2025年4月18日
+    </footer>
+  </div>
+</body>
+</html>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">Monty Trader</div>
+            <div class="footer-social">
+                <a href="https://x.com/monty_investor" target="_blank">@monty_investor</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleLanguage() {
+            const jaElements = document.querySelectorAll('.ja');
+            const enElements = document.querySelectorAll('.en');
+            const button = document.querySelector('.language-switch button');
+            
+            jaElements.forEach(el => el.classList.toggle('hidden'));
+            enElements.forEach(el => el.classList.toggle('hidden'));
+            
+            button.textContent = button.textContent === 'English' ? '日本語' : 'English';
+        }
+    </script>
+</body>
+</html> 
