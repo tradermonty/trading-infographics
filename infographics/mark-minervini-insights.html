@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>マーク・ミネルヴィニ氏インタビュー概要</title>
+    <link rel="icon" type="image/png" href="../images/monty.png">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Yomogi&family=Zen+Kurenaido&family=Kaisei+Decol:wght@400;700&display=swap');
+        
+        :root {
+            --fashion-1: #593C47;
+            --fashion-2: #F2E63D;
+            --fashion-3: #F2C53D;
+            --fashion-4: #F25C05;
+            --fashion-5: #F24405;
+            --text-dark: #334155;
+            --text-title: #1e40af;
+            --bg-light: #fff;
+            --shadow: rgba(0, 0, 0, 0.1);
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Kaisei Decol', serif;
+            background-color: #f8f9fa;
+            color: var(--text-dark);
+            line-height: 1.4;
+            padding: 0;
+            margin: 0;
+        }
+
+        .fixed-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: linear-gradient(135deg, var(--fashion-1), var(--fashion-5));
+            padding: 10px 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .fixed-header:hover {
+            background: linear-gradient(135deg, var(--fashion-5), var(--fashion-1));
+        }
+
+        .fixed-header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .header-logo {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .fixed-header h1 {
+            font-family: 'Zen Kurenaido', sans-serif;
+            font-size: 24px;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            background: linear-gradient(to right, white, var(--fashion-2));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin: 0;
+            pointer-events: none;
+        }
+
+        .main-content {
+            margin-top: 60px;
+            padding: 20px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hidden {
+            display: none !important;
+            visibility: hidden;
+            opacity: 0;
+        }
+
+        .language-switch {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1001;
+            display: none;
+        }
+        
+        .language-switch button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 20px;
+            background: linear-gradient(135deg, var(--fashion-1), var(--fashion-5));
+            color: white;
+            cursor: pointer;
+            font-family: 'Yomogi', cursive;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .language-switch button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(135deg, var(--fashion-1), var(--fashion-5));
+            color: white;
+            margin-top: 40px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-logo {
+            font-family: 'Zen Kurenaido', sans-serif;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 15px;
+        }
+
+        .footer-social a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .footer-social a:hover {
+            color: var(--fashion-2);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .fixed-header h1 {
+                font-size: 20px;
+            }
+            
+            .main-content {
+                margin-top: 50px;
+                padding: 10px;
+            }
+
+            .language-switch {
+                top: 10px;
+                right: 10px;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="language-switch">
+        <button onclick="toggleLanguage()">English</button>
+    </div>
+
+    <div class="fixed-header" onclick="window.location.href='../index.html'">
+        <div class="fixed-header-content">
+            <img src="../images/monty.png" alt="Monty Trader Logo" class="header-logo">
+            <h1 class="ja">モンティの株式トレードインフォグラフィックス集</h1>
+            <h1 class="en hidden">Monty's Stock Trading Infographics Collection</h1>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>マーク・ミネルヴィニ氏インタビュー｜グラフィックレコーディング</title>
+  <link href="https://fonts.googleapis.com/css2?family=Yomogi&family=Zen+Kurenaido&family=Kaisei+Decol:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'Kaisei Decol', serif;
+      background-color: #f8f9fa;
+      color: #334155;
+      line-height: 1.4;
+      padding: 20px;
+      background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23593c47' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.85);
+      border-radius: 16px;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(5px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      padding: 30px;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 30px;
+      border-bottom: 3px solid #F2C53D;
+      padding-bottom: 15px;
+      position: relative;
+    }
+
+    header::after {
+      content: "";
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background-color: #F25C05;
+      border-radius: 3px;
+    }
+
+    h1 {
+      font-family: 'Zen Kurenaido', sans-serif;
+      font-size: 32px;
+      font-weight: 700;
+      background: linear-gradient(45deg, #593C47, #F24405);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 1px 1px 1px rgba(0,0,0,0.1);
+      margin-bottom: 5px;
+      position: relative;
+    }
+
+    h1::before {
+      content: "📊";
+      position: absolute;
+      left: -40px;
+      top: 5px;
+    }
+
+    .date {
+      font-family: 'Yomogi', cursive;
+      color: #475569;
+      font-size: 14px;
+      text-align: right;
+    }
+
+    .main-content {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .column {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 12px;
+      padding: 15px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      position: relative;
+      overflow: hidden;
+      border: 2px solid transparent;
+      transition: all 0.3s ease;
+    }
+
+    .card:hover {
+      border-color: #F2C53D;
+      transform: translateY(-2px);
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 5px;
+      height: 100%;
+      background: linear-gradient(to bottom, #F2E63D, #F24405);
+      border-radius: 2px 0 0 2px;
+    }
+
+    h2 {
+      font-family: 'Zen Kurenaido', sans-serif;
+      font-size: 18px;
+      color: #1e40af;
+      margin-bottom: 10px;
+      padding-bottom: 5px;
+      border-bottom: 2px dotted #F2C53D;
+      display: flex;
+      align-items: center;
+    }
+
+    h2 svg, h2 span.icon {
+      margin-right: 8px;
+      color: #F25C05;
+    }
+
+    p {
+      font-size: 14px;
+      margin-bottom: 10px;
+      line-height: 1.6;
+    }
+
+    .highlight {
+      background: linear-gradient(transparent 60%, rgba(242, 230, 61, 0.6) 40%);
+      padding: 0 2px;
+      font-weight: bold;
+      color: #593C47;
+    }
+
+    .keyword {
+      font-family: 'Yomogi', cursive;
+      font-weight: bold;
+      color: #F24405;
+      border-bottom: 1px dashed #F2C53D;
+      padding: 0 2px;
+    }
+
+    .bubble {
+      background: rgba(242, 196, 61, 0.2);
+      border-radius: 20px;
+      padding: 10px 15px;
+      position: relative;
+      margin: 15px 0;
+      border: 1px solid #F2C53D;
+    }
+
+    .bubble::before {
+      content: "";
+      position: absolute;
+      top: -10px;
+      left: 20px;
+      border-width: 0 10px 10px;
+      border-style: solid;
+      border-color: transparent transparent #F2C53D transparent;
+    }
+
+    .arrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 15px 0;
+    }
+
+    .arrow svg {
+      fill: #593C47;
+    }
+
+    .trader-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 10px 0;
+    }
+
+    .trader-badge {
+      background: rgba(242, 92, 5, 0.1);
+      border: 1px dashed #F25C05;
+      border-radius: 30px;
+      padding: 5px 10px;
+      font-size: 12px;
+      font-family: 'Kaisei Decol', serif;
+      color: #593C47;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .trader-badge::before {
+      content: "👑";
+      margin-right: 5px;
+    }
+
+    .quote {
+      font-family: 'Yomogi', cursive;
+      font-style: italic;
+      color: #593C47;
+      padding-left: 15px;
+      border-left: 3px solid #F2C53D;
+      margin: 15px 0;
+    }
+
+    .emphasis {
+      font-weight: bold;
+      font-size: 1.1em;
+      color: #F24405;
+    }
+
+    .connector {
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .connector::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 50%;
+      height: 100%;
+      width: 2px;
+      background: repeating-linear-gradient(
+        to bottom,
+        #F2C53D 0,
+        #F2C53D 5px,
+        transparent 5px,
+        transparent 10px
+      );
+    }
+
+    .section-icon {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: white;
+      border-radius: 50%;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      border: 2px solid #F2C53D;
+      margin-right: 10px;
+      flex-shrink: 0;
+    }
+
+    .hand-drawn {
+      font-family: 'Yomogi', cursive;
+    }
+
+    .conclusion {
+      margin-top: 30px;
+      background: rgba(242, 196, 61, 0.2);
+      border-radius: 12px;
+      padding: 20px;
+      position: relative;
+    }
+
+    .conclusion::before {
+      content: "📝";
+      position: absolute;
+      top: -15px;
+      left: 20px;
+      font-size: 30px;
+    }
+
+    .conclusion h2 {
+      border-bottom: 2px solid #F25C05;
+    }
+
+    footer {
+      margin-top: 30px;
+      text-align: right;
+      font-size: 12px;
+      color: #475569;
+      padding-top: 10px;
+      border-top: 1px solid #F2C53D;
+    }
+
+    @media (max-width: 768px) {
+      .column {
+        flex: 100%;
+      }
+    }
+
+    /* 手書き風の線や図形のCSS */
+    .hand-drawn-border {
+      position: relative;
+    }
+
+    .hand-drawn-border::after {
+      content: "";
+      position: absolute;
+      top: -5px;
+      left: -5px;
+      right: -5px;
+      bottom: -5px;
+      border: 2px solid #593C47;
+      border-radius: 15px;
+      opacity: 0.5;
+      transform: rotate(-0.5deg);
+      pointer-events: none;
+    }
+
+    .marker {
+      padding: 0 2px;
+      background: linear-gradient(transparent 40%, rgba(242, 92, 5, 0.3) 60%);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div>
+        <h1>マーク・ミネルヴィニ氏インタビュー概要</h1>
+        <p class="date">2025年4月17日｜グラフィックレコーディング</p>
+      </div>
+      <div class="hand-drawn">⭐ 米国投資チャンピオンシップ2度優勝の伝説的トレーダー ⭐</div>
+    </header>
+
+    <div class="main-content">
+      <div class="column">
+        <div class="card hand-drawn-border">
+          <h2><span class="icon">📈</span>現在の市場見解</h2>
+          <p>ミネルヴィニ氏は<span class="highlight">短期的なニュース主導の乱高下</span>があり、底打ちの可能性はあるものの、<span class="keyword">ボラティリティは依然として高い</span>と見ています。</p>
+          <div class="bubble">
+            <p class="quote">「３日連続で4.5%以上の動きがあった。歴史的に見ると、このパターンは大恐慌時代以来の事象で、通常は底に近い状況を示唆する」</p>
+          </div>
+          <p>しかし同時に「<span class="marker">ボラティリティはまだ終わっていない</span>」とも警告しています。</p>
+          <div class="arrow">
+            <svg width="100" height="30" viewBox="0 0 100 30" xmlns="http://www.w3.org/2000/svg">
+              <path d="M5,15 C20,5 80,25 95,15 L100,15 L95,20 L95,10 Z" fill="#593C47" />
+            </svg>
+          </div>
+          <p><span class="emphasis">長期的なトレンドが確立するまでは慎重な姿勢を推奨</span>しています。</p>
+        </div>
+
+        <div class="card">
+          <h2><span class="icon">🛡️</span>低リスク戦略</h2>
+          <p>ミネルヴィニ氏は<span class="highlight">ボラティリティを避け</span>、市場が安定し明確なトレンドが出現するまで待つ、低リスクな取引スタイルを重視しています。</p>
+          <div class="bubble">
+            <p class="quote">「私はボラティリティが嫌いだ。アップトレンドや『ロックアウトラリー』と呼ぶ状況を好む。そこではアルファが高く、ボラティリティが低い」</p>
+          </div>
+          <p>ドローダウンを最小限に抑えることが<span class="keyword">成功の重要な要素</span>だと強調しています。</p>
+          <div class="trader-list">
+            <div class="trader-badge">早めの利食い</div>
+            <div class="trader-badge">早めの損切り</div>
+            <div class="trader-badge">エクイティカーブ最大化</div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2><span class="icon">🔄</span>トレード戦略の変化</h2>
+          <p>かつてのような大型の勝ちトレードを狙うのではなく、<span class="highlight">より頻繁なスイングトレード</span>に焦点を当てています。</p>
+          <div class="bubble">
+            <p class="quote">「成功の秘訣があるとすれば、ドローダウンの少なさだ」</p>
+          </div>
+          <p>完璧なタイミングを狙うのではなく、<span class="marker">早めに行動</span>することを重視しています。</p>
+          <div class="arrow">
+            <svg width="100" height="30" viewBox="0 0 100 30" xmlns="http://www.w3.org/2000/svg">
+              <path d="M10,10 C30,0 70,30 90,10 M90,10 L85,5 M90,10 L85,15" stroke="#593C47" fill="none" stroke-width="2" stroke-linecap="round" />
+            </svg>
+          </div>
+          <p>トレードの出入りには「<span class="emphasis">早いか遅いか</span>」の2パターンしかなく、完璧なタイミングはほぼあり得ないことを認識しています。</p>
+        </div>
+
+        <div class="card">
+          <h2><span class="icon">🔎</span>情報分析アプローチ</h2>
+          <p>ミネルヴィニ氏は<span class="highlight">ボトムアップアプローチ</span>を採用し、個々の銘柄の動きに注目しています。</p>
+          <div class="bubble">
+            <p class="quote">「私は金融ニュースを見ないようにしている」</p>
+          </div>
+          <p>個別銘柄のチャートから<span class="keyword">すべての情報を読み取る</span>スタイルを重視しています。</p>
+          <div class="trader-list">
+            <div class="trader-badge">ニュースより価格</div>
+            <div class="trader-badge">外部情報の警戒</div>
+            <div class="trader-badge">独自の判断</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="column">
+        <div class="card">
+          <h2><span class="icon">👑</span>偉大なトレーダーからの影響</h2>
+          <p>ミネルヴィニ氏は多くの著名なトレーダーから<span class="highlight">影響と学び</span>を得ています。</p>
+          <div class="trader-list">
+            <div class="trader-badge">ビル・オニール</div>
+            <div class="trader-badge">デビッド・ライアン</div>
+            <div class="trader-badge">スタン・ワインスタイン</div>
+            <div class="trader-badge">ラリー・ハイト</div>
+            <div class="trader-badge">ポール・チューダー・ジョーンズ</div>
+          </div>
+          <div class="bubble">
+            <p class="quote">「マーケットウィザーズの本に登場する全員、特に最初と2冊目の伝説的トレーダーたちは皆私にインスピレーションを与えてくれた」</p>
+          </div>
+          <p>偉大なトレーダーの存在が「<span class="emphasis">これは達成可能なことであり、自分にもできる</span>」という自信を与えたと語っています。</p>
+        </div>
+
+        <div class="card">
+          <h2><span class="icon">📚</span>継続的な学習と成長</h2>
+          <p><span class="highlight">43年のキャリア</span>を持つ現在でも、常に学び続けることの重要性を強調しています。</p>
+          <div class="bubble">
+            <p class="quote">「お金だけのためにやるなら、成功しないだろう。学習曲線を乗り越えられない」</p>
+          </div>
+          <p>トレーディングそのものに対する<span class="keyword">情熱</span>と、成功への<span class="keyword">強いコミットメント</span>が不可欠だと述べています。</p>
+          <div class="arrow">
+            <svg width="100" height="30" viewBox="0 0 100 30" xmlns="http://www.w3.org/2000/svg">
+              <path d="M5,15 C35,0 65,30 95,15 M90,10 L95,15 M90,20 L95,15" stroke="#593C47" fill="none" stroke-width="2" stroke-linecap="round" />
+            </svg>
+          </div>
+          <p>金銭的目標だけでなく、<span class="emphasis">トレーディングへの愛情</span>が長期的な成功につながるとしています。</p>
+        </div>
+
+        <div class="card">
+          <h2><span class="icon">⚠️</span>リスク管理の徹底</h2>
+          <p>大きな損失を避けることの重要性を<span class="highlight">繰り返し強調</span>しています。</p>
+          <div class="bubble">
+            <p class="quote">「常にリスクを尊重すること。これは必ず学ばなければならないこと」</p>
+          </div>
+          <p><span class="keyword">過去30年間で数えるほどの負け年しかない</span>という驚異的な記録を持ち、その戦略の有効性を証明しています。</p>
+          <div class="trader-list">
+            <div class="trader-badge">損失最小化</div>
+            <div class="trader-badge">早期撤退</div>
+            <div class="trader-badge">資金管理</div>
+          </div>
+          <p>ミネルヴィニ氏は「<span class="emphasis">私は負けない。とても稀にしか負けない</span>」と自信を持って語っています。</p>
+        </div>
+
+        <div class="card">
+          <h2><span class="icon">📉</span>ショートトレードへの姿勢</h2>
+          <p><span class="highlight">指数に対するショート</span>は行うものの、個別株のショートには慎重な姿勢を示しています。</p>
+          <div class="bubble">
+            <p class="quote">「Redditやこれらの噂... GameStopがGabe PlotkinのMelvin Capitalを倒した。一つの銘柄で数十億ドルの損失」</p>
+          </div>
+          <p><span class="keyword">ソーシャルメディアの影響</span>による株価の急騰リスクを考慮し、個別株のショートに警戒的です。</p>
+          <div class="arrow">
+            <svg width="100" height="30" viewBox="0 0 100 30" xmlns="http://www.w3.org/2000/svg">
+              <path d="M10,5 C30,25 70,5 90,25 M85,20 L90,25 M90,25 L95,20" stroke="#593C47" fill="none" stroke-width="2" stroke-linecap="round" />
+            </svg>
+          </div>
+          <p>現代のソーシャルメディア環境では、株価が<span class="emphasis">1,000%も上昇</span>する可能性があるため、ショートのリスクは非常に高いと警告しています。</p>
+        </div>
+      </div>
+
+      <div class="column">
+        <div class="card">
+          <h2><span class="icon">🏆</span>市場の健全性</h2>
+          <p>市場は全体として<span class="highlight">操作されているわけではない</span>と考えています。</p>
+          <div class="bubble">
+            <p class="quote">「市場が操作されているという陰謀論はナンセンスだ。市場は単純に巨大すぎる」</p>
+          </div>
+          <p>一時的なニュースやイベントによる影響が大きいと見ていますが、<span class="keyword">市場全体の健全性</span>は保たれていると考えています。</p>
+          <div class="arrow">
+            <svg width="100" height="30" viewBox="0 0 100 30" xmlns="http://www.w3.org/2000/svg">
+              <path d="M10,15 Q50,0 90,15 M85,10 L90,15 M85,20 L90,15" stroke="#593C47" fill="none" stroke-width="2" stroke-linecap="round" />
+            </svg>
+          </div>
+          <p>短期的な市場の動きは様々な要因で乱高下することがあっても、<span class="emphasis">長期的には健全</span>だとしています。</p>
+        </div>
+
+        <div class="card">
+          <h2><span class="icon">👨‍🎓</span>ユニークなキャリアパス</h2>
+          <p>ミネルヴィニ氏は<span class="highlight">中学2年生で学校を中退</span>し、異色の経歴を持っています。</p>
+          <div class="trader-list">
+            <div class="trader-badge">ミュージシャン</div>
+            <div class="trader-badge">レコーディングエンジニア</div>
+            <div class="trader-badge">トレーダー</div>
+          </div>
+          <p>従来の教育やキャリアパスに従わず、<span class="keyword">独自の道</span>を切り開いてきました。</p>
+          <div class="bubble">
+            <p class="quote">「私はIQが高いとは思わないが、EQ（感情的知性）は高いと思う」</p>
+          </div>
+          <p>自身の成功は学歴や伝統的な知性よりも、<span class="emphasis">高いEQ（感情的知性）</span>によるものだと考えています。</p>
+        </div>
+
+        <div class="card">
+          <h2><span class="icon">🤝</span>慈善活動とコミュニティ</h2>
+          <p><span class="highlight">US Investing Championshipの復活</span>に貢献するなど、コミュニティ活動にも積極的です。</p>
+          <div class="bubble">
+            <p>メンバー向けのイベント開催やトレーダーの育成にも力を入れています。</p>
+          </div>
+          <p>自身の<span class="keyword">経験や知識</span>を次世代のトレーダーに伝えることに喜びを感じているようです。</p>
+          <div class="arrow">
+            <svg width="100" height="30" viewBox="0 0 100 30" xmlns="http://www.w3.org/2000/svg">
+              <path d="M10,15 C20,5 40,25 60,5 C70,25 90,15 90,15" stroke="#593C47" fill="none" stroke-width="2" stroke-linecap="round" />
+            </svg>
+          </div>
+          <p>トレーディングの<span class="emphasis">知識と経験を共有する</span>ことに価値を見出しています。</p>
+        </div>
+
+        <div class="card">
+          <h2><span class="icon">⚙️</span>戦略の規模と限界</h2>
+          <p>長年の実績にもかかわらず、<span class="highlight">流動性の問題</span>から戦略を大規模に展開することは難しいと考えています。</p>
+          <div class="bubble">
+            <p class="quote">「私の戦略は5000万ドル程度が快適なサイズ。個人口座では1000万ドルのポジションを取ることもあるが、機関投資家から見れば全く小さい」</p>
+          </div>
+          <p>彼の戦略は<span class="keyword">個人投資家向け</span>であり、機関投資家レベルに拡大するのは難しいと認めています。</p>
+        </div>
+
+        <div class="conclusion">
+          <h2><span class="icon">📋</span>結論</h2>
+          <p>マーク・ミネルヴィニ氏のインタビューは、<span class="highlight">経験豊富な伝説的トレーダー</span>の貴重な洞察を提供しています。</p>
+          <p>不確実な市場環境においては、<span class="keyword">リスク管理を徹底</span>し、ボラティリティを避け、明確なトレンドが現れるまで慎重に待つことの重要性が強調されています。</p>
+          <p>過去の偉大なトレーダーからの学び、継続的な学習、そして何よりも<span class="emphasis">トレーディングに対する情熱とコミットメント</span>が、長期的な成功には不可欠であることが示唆されています。</p>
+          <p>彼の低リスク戦略と早めの利食い・損切りの徹底は、多くのトレーダーにとって参考になるでしょう。</p>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <p>出典: <a href="https://youtu.be/e3c_zeyThy8?feature=shared" target="_blank">Mark Minervini インタビュー - YouTube</a> | グラフィックレコーディング作成: Claude | 2025年4月17日</p>
+    </footer>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">Monty Trader</div>
+            <div class="footer-social">
+                <a href="https://x.com/monty_investor" target="_blank">@monty_investor</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleLanguage() {
+            const jaElements = document.querySelectorAll('.ja');
+            const enElements = document.querySelectorAll('.en');
+            const button = document.querySelector('.language-switch button');
+            
+            jaElements.forEach(el => el.classList.toggle('hidden'));
+            enElements.forEach(el => el.classList.toggle('hidden'));
+            
+            button.textContent = button.textContent === 'English' ? '日本語' : 'English';
+        }
+    </script>
+</body>
+</html> 
