@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>米国株 2025-04-07週振り返りと今週の戦略</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Yomogi&family=Zen+Kurenaido&family=Kaisei+Decol:wght@400;700&display=swap');
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Kaisei Decol', serif;
+            background-color: #f8f9fa;
+            color: #334155;
+            line-height: 1.4;
+            padding: 20px;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(242, 230, 60, 0.05), rgba(242, 91, 4, 0.05));
+            z-index: 0;
+        }
+        
+        .content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            border-bottom: 2px dashed #593C47;
+            padding-bottom: 20px;
+        }
+        
+        .title {
+            font-family: 'Yomogi', cursive;
+            font-size: 32px;
+            font-weight: bold;
+            background: linear-gradient(to right, #593C47, #F24405);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+        
+        .date {
+            font-family: 'Zen Kurenaido', sans-serif;
+            font-size: 16px;
+            color: #475569;
+            background-color: rgba(242, 196, 60, 0.2);
+            padding: 5px 10px;
+            border-radius: 20px;
+            border: 1px solid #F2C53D;
+        }
+        
+        .columns {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .column {
+            flex: 1;
+            padding: 15px;
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            border: 1px solid rgba(89, 60, 71, 0.2);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        
+        .section {
+            margin-bottom: 25px;
+        }
+        
+        .section-title {
+            font-family: 'Zen Kurenaido', sans-serif;
+            font-size: 18px;
+            color: #1e40af;
+            margin-bottom: 10px;
+            padding-bottom: 5px;
+            border-bottom: 2px solid #F25C05;
+            display: flex;
+            align-items: center;
+        }
+        
+        .section-title i {
+            margin-right: 8px;
+            color: #F25C05;
+        }
+        
+        .card {
+            background-color: white;
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            border: 1px dashed #593C47;
+        }
+        
+        .highlight {
+            font-weight: bold;
+            background: linear-gradient(transparent 60%, rgba(242, 230, 60, 0.6) 40%);
+            padding: 0 2px;
+        }
+        
+        .keyword {
+            color: #F24405;
+            font-weight: bold;
+            border-bottom: 2px dotted #F25C05;
+        }
+        
+        .arrow {
+            font-family: 'Yomogi', cursive;
+            color: #593C47;
+            font-size: 20px;
+            margin: 0 5px;
+        }
+        
+        .trend-up {
+            color: #F24405;
+            font-weight: bold;
+        }
+        
+        .trend-down {
+            color: #1e40af;
+            font-weight: bold;
+        }
+        
+        .bubble {
+            background-color: rgba(242, 196, 60, 0.2);
+            border-radius: 20px;
+            padding: 10px 15px;
+            margin: 10px 0;
+            position: relative;
+        }
+        
+        .bubble::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 30px;
+            border-width: 10px;
+            border-style: solid;
+            border-color: rgba(242, 196, 60, 0.2) transparent transparent transparent;
+        }
+        
+        .hand-drawn {
+            font-family: 'Yomogi', cursive;
+        }
+        
+        .icon {
+            display: inline-block;
+            margin-right: 5px;
+            font-weight: bold;
+        }
+        
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 10px 0;
+        }
+        
+        .table th, .table td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px dashed #593C47;
+        }
+        
+        .table th {
+            background-color: rgba(89, 60, 71, 0.1);
+            color: #593C47;
+        }
+        
+        .footer {
+            text-align: right;
+            font-size: 12px;
+            color: #475569;
+            margin-top: 30px;
+            padding-top: 10px;
+            border-top: 1px dashed #593C47;
+        }
+        
+        .tag {
+            display: inline-block;
+            background-color: rgba(242, 91, 4, 0.1);
+            color: #F24405;
+            border-radius: 20px;
+            padding: 2px 8px;
+            margin: 2px;
+            font-size: 12px;
+            border: 1px solid #F25C05;
+        }
+        
+        .box {
+            border: 2px solid #593C47;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 10px 0;
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .note {
+            background-color: rgba(242, 230, 60, 0.2);
+            border-left: 4px solid #F2E63D;
+            padding: 10px;
+            margin: 10px 0;
+        }
+        
+        .emoji-large {
+            font-size: 24px;
+            margin: 0 5px;
+        }
+        
+        @media (max-width: 768px) {
+            .columns {
+                flex-direction: column;
+            }
+            
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .date {
+                margin-top: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="content">
+            <div class="header">
+                <h1 class="title">【米国株】2025-04-14週の振り返りと今週の戦略</h1>
+                <div class="date">2025年4月20日</div>
+            </div>
+            
+            <div class="columns">
+                <!-- 左カラム -->
+                <div class="column">
+                    <div class="section">
+                        <h2 class="section-title"><i>📊</i>市場概況</h2>
+                        <div class="bubble">
+                            先週の米国市場は<span class="highlight">調整局面が続いた</span>ものの、底打ちの兆しも見られました
+                        </div>
+                        
+                        <div class="card">
+                            <div class="hand-drawn">先週の相場動向 📉</div>
+                            <ul style="list-style: none; padding-left: 10px;">
+                                <li><span class="icon">💰</span> 長期金利 <span class="trend-down">📉 -3.65%</span></li>
+                                <li><span class="icon">📈</span> NASDAQ <span class="trend-down">📉 -2.04%</span></li>
+                                <li><span class="icon">📈</span> S&P500 <span class="trend-down">📉 -1.20%</span></li>
+                                <li><span class="icon">📈</span> DOW <span class="trend-down">📉 -2.54%</span></li>
+                                <li><span class="icon">📈</span> R2000 <span class="trend-up">📈 +1.47%</span></li>
+                                <li><span class="icon">🛢️</span> 原油 <span class="trend-up">📈 +3.66%</span></li>
+                                <li><span class="icon">🔥</span> 天然ガス <span class="trend-down">📉 -8.00%</span></li>
+                                <li><span class="icon">🥇</span> 金 <span class="trend-up">📈 +2.58%</span></li>
+                                <li><span class="icon">🔴</span> 銅 <span class="trend-up">📈 +4.78%</span></li>
+                            </ul>
+                        </div>
+                        
+                        <div class="note">
+                            <span class="hand-drawn">ポイント</span><br>
+                            <span class="keyword">ラッセル2000</span>が唯一プラス！<br>
+                            <span class="keyword">VIX</span>が下落して恐怖心後退<br>
+                            <span class="keyword">10年債利回り</span>が大幅に低下
+                        </div>
+                    </div>
+                    
+                    <div class="section">
+                        <h2 class="section-title"><i>📅</i>今週の予定</h2>
+                        <div class="box">
+                            <table class="table">
+                                <tr>
+                                    <th>日付</th>
+                                    <th>イベント</th>
+                                </tr>
+                                <tr>
+                                    <td>4/22</td>
+                                    <td><span class="tag">TSLA</span> 決算発表</td>
+                                </tr>
+                                <tr>
+                                    <td>4/23</td>
+                                    <td>新規住宅売上</td>
+                                </tr>
+                                <tr>
+                                    <td>4/24</td>
+                                    <td><span class="tag">GOOG</span> 決算発表</td>
+                                </tr>
+                                <tr>
+                                    <td>4/25</td>
+                                    <td><span class="tag">ABBV</span> 決算発表</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 中央カラム -->
+                <div class="column">
+                    <div class="section">
+                        <h2 class="section-title"><i>📉</i>株価指数分析</h2>
+                        
+                        <div class="card">
+                            <div class="hand-drawn">ナスダック</div>
+                            <p>月足: 4月下落幅 <span class="trend-down">-4.82%</span> まで戻す</p>
+                            <p>週足: 先週 <span class="trend-down">-2.04%</span> 下落</p>
+                            <p class="note">急上昇から一旦調整の動き<br>
+                            <span class="keyword">18900-18200</span>のレンジをどう抜けるかに注目</p>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="hand-drawn">ダウ</div>
+                            <p>月足: 4月騰落率 <span class="trend-down">-6.47%</span>、最安値から50%戻し</p>
+                            <p>週足: 先週 <span class="trend-down">-2.54%</span> 下落</p>
+                            <p class="note">底打ちからの強い上昇後の調整局面</p>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="hand-drawn">S&P500</div>
+                            <p>月足: 4月騰落率 <span class="trend-down">-5.38%</span></p>
+                            <p>週足: 先週 <span class="trend-down">-1.20%</span> 下落</p>
+                            <p class="note">他指数に比べて下げ幅が小さい！<br>
+                            大型ハイテク株以外への物色拡大の可能性</p>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="hand-drawn">ラッセル2000</div>
+                            <p>月足: 4月騰落率 <span class="trend-down">-6.31%</span></p>
+                            <p>週足: 先週 <span class="trend-up">+1.47%</span> 上昇</p>
+                            <p class="note">唯一プラス終了！<span class="emoji-large">🎉</span><br>
+                            割安感で買われている可能性<br>
+                            200MAを上抜けて上昇継続できるか注目</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 右カラム -->
+                <div class="column">
+                    <div class="section">
+                        <h2 class="section-title"><i>🧩</i>セクター・コモディティ分析</h2>
+                        
+                        <div class="card">
+                            <div class="hand-drawn">上昇セクター</div>
+                            <span class="tag">エネルギー</span>
+                            <span class="tag">不動産</span>
+                            <span class="tag">素材</span>
+                            <span class="tag">石炭</span>
+                            <span class="tag">貴金属</span>
+                            <span class="tag">石油ガス採掘</span>
+                            <span class="tag">ウラン</span>
+                            <span class="tag">REIT</span>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="hand-drawn">下落セクター</div>
+                            <span class="tag">情報技術</span>
+                            <span class="tag">通信サービス</span>
+                            <span class="tag">一般消費財</span>
+                            <span class="tag">健康保険</span>
+                        </div>
+                        
+                        <div class="bubble">
+                            過去1ヶ月では<span class="highlight">ディフェンシブセクターのみがプラス</span>！<br>
+                            エネルギーと情報技術は相場反転時に大きく上昇する可能性あり
+                        </div>
+                        
+                        <div class="card">
+                            <div class="hand-drawn">コモディティ分析</div>
+                            <p><span class="icon">🛢️</span> 原油: <span class="trend-up">+3.66%</span> 底打ちから上昇継続</p>
+                            <p><span class="icon">🔥</span> 天然ガス: <span class="trend-down">-8.00%</span> 3週連続下落</p>
+                            <p><span class="icon">🥇</span> 金: <span class="trend-up">+2.58%</span> 強い上昇トレンド継続</p>
+                            <p><span class="icon">🔴</span> 銅: <span class="trend-up">+4.78%</span> 急落からの強い反発</p>
+                        </div>
+                    </div>
+                    
+                    <div class="section">
+                        <h2 class="section-title"><i>🔍</i>今週の戦略</h2>
+                        
+                        <div class="box">
+                            <ul style="list-style: none; padding-left: 10px;">
+                                <li><span class="icon">👀</span> <span class="keyword">マーケット・ブレス指数</span>を監視</li>
+                                <li><span class="icon">📈</span> 相場全体の<span class="keyword">トレンド転換</span>を待つ</li>
+                                <li><span class="icon">💼</span> 上昇トレンド確認後に<span class="keyword">スイングポジション追加</span></li>
+                                <li><span class="icon">🔍</span> <span class="tag">TSLA</span><span class="tag">GOOG</span>の決算反応に注目</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="note">
+                            <div class="hand-drawn">注目決算銘柄</div>
+                            <span class="tag">LMT</span>
+                            <span class="tag">TSLA</span>
+                            <span class="tag">ISRG</span>
+                            <span class="tag">GOOG</span>
+                            <span class="tag">ABBV</span>
+                        </div>
+                        
+                        <div class="bubble">
+                            <div class="hand-drawn">スイング監視銘柄（決算後強い値動き）</div>
+                            <span class="tag">ABT</span>
+                            <span class="tag">ADMA</span>
+                            <span class="tag">BYRN</span>
+                            <span class="tag">NFLX</span>
+                            <span class="tag">TRV</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer">
+                グラフィックレコーディング作成: 2025年4月20日
+            </div>
+        </div>
+    </div>
+</body>
+</html>
