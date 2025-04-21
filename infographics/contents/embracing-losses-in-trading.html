@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>トレーディングの哲学 - 負けることを前提に</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Yomogi&family=Zen+Kurenaido&family=Kaisei+Decol:wght@400;700&display=swap');
+    
+    :root {
+      --color-fashion-1: #593C47;
+      --color-fashion-2: #F2E63D;
+      --color-fashion-3: #F2C53D;
+      --color-fashion-4: #F25C05;
+      --color-fashion-5: #F24405;
+      --color-text: #334155;
+      --color-heading: #1e40af;
+      --color-subtitle: #475569;
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'Kaisei Decol', serif;
+      background-color: #f8f9fa;
+      line-height: 1.4;
+      color: var(--color-text);
+      padding: 2rem;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      padding: 2rem;
+      position: relative;
+    }
+    
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 2px dashed var(--color-fashion-1);
+    }
+    
+    .title {
+      font-family: 'Zen Kurenaido', sans-serif;
+      font-size: 32px;
+      font-weight: bold;
+      background: linear-gradient(90deg, var(--color-fashion-1), var(--color-fashion-5));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      position: relative;
+    }
+    
+    .title::after {
+      content: "";
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: var(--color-fashion-3);
+      border-radius: 2px;
+    }
+    
+    .date-source {
+      font-family: 'Yomogi', cursive;
+      font-size: 14px;
+      color: var(--color-subtitle);
+      text-align: right;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    
+    .content {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+    
+    .column {
+      flex: 1 1 30%;
+      min-width: 300px;
+    }
+    
+    .card {
+      background-color: white;
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      position: relative;
+      border: 2px solid transparent;
+      background-image: linear-gradient(white, white), 
+                        linear-gradient(to right, var(--color-fashion-2), var(--color-fashion-3));
+      background-origin: border-box;
+      background-clip: content-box, border-box;
+    }
+    
+    .section-title {
+      font-family: 'Zen Kurenaido', sans-serif;
+      font-size: 18px;
+      color: var(--color-heading);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .section-title::before {
+      content: "✏️";
+      font-size: 20px;
+    }
+    
+    .key-point {
+      font-family: 'Yomogi', cursive;
+      font-size: 16px;
+      font-weight: bold;
+      margin: 1rem 0;
+      color: var(--color-fashion-1);
+      background-color: rgba(242, 198, 61, 0.2);
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      display: inline-block;
+      position: relative;
+    }
+    
+    .key-point::before {
+      content: "📌";
+      margin-right: 0.5rem;
+    }
+    
+    .highlight {
+      position: relative;
+      z-index: 1;
+    }
+    
+    .highlight::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 8px;
+      background-color: var(--color-fashion-2);
+      z-index: -1;
+      opacity: 0.5;
+    }
+    
+    .arrow-connector {
+      position: relative;
+      padding-left: 1.5rem;
+      margin: 1rem 0;
+    }
+    
+    .arrow-connector::before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      color: var(--color-fashion-4);
+      font-weight: bold;
+    }
+    
+    .emphasis {
+      font-weight: bold;
+      color: var(--color-fashion-5);
+    }
+    
+    .handdrawn-box {
+      border: 2px solid var(--color-fashion-1);
+      border-radius: 12px;
+      padding: 1rem;
+      margin: 1rem 0;
+      position: relative;
+      background-color: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(8px);
+    }
+    
+    .handdrawn-box::before {
+      content: "";
+      position: absolute;
+      top: -5px;
+      left: 20px;
+      width: 40px;
+      height: 15px;
+      background-color: white;
+      border-left: 2px solid var(--color-fashion-1);
+      border-right: 2px solid var(--color-fashion-1);
+      border-top: 2px solid var(--color-fashion-1);
+      border-radius: 6px 6px 0 0;
+    }
+    
+    .quote {
+      font-family: 'Yomogi', cursive;
+      font-size: 18px;
+      padding: 0.5rem 1rem;
+      background-color: rgba(89, 60, 71, 0.1);
+      border-left: 4px solid var(--color-fashion-1);
+      margin: 1rem 0;
+      position: relative;
+    }
+    
+    .quote::before {
+      content: """;
+      position: absolute;
+      top: -5px;
+      left: 5px;
+      font-size: 32px;
+      color: var(--color-fashion-1);
+      opacity: 0.3;
+    }
+    
+    .quote::after {
+      content: """;
+      position: absolute;
+      bottom: -20px;
+      right: 5px;
+      font-size: 32px;
+      color: var(--color-fashion-1);
+      opacity: 0.3;
+    }
+    
+    .sticker {
+      display: inline-block;
+      padding: 0.3rem 0.8rem;
+      background-color: var(--color-fashion-3);
+      color: var(--color-fashion-1);
+      border-radius: 20px;
+      font-size: 12px;
+      transform: rotate(-5deg);
+      position: absolute;
+      top: -10px;
+      right: 20px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      font-family: 'Yomogi', cursive;
+    }
+    
+    .footer {
+      margin-top: 2rem;
+      padding-top: 1rem;
+      border-top: 2px dashed var(--color-fashion-1);
+      font-size: 12px;
+      color: var(--color-subtitle);
+      text-align: center;
+    }
+    
+    .icon-group {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin: 1rem 0;
+    }
+    
+    .icon-item {
+      text-align: center;
+      width: 80px;
+    }
+    
+    .icon {
+      font-size: 24px;
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+    
+    .concept-map {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin: 1rem 0;
+    }
+    
+    .concept-node {
+      padding: 0.5rem 1rem;
+      background-color: white;
+      border: 2px solid var(--color-fashion-3);
+      border-radius: 20px;
+      text-align: center;
+      position: relative;
+    }
+    
+    .concept-node::after {
+      content: "⬇️";
+      position: absolute;
+      bottom: -16px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    
+    .concept-node:last-child::after {
+      display: none;
+    }
+    
+    .hand-drawn-arrow {
+      position: absolute;
+      width: 50px;
+      height: 20px;
+      border-right: 3px solid var(--color-fashion-4);
+      border-bottom: 3px solid var(--color-fashion-4);
+      transform: rotate(45deg);
+      right: -30px;
+      top: 50%;
+    }
+    
+    .speech-bubble {
+      position: relative;
+      background-color: rgba(242, 230, 61, 0.3);
+      border-radius: 12px;
+      padding: 1rem;
+      margin: 1rem 0;
+    }
+    
+    .speech-bubble::after {
+      content: "";
+      position: absolute;
+      bottom: -10px;
+      left: 30px;
+      border-width: 10px 10px 0;
+      border-style: solid;
+      border-color: rgba(242, 230, 61, 0.3) transparent transparent;
+    }
+    
+    @media (max-width: 768px) {
+      .content {
+        flex-direction: column;
+      }
+      
+      .column {
+        flex: 1 1 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1 class="title">負けることを前提に 〜トレーディングの哲学〜</h1>
+      <div class="date-source">
+        <div>2025年</div>
+        <div>出典: @samuraipips358</div>
+      </div>
+    </div>
+    
+    <div class="content">
+      <!-- 左カラム -->
+      <div class="column">
+        <div class="card">
+          <div class="sticker">核心🔍</div>
+          <h2 class="section-title">トレードの本質</h2>
+          <div class="quote">
+            "You will inevitably lose"—make that your premise
+          </div>
+          <p>トレードで資本を失いたくないなら、トレードをするべきではない。</p>
+          <p>それは<span class="emphasis">「泳ぎたいけど濡れたくない」</span>と言っているようなもの。</p>
+          
+          <div class="handdrawn-box">
+            <div class="key-point">トレードの基本前提</div>
+            <p>トレードは<span class="highlight">「損失を受け入れ、計画に組み込む」</span>という前提なしには存在できない。</p>
+            <p>利益は<span class="highlight">「継続的に制御された損失を受け入れた結果」</span>として生まれる。</p>
+          </div>
+        </div>
+        
+        <div class="card">
+          <h2 class="section-title">ルールに従うことの重要性</h2>
+          <div class="concept-map">
+            <div class="concept-node">厳格にルールに従って入退場を繰り返す</div>
+            <div class="concept-node">短期的なランダム性が勝ち負けを生み出す</div>
+            <div class="concept-node">サンプルサイズが大きくなると</div>
+            <div class="concept-node">利益を残すシステムは「エッジ」を持つ</div>
+          </div>
+          
+          <div class="key-point">トレーダーに求められること</div>
+          <p>あなたに求められるのは<span class="emphasis">ルールに従い続けること</span>だけ。</p>
+        </div>
+      </div>
+      
+      <!-- 中央カラム -->
+      <div class="column">
+        <div class="card">
+          <h2 class="section-title">多くのトレーダーの矛盾</h2>
+          <div class="speech-bubble">
+            「泳ぎたいけど濡れたくない」という矛盾した願望
+          </div>
+          
+          <div class="icon-group">
+            <div class="icon-item">
+              <span class="icon">🏊‍♂️</span>
+              <span>トレード</span>
+            </div>
+            <div class="icon-item">
+              <span class="icon">💧</span>
+              <span>損失</span>
+            </div>
+            <div class="icon-item">
+              <span class="icon">🛡️</span>
+              <span>回避策</span>
+            </div>
+          </div>
+          
+          <p>彼らは全身をビニール袋で包み、頑丈な防護服を着用し、わずかな濡れさえも「失敗」とみなし、濡れた部分を補強しようとする。</p>
+          
+          <div class="arrow-connector">
+            損失を避けようとするトレーダーは、あらゆる戦略を組み合わせてチャートが複雑になっていくが、それは動きを鈍くするだけ
+          </div>
+          
+          <div class="arrow-connector">
+            濡れることを受け入れて軽装で泳ぐ人はあなたを追い抜いていく
+          </div>
+        </div>
+        
+        <div class="card">
+          <div class="key-point">必ず負ける</div>
+          <p>それを前提にすることが不可欠。</p>
+          
+          <div class="handdrawn-box">
+            <p>一貫したルールに基づいて入退場を繰り返すことで、そのリスク・リワードと勝率を理解し、<span class="highlight">常に予め決められた損失で個々のトレードを終えなければならない</span>。</p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 右カラム -->
+      <div class="column">
+        <div class="card">
+          <h2 class="section-title">本当の失敗とは？</h2>
+          <div class="handdrawn-box">
+            <p>損失を避けようとせず、躊躇わず、<span class="emphasis">ルールに従って損失を生み出す</span>こと。</p>
+            <p>それが戦略に組み込まれているなら、それは失敗ではない。</p>
+          </div>
+          
+          <div class="key-point">問題の本質</div>
+          <p>問題は戦略が損失を被ることを想定していないこと。</p>
+          <p><span class="emphasis">ルールを破ることこそが失敗を構成する</span>。</p>
+        </div>
+        
+        <div class="card">
+          <h2 class="section-title">トレーダーに求められるシンプルさ</h2>
+          <div class="quote">
+            「ルールに従って待ち」「ルールに従って入り」「ルールに従って出る」
+          </div>
+          <p>それだけでいい。</p>
+          <p>損失を失敗とみなし、何としても避けようとするから不必要に複雑になる。</p>
+          
+          <div class="handdrawn-box">
+            <div class="key-point">確率を使うということ</div>
+            <p>確率を使うとは、<span class="highlight">個々の事象をすべて受け入れること</span>。</p>
+            <p>大きなサンプルサイズを通じて利益が残れば、それで十分。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer">
+      <p>出典: <a href="https://x.com/samuraipips358/status/1913925617697145049?s=61" target="_blank">https://x.com/samuraipips358/status/1913925617697145049?s=61</a> by @samuraipips358</p>
+    </div>
+  </div>
+</body>
+</html>
