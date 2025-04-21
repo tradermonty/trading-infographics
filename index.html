@@ -368,10 +368,10 @@
             text-align: center;
             padding: 20px;
             font-size: 14px;
-            color: #666;
+            color: var(--fashion-1);
             border-top: 2px dashed var(--fashion-3);
             font-family: 'Yomogi', cursive;
-            background: linear-gradient(135deg, rgba(89, 59, 70, 0.05), rgba(242, 68, 5, 0.05));
+            background: linear-gradient(135deg, rgba(89, 59, 70, 0.1), rgba(242, 68, 5, 0.1));
         }
         
         .footer-content {
@@ -386,8 +386,9 @@
         .footer-text {
             font-family: 'Zen Kurenaido', sans-serif;
             font-size: 18px;
-            color: var(--fashion-1);
+            color: var(--fashion-4);
             font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
         }
         
         .footer-links {
@@ -400,17 +401,19 @@
             align-items: center;
             gap: 8px;
             text-decoration: none;
-            color: var(--fashion-1);
+            color: var(--fashion-4);
             padding: 5px 12px;
             border-radius: 20px;
-            background: rgba(255, 255, 255, 0.8);
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease;
         }
         
         .social-link:hover {
             transform: translateY(-2px);
             background: rgba(242, 197, 61, 0.2);
-            color: var(--fashion-4);
+            color: var(--fashion-5);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
         }
         
         .social-icon {
@@ -420,6 +423,7 @@
         
         .social-text {
             font-family: 'Yomogi', cursive;
+            color: var(--fashion-4);
         }
         
         @media (max-width: 768px) {
