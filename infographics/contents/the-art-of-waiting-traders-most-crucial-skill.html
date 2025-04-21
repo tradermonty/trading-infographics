@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>待つ技術：最も簡単で、最も難しいトレードスキル</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Yomogi&family=Zen+Kurenaido&family=Kaisei+Decol:wght@400;700&display=swap');
+        
+        :root {
+            --fashion-1: #593C47;
+            --fashion-2: #F2E63D;
+            --fashion-3: #F2C53D;
+            --fashion-4: #F25C05;
+            --fashion-5: #F24405;
+            --dark-text: #334155;
+            --section-head: #1e40af;
+            --sub-title: #475569;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Kaisei Decol', serif;
+            color: var(--dark-text);
+            line-height: 1.4;
+            background-color: #f8f9fa;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            padding: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Hand-drawn style elements */
+        .hand-drawn {
+            position: relative;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 12px;
+        }
+        
+        .hand-drawn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border: 3px solid;
+            border-color: var(--fashion-4);
+            border-radius: 14px;
+            z-index: -1;
+            transform: rotate(-0.5deg);
+        }
+        
+        .arrow {
+            position: relative;
+            width: 80px;
+            height: 20px;
+            margin: 15px auto;
+        }
+        
+        .arrow::before {
+            content: '→';
+            font-size: 28px;
+            position: absolute;
+            color: var(--fashion-3);
+            font-family: 'Zen Kurenaido', sans-serif;
+            left: 50%;
+            transform: translateX(-50%) rotate(2deg);
+        }
+        
+        .marker {
+            background: linear-gradient(transparent 60%, var(--fashion-2) 40%);
+            font-weight: bold;
+            padding: 0 2px;
+        }
+        
+        .emphasis {
+            color: var(--fashion-5);
+            font-weight: bold;
+            display: inline-block;
+            transform: rotate(-1deg);
+        }
+        
+        .bubble {
+            position: relative;
+            background: rgba(242, 197, 61, 0.2);
+            border-radius: 15px;
+            padding: 15px 20px;
+            margin: 25px 0;
+            max-width: 90%;
+        }
+        
+        .bubble::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 30px;
+            border-width: 15px 15px 0;
+            border-style: solid;
+            border-color: rgba(242, 197, 61, 0.2) transparent;
+        }
+        
+        /* Header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 30px;
+            border-bottom: 2px dashed var(--fashion-1);
+            padding-bottom: 20px;
+        }
+        
+        h1 {
+            font-size: 32px;
+            font-family: 'Yomogi', cursive;
+            background: linear-gradient(45deg, var(--fashion-5), var(--fashion-4));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: bold;
+            margin-bottom: 10px;
+            position: relative;
+            display: inline-block;
+            transform: rotate(-0.5deg);
+        }
+        
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(45deg, var(--fashion-5), var(--fashion-4));
+            border-radius: 3px;
+        }
+        
+        .date {
+            font-size: 14px;
+            color: var(--sub-title);
+            font-family: 'Zen Kurenaido', sans-serif;
+            text-align: right;
+        }
+        
+        /* Main content */
+        .content {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        
+        .column {
+            width: 33.33%;
+            padding: 0 15px;
+        }
+        
+        .section {
+            margin-bottom: 30px;
+        }
+        
+        .section-title {
+            font-size: 18px;
+            color: var(--section-head);
+            font-family: 'Zen Kurenaido', sans-serif;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            transform: rotate(-0.5deg);
+        }
+        
+        .section-title::before {
+            content: '📝';
+            margin-right: 8px;
+            font-size: 20px;
+        }
+        
+        .message-box {
+            background: rgba(89, 60, 71, 0.05);
+            backdrop-filter: blur(5px);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+            border: 1px solid rgba(89, 60, 71, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .message-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(242, 230, 61, 0.2), transparent);
+            z-index: -1;
+        }
+        
+        .point-list {
+            list-style: none;
+        }
+        
+        .point-list li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 12px;
+            line-height: 1.5;
+        }
+        
+        .point-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--fashion-4);
+            font-weight: bold;
+        }
+        
+        .sub-point {
+            list-style: none;
+            margin-left: 25px;
+            margin-top: 8px;
+        }
+        
+        .sub-point li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 8px;
+        }
+        
+        .sub-point li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--fashion-3);
+        }
+        
+        .bold-text {
+            font-weight: bold;
+        }
+        
+        .image-metaphor {
+            background: rgba(242, 92, 5, 0.05);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 30px 0;
+            position: relative;
+        }
+        
+        .image-metaphor::before {
+            content: '🚦';
+            font-size: 28px;
+            position: absolute;
+            top: -15px;
+            left: 20px;
+            background: white;
+            padding: 5px;
+            border-radius: 50%;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .final-message {
+            text-align: center;
+            font-family: 'Yomogi', cursive;
+            font-size: 18px;
+            color: var(--fashion-1);
+            font-weight: bold;
+            margin: 30px 0;
+            padding: 20px;
+            background: linear-gradient(135deg, rgba(242, 197, 61, 0.2), rgba(242, 92, 5, 0.1));
+            border-radius: 12px;
+            position: relative;
+        }
+        
+        .final-message::before,
+        .final-message::after {
+            content: '★';
+            color: var(--fashion-3);
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        
+        .final-message::before {
+            left: 20px;
+        }
+        
+        .final-message::after {
+            right: 20px;
+        }
+        
+        .divider {
+            height: 2px;
+            background: linear-gradient(to right, transparent, var(--fashion-3), transparent);
+            margin: 20px 0;
+            border-radius: 2px;
+        }
+        
+        footer {
+            text-align: center;
+            font-size: 12px;
+            color: var(--sub-title);
+            margin-top: 30px;
+            padding-top: 15px;
+            border-top: 1px dashed var(--fashion-1);
+        }
+        
+        @media (max-width: 900px) {
+            .column {
+                width: 50%;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .column {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div>
+                <h1>「待つ技術」</h1>
+                <p class="subtitle" style="font-size: 16px; color: var(--sub-title);">最も簡単で、最も難しいトレードスキル</p>
+            </div>
+            <div class="date">2025年4月21日</div>
+        </header>
+        
+        <div class="content">
+            <div class="column">
+                <div class="message-box">
+                    <div class="section-title" style="margin-top: 0;">✏️ 初心者への語りかけ</div>
+                    <p>トレードで最も多くのミスが起きるのは、<span class="marker">「待てなかった時」</span>です。</p>
+                    <p>相場は毎日動いています。だからこそ、「今乗らなきゃ損をするかもしれない」と感じた瞬間、あなたの中で焦りと不安が生まれます。</p>
+                    <div class="bubble">
+                        でも、覚えておいてください。
+                        <p style="font-weight: bold; margin-top: 10px;">「待つ」という行為は、ただ何もしないことではありません。</p>
+                    </div>
+                    <p>それは、<span class="emphasis">「優位性が現れるまで、自分の信念とルールを守り抜くという、最も強い行動」</span>なのです。</p>
+                </div>
+                
+                <div class="section">
+                    <div class="section-title">🔍 なぜ「待つこと」が難しいのか</div>
+                    <div class="hand-drawn">
+                        <ul class="point-list">
+                            <li>待つことには報酬がないように見える</li>
+                            <li>結果が出ない時間に、自分を信じ続ける力が必要</li>
+                            <li>SNSや他人のトレードが気になり、<span class="bold-text">「置いていかれる不安」</span>が湧いてくる</li>
+                        </ul>
+                        <div class="arrow"></div>
+                        <p>でもこの感情は、<span class="marker">「勝ち負けに価値を置く信念」</span>から生まれている。</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="column">
+                <div class="section">
+                    <div class="section-title">📊 確率論的思考に立てば</div>
+                    <div class="hand-drawn" style="border-color: var(--fashion-3);">
+                        <p class="emphasis" style="text-align: center; font-size: 18px; margin-bottom: 15px;">「待ち」は戦略そのもの</p>
+                        <ul class="point-list">
+                            <li>トレードは「当てるゲーム」ではなく、<span class="marker">「再現性ある優位性を繰り返すゲーム」</span></li>
+                            <li>優位性がない局面では、エントリーする方がリスク</li>
+                            <li>「大数の法則」は、条件が揃った時だけ行動することで初めて機能する</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="image-metaphor">
+                    <div class="section-title">🚗 イメージ比喩：赤信号の交差点</div>
+                    <p>トレードを待てないあなたは、<span class="marker">赤信号を無視して車を出そうとしているドライバー</span>と同じです。</p>
+                    <p>あなたはただ、早く目的地に着きたいだけ。</p>
+                    <p>でも、信号無視の結果はどうなるか？</p>
+                    <p style="font-weight: bold; color: var(--fashion-5); margin-top: 10px;">ほとんどの場合、それは自滅です。</p>
+                </div>
+            </div>
+            
+            <div class="column">
+                <div class="section">
+                    <div class="section-title">💭 心に刻むべき問い</div>
+                    <div class="message-box" style="background: rgba(242, 230, 61, 0.1);">
+                        <ul class="point-list">
+                            <li>この場面、ルールに沿っているか？</li>
+                            <li>自分の中に今、焦り・不安・過信はないか？</li>
+                            <li>「待てない理由」は、信念が弱いからか、検証が足りないからか？</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="divider"></div>
+                
+                <div class="final-message">
+                    <p>「待てる人間が勝つ」</p>
+                    <p style="font-size: 14px; margin-top: 10px;">これはトレードに限らず、人生全般においても本質です。</p>
+                </div>
+                
+                <div class="hand-drawn" style="border-color: var(--fashion-5);">
+                    <p>待てないトレーダーは、市場から退場させられます。</p>
+                    <p>でも、待てるトレーダーは、エッジのある場面だけで戦える。</p>
+                    <p>勝率も、期待値も、資金曲線も、すべてが改善されていきます。</p>
+                    <div class="arrow"></div>
+                    <p style="text-align: center; font-weight: bold;">そして最後には、<span class="marker">あなたの心も安定</span>します。</p>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            グラフィックレコーディング・インフォグラフィック © 2025
+        </footer>
+    </div>
+</body>
+</html>
