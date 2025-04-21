@@ -1,0 +1,1152 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🚀 システムトレードを変える4つの原則</title>
+    <link rel="icon" type="image/png" href="../images/monty.png">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Yomogi&family=Zen+Kurenaido&family=Kaisei+Decol:wght@400;700&display=swap');
+        
+        :root {
+            --fashion-1: #593C47;
+            --fashion-2: #F2E63D;
+            --fashion-3: #F2C53D;
+            --fashion-4: #F25C05;
+            --fashion-5: #F24405;
+            --text-dark: #334155;
+            --text-title: #1e40af;
+            --bg-light: #fff;
+            --shadow: rgba(0, 0, 0, 0.1);
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Kaisei Decol', serif;
+            background-color: #f8f9fa;
+            color: var(--text-dark);
+            line-height: 1.4;
+            padding: 0;
+            margin: 0;
+        }
+
+        .fixed-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: linear-gradient(135deg, var(--fashion-1), var(--fashion-5));
+            padding: 10px 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .fixed-header:hover {
+            background: linear-gradient(135deg, var(--fashion-5), var(--fashion-1));
+        }
+
+        .fixed-header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .header-logo {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .fixed-header h1 {
+            font-family: 'Zen Kurenaido', sans-serif;
+            font-size: 24px;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            background: linear-gradient(to right, white, var(--fashion-2));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin: 0;
+            pointer-events: none;
+        }
+
+        .main-content {
+            margin-top: 60px;
+            padding: 20px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hidden {
+            display: none !important;
+            visibility: hidden;
+            opacity: 0;
+        }
+
+        .language-switch {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1001;
+            display: none;
+        }
+        
+        .language-switch button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 20px;
+            background: linear-gradient(135deg, var(--fashion-1), var(--fashion-5));
+            color: white;
+            cursor: pointer;
+            font-family: 'Yomogi', cursive;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .language-switch button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(135deg, var(--fashion-1), var(--fashion-5));
+            color: white;
+            margin-top: 40px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-logo {
+            font-family: 'Zen Kurenaido', sans-serif;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 15px;
+        }
+
+        .footer-social a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .footer-social a:hover {
+            color: var(--fashion-2);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .fixed-header h1 {
+                font-size: 20px;
+            }
+            
+            .main-content {
+                margin-top: 50px;
+                padding: 10px;
+            }
+
+            .language-switch {
+                top: 10px;
+                right: 10px;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="language-switch">
+        <button onclick="toggleLanguage()">English</button>
+    </div>
+
+    <div class="fixed-header" onclick="window.location.href='../index.html'">
+        <div class="fixed-header-content">
+            <img src="../images/monty.png" alt="Monty Trader Logo" class="header-logo">
+            <h1 class="ja">モンティの株式トレードインフォグラフィックス集</h1>
+            <h1 class="en hidden">Monty's Stock Trading Infographics Collection</h1>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>トレーディングを変える4つの原則</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Yomogi&family=Zen+Kurenaido&family=Kaisei+Decol:wght@400;700&display=swap');
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Kaisei Decol', serif;
+            background-color: #f8f9fa;
+            color: #334155;
+            line-height: 1.4;
+            padding: 10px;
+            background-image: 
+                radial-gradient(#F2E63D20 1px, transparent 1px),
+                radial-gradient(#F25C0510 1px, transparent 1px);
+            background-size: 20px 20px, 40px 40px;
+            background-position: 0 0, 10px 10px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(5px);
+            border-radius: 16px;
+            box-shadow: 0 4px 15px rgba(89, 60, 71, 0.1);
+            padding: 15px;
+            border: 2px dashed #593C47;
+        }
+
+        .header {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px dotted #F25C05;
+        }
+
+        @media (min-width: 768px) {
+            body {
+                padding: 20px;
+            }
+            
+            .container {
+                padding: 30px;
+            }
+            
+            .header {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 30px;
+            }
+        }
+
+        .title {
+            font-size: 24px;
+            font-weight: bold;
+            font-family: 'Zen Kurenaido', sans-serif;
+            background: linear-gradient(45deg, #593C47, #F24405);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 2px 2px 0px rgba(242, 196, 60, 0.3);
+            position: relative;
+            margin-bottom: 15px;
+        }
+
+        @media (min-width: 768px) {
+            .title {
+                font-size: 32px;
+                margin-bottom: 0;
+            }
+        }
+
+        .title::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, #F2E63D, #F24405);
+            border-radius: 3px;
+        }
+
+        .date {
+            font-family: 'Yomogi', cursive;
+            color: #475569;
+            font-size: 14px;
+            text-align: left;
+        }
+
+        @media (min-width: 768px) {
+            .date {
+                text-align: right;
+            }
+        }
+
+        .columns {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        @media (min-width: 768px) {
+            .columns {
+                flex-direction: row;
+                gap: 20px;
+                margin-bottom: 30px;
+            }
+        }
+
+        .column {
+            width: 100%;
+            padding: 10px;
+        }
+
+        @media (min-width: 768px) {
+            .column {
+                flex: 1;
+                padding: 15px;
+            }
+        }
+
+        .card {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(89, 60, 71, 0.08);
+            padding: 15px;
+            margin-bottom: 15px;
+            position: relative;
+            border: 1px solid rgba(242, 196, 60, 0.5);
+        }
+
+        @media (min-width: 768px) {
+            .card {
+                padding: 20px;
+                margin-bottom: 20px;
+            }
+        }
+
+        .card.simple-strategy {
+            padding-bottom: 5px;
+        }
+
+        .card::before {
+            content: "";
+            position: absolute;
+            top: -10px;
+            left: 15px;
+            width: 25px;
+            height: 25px;
+            background-color: #fff;
+            border-radius: 50%;
+            box-shadow: 0 0 0 3px rgba(242, 91, 4, 0.1);
+        }
+
+        @media (min-width: 768px) {
+            .card::before {
+                width: 30px;
+                height: 30px;
+                box-shadow: 0 0 0 5px rgba(242, 91, 4, 0.1);
+            }
+        }
+
+        .section-title {
+            font-size: 16px;
+            color: #1e40af;
+            font-family: 'Zen Kurenaido', sans-serif;
+            margin-bottom: 12px;
+            padding-bottom: 6px;
+            border-bottom: 2px dashed #F2C53D;
+            position: relative;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        @media (min-width: 768px) {
+            .section-title {
+                font-size: 18px;
+                margin-bottom: 15px;
+                padding-bottom: 8px;
+            }
+        }
+
+        .section-title::before {
+            content: attr(data-emoji);
+            margin-right: 6px;
+            font-size: 18px;
+        }
+
+        @media (min-width: 768px) {
+            .section-title::before {
+                margin-right: 8px;
+                font-size: 22px;
+            }
+        }
+
+        .keyword {
+            font-weight: bold;
+            background: linear-gradient(transparent 60%, #F2E63D 60%);
+            padding: 0 2px;
+        }
+
+        .text-block {
+            margin-bottom: 12px;
+            font-size: 13px;
+        }
+
+        @media (min-width: 768px) {
+            .text-block {
+                margin-bottom: 15px;
+                font-size: 14px;
+            }
+        }
+
+        .highlight-box {
+            background-color: rgba(242, 196, 60, 0.15);
+            border-left: 4px solid #F25C05;
+            padding: 8px;
+            margin: 12px 0;
+            border-radius: 0 8px 8px 0;
+            font-size: 13px;
+        }
+
+        @media (min-width: 768px) {
+            .highlight-box {
+                padding: 10px;
+                margin: 15px 0;
+                font-size: 14px;
+            }
+        }
+
+        .quote {
+            font-family: 'Yomogi', cursive;
+            font-style: italic;
+            padding: 8px;
+            margin: 8px 0;
+            border-radius: 8px;
+            position: relative;
+            background-color: rgba(242, 91, 4, 0.05);
+            font-size: 12px;
+        }
+
+        @media (min-width: 768px) {
+            .quote {
+                padding: 10px;
+                margin: 10px 0;
+                font-size: 14px;
+            }
+        }
+
+        .quote::before {
+            content: "「";
+            font-size: 20px;
+            color: #F25C05;
+            position: absolute;
+            left: -5px;
+            top: -5px;
+        }
+
+        .quote::after {
+            content: "」";
+            font-size: 20px;
+            color: #F25C05;
+            position: absolute;
+            right: -5px;
+            bottom: -15px;
+        }
+
+        @media (min-width: 768px) {
+            .quote::before {
+                font-size: 24px;
+            }
+
+            .quote::after {
+                font-size: 24px;
+            }
+        }
+
+        .arrow {
+            position: relative;
+            margin: 15px auto;
+            height: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        @media (min-width: 768px) {
+            .arrow {
+                margin: 20px auto;
+                height: 40px;
+            }
+        }
+
+        .arrow::before {
+            content: "";
+            position: absolute;
+            width: 80%;
+            height: 2px;
+            background-color: #593C47;
+            transform: scaleX(0.8) rotate(-2deg);
+            animation: arrowPulse 3s infinite;
+        }
+
+        .arrow::after {
+            content: "▼";
+            color: #593C47;
+            font-size: 14px;
+            position: absolute;
+            bottom: -12px;
+        }
+
+        @media (min-width: 768px) {
+            .arrow::after {
+                font-size: 16px;
+                bottom: -14px;
+            }
+        }
+
+        @keyframes arrowPulse {
+            0%, 100% { opacity: 0.7; }
+            50% { opacity: 1; }
+        }
+
+        .concept-bubble {
+            background-color: rgba(255, 255, 255, 0.9);
+            border: 2px solid #F2C53D;
+            border-radius: 50%;
+            width: 90px;
+            height: 90px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-family: 'Yomogi', cursive;
+            font-weight: bold;
+            color: #593C47;
+            margin: 12px auto;
+            box-shadow: 2px 2px 0 rgba(89, 60, 71, 0.2);
+            transform: rotate(-3deg);
+            font-size: 12px;
+        }
+
+        @media (min-width: 768px) {
+            .concept-bubble {
+                width: 120px;
+                height: 120px;
+                margin: 15px auto;
+                box-shadow: 3px 3px 0 rgba(89, 60, 71, 0.2);
+                font-size: 14px;
+            }
+        }
+
+        .connection-line {
+            position: relative;
+            margin: 8px 0;
+            height: 25px;
+        }
+
+        @media (min-width: 768px) {
+            .connection-line {
+                margin: 10px 0;
+                height: 30px;
+            }
+        }
+
+        .connection-line::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 10%;
+            width: 80%;
+            height: 2px;
+            background: repeating-linear-gradient(90deg, #F24405, #F24405 5px, transparent 5px, transparent 10px);
+        }
+
+        .marker {
+            position: absolute;
+            font-size: 16px;
+            color: #F25C05;
+        }
+
+        @media (min-width: 768px) {
+            .marker {
+                font-size: 20px;
+            }
+        }
+
+        .marker-start {
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .marker-end {
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .footer {
+            font-size: 11px;
+            color: #475569;
+            text-align: center;
+            margin-top: 20px;
+            padding-top: 10px;
+            border-top: 1px dashed #593C47;
+        }
+
+        @media (min-width: 768px) {
+            .footer {
+                font-size: 12px;
+                margin-top: 30px;
+                padding-top: 15px;
+            }
+        }
+
+        .graph-container {
+            width: 100%;
+            height: 140px;
+            margin: 15px 0;
+            position: relative;
+        }
+
+        @media (min-width: 768px) {
+            .graph-container {
+                height: 180px;
+                margin: 20px 0;
+            }
+        }
+
+        .graph-line {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            stroke: #F24405;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            fill: none;
+        }
+
+        @media (min-width: 768px) {
+            .graph-line {
+                stroke-width: 3;
+            }
+        }
+
+        .x-axis, .y-axis {
+            position: absolute;
+            background-color: #593C47;
+        }
+
+        .x-axis {
+            bottom: 20px;
+            left: 25px;
+            width: calc(100% - 30px);
+            height: 2px;
+        }
+
+        @media (min-width: 768px) {
+            .x-axis {
+                left: 30px;
+                width: calc(100% - 40px);
+            }
+        }
+
+        .y-axis {
+            bottom: 20px;
+            left: 25px;
+            width: 2px;
+            height: calc(100% - 30px);
+        }
+
+        @media (min-width: 768px) {
+            .y-axis {
+                left: 30px;
+            }
+        }
+
+        .axis-label {
+            position: absolute;
+            font-size: 10px;
+            font-family: 'Yomogi', cursive;
+            color: #593C47;
+        }
+
+        @media (min-width: 768px) {
+            .axis-label {
+                font-size: 12px;
+            }
+        }
+
+        .x-label {
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .y-label {
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%) rotate(-90deg);
+            transform-origin: left center;
+        }
+
+        .hand-drawn {
+            filter: url(#displacementFilter);
+        }
+
+        .portfolio-container {
+            display: flex;
+            justify-content: space-around;
+            margin: 15px 0;
+        }
+
+        @media (min-width: 768px) {
+            .portfolio-container {
+                margin: 20px 0;
+            }
+        }
+
+        .portfolio-item {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            font-size: 11px;
+            position: relative;
+        }
+
+        @media (min-width: 768px) {
+            .portfolio-item {
+                width: 60px;
+                height: 60px;
+                font-size: 12px;
+            }
+        }
+
+        .portfolio-item::after {
+            content: "";
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background-color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 12px;
+            box-shadow: 0 0 0 2px rgba(89, 60, 71, 0.2);
+        }
+
+        @media (min-width: 768px) {
+            .portfolio-item::after {
+                width: 20px;
+                height: 20px;
+                font-size: 14px;
+            }
+        }
+
+        .portfolio-item:nth-child(1) {
+            background-color: rgba(242, 230, 60, 0.3);
+            border: 2px dashed #F2E63D;
+        }
+        .portfolio-item:nth-child(1)::after {
+            content: "A";
+            color: #F25C05;
+        }
+
+        .portfolio-item:nth-child(2) {
+            background-color: rgba(242, 196, 60, 0.3);
+            border: 2px dashed #F2C53D;
+        }
+        .portfolio-item:nth-child(2)::after {
+            content: "B";
+            color: #F25C05;
+        }
+
+        .portfolio-item:nth-child(3) {
+            background-color: rgba(242, 91, 4, 0.3);
+            border: 2px dashed #F25C05;
+        }
+        .portfolio-item:nth-child(3)::after {
+            content: "C";
+
+        .connection-circle {
+            position: relative;
+            width: 100%;
+            height: 320px;
+            margin: 15px 0;
+            overflow: visible;
+        }
+
+        @media (min-width: 768px) {
+            .connection-circle {
+                height: 400px;
+            }
+        }
+
+        .circle {
+            position: absolute;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .edge-circle {
+            width: 80px;
+            height: 80px;
+            top: 15%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(242, 230, 60, 0.8);
+            border: 2px solid #593C47;
+            font-size: 16px;
+            z-index: 5;
+        }
+
+        .test-circle {
+            width: 80px;
+            height: 80px;
+            top: 50%;
+            left: 25%;
+            transform: translateX(-50%);
+            background-color: rgba(242, 196, 60, 0.8);
+            border: 2px solid #593C47;
+            font-size: 16px;
+            z-index: 5;
+        }
+
+        .portfolio-circle {
+            width: 80px;
+            height: 80px;
+            top: 50%;
+            right: 25%;
+            transform: translateX(50%);
+            background-color: rgba(242, 91, 4, 0.8);
+            border: 2px solid #593C47;
+            font-size: 16px;
+            z-index: 5;
+        }
+
+        .strategy-circle {
+            width: 150px;
+            height: 150px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(242, 68, 4, 0.6);
+            border: 3px dashed #593C47;
+            padding: 10px;
+            font-size: 18px;
+            line-height: 1.3;
+            z-index: 1;
+        }
+
+        @media (min-width: 768px) {
+            .edge-circle, .test-circle, .portfolio-circle {
+                width: 100px;
+                height: 100px;
+                font-size: 18px;
+            }
+            
+            .strategy-circle {
+                width: 180px;
+                height: 180px;
+                font-size: 22px;
+            }
+        }
+
+        .connector {
+            position: absolute;
+            height: 2px;
+            background-color: #593C47;
+            transform-origin: center;
+            z-index: 2;
+        }
+
+        .conclusion-banner {
+            background: linear-gradient(90deg, rgba(242, 196, 60, 0.2), rgba(242, 91, 4, 0.2));
+            border: 2px dashed #593C47;
+            border-radius: 10px;
+            padding: 12px;
+            margin-top: 20px;
+            text-align: center;
+            position: relative;
+            font-family: 'Zen Kurenaido', sans-serif;
+        }
+
+        @media (min-width: 768px) {
+            .conclusion-banner {
+                padding: 15px;
+                margin-top: 30px;
+            }
+        }
+
+        .conclusion-banner::before {
+            content: "✨";
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 18px;
+        }
+
+        .conclusion-banner::after {
+            content: "✨";
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 18px;
+        }
+
+        @media (min-width: 768px) {
+            .conclusion-banner::before, 
+            .conclusion-banner::after {
+                font-size: 24px;
+            }
+        }
+        
+        .conclusion-text {
+            font-size: 14px;
+            color: #593C47;
+            font-weight: bold;
+        }
+
+        @media (min-width: 768px) {
+            .conclusion-text {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <svg width="0" height="0">
+        <filter id="displacementFilter">
+            <feTurbulence type="turbulence" baseFrequency="0.05" numOctaves="2" result="turbulence"/>
+            <feDisplacementMap in="SourceGraphic" in2="turbulence" scale="5" xChannelSelector="R" yChannelSelector="G"/>
+        </filter>
+    </svg>
+
+    <div class="container">
+        <div class="header">
+            <h1 class="title">🚀 システムトレードを変える4つの原則</h1>
+            <div class="date">
+                <p>2025年4月20日</p>
+                <p>出典: "Give me 10 minutes, and I'll give you 4 ways to transform your trading."</p>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="text-block" style="background-color: rgba(242, 196, 60, 0.15); padding: 15px; border-radius: 10px; margin-bottom: 20px;">
+                <p style="font-size: 15px; text-align: center;">この記事では、<span class="keyword">システムトレード</span>の成功確率を高めるための実践的な原則を解説しています。アルゴリズムによる自動売買戦略を開発・運用する際に陥りがちな落とし穴と、それを回避するための方法を紹介します。</p>
+            </div>
+        </div>
+
+        <div class="columns">
+            <div class="column">
+                <div class="card">
+                    <h2 class="section-title" data-emoji="💎">エッジの必要性</h2>
+                    <div class="text-block">
+                        トレーディングで利益を上げるには<span class="keyword">明確なエッジ（優位性）</span>が不可欠です。単なるパターン追従は<span class="keyword">推測やギャンブル</span>に過ぎません。
+                    </div>
+                    
+                    <div class="quote">
+                        私が最初に取引を始めたとき、私は単に、なぜそれらが実際に機能するはずなのかを理解せずにパターンに従っていました。しかし結局のところ、それにはエッジがありませんでした。
+                    </div>
+                    
+                    <div class="highlight-box">
+                        <p><span class="keyword">リスクプレミアム</span>とは、リスクフリーレートを超える対価として得られる超過収益のことです。</p>
+                        <p>例：株式市場は長期的に債券や高金利預金より高いROIを提供</p>
+                    </div>
+                    
+                    <div class="concept-bubble">
+                        なぜ利益を<br>得られるのか？
+                    </div>
+
+                    <div class="connection-line">
+                        <span class="marker marker-start">●</span>
+                        <span class="marker marker-end">●</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="column">
+                <div class="card">
+                    <h2 class="section-title" data-emoji="🧪">厳密なテストの重要性</h2>
+                    <div class="text-block">
+                        戦略の特性（最大ドローダウン、連敗回数、CAGRなど）を理解するためには<span class="keyword">徹底的なバックテスト</span>が必要です。ただし、<span class="keyword">過剰な最適化（オーバーフィッティング）</span>に注意しましょう。
+                    </div>
+                    
+                    <div class="highlight-box">
+                        <p>📊 バックテストの目的：</p>
+                        <p>✓ アイデアの検証</p>
+                        <p>✓ 戦略の挙動理解</p>
+                    </div>
+                    
+                    <div class="graph-container">
+                        <div class="x-axis"></div>
+                        <div class="y-axis"></div>
+                        <div class="axis-label x-label">モデルの複雑さ →</div>
+                        <div class="axis-label y-label">予測誤差</div>
+                        
+                        <svg class="graph-line" viewBox="0 0 100 100" preserveAspectRatio="none">
+                            <path d="M10,80 Q30,20 50,30 T90,10" class="hand-drawn" />
+                            <text x="50" y="40" font-size="5" fill="#593C47">最適なバランス</text>
+                            <text x="20" y="55" font-size="4" fill="#F25C05">過少適合</text>
+                            <text x="75" y="25" font-size="4" fill="#F25C05">過剰適合</text>
+                        </svg>
+                    </div>
+                    
+                    <div class="text-block">
+                        <p>📝 テスト方法：</p>
+                        <p>・インサンプルとアウトオブサンプルの分離</p>
+                        <p>・ウォークフォワード最適化</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="column">
+                <div class="card">
+                    <h2 class="section-title" data-emoji="🧩">ポートフォリオの構築</h2>
+                    <div class="text-block">
+                        <span class="keyword">単一戦略への依存は危険</span>です。非相関または逆相関の戦略を組み合わせて<span class="keyword">リスク分散</span>し、安定したリターンを目指しましょう。
+                    </div>
+                    
+                    <div class="quote">
+                        私の個人的な経験から言うと、ポートフォリオの構築は、実際に私のトレーディングキャリアを築き上げていく上で最大の変化の1つでした。
+                    </div>
+                    
+                    <div class="portfolio-container">
+                        <div class="portfolio-item">戦略</div>
+                        <div class="portfolio-item">戦略</div>
+                        <div class="portfolio-item">戦略</div>
+                    </div>
+                    
+                    <div class="highlight-box">
+                        <p>📈 ポートフォリオのメリット：</p>
+                        <p>・分散投資によるリスク低減</p>
+                        <p>・<span class="keyword">心理的な強さ</span>の獲得</p>
+                        <p>・ボラティリティ（リスク）の低減</p>
+                    </div>
+                    
+                    <div class="text-block">
+                        <p>💡 レイ・ダリオやジム・シモンズが提唱したポートフォリオ理論に基づく</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card simple-strategy">
+            <h2 class="section-title" data-emoji="✂️">戦略をシンプルにする</h2>
+            <div class="columns">
+                <div class="column">
+                    <div class="text-block">
+                        パラメータ数を増やしすぎると、<span class="keyword">オーバーフィッティング</span>のリスクが高まります。戦略は<span class="keyword">本質的な少数のパラメータ</span>に焦点を当てるべきです。
+                    </div>
+                    
+                    <div class="quote">
+                        12個のパラメータを持つ戦略がありましたが、バックテストでは素晴らしい結果に見えたものの、ライブ取引では完全に失敗しました。
+                    </div>
+                </div>
+                
+                <div class="column">
+                    <div class="highlight-box">
+                        <p>パラメータ追加の判断基準：</p>
+                        <p>・リターンの改善</p>
+                        <p>・ドローダウンの削減</p>
+                        <p>→ 明確な改善がなければ<span class="keyword">削除</span>する</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="conclusion-banner">
+            <div class="text-block" style="padding: 15px; background-color: rgba(242, 230, 60, 0.1); border-radius: 10px; border-left: 4px solid #F25C05;">
+                <p style="font-size: 16px; line-height: 1.5; text-align: center;">
+                    <span style="font-weight: bold; margin-right: 10px;">💎</span>エッジ（取引優位性）の確立<span style="margin-left: 10px;">→</span>
+                </p>
+                <p style="font-size: 16px; line-height: 1.5; text-align: center;">
+                    <span style="font-weight: bold; margin-right: 10px;">🧪</span>厳密なバックテスト<span style="margin-left: 10px;">→</span>
+                </p>
+                <p style="font-size: 16px; line-height: 1.5; text-align: center;">
+                    <span style="font-weight: bold; margin-right: 10px;">🧩</span>複数戦略のポートフォリオ構築<span style="margin-left: 10px;">→</span>
+                </p>
+                <p style="font-size: 16px; line-height: 1.5; text-align: center;">
+                    <span style="font-weight: bold; margin-right: 10px;">✂️</span>シンプルな戦略設計
+                </p>
+                <p style="font-size: 16px; line-height: 1.5; text-align: center; margin-top: 15px; font-weight: bold;">
+                    これら4つの原則を実践することで、システムトレードが短期間で大きく改善します！
+                </p>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>このグラフィックレコーディングは "Give me 10 minutes, and I'll give you 4 ways to transform your trading." の内容を元に作成されています。</p>
+            <p>出典: <a href="https://youtu.be/YBoDZH0mCZY?si=84xFlWigWMrDJh77" target="_blank" style="color: #F24405; text-decoration: underline;">YouTube動画を見る</a></p>
+            <p>© 2025 システムトレード成功への道</p>
+        </div>
+    </div>
+</body>
+</html>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">Monty Trader</div>
+            <div class="footer-social">
+                <a href="https://x.com/monty_investor" target="_blank">@monty_investor</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleLanguage() {
+            const jaElements = document.querySelectorAll('.ja');
+            const enElements = document.querySelectorAll('.en');
+            const button = document.querySelector('.language-switch button');
+            
+            jaElements.forEach(el => el.classList.toggle('hidden'));
+            enElements.forEach(el => el.classList.toggle('hidden'));
+            
+            button.textContent = button.textContent === 'English' ? '日本語' : 'English';
+        }
+    </script>
+</body>
+</html> 
