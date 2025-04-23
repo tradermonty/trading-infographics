@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>トレードの本質 📈</title>
+    <link rel="icon" type="image/png" href="../images/monty.png">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Yomogi&family=Zen+Kurenaido&family=Kaisei+Decol:wght@400;700&display=swap');
+        
+        :root {
+            --fashion-1: #593C47;
+            --fashion-2: #F2E63D;
+            --fashion-3: #F2C53D;
+            --fashion-4: #F25C05;
+            --fashion-5: #F24405;
+            --text-dark: #334155;
+            --text-title: #1e40af;
+            --bg-light: #fff;
+            --shadow: rgba(0, 0, 0, 0.1);
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Kaisei Decol', serif;
+            background-color: #f8f9fa;
+            color: var(--text-dark);
+            line-height: 1.4;
+            padding: 0;
+            margin: 0;
+        }
+
+        .fixed-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: linear-gradient(135deg, var(--fashion-1), var(--fashion-5));
+            padding: 10px 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .fixed-header:hover {
+            background: linear-gradient(135deg, var(--fashion-5), var(--fashion-1));
+        }
+
+        .fixed-header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .header-logo {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .fixed-header h1 {
+            font-family: 'Zen Kurenaido', sans-serif;
+            font-size: 24px;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            background: linear-gradient(to right, white, var(--fashion-2));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin: 0;
+            pointer-events: none;
+        }
+
+        .main-content {
+            margin-top: 60px;
+            padding: 20px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hidden {
+            display: none !important;
+            visibility: hidden;
+            opacity: 0;
+        }
+
+        .language-switch {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1001;
+            display: none;
+        }
+        
+        .language-switch button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 20px;
+            background: linear-gradient(135deg, var(--fashion-1), var(--fashion-5));
+            color: white;
+            cursor: pointer;
+            font-family: 'Yomogi', cursive;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .language-switch button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(135deg, var(--fashion-1), var(--fashion-5));
+            color: white;
+            margin-top: 40px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-logo {
+            font-family: 'Zen Kurenaido', sans-serif;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 15px;
+        }
+
+        .footer-social a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .footer-social a:hover {
+            color: var(--fashion-2);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .fixed-header h1 {
+                font-size: 20px;
+            }
+            
+            .main-content {
+                margin-top: 50px;
+                padding: 10px;
+            }
+
+            .language-switch {
+                top: 10px;
+                right: 10px;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="language-switch">
+        <button onclick="toggleLanguage()">English</button>
+    </div>
+
+    <div class="fixed-header" onclick="window.location.href='../index.html'">
+        <div class="fixed-header-content">
+            <img src="../images/monty.png" alt="Monty Trader Logo" class="header-logo">
+            <h1 class="ja">モンティの株式トレードインフォグラフィックス集</h1>
+            <h1 class="en hidden">Monty's Stock Trading Infographics Collection</h1>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>トレードの本質 - グラフィックレコーディング</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Yomogi&family=Zen+Kurenaido&family=Kaisei+Decol:wght@400;700&display=swap');
+    
+    :root {
+      --color-1: #593C47;
+      --color-2: #F2E63D;
+      --color-3: #F2C53D;
+      --color-4: #F25C05;
+      --color-5: #F24405;
+      --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      --glass: rgba(255, 255, 255, 0.7);
+    }
+    
+    body {
+      font-family: 'Kaisei Decol', serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #f9f8f3;
+      color: #334155;
+      line-height: 1.4;
+      overflow-x: hidden;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+    }
+    
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+      border-bottom: 2px solid var(--color-1);
+      padding-bottom: 15px;
+    }
+    
+    .title-area {
+      flex: 1;
+    }
+    
+    h1 {
+      font-family: 'Zen Kurenaido', sans-serif;
+      font-size: 32px;
+      font-weight: bold;
+      margin: 0;
+      background: linear-gradient(45deg, var(--color-1), var(--color-5));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      display: inline-block;
+      position: relative;
+    }
+    
+    h1::after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 6px;
+      bottom: -5px;
+      left: 0;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 10' preserveAspectRatio='none'%3E%3Cpath d='M0,5 C20,10 30,0 40,5 C60,12 70,0 90,5 L100,5 L0,5 Z' fill='%23F2C53D'/%3E%3C/svg%3E") repeat-x;
+      background-size: auto 100%;
+    }
+    
+    .subtitle {
+      font-family: 'Yomogi', cursive;
+      font-size: 16px;
+      color: #475569;
+      margin: 5px 0 0;
+    }
+    
+    .date {
+      text-align: right;
+      font-size: 14px;
+      color: #64748B;
+    }
+    
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    
+    .section {
+      background-color: var(--glass);
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: var(--shadow);
+      position: relative;
+      margin-bottom: 20px;
+      backdrop-filter: blur(5px);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+    }
+    
+    .section::before {
+      content: "";
+      position: absolute;
+      top: -5px;
+      left: 10px;
+      width: 50px;
+      height: 15px;
+      background-color: var(--color-3);
+      border-radius: 5px;
+      transform: rotate(-2deg);
+      z-index: -1;
+    }
+    
+    h2 {
+      font-family: 'Zen Kurenaido', sans-serif;
+      font-size: 18px;
+      color: var(--color-1);
+      margin-top: 0;
+      padding-bottom: 5px;
+      border-bottom: 2px dashed var(--color-4);
+      display: flex;
+      align-items: center;
+    }
+    
+    h2 .icon {
+      margin-right: 5px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 30px;
+      height: 30px;
+      background-color: var(--color-3);
+      border-radius: 50%;
+      color: var(--color-1);
+    }
+    
+    .quote {
+      margin: 15px 0;
+      padding: 10px 15px;
+      background-color: rgba(242, 198, 61, 0.2);
+      border-left: 4px solid var(--color-3);
+      font-family: 'Yomogi', cursive;
+      position: relative;
+    }
+    
+    .quote::before {
+      content: "❝";
+      position: absolute;
+      top: -10px;
+      left: 5px;
+      font-size: 24px;
+      color: var(--color-4);
+    }
+    
+    .quote::after {
+      content: "❞";
+      position: absolute;
+      bottom: -15px;
+      right: 5px;
+      font-size: 24px;
+      color: var(--color-4);
+    }
+    
+    ul {
+      list-style: none;
+      padding-left: 5px;
+    }
+    
+    li {
+      position: relative;
+      padding-left: 25px;
+      margin-bottom: 10px;
+    }
+    
+    li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: var(--color-5);
+      font-weight: bold;
+    }
+    
+    .highlight {
+      background: linear-gradient(transparent 60%, var(--color-2) 60%);
+      font-weight: bold;
+    }
+    
+    .card {
+      background-color: white;
+      border-radius: 10px;
+      padding: 15px;
+      margin: 15px 0;
+      box-shadow: var(--shadow);
+      position: relative;
+    }
+    
+    .card::before {
+      content: "";
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      background-color: var(--color-2);
+      top: -10px;
+      right: -10px;
+      border-radius: 50%;
+      z-index: -1;
+    }
+    
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 15px 0;
+    }
+    
+    th {
+      background-color: var(--color-1);
+      color: white;
+      padding: 8px;
+      text-align: left;
+      font-weight: normal;
+    }
+    
+    td {
+      padding: 8px;
+      border-bottom: 1px dashed #ccc;
+    }
+    
+    tr:nth-child(even) {
+      background-color: rgba(242, 198, 61, 0.1);
+    }
+    
+    .arrow {
+      display: block;
+      margin: 20px auto;
+      width: 40px;
+      height: 40px;
+      text-align: center;
+      line-height: 40px;
+      font-size: 24px;
+      color: var(--color-5);
+      transform: rotate(45deg);
+    }
+    
+    .step {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    
+    .step-number {
+      width: 30px;
+      height: 30px;
+      background-color: var(--color-4);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 10px;
+      font-family: 'Zen Kurenaido', sans-serif;
+    }
+    
+    .checkbox-list {
+      background-color: #fff;
+      padding: 15px;
+      border-radius: 10px;
+      border: 2px dashed var(--color-3);
+    }
+    
+    .checkbox-item {
+      margin-bottom: 10px;
+      display: flex;
+      align-items: start;
+    }
+    
+    .checkbox {
+      width: 20px;
+      height: 20px;
+      border: 2px solid var(--color-1);
+      border-radius: 5px;
+      margin-right: 10px;
+      position: relative;
+      flex-shrink: 0;
+    }
+    
+    .final-points {
+      background-color: rgba(89, 60, 71, 0.1);
+      padding: 15px;
+      border-radius: 10px;
+      margin-top: 20px;
+    }
+    
+    .final-point {
+      font-family: 'Yomogi', cursive;
+      font-size: 16px;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+    }
+    
+    .final-number {
+      width: 25px;
+      height: 25px;
+      background-color: var(--color-5);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 10px;
+      font-family: 'Kaisei Decol', serif;
+      font-weight: bold;
+    }
+    
+    footer {
+      margin-top: 30px;
+      text-align: center;
+      color: #64748B;
+      font-size: 12px;
+      padding-top: 10px;
+      border-top: 1px dashed var(--color-1);
+    }
+
+    .arrow-connector {
+      position: relative;
+      margin: 20px 0;
+      height: 30px;
+    }
+
+    .arrow-connector::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background-color: var(--color-4);
+      transform: translateY(-50%);
+    }
+
+    .arrow-connector::before {
+      content: "▶";
+      position: absolute;
+      top: 50%;
+      right: 0;
+      transform: translateY(-50%);
+      color: var(--color-4);
+      z-index: 1;
+    }
+
+    .grid-1-2 {
+      grid-column: 1 / 3;
+    }
+    
+    .grid-3 {
+      grid-column: 3 / 4;
+    }
+
+    .grid-1 {
+      grid-column: 1 / 2;
+    }
+    
+    .grid-2-3 {
+      grid-column: 2 / 4;
+    }
+
+    .grid-1-3 {
+      grid-column: 1 / 4;
+    }
+
+    @media (max-width: 768px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .grid-1-2, .grid-3, .grid-1, .grid-2-3, .grid-1-3 {
+        grid-column: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="title-area">
+        <h1>トレードの本質 📈</h1>
+        <p class="subtitle">— はじめての人にもわかる「負けを小さく、勝ちを少し大きく」入門—</p>
+      </div>
+      <div class="date">2025年4月23日</div>
+    </header>
+    
+    <div class="grid">
+      <!-- セクション1 -->
+      <div class="section grid-1-2">
+        <h2><span class="icon">🎯</span> トレードは「当てもの」ではない</h2>
+        <div class="quote">
+          ゴールは "当たり" を増やすことではなく、合計でプラスにすること。
+        </div>
+        
+        <ul>
+          <li>チャートの上げ下げを<span class="highlight">100%当てるのは不可能</span></li>
+          <li>重要なのは「<em>勝ったときに得る額</em>」と「<em>負けたときに失う額</em>」の<strong>平均＝期待値</strong></li>
+          <li>期待値がプラスなら、<strong>回数を重ねるほど口座残高が伸びる</strong></li>
+        </ul>
+        
+        <div class="card">
+          <table>
+            <tr>
+              <th>勝率</th>
+              <th>１回の勝ち</th>
+              <th>１回の負け</th>
+              <th>期待値（１回）</th>
+            </tr>
+            <tr>
+              <td>50%</td>
+              <td>+120円</td>
+              <td>-100円</td>
+              <td><strong>+10円</strong></td>
+            </tr>
+          </table>
+          <div style="text-align: center; margin-top: 10px;">
+            → 当たりは半分でも、<span class="highlight">10円×100回＝+1,000円</span> になる仕組み。
+          </div>
+        </div>
+      </div>
+      
+      <!-- セクション2 -->
+      <div class="section grid-3">
+        <h2><span class="icon">🛡️</span> まず「生き残り」が最優先</h2>
+        <div class="quote">
+          破産した瞬間、どんな必勝法も意味がなくなる。
+        </div>
+        
+        <div style="margin-bottom: 20px;">
+          <h3 style="font-size: 16px; color: var(--color-4);">● ポジションサイズ（賭け金）の目安</h3>
+          <ul>
+            <li>口座残高の <span class="highlight">1〜2%</span> を「1回で許容できる損失」にする</li>
+            <li>100万円なら最大損失 <strong>1〜2万円/回</strong></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h3 style="font-size: 16px; color: var(--color-4);">● 損切りは"保険料"</h3>
+          <ul>
+            <li>価格が想定と逆へ動いたら、<span class="highlight">ためらわず自動で退出</span></li>
+            <li>「もっと戻るかも…」は破産への近道</li>
+          </ul>
+        </div>
+      </div>
+      
+      <!-- セクション3 -->
+      <div class="section grid-1">
+        <h2><span class="icon">⏳</span> エッジ（優位性）は消耗品</h2>
+        <div class="quote">
+          儲かるルールは必ず"飽きられる"か"真似される"。
+        </div>
+        
+        <div class="step">
+          <div class="step-number">1</div>
+          <div><strong>発見</strong> — 例：決算発表後にギャップアップした銘柄を買う</div>
+        </div>
+        <div class="arrow-connector"></div>
+        
+        <div class="step">
+          <div class="step-number">2</div>
+          <div><strong>利用</strong> — ルール通りに小さく負け・大きく勝つ</div>
+        </div>
+        <div class="arrow-connector"></div>
+        
+        <div class="step">
+          <div class="step-number">3</div>
+          <div><strong>劣化</strong> — 参加者が増えて利幅縮小</div>
+        </div>
+        <div class="arrow-connector"></div>
+        
+        <div class="step">
+          <div class="step-number">4</div>
+          <div><strong>乗換</strong> — 新しいルールをテストへ</div>
+        </div>
+        
+        <div style="margin-top: 20px; font-style: italic; text-align: center;">
+          <span style="background-color: var(--color-2); padding: 3px 8px; border-radius: 5px;">
+            ポイント：常に「次の種」を蒔きながら今の種を刈り取る。
+          </span>
+        </div>
+      </div>
+      
+      <!-- セクション4 -->
+      <div class="section grid-2-3">
+        <h2><span class="icon">😠</span> 感情は最大のコスト</h2>
+        <div class="quote">
+          "怖い""欲しい""退屈"── ３大感情が期待値を奪う。
+        </div>
+        
+        <h3 style="font-size: 16px; color: var(--color-4);">感情を封じる３つの道具</h3>
+        <div class="card">
+          <table>
+            <tr>
+              <th>道具</th>
+              <th>やること</th>
+              <th>効果</th>
+            </tr>
+            <tr>
+              <td><strong>チェックリスト</strong> 📋</td>
+              <td>エントリー前に条件を○×確認</td>
+              <td>感情による判断ミスを防ぐ</td>
+            </tr>
+            <tr>
+              <td><strong>自動発注</strong> 🤖</td>
+              <td>サイズ・損切りをコード化</td>
+              <td>指値忘れ・躊躇を排除</td>
+            </tr>
+            <tr>
+              <td><strong>取引日誌</strong> 📔</td>
+              <td>ルール遵守率を点検</td>
+              <td>ブレの原因を可視化</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      
+      <!-- セクション5 -->
+      <div class="section grid-1-2">
+        <h2><span class="icon">🔧</span> 今すぐ使えるシンプル戦略例</h2>
+        <div class="quote">
+          「勝率40〜60% × リスクリワード2：1」だけで十分プラス
+        </div>
+        
+        <div class="step">
+          <div class="step-number">1</div>
+          <div><strong>ルールを決める</strong>
+            <div style="padding-left: 20px; font-size: 13px;">例：5日移動平均を下から上へ抜けたら買う</div>
+          </div>
+        </div>
+        
+        <div class="step">
+          <div class="step-number">2</div>
+          <div><strong>損切り = エントリー価格の-2%</strong></div>
+        </div>
+        
+        <div class="step">
+          <div class="step-number">3</div>
+          <div><strong>利確 = +4%</strong></div>
+        </div>
+        
+        <div class="step">
+          <div class="step-number">4</div>
+          <div><strong>1回の損失 = 口座の1%</strong></div>
+        </div>
+        
+        <div class="step">
+          <div class="step-number">5</div>
+          <div><strong>100回以上テストして、合計がプラスなら小口から実践</strong></div>
+        </div>
+      </div>
+      
+      <!-- セクション6 -->
+      <div class="section grid-3">
+        <h2><span class="icon">✅</span> 実践チェックリスト</h2>
+        <div style="text-align: center; font-size: 12px; margin-bottom: 15px; color: var(--color-4);">
+          （印刷して机に貼る）
+        </div>
+        
+        <div class="checkbox-list">
+          <div class="checkbox-item">
+            <div class="checkbox"></div>
+            <div>ルールどおりの <strong>シグナル</strong> か？</div>
+          </div>
+          
+          <div class="checkbox-item">
+            <div class="checkbox"></div>
+            <div><strong>損切り幅</strong> と <strong>数量</strong> が上限内か？</div>
+          </div>
+          
+          <div class="checkbox-item">
+            <div class="checkbox"></div>
+            <div>1日の取引回数上限を超えていないか？</div>
+          </div>
+          
+          <div class="checkbox-item">
+            <div class="checkbox"></div>
+            <div>取引後に <strong>日誌</strong> を書いたか？</div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- セクション7 -->
+      <div class="section grid-1-3">
+        <h2><span class="icon">🏆</span> まとめ 〜覚えておく３フレーズ〜</h2>
+        
+        <div class="final-points">
+          <div class="final-point">
+            <div class="final-number">1</div>
+            <div><strong>「当てる」より「合計で勝つ」</strong></div>
+          </div>
+          
+          <div class="final-point">
+            <div class="final-number">2</div>
+            <div><strong>「まず生き残る」</strong></div>
+          </div>
+          
+          <div class="final-point">
+            <div class="final-number">3</div>
+            <div><strong>「感情と一緒にプレーしない」</strong></div>
+          </div>
+        </div>
+        
+        <div style="margin-top: 20px; text-align: center; padding: 15px; background-color: rgba(242, 230, 61, 0.2); border-radius: 10px;">
+          この３つを土台に、あなた独自のルールを少しずつ改良していけば、"小さく負けて少し大きく勝つ仕組み"ができあがります。<br>
+          あとは壊れる前に回し続けるだけ。さあ、今日から"胴元側"の視点でトレードを始めましょう。
+        </div>
+      </div>
+    </div>
+    
+    <footer>
+      © 2025 トレードの本質 グラフィックレコーディング
+    </footer>
+  </div>
+</body>
+</html>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">Monty Trader</div>
+            <div class="footer-social">
+                <a href="https://x.com/monty_investor" target="_blank">@monty_investor</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleLanguage() {
+            const jaElements = document.querySelectorAll('.ja');
+            const enElements = document.querySelectorAll('.en');
+            const button = document.querySelector('.language-switch button');
+            
+            jaElements.forEach(el => el.classList.toggle('hidden'));
+            enElements.forEach(el => el.classList.toggle('hidden'));
+            
+            button.textContent = button.textContent === 'English' ? '日本語' : 'English';
+        }
+    </script>
+</body>
+</html> 
