@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>初心者・中級者向けトレーディングアドバイス by Brian Lee</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Yomogi&family=Zen+Kurenaido&family=Kaisei+Decol:wght@400;700&display=swap');
+        
+        :root {
+            --fashion-1: #593C47;
+            --fashion-2: #F2E63D;
+            --fashion-3: #F2C53D;
+            --fashion-4: #F25C05;
+            --fashion-5: #F24405;
+            --gray-600: #475569;
+            --gray-700: #334155;
+            --blue-800: #1e40af;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Zen Kurenaido', 'Kaisei Decol', sans-serif;
+            background-color: #f8f9fa;
+            color: var(--gray-700);
+            line-height: 1.4;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            padding: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .container::before {
+            content: "";
+            position: absolute;
+            top: -50px;
+            left: -50px;
+            width: 200px;
+            height: 200px;
+            background-color: rgba(242, 230, 61, 0.1);
+            border-radius: 50%;
+            z-index: 0;
+        }
+        
+        .container::after {
+            content: "";
+            position: absolute;
+            bottom: -50px;
+            right: -50px;
+            width: 200px;
+            height: 200px;
+            background-color: rgba(242, 91, 4, 0.1);
+            border-radius: 50%;
+            z-index: 0;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 1;
+            border-bottom: 2px dashed var(--fashion-1);
+            padding-bottom: 15px;
+        }
+        
+        .title {
+            font-family: 'Kaisei Decol', serif;
+            font-size: 32px;
+            font-weight: bold;
+            background: linear-gradient(45deg, var(--fashion-1), var(--fashion-5));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-right: 20px;
+            position: relative;
+        }
+        
+        .title::after {
+            content: "✏️";
+            position: absolute;
+            right: -25px;
+            top: 0;
+        }
+        
+        .date-source {
+            font-size: 14px;
+            color: var(--gray-600);
+            text-align: right;
+        }
+        
+        .content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .column {
+            flex: 1;
+            min-width: calc(33% - 20px);
+        }
+        
+        .card {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            border: 2px solid transparent;
+            position: relative;
+        }
+        
+        .card:nth-child(odd) {
+            border-color: var(--fashion-2);
+        }
+        
+        .card:nth-child(even) {
+            border-color: var(--fashion-3);
+        }
+        
+        .card:nth-child(3n) {
+            border-color: var(--fashion-4);
+        }
+        
+        .section-title {
+            font-family: 'Kaisei Decol', serif;
+            font-size: 18px;
+            color: var(--blue-800);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+        
+        .section-title::before {
+            content: attr(data-number);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 30px;
+            height: 30px;
+            background-color: var(--fashion-3);
+            color: var(--fashion-1);
+            border-radius: 50%;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+        
+        .section-title::after {
+            content: attr(data-icon);
+            margin-left: 8px;
+        }
+        
+        .text {
+            font-size: 14px;
+            color: var(--gray-700);
+            margin-bottom: 15px;
+            position: relative;
+        }
+        
+        .keyword {
+            font-weight: bold;
+            color: var(--fashion-5);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .keyword::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 6px;
+            background-color: var(--fashion-2);
+            opacity: 0.4;
+            z-index: -1;
+        }
+        
+        .highlight-box {
+            border: 2px dashed var(--fashion-4);
+            border-radius: 8px;
+            padding: 12px;
+            margin: 10px 0;
+            position: relative;
+        }
+        
+        .highlight-box::before {
+            content: "📌";
+            position: absolute;
+            top: -12px;
+            left: 10px;
+            background-color: white;
+            padding: 0 5px;
+        }
+        
+        .arrow {
+            display: inline-block;
+            margin: 0 5px;
+            color: var(--fashion-4);
+            font-weight: bold;
+        }
+        
+        .note {
+            font-family: 'Yomogi', cursive;
+            font-size: 13px;
+            font-style: italic;
+            color: var(--fashion-1);
+            opacity: 0.8;
+        }
+        
+        .bubble {
+            position: relative;
+            background-color: rgba(242, 196, 61, 0.2);
+            border-radius: 8px;
+            padding: 10px 15px;
+            margin: 15px 0;
+        }
+        
+        .bubble::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 20px;
+            border: 8px solid transparent;
+            border-top-color: rgba(242, 196, 61, 0.2);
+        }
+        
+        .icon-list {
+            margin-left: 25px;
+        }
+        
+        .icon-list-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 8px;
+        }
+        
+        .icon-list-item::before {
+            content: attr(data-icon);
+            margin-right: 8px;
+            margin-left: -25px;
+        }
+        
+        .connection {
+            display: flex;
+            justify-content: center;
+            margin: 15px 0;
+        }
+        
+        .connection-line {
+            width: 60%;
+            height: 2px;
+            background: repeating-linear-gradient(90deg, var(--fashion-4), var(--fashion-4) 5px, transparent 5px, transparent 10px);
+        }
+        
+        .data-box {
+            display: flex;
+            background-color: rgba(89, 60, 71, 0.1);
+            border-radius: 8px;
+            padding: 12px;
+            margin: 10px 0;
+            align-items: center;
+        }
+        
+        .data-number {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--fashion-1);
+            margin-right: 10px;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px dashed var(--fashion-1);
+            color: var(--gray-600);
+            font-size: 12px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* グラスモーフィズム効果 */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+        
+        @media (max-width: 768px) {
+            .column {
+                min-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="title">初心者・中級者向けトレーディングアドバイス</h1>
+            <div class="date-source">
+                2024年4月<br>
+                <span class="note">@BrianLeeTrades 氏による</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <!-- 左カラム -->
+            <div class="column">
+                <div class="card">
+                    <h2 class="section-title" data-number="1" data-icon="💰">ポジションサイジング</h2>
+                    <p class="text">
+                        <span class="keyword">ポジションサイジング</span>は最初に習得すべきスキルです。お金がどのように<span class="keyword">獲得され、失われる</span>かを明確に理解する必要があります。
+                    </p>
+                    <div class="highlight-box">
+                        ２つの重要な要素:
+                        <div class="icon-list">
+                            <div class="icon-list-item" data-icon="⚠️">リスクレベル - ここでトレードを切ります</div>
+                            <div class="icon-list-item" data-icon="💲">トレードごとのドルリスク - リスクレベルで失う金額</div>
+                        </div>
+                    </div>
+                    <div class="bubble">
+                        計算式: 株式の場合、ドルリスク ÷ (エントリーからリスクレベルまでの株あたりのリスク)
+                    </div>
+                    <div class="data-box">
+                        <div class="data-number">📝</div>
+                        <div>
+                            例: リスク配分$100、ロング$1.00入り、リスク$0.90<br>
+                            株あたりのリスク$0.10<br>
+                            $100 ÷ $0.10 = 1,000株
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card glass-card">
+                    <h2 class="section-title" data-number="2" data-icon="🔄">ルーティング</h2>
+                    <p class="text">
+                        ルーティングについて混乱している場合は、単純に<span class="keyword">ARCALまたはARCA</span>ルートを使用し、プレマーケットやアフターアワーでも機能するように日中+を設定することをお勧めします。
+                    </p>
+                    <div class="note">
+                        ダークプールは初心者や中級者には通常不要です。そのメカニズムは流動性が少なく済む場合、即時トレード執行よりもサイズと不明化に適しています。
+                    </div>
+                    <div class="highlight-box">
+                        プロ向けヒント：少なくとも2層のルートを用意しましょう。CTRLやALTなどのモディファイアを使えば筋肉記憶と実用性を高められます。
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h2 class="section-title" data-number="3" data-icon="📊">チャート</h2>
+                    <p class="text">
+                        <span class="keyword">ThinkOrSwim (Schwab)</span>または<span class="keyword">TradingView</span>をお勧めします。どちらも同様に広範なスクリプト編集機能があり、カスタマイズと実用性に非常に役立ちます。
+                    </p>
+                    <div class="connection">
+                        <div class="connection-line"></div>
+                    </div>
+                    <p class="text">
+                        どちらか一方を使うことをお勧めします。両方にプラス面とマイナス面がありますが、筆者はTOSを好んでいます。
+                    </p>
+                </div>
+                
+                <div class="card glass-card">
+                    <h2 class="section-title" data-number="4" data-icon="⚠️">落とし穴</h2>
+                    <p class="text">
+                        特にメンターシップについて、非常に安価な商品やサービスに手を出すことは簡単な落とし穴です。低価格は魅力的ですが、そこでは多くの時間を無駄にしてしまいました。
+                    </p>
+                    <p class="text">
+                        逆に、過度なマーケティングや高価なコースもほとんどがジョークです。教育のために支払うことを検討している場合は、マーケティングに注がれたリソースを精査する必要がありますが、初めは素朴でいることが難しいため、おそらく少し損失を出して発見することになるでしょう。
+                    </p>
+                    <div class="highlight-box">
+                        プロ向けヒント：詐欺師に利用されるのではなく、自分自身のために詐欺を活用しましょう。つまり、これらのコミュニティで他の人々とつながり、友情を築き、集合的な理性を使って良い情報と悪い情報を解読できます。
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 中央カラム -->
+            <div class="column">
+                <div class="card">
+                    <h2 class="section-title" data-number="5" data-icon="📚">システム</h2>
+                    <p class="text">
+                        <span class="keyword">システムが全て</span>です。
+                    </p>
+                    <div class="icon-list">
+                        <div class="icon-list-item" data-icon="📕">Atomic Habits by James Clear</div>
+                        <div class="icon-list-item" data-icon="📗">The Compound Effect by James Hardy</div>
+                    </div>
+                    <p class="text">
+                        これら2冊の本を読むことで、あなたのプロセスを強化し、小さすぎる考え方をする人間の性向を抑えるのに役立ちます。成功は努力と時間の積み重ねであり、一貫して現れることで自分自身の幸運を創り出すのです。
+                    </p>
+                </div>
+                
+                <div class="card glass-card">
+                    <h2 class="section-title" data-number="6" data-icon="🧠">トレード決定の体系化</h2>
+                    <p class="text">
+                        トレード決定を<span class="keyword">体系化</span>することで、精神的な能力をより活用できます。急速な感情的決断でさもなければ占有されるスペースを解放することで、はるかに重要なトレード管理に集中できます。
+                    </p>
+                    <div class="bubble">
+                        "もし～なら、そのとき～する"と考えましょう
+                    </div>
+                    <p class="text">
+                        トレードの入退場のための条件やトリガーを作れますか？
+                    </p>
+                    <div class="highlight-box">
+                        プロ向けヒント：体系化できるなら、それをスクリプトにコーディングできます（自動化ではなく）。例えば、いつ買うか売るかを示すラベルやインジケーター。さらに、古いサンプルと新しいサンプルでバックテストを行い、システムに自信を持てます。
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h2 class="section-title" data-number="8" data-icon="💯">勝率とリターン</h2>
+                    <p class="text">
+                        どんな犠牲を払っても<span class="keyword">勝つこと</span>が目標ではありません。それは自我を慰め、痛みから保護するだけです。目標はお金を稼ぐことです。
+                    </p>
+                    <p class="text">
+                        トレーダーは収益性のメカニズムを理解する必要があります。
+                    </p>
+                    <div class="data-box">
+                        <div class="data-number">📊</div>
+                        <div>
+                            勝率60%でリスクリワード比率1:1の戦略でさえ、失敗する運命にあります。
+                        </div>
+                    </div>
+                    <p class="text">
+                        私の勝率は月の良し悪しで25-35%の間で振動しますが、それでも<span class="keyword">驚異的な収益性</span>を経験しています。
+                    </p>
+                    <div class="highlight-box">
+                        プロ向けヒント：小さな損失を組み込むと、平均損失が1R未満に減少します。例えば0.5Rと1Rを組み合わせると、平均損失が0.75Rになり、収益性に大きな影響を与えます。
+                    </div>
+                </div>
+                
+                <div class="card glass-card">
+                    <h2 class="section-title" data-number="9" data-icon="📝">トレード統計の追跡</h2>
+                    <p class="text">
+                        毎日レビューするためにただ一つのことができるとしたら、私のトレードの勝ち負けを$とRの両方で<span class="keyword">正確に記録する</span>ことです。
+                    </p>
+                    <p class="text">
+                        ほとんどのソフトウェアや集計サイトはこの側面を誤って処理しているので、それに頼らないでください。
+                    </p>
+                    <div class="icon-list">
+                        <div class="icon-list-item" data-icon="🎯">あなた自身はクローズドポジションが何か、ミスが何か、スクラッチが何かなどを知っています</div>
+                    </div>
+                    <p class="text">
+                        あなたの統計は2つの目的を果たします：
+                    </p>
+                    <div class="icon-list">
+                        <div class="icon-list-item" data-icon="1️⃣">将来の軌道を知る - データをシミュレーションして、資産曲線が意味をなすかどうかを確認できます</div>
+                        <div class="icon-list-item" data-icon="2️⃣">説明責任を持ち、パフォーマンスを評価するのに役立ちます</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 右カラム -->
+            <div class="column">
+                <div class="card">
+                    <h2 class="section-title" data-number="10" data-icon="📋">必須記録</h2>
+                    <p class="text">
+                        毎日、気づいていないかもしれませんが、将来役立つ大量の情報が含まれています。
+                    </p>
+                    <div class="icon-list">
+                        <div class="icon-list-item" data-icon="📈">潜在的にトレードになり得る<span class="keyword">全てのチャート</span>の記録を保管する</div>
+                        <div class="icon-list-item" data-icon="🔍">執行チャート、日中チャート、日足チャートをスクリーンショットする</div>
+                        <div class="icon-list-item" data-icon="📅">単純な日付、ティッカー、時間枠の命名規則で十分</div>
+                        <div class="icon-list-item" data-icon="✏️">チャートにテクニカルを描画し、トレードしなかったチャートでもインジケーターなどのシステムを残す</div>
+                        <div class="icon-list-item" data-icon="📰">ニュース触媒、基本情報、マクロ/ミクロ環境などのコンテキストに関するメモを残す</div>
+                    </div>
+                    <div class="highlight-box">
+                        プロ向けヒント：ShareXはスクリーンショットソフトウェアで、時間を節約するためにスクリーンショットを自動的に命名し、クリップボードに保存/アップロードして友人と共有するのに役立ちます。
+                    </div>
+                </div>
+                
+                <div class="card glass-card">
+                    <h2 class="section-title" data-number="11" data-icon="📢">あなたのストーリーを語る</h2>
+                    <p class="text">
+                        あなたの視点やストーリー、苦労など、<span class="keyword">すべてを共有する</span>ことは最良のことの一つです。
+                    </p>
+                    <p class="text">
+                        陳腐に聞こえるかもしれませんが、努力と脆弱性を示すことで他者とつながることができます。
+                    </p>
+                    <div class="connection">
+                        <div class="connection-line"></div>
+                    </div>
+                    <p class="text">
+                        最初は誰も見ないかもしれませんが、一貫して（数ヶ月または数年）行えば、あなたと他者にとってプラスになります。
+                    </p>
+                    <div class="bubble">
+                        投稿がゼロの人々をオンラインで評価するのは難しく、あなたは<span class="keyword">匿名</span>になります。それは良いように思えますが、あなたのプロフィールとつながる人が一人いれば、生涯の友情やメンターシップに発展する可能性があることを認識していないのです。
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h2 class="section-title" data-number="12" data-icon="🔥">執着のゲーム</h2>
+                    <p class="text">
+                        トレーダーの多くは自由を求めてこのゲームに入りますが、この仕事には<span class="keyword">莫大な集中力と規律</span>が必要です。
+                    </p>
+                    <p class="text">
+                        トレーダーやインベスターは適応性があり、常に学び続けなければならないと逸話的に聞いたことがあるかもしれませんが...それは真実です。
+                    </p>
+                    <div class="data-box">
+                        <div class="data-number">⚖️</div>
+                        <div>
+                            トレードは本質的に<span class="keyword">競争的でゼロサム</span>であり、ゲーム理論が関わっています。
+                        </div>
+                    </div>
+                    <p class="text">
+                        あなたは言うほど頻繁に反復する必要はありませんが、その緊急感は火を灯し続けるために重要です。
+                    </p>
+                    <div class="highlight-box">
+                        プロ向けヒント：レビューを魅力的にし、毎週または毎日一緒に勉強する時間を確保できる友人のグループを作るか参加しましょう。他者と協力するとモチベーションとエネルギーを維持しやすくなります。
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            出典: <a href="https://x.com/brianleetrades/status/1914718331271295356?s=12" target="_blank">https://x.com/brianleetrades/status/1914718331271295356?s=12</a> by @BrianLeeTrades
+        </div>
+    </div>
+</body>
+</html>
