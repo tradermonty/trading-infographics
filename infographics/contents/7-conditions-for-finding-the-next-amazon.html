@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>最大勝利株の99%が共有する7つの条件</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Yomogi&family=Zen+Kurenaido&family=Kaisei+Decol:wght@400;700&display=swap');
+    
+    :root {
+      --fashion-1: #593C47;
+      --fashion-2: #F2E63D;
+      --fashion-3: #F2C53D;
+      --fashion-4: #F25C05;
+      --fashion-5: #F24405;
+      --gray-700: #334155;
+      --gray-600: #475569;
+      --blue-800: #1e40af;
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'Kaisei Decol', serif;
+      color: var(--gray-700);
+      background-color: #f8f9fa;
+      line-height: 1.4;
+      padding: 1rem;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+      padding: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    /* ヘッダー */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 2rem;
+      border-bottom: 2px dashed var(--fashion-1);
+      padding-bottom: 1rem;
+    }
+    
+    .title-container {
+      flex: 1;
+    }
+    
+    .title {
+      font-family: 'Zen Kurenaido', sans-serif;
+      font-size: 32px;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(90deg, var(--fashion-1), var(--fashion-4));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .title::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 6px;
+      bottom: 0;
+      left: 0;
+      background: url("data:image/svg+xml,%3Csvg width='100' height='6' viewBox='0 0 100 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 3C8.33333 1 16.6667 1 25 3C33.3333 5 41.6667 5 50 3C58.3333 1 66.6667 1 75 3C83.3333 5 91.6667 5 100 3' stroke='%23F25C05' stroke-width='2'/%3E%3C/svg%3E") repeat-x;
+      background-size: 100px 6px;
+    }
+    
+    .subtitle {
+      font-family: 'Yomogi', cursive;
+      font-size: 16px;
+      color: var(--gray-600);
+      margin-bottom: 0.5rem;
+    }
+    
+    .date-source {
+      text-align: right;
+      font-size: 14px;
+      color: var(--gray-600);
+    }
+    
+    /* メインコンテンツ */
+    .content {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+    
+    .column {
+      flex: 1;
+      min-width: 300px;
+    }
+    
+    .section {
+      margin-bottom: 2rem;
+      position: relative;
+    }
+    
+    .section-title {
+      font-family: 'Zen Kurenaido', sans-serif;
+      font-size: 18px;
+      font-weight: bold;
+      color: var(--blue-800);
+      margin-bottom: 1rem;
+      padding-left: 2rem;
+      position: relative;
+    }
+    
+    .section-title::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 1.5rem;
+      height: 1.5rem;
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+    
+    .icon-quote::before {
+      background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10 11C10 8.79086 8.20914 7 6 7H4C3.44772 7 3 7.44772 3 8V10C3 10.5523 3.44772 11 4 11H6C6.55228 11 7 11.4477 7 12V15C7 15.5523 6.55228 16 6 16H4C3.44772 16 3 16.4477 3 17V19C3 19.5523 3.44772 20 4 20H6C8.20914 20 10 18.2091 10 16V11ZM20 11C20 8.79086 18.2091 7 16 7H14C13.4477 7 13 7.44772 13 8V10C13 10.5523 13.4477 11 14 11H16C16.5523 11 17 11.4477 17 12V15C17 15.5523 16.5523 16 16 16H14C13.4477 16 13 16.4477 13 17V19C13 19.5523 13.4477 20 14 20H16C18.2091 20 20 18.2091 20 16V11Z' stroke='%23593C47' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    }
+    
+    .icon-checklist::before {
+      background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M9 5H7C5.89543 5 5 5.89543 5 7V19C5 20.1046 5.89543 21 7 21H17C18.1046 21 19 20.1046 19 19V7C19 5.89543 18.1046 5 17 5H15M9 5C9 6.10457 9.89543 7 11 7H13C14.1046 7 15 6.10457 15 5M9 5C9 3.89543 9.89543 3 11 3H13C14.1046 3 15 3.89543 15 5M12 12H15M12 16H15M9 12H9.01M9 16H9.01' stroke='%23F25C05' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
+    }
+    
+    .icon-steps::before {
+      background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 13L10 16M10 16L13 13M10 16V8M17 8L14 5M14 5L11 8M14 5V13' stroke='%23F2C53D' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Crect x='3' y='3' width='18' height='18' rx='2' stroke='%23593C47' stroke-width='2'/%3E%3C/svg%3E");
+    }
+    
+    .icon-next::before {
+      background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M13 5L20 12L13 19M20 12H4' stroke='%23F24405' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    }
+    
+    .card {
+      background-color: white;
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      position: relative;
+      border: 1px solid rgba(0,0,0,0.05);
+      background: rgba(255,255,255,0.9);
+      backdrop-filter: blur(10px);
+      overflow: hidden;
+    }
+    
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--fashion-3), var(--fashion-4));
+      border-radius: 4px 4px 0 0;
+    }
+    
+    .quote-block {
+      position: relative;
+      padding: 1rem 1.5rem;
+      background-color: rgba(242, 230, 61, 0.1);
+      border-radius: 8px;
+      margin: 1.5rem 0;
+      font-family: 'Yomogi', cursive;
+    }
+    
+    .quote-block::before {
+      content: '"';
+      position: absolute;
+      left: 0.5rem;
+      top: -0.5rem;
+      font-size: 3rem;
+      color: var(--fashion-3);
+      font-family: serif;
+    }
+    
+    .quote-block::after {
+      content: '"';
+      position: absolute;
+      right: 0.5rem;
+      bottom: -2rem;
+      font-size: 3rem;
+      color: var(--fashion-3);
+      font-family: serif;
+    }
+    
+    .highlight {
+      background: linear-gradient(transparent 60%, var(--fashion-2) 60%);
+      font-weight: bold;
+      padding: 0 0.2rem;
+    }
+    
+    .emphasis {
+      font-weight: bold;
+      color: var(--fashion-5);
+    }
+    
+    .table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+      font-size: 14px;
+    }
+    
+    .table th, .table td {
+      padding: 0.75rem;
+      text-align: left;
+      border-bottom: 2px dashed rgba(89, 60, 71, 0.2);
+    }
+    
+    .table th {
+      background-color: rgba(89, 60, 71, 0.1);
+      font-weight: bold;
+      white-space: nowrap;
+    }
+    
+    .table tr:last-child td {
+      border-bottom: none;
+    }
+    
+    .bubble {
+      position: relative;
+      background-color: rgba(242, 92, 5, 0.1);
+      padding: 1rem;
+      border-radius: 16px;
+      margin: 1rem 0;
+    }
+    
+    .bubble::before {
+      content: '';
+      position: absolute;
+      top: -10px;
+      left: 30px;
+      border-width: 0 10px 10px;
+      border-style: solid;
+      border-color: transparent transparent rgba(242, 92, 5, 0.1) transparent;
+    }
+    
+    .number-item {
+      display: flex;
+      margin-bottom: 1rem;
+      align-items: flex-start;
+    }
+    
+    .number {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 2rem;
+      height: 2rem;
+      background-color: var(--fashion-1);
+      color: white;
+      border-radius: 50%;
+      margin-right: 1rem;
+      flex-shrink: 0;
+      font-weight: bold;
+    }
+    
+    .number-content {
+      flex: 1;
+    }
+    
+    .arrow {
+      position: relative;
+      padding-right: 2rem;
+    }
+    
+    .arrow::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 1.5rem;
+      height: 1rem;
+      background-image: url("data:image/svg+xml,%3Csvg width='24' height='16' viewBox='0 0 24 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M23 8H1M23 8L16 1M23 8L16 15' stroke='%23F25C05' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+    
+    .vcp-pattern {
+      position: relative;
+      background-color: rgba(242, 196, 61, 0.2);
+      padding: 1rem;
+      border-radius: 8px;
+      margin-top: 1rem;
+      font-size: 14px;
+    }
+    
+    .vcp-pattern::before {
+      content: 'VCP';
+      position: absolute;
+      top: -0.75rem;
+      left: 1rem;
+      background-color: var(--fashion-3);
+      color: var(--fashion-1);
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+      font-weight: bold;
+      font-size: 12px;
+    }
+    
+    .star-point {
+      position: relative;
+      padding-left: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .star-point::before {
+      content: '★';
+      position: absolute;
+      left: 0;
+      color: var(--fashion-4);
+    }
+    
+    .footer {
+      text-align: center;
+      margin-top: 2rem;
+      padding-top: 1rem;
+      border-top: 2px dashed var(--fashion-1);
+      font-size: 14px;
+      color: var(--gray-600);
+    }
+    
+    /* 手書き風の装飾 */
+    .hand-drawn-box {
+      border: 2px solid var(--fashion-1);
+      border-radius: 12px;
+      position: relative;
+      padding: 1.5rem;
+      margin: 1rem 0;
+    }
+    
+    .hand-drawn-box::before {
+      content: '';
+      position: absolute;
+      top: -0.5rem;
+      left: 1rem;
+      padding: 0 0.5rem;
+      background-color: white;
+      color: var(--fashion-1);
+      font-weight: bold;
+      font-family: 'Yomogi', cursive;
+    }
+    
+    .hand-drawn-box.checklist::before {
+      content: 'チェックリスト';
+    }
+    
+    /* 背景の装飾要素 */
+    .deco-circle {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.05;
+      z-index: 0;
+    }
+    
+    .deco-circle-1 {
+      width: 300px;
+      height: 300px;
+      background-color: var(--fashion-2);
+      top: -100px;
+      right: -100px;
+    }
+    
+    .deco-circle-2 {
+      width: 200px;
+      height: 200px;
+      background-color: var(--fashion-4);
+      bottom: -50px;
+      left: -50px;
+    }
+    
+    .deco-dots {
+      position: absolute;
+      width: 150px;
+      height: 150px;
+      background-image: radial-gradient(var(--fashion-1) 1px, transparent 1px);
+      background-size: 10px 10px;
+      opacity: 0.1;
+    }
+    
+    .deco-dots-1 {
+      top: 200px;
+      right: 20px;
+    }
+    
+    .deco-dots-2 {
+      bottom: 100px;
+      left: 50px;
+    }
+    
+    /* レスポンシブ対応 */
+    @media (max-width: 768px) {
+      .content {
+        flex-direction: column;
+      }
+      
+      .column {
+        min-width: 100%;
+      }
+      
+      .header {
+        flex-direction: column;
+      }
+      
+      .date-source {
+        text-align: left;
+        margin-top: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- 装飾的な背景要素 -->
+    <div class="deco-circle deco-circle-1"></div>
+    <div class="deco-circle deco-circle-2"></div>
+    <div class="deco-dots deco-dots-1"></div>
+    <div class="deco-dots deco-dots-2"></div>
+    
+    <!-- ヘッダー -->
+    <div class="header">
+      <div class="title-container">
+        <h1 class="title">最大勝利株の99%が共有する7つの条件</h1>
+        <p class="subtitle">マーク・ミネルヴィーニが語る「次のアマゾン」の見つけ方 📈 ✨</p>
+      </div>
+      <div class="date-source">
+        <p>作成日: 2025-04-21</p>
+      </div>
+    </div>
+    
+    <!-- メインコンテンツ -->
+    <div class="content">
+      <!-- 左カラム -->
+      <div class="column">
+        <section class="section">
+          <h2 class="section-title icon-quote">伝説のトレーダーの警告</h2>
+          <div class="card">
+            <div class="quote-block">
+              「マグニフィセント・セブン（Magnificent 7）のような巨人たちが永遠にアウトパフォームすることはない」
+            </div>
+            <p>2度の全米投資チャンピオンに輝いた<span class="highlight">マーク・ミネルヴィーニ</span>の言葉です。彼が今注目するのは、まだ誰のレーダーにも映っていない<span class="emphasis">「次のアマゾン」</span>です。</p>
+            <p style="margin-top: 1rem;">1960〜70年代の<em>Nifty Fifty</em>でさえ、時間とともに衰退。現在の<em>Magnificent 7</em>（AAPL, MSFT, NVDA, AMZN, GOOGL, META, TSLA）も例外ではありません。</p>
+            <div class="bubble">
+              <p>株式市場は常に<span class="highlight">「新陳代謝」</span>で進化し、<span class="emphasis">勝者は入れ替わる</span>——だからこそ、次代のリーダー候補をいち早く発掘するフレームワークが必要になります。</p>
+            </div>
+          </div>
+        </section>
+        
+        <section class="section">
+          <h2 class="section-title icon-checklist">7つの条件——"Super-performers"の設計図</h2>
+          <div class="card">
+            <p>ミネルヴィーニは40年のトレード経験を通じて、<span class="highlight">過去40年間に株価が10倍以上になった"最大の勝利株"の99%が満たしていた7つの共通点</span>を抽出しました。</p>
+            
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>チェック項目</th>
+                  <th>見分け方</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td><span class="emphasis">売上高・EPSの急加速</span></td>
+                  <td>直近2四半期連続で<em>EPS</em>＋30%以上、<em>売上高</em>＋20%以上</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td><span class="emphasis">高い自己資本利益率（ROE）</span></td>
+                  <td>ROE 20%超（理想は25%超）</td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td><span class="emphasis">新規性ある製品・サービス</span></td>
+                  <td>既存シェアを奪う技術やモデルが話題に</td>
+                </tr>
+                <tr>
+                  <td>4</td>
+                  <td><span class="emphasis">浮動株回転率の急上昇</span></td>
+                  <td>50日平均出来高の2〜3倍が複数日続く</td>
+                </tr>
+                <tr>
+                  <td>5</td>
+                  <td><span class="emphasis">相対強度(RS)指数≥80</span></td>
+                  <td>52週高値を更新し続け、指数をアウトパフォーム</td>
+                </tr>
+                <tr>
+                  <td>6</td>
+                  <td><span class="emphasis">上昇トレンドの"テンプレート"</span></td>
+                  <td>
+                    ・株価が200EMA上30%以上<br>
+                    ・50EMA > 150EMA > 200EMA<br>
+                    ・52週高値から−25%以内
+                  </td>
+                </tr>
+                <tr>
+                  <td>7</td>
+                  <td><span class="emphasis">出来高を伴うブレイクアウト</span></td>
+                  <td>ボラティリティ縮小→高出来高で狭いレンジを上放れ</td>
+                </tr>
+              </tbody>
+            </table>
+            
+            <div class="vcp-pattern">
+              <p><span class="emphasis">VCP（Volatility Contraction Pattern）</span>は必修パターン</p>
+              <p style="margin-top: 0.5rem;">99%の大化け株は「押し目」から始動するため、ボラティリティが縮小した後の上放れを狙います。</p>
+            </div>
+          </div>
+        </section>
+      </div>
+      
+      <!-- 中央カラム -->
+      <div class="column">
+        <section class="section">
+          <h2 class="section-title icon-steps">スクリーニング＆エントリーの4ステップ</h2>
+          <div class="card">
+            <div class="number-item">
+              <div class="number">1</div>
+              <div class="number-content">
+                <h3 style="font-size: 16px; margin-bottom: 0.5rem;">粗選別（週末バッチ）</h3>
+                <p>条件1・2・5をFinvizやMarketSmithでフィルタリングし、約500銘柄→50銘柄へ。</p>
+              </div>
+            </div>
+            
+            <div class="number-item">
+              <div class="number">2</div>
+              <div class="number-content">
+                <h3 style="font-size: 16px; margin-bottom: 0.5rem;">チャート精査（構造チェック）</h3>
+                <p>日足・週足で条件6・7を手動確認。VCP、ハンドル付きカップ、フラットベースが理想形。</p>
+                <img src="/api/placeholder/400/200" alt="チャートパターンのイメージ" style="width: 100%; height: auto; margin-top: 0.5rem; border-radius: 8px;" />
+              </div>
+            </div>
+            
+            <div class="number-item">
+              <div class="number">3</div>
+              <div class="number-content">
+                <h3 style="font-size: 16px; margin-bottom: 0.5rem;">イベントリスクの排除</h3>
+                <p>決算発表の1〜3週間前後は"ノイズ"増。新規エントリーは期間外が原則。</p>
+              </div>
+            </div>
+            
+            <div class="number-item">
+              <div class="number">4</div>
+              <div class="number-content">
+                <h3 style="font-size: 16px; margin-bottom: 0.5rem;">リスク＆サイズ設定</h3>
+                <p>初期リスク＝【株価×ポジション】×0.5〜1.0%（総資産比）。7〜8%の損切りルールを厳守。</p>
+              </div>
+            </div>
+          </div>
+        </section>
+        
+        <section class="section">
+          <h2 class="section-title icon-next">Magnificent 7から"New 7"へ</h2>
+          <div class="card">
+            <p>リーダー交代のサインを見逃すな！</p>
+            
+            <div class="star-point">
+              <p><span class="emphasis">指数寄与度が急拡大</span>し始めたら"天井警戒"——規模が大きくなるほど成長率の維持が困難。</p>
+            </div>
+            
+            <div class="star-point">
+              <p><span class="emphasis">ROICの低下や設備投資増</span>は、競争優位の質的変化を示唆。</p>
+            </div>
+            
+            <div class="star-point">
+              <p>市場は「永遠の勝者」という物語を好むが、<span class="highlight">物語が最も説得力を持つ瞬間こそ転換点</span>になる。</p>
+            </div>
+            
+            <div class="quote-block" style="margin-top: 1.5rem;">
+              "People convince themselves a stock can do no wrong right before relative strength cracks. That's precisely why I hunt for the next leader, not yesterday's news."
+              <div style="text-align: right; margin-top: 0.5rem;">— Mark Minervini, MarketWatch Interview, Apr 2025</div>
+            </div>
+          </div>
+        </section>
+      </div>
+      
+      <!-- 右カラム -->
+      <div class="column">
+        <section class="section">
+          <h2 class="section-title">補足メモ</h2>
+          <div class="card">
+            <div class="hand-drawn-box checklist">
+              <div class="star-point">
+                <p><span class="emphasis">条件1：売上高・EPSの急加速</span></p>
+                <p style="margin-left: 1rem; font-size: 14px;">「構造的伸び」かどうかを2Qで判定</p>
+              </div>
+              
+              <div class="star-point">
+                <p><span class="emphasis">条件2：高いROE</span></p>
+                <p style="margin-left: 1rem; font-size: 14px;">資本効率の良さは上昇トレンドの燃料</p>
+              </div>
+              
+              <div class="star-point">
+                <p><span class="emphasis">条件3：新規性ある製品・サービス</span></p>
+                <p style="margin-left: 1rem; font-size: 14px;">例：NVIDIAのCUDA、AppleのiPhone発表時</p>
+              </div>
+              
+              <div class="star-point">
+                <p><span class="emphasis">条件4：浮動株回転率の急上昇</span></p>
+                <p style="margin-left: 1rem; font-size: 14px;">機関投資家の本格参入サイン</p>
+              </div>
+              
+              <div class="star-point">
+                <p><span class="emphasis">条件5：相対強度(RS)指数≥80</span></p>
+                <p style="margin-left: 1rem; font-size: 14px;">価格がファンダを裏づけ始めた証拠</p>
+              </div>
+              
+              <div class="star-point">
+                <p><span class="emphasis">条件6：上昇トレンドの"テンプレート"</span></p>
+                <p style="margin-left: 1rem; font-size: 14px;">99%の大化け株は「押し目」から始動</p>
+              </div>
+              
+              <div class="star-point">
+                <p><span class="emphasis">条件7：出来高を伴うブレイクアウト</span></p>
+                <p style="margin-left: 1rem; font-size: 14px;">VCP（Volatility Contraction Pattern）は必修パターン</p>
+              </div>
+            </div>
+          </div>
+        </section>
+        
+        <section class="section">
+          <h2 class="section-title">まとめ——次の一手</h2>
+          <div class="card">
+            <div class="number-item">
+              <div class="number">1</div>
+              <div class="number-content arrow">
+                <p><span class="highlight">時価総額30〜300億ドル帯</span>に黄金郷がある。</p>
+              </div>
+            </div>
+            
+            <div class="number-item">
+              <div class="number">2</div>
+              <div class="number-content arrow">
+                <p><span class="highlight">質的転換点</span>（New Product / New Model / New Market）を敏感に察知。</p>
+              </div>
+            </div>
+            
+            <div class="number-item">
+              <div class="number">3</div>
+              <div class="number-content">
+                <p><span class="highlight">Check-list → Watch-list → Kill-list</span>——ルールが銘柄を選び、同時に切り捨ても行う。</p>
+              </div>
+            </div>
+            
+            <div style="margin-top: 2rem; padding: 1rem; background-color: rgba(242, 196, 61, 0.15); border-radius: 12px; position: relative;">
+              <p>"次のアマゾン"がどこから現れるかは誰にもわかりません。しかし、<span class="emphasis">最大勝利株の99%が備えた7条件</span>を日々点検していれば、チャートがシグナルを灯したその瞬間をつかみ損ねることはないでしょう。</p>
+              <div style="position: absolute; top: -12px; right: -12px; width: 60px; height: 60px; background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' fill=\'none\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath d=\'M30 4L37.3 23.1H57.3L41 35.4L48.3 54.5L30 41.5L11.7 54.5L19 35.4L2.7 23.1H22.7L30 4Z\' stroke=\'%23F25C05\' stroke-width=\'2\' stroke-linecap=\'round\' stroke-linejoin=\'round\'/%3E%3C/svg%3E'); background-size: contain; background-repeat: no-repeat;"></div>
+            </div>
+          </div>
+          
+          <div class="card" style="margin-top: 2rem;">
+            <h3 style="font-size: 16px; margin-bottom: 1rem; color: var(--fashion-1);">実践のヒント</h3>
+            <ul style="list-style-type: none; padding-left: 0;">
+              <li style="position: relative; padding-left: 2rem; margin-bottom: 0.75rem;">
+                <span style="position: absolute; left: 0; top: 0; color: var(--fashion-4);">📊</span>
+                <span>週末のスクリーニングを習慣化する</span>
+              </li>
+              <li style="position: relative; padding-left: 2rem; margin-bottom: 0.75rem;">
+                <span style="position: absolute; left: 0; top: 0; color: var(--fashion-4);">📝</span>
+                <span>取引ジャーナルを記録し、パターンを学ぶ</span>
+              </li>
+              <li style="position: relative; padding-left: 2rem; margin-bottom: 0.75rem;">
+                <span style="position: absolute; left: 0; top: 0; color: var(--fashion-4);">📌</span>
+                <span>ウォッチリストは常に15〜20銘柄に絞る</span>
+              </li>
+              <li style="position: relative; padding-left: 2rem;">
+                <span style="position: absolute; left: 0; top: 0; color: var(--fashion-4);">✏️</span>
+                <span>7条件をチェックリスト化して毎回確認</span>
+              </li>
+            </ul>
+          </div>
+        </section>
+      </div>
+    </div>
+    
+    <!-- フッター -->
+    <div class="footer">
+      <p>作成日: 2025-04-21 | 出典: マーク・ミネルヴィーニの講演内容より | グラフィックレコーディング風インフォグラフィック</p>
+    </div>
+  </div>
+</body>
+</html>

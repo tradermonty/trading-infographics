@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>モメンタム戦略</title>
+    <link rel="icon" type="image/png" href="../images/monty.png">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Yomogi&family=Zen+Kurenaido&family=Kaisei+Decol:wght@400;700&display=swap');
+        
+        :root {
+            --fashion-1: #593C47;
+            --fashion-2: #F2E63D;
+            --fashion-3: #F2C53D;
+            --fashion-4: #F25C05;
+            --fashion-5: #F24405;
+            --text-dark: #334155;
+            --text-title: #1e40af;
+            --bg-light: #fff;
+            --shadow: rgba(0, 0, 0, 0.1);
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Kaisei Decol', serif;
+            background-color: #f8f9fa;
+            color: var(--text-dark);
+            line-height: 1.4;
+            padding: 0;
+            margin: 0;
+        }
+
+        .fixed-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: linear-gradient(135deg, var(--fashion-1), var(--fashion-5));
+            padding: 10px 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .fixed-header:hover {
+            background: linear-gradient(135deg, var(--fashion-5), var(--fashion-1));
+        }
+
+        .fixed-header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .header-logo {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .fixed-header h1 {
+            font-family: 'Zen Kurenaido', sans-serif;
+            font-size: 24px;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            background: linear-gradient(to right, white, var(--fashion-2));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin: 0;
+            pointer-events: none;
+        }
+
+        .main-content {
+            margin-top: 60px;
+            padding: 20px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hidden {
+            display: none !important;
+            visibility: hidden;
+            opacity: 0;
+        }
+
+        .language-switch {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1001;
+            display: none;
+        }
+        
+        .language-switch button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 20px;
+            background: linear-gradient(135deg, var(--fashion-1), var(--fashion-5));
+            color: white;
+            cursor: pointer;
+            font-family: 'Yomogi', cursive;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .language-switch button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(135deg, var(--fashion-1), var(--fashion-5));
+            color: white;
+            margin-top: 40px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-logo {
+            font-family: 'Zen Kurenaido', sans-serif;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 15px;
+        }
+
+        .footer-social a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .footer-social a:hover {
+            color: var(--fashion-2);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .fixed-header h1 {
+                font-size: 20px;
+            }
+            
+            .main-content {
+                margin-top: 50px;
+                padding: 10px;
+            }
+
+            .language-switch {
+                top: 10px;
+                right: 10px;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="language-switch">
+        <button onclick="toggleLanguage()">English</button>
+    </div>
+
+    <div class="fixed-header" onclick="window.location.href='../index.html'">
+        <div class="fixed-header-content">
+            <img src="../images/monty.png" alt="Monty Trader Logo" class="header-logo">
+            <h1 class="ja">モンティの株式トレードインフォグラフィックス集</h1>
+            <h1 class="en hidden">Monty's Stock Trading Infographics Collection</h1>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>モメンタム戦略のグラフィックレコーディング</title>
+  <link href="https://fonts.googleapis.com/css2?family=Yomogi&family=Zen+Kurenaido&family=Kaisei+Decol&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --fashion-1: #593C47;
+      --fashion-2: #F2E63D;
+      --fashion-3: #F2C53D;
+      --fashion-4: #F25C05;
+      --fashion-5: #F24405;
+    }
+    
+    body {
+      font-family: 'Zen Kurenaido', sans-serif;
+      background-color: #FAFAFA;
+      color: #334155;
+      line-height: 1.4;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+      border-bottom: 3px solid var(--fashion-3);
+      padding-bottom: 15px;
+    }
+    
+    .title-container {
+      flex: 1;
+    }
+    
+    h1 {
+      font-family: 'Kaisei Decol', serif;
+      font-size: 32px;
+      font-weight: bold;
+      margin: 0;
+      padding: 10px 0;
+      background: linear-gradient(to right, var(--fashion-1), var(--fashion-5));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    }
+    
+    .meta-info {
+      font-size: 16px;
+      color: #475569;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+    }
+    
+    .content {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    
+    .column {
+      flex: 1;
+      min-width: 30%;
+    }
+    
+    .card {
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+      padding: 20px;
+      margin-bottom: 20px;
+      position: relative;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+    }
+    
+    h2 {
+      font-size: 18px;
+      color: #1e40af;
+      border-bottom: 2px dashed var(--fashion-3);
+      padding-bottom: 5px;
+      margin-top: 0;
+      display: flex;
+      align-items: center;
+      font-family: 'Kaisei Decol', serif;
+    }
+    
+    h2::before {
+      content: "✏️";
+      margin-right: 8px;
+    }
+    
+    p {
+      font-size: 14px;
+      margin-bottom: 15px;
+      font-family: 'Yomogi', cursive;
+    }
+    
+    .highlight {
+      background: linear-gradient(transparent 60%, var(--fashion-2) 40%);
+      font-weight: bold;
+    }
+    
+    .keyword {
+      color: var(--fashion-5);
+      font-weight: bold;
+      text-decoration: underline;
+      text-decoration-color: var(--fashion-4);
+      text-decoration-style: wavy;
+    }
+    
+    .handdrawn-box {
+      border: 3px solid var(--fashion-1);
+      border-radius: 15px;
+      padding: 10px;
+      margin: 15px 0;
+      position: relative;
+    }
+    
+    .handdrawn-box::before {
+      content: "";
+      position: absolute;
+      top: -10px;
+      left: 20px;
+      background: white;
+      padding: 0 10px;
+    }
+    
+    .arrow {
+      position: relative;
+      margin: 15px 0;
+      text-align: center;
+    }
+    
+    .arrow::after {
+      content: "↓";
+      font-size: 24px;
+      color: var(--fashion-4);
+    }
+    
+    .bubble {
+      background: rgba(242, 230, 61, 0.2);
+      border-radius: 20px;
+      padding: 10px 15px;
+      position: relative;
+      margin: 20px 0;
+      border: 2px solid var(--fashion-3);
+    }
+    
+    .bubble::before {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 0;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      border-bottom: 15px solid var(--fashion-3);
+      top: -15px;
+      left: 20px;
+    }
+    
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 15px 0;
+      font-family: 'Zen Kurenaido', sans-serif;
+    }
+    
+    .data-table th, .data-table td {
+      padding: 8px;
+      text-align: center;
+      border: 1px dashed #ccc;
+    }
+    
+    .data-table th {
+      background-color: var(--fashion-1);
+      color: white;
+    }
+    
+    .data-table tr:nth-child(even) {
+      background-color: rgba(242, 230, 61, 0.1);
+    }
+    
+    .banner {
+      background: linear-gradient(to right, var(--fashion-3), var(--fashion-4));
+      color: white;
+      padding: 10px;
+      border-radius: 8px;
+      text-align: center;
+      margin: 15px 0;
+      font-weight: bold;
+      transform: rotate(-1deg);
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+    }
+    
+    .note {
+      font-size: 12px;
+      font-style: italic;
+      color: #666;
+      margin-top: 10px;
+      border-left: 3px solid var(--fashion-4);
+      padding-left: 10px;
+    }
+    
+    .conclusion {
+      font-weight: bold;
+      font-size: 16px;
+      color: var(--fashion-5);
+      text-align: center;
+      margin: 20px 0;
+    }
+    
+    footer {
+      margin-top: 30px;
+      padding-top: 15px;
+      border-top: 1px dashed var(--fashion-3);
+      font-size: 12px;
+      color: #666;
+      text-align: center;
+    }
+    
+    .icon {
+      margin-right: 5px;
+      font-size: 120%;
+    }
+    
+    .connector {
+      position: relative;
+      height: 40px;
+    }
+    
+    .connector::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      border-left: 2px dashed var(--fashion-4);
+    }
+    
+    .diagram {
+      display: flex;
+      justify-content: space-around;
+      margin: 20px 0;
+    }
+    
+    .diagram-item {
+      text-align: center;
+      padding: 10px;
+      background: white;
+      border-radius: 8px;
+      border: 2px solid var(--fashion-1);
+      width: 30%;
+      position: relative;
+    }
+    
+    .diagram-item::after {
+      content: "→";
+      position: absolute;
+      right: -20px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--fashion-4);
+      font-size: 20px;
+    }
+    
+    .diagram-item:last-child::after {
+      display: none;
+    }
+    
+    .tag {
+      display: inline-block;
+      background: var(--fashion-3);
+      color: black;
+      padding: 3px 8px;
+      border-radius: 15px;
+      font-size: 12px;
+      margin-right: 5px;
+      margin-bottom: 5px;
+    }
+    
+    @media (max-width: 768px) {
+      .content {
+        flex-direction: column;
+      }
+      
+      .column {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="title-container">
+        <h1>モメンタム戦略</h1>
+      </div>
+      <div class="meta-info">
+        <div>📆 1995年12月</div>
+        <div>📚 NBER Working Paper 5375</div>
+        <div>👥 Louis K.C. Chan, Narasimhan Jegadeesh, Josef Lakonishok</div>
+      </div>
+    </header>
+    
+    <div class="content">
+      <div class="column">
+        <div class="card">
+          <h2>モメンタム戦略とは❓</h2>
+          <p>株式市場では、<span class="highlight">過去のリターンに基づいて将来のリターンを予測できる</span>ことが広範囲の研究で示されています。</p>
+          <div class="bubble">
+            <p><span class="keyword">モメンタム戦略</span>：3〜12ヶ月の中期的な時間枠で、<span class="highlight">過去のウィナー銘柄（値上がり株）が引き続きルーザー銘柄（値下がり株）をアウトパフォーム</span>する傾向を利用した投資戦略 📈</p>
+          </div>
+          <p>この戦略は<span class="keyword">過去のウィナーを買い、過去のルーザーを売る</span>というシンプルなもので、科学的証拠が出る前から多くのプロ投資家が実践してきました。</p>
+        </div>
+        
+        <div class="card">
+          <h2>株価の反転現象に関する議論 🔄</h2>
+          <p>長期的な株価反転については多くの説明がありますが、中期的なモメンタムについては説得力のある説明が少なく、データマイニングの可能性も無視できません。</p>
+          
+          <div class="handdrawn-box">
+            <p>株価反転の説明例：</p>
+            <ul>
+              <li>ビッド・アスク・スプレッドの影響</li>
+              <li>リード・ラグ効果</li>
+              <li>投資家の過剰反応</li>
+              <li>ミクロ構造バイアス</li>
+              <li>期待リターンの時間変動</li>
+            </ul>
+          </div>
+          
+          <div class="banner">
+            もし戦略の理由を理解できなければ、その戦略はサンプル外でうまく機能しない統計的偶然である可能性が高い！
+          </div>
+        </div>
+        
+        <div class="card">
+          <h2>研究の目的 🔍</h2>
+          <p>本研究の目的は、<span class="highlight">過去のリターンに基づく将来の株式リターンの予測可能性の源泉を追跡すること</span>です。</p>
+          <p>特に<span class="keyword">株価モメンタム</span>と<span class="keyword">収益関連情報に対する市場の過小反応</span>の関係性を探ります。</p>
+          
+          <div class="diagram">
+            <div class="diagram-item">過去の株価動向</div>
+            <div class="diagram-item">市場の情報処理</div>
+            <div class="diagram-item">将来リターン</div>
+          </div>
+          
+          <p>収益サプライズへの市場反応が遅いことは既に示されており：</p>
+          <ul>
+            <li>予想外の高収益の企業は、予想外の低収益の企業をアウトパフォーム</li>
+            <li>この優れたパフォーマンスは収益発表後約6ヶ月間持続</li>
+            <li>アナリスト予想の修正に対する価格反応も同様に遅延</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="column">
+        <div class="card">
+          <h2>可能性のある説明 💡</h2>
+          <div class="handdrawn-box">
+            <p>モメンタム戦略の収益性の源泉：</p>
+            <div class="tag">1️⃣ 収益関連ニュースへの過小反応</div>
+            <div class="tag">2️⃣ ポジティブフィードバック取引による過剰反応</div>
+            <div class="tag">3️⃣ 異なる情報への市場の遅い反応</div>
+          </div>
+          
+          <p><span class="highlight">仮説1：</span> モメンタム戦略の収益性は、収益関連ニュースに関連する中期的リターンの構成要素によるもの</p>
+          <p><span class="highlight">仮説2：</span> ポジティブフィードバック取引による過剰反応が、ファンダメンタルズ情報がなくても株価を押し上げ、後に一時的な反転をもたらす</p>
+          <p><span class="highlight">仮説3：</span> 株価モメンタム戦略と収益モメンタム戦略は、市場の異なる情報への過小反応を利用している</p>
+        </div>
+        
+        <div class="card">
+          <h2>研究方法 📊</h2>
+          <p>1977年1月から1993年1月まで、毎月の初めに、すべての株式を過去6ヶ月のリターンまたは収益ニュースの指標でランク付けし、10のポートフォリオに分類しました。</p>
+          
+          <div class="bubble">
+            <p>収益サプライズの3つの測定方法：</p>
+            <ol>
+              <li><span class="keyword">標準化された予想外収益（SUE）</span>：過去4四半期からの変化を標準偏差で割ったもの</li>
+              <li><span class="keyword">アナウンスメント周辺の異常リターン（ABR）</span>：収益発表の前後のマーケットに対する超過リターン</li>
+              <li><span class="keyword">アナリスト予想の修正（REV6）</span>：過去6ヶ月間のIBESアナリスト収益予想の修正の移動平均</li>
+            </ol>
+          </div>
+          
+          <p>各モメンタム戦略について、ポートフォリオ形成後の期間のバイ・アンド・ホールド・リターンと、ポートフォリオの特性（簿価時価比率、キャッシュフロー/価格など）を報告しています。</p>
+        </div>
+        
+        <div class="card">
+          <h2>研究結果：株価モメンタム 📈</h2>
+          <div class="handdrawn-box">
+            <p>過去6ヶ月のリターンに基づくポートフォリオのパフォーマンス：</p>
+            <ul>
+              <li>ポートフォリオ形成後の12ヶ月間で、ウィナーとルーザーの間に<span class="highlight">15.4%もの大きな差</span></li>
+              <li>過去のリターンパフォーマンスと簿価時価比率に密接な関連</li>
+              <li>過去のウィナーはグラマー株（低簿価時価比率）、ルーザーはバリュー株（高簿価時価比率）に傾向</li>
+            </ul>
+          </div>
+          
+          <p>注目すべきは、ポートフォリオ間の過去の収益パフォーマンスの差が<span class="highlight">次の期間も継続する</span>こと：</p>
+          <ul>
+            <li>ウィナーとルーザーの標準化予想外収益（SUE）の差はポートフォリオ形成後の四半期でさらに広がる</li>
+            <li>市場は次の四半期の収益発表でも驚かされ続ける</li>
+            <li>最初の次の発表では、ウィナー株の異常リターンはルーザー株よりも2.6%高い</li>
+          </ul>
+          
+          <div class="note">
+            ポートフォリオ形成後最初の6ヶ月間におけるウィナーとルーザーの間のリターン差8.8%のうち、次の2回の四半期収益発表周辺の異常リターンの合計差3.6%が、この期間のモメンタム戦略のパフォーマンスの約41%を説明
+          </div>
+        </div>
+      </div>
+      
+      <div class="column">
+        <div class="card">
+          <h2>研究結果：収益モメンタム 💰</h2>
+          <p>標準化された予想外収益（SUE）に基づく戦略：</p>
+          <ul>
+            <li>ポートフォリオ形成後の最初の6ヶ月で、裁定取引ポートフォリオ（ポートフォリオ10-1）は<span class="highlight">6.8%のリターン</span>を獲得</li>
+            <li>優れたパフォーマンスは比較的短命で、1年後のリターン差は7.5%にわずかに上昇</li>
+            <li>その後の数年間では、極端なポートフォリオ間のリターンにわずかな差のみ</li>
+          </ul>
+          
+          <p>過去の収益発表周辺の異常リターン（ABR）に基づく戦略：</p>
+          <ul>
+            <li>有利な発表リターンのある株式は、不利な発表リターンのある株式を<span class="highlight">最初の6ヶ月で5.9%、最初の年で8.3%アウトパフォーム</span></li>
+            <li>四半期収益サプライズへの過小反応は、過去のリターンへの過小反応よりも短命な現象</li>
+          </ul>
+          
+          <p>アナリスト予想の修正（REV6）に基づく戦略：</p>
+          <ul>
+            <li>3つの収益サプライズ測定のうち、<span class="highlight">REV6に基づくソートが1年間のリターンで最大の差（9.7%）</span>をもたらす</li>
+            <li>他の点では、結果はSUEやABRの場合と非常に類似</li>
+          </ul>
+          
+          <div class="banner">
+            収益モメンタム戦略に関連するリターンの差は、株価モメンタム戦略と比較して一般的に小さく、より短期間持続する傾向があります
+          </div>
+        </div>
+        
+        <div class="card">
+          <h2>2つの戦略の関係性 🔗</h2>
+          <p>過去の6ヶ月リターンと収益サプライズによる2元分類の結果：</p>
+          
+          <div class="bubble">
+            <p>各変数（過去のリターンまたは収益サプライズ）は、他の変数が与えられた場合の将来のリターンに対して、<span class="highlight">増分的予測力を持つ</span>ことが判明</p>
+          </div>
+          
+          <p>例えば、過去の発表リターンとの組み合わせ：</p>
+          <ul>
+            <li>最も高くランクされたポートフォリオは最も低くランクされたポートフォリオを<span class="highlight">最初の6ヶ月で7.9%アウトパフォーム</span></li>
+            <li>SUEとの組み合わせでは6ヶ月差は8.1%</li>
+            <li>アナリスト修正との組み合わせでは6ヶ月差は8.8%</li>
+          </ul>
+          
+          <p>重要な結論：<span class="highlight">一方のモメンタム戦略が他方を包含するわけではなく、それぞれが異なる情報への過小反応を活用</span>している</p>
+          
+          <div class="note">
+            収益サプライズに関連する優れたパフォーマンスの構成要素は、過去のリターンに関連する構成要素よりも短命である傾向が示唆されています
+          </div>
+        </div>
+        
+        <div class="card">
+          <h2>価格および収益モメンタムはその後修正されるか？ 🤔</h2>
+          <p>モメンタム戦略の収益性が、将来の株価修正によって失われるかどうかを検討することで、競合する説明の一部を区別できます。</p>
+          
+          <div class="handdrawn-box">
+            <p>主な発見：</p>
+            <ul>
+              <li>株価モメンタムの一元分類（表2）では、<span class="highlight">リターン反転の直接的証拠を見つけることは困難</span></li>
+              <li>収益モメンタムの一元分類（表3〜5）でも、<span class="highlight">その後のリターン反転の強い兆候は見られない</span></li>
+              <li>悪いニュースのある株の将来のリターンは比較的低いままの傾向</li>
+            </ul>
+          </div>
+          
+          <p>二元分類（表6）では、株価モメンタムが収益ニュースで確認されるかどうかを制御すると、より明確な結果：</p>
+          <ul>
+            <li>高い過去のリターンが有利な収益ニュースで確認される場合、優れたパフォーマンスが継続</li>
+            <li>高い過去のリターンが収益ニュースで確認されない場合、<span class="highlight">2年目にはリターン反転が発生</span></li>
+            <li>低リターンと悪い収益ニュースの両方に苦しむポートフォリオは、<span class="highlight">ポートフォリオ形成後も2〜3年間、長引く下落を続ける</span></li>
+          </ul>
+          
+          <div class="banner">
+            価格への影響は永続的な性質を持つように見え、ポジティブフィードバック取引仮説よりも、市場の情報への緩やかな反応を支持しています
+          </div>
+        </div>
+        
+        <div class="card">
+          <h2>結論：市場は新情報にゆっくりと反応する 🧩</h2>
+          <div class="conclusion">
+            証拠は、株式市場が過去のリターンや収益ニュースに含まれる情報に迅速に対応せず、代わりに調整が徐々に行われ、その後のリターンのドリフトにつながることを示唆しています
+          </div>
+          
+          <p>主な発見のまとめ：</p>
+          <ul>
+            <li>過去のリターンと収益サプライズは共に将来のリターンを予測</li>
+            <li>各モメンタム変数は将来のリターンに対する限界的な予測力を持つ</li>
+            <li>最も悪い過去の収益パフォーマンスを持つ株式のリターンは、最大3年間、平均を下回り続ける</li>
+            <li>アナリストも過去の収益ニュースに対して予想を緩やかに修正、特に悪いニュースの場合に顕著</li>
+            <li>証拠は、過去のリターンや収益ニュースへの市場の遅い反応を支持</li>
+          </ul>
+          
+          <div class="note">
+            注意：モメンタム戦略は取引集約的であり、高いモメンタムを持つ株は小型株である傾向があり、取引コストが比較的高い。これらの実装の問題は、モメンタム戦略から得られる利益を減少させる可能性があります。
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <footer>
+      <p>出典: Chan, L.K.C., Jegadeesh, N., & Lakonishok, J. (1995). Momentum Strategies. NBER Working Paper 5375.</p>
+    </footer>
+  </div>
+</body>
+</html>
+
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">Monty Trader</div>
+            <div class="footer-social">
+                <a href="https://x.com/monty_investor" target="_blank">@monty_investor</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleLanguage() {
+            const jaElements = document.querySelectorAll('.ja');
+            const enElements = document.querySelectorAll('.en');
+            const button = document.querySelector('.language-switch button');
+            
+            jaElements.forEach(el => el.classList.toggle('hidden'));
+            enElements.forEach(el => el.classList.toggle('hidden'));
+            
+            button.textContent = button.textContent === 'English' ? '日本語' : 'English';
+        }
+    </script>
+</body>
+</html> 
