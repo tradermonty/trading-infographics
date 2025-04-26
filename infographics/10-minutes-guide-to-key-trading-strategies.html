@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>トレーディング戦略の種類</title>
+    <link rel="icon" type="image/png" href="../images/monty.png">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Yomogi&family=Zen+Kurenaido&family=Kaisei+Decol:wght@400;700&display=swap');
+        
+        :root {
+            --fashion-1: #593C47;
+            --fashion-2: #F2E63D;
+            --fashion-3: #F2C53D;
+            --fashion-4: #F25C05;
+            --fashion-5: #F24405;
+            --text-dark: #334155;
+            --text-title: #1e40af;
+            --bg-light: #fff;
+            --shadow: rgba(0, 0, 0, 0.1);
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Kaisei Decol', serif;
+            background-color: #f8f9fa;
+            color: var(--text-dark);
+            line-height: 1.4;
+            padding: 0;
+            margin: 0;
+        }
+
+        .fixed-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: linear-gradient(135deg, var(--fashion-1), var(--fashion-5));
+            padding: 10px 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .fixed-header:hover {
+            background: linear-gradient(135deg, var(--fashion-5), var(--fashion-1));
+        }
+
+        .fixed-header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .header-logo {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .fixed-header h1 {
+            font-family: 'Zen Kurenaido', sans-serif;
+            font-size: 24px;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            background: linear-gradient(to right, white, var(--fashion-2));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin: 0;
+            pointer-events: none;
+        }
+
+        .main-content {
+            margin-top: 60px;
+            padding: 20px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hidden {
+            display: none !important;
+            visibility: hidden;
+            opacity: 0;
+        }
+
+        .language-switch {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1001;
+            display: none;
+        }
+        
+        .language-switch button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 20px;
+            background: linear-gradient(135deg, var(--fashion-1), var(--fashion-5));
+            color: white;
+            cursor: pointer;
+            font-family: 'Yomogi', cursive;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .language-switch button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(135deg, var(--fashion-1), var(--fashion-5));
+            color: white;
+            margin-top: 40px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-logo {
+            font-family: 'Zen Kurenaido', sans-serif;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 15px;
+        }
+
+        .footer-social a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .footer-social a:hover {
+            color: var(--fashion-2);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .fixed-header h1 {
+                font-size: 20px;
+            }
+            
+            .main-content {
+                margin-top: 50px;
+                padding: 10px;
+            }
+
+            .language-switch {
+                top: 10px;
+                right: 10px;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="language-switch">
+        <button onclick="toggleLanguage()">English</button>
+    </div>
+
+    <div class="fixed-header" onclick="window.location.href='../index.html'">
+        <div class="fixed-header-content">
+            <img src="../images/monty.png" alt="Monty Trader Logo" class="header-logo">
+            <h1 class="ja">モンティの株式トレードインフォグラフィックス集</h1>
+            <h1 class="en hidden">Monty's Stock Trading Infographics Collection</h1>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>トレーディング戦略の種類：グラフィックレコーディング</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Yomogi&family=Zen+Kurenaido&family=Kaisei+Decol:wght@400;700&display=swap');
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Kaisei Decol', serif;
+            background-color: #f8f9fa;
+            color: #334155;
+            line-height: 1.4;
+            padding: 20px;
+            background-image: url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h100v100H0z" fill="white"/><path d="M20 20h1v1h-1z M40 40h1v1h-1z M60 60h1v1h-1z M80 80h1v1h-1z" fill="%23593C47" fill-opacity="0.05"/></svg>');
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 30px;
+            background: linear-gradient(135deg, #593C47 0%, #F25C05 100%);
+            color: white;
+            position: relative;
+        }
+        
+        .title-container {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .title {
+            font-family: 'Zen Kurenaido', sans-serif;
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            position: relative;
+            display: inline-block;
+            background: linear-gradient(90deg, #F2E63D, #F25C05);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .title::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, #F2E63D, #F25C05);
+            border-radius: 3px;
+        }
+        
+        .subtitle {
+            font-family: 'Yomogi', cursive;
+            font-size: 16px;
+            color: #f8f9fa;
+        }
+        
+        .metadata {
+            font-family: 'Kaisei Decol', serif;
+            font-size: 14px;
+            color: #f8f9fa;
+            text-align: right;
+        }
+        
+        .main-content {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 30px;
+            position: relative;
+        }
+        
+        .intro-section {
+            width: 100%;
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: rgba(242, 230, 60, 0.1);
+            border-radius: 12px;
+            border: 2px dashed #593C47;
+            position: relative;
+        }
+        
+        .intro-content {
+            font-family: 'Kaisei Decol', serif;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        .intro-icon {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-family: 'Yomogi', cursive;
+            color: #593C47;
+            font-weight: bold;
+            font-size: 18px;
+            border: 2px solid #593C47;
+        }
+        
+        .strategy-column {
+            width: 33.333%;
+            padding: 15px;
+        }
+        
+        .strategy-card {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            height: 100%;
+            position: relative;
+            border: 2px solid;
+        }
+        
+        .trend-follow {
+            border-color: #F2C53D;
+        }
+        
+        .mean-reversion {
+            border-color: #F25C05;
+        }
+        
+        .arbitrage {
+            border-color: #F24405;
+        }
+        
+        .strategy-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .strategy-header {
+            padding: 15px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .trend-follow .strategy-header {
+            background-color: #F2C53D;
+        }
+        
+        .mean-reversion .strategy-header {
+            background-color: #F25C05;
+        }
+        
+        .arbitrage .strategy-header {
+            background-color: #F24405;
+        }
+        
+        .strategy-title {
+            font-family: 'Zen Kurenaido', sans-serif;
+            font-size: 24px;
+            color: #fff;
+            margin-bottom: 5px;
+            position: relative;
+            z-index: 1;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+        }
+        
+        .english-title {
+            font-family: 'Kaisei Decol', serif;
+            font-size: 14px;
+            color: rgba(255,255,255,0.8);
+            font-style: italic;
+        }
+        
+        .strategy-icon {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 36px;
+            color: rgba(255,255,255,0.3);
+        }
+        
+        .strategy-content {
+            padding: 20px;
+        }
+        
+        .definition {
+            font-family: 'Kaisei Decol', serif;
+            font-size: 16px;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed #e2e8f0;
+        }
+        
+        .key-point {
+            font-family: 'Kaisei Decol', serif;
+            font-size: 14px;
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 25px;
+        }
+        
+        .key-point:before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: #593C47;
+            font-weight: bold;
+        }
+        
+        .pros-cons {
+            display: flex;
+            margin-top: 20px;
+            border-top: 1px dashed #e2e8f0;
+            padding-top: 15px;
+        }
+        
+        .pros, .cons {
+            width: 50%;
+            padding: 10px;
+        }
+        
+        .pros h4, .cons h4 {
+            font-family: 'Yomogi', cursive;
+            font-size: 16px;
+            margin-bottom: 10px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .pros h4 {
+            color: #15803d;
+        }
+        
+        .cons h4 {
+            color: #b91c1c;
+        }
+        
+        .pros h4:after, .cons h4:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 25%;
+            width: 50%;
+            height: 2px;
+            border-radius: 2px;
+        }
+        
+        .pros h4:after {
+            background-color: #15803d;
+        }
+        
+        .cons h4:after {
+            background-color: #b91c1c;
+        }
+        
+        .pros-cons-item {
+            font-family: 'Kaisei Decol', serif;
+            font-size: 13px;
+            margin-bottom: 5px;
+            position: relative;
+            padding-left: 20px;
+        }
+        
+        .pros-cons-item:before {
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        
+        .pros .pros-cons-item:before {
+            content: '👍';
+            font-size: 14px;
+        }
+        
+        .cons .pros-cons-item:before {
+            content: '👎';
+            font-size: 14px;
+        }
+        
+        .quote {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: rgba(89, 60, 71, 0.05);
+            border-left: 3px solid #593C47;
+            border-radius: 0 5px 5px 0;
+            font-family: 'Yomogi', cursive;
+            font-style: italic;
+            font-size: 14px;
+            color: #475569;
+            position: relative;
+        }
+        
+        .quote:before {
+            content: '"';
+            position: absolute;
+            left: 5px;
+            top: 0;
+            font-size: 30px;
+            color: #593C47;
+            opacity: 0.3;
+        }
+        
+        .example {
+            margin-top: 15px;
+            padding: 10px;
+            background-color: rgba(242, 230, 60, 0.1);
+            border-radius: 8px;
+            font-family: 'Kaisei Decol', serif;
+            font-size: 14px;
+        }
+        
+        .example-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #593C47;
+            display: flex;
+            align-items: center;
+        }
+        
+        .example-title:before {
+            content: '📋';
+            margin-right: 5px;
+        }
+        
+        .combination-section {
+            width: 100%;
+            margin-top: 30px;
+            padding: 25px;
+            background: linear-gradient(135deg, rgba(242, 230, 60, 0.1) 0%, rgba(242, 68, 4, 0.1) 100%);
+            border-radius: 12px;
+            position: relative;
+            border: 2px dashed #593C47;
+        }
+        
+        .combination-title {
+            font-family: 'Zen Kurenaido', sans-serif;
+            font-size: 24px;
+            color: #593C47;
+            margin-bottom: 15px;
+            text-align: center;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: white;
+            padding: 5px 20px;
+            border-radius: 20px;
+            border: 2px solid #593C47;
+            top: -40px;
+        }
+        
+        .combination-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        
+        .combination-text {
+            width: 60%;
+            font-family: 'Kaisei Decol', serif;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        .combination-diagram {
+            width: 35%;
+            background-color: white;
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 200px;
+        }
+        
+        .diagram-title {
+            font-family: 'Yomogi', cursive;
+            font-size: 16px;
+            color: #593C47;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .diagram-content {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+        
+        .strategy-bubble {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Yomogi', cursive;
+            font-size: 12px;
+            color: white;
+            position: relative;
+            margin: 0 5px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .strategy-bubble:hover {
+            transform: scale(1.1);
+        }
+        
+        .trend-bubble {
+            background-color: #F2C53D;
+        }
+        
+        .mean-bubble {
+            background-color: #F25C05;
+        }
+        
+        .arb-bubble {
+            background-color: #F24405;
+        }
+        
+        .bubble-connector {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+        
+        .conclusion-section {
+            width: 100%;
+            margin-top: 30px;
+            padding: 20px;
+            background-color: rgba(89, 60, 71, 0.1);
+            border-radius: 12px;
+            position: relative;
+        }
+        
+        .conclusion-title {
+            font-family: 'Zen Kurenaido', sans-serif;
+            font-size: 20px;
+            color: #593C47;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+            background-color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            top: -30px;
+            left: 20px;
+            border: 2px solid #593C47;
+        }
+        
+        .conclusion-content {
+            font-family: 'Kaisei Decol', serif;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        .footer {
+            width: 100%;
+            padding: 20px;
+            background-color: #593C47;
+            color: white;
+            text-align: center;
+            font-family: 'Kaisei Decol', serif;
+            font-size: 14px;
+            margin-top: 30px;
+        }
+        
+        .highlight {
+            background: linear-gradient(transparent 60%, #F2E63D 60%);
+            font-weight: bold;
+        }
+        
+        .keyword {
+            color: #F25C05;
+            font-weight: bold;
+            position: relative;
+        }
+        
+        .keyword::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #F25C05;
+            border-radius: 2px;
+        }
+        
+        .bubble {
+            display: inline-block;
+            padding: 3px 10px;
+            background-color: #593C47;
+            color: white;
+            border-radius: 15px;
+            font-size: 12px;
+            margin: 0 3px;
+        }
+        
+        .hand-drawn-arrow {
+            position: absolute;
+            opacity: 0.6;
+            z-index: 0;
+        }
+        
+        .stars {
+            position: absolute;
+            font-size: 14px;
+            color: #F2C53D;
+        }
+        
+        .stars:nth-child(1) {
+            top: 20px;
+            right: 40px;
+        }
+        
+        .stars:nth-child(2) {
+            bottom: 15px;
+            left: 30px;
+        }
+        
+        @media (max-width: 900px) {
+            .strategy-column {
+                width: 100%;
+                margin-bottom: 30px;
+            }
+            
+            .combination-text,
+            .combination-diagram {
+                width: 100%;
+            }
+            
+            .combination-diagram {
+                margin-top: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="title-container">
+                <h1 class="title">トレーディング戦略の種類</h1>
+                <p class="subtitle">10分で理解する3つの基本戦略とその組み合わせ</p>
+            </div>
+            <div class="metadata">
+                <p>2025年4月26日作成</p>
+                <p>出典: Unbiased Trading (YouTube)</p>
+            </div>
+            <div class="stars">✨✨✨</div>
+            <div class="stars">✨✨</div>
+        </div>
+        
+        <div class="main-content">
+            <div class="intro-section">
+                <div class="intro-icon">📊 はじめに</div>
+                <div class="intro-content">
+                    このインフォグラフィックでは、トレーダーが知っておくべき<span class="highlight">主要な取引戦略タイプ</span>である「<span class="keyword">トレンドフォロー</span>」「<span class="keyword">平均回帰</span>」「<span class="keyword">アービトラージ</span>」の3つについて解説します。これらの戦略は株式、暗号資産、外国為替、オプションなど、多様な市場で活用できます。それぞれの特徴、メリット・デメリット、具体的な例を知ることで、収益性の高い戦略の構築と最適化が可能になります。
+                </div>
+            </div>
+            
+            <div class="strategy-column">
+                <div class="strategy-card trend-follow">
+                    <div class="strategy-header">
+                        <h2 class="strategy-title">トレンドフォロー</h2>
+                        <p class="english-title">Trend Following</p>
+                        <div class="strategy-icon">📈</div>
+                    </div>
+                    <div class="strategy-content">
+                        <div class="definition">
+                            <span class="bubble">定義</span> 方向性のあるモメンタム、つまり上昇トレンド（強気トレンド）と下降トレンド（弱気トレンド）に乗じて利益を得ることを目指す戦略。
+                        </div>
+                        
+                        <div class="key-point">低い勝率（20-30%程度）だが、成功したトレードにおけるリスクリワード比率が非常に高い（例：10対1の利益）</div>
+                        <div class="key-point">損失を小さく抑え、利益を最大限に伸ばすことが重要</div>
+                        <div class="key-point">Bill DunnやJerry Parkerといった著名なトレーダーが長期間にわたり成功</div>
+                        
+                        <div class="pros-cons">
+                            <div class="pros">
+                                <h4>メリット</h4>
+                                <div class="pros-cons-item">戦略の概念がシンプルで理解しやすい</div>
+                                <div class="pros-cons-item">誰でも比較的容易に始められる</div>
+                            </div>
+                            <div class="cons">
+                                <h4>デメリット</h4>
+                                <div class="pros-cons-item">レンジ相場で長期ドローダウンを経験する可能性</div>
+                                <div class="pros-cons-item">精神的に厳しい期間がある</div>
+                            </div>
+                        </div>
+                        
+                        <div class="example">
+                            <div class="example-title">具体例</div>
+                            <p>・移動平均線のクロスオーバー<br>・200日移動平均線へのタッチ</p>
+                        </div>
+                        
+                        <div class="quote">「トレンドフォローの核となる哲学は、損失をできるだけ小さく抑えながら、利益を劇的に伸ばすことです。」</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="strategy-column">
+                <div class="strategy-card mean-reversion">
+                    <div class="strategy-header">
+                        <h2 class="strategy-title">平均回帰</h2>
+                        <p class="english-title">Mean Reversion</p>
+                        <div class="strategy-icon">🔄</div>
+                    </div>
+                    <div class="strategy-content">
+                        <div class="definition">
+                            <span class="bubble">定義</span> 市場価格は平均値から大きく乖離した後、再び平均値に戻るという考えに基づいて利益を得る戦略。市場をゴムバンドに例え、伸びすぎたゴムバンドは元に戻るように、価格も平均値に戻る傾向を利用する。
+                        </div>
+                        
+                        <div class="key-point">価格が平均から大きく乖離した過剰なピークや谷で取引を行う</div>
+                        <div class="key-point">高い勝率を持つことが多いが、リスクリワード比率は低い傾向にある</div>
+                        <div class="key-point">価格が平均からさらに乖離した場合、ポジションを積み増すことが戦略的に正しい場合も</div>
+                        
+                        <div class="pros-cons">
+                            <div class="pros">
+                                <h4>メリット</h4>
+                                <div class="pros-cons-item">チョッピーな市場でも利益を上げやすい</div>
+                                <div class="pros-cons-item">統計的指標で行き過ぎを判断可能</div>
+                            </div>
+                            <div class="cons">
+                                <h4>デメリット</h4>
+                                <div class="pros-cons-item">トレンド転換時に大きな損失のリスク</div>
+                                <div class="pros-cons-item">一度の大損失で利益を失う可能性</div>
+                            </div>
+                        </div>
+                        
+                        <div class="example">
+                            <div class="example-title">具体例</div>
+                            <p>・標準偏差やZスコアによる行き過ぎ判断<br>・ボリンジャーバンドの活用</p>
+                        </div>
+                        
+                        <div class="quote">「平均回帰を説明する最良の方法は、市場をゴムバンドのように考えることです。」</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="strategy-column">
+                <div class="strategy-card arbitrage">
+                    <div class="strategy-header">
+                        <h2 class="strategy-title">アービトラージ</h2>
+                        <p class="english-title">Arbitrage</p>
+                        <div class="strategy-icon">⚖️</div>
+                    </div>
+                    <div class="strategy-content">
+                        <div class="definition">
+                            <span class="bubble">定義</span> 市場の非効率性、特に価格のずれを利用して、リスクなしで利益を得る戦略。異なる取引所間や、異なる資産間での価格差を利用する。
+                        </div>
+                        
+                        <div class="key-point">取引手数料や流動性などの要因を考慮する必要がある</div>
+                        <div class="key-point">真のアービトラージであれば、原則として損失を出すことは非常に難しい</div>
+                        <div class="key-point">高いシャープレシオ（リスク調整後収益率）を持つことが多い</div>
+                        
+                        <div class="pros-cons">
+                            <div class="pros">
+                                <h4>メリット</h4>
+                                <div class="pros-cons-item">あらゆる市場状況で機能する可能性</div>
+                                <div class="pros-cons-item">伝統的投資との相関が低い</div>
+                            </div>
+                            <div class="cons">
+                                <h4>デメリット</h4>
+                                <div class="pros-cons-item">利益機会はすぐに解消される傾向</div>
+                                <div class="pros-cons-item">数時間または数日しか持続しない</div>
+                            </div>
+                        </div>
+                        
+                        <div class="example">
+                            <div class="example-title">具体例</div>
+                            <p>・取引所間の価格差を利用<br>・異なる資産間での価格のずれを活用</p>
+                        </div>
+                        
+                        <div class="quote">「アービトラージのマイナス面は、これらの機会が通常非常に速く消えるということです。」</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="combination-section">
+                <div class="combination-title">複数の戦略の組み合わせ</div>
+                <div class="combination-content">
+                    <div class="combination-text">
+                        単一の戦略に依存するのではなく、<span class="highlight">複数の戦略タイプを組み合わせること</span>が、一貫したリスク調整後収益を得るための最も強力な方法です。<br><br>
+                        
+                        例えば、トレンドフォロー戦略がレンジ相場で苦戦する時期には、平均回帰戦略が有効になります。また、アービトラージ戦略は、市場の状況に関わらず、低相関または無相関の収益源を提供できます。<br><br>
+                        
+                        Jim Simonsの言葉「すべてには機会費用がある」のように、戦略タイプにおいても同様のことが言えます。多くのトレーダーは単一の「素晴らしい戦略」に目を向けがちですが、<span class="keyword">異なる戦略タイプを組み合わせること</span>が、長期的に安定したパフォーマンスにつながります。これは「<span class="highlight">トレーディングにおける聖杯</span>」とも言える考え方です。
+                    </div>
+                    <div class="combination-diagram">
+                        <div class="diagram-title">戦略の相互補完性</div>
+                        <div class="diagram-content">
+                            <div class="strategy-bubble trend-bubble">トレンド<br>フォロー</div>
+                            <div class="strategy-bubble mean-bubble">平均<br>回帰</div>
+                            <div class="strategy-bubble arb-bubble">アービト<br>ラージ</div>
+                            <svg class="bubble-connector" viewBox="0 0 360 120" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M90,60 L180,60" stroke="#593C47" stroke-width="2" fill="none" stroke-dasharray="5,5" />
+                                <path d="M180,60 L270,60" stroke="#593C47" stroke-width="2" fill="none" stroke-dasharray="5,5" />
+                                <path d="M90,60 C90,100 270,100 270,60" stroke="#593C47" stroke-width="2" fill="none" stroke-dasharray="5,5" />
+                                <text x="150" y="40" font-family="Yomogi, cursive" font-size="12" fill="#593C47">相互補完</text>
+                                <text x="230" y="100" font-family="Yomogi, cursive" font-size="12" fill="#593C47">低相関</text>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="conclusion-section">
+                <div class="conclusion-title">結論</div>
+                                    <div class="conclusion-content">
+                    主要な取引戦略タイプである<span class="keyword">トレンドフォロー</span>、<span class="keyword">平均回帰</span>、<span class="keyword">アービトラージ</span>の基本的な概念、メリット・デメリットを理解することで、トレーダーは自身の取引スタイルや市場環境に合わせて戦略を構築・最適化することができます。<br><br>
+                    
+                    特に重要なのは、<span class="highlight">単一の戦略に固執するのではなく、複数の戦略を組み合わせること</span>です。これによって、あらゆる市場環境で一貫したリターンを得る可能性が高まります。異なる戦略タイプを組み合わせ、低相関の収益源を活用することこそが、長期的に安定したパフォーマンスを実現する鍵となるでしょう。
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>© 2025 グラフィックレコーディング | 出典: Unbiased Trading (YouTube) - "Every type of trading strategy explained in 10 minutes."</p>
+            <p><a href="https://youtu.be/sRDvTq_Z6HY?si=KY5LnbiTXIPP90zV" style="color: #F2E63D; text-decoration: none; font-weight: bold;">https://youtu.be/sRDvTq_Z6HY?si=KY5LnbiTXIPP90zV</a> 🔗</p>
+        </div>
+    </div>
+</body>
+</html>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">Monty Trader</div>
+            <div class="footer-social">
+                <a href="https://x.com/monty_investor" target="_blank">@monty_investor</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleLanguage() {
+            const jaElements = document.querySelectorAll('.ja');
+            const enElements = document.querySelectorAll('.en');
+            const button = document.querySelector('.language-switch button');
+            
+            jaElements.forEach(el => el.classList.toggle('hidden'));
+            enElements.forEach(el => el.classList.toggle('hidden'));
+            
+            button.textContent = button.textContent === 'English' ? '日本語' : 'English';
+        }
+    </script>
+</body>
+</html> 
