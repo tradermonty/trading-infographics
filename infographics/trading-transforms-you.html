@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>トレーディングがあなたを成長させる</title>
+    <link rel="icon" type="image/png" href="../images/monty.png">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Yomogi&family=Zen+Kurenaido&family=Kaisei+Decol:wght@400;700&display=swap');
+        
+        :root {
+            --fashion-1: #593C47;
+            --fashion-2: #F2E63D;
+            --fashion-3: #F2C53D;
+            --fashion-4: #F25C05;
+            --fashion-5: #F24405;
+            --text-dark: #334155;
+            --text-title: #1e40af;
+            --bg-light: #fff;
+            --shadow: rgba(0, 0, 0, 0.1);
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Kaisei Decol', serif;
+            background-color: #f8f9fa;
+            color: var(--text-dark);
+            line-height: 1.4;
+            padding: 0;
+            margin: 0;
+        }
+
+        .fixed-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: linear-gradient(135deg, var(--fashion-1), var(--fashion-5));
+            padding: 10px 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .fixed-header:hover {
+            background: linear-gradient(135deg, var(--fashion-5), var(--fashion-1));
+        }
+
+        .fixed-header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .header-logo {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .fixed-header h1 {
+            font-family: 'Zen Kurenaido', sans-serif;
+            font-size: 24px;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            background: linear-gradient(to right, white, var(--fashion-2));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin: 0;
+            pointer-events: none;
+        }
+
+        .main-content {
+            margin-top: 60px;
+            padding: 20px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hidden {
+            display: none !important;
+            visibility: hidden;
+            opacity: 0;
+        }
+
+        .language-switch {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1001;
+            display: none;
+        }
+        
+        .language-switch button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 20px;
+            background: linear-gradient(135deg, var(--fashion-1), var(--fashion-5));
+            color: white;
+            cursor: pointer;
+            font-family: 'Yomogi', cursive;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .language-switch button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(135deg, var(--fashion-1), var(--fashion-5));
+            color: white;
+            margin-top: 40px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-logo {
+            font-family: 'Zen Kurenaido', sans-serif;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 15px;
+        }
+
+        .footer-social a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .footer-social a:hover {
+            color: var(--fashion-2);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .fixed-header h1 {
+                font-size: 20px;
+            }
+            
+            .main-content {
+                margin-top: 50px;
+                padding: 10px;
+            }
+
+            .language-switch {
+                top: 10px;
+                right: 10px;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="language-switch">
+        <button onclick="toggleLanguage()">English</button>
+    </div>
+
+    <div class="fixed-header" onclick="window.location.href='../index.html'">
+        <div class="fixed-header-content">
+            <img src="../images/monty.png" alt="Monty Trader Logo" class="header-logo">
+            <h1 class="ja">モンティの株式トレードインフォグラフィックス集</h1>
+            <h1 class="en hidden">Monty's Stock Trading Infographics Collection</h1>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>トレーディングがあなたを成長させる</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Yomogi&family=Zen+Kurenaido&family=Kaisei+Decol:wght@400;700&display=swap');
+        
+        :root {
+            --fashion-1: #593C47;
+            --fashion-2: #F2E63D;
+            --fashion-3: #F2C53D;
+            --fashion-4: #F25C05;
+            --fashion-5: #F24405;
+            --text-main: #334155;
+            --text-heading: #1e40af;
+            --bg-card: rgba(255, 255, 255, 0.85);
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Kaisei Decol', serif;
+            background-color: #f8f9fa;
+            color: var(--text-main);
+            line-height: 1.4;
+            padding: 20px;
+            background-image: radial-gradient(#f0f0f0 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: var(--bg-card);
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            padding: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            border-bottom: 3px solid var(--fashion-3);
+            padding-bottom: 15px;
+            position: relative;
+        }
+        
+        .header::after {
+            content: "";
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--fashion-3), var(--fashion-4), var(--fashion-5));
+            border-radius: 3px;
+        }
+        
+        .title {
+            font-family: 'Zen Kurenaido', sans-serif;
+            font-size: 32px;
+            font-weight: bold;
+            background: linear-gradient(90deg, var(--fashion-1), var(--fashion-5));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+            margin-bottom: 10px;
+            position: relative;
+        }
+        
+        .title::after {
+            content: "✨";
+            position: absolute;
+            right: -30px;
+            top: -5px;
+        }
+        
+        .subtitle {
+            font-family: 'Yomogi', cursive;
+            font-size: 16px;
+            color: #475569;
+        }
+        
+        .meta {
+            text-align: right;
+            font-size: 14px;
+        }
+        
+        .meta .date {
+            display: block;
+        }
+        
+        .meta .source {
+            display: block;
+            color: var(--fashion-1);
+        }
+        
+        .content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .column {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .section {
+            margin-bottom: 30px;
+            position: relative;
+        }
+        
+        .section-title {
+            font-family: 'Zen Kurenaido', sans-serif;
+            font-size: 18px;
+            color: var(--text-heading);
+            margin-bottom: 15px;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .section-title::before {
+            content: "🔍";
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        
+        .section:nth-child(2) .section-title::before {
+            content: "💪";
+        }
+        
+        .section:nth-child(3) .section-title::before {
+            content: "🌱";
+        }
+        
+        .section:nth-child(4) .section-title::before {
+            content: "📈";
+        }
+        
+        .section:nth-child(5) .section-title::before {
+            content: "🚀";
+        }
+        
+        .card {
+            background: var(--bg-card);
+            border-radius: 12px;
+            padding: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            margin-bottom: 15px;
+            border: 2px solid transparent;
+            border-image: linear-gradient(45deg, var(--fashion-2), var(--fashion-4)) 1;
+            position: relative;
+        }
+        
+        .card::before {
+            content: "";
+            position: absolute;
+            top: -8px;
+            left: 20px;
+            width: 15px;
+            height: 15px;
+            background: var(--fashion-2);
+            border-radius: 50%;
+            box-shadow: 0 0 0 2px white;
+        }
+        
+        .keyword {
+            font-weight: bold;
+            color: var(--fashion-5);
+            border-bottom: 3px solid var(--fashion-3);
+            padding: 0 2px;
+            display: inline-block;
+            transform: rotate(-1deg);
+        }
+        
+        .highlight {
+            background: linear-gradient(transparent 60%, var(--fashion-2) 60%);
+            padding: 0 2px;
+        }
+        
+        .handwritten {
+            font-family: 'Yomogi', cursive;
+        }
+        
+        .emoji-icon {
+            font-size: 1.2em;
+            margin-right: 5px;
+            vertical-align: middle;
+        }
+        
+        .arrow {
+            position: absolute;
+            width: 50px;
+            height: 20px;
+        }
+        
+        .arrow.down {
+            bottom: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .arrow.down svg {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .arrow.right {
+            right: -60px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 60px;
+        }
+        
+        /* 手描き風の要素 */
+        .hand-drawn {
+            border: 3px solid var(--fashion-1);
+            border-radius: 15px;
+            position: relative;
+        }
+        
+        .hand-drawn::before {
+            content: "";
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            width: 80px;
+            height: 20px;
+            background: white;
+            border: 3px solid var(--fashion-1);
+            border-radius: 10px;
+            z-index: 1;
+        }
+        
+        .bubble {
+            background: white;
+            border: 2px solid var(--fashion-1);
+            border-radius: 20px;
+            padding: 10px 15px;
+            position: relative;
+            margin: 20px 0;
+        }
+        
+        .bubble::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 30px;
+            width: 20px;
+            height: 20px;
+            background: white;
+            border-right: 2px solid var(--fashion-1);
+            border-bottom: 2px solid var(--fashion-1);
+            transform: rotate(45deg);
+        }
+        
+        .step {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .step-number {
+            background: var(--fashion-3);
+            color: var(--fashion-1);
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+            font-weight: bold;
+            font-family: 'Yomogi', cursive;
+        }
+        
+        .step-text {
+            flex: 1;
+        }
+        
+        .quote {
+            font-style: italic;
+            color: var(--fashion-1);
+            border-left: 3px solid var(--fashion-4);
+            padding-left: 10px;
+            margin: 10px 0;
+        }
+        
+        .graph {
+            height: 150px;
+            margin: 20px 0;
+            position: relative;
+        }
+        
+        .graph-line {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        
+        .graph-line svg {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .phases {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px 0;
+        }
+        
+        .phase {
+            text-align: center;
+            width: 23%;
+            position: relative;
+        }
+        
+        .phase::after {
+            content: "→";
+            position: absolute;
+            right: -10px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--fashion-4);
+            font-weight: bold;
+        }
+        
+        .phase:last-child::after {
+            content: "";
+        }
+        
+        .phase-icon {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+        
+        .phase-text {
+            font-size: 12px;
+            font-family: 'Yomogi', cursive;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 12px;
+            color: #64748b;
+            border-top: 1px dashed var(--fashion-3);
+            padding-top: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            .content {
+                flex-direction: column;
+            }
+            
+            .column {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div>
+                <h1 class="title">トレーディングがあなたを成長させる</h1>
+                <p class="subtitle">プロフェッショナルな心構えが人生を変える</p>
+            </div>
+            <div class="meta">
+                <span class="date">2025年5月4日</span>
+                <span class="source">出典: @KayKlingson</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <div class="column">
+                <div class="section">
+                    <h2 class="section-title">トレーディングが育む人間性</h2>
+                    <div class="card">
+                        <p>トレーディングは<span class="keyword">より良い人間</span>へと成長させる力があります。</p>
+                        <p><span class="emoji-icon">⏱️</span><span class="highlight">忍耐力と規律</span>を身につけ、</p>
+                        <p><span class="emoji-icon">🎯</span><span class="highlight">集中力と責任感</span>を高め、</p>
+                        <p><span class="emoji-icon">🔥</span><span class="highlight">向上心</span>を育みながらも、</p>
+                        <p><span class="emoji-icon">🙏</span><span class="highlight">謙虚さ</span>を忘れない姿勢を作ります。</p>
+                    </div>
+                    
+                    <div class="bubble handwritten">
+                        「これらの資質を生み出す『火花』は、プロフェッショナルな心構えでトレーディングに取り組み始めた瞬間から燃え始めます」
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <h2 class="section-title">コミットメントの力</h2>
+                    <div class="card">
+                        <p>トレーディングに取り組むとき、あなたは<span class="keyword">長期的視点</span>を持ち、市場に対して<span class="highlight">本気でコミット</span>します。</p>
+                        <p>そして、自分が可能だと思っていた以上に<span class="highlight">懸命に努力</span>するようになります。</p>
+                    </div>
+                    
+                    <div class="card hand-drawn">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div class="step-text">周りの人には<span class="highlight">狂気</span>と映る行動をとる</div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-text">気分に関係なく<span class="highlight">毎日</span>取り組む</div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <div class="step-text">社交生活を<span class="highlight">一時停止</span>する</div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">4</div>
+                            <div class="step-text">結果が出なくても<span class="highlight">単調な作業</span>を継続する</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="column">
+                <div class="section">
+                    <h2 class="section-title">能力の発見</h2>
+                    <div class="card">
+                        <p>やがて、<span class="keyword">自分の可能性</span>に気づき始めます。それは小さなことから始まります：</p>
+                        <ul style="list-style-type: none; padding-left: 20px;">
+                            <li><span class="emoji-icon">📚</span> 以前は読めなかった<span class="highlight">本を読む忍耐力</span></li>
+                            <li><span class="emoji-icon">🎧</span> <span class="highlight">3時間のインタビュー</span>を集中して聴ける</li>
+                            <li><span class="emoji-icon">📊</span> 深夜まで<span class="highlight">チャートを研究</span>し、翌日も通常通り起きられる</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bubble handwritten">
+                        「そして、あなたの努力が実を結び始めている小さな手がかりが見え始めます」
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <h2 class="section-title">成長の兆し</h2>
+                    <div class="card">
+                        <p>徐々に、以前は<span class="keyword">見過ごしていたことに気づき始めます</span>：</p>
+                        <ul style="list-style-type: none; padding-left: 20px;">
+                            <li><span class="emoji-icon">🔍</span> まだ行動できなくても、<span class="highlight">市場の動き</span>が見えるようになる</li>
+                            <li><span class="emoji-icon">📈</span> 大きく<span class="highlight">上昇する銘柄</span>に投資できるようになる</li>
+                            <li><span class="emoji-icon">💡</span> <span class="highlight">一般的な知恵</span>が突然理解できるようになる</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="graph">
+                        <div class="graph-line">
+                            <svg viewBox="0 0 300 150" xmlns="http://www.w3.org/2000/svg">
+                                <!-- 手書き風のグラフ線 - 下積み期間は横ばいで、ある瞬間から急成長 -->
+                                <path d="M0,120 C20,123 40,119 60,122 C80,124 100,120 120,121 C140,122 160,120 180,120 C182,118 184,110 186,100 C190,80 200,60 220,30 C240,12 260,4 300,0" 
+                                      fill="none" stroke="#F25C05" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+                                
+                                <!-- 気泡 -->
+                                <circle cx="120" cy="121" r="5" fill="#F2E63D" />
+                                <circle cx="180" cy="120" r="5" fill="#F2E63D" />
+                                <circle cx="186" cy="100" r="5" fill="#F2E63D" />
+                                <circle cx="220" cy="30" r="5" fill="#F2E63D" />
+                                <circle cx="260" cy="4" r="5" fill="#F2E63D" />
+                                
+                                <!-- ブレイクスルーポイントの強調 -->
+                                <circle cx="186" cy="100" r="8" fill="none" stroke="#F24405" stroke-width="2" stroke-dasharray="3,2" />
+                                <text x="186" y="85" text-anchor="middle" font-family="Yomogi, cursive" font-size="10" fill="#F24405">ブレイクスルー</text>
+                                
+                                <!-- 矢印 -->
+                                <path d="M300,0 L295,10 M300,0 L290,5" fill="none" stroke="#F25C05" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+                                
+                                <!-- 下積み期間の表示 -->
+                                <text x="90" y="110" text-anchor="middle" font-family="Yomogi, cursive" font-size="10" fill="#593C47">下積み期間</text>
+                                <path d="M20,135 L160,135" stroke="#593C47" stroke-width="1" stroke-dasharray="5,3" />
+                                <path d="M20,135 L20,125 M160,135 L160,125" stroke="#593C47" stroke-width="1" />
+                                
+                                <!-- 成長加速期間の表示 -->
+                                <text x="240" y="50" text-anchor="middle" font-family="Yomogi, cursive" font-size="10" fill="#F24405">成長加速</text>
+                                <path d="M190,70 L290,70" stroke="#F24405" stroke-width="1" stroke-dasharray="5,3" />
+                                <path d="M190,70 L190,60 M290,70 L290,60" stroke="#F24405" stroke-width="1" />
+                                
+                                <!-- 軸ラベル -->
+                                <text x="150" y="145" text-anchor="middle" font-family="Yomogi, cursive" font-size="10" fill="#593C47">時間と経験</text>
+                                <text x="10" y="75" text-anchor="middle" font-family="Yomogi, cursive" font-size="10" fill="#593C47" transform="rotate(-90, 10, 75)">成長</text>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="column">
+                <div class="section">
+                    <h2 class="section-title">加速する成長サイクル</h2>
+                    <div class="card">
+                        <p>成果に励まされ、あなたは<span class="keyword">継続し続けます</span>。そして、<span class="highlight">加速的リターンのサイクル</span>に入ります：</p>
+                        
+                        <div class="phases">
+                            <div class="phase">
+                                <div class="phase-icon">🔄</div>
+                                <div class="phase-text">プロセスを楽しむ</div>
+                            </div>
+                            <div class="phase">
+                                <div class="phase-icon">🔥</div>
+                                <div class="phase-text">さらに努力する</div>
+                            </div>
+                            <div class="phase">
+                                <div class="phase-icon">🎁</div>
+                                <div class="phase-text">報酬が大きくなる</div>
+                            </div>
+                            <div class="phase">
+                                <div class="phase-icon">🚀</div>
+                                <div class="phase-text">継続する</div>
+                            </div>
+                        </div>
+                        
+                        <div class="quote handwritten">
+                            「モメンタムは銘柄だけのものではありません」
+                        </div>
+                        
+                        <p>達成すればするほど、<span class="highlight">可能性を信じる</span>ようになります。</p>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <h2 class="section-title">成功の秘訣</h2>
+                    <div class="card">
+                        <p>この全ては<span class="keyword">３つの要素</span>から始まります：</p>
+                        <ul style="list-style-type: none; padding-left: 20px;">
+                            <li><span class="emoji-icon">🔭</span> <span class="highlight">長期的な思考</span>を持つこと</li>
+                            <li><span class="emoji-icon">💖</span> 自分は<span class="highlight">価値あることをしている</span>と信じること</li>
+                            <li><span class="emoji-icon">🕰️</span> <span class="highlight">素晴らしいことは一夜にして成らない</span>と理解すること</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bubble handwritten">
+                        「継続的な努力と時間が、あなたを優れたトレーダーに、そして優れた人間に変えていきます」
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>© 2025 グラフィックレコーディング | 原文: <a href="https://x.com/KayKlingson/status/1918636671806910889" target="_blank">@KayKlingson on X</a> | <a href="https://x.com/KayKlingson" target="_blank">Kay Klingsonをフォロー</a></p>
+        </div>
+    </div>
+</body>
+</html>
+
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">Monty Trader</div>
+            <div class="footer-social">
+                <a href="https://x.com/monty_investor" target="_blank">@monty_investor</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleLanguage() {
+            const jaElements = document.querySelectorAll('.ja');
+            const enElements = document.querySelectorAll('.en');
+            const button = document.querySelector('.language-switch button');
+            
+            jaElements.forEach(el => el.classList.toggle('hidden'));
+            enElements.forEach(el => el.classList.toggle('hidden'));
+            
+            button.textContent = button.textContent === 'English' ? '日本語' : 'English';
+        }
+    </script>
+</body>
+</html> 
