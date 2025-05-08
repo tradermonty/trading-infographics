@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sensata 2025年第1四半期 決算情報</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Yomogi&family=Zen+Kurenaido&family=Kaisei+Decol:wght@400;700&display=swap');
+        
+        :root {
+            --fashion-1: #593C47;
+            --fashion-2: #F2E63D;
+            --fashion-3: #F2C53D;
+            --fashion-4: #F25C05;
+            --fashion-5: #F24405;
+            --text-dark: #334155;
+            --text-subtitle: #475569;
+            --text-heading: #1e40af;
+            --bg-card: #ffffff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Kaisei Decol', serif;
+            color: var(--text-dark);
+            line-height: 1.4;
+            background-color: #f8f9fa;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23593c47' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+            padding: 2rem;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: #fff;
+            border-radius: 16px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            border-bottom: 2px dashed var(--fashion-3);
+            padding-bottom: 1rem;
+        }
+        
+        .title {
+            font-family: 'Kaisei Decol', serif;
+            font-size: 32px;
+            font-weight: bold;
+            background: linear-gradient(to right, var(--fashion-1), var(--fashion-4));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .title::after {
+            content: "";
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(to right, var(--fashion-2), var(--fashion-5));
+            border-radius: 3px;
+        }
+        
+        .date {
+            font-family: 'Zen Kurenaido', sans-serif;
+            font-size: 18px;
+            color: var(--text-subtitle);
+            position: relative;
+            padding-left: 25px;
+        }
+        
+        .date::before {
+            content: "📅";
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        
+        .main-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+        
+        .column {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .section {
+            margin-bottom: 2rem;
+            position: relative;
+        }
+        
+        .section-title {
+            font-family: 'Zen Kurenaido', sans-serif;
+            font-size: 18px;
+            color: var(--text-heading);
+            margin-bottom: 1rem;
+            padding-left: 30px;
+            position: relative;
+            font-weight: bold;
+        }
+        
+        .section-title::before {
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        
+        .ceo-message .section-title::before {
+            content: "💬";
+        }
+        
+        .financial-highlights .section-title::before {
+            content: "📊";
+        }
+        
+        .segment-performance .section-title::before {
+            content: "🔍";
+        }
+        
+        .market-outlook .section-title::before {
+            content: "🔮";
+        }
+        
+        .card {
+            background-color: var(--bg-card);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 6px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--fashion-2), var(--fashion-4));
+            border-radius: 6px 0 0 6px;
+        }
+        
+        .ceo-card {
+            background-color: rgba(242, 230, 61, 0.1);
+            border: 2px dashed var(--fashion-3);
+        }
+        
+        .ceo-card::before {
+            background: linear-gradient(to bottom, var(--fashion-3), var(--fashion-4));
+        }
+        
+        .ceo-name {
+            font-family: 'Kaisei Decol', serif;
+            font-weight: bold;
+            color: var(--fashion-5);
+            text-align: right;
+            margin-top: 1rem;
+            position: relative;
+            padding-right: 30px;
+        }
+        
+        .ceo-name::after {
+            content: "✍️";
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        
+        .highlight-box {
+            background-color: rgba(242, 92, 5, 0.1);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+        
+        .highlight-box::before {
+            content: "✓";
+            position: absolute;
+            left: -10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: var(--fashion-4);
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        .metric {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .metric-label {
+            flex: 1;
+            font-family: 'Zen Kurenaido', sans-serif;
+        }
+        
+        .metric-value {
+            font-weight: bold;
+            color: var(--fashion-1);
+            font-family: 'Kaisei Decol', serif;
+            position: relative;
+            padding-right: 20px;
+        }
+        
+        .metric-value.positive {
+            color: #10b981;
+        }
+        
+        .metric-value.negative {
+            color: #ef4444;
+        }
+        
+        .metric-value.positive::after {
+            content: "↑";
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #10b981;
+        }
+        
+        .metric-value.negative::after {
+            content: "↓";
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #ef4444;
+        }
+        
+        .segment-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .segment-card {
+            flex: 1;
+            min-width: 200px;
+            background-color: rgba(89, 60, 71, 0.05);
+            border-radius: 8px;
+            padding: 1rem;
+            position: relative;
+        }
+        
+        .segment-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(to right, var(--fashion-2), var(--fashion-4));
+            border-radius: 4px 4px 0 0;
+        }
+        
+        .segment-title {
+            font-weight: bold;
+            color: var(--fashion-1);
+            margin-bottom: 0.5rem;
+            font-family: 'Kaisei Decol', serif;
+        }
+        
+        .quote {
+            font-family: 'Yomogi', cursive;
+            font-size: 16px;
+            line-height: 1.6;
+            position: relative;
+            padding: 10px 20px;
+            margin-bottom: 1rem;
+        }
+        
+        .quote::before, .quote::after {
+            content: """;
+            position: absolute;
+            font-size: 40px;
+            color: var(--fashion-3);
+            opacity: 0.3;
+        }
+        
+        .quote::before {
+            top: -10px;
+            left: 0;
+        }
+        
+        .quote::after {
+            content: """;
+            bottom: -30px;
+            right: 0;
+        }
+        
+        .market-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .market-item::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--fashion-4);
+            font-size: 20px;
+            font-weight: bold;
+        }
+        
+        .performance-numbers {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .number-box {
+            flex: 1;
+            min-width: 120px;
+            background-color: rgba(242, 196, 61, 0.1);
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+        
+        .number-value {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--fashion-5);
+            margin-bottom: 0.5rem;
+            font-family: 'Kaisei Decol', serif;
+        }
+        
+        .number-label {
+            font-size: 14px;
+            color: var(--text-subtitle);
+            font-family: 'Zen Kurenaido', sans-serif;
+        }
+        
+        .guidance-container {
+            margin-top: 2rem;
+            background-color: rgba(89, 60, 71, 0.05);
+            border-radius: 12px;
+            padding: 1.5rem;
+            position: relative;
+        }
+        
+        .guidance-title {
+            font-family: 'Zen Kurenaido', sans-serif;
+            font-size: 18px;
+            color: var(--text-heading);
+            margin-bottom: 1rem;
+            text-align: center;
+            position: relative;
+            display: inline-block;
+            padding: 0 30px;
+        }
+        
+        .guidance-title::before {
+            content: "📈";
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        
+        .guidance-title::after {
+            content: "📆";
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 2px dashed var(--fashion-3);
+            font-size: 14px;
+            color: var(--text-subtitle);
+        }
+        
+        .arrow-connector {
+            position: absolute;
+            width: 40px;
+            height: 80px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='80' viewBox='0 0 40 80' fill='none'%3E%3Cpath d='M20 0C20 0 20 60 20 80M10 70L20 80L30 70' stroke='%23F25C05' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            z-index: 2;
+        }
+        
+        .circle-decorator {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: rgba(242, 230, 61, 0.1);
+            z-index: -1;
+        }
+        
+        .marker-highlight {
+            background: linear-gradient(180deg, rgba(242, 230, 61, 0) 50%, rgba(242, 230, 61, 0.4) 50%);
+            padding: 0 2px;
+            border-radius: 4px;
+        }
+        
+        .underline-highlight {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .underline-highlight::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -2px;
+            width: 100%;
+            height: 3px;
+            background: var(--fashion-4);
+            border-radius: 2px;
+        }
+        
+        .guidance-data {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .guidance-item {
+            flex: 1;
+            min-width: 200px;
+            padding: 0.5rem;
+            text-align: center;
+        }
+        
+        .guidance-label {
+            font-family: 'Zen Kurenaido', sans-serif;
+            font-size: 14px;
+            color: var(--text-subtitle);
+            margin-bottom: 0.5rem;
+        }
+        
+        .guidance-range {
+            font-family: 'Kaisei Decol', serif;
+            font-weight: bold;
+            color: var(--fashion-5);
+        }
+        
+        .guidance-comparison {
+            font-size: 12px;
+            margin-top: 0.25rem;
+        }
+
+        .hand-drawn-border {
+            position: relative;
+        }
+
+        .hand-drawn-border::before {
+            content: "";
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            bottom: -5px;
+            left: -5px;
+            border: 2px solid var(--fashion-3);
+            border-radius: 15px;
+            z-index: -1;
+            transform: rotate(-0.5deg);
+        }
+
+        /* レスポンシブ対応 */
+        @media (max-width: 768px) {
+            .column {
+                flex: 1 100%;
+            }
+            
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .date {
+                margin-top: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="title">Sensata 2025年第1四半期 決算情報</h1>
+            <div class="date">2025年5月8日発表</div>
+        </div>
+        
+        <section class="section">
+            <div class="card" style="background-color: rgba(89, 60, 71, 0.05); border-left: 6px solid var(--fashion-1);">
+                <h2 style="font-family: 'Zen Kurenaido', sans-serif; font-size: 18px; color: var(--fashion-1); margin-bottom: 0.5rem; display: flex; align-items: center;">
+                    <span style="display: inline-block; margin-right: 8px;">🏢</span>Sensata Technologies（NYSE: ST）- 企業概要
+                </h2>
+                <p style="font-size: 14px; line-height: 1.6; margin-bottom: 0.5rem;">
+                    Sensataは、より安全で、よりクリーンで、より効率的でエレクトリファイドな世界の創造を目指すグローバル産業技術企業です。ミッションクリティカルなセンサー、電気保護コンポーネント、センサーリッチなソリューションの幅広いポートフォリオを通じて、顧客の複雑化するエンジニアリングと運用パフォーマンス要件に対応しています。
+                </p>
+                <div style="display: flex; flex-wrap: wrap; gap: 1rem; font-size: 13px; margin-top: 0.5rem;">
+                    <div style="flex: 1; min-width: 150px;">
+                        <span style="font-weight: bold; color: var(--fashion-4);">18,000+</span> 従業員
+                    </div>
+                    <div style="flex: 1; min-width: 150px;">
+                        <span style="font-weight: bold; color: var(--fashion-4);">14ヵ国</span> にグローバル展開
+                    </div>
+                    <div style="flex: 1; min-width: 150px;">
+                        <span style="font-weight: bold; color: var(--fashion-4);">主要市場:</span> 自動車、重機・オフロード、産業、航空宇宙
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <div class="main-content">
+            <div class="column">
+                <section class="section ceo-message">
+                    <h2 class="section-title">CEOメッセージ</h2>
+                    <div class="card ceo-card">
+                        <div class="quote">
+                            当社は力強い第1四半期で年を始め、ガイダンス範囲の上限を上回りました。これらの結果は、今年初めに共有した主要な柱に焦点を当てた初期の進展を反映しています。それは<span class="marker-highlight">運用パフォーマンスの向上</span>、<span class="marker-highlight">資本配分の最適化</span>、そして<span class="marker-highlight">Sensataの成長回帰</span>です。これらの優先事項をさらに進め、Sensataの回復力を高め、時間をかけて株主価値を創造していくことを楽しみにしています。
+                        </div>
+                        <div class="ceo-name">Stephan von Schuckmann<br>最高経営責任者</div>
+                    </div>
+                </section>
+                
+                <section class="section financial-highlights">
+                    <h2 class="section-title">財務ハイライト</h2>
+                    <div class="card">
+                        <div class="highlight-box">
+                            <span class="underline-highlight">収益、調整後営業利益、調整後EPSの期待値を上回りました</span>
+                        </div>
+                        <div class="highlight-box">
+                            <span class="underline-highlight">2025年Q1のフリーキャッシュフローは8,700万ドル、変換率は74%</span>（前年同期比26ポイント上昇）
+                        </div>
+                        <div class="highlight-box">
+                            <span class="underline-highlight">Sensing Solutionsは2023年Q2以来、初の前年同期比成長を達成</span>
+                        </div>
+                        
+                        <div class="performance-numbers">
+                            <div class="number-box">
+                                <div class="number-value">$9億1,130万</div>
+                                <div class="number-label">総収益</div>
+                            </div>
+                            <div class="number-box">
+                                <div class="number-value">18.3%</div>
+                                <div class="number-label">調整後営業利益率</div>
+                            </div>
+                            <div class="number-box">
+                                <div class="number-value">$0.78</div>
+                                <div class="number-label">調整後EPS</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <section class="section financial-details">
+                    <h2 class="section-title">財務詳細</h2>
+                    <div class="card">
+                        <div class="metric">
+                            <div class="metric-label">収益</div>
+                            <div class="metric-value negative">$9億1,130万 (9.5%減)</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-label">営業利益</div>
+                            <div class="metric-value negative">$1億2,220万 (15.6%減)</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-label">調整後営業利益</div>
+                            <div class="metric-value negative">$1億6,650万 (11.7%減)</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-label">EPS</div>
+                            <div class="metric-value negative">$0.47 (6.0%減)</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-label">調整後EPS</div>
+                            <div class="metric-value negative">$0.78 (12.4%減)</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-label">フリーキャッシュフロー</div>
+                            <div class="metric-value positive">$8,660万 (34.6%増)</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-label">純レバレッジ比率</div>
+                            <div class="metric-value">3.1x</div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            
+            <div class="column">
+                <section class="section segment-performance">
+                    <h2 class="section-title">セグメントパフォーマンス</h2>
+                    <div class="card">
+                        <div class="segment-container">
+                            <div class="segment-card">
+                                <div class="segment-title">Performance Sensing</div>
+                                <div class="metric">
+                                    <div class="metric-label">収益</div>
+                                    <div class="metric-value negative">$6億5,040万 (8.8%減)</div>
+                                </div>
+                                <div class="metric">
+                                    <div class="metric-label">営業利益</div>
+                                    <div class="metric-value negative">$1億4,290万</div>
+                                </div>
+                                <div class="metric">
+                                    <div class="metric-label">利益率</div>
+                                    <div class="metric-value negative">22.0% (1.7%減)</div>
+                                </div>
+                            </div>
+                            
+                            <div class="segment-card">
+                                <div class="segment-title">Sensing Solutions</div>
+                                <div class="metric">
+                                    <div class="metric-label">収益</div>
+                                    <div class="metric-value positive">$2億6,080万 (1.2%増)</div>
+                                </div>
+                                <div class="metric">
+                                    <div class="metric-label">営業利益</div>
+                                    <div class="metric-value positive">$7,610万</div>
+                                </div>
+                                <div class="metric">
+                                    <div class="metric-label">利益率</div>
+                                    <div class="metric-value positive">29.2% (1.2%増)</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="metric">
+                            <div class="metric-label">企業およびその他 調整後営業費用</div>
+                            <div class="metric-value positive">$5,240万 (9.8%減)</div>
+                        </div>
+                    </div>
+                </section>
+                
+                <section class="section market-outlook">
+                    <h2 class="section-title">市場展望</h2>
+                    <div class="card">
+                        <div class="segment-title">Performance Sensing - 関税対応によるOEMの生産変動</div>
+                        <div class="market-item">
+                            <span class="underline-highlight">自動車</span>: 北米と欧州の上半期生産スケジュールは関税管理により変動。中国の奨励策が生産を継続的に牽引。第三者予測は下半期に110万台減少（主に北米）を予測
+                        </div>
+                        <div class="market-item">
+                            <span class="underline-highlight">HVOR</span>: 上半期のオンロード・トラック生産は世界的に減少。Q2はQ1と比較して約横ばいの見込み。関税関連の在庫管理でアウトグロース指標は複雑化
+                        </div>
+                        
+                        <div class="segment-title">Sensing Solutions - 2023年Q2以来初の収益成長</div>
+                        <div class="market-item">
+                            <span class="underline-highlight">産業</span>: 第1四半期は成長に回帰、安定化の兆し。漏えい検知での初期成功を基に、HVAC事業の成長機会を追求中。前年同期比約1%の収益成長
+                        </div>
+                        <div class="market-item">
+                            <span class="underline-highlight">航空宇宙</span>: 主要顧客における強力な受注残。前年同期比約2%の収益成長。調整後営業利益率の力強さが継続
+                        </div>
+                    </div>
+                </section>
+                
+                <section class="section capital-return">
+                    <h2 class="section-title">資本還元</h2>
+                    <div class="card">
+                        <div class="metric">
+                            <div class="metric-label">自社株買い</div>
+                            <div class="metric-value">$1億100万</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-label">買い戻し株数</div>
+                            <div class="metric-value">約350万株</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-label">配当支払い</div>
+                            <div class="metric-value">$0.12/株（総額$1,800万）</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-label">フリーキャッシュフロー変換率</div>
+                            <div class="metric-value positive">74% (26ポイント上昇)</div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+        
+        <div class="guidance-container">
+            <h2 class="guidance-title">2025年第2四半期ガイダンス</h2>
+            <div class="guidance-data">
+                <div class="guidance-item">
+                    <div class="guidance-label">収益</div>
+                    <div class="guidance-range">$9億1,000万 - $9億4,000万</div>
+                    <div class="guidance-comparison">Q1対比 0% - 3%</div>
+                </div>
+                <div class="guidance-item">
+                    <div class="guidance-label">調整後営業利益</div>
+                    <div class="guidance-range">$1億6,900万 - $1億7,700万</div>
+                    <div class="guidance-comparison">Q1対比 1% - 6%</div>
+                </div>
+                <div class="guidance-item">
+                    <div class="guidance-label">調整後営業利益率</div>
+                    <div class="guidance-range">18.6% - 18.8%</div>
+                    <div class="guidance-comparison">Q1対比 30 - 50bps</div>
+                </div>
+                <div class="guidance-item">
+                    <div class="guidance-label">調整後EPS</div>
+                    <div class="guidance-range">$0.80 - $0.86</div>
+                    <div class="guidance-comparison">Q1対比 3% - 10%</div>
+                </div>
+            </div>
+            
+            <div class="highlight-box">
+                <span class="underline-highlight">関税の影響に関する注記:</span>
+                <ul style="list-style-type: none; padding-left: 20px; margin-top: 0.5rem;">
+                    <li style="position: relative; padding-left: 15px; margin-bottom: 0.5rem;">
+                        <span style="position: absolute; left: 0; top: 0;">•</span>
+                        収益には顧客からの関税回収に関連する約2,000万ドルが含まれています
+                    </li>
+                    <li style="position: relative; padding-left: 15px; margin-bottom: 0.5rem;">
+                        <span style="position: absolute; left: 0; top: 0;">•</span>
+                        調整後営業利益、調整後純利益、調整後EPSは関税の影響を受けない見込み（予想される2,000万ドルの関税コストは予想される2,000万ドルのパススルー収益によって相殺）
+                    </li>
+                    <li style="position: relative; padding-left: 15px; margin-bottom: 0.5rem;">
+                        <span style="position: absolute; left: 0; top: 0;">•</span>
+                        関税収益と関連費用の希薄化効果を除く調整後営業利益率は19.0%～19.2%の範囲になる見込み
+                    </li>
+                </ul>
+            </div>
+            
+            <div style="text-align: center; font-size: 14px; margin-top: 1rem; font-style: italic; color: var(--text-subtitle);">
+                ガイダンスに含まれる関税予測は2025年5月8日時点で有効な貿易政策を反映しています
+            </div>
+        </div>
+        
+        <section class="section">
+            <h2 class="section-title" style="margin-top: 2rem;">グローバルフットプリント</h2>
+            <div class="card">
+                <div style="text-align: center; margin-bottom: 1rem; font-weight: bold; color: var(--fashion-1);">
+                    Sensataは柔軟な地域内・地域向け生産モデルでグローバルに展開
+                </div>
+                
+                <div class="segment-container">
+                    <div class="segment-card" style="min-width: 150px;">
+                        <div class="segment-title">2024年地域別収益構成*</div>
+                        <div style="margin-top: 0.5rem; font-size: 14px;">
+                            <div><span style="color: var(--fashion-4); font-weight: bold;">38%</span> 米国市場</div>
+                            <div><span style="color: var(--fashion-4); font-weight: bold;">28%</span> 欧州/英国</div>
+                            <div><span style="color: var(--fashion-4); font-weight: bold;">19%</span> 中国</div>
+                            <div><span style="color: var(--fashion-4); font-weight: bold;">15%</span> アジア他</div>
+                        </div>
+                        <div style="font-size: 10px; margin-top: 0.5rem; font-style: italic;">*売却済製品とInsightsを除く</div>
+                    </div>
+                    
+                    <div class="segment-card" style="min-width: 150px;">
+                        <div class="segment-title">2024年米国向け生産*</div>
+                        <div style="margin-top: 0.5rem; font-size: 14px;">
+                            <div><span style="color: var(--fashion-4); font-weight: bold;">70%</span> メキシコ生産</div>
+                            <div style="font-size: 12px; padding-left: 15px;">(>80% USMCA適格・関税免除)</div>
+                            <div><span style="color: var(--fashion-4); font-weight: bold;">7%</span> 米国内生産</div>
+                            <div style="font-size: 12px; padding-left: 15px;">(関税免除)</div>
+                        </div>
+                        <div style="font-size: 10px; margin-top: 0.5rem; font-style: italic;">*売却済製品とInsightsを除く</div>
+                    </div>
+                    
+                    <div class="segment-card" style="min-width: 150px;">
+                        <div class="segment-title">グローバル関税の影響</div>
+                        <div style="margin-top: 0.5rem; font-size: 14px;">
+                            <div>米国での関税コスト <span style="color: var(--fashion-4); font-weight: bold;">~四半期$1,500万</span></div>
+                            <div>中国での関税コスト <span style="color: var(--fashion-4); font-weight: bold;">~四半期$500万</span></div>
+                            <div>パススルー収益 <span style="color: var(--fashion-4); font-weight: bold;">~$2,000万</span></div>
+                            <div>→これらのコストを<span style="color: var(--fashion-4); font-weight: bold; text-decoration: underline;">完全に軽減</span></div>
+                        </div>
+                        <div style="font-size: 10px; margin-top: 0.5rem; font-style: italic;">2025年5月8日時点の貿易政策に基づく</div>
+                    </div>
+                </div>
+                
+                <div style="margin-top: 1.5rem;">
+                    <div style="font-weight: bold; color: var(--fashion-1); margin-bottom: 0.5rem;">グローバルかつ柔軟な拠点配置:</div>
+                    <div class="market-item">北米市場向けにメキシコと米国に複数拠点</div>
+                    <div class="market-item">欧州市場向けに欧州と英国の製造拠点</div>
+                    <div class="market-item">中国市場向けに中国の製造拠点</div>
+                    <div class="market-item">アジア市場向けにマレーシアの製造拠点</div>
+                </div>
+            </div>
+        </section>
+        
+        <div class="footer">
+            <p>出典: Sensata Technologies 2025年第1四半期決算発表（2025年5月8日）</p>
+            <p style="margin-top: 0.5rem;">© 2025 グラフィックレコーディング風可視化 - All Rights Reserved</p>
+        </div>
+
+        <!-- 装飾的な要素 -->
+        <div class="circle-decorator" style="top: 100px; right: 50px; opacity: 0.3;"></div>
+        <div class="circle-decorator" style="bottom: 120px; left: 70px; opacity: 0.4;"></div>
+        <div class="circle-decorator" style="top: 400px; left: 20px; opacity: 0.2;"></div>
+        <div class="circle-decorator" style="bottom: 300px; right: 30px; opacity: 0.3;"></div>
+    </div>
+</body>
+</html>
