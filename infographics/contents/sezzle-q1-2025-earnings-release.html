@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sezzle FY2025 第1四半期 決算発表</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Yomogi&family=Zen+Kurenaido&family=Kaisei+Decol:wght@400;700&display=swap');
+        
+        :root {
+            --fashion-1: #593C47;
+            --fashion-2: #F2E63D;
+            --fashion-3: #F2C53D;
+            --fashion-4: #F25C05;
+            --fashion-5: #F24405;
+            --text-dark: #334155;
+            --text-heading: #1e40af;
+            --text-subheading: #475569;
+            --bg-light: #ffffff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Kaisei Decol', serif;
+            background-color: #f8f9fa;
+            color: var(--text-dark);
+            line-height: 1.4;
+            padding: 2rem;
+        }
+        
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+            background-color: var(--bg-light);
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+            position: relative;
+        }
+        
+        /* 手書き風スタイル */
+        .handwritten {
+            font-family: 'Yomogi', cursive;
+        }
+        
+        .title-box {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: linear-gradient(to right, var(--fashion-1), var(--fashion-5));
+            color: white;
+            position: relative;
+        }
+        
+        .title {
+            font-family: 'Zen Kurenaido', sans-serif;
+            font-size: 32px;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            margin: 0;
+            padding-bottom: 8px;
+            position: relative;
+        }
+        
+        .subtitle {
+            font-family: 'Kaisei Decol', serif;
+            font-size: 16px;
+            color: #fff;
+            opacity: 0.9;
+        }
+        
+        .date-source {
+            text-align: right;
+            font-size: 14px;
+            color: white;
+        }
+        
+        .main-content {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 1.5rem;
+            gap: 1.5rem;
+        }
+        
+        .column {
+            flex: 1;
+            min-width: 31%;
+        }
+        
+        .card {
+            background-color: var(--bg-light);
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            border: 2px solid transparent;
+            background-clip: padding-box;
+        }
+        
+        .card::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            right: -2px;
+            bottom: -2px;
+            left: -2px;
+            background: linear-gradient(45deg, var(--fashion-2), var(--fashion-3));
+            border-radius: 14px;
+            z-index: -1;
+        }
+        
+        .section-title {
+            font-size: 18px;
+            color: var(--text-heading);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: 'Zen Kurenaido', sans-serif;
+            font-weight: bold;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(to right, var(--fashion-2), var(--fashion-3));
+            border-radius: 2px;
+        }
+        
+        .highlight {
+            background: linear-gradient(transparent 60%, var(--fashion-2) 60%);
+            padding: 0 2px;
+            font-weight: bold;
+        }
+        
+        .arrow {
+            color: var(--fashion-4);
+            font-weight: bold;
+            margin: 0 4px;
+        }
+        
+        .circle-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--fashion-1);
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            margin-right: 8px;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        
+        .key-value-box {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+            padding: 8px;
+            border-radius: 8px;
+            background-color: rgba(242, 198, 60, 0.1);
+        }
+        
+        .key {
+            font-weight: bold;
+            margin-right: 8px;
+            color: var(--fashion-1);
+        }
+        
+        .value {
+            flex-grow: 1;
+        }
+        
+        .percent-up {
+            color: #10b981;
+            font-weight: bold;
+        }
+        
+        .chip {
+            display: inline-block;
+            padding: 4px 12px;
+            background-color: var(--fashion-3);
+            color: var(--fashion-1);
+            border-radius: 16px;
+            font-size: 12px;
+            font-weight: bold;
+            margin: 4px;
+        }
+        
+        .quote {
+            position: relative;
+            margin: 1.5rem 0;
+            padding: 1rem 1.5rem;
+            background-color: rgba(89, 60, 71, 0.05);
+            border-left: 4px solid var(--fashion-4);
+            border-radius: 0 8px 8px 0;
+            font-style: italic;
+        }
+        
+        .quote::before {
+            content: '"';
+            font-size: 48px;
+            position: absolute;
+            top: -10px;
+            left: 5px;
+            color: var(--fashion-3);
+            opacity: 0.5;
+        }
+        
+        .footer {
+            padding: 1.5rem;
+            text-align: center;
+            font-size: 12px;
+            color: var(--text-subheading);
+            border-top: 1px dashed var(--fashion-3);
+            margin-top: 1.5rem;
+        }
+        
+        .hand-arrow {
+            position: relative;
+            display: inline-block;
+            margin: 0 8px;
+            width: 40px;
+            height: 20px;
+        }
+        
+        .hand-arrow::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--fashion-4);
+            transform: translateY(-50%);
+        }
+        
+        .hand-arrow::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 10px;
+            height: 10px;
+            border-top: 2px solid var(--fashion-4);
+            border-right: 2px solid var(--fashion-4);
+            transform: rotate(45deg);
+        }
+        
+        .bubble {
+            position: relative;
+            background: #fff;
+            border-radius: 16px;
+            padding: 12px;
+            margin: 16px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            border: 1px solid var(--fashion-3);
+        }
+        
+        .bubble::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 30px;
+            border: 10px solid transparent;
+            border-top-color: var(--fashion-3);
+        }
+        
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-top: 16px;
+        }
+        
+        .metric-box {
+            background: linear-gradient(135deg, rgba(242, 230, 60, 0.1), rgba(242, 196, 60, 0.2));
+            border-radius: 8px;
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        
+        .metric-label {
+            font-size: 12px;
+            color: var(--fashion-1);
+            margin-bottom: 4px;
+        }
+        
+        .metric-value {
+            font-size: 20px;
+            font-weight: bold;
+            color: var(--fashion-5);
+        }
+        
+        .metric-change {
+            font-size: 12px;
+            margin-top: 4px;
+        }
+        
+        .hand-drawn-box {
+            border: 2px solid var(--fashion-4);
+            border-radius: 12px;
+            padding: 12px;
+            position: relative;
+            margin: 16px 0;
+        }
+        
+        .hand-drawn-box::before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: 20px;
+            width: 30%;
+            height: 10px;
+            background-color: white;
+        }
+        
+        .tag-label {
+            position: absolute;
+            top: -10px;
+            left: 30px;
+            padding: 0 10px;
+            background-color: white;
+            color: var(--fashion-4);
+            font-weight: bold;
+            font-size: 14px;
+        }
+        
+        .progress-bar {
+            height: 10px;
+            background-color: #e5e7eb;
+            border-radius: 5px;
+            margin: 8px 0;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            border-radius: 5px;
+            background: linear-gradient(to right, var(--fashion-2), var(--fashion-4));
+        }
+        
+        .company-overview {
+            padding: 1.5rem;
+            margin: 0 1.5rem 1.5rem;
+            background-color: rgba(89, 60, 71, 0.05);
+            border-radius: 12px;
+            position: relative;
+        }
+        
+        .company-overview-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-top: 16px;
+        }
+        
+        .overview-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 12px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        
+        .overview-icon {
+            font-size: 32px;
+            margin-bottom: 8px;
+            color: var(--fashion-4);
+        }
+        
+        .overview-title {
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 4px;
+            color: var(--fashion-1);
+        }
+        
+        .overview-content {
+            font-size: 13px;
+        }
+        
+        .business-model-flow {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 20px;
+            padding: 0 20px;
+        }
+        
+        .flow-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            width: 22%;
+        }
+        
+        .flow-icon {
+            width: 50px;
+            height: 50px;
+            background-color: var(--fashion-3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10px;
+            font-size: 20px;
+            color: var(--fashion-1);
+            font-weight: bold;
+        }
+        
+        .flow-text {
+            font-size: 12px;
+        }
+        
+        .flow-arrow {
+            width: 40px;
+            color: var(--fashion-5);
+            font-size: 20px;
+            text-align: center;
+        }
+        
+        @media (max-width: 768px) {
+            .main-content {
+                flex-direction: column;
+            }
+            
+            .column {
+                width: 100%;
+            }
+            
+            .company-overview-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .business-model-flow {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .flow-step {
+                width: 100%;
+            }
+            
+            .flow-arrow {
+                transform: rotate(90deg);
+                margin: 5px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="title-box">
+            <div>
+                <h1 class="title">Sezzle FY2025 第1四半期 決算発表</h1>
+                <p class="subtitle">📊 イノベーションと消費者体験の向上による記録的成長の四半期 ✨</p>
+            </div>
+            <div class="date-source">
+                <p>発表日: 2025年5月7日</p>
+                <p>Sezzle Inc. (NASDAQ:SEZL)</p>
+            </div>
+        </div>
+        
+        <!-- 企業概要セクション -->
+        <div class="company-overview">
+            <h2 class="section-title">🏢 Sezzle企業概要</h2>
+            <div class="bubble handwritten">
+                Buy Now, Pay Later (BNPL)プラットフォームのリーディングカンパニー！
+                消費者の金融アクセスと責任ある支出をサポート 💸
+            </div>
+            
+            <div class="company-overview-grid">
+                <div class="overview-item">
+                    <div class="overview-icon">⚙️</div>
+                    <div class="overview-title">創業</div>
+                    <div class="overview-content">2016年 ミネアポリス</div>
+                    <div class="overview-content">創業者: Charlie Youakim (CEO)</div>
+                </div>
+                <div class="overview-item">
+                    <div class="overview-icon">📱</div>
+                    <div class="overview-title">サービス概要</div>
+                    <div class="overview-content">無利息の分割払いサービス</div>
+                    <div class="overview-content">4回払い・6週間で完済</div>
+                </div>
+                <div class="overview-item">
+                    <div class="overview-icon">💼</div>
+                    <div class="overview-title">ビジネスモデル</div>
+                    <div class="overview-content">加盟店から手数料徴収</div>
+                    <div class="overview-content">基本料金: 取引額の6.1%+30¢/件</div>
+                </div>
+                <div class="overview-item">
+                    <div class="overview-icon">🌟</div>
+                    <div class="overview-title">独自の特徴</div>
+                    <div class="overview-content">Public Benefit Corporation認定</div>
+                    <div class="overview-content">ユーザーの金融リテラシー向上に貢献</div>
+                </div>
+                <div class="overview-item">
+                    <div class="overview-icon">🔄</div>
+                    <div class="overview-title">最近の進化</div>
+                    <div class="overview-content">ロイヤルティプログラム導入</div>
+                    <div class="overview-content">長期分割払いサービスも提供</div>
+                </div>
+                <div class="overview-item">
+                    <div class="overview-icon">🏆</div>
+                    <div class="overview-title">市場ポジション</div>
+                    <div class="overview-content">Forbesの「最も成功した中堅企業100社」3位</div>
+                    <div class="overview-content">北米BNPLリーダー企業</div>
+                </div>
+            </div>
+            
+            <h3 style="margin-top:20px; font-size:16px; color:var(--fashion-1);">💡 Sezzleの「Buy Now, Pay Later」の仕組み</h3>
+            <div class="business-model-flow">
+                <div class="flow-step">
+                    <div class="flow-icon">1</div>
+                    <div class="flow-text">利用者が商品を選択し、Sezzleでの支払いを選択</div>
+                </div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-step">
+                    <div class="flow-icon">2</div>
+                    <div class="flow-text">Sezzleが加盟店に全額を前払い（手数料差し引き）</div>
+                </div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-step">
+                    <div class="flow-icon">3</div>
+                    <div class="flow-text">利用者は6週間で4回の無利息分割払いで返済</div>
+                </div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-step">
+                    <div class="flow-icon">4</div>
+                    <div class="flow-text">返済状況に応じてロイヤルティと信用スコアが向上</div>
+                </div>
+            </div>
+            <div class="column">
+                <div class="card">
+                    <h2 class="section-title">📈 業績ハイライト</h2>
+                    <div class="bubble handwritten">
+                        需要が予想を上回り、イノベーションと消費者体験向上によって、エンゲージメントとパフォーマンスが新記録を達成！
+                    </div>
+                    
+                    <div class="metrics-grid">
+                        <div class="metric-box">
+                            <div class="metric-label">GMV</div>
+                            <div class="metric-value">8億870万ドル</div>
+                            <div class="metric-change">👆 <span class="percent-up">+64.1% YoY</span></div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label">総売上</div>
+                            <div class="metric-value">1億490万ドル</div>
+                            <div class="metric-change">👆 <span class="percent-up">+123.3% YoY</span></div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label">営業利益</div>
+                            <div class="metric-value">4,990万ドル</div>
+                            <div class="metric-change">👆 <span class="percent-up">+260.6% YoY</span></div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label">純利益</div>
+                            <div class="metric-value">3,620万ドル</div>
+                            <div class="metric-change">👆 <span class="percent-up">4倍以上 YoY</span></div>
+                        </div>
+                    </div>
+                    
+                    <div class="key-value-box">
+                        <span class="key">EPS (希薄化後):</span>
+                        <span class="value">1.00ドル <span class="arrow">→</span> <span class="highlight">前年同期比4.5倍</span></span>
+                    </div>
+                    
+                    <div class="key-value-box">
+                        <span class="key">Adjusted EBITDA:</span>
+                        <span class="value">5,140万ドル <span class="arrow">→</span> <span class="highlight">+243.7% YoY</span></span>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h2 class="section-title">💬 CEO コメント</h2>
+                    <div class="quote">
+                        "イノベーションと消費者体験への投資が第1四半期のエンゲージメントとパフォーマンスを新たな高みへと押し上げました。より強い消費者活動と予想を上回る返済傾向により、四半期収益は予想を上回りました。これらの好調な進展により、2025年の純利益ガイダンスを約50%引き上げて1億2,000万ドルとする自信が生まれました。"
+                        <div style="text-align:right; margin-top:8px; font-style:normal; font-size:12px;">
+                            - Charlie Youakim, Sezzle会長兼CEO
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h2 class="section-title">💹 収益性分析</h2>
+                    <div class="hand-drawn-box">
+                        <div class="tag-label">オペレーティングレバレッジ</div>
+                        <p>総営業費用: <span class="highlight">+66.0% YoY</span>、総収益比率は<span class="highlight">52.4%</span>（前年同期比<span class="highlight">-18.2pt</span>）</p>
+                    </div>
+                    
+                    <div class="key-value-box">
+                        <span class="key">取引関連コスト:</span>
+                        <span class="value">GMV比 <span class="percent-up">3.8%</span> (前年: 4.3%)</span>
+                    </div>
+                    
+                    <div class="key-value-box">
+                        <span class="key">非取引関連費用:</span>
+                        <span class="value">総収益比 <span class="percent-up">25.6%</span> (過去最低、-8.9pt YoY)</span>
+                    </div>
+                    
+                    <div class="key-value-box">
+                        <span class="key">総収益 - 取引コスト:</span>
+                        <span class="value">7,390万ドル <span class="arrow">→</span> <span class="highlight">+184.5% YoY</span></span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 中央カラム -->
+            <div class="column">
+                <div class="card">
+                    <h2 class="section-title">🚀 2025年度ガイダンス (大幅上方修正)</h2>
+                    
+                    <div class="key-value-box">
+                        <span class="key">純利益:</span>
+                        <span class="value">1億2,000万ドル <span class="hand-arrow"></span> <span class="highlight">旧: 8,040万ドル</span></span>
+                    </div>
+                    
+                    <div class="key-value-box">
+                        <span class="key">EPS (希薄化後):</span>
+                        <span class="value">3.25ドル <span class="hand-arrow"></span> <span class="highlight">旧: 2.21ドル</span></span>
+                    </div>
+                    
+                    <div class="key-value-box">
+                        <span class="key">総収益成長率:</span>
+                        <span class="value">60-65% <span class="hand-arrow"></span> <span class="highlight">旧: 25-30%</span></span>
+                    </div>
+                    
+                    <div class="key-value-box">
+                        <span class="key">総収益 - 取引コスト:</span>
+                        <span class="value">総収益比 60-65% <span class="hand-arrow"></span> <span class="highlight">旧: 55-60%</span></span>
+                    </div>
+                    
+                    <div class="bubble handwritten" style="margin-top:20px;">
+                        最新のビジネストレンドを反映した大幅な上方修正！
+                        純利益ガイダンスを約50%引き上げ 💰
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h2 class="section-title">💵 キャッシュフロー & バランスシート</h2>
+                    
+                    <div class="key-value-box">
+                        <span class="key">営業CF:</span>
+                        <span class="value">5,880万ドル <span class="arrow">→</span> <span class="highlight">前年: 3,860万ドル</span></span>
+                    </div>
+                    
+                    <div class="key-value-box">
+                        <span class="key">現金・同等物:</span>
+                        <span class="value">1億2,090万ドル (うち制限付き現金: 3,200万ドル)</span>
+                    </div>
+                    
+                    <div class="key-value-box">
+                        <span class="key">ファシリティ残高:</span>
+                        <span class="value">7,080万ドル / 1億5,000万ドル</span>
+                    </div>
+                    
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 47%;"></div>
+                    </div>
+                    <div style="text-align:right; font-size:12px; color:var(--text-subheading);">ファシリティ利用率: 47%</div>
+                </div>
+                
+                <div class="card">
+                    <h2 class="section-title">👥 ユーザーエンゲージメント</h2>
+                    
+                    <div class="key-value-box">
+                        <span class="key">MODS:</span>
+                        <span class="value">658,000人 <span class="arrow">→</span> <span style="color:#ef4444;">前四半期比: -49,000人</span></span>
+                    </div>
+                    
+                    <div class="hand-drawn-box">
+                        <div class="tag-label">季節変動</div>
+                        <p><span class="handwritten">ホリデーシーズン後の季節的な傾向と一致</span></p>
+                    </div>
+                    
+                    <div class="key-value-box" style="background-color:rgba(242, 92, 5, 0.1);">
+                        <span class="key">購入頻度:</span>
+                        <span class="value">6.1回 <span class="arrow">→</span> <span class="highlight">前年: 4.5回</span></span>
+                    </div>
+                    
+                    <div class="bubble handwritten">
+                        MODSは季節的減少も、ユーザーあたりの購入頻度は大幅増加！
+                        エンゲージメント向上を実証 👍
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 右カラム -->
+            <div class="column">
+                <div class="card">
+                    <h2 class="section-title">🌟 成長要因分析</h2>
+                    
+                    <div class="hand-drawn-box">
+                        <div class="tag-label">GMV成長</div>
+                        <p><span class="highlight">Subscriber</span>および<span class="highlight">On-Demand</span>ユーザーのエンゲージメント向上によって<span class="percent-up">64.1%</span>増加</p>
+                    </div>
+                    
+                    <div class="hand-drawn-box">
+                        <div class="tag-label">総収益増加</div>
+                        <ul style="list-style:none; padding-left:10px;">
+                            <li>✅ エンゲージメントの向上</li>
+                            <li>✅ WebBankパートナーシップの継続的効果</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="key-value-box">
+                        <span class="key">総収益/GMV:</span>
+                        <span class="value">13.0% <span class="arrow">→</span> <span class="highlight">前四半期: 11.5%</span></span>
+                    </div>
+                    
+                    <div class="bubble handwritten">
+                        WebBankパートナーシップと高いユーザーエンゲージメントが
+                        収益性向上の鍵！🔑
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h2 class="section-title">🛠️ 新機能・イニシアチブ</h2>
+                    
+                    <div style="display:flex; flex-wrap:wrap; margin:10px 0;">
+                        <div class="chip">Pay-in-5 (β版)</div>
+                        <div class="chip">強化ショッピングツール</div>
+                        <div class="chip">Sezzle Balance</div>
+                        <div class="chip">Money IQ</div>
+                    </div>
+                    
+                    <div class="hand-drawn-box">
+                        <div class="tag-label">新ショッピングツール</div>
+                        <ul style="list-style:none; padding-left:10px;">
+                            <li>🔍 価格比較</li>
+                            <li>❤️ 欲しいものリスト</li>
+                            <li>🏷️ 自動適用クーポン (β版)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="hand-drawn-box">
+                        <div class="tag-label">加盟店拡大</div>
+                        <p class="handwritten">Scheels (高級スポーツ用品小売店)</p>
+                        <p class="handwritten">WHOP (クリエイター向けデジタルマーケット)</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h2 class="section-title">📝 その他の重要事項</h2>
+                    
+                    <div class="hand-drawn-box">
+                        <div class="tag-label">株式分割</div>
+                        <p>2025年3月28日に<span class="highlight">6対1</span>の株式分割を実施</p>
+                        <p style="font-size:12px; color:var(--text-subheading);">※EPS等の数値は遡及調整済み</p>
+                    </div>
+                    
+                    <div class="hand-drawn-box">
+                        <div class="tag-label">非GAAP指標</div>
+                        <p style="font-size:13px;">会社は以下の非GAAP指標を使用:</p>
+                        <ul style="font-size:12px; columns:2; padding-left:20px; margin-top:5px;">
+                            <li>取引関連コスト</li>
+                            <li>調整後純利益</li>
+                            <li>調整後EBITDA</li>
+                            <li>非取引関連費用</li>
+                            <li>総収益-取引コスト</li>
+                        </ul>
+                        <p style="font-size:11px; color:var(--text-subheading); margin-top:5px;">
+                            ※補足的な指標として提供、GAAP指標の代替ではない
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>本資料は、提供された「Sezzle FY2025 第1四半期 決算発表 ブリーフィングドキュメント」に基づいています。</p>
+            <p>発行元: Sezzle Inc. (NASDAQ:SEZL) | 発表日: 2025年5月7日 | 期間: 2025年3月31日終了の3ヶ月間（第1四半期）</p>
+        </div>
+    </div>
+</body>
+</html>
