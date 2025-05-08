@@ -250,53 +250,6 @@
             transition: max-height 0.3s ease-out;
         }
 
-        .category[data-category="company-analysis"] .category-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
-            padding: 15px;
-        }
-
-        .category[data-category="company-analysis"] .infographic-card {
-            background: white;
-            border-radius: 12px;
-            padding: 20px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            transition: all 0.3s ease;
-            border: 1px solid var(--company-analysis);
-        }
-
-        .category[data-category="company-analysis"] .infographic-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-
-        .category[data-category="company-analysis"] .infographic-card h3 {
-            color: var(--company-analysis);
-            margin-bottom: 10px;
-            font-size: 1.2em;
-        }
-
-        .category[data-category="company-analysis"] .infographic-card p {
-            color: var(--text-dark);
-            font-size: 0.9em;
-            margin-bottom: 15px;
-        }
-
-        .category[data-category="company-analysis"] .infographic-card a {
-            display: inline-block;
-            padding: 8px 15px;
-            background: var(--company-analysis);
-            color: white;
-            text-decoration: none;
-            border-radius: 6px;
-            transition: all 0.3s ease;
-        }
-
-        .category[data-category="company-analysis"] .infographic-card a:hover {
-            background: var(--fashion-4);
-        }
-
         .category:not(.active) .category-content {
             max-height: 0;
             overflow: hidden;
