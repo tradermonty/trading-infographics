@@ -1,0 +1,1017 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Axon Q1 2025 財務状況および事業概要</title>
+    <link rel="icon" type="image/png" href="../images/monty.png">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Yomogi&family=Zen+Kurenaido&family=Kaisei+Decol:wght@400;700&display=swap');
+        
+        :root {
+            --fashion-1: #593C47;
+            --fashion-2: #F2E63D;
+            --fashion-3: #F2C53D;
+            --fashion-4: #F25C05;
+            --fashion-5: #F24405;
+            --text-dark: #334155;
+            --text-title: #1e40af;
+            --bg-light: #fff;
+            --shadow: rgba(0, 0, 0, 0.1);
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Kaisei Decol', serif;
+            background-color: #f8f9fa;
+            color: var(--text-dark);
+            line-height: 1.4;
+            padding: 0;
+            margin: 0;
+        }
+
+        .fixed-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: linear-gradient(135deg, var(--fashion-1), var(--fashion-5));
+            padding: 10px 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .fixed-header:hover {
+            background: linear-gradient(135deg, var(--fashion-5), var(--fashion-1));
+        }
+
+        .fixed-header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .header-logo {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .fixed-header h1 {
+            font-family: 'Zen Kurenaido', sans-serif;
+            font-size: 24px;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            background: linear-gradient(to right, white, var(--fashion-2));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin: 0;
+            pointer-events: none;
+        }
+
+        .main-content {
+            margin-top: 60px;
+            padding: 20px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hidden {
+            display: none !important;
+            visibility: hidden;
+            opacity: 0;
+        }
+
+        .language-switch {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1001;
+            display: none;
+        }
+        
+        .language-switch button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 20px;
+            background: linear-gradient(135deg, var(--fashion-1), var(--fashion-5));
+            color: white;
+            cursor: pointer;
+            font-family: 'Yomogi', cursive;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .language-switch button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(135deg, var(--fashion-1), var(--fashion-5));
+            color: white;
+            margin-top: 40px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-logo {
+            font-family: 'Zen Kurenaido', sans-serif;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 15px;
+        }
+
+        .footer-social a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .footer-social a:hover {
+            color: var(--fashion-2);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .fixed-header h1 {
+                font-size: 20px;
+            }
+            
+            .main-content {
+                margin-top: 50px;
+                padding: 10px;
+            }
+
+            .language-switch {
+                top: 10px;
+                right: 10px;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="language-switch">
+        <button onclick="toggleLanguage()">English</button>
+    </div>
+
+    <div class="fixed-header" onclick="window.location.href='../index.html'">
+        <div class="fixed-header-content">
+            <img src="../images/monty.png" alt="Monty Trader Logo" class="header-logo">
+            <h1 class="ja">モンティの株式トレードインフォグラフィックス集</h1>
+            <h1 class="en hidden">Monty's Stock Trading Infographics Collection</h1>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Axon社 Q1 2025 グラフィックレコーディング</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Yomogi&family=Zen+Kurenaido&family=Kaisei+Decol:wght@400;700&display=swap');
+        
+        :root {
+            --fashion-1: #593C47;
+            --fashion-2: #F2E63D;
+            --fashion-3: #F2C53D;
+            --fashion-4: #F25C05;
+            --fashion-5: #F24405;
+            --text-main: #334155;
+            --text-heading: #1e40af;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Kaisei Decol', serif;
+            color: var(--text-main);
+            line-height: 1.4;
+            background-color: #f8f9fa;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23593c47' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 3px solid var(--fashion-3);
+            position: relative;
+        }
+        
+        .header::after {
+            content: "";
+            position: absolute;
+            bottom: -8px;
+            left: 30px;
+            right: 30px;
+            height: 3px;
+            background-color: var(--fashion-4);
+            border-radius: 3px;
+        }
+        
+        .title {
+            font-family: 'Zen Kurenaido', sans-serif;
+            font-size: 32px;
+            font-weight: bold;
+            color: var(--fashion-1);
+            background: linear-gradient(90deg, var(--fashion-5) 0%, var(--fashion-4) 50%, var(--fashion-3) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .title::before {
+            content: "";
+            position: absolute;
+            bottom: 2px;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            background-color: rgba(242, 196, 60, 0.3);
+            z-index: -1;
+            transform: rotate(-1deg);
+        }
+        
+        .date-source {
+            font-family: 'Yomogi', cursive;
+            color: var(--fashion-1);
+            text-align: right;
+            font-size: 14px;
+            border: 2px dashed var(--fashion-3);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            background-color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .main-content {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+        
+        .section {
+            background-color: rgba(255, 255, 255, 0.85);
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(242, 196, 60, 0.3);
+        }
+        
+        .section-wide {
+            grid-column: span 3;
+        }
+        
+        .section-medium {
+            grid-column: span 2;
+        }
+        
+        .section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 6px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--fashion-3), var(--fashion-4));
+            border-radius: 6px 0 0 6px;
+        }
+        
+        .section-heading {
+            font-family: 'Zen Kurenaido', sans-serif;
+            font-size: 18px;
+            color: var(--text-heading);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px dotted var(--fashion-3);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .icon {
+            font-size: 1.2em;
+            color: var(--fashion-4);
+        }
+        
+        .highlight {
+            font-weight: bold;
+            color: var(--fashion-5);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .highlight::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background-color: rgba(242, 196, 60, 0.5);
+            z-index: -1;
+            border-radius: 3px;
+        }
+        
+        .marker {
+            background: linear-gradient(transparent 40%, rgba(242, 230, 60, 0.6) 40%);
+            padding: 0 4px;
+        }
+        
+        .card {
+            background-color: white;
+            border-radius: 12px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            border: 1px dashed var(--fashion-3);
+            position: relative;
+        }
+        
+        .handwritten {
+            font-family: 'Yomogi', cursive;
+        }
+        
+        .quote {
+            font-style: italic;
+            color: var(--fashion-1);
+            padding: 0.5rem 1rem;
+            border-left: 3px solid var(--fashion-4);
+            margin: 0.5rem 0;
+            font-size: 13px;
+            background-color: rgba(242, 230, 60, 0.1);
+        }
+        
+        .stats {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .stat-item {
+            flex: 1;
+            min-width: 150px;
+            text-align: center;
+            padding: 0.8rem;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(242, 196, 60, 0.3);
+        }
+        
+        .stat-value {
+            font-size: 18px;
+            font-weight: bold;
+            color: var(--fashion-5);
+            margin-bottom: 0.3rem;
+        }
+        
+        .stat-label {
+            font-size: 12px;
+            color: var(--fashion-1);
+        }
+        
+        .arrow {
+            position: relative;
+            margin: 1rem 0;
+            text-align: center;
+            font-weight: bold;
+            color: var(--fashion-4);
+        }
+        
+        .arrow::after {
+            content: "↓";
+            font-size: 1.5rem;
+            display: block;
+            margin: 0.3rem 0;
+        }
+        
+        .banner {
+            background-color: var(--fashion-3);
+            color: var(--fashion-1);
+            text-align: center;
+            padding: 0.5rem 1rem;
+            margin: 1rem -1.5rem;
+            position: relative;
+            font-weight: bold;
+            transform: rotate(-1deg);
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .banner::before,
+        .banner::after {
+            content: "✧";
+            padding: 0 0.5rem;
+        }
+        
+        .connection-line {
+            position: relative;
+        }
+        
+        .connection-line::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 100%;
+            width: 20px;
+            height: 2px;
+            background-color: var(--fashion-4);
+            border-radius: 1px;
+        }
+        
+        .bubble {
+            background-color: rgba(242, 196, 60, 0.2);
+            border-radius: 20px;
+            padding: 0.8rem 1.2rem;
+            position: relative;
+            margin: 1rem 0;
+            border: 1px dashed var(--fashion-3);
+        }
+        
+        .bubble::before {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 30px;
+            width: 0;
+            height: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-top: 10px solid rgba(242, 196, 60, 0.2);
+        }
+        
+        .flex-row {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .flex-column {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .key-value {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px dotted var(--fashion-3);
+            padding: 0.3rem 0;
+        }
+        
+        .key {
+            font-weight: bold;
+            color: var(--fashion-1);
+        }
+        
+        .value {
+            color: var(--fashion-5);
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 2px dotted var(--fashion-3);
+            font-size: 12px;
+            color: var(--fashion-1);
+        }
+        
+        .risk-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .risk-icon {
+            color: var(--fashion-4);
+            flex-shrink: 0;
+        }
+
+        .product-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .product-icon {
+            background-color: var(--fashion-3);
+            color: var(--fashion-1);
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            flex-shrink: 0;
+            font-size: 16px;
+        }
+
+        .product-content {
+            flex: 1;
+        }
+
+        .product-title {
+            font-weight: bold;
+            color: var(--fashion-5);
+            margin-bottom: 0.3rem;
+        }
+
+        .hand-arrow {
+            position: relative;
+            font-family: 'Yomogi', cursive;
+            font-size: 24px;
+            color: var(--fashion-4);
+            transform: rotate(30deg);
+            margin: 1rem;
+            display: inline-block;
+        }
+
+        @media (max-width: 1000px) {
+            .main-content {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .section-wide {
+                grid-column: span 2;
+            }
+            
+            .section-medium {
+                grid-column: span 2;
+            }
+        }
+        
+        @media (max-width: 700px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .section-wide, .section-medium {
+                grid-column: span 1;
+            }
+            
+            .header {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: flex-start;
+            }
+            
+            .date-source {
+                align-self: flex-end;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="title">Axon Q1 2025 財務状況および事業概要</h1>
+            <div class="date-source">
+                <div>2025年5月7日</div>
+                <div>📊 Axon IR資料より</div>
+            </div>
+        </header>
+        
+        <div class="main-content">
+            <!-- エグゼクティブサマリー -->
+            <section class="section section-wide">
+                <h2 class="section-heading">
+                    <span class="icon">📝</span>エグゼクティブサマリー
+                </h2>
+                <div class="card">
+                    <p>
+                        <span class="highlight">Axon</span>は、<span class="marker">公共安全分野に特化したテクノロジー企業</span>であり、「<span class="handwritten">命を守り、真実を捉え、正義を加速する</span>」というミッションを掲げています。Q1 2025は堅調なスタートとなり、<span class="highlight">記録的な四半期収益</span>を達成し、健全なマージンを維持しました。
+                    </p>
+                    <div class="bubble">
+                        特に、<span class="marker">AIを活用した新製品</span>を含むソフトウェアおよびサービスの成長、TASER 10やAxon Body 4といったコネクテッドデバイスの採用拡大が収益を牽引しています。
+                    </div>
+                    <p>
+                        Axonは、公共および民間の安全ネットワークを拡大し、製品イノベーションとサブスクリプションモデルを通じて持続的な成長を目指しています。2025年度通期の業績予想も上方修正しており、将来に対する自信を示しています。
+                    </p>
+                </div>
+            </section>
+            
+            <!-- 企業ミッションとビジョン -->
+            <section class="section">
+                <h2 class="section-heading">
+                    <span class="icon">🔍</span>企業ミッションとビジョン
+                </h2>
+                <div class="card">
+                    <div class="key-value">
+                        <div class="key">ミッション:</div>
+                        <div class="value"></div>
+                    </div>
+                    <div class="quote">「命を守り、真実を捉え、正義を加速する」</div>
+                    <div class="key-value">
+                        <div class="key">ビジョン:</div>
+                        <div class="value"></div>
+                    </div>
+                    <p>公共安全のためのテクノロジーエコシステムを構築すること。</p>
+                    <div class="key-value">
+                        <div class="key">ムーンショット目標:</div>
+                        <div class="value"></div>
+                    </div>
+                    <div class="quote">「2033年までに警察と一般市民の間での銃器関連死を50%削減する」</div>
+                </div>
+            </section>
+            
+            <!-- 市場機会と成長戦略 -->
+            <section class="section section-medium">
+                <h2 class="section-heading">
+                    <span class="icon">📈</span>市場機会と成長戦略
+                </h2>
+                <div class="stat-item">
+                    <div class="stat-value">1,290億ドル</div>
+                    <div class="stat-label">合計アドレス可能市場（TAM）</div>
+                </div>
+                
+                <div class="banner">成長ドライバー</div>
+                
+                <div class="product-item">
+                    <div class="product-icon">↑</div>
+                    <div class="product-content">
+                        <div class="product-title">顧客による最新製品へのアップグレード</div>
+                        <p>既存製品の革新と改善を絶えず行い、公共安全分野での採用は徐々に持続的に進行</p>
+                    </div>
+                </div>
+                
+                <div class="product-item">
+                    <div class="product-icon">🌐</div>
+                    <div class="product-content">
+                        <div class="product-title">グローバル展開</div>
+                        <p>Axonの製品は世界的な適用性があり、85カ国以上で展開</p>
+                    </div>
+                </div>
+                
+                <div class="product-item">
+                    <div class="product-icon">↻</div>
+                    <div class="product-content">
+                        <div class="product-title">サブスクリプションモデル</div>
+                        <p>収益の<span class="highlight">95%以上</span>がサブスクリプションプランに関連</p>
+                    </div>
+                </div>
+                
+                <div class="product-item">
+                    <div class="product-icon">👥</div>
+                    <div class="product-content">
+                        <div class="product-title">新たな顧客層での成長</div>
+                        <p>刑務所、司法、消防・EMS、米国連邦政府機関、企業における職場安全、民間警備など</p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- 主な製品とエコシステム -->
+            <section class="section section-medium">
+                <h2 class="section-heading">
+                    <span class="icon">🛡️</span>主な製品とエコシステム
+                </h2>
+                <div class="card">
+                    <div class="key-value">
+                        <div class="key">コネクテッドデバイス</div>
+                    </div>
+                    
+                    <div class="product-item">
+                        <div class="product-icon">⚡</div>
+                        <div class="product-content">
+                            <div class="product-title">TASERデバイス</div>
+                            <p>実証済みの救命ツール、非致死性の力で事態をエスカレート解除</p>
+                            <div class="quote">「TASER 10 was a no-brainer.」- Scottsdale Police Department</div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-item">
+                        <div class="product-icon">📹</div>
+                        <div class="product-content">
+                            <div class="product-title">コネクテッドビデオ＆センサー</div>
+                            <p>ボディカメラ、車載カメラ、リアルタイムの状況認識のためのセンサー</p>
+                        </div>
+                    </div>
+                    
+                    <div class="product-item">
+                        <div class="product-icon">🚁</div>
+                        <div class="product-content">
+                            <div class="product-title">ドローン＆ロボットセキュリティ</div>
+                            <p>状況認識を強化し、リソースを最適化し、運用効率を向上</p>
+                        </div>
+                    </div>
+                    
+                    <div class="key-value">
+                        <div class="key">ソフトウェア＆サービス</div>
+                    </div>
+                    
+                    <div class="product-item">
+                        <div class="product-icon">🔐</div>
+                        <div class="product-content">
+                            <div class="product-title">デジタル証拠管理（DEMS）</div>
+                            <p>証拠の安全な保存、管理、共有を可能に</p>
+                            <div class="quote">「Decrease time spent redacting evidence by 75% with Redaction Assistant.」- Rowlett Police Department</div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-item">
+                        <div class="product-icon">🔍</div>
+                        <div class="product-content">
+                            <div class="product-title">リアルタイムオペレーション</div>
+                            <p>リアルタイムの状況認識と情報提供を可能にするシステム</p>
+                            <div class="quote">「Fleet 3 ALPR covers equivalent to five officers in the field.」- Fairfax County Police Department</div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-item">
+                        <div class="product-icon">🤖</div>
+                        <div class="product-content">
+                            <div class="product-title">AI＆生産性</div>
+                            <p>AIを活用して効率を高め、意思決定を加速</p>
+                            <div class="quote">「Decrease time spent writing incident reports by 67% through Draft One.」- Fort Collins Police Department</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- 財務状況 -->
+            <section class="section section-wide">
+                <h2 class="section-heading">
+                    <span class="icon">💰</span>財務状況
+                </h2>
+                <div class="stats">
+                    <div class="stat-item">
+                        <div class="stat-value">6億400万ドル</div>
+                        <div class="stat-label">Q1 2025 収益</div>
+                        <div class="handwritten">前年同期比 31%増 ⤴</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">2億6,300万ドル</div>
+                        <div class="stat-label">ソフトウェア＆サービス収益</div>
+                        <div class="handwritten">前年同期比 39%増 ⤴</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">3億4,090万ドル</div>
+                        <div class="stat-label">コネクテッドデバイス収益</div>
+                        <div class="handwritten">前年同期比 26.1%増 ⤴</div>
+                    </div>
+                </div>
+                
+                <div class="flex-row">
+                    <div class="card" style="flex: 1;">
+                        <div class="product-title">収益性の高いグロスマージン</div>
+                        <div class="key-value">
+                            <div class="key">Q1 2025 Adjusted Gross Margin:</div>
+                            <div class="value">63.6%</div>
+                        </div>
+                        <div class="key-value">
+                            <div class="key">コネクテッドデバイス:</div>
+                            <div class="value">52.8%</div>
+                        </div>
+                        <div class="key-value">
+                            <div class="key">ソフトウェア＆サービス:</div>
+                            <div class="value">77.7%</div>
+                        </div>
+                    </div>
+                    
+                    <div class="card" style="flex: 1;">
+                        <div class="product-title">健全なマージンとキャッシュフロー</div>
+                        <div class="key-value">
+                            <div class="key">Q1 2025 Net income:</div>
+                            <div class="value">8,800万ドル</div>
+                        </div>
+                        <div class="key-value">
+                            <div class="key">Q1 2025 Adjusted EBITDA:</div>
+                            <div class="value">1億5,500万ドル</div>
+                        </div>
+                        <div class="key-value">
+                            <div class="key">Q1 2025 Adjusted EBITDA margin:</div>
+                            <div class="value">25.7%</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bubble">
+                    <strong>2025年度通期ガイダンス（上方修正）:</strong>
+                    <div class="key-value">
+                        <div class="key">収益:</div>
+                        <div class="value">26億ドル〜27億ドル (前年比27%増)</div>
+                    </div>
+                    <div class="key-value">
+                        <div class="key">Adjusted EBITDA:</div>
+                        <div class="value">6億5,000万ドル〜6億7,500万ドル (約25%のマージン)</div>
+                    </div>
+                </div>
+                
+                <div class="hand-arrow">メモ！</div>
+                <div class="handwritten" style="margin-left: 2rem;">
+                    Q1 2025時点で、現金・現金同等物・投資は<span class="highlight">22億ドル</span>、純現金ポジションは<span class="highlight">1億7,100万ドル</span>
+                </div>
+            </section>
+            
+            <!-- 製品イノベーションとパートナーシップ -->
+            <section class="section section-medium">
+                <h2 class="section-heading">
+                    <span class="icon">🚀</span>製品イノベーションとパートナーシップ
+                </h2>
+                <div class="card">
+                    <div class="product-item">
+                        <div class="product-icon">🎪</div>
+                        <div class="product-content">
+                            <div class="product-title">Axon Week 2025</div>
+                            <p>第10回年次ユーザーカンファレンスを開催し、公共安全技術の未来像を提示。<span class="highlight">2,500名以上</span>の参加者が集まりました。</p>
+                        </div>
+                    </div>
+                    
+                    <div class="product-item">
+                        <div class="product-icon">🚗</div>
+                        <div class="product-content">
+                            <div class="product-title">Axon Vehicle Intelligence</div>
+                            <p>Axon Outpost、Axon Lightpost、Axon Fleet 3、Axon Fususを統合し、ナンバープレート認識に加え、車両の詳細情報をリアルタイムで提供。</p>
+                            <div class="quote">「We built Axon Vehicle Intelligence not just to help solve crimes faster, but to do it the right way. With privacy built in.」- リック・スミスCEO</div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-item">
+                        <div class="product-icon">🤖</div>
+                        <div class="product-content">
+                            <div class="product-title">Axon Assistant</div>
+                            <p>AI Era Planに含まれる機能で、Play General Q&A、Voice-Enabled Policy Chatなどにより、現場の警察官の意思決定を支援。</p>
+                            <p class="handwritten">ライセンスプレートルックアップ、天気予報、交通情報などの機能が2025年後半に追加予定 👍</p>
+                        </div>
+                    </div>
+                    
+                    <div class="product-item">
+                        <div class="product-icon">🔄</div>
+                        <div class="product-content">
+                            <div class="product-title">公共および民間安全ネットワークの拡大</div>
+                            <p>Axon Fususを通じて民間企業と地域機関間のビデオ共有を可能に。</p>
+                            <p>Ringおよび<span class="marker">Citizen</span>との新たな連携により、地域住民がコミュニティ安全に直接参加可能に。</p>
+                            <div class="quote">「THIS COLLABORATION WITH AXON USHERS IN A NEW ERA OF PRIVACY-FIRST COOPERATION...」- Jamie Siminoff, Ring CEO</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- リスクと不確実性 -->
+            <section class="section">
+                <h2 class="section-heading">
+                    <span class="icon">⚠️</span>リスクと不確実性
+                </h2>
+                <div class="card">
+                    <p>将来の見通しに関する記述には、以下の重要な要因により実際の結果が異なる可能性があります：</p>
+                    
+                    <div class="risk-item">
+                        <span class="risk-icon">⚠️</span>
+                        <span>政府契約の解除リスク</span>
+                    </div>
+                    
+                    <div class="risk-item">
+                        <span class="risk-icon">⚠️</span>
+                        <span>法執行機関の資金調達能力</span>
+                    </div>
+                    
+                    <div class="risk-item">
+                        <span class="risk-icon">⚠️</span>
+                        <span>サプライチェーンの管理と生産遅延</span>
+                    </div>
+                    
+                    <div class="risk-item">
+                        <span class="risk-icon">⚠️</span>
+                        <span>インフレ、マクロ経済状況の影響</span>
+                    </div>
+                    
+                    <div class="risk-item">
+                        <span class="risk-icon">⚠️</span>
+                        <span>顧客データの損失、セキュリティ侵害</span>
+                    </div>
+                    
+                    <div class="risk-item">
+                        <span class="risk-icon">⚠️</span>
+                        <span>買収した事業の統合能力</span>
+                    </div>
+                    
+                    <div class="bubble handwritten">
+                        ※ 注意: これらはリスク要因の一部であり、完全なリスク分析には詳細な開示資料を参照してください。
+                    </div>
+                </div>
+            </section>
+            
+            <!-- 結論 -->
+            <section class="section section-wide">
+                <h2 class="section-heading">
+                    <span class="icon">📌</span>結論
+                </h2>
+                <div class="card">
+                    <p>
+                        <span class="highlight">Axon</span>は、公共安全分野における<span class="marker">強力なテクノロジーリーダー</span>であり、革新的な製品、ソフトウェア、およびサービスのエコシステムを通じて、市場での地位を確立しています。
+                    </p>
+                    
+                    <div class="flex-row" style="margin: 1rem 0;">
+                        <div style="flex: 1; text-align: center;">
+                            <div style="font-size: 36px; color: var(--fashion-4);">↑</div>
+                            <div>サブスクリプションモデル</div>
+                        </div>
+                        <div style="flex: 1; text-align: center;">
+                            <div style="font-size: 36px; color: var(--fashion-4);">↑</div>
+                            <div>AIを活用した新機能</div>
+                        </div>
+                        <div style="flex: 1; text-align: center;">
+                            <div style="font-size: 36px; color: var(--fashion-4);">↑</div>
+                            <div>新たな顧客層の拡大</div>
+                        </div>
+                    </div>
+                    
+                    <p>
+                        これらの戦略的要素は、<span class="highlight">将来の成長のための強力な基盤</span>を構築しています。拡大する市場機会と新たな顧客層への浸透により、Axonは堅調な財務実績を維持し、将来の成長に向けてポジティブな見通しを示しています。
+                    </p>
+                    
+                    <div class="handwritten" style="text-align: right; margin-top: 1rem;">
+                        ただし、政府契約への依存やサプライチェーンのリスクなど、特定の不確実性も存在するため、これらを注視する必要があります。
+                    </div>
+                </div>
+            </section>
+        </div>
+        
+        <footer class="footer">
+            <p>© 2025 Axon Enterprise, Inc. | このインフォグラフィックは情報提供のみを目的としており、投資判断の根拠として使用すべきではありません。</p>
+            <p>データソース: Axon 2025年第1四半期決算発表資料</p>
+        </footer>
+    </div>
+</body>
+</html>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">Monty Trader</div>
+            <div class="footer-social">
+                <a href="https://x.com/monty_investor" target="_blank">@monty_investor</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleLanguage() {
+            const jaElements = document.querySelectorAll('.ja');
+            const enElements = document.querySelectorAll('.en');
+            const button = document.querySelector('.language-switch button');
+            
+            jaElements.forEach(el => el.classList.toggle('hidden'));
+            enElements.forEach(el => el.classList.toggle('hidden'));
+            
+            button.textContent = button.textContent === 'English' ? '日本語' : 'English';
+        }
+    </script>
+</body>
+</html> 
