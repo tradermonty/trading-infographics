@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>オスカー・ヘルス Q1 2025 業績ハイライト</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Yomogi&family=Zen+Kurenaido&family=Kaisei+Decol:wght@400;700&display=swap');
+    
+    :root {
+      --fashion-1: #593C47;
+      --fashion-2: #F2E63D;
+      --fashion-3: #F2C53D;
+      --fashion-4: #F25C05;
+      --fashion-5: #F24405;
+      --slate-700: #334155;
+      --slate-600: #475569;
+      --blue-800: #1e40af;
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'Kaisei Decol', serif;
+      color: var(--slate-700);
+      background-color: #f8f9fa;
+      line-height: 1.4;
+      padding: 20px;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      padding: 30px;
+      position: relative;
+    }
+    
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+      border-bottom: 2px dashed var(--fashion-1);
+      padding-bottom: 15px;
+    }
+    
+    .title {
+      font-family: 'Yomogi', cursive;
+      font-size: 32px;
+      font-weight: bold;
+      background: linear-gradient(90deg, var(--fashion-1), var(--fashion-5));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    }
+    
+    .date {
+      font-family: 'Zen Kurenaido', sans-serif;
+      font-size: 16px;
+      color: var(--slate-600);
+      text-align: right;
+    }
+    
+    .content {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    
+    .column {
+      flex: 1;
+      min-width: 300px;
+    }
+    
+    .section {
+      margin-bottom: 25px;
+      padding: 15px;
+      border-radius: 12px;
+      background-color: rgba(255, 255, 255, 0.8);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+      backdrop-filter: blur(10px);
+      border: 2px solid transparent;
+      position: relative;
+    }
+    
+    .section::before {
+      content: '';
+      position: absolute;
+      top: -10px;
+      left: 20px;
+      width: 30px;
+      height: 30px;
+      background-color: white;
+      border-radius: 50%;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      z-index: -1;
+    }
+    
+    .section-1 {
+      border-color: var(--fashion-2);
+    }
+    
+    .section-2 {
+      border-color: var(--fashion-3);
+    }
+    
+    .section-3 {
+      border-color: var(--fashion-4);
+    }
+    
+    .section-4 {
+      border-color: var(--fashion-5);
+    }
+    
+    .section-title {
+      font-family: 'Zen Kurenaido', sans-serif;
+      font-size: 18px;
+      color: var(--blue-800);
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .highlight {
+      background: linear-gradient(transparent 60%, var(--fashion-2) 40%);
+      font-weight: bold;
+      padding: 0 4px;
+    }
+    
+    .data-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+      padding-bottom: 5px;
+      border-bottom: 1px dotted #ccc;
+    }
+    
+    .data-label {
+      font-weight: bold;
+    }
+    
+    .data-value {
+      font-family: 'Kaisei Decol', serif;
+    }
+    
+    .positive {
+      color: #10b981;
+    }
+    
+    .negative {
+      color: #ef4444;
+    }
+    
+    .quote {
+      background-color: rgba(89, 60, 71, 0.05);
+      border-left: 4px solid var(--fashion-1);
+      padding: 15px;
+      margin: 15px 0;
+      border-radius: 0 8px 8px 0;
+      font-family: 'Kaisei Decol', serif;
+      font-style: italic;
+      position: relative;
+    }
+    
+    .quote::before {
+      content: '❝';
+      font-size: 30px;
+      color: var(--fashion-1);
+      position: absolute;
+      top: -15px;
+      left: 10px;
+    }
+    
+    .quote::after {
+      content: '❞';
+      font-size: 30px;
+      color: var(--fashion-1);
+      position: absolute;
+      bottom: -25px;
+      right: 10px;
+    }
+    
+    .arrow {
+      position: relative;
+      padding-left: 20px;
+      margin: 10px 0;
+    }
+    
+    .arrow::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--fashion-4);
+      font-weight: bold;
+    }
+    
+    .bubble {
+      background-color: white;
+      border: 2px solid var(--fashion-3);
+      border-radius: 20px;
+      padding: 15px;
+      margin: 15px 0;
+      position: relative;
+    }
+    
+    .bubble::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 30px;
+      width: 20px;
+      height: 20px;
+      background-color: white;
+      border-right: 2px solid var(--fashion-3);
+      border-bottom: 2px solid var(--fashion-3);
+      transform: rotate(45deg);
+    }
+    
+    .chart {
+      width: 100%;
+      margin: 20px 0;
+      position: relative;
+    }
+    
+    .bar-container {
+      height: 200px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-around;
+      border-bottom: 2px dashed var(--fashion-1);
+      border-left: 2px dashed var(--fashion-1);
+      padding: 10px;
+    }
+    
+    .bar-group {
+      display: flex;
+      gap: 10px;
+      align-items: flex-end;
+      text-align: center;
+    }
+    
+    .bar {
+      width: 40px;
+      background: linear-gradient(180deg, var(--fashion-2), var(--fashion-4));
+      border-radius: 5px 5px 0 0;
+      position: relative;
+      transition: all 0.3s;
+    }
+    
+    .bar:hover {
+      transform: translateY(-5px);
+    }
+    
+    .bar-label {
+      transform: rotate(-45deg);
+      position: absolute;
+      bottom: -35px;
+      left: -15px;
+      font-size: 12px;
+    }
+    
+    .bar-value {
+      position: absolute;
+      top: -25px;
+      width: 100%;
+      text-align: center;
+      font-size: 12px;
+      font-weight: bold;
+    }
+    
+    .chart-title {
+      text-align: center;
+      margin-bottom: 15px;
+      font-weight: bold;
+    }
+    
+    .footer {
+      margin-top: 30px;
+      font-size: 12px;
+      color: var(--slate-600);
+      text-align: right;
+      border-top: 2px dashed var(--fashion-1);
+      padding-top: 15px;
+    }
+    
+    .tag {
+      display: inline-block;
+      background-color: var(--fashion-2);
+      color: var(--fashion-1);
+      padding: 3px 8px;
+      border-radius: 15px;
+      font-size: 12px;
+      margin-right: 5px;
+      margin-bottom: 5px;
+    }
+    
+    .hand-drawn {
+      border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+      border: 2px solid var(--fashion-1);
+    }
+    
+    .connect-line {
+      position: absolute;
+      border-top: 2px dashed var(--fashion-4);
+      width: 50px;
+      transform: rotate(-45deg);
+    }
+    
+    .callout {
+      position: relative;
+      background-color: #fff;
+      border: 2px solid var(--fashion-5);
+      border-radius: 8px;
+      padding: 10px;
+      margin: 15px 0;
+      max-width: 90%;
+    }
+    
+    .callout::before {
+      content: "";
+      position: absolute;
+      left: -10px;
+      top: 50%;
+      transform: translateY(-50%);
+      border-width: 10px 10px 10px 0;
+      border-style: solid;
+      border-color: transparent var(--fashion-5) transparent transparent;
+    }
+    
+    .sticker {
+      display: inline-block;
+      transform: rotate(-5deg);
+      background-color: var(--fashion-2);
+      color: var(--fashion-1);
+      padding: 5px 10px;
+      border-radius: 5px;
+      font-weight: bold;
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+    }
+    
+    .circle-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background-color: var(--fashion-3);
+      color: var(--fashion-1);
+      font-weight: bold;
+      font-size: 16px;
+      transform: rotate(10deg);
+      margin: 10px;
+      box-shadow: 3px 3px 6px rgba(0,0,0,0.1);
+    }
+    
+    .underline {
+      border-bottom: 3px solid var(--fashion-4);
+      display: inline-block;
+      padding-bottom: 2px;
+    }
+    
+    @media (max-width: 768px) {
+      .column {
+        flex: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div>
+        <h1 class="title">オスカー・ヘルス Q1 2025 業績ハイライト</h1>
+        <p>ヘルスケアテクノロジー企業の力強い財務結果</p>
+      </div>
+      <div class="date">
+        <p>2025年5月7日発表</p>
+        <p>ニューヨーク証券取引所: OSCR</p>
+      </div>
+    </div>
+    
+    <div class="section" style="margin-bottom: 30px; background-color: rgba(242, 230, 60, 0.1); border: 2px dashed var(--fashion-1); padding: 15px; border-radius: 12px;">
+      <h2 class="section-title" style="display: flex; align-items: center;"><span style="font-size: 24px; margin-right: 8px;">🏥</span> 企業概要</h2>
+      <p style="font-size: 15px; line-height: 1.6;">
+        <span class="highlight">オスカー・ヘルス（Oscar Health, Inc.）</span>は、2012年に設立された米国のヘルスケアテクノロジー企業です。
+        フルスタックテクノロジープラットフォームと会員サービスに重点を置き、個人・家族向け健康保険プランとヘルスケア業界向けデジタルソリューション（+Oscar）を提供しています。
+        革新的なテクノロジーにより、優れた顧客体験、深いエンゲージメント、高価値の臨床ケアを実現し、現在約200万人の会員から信頼を得ています。
+        ニューヨーク証券取引所に上場（ティッカーシンボル: OSCR）しています。
+      </p>
+      <div style="display: flex; flex-wrap: wrap; margin-top: 10px;">
+        <div class="tag">2012年設立</div>
+        <div class="tag">ヘルスケアテック</div>
+        <div class="tag">デジタル保険</div>
+        <div class="tag">テクノロジー駆動</div>
+        <div class="tag">NYSE上場</div>
+      </div>
+    </div>
+    
+    <div class="content">
+      <div class="column">
+        <div class="section section-1">
+          <h2 class="section-title">📈 主要財務指標</h2>
+          <div class="data-row">
+            <div class="data-label">総売上高</div>
+            <div class="data-value highlight">30億4,626万ドル</div>
+          </div>
+          <div class="data-row">
+            <div class="data-label">前年同期比</div>
+            <div class="data-value positive">+42% ⤴️</div>
+          </div>
+          <div class="data-row">
+            <div class="data-label">医療損失率（MLR）</div>
+            <div class="data-value">75.4%</div>
+          </div>
+          <div class="data-row">
+            <div class="data-label">SG&A費用比率</div>
+            <div class="data-value positive">15.8% 改善</div>
+          </div>
+          <div class="data-row">
+            <div class="data-label">営業利益</div>
+            <div class="data-value highlight">2億9,712万ドル</div>
+          </div>
+          <div class="data-row">
+            <div class="data-label">純利益</div>
+            <div class="data-value">2億7,527万ドル</div>
+          </div>
+          <div class="data-row">
+            <div class="data-label">調整後EBITDA</div>
+            <div class="data-value">3億2,883万ドル</div>
+          </div>
+        </div>
+        
+        <div class="section section-2">
+          <h2 class="section-title">👥 会員数の推移</h2>
+          <div class="chart">
+            <div class="chart-title">会員数（2025年3月31日時点）</div>
+            <div class="bar-container">
+              <div class="bar-group">
+                <div class="bar" style="height: 150px;">
+                  <span class="bar-value">204万</span>
+                  <span class="bar-label">2025年</span>
+                </div>
+                <div class="bar" style="height: 105px; background: linear-gradient(180deg, #ccc, #999);">
+                  <span class="bar-value">145万</span>
+                  <span class="bar-label">2024年</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="bubble">
+            <div class="data-row">
+              <div class="data-label">個人・小規模グループ</div>
+              <div class="data-value">2,021,484</div>
+            </div>
+            <div class="data-row">
+              <div class="data-label">Cigna+Oscar</div>
+              <div class="data-value">17,983</div>
+            </div>
+            <div class="data-row">
+              <div class="data-label">総会員数</div>
+              <div class="data-value highlight">2,039,467</div>
+            </div>
+          </div>
+          <div class="arrow">前年同期比 41% 増加</div>
+        </div>
+      </div>
+      
+      <div class="column">
+        <div class="section section-3">
+          <h2 class="section-title">💬 CEOコメント</h2>
+          <div class="quote">
+            オスカーは第1四半期に力強い財務結果を報告しました。収益と純利益の前年同期比で大幅な増加を伴う、継続的なトップラインの成長とボトムラインのパフォーマンスを達成しました。会員とパートナーに優れた価値を提供する中で、今年は意味のあるマージン拡大を引き続き期待しています。
+            <p style="text-align: right; margin-top: 10px;">- マーク・ベルトリーニ CEO</p>
+          </div>
+          <div class="sticker">2025年通期見通しを再確認 ✓</div>
+        </div>
+        
+        <div class="section section-4">
+          <h2 class="section-title">🔍 主要業績指標の解説</h2>
+          <div class="callout">
+            <p><span class="underline">売上高増加の主な要因</span>：会員数の増加</p>
+          </div>
+          <div class="callout">
+            <p><span class="underline">MLR上昇の要因</span>：前期の開発から3,100万ドルのマイナス影響</p>
+          </div>
+          <div class="callout">
+            <p><span class="underline">SG&A比率改善の要因</span>：固定費レバレッジ、取引所手数料率の低下、変動費効率</p>
+          </div>
+          <div class="callout">
+            <p><span class="underline">営業利益増加の要因</span>：会員数増加、固定費レバレッジ、変動費効率による強力な業績</p>
+          </div>
+        </div>
+        
+        <div class="section section-1">
+          <h2 class="section-title">📊 業績比較</h2>
+          <div class="data-row">
+            <div class="data-label">希薄化後EPS</div>
+            <div class="data-value">$0.92</div>
+          </div>
+          <div class="data-row">
+            <div class="data-label">前年同期</div>
+            <div class="data-value">$0.62</div>
+          </div>
+          <div class="data-row">
+            <div class="data-label">増加率</div>
+            <div class="data-value positive">48.4% ⤴️</div>
+          </div>
+          <div class="circle-badge">48%<br>UP</div>
+        </div>
+      </div>
+      
+      <div class="column">
+        <div class="section section-2">
+          <h2 class="section-title">📝 企業概要</h2>
+          <p>オスカー・ヘルスは、フルスタックテクノロジープラットフォームと会員へのサービスに対する揺るぎない焦点を中心に構築された先進的なヘルスケアテクノロジー企業です。</p>
+          <div class="tag">2012年設立</div>
+          <div class="tag">ヘルスケアIT</div>
+          <div class="tag">保険</div>
+          
+          <p class="arrow">個人・家族向けプランとヘルスケア業界向けテクノロジーソリューションを提供</p>
+          
+          <p class="arrow">テクノロジーが優れた体験、深いエンゲージメント、高価値の臨床ケアを推進</p>
+          
+          <div class="hand-drawn" style="padding: 10px; margin-top: 15px;">
+            <p style="text-align: center; font-weight: bold;">2025年3月31日時点で約200万人の会員が信頼</p>
+          </div>
+        </div>
+        
+        <div class="section section-3">
+          <h2 class="section-title">📅 今後の予定</h2>
+          <p>オスカーは、2025年5月7日午前8時（ET）に財務結果を議論するためのカンファレンスコールを開催します。</p>
+          <div class="arrow">ライブ音声ウェブキャストは、Investor Relationsページ（ir.hioscar.com）からアクセス可能</div>
+          
+          <div class="callout">
+            <p>ウェブキャストの録音は、コール終了後すぐにオンデマンド視聴が可能になり、同じWebリンクでアクセスでき、約90日間利用可能になります。</p>
+          </div>
+        </div>
+        
+        <div class="section section-4">
+          <h2 class="section-title">⚠️ 注意事項</h2>
+          <p style="font-size: 13px;">このプレスリリースには、1995年の米国私募証券訴訟改革法の意味における将来予測に関する記述が含まれています。このリリースに含まれる将来予測に関する記述は、保証されたものではなく、リスク、仮定、不確実性の影響を受けます。</p>
+          <div class="tag">将来予測情報</div>
+          <div class="tag">リスク要因</div>
+          <div class="tag">非GAAP指標</div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer">
+      <p>出典: Oscar Health, Inc. 2025年第1四半期決算報告書（2025年5月7日発表）</p>
+      <p>問い合わせ先: 投資家関係: ir@hioscar.com | メディア関係: press@hioscar.com</p>
+    </div>
+  </div>
+</body>
+</html>
