@@ -1,0 +1,1252 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>インスレット社 インベスター・プレゼンテーション</title>
+    <link rel="icon" type="image/png" href="../images/monty.png">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Yomogi&family=Zen+Kurenaido&family=Kaisei+Decol:wght@400;700&display=swap');
+        
+        :root {
+            --fashion-1: #593C47;
+            --fashion-2: #F2E63D;
+            --fashion-3: #F2C53D;
+            --fashion-4: #F25C05;
+            --fashion-5: #F24405;
+            --text-dark: #334155;
+            --text-title: #1e40af;
+            --bg-light: #fff;
+            --shadow: rgba(0, 0, 0, 0.1);
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Kaisei Decol', serif;
+            background-color: #f8f9fa;
+            color: var(--text-dark);
+            line-height: 1.4;
+            padding: 0;
+            margin: 0;
+        }
+
+        .fixed-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: linear-gradient(135deg, var(--fashion-1), var(--fashion-5));
+            padding: 10px 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .fixed-header:hover {
+            background: linear-gradient(135deg, var(--fashion-5), var(--fashion-1));
+        }
+
+        .fixed-header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .header-logo {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .fixed-header h1 {
+            font-family: 'Zen Kurenaido', sans-serif;
+            font-size: 24px;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            background: linear-gradient(to right, white, var(--fashion-2));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin: 0;
+            pointer-events: none;
+        }
+
+        .template-main-content {
+            margin-top: 60px;
+            padding: 20px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .template-footer {
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(135deg, var(--fashion-1), var(--fashion-5));
+            color: white;
+            margin-top: 40px;
+        }
+
+        .template-footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .template-footer-logo {
+            font-family: 'Zen Kurenaido', sans-serif;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .template-footer-social {
+            display: flex;
+            gap: 15px;
+        }
+
+        .template-footer-social a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .template-footer-social a:hover {
+            color: var(--fashion-2);
+            transform: translateY(-2px);
+        }
+
+        .template-hidden {
+            display: none !important;
+            visibility: hidden;
+            opacity: 0;
+        }
+
+        .language-switch {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1001;
+            display: none;
+        }
+        
+        .language-switch button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 20px;
+            background: linear-gradient(135deg, var(--fashion-1), var(--fashion-5));
+            color: white;
+            cursor: pointer;
+            font-family: 'Yomogi', cursive;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .language-switch button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+
+        @media (max-width: 768px) {
+            .fixed-header h1 {
+                font-size: 20px;
+            }
+            
+            .template-main-content {
+                margin-top: 50px;
+                padding: 10px;
+            }
+
+            .language-switch {
+                top: 10px;
+                right: 10px;
+            }
+
+            .template-footer-content {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="language-switch">
+        <button onclick="toggleLanguage()">English</button>
+    </div>
+
+    <div class="fixed-header" onclick="window.location.href='../index.html'">
+        <div class="fixed-header-content">
+            <img src="../images/monty.png" alt="Monty Trader Logo" class="header-logo">
+            <h1 class="ja">モンティの株式トレードインフォグラフィックス集</h1>
+            <h1 class="en hidden">Monty's Stock Trading Infographics Collection</h1>
+        </div>
+    </div>
+
+    <div class="template-main-content">
+        <!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>インスレット社 インベスター・プレゼンテーション 2025年</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Yomogi&family=Zen+Kurenaido&family=Kaisei+Decol:wght@400;700&display=swap');
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Kaisei Decol', 'Zen Kurenaido', sans-serif;
+            background-color: #f8f8ff;
+            color: #334155;
+            line-height: 1.4;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+        }
+        
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px dotted #593C47;
+        }
+        
+        .title-container {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .main-title {
+            font-family: 'Yomogi', cursive;
+            font-size: 32px;
+            font-weight: bold;
+            background: linear-gradient(45deg, #593C47, #F25C05);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 10px;
+            position: relative;
+        }
+        
+        .main-title::after {
+            content: "";
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, #F2E63D, #F25C05);
+            border-radius: 3px;
+        }
+        
+        .subtitle {
+            font-size: 16px;
+            color: #475569;
+            margin-top: 5px;
+        }
+        
+        .date-info {
+            font-size: 14px;
+            text-align: right;
+            color: #475569;
+        }
+        
+        .content {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        
+        .section {
+            background-color: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+        
+        .section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 6px;
+            height: 100%;
+            background: linear-gradient(to bottom, #F2E63D, #F25C05);
+            border-radius: 3px 0 0 3px;
+        }
+        
+        .section-title {
+            font-size: 18px;
+            font-family: 'Yomogi', cursive;
+            color: #593C47;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px dashed #F2C53D;
+            display: flex;
+            align-items: center;
+        }
+        
+        .section-title i {
+            margin-right: 8px;
+            color: #F25C05;
+        }
+        
+        .highlight {
+            background: linear-gradient(transparent 60%, #F2E63D 40%);
+            font-weight: bold;
+            padding: 0 2px;
+        }
+        
+        .key-point {
+            border: 2px solid #F2C53D;
+            border-radius: 8px;
+            padding: 10px;
+            margin: 10px 0;
+            position: relative;
+        }
+        
+        .key-point-title {
+            position: absolute;
+            top: -10px;
+            left: 10px;
+            background-color: white;
+            padding: 0 5px;
+            color: #F24405;
+            font-weight: bold;
+        }
+        
+        .data-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin: 15px 0;
+        }
+        
+        .data-box {
+            background-color: rgba(242, 230, 61, 0.1);
+            border-radius: 8px;
+            padding: 12px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .data-box::after {
+            content: "";
+            position: absolute;
+            bottom: -5px;
+            right: -5px;
+            width: 15px;
+            height: 15px;
+            background-color: #F2C53D;
+            border-radius: 50%;
+            opacity: 0.5;
+        }
+        
+        .data-label {
+            font-size: 14px;
+            color: #593C47;
+        }
+        
+        .data-value {
+            font-size: 24px;
+            font-weight: bold;
+            color: #F24405;
+            margin: 5px 0;
+        }
+        
+        .data-note {
+            font-size: 12px;
+            color: #475569;
+        }
+        
+        .list-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 10px;
+        }
+        
+        .list-icon {
+            color: #F25C05;
+            margin-right: 8px;
+            flex-shrink: 0;
+            margin-top: 5px;
+        }
+        
+        .growth-chart {
+            width: 100%;
+            height: 150px;
+            margin: 20px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .chart-bar {
+            background: linear-gradient(90deg, #593C47, #F25C05);
+            height: 40px;
+            border-radius: 5px;
+            position: relative;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 10px;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .chart-bar::before {
+            content: attr(data-label);
+            position: absolute;
+            left: 10px;
+            color: white;
+        }
+        
+        .chart-arrow {
+            position: absolute;
+            top: 50%;
+            right: -20px;
+            transform: translateY(-50%);
+            width: 30px;
+            height: 30px;
+        }
+        
+        .comment-bubble {
+            background-color: rgba(89, 60, 71, 0.1);
+            border-radius: 15px 15px 15px 0;
+            padding: 10px 15px;
+            position: relative;
+            margin: 20px 0 20px 15px;
+        }
+        
+        .comment-bubble::before {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 15px;
+            height: 15px;
+            background-color: rgba(89, 60, 71, 0.1);
+            clip-path: polygon(0 0, 100% 0, 0 100%);
+        }
+        
+        .quote {
+            font-style: italic;
+            padding-left: 15px;
+            border-left: 3px solid #F2C53D;
+            margin: 15px 0;
+        }
+        
+        .timeline {
+            margin: 20px 0;
+            position: relative;
+        }
+        
+        .timeline::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 15px;
+            width: 3px;
+            height: 100%;
+            background: linear-gradient(to bottom, #F2E63D, #F25C05);
+            border-radius: 3px;
+        }
+        
+        .timeline-item {
+            padding-left: 40px;
+            position: relative;
+            margin-bottom: 15px;
+        }
+        
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            top: 5px;
+            left: 9px;
+            width: 15px;
+            height: 15px;
+            background-color: #F25C05;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        
+        .tag {
+            display: inline-block;
+            background-color: #F2C53D;
+            color: #593C47;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+            margin-right: 5px;
+            margin-bottom: 5px;
+        }
+        
+        .image-placeholder {
+            width: 100%;
+            height: 150px;
+            background-color: rgba(242, 196, 61, 0.2);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 10px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .image-placeholder::after {
+            content: "📊";
+            font-size: 40px;
+            opacity: 0.5;
+        }
+        
+        .hand-drawn-arrow {
+            width: 50px;
+            height: 30px;
+            position: relative;
+            margin: 10px auto;
+        }
+        
+        .hand-drawn-arrow::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: #F24405;
+            transform: translateY(-50%);
+            border-radius: 3px;
+        }
+        
+        .hand-drawn-arrow::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: -5px;
+            width: 15px;
+            height: 15px;
+            border-right: 3px solid #F24405;
+            border-bottom: 3px solid #F24405;
+            transform: rotate(-45deg);
+            border-radius: 2px;
+        }
+        
+        .note {
+            font-size: 12px;
+            color: #475569;
+            margin-top: 10px;
+            padding-top: 5px;
+            border-top: 1px dashed #F2C53D;
+        }
+        
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            border-radius: 12px;
+            padding: 15px;
+            margin: 10px 0;
+        }
+        
+        .full-width {
+            grid-column: 1 / -1;
+        }
+        
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            padding-top: 20px;
+            border-top: 3px dotted #593C47;
+            font-size: 12px;
+            color: #475569;
+        }
+        
+        @media (max-width: 900px) {
+            .content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* 手書き風の追加スタイル */
+        .hand-drawn-box {
+            border: 2px solid #593C47;
+            border-radius: 15px;
+            padding: 15px;
+            position: relative;
+            margin: 15px 0;
+            box-shadow: 3px 3px 0 rgba(89, 60, 71, 0.3);
+        }
+
+        /* 吹き出し効果 */
+        .bubble-box {
+            background-color: white;
+            border: 2px solid #F25C05;
+            border-radius: 20px;
+            padding: 15px;
+            position: relative;
+            margin: 20px 0;
+        }
+
+        .bubble-box::after {
+            content: "";
+            position: absolute;
+            bottom: -15px;
+            left: 50px;
+            width: 20px;
+            height: 15px;
+            background-color: white;
+            border-right: 2px solid #F25C05;
+            border-bottom: 2px solid #F25C05;
+            clip-path: polygon(0 0, 100% 0, 50% 100%);
+        }
+
+        /* リスト項目のチェックマーク */
+        .check-list {
+            list-style: none;
+            margin-left: 10px;
+        }
+
+        .check-list li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 8px;
+        }
+
+        .check-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #F25C05;
+            font-weight: bold;
+        }
+
+        /* 数値強調 */
+        .big-number {
+            font-size: 28px;
+            font-weight: bold;
+            color: #593C47;
+            text-align: center;
+            margin: 10px 0;
+            text-shadow: 1px 1px 0 rgba(242, 196, 61, 0.5);
+        }
+
+        .percentage {
+            font-size: 24px;
+            color: #F24405;
+            font-weight: bold;
+        }
+
+        /* 強調アイコン */
+        .emphasis-icon {
+            font-size: 24px;
+            color: #F2C53D;
+            margin-right: 5px;
+            vertical-align: middle;
+        }
+
+        /* 手書き風の矢印 */
+        .sketch-arrow {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 20px;
+            margin: 0 10px;
+        }
+
+        .sketch-arrow::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #F25C05;
+            transform: translateY(-50%);
+        }
+
+        .sketch-arrow::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: -5px;
+            width: 12px;
+            height: 12px;
+            border-top: 2px solid #F25C05;
+            border-right: 2px solid #F25C05;
+            transform: rotate(45deg);
+        }
+
+        /* 会社ロゴ風のスタイリング */
+        .company-logo {
+            font-family: 'Kaisei Decol', serif;
+            font-weight: bold;
+            font-size: 20px;
+            color: #593C47;
+            padding: 5px 10px;
+            border-radius: 5px;
+            background: linear-gradient(135deg, #F2E63D 0%, #F2C53D 100%);
+            display: inline-block;
+            margin-bottom: 10px;
+            box-shadow: 2px 2px 0 rgba(89, 60, 71, 0.3);
+        }
+
+        /* マーケット情報用の円グラフ風要素 */
+        .pie-chart-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .pie-slice {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: conic-gradient(#593C47 0% 40%, #F2C53D 40% 60%, #F25C05 60% 100%);
+            position: relative;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .pie-label {
+            font-size: 12px;
+            text-align: center;
+            margin-top: 5px;
+            color: #475569;
+            font-weight: bold;
+        }
+
+        /* 製品特徴のアイコンリスト */
+        .feature-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 15px 0;
+        }
+
+        .feature-item {
+            flex: 1 1 calc(50% - 10px);
+            min-width: 120px;
+            background-color: rgba(242, 230, 61, 0.1);
+            border-radius: 8px;
+            padding: 10px;
+            text-align: center;
+            position: relative;
+            box-shadow: 2px 2px 0 rgba(89, 60, 71, 0.1);
+        }
+
+        .feature-icon {
+            font-size: 24px;
+            color: #F25C05;
+            margin-bottom: 5px;
+        }
+
+        .feature-text {
+            font-size: 13px;
+            color: #593C47;
+        }
+
+        /* スクラッチ風のテキスト装飾 */
+        .scratch-text {
+            font-family: 'Yomogi', cursive;
+            font-weight: bold;
+            color: #F24405;
+            text-decoration: underline wavy #F2C53D;
+            text-underline-offset: 3px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="title-container">
+                <div class="company-logo">Insulet</div>
+                <h1 class="main-title">インスレット社 インベスター・プレゼンテーション</h1>
+                <p class="subtitle">糖尿病管理のグローバルリーダー</p>
+            </div>
+            <div class="date-info">
+                <p>2025年5月</p>
+                <p>Omnipod®製品シリーズ</p>
+            </div>
+        </header>
+        
+        <!-- 企業概要（冒頭追加セクション） -->
+        <div class="section full-width">
+            <h2 class="section-title">🏢 インスレット社（Insulet Corporation）企業概要</h2>
+            
+            <div class="bubble-box">
+                <p><span class="emphasis-icon">🔍</span> <strong>企業情報：</strong> 1995年創業、米国マサチューセッツ州アクトンに本社を置く医療機器メーカー（NASDAQ: PODD）</p>
+                <p><span class="emphasis-icon">💡</span> <strong>主力製品：</strong> チューブレスインスリンポンプ「Omnipod®（オムニポッド）」シリーズ</p>
+                <p><span class="emphasis-icon">🌟</span> <strong>特徴：</strong> 糖尿病管理に革命をもたらす使い捨て型パッチポンプ技術で、従来の注射やチューブ型ポンプから解放</p>
+                <p><span class="emphasis-icon">🎯</span> <strong>強み：</strong> 自動インスリン投与（AID）システム「Omnipod 5」が米国で1型・2型糖尿病両方に承認され、国際市場でも拡大中</p>
+            </div>
+            
+            <div class="feature-list" style="margin-top: 15px;">
+                <div class="feature-item">
+                    <div class="feature-icon">👥</div>
+                    <div class="feature-text">世界中で糖尿病患者の生活の質を向上させることに注力</div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">📱</div>
+                    <div class="feature-text">継続的改良と技術革新で市場をリード</div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">🌐</div>
+                    <div class="feature-text">25カ国に展開、米国・欧州・アジアで成長拡大中</div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">📈</div>
+                    <div class="feature-text">持続的な高成長と利益率の向上を実現</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="content">
+            <!-- セクション1: 会社概要 -->
+            <div class="section">
+                <h2 class="section-title">📊 インスレット社の概要</h2>
+                
+                <div class="data-grid">
+                    <div class="data-box">
+                        <div class="data-label">2024年売上高</div>
+                        <div class="data-value">$2.1B</div>
+                    </div>
+                    <div class="data-box">
+                        <div class="data-label">アクティブユーザー</div>
+                        <div class="data-value">50万人</div>
+                    </div>
+                    <div class="data-box">
+                        <div class="data-label">展開国数</div>
+                        <div class="data-value">25カ国</div>
+                    </div>
+                    <div class="data-box">
+                        <div class="data-label">Omnipod 5使用者</div>
+                        <div class="data-value">36.5万人</div>
+                    </div>
+                </div>
+                
+                <div class="key-point">
+                    <div class="key-point-title">ミッション</div>
+                    <p>私たちのミッションは、<span class="highlight">糖尿病患者の生活を改善</span>し、革新的な技術を通じて顧客が<span class="highlight">シンプルさ</span>、<span class="highlight">自由</span>、そして<span class="highlight">より健康的な生活</span>を楽しめるようにすることです。</p>
+                </div>
+                
+                <div class="bubble-box">
+                    <strong>米国およびEUで新規ポンプユーザーに選ばれる第1位のインスリンポンプ（2024年）</strong>
+                    <ul class="check-list">
+                        <li>米国で最も処方されているAID（2年連続）</li>
+                        <li>患者から最も要望の多いポンプ</li>
+                        <li>米国でタイプ1とタイプ2の両方にFDA承認された初のAIDシステム</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- セクション2: 業績ハイライト -->
+            <div class="section">
+                <h2 class="section-title">📈 2024年業績ハイライト</h2>
+                
+                <div class="hand-drawn-box">
+                    <div class="big-number">9<span class="scratch-text">年連続</span></div>
+                    <p style="text-align: center;">総売上20%以上の成長</p>
+                </div>
+                
+                <div class="data-grid">
+                    <div class="data-box">
+                        <div class="data-label">粗利益率</div>
+                        <div class="data-value">69.8%</div>
+                        <div class="data-note">前年比+210 bps</div>
+                    </div>
+                    <div class="data-box">
+                        <div class="data-label">営業利益率</div>
+                        <div class="data-value">14.9%</div>
+                        <div class="data-note">前年比+260 bps</div>
+                    </div>
+                </div>
+                
+                <div class="growth-chart">
+                    <div class="chart-bar" style="width: 40%;" data-label="2020">$0.9B</div>
+                    <div class="chart-bar" style="width: 90%;" data-label="2025E">~$2.5B</div>
+                    <div style="text-align: center; margin-top: 10px;">
+                        <span class="percentage">23% CAGR</span>
+                    </div>
+                </div>
+                
+                <div class="comment-bubble">
+                    <p>粗利益率：<span class="percentage">64.4%</span> (2020) → <span class="percentage">~71.0%</span> (2025E)</p>
+                    <p>営業利益率：<span class="percentage">7.3%</span> (2020) → <span class="percentage">~16.5%</span> (2025E)</p>
+                </div>
+            </div>
+            
+            <!-- セクション3: Omnipod 5の特徴 -->
+            <div class="section">
+                <h2 class="section-title">🔍 Omnipod 5の特徴</h2>
+                
+                <div class="image-placeholder" style="height: 120px;">
+                    <!-- Omnipod 5の画像プレースホルダー -->
+                </div>
+                
+                <div class="feature-list">
+                    <div class="feature-item">
+                        <div class="feature-icon">💧</div>
+                        <div class="feature-text">チューブレス、防水設計</div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">🧠</div>
+                        <div class="feature-text">ポッド内蔵の高性能アルゴリズム</div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">📱</div>
+                        <div class="feature-text">AndroidとiOSでのコントロール</div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">📊</div>
+                        <div class="feature-text">センサー連携オプション</div>
+                    </div>
+                </div>
+                
+                <div class="key-point">
+                    <div class="key-point-title">臨床効果</div>
+                    <ul class="check-list">
+                        <li>1型および2型糖尿病成人の目標範囲内の時間が<span class="highlight">20〜23%</span>増加</li>
+                        <li>糖尿病関連のストレスが軽減</li>
+                        <li>米国で1型（2歳以上）と2型（18歳以上）の両方にFDA承認</li>
+                    </ul>
+                </div>
+                
+                <div class="quote">
+                    <p>「Omnipod 5は私の生活を変えました。今では血糖値を知ることができ、Omnipod 5が全てのインスリン計算を行ってくれます。それは素晴らしいことです！」</p>
+                    <p style="text-align: right;">- Milli、2023年からのPodder</p>
+                </div>
+            </div>
+            
+            <!-- セクション4: 市場機会 -->
+            <div class="section">
+                <h2 class="section-title">🌐 巨大な市場機会</h2>
+                
+                <div class="big-number"><span class="scratch-text">約1400万人</span></div>
+                <p style="text-align: center;">合計ターゲット市場（TAM）</p>
+                
+                <div class="pie-chart-container">
+                    <div>
+                        <div class="pie-slice"></div>
+                        <div class="pie-label">米国1型糖尿病<br>~170万人</div>
+                    </div>
+                    <div>
+                        <div class="pie-slice"></div>
+                        <div class="pie-label">国際1型糖尿病<br>~350万人</div>
+                    </div>
+                    <div>
+                        <div class="pie-slice"></div>
+                        <div class="pie-label">米国2型糖尿病<br>~550万人</div>
+                    </div>
+                    <div>
+                        <div class="pie-slice"></div>
+                        <div class="pie-label">国際2型糖尿病<br>~350万人</div>
+                    </div>
+                </div>
+                
+                <div class="key-point">
+                    <div class="key-point-title">現在の普及率</div>
+                    <ul>
+                        <li>米国1型糖尿病：<span class="percentage">~40%</span></li>
+                        <li>国際1型糖尿病：<span class="percentage">~20%</span></li>
+                        <li>米国2型糖尿病（基礎-ボーラス）：<span class="percentage">~5%</span></li>
+                    </ul>
+                </div>
+                
+                <div class="comment-bubble">
+                    <p>大きく成長する未開拓市場への可能性</p>
+                    <p>世界中の何百万人もの糖尿病患者の生活を改善できる位置にあります</p>
+                </div>
+            </div>
+            
+            <!-- セクション5: 成長戦略 -->
+            <div class="section">
+                <h2 class="section-title">🚀 明確な成長戦略</h2>
+                
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <h3><span class="emphasis-icon">💡</span> 進化（Advance）</h3>
+                        <p>データに基づいた革新的なOmnipod 5プラットフォームの開発</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h3><span class="emphasis-icon">🏆</span> リード（Lead）</h3>
+                        <p>米国の1型および2型市場での継続的な成長を主導</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h3><span class="emphasis-icon">🌍</span> 推進（Drive）</h3>
+                        <p>国際市場でのOmnipod 5へのアクセスを推進</p>
+                    </div>
+                </div>
+                
+                <div class="bubble-box">
+                    <h4>競争上の優位性</h4>
+                    <ul class="check-list">
+                        <li>独自のパッチポンプ形状</li>
+                        <li>広範で手頃な価格のアクセス</li>
+                        <li>最適化された製造ノウハウ</li>
+                        <li>高度なデータ機能</li>
+                    </ul>
+                </div>
+                
+                <div class="hand-drawn-box">
+                    <h4>国際展開の進捗</h4>
+                    <p>2025年に9つの新市場でOmnipod 5を発売：</p>
+                    <div class="tag">🇮🇹 イタリア</div>
+                    <div class="tag">🇳🇴 ノルウェー</div>
+                    <div class="tag">🇫🇮 フィンランド</div>
+                    <div class="tag">🇸🇪 スウェーデン</div>
+                    <div class="tag">🇩🇰 デンマーク</div>
+                    <div class="tag">🇦🇺 オーストラリア</div>
+                    <div class="tag">🇧🇪 ベルギー</div>
+                    <div class="tag">🇨🇦 カナダ</div>
+                    <div class="tag">🇨🇭 スイス</div>
+                </div>
+            </div>
+            
+            <!-- セクション6: 2型糖尿病機会 -->
+            <div class="section">
+                <h2 class="section-title">📊 2型糖尿病の成長機会</h2>
+                
+                <div class="key-point">
+                    <div class="key-point-title">SECURE-T2D臨床試験結果</div>
+                    <div class="growth-chart" style="height: 100px;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                            <div>
+                                <div style="text-align: center;">ベースライン</div>
+                                <div class="big-number">8.2%</div>
+                            </div>
+                            <div class="sketch-arrow"></div>
+                            <div>
+                                <div style="text-align: center;">13週間後</div>
+                                <div class="big-number">7.4%</div>
+                            </div>
+                        </div>
+                        <div style="text-align: center;">
+                            <span class="percentage">-0.8%</span> HbA1c改善
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bubble-box">
+                    <h4>2型糖尿病向け戦略</h4>
+                    <ul class="check-list">
+                        <li>2024年8月、成人2型糖尿病への米国FDA承認取得</li>
+                        <li>内分泌科医および処方量の多いPCPとの関係拡大</li>
+                        <li>臨床データを元にした営業活動</li>
+                        <li>独自のDTC（直接消費者向け）戦略の活用</li>
+                    </ul>
+                </div>
+                
+                <div class="comment-bubble">
+                    <p>2型糖尿病市場は大きな未開拓の機会を提供します</p>
+                    <p>米国だけでも550万人以上の潜在的ユーザー</p>
+                </div>
+            </div>
+            
+            <!-- セクション7: サステナビリティへの取り組み -->
+            <div class="section">
+                <h2 class="section-title">🌱 サステナビリティの取り組み</h2>
+                
+                <div class="feature-list">
+                    <div class="feature-item">
+                        <div class="feature-icon">♻️</div>
+                        <div class="feature-text">590万個のPodを回収プログラムで受け入れ</div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">☀️</div>
+                        <div class="feature-text">802kWの再生可能エネルギー生成能力増加</div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">📉</div>
+                        <div class="feature-text">Omnipod 5スターターキットのカーボンフットプリント77%削減</div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">👥</div>
+                        <div class="feature-text">取締役会の56%がジェンダーまたは民族的に多様</div>
+                    </div>
+                </div>
+                
+                <div class="key-point">
+                    <div class="key-point-title">サステナビリティの柱</div>
+                    <ul class="check-list">
+                        <li>レジリエントな事業運営</li>
+                        <li>持続可能な製品イノベーション</li>
+                        <li>人材とコミュニティ</li>
+                        <li>Insulet for Good（グローバル企業寄付プログラム）</li>
+                    </ul>
+                </div>
+                
+                <div class="comment-bubble">
+                    <p>マレーシア製造施設は、GBIおよびLEED Silver認証の取得に向けて進行中</p>
+                    <p>マレーシア施設に設置された太陽光発電は約3,100kW</p>
+                </div>
+            </div>
+            
+            <!-- セクション8: Q1 2025業績 -->
+            <div class="section">
+                <h2 class="section-title">📊 2025年第1四半期の業績</h2>
+                
+                <div class="data-grid">
+                    <div class="data-box">
+                        <div class="data-label">総売上高</div>
+                        <div class="data-value">$569.0M</div>
+                        <div class="data-note">前年比+28.8%</div>
+                    </div>
+                    <div class="data-box">
+                        <div class="data-label">粗利益率</div>
+                        <div class="data-value">71.9%</div>
+                        <div class="data-note">+240 bps</div>
+                    </div>
+                </div>
+                
+                <div class="key-point">
+                    <div class="key-point-title">地域別売上高</div>
+                    <ul>
+                        <li>米国Omnipod：<span class="highlight">$401.7M</span>（+26.4%）</li>
+                        <li>国際Omnipod：<span class="highlight">$152.4M</span>（+32.2%）</li>
+                        <li>合計Omnipod：<span class="highlight">$554.1M</span>（+28.0%）</li>
+                    </ul>
+                </div>
+                
+                <div class="hand-drawn-box">
+                    <h4>商業的な成果</h4>
+                    <ul class="check-list">
+                        <li>米国の新規顧客の<span class="percentage">85%以上</span>がMDI（多数回注射法）からの移行</li>
+                        <li>米国の新規顧客の<span class="percentage">30%以上</span>が2型糖尿病患者</li>
+                        <li>米国顧客ベースの<span class="percentage">90%以上</span>がOmnipod 5を使用</li>
+                        <li>国際顧客ベースの<span class="percentage">40%以上</span>がOmnipod 5を使用</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- セクション9: 2025年の見通し -->
+            <div class="section">
+                <h2 class="section-title">🔮 2025年の見通し</h2>
+                
+                <div class="key-point">
+                    <div class="key-point-title">2025年通期予測（引き上げ後）</div>
+                    <ul>
+                        <li>総売上高：<span class="highlight">19%〜22%</span>成長（以前は16%〜20%）</li>
+                        <li>米国Omnipod：<span class="highlight">18%〜21%</span>成長</li>
+                        <li>国際Omnipod：<span class="highlight">27%〜30%</span>成長</li>
+                        <li>粗利益率：<span class="highlight">~71%</span>（以前は70.5%）</li>
+                        <li>調整後営業利益率：<span class="highlight">~16.5%</span></li>
+                    </ul>
+                </div>
+                
+                <div class="bubble-box">
+                    <h4>成長の原動力</h4>
+                    <ul class="check-list">
+                        <li>世界的なOmnipod 5の強力な採用継続</li>
+                        <li>革新的なカスケードによる米国および国際的な年間NCS成長</li>
+                        <li>MDIからの市場をリードする新規顧客獲得</li>
+                        <li>世界的な1型糖尿病と米国での2型糖尿病の継続的な注力</li>
+                        <li>収益拡大へのコミットメント</li>
+                    </ul>
+                </div>
+                
+                <div class="hand-drawn-box">
+                    <h4>将来の持続可能な収益成長のための強固な基盤</h4>
+                    <ul class="check-list">
+                        <li>タイプ1および2向けの革新的なOmnipod 5プラットフォーム</li>
+                        <li>イノベーションを通じた市場リーダーシップの継続</li>
+                        <li>競争モートと差別化された事業モデル</li>
+                        <li>大規模で未開拓の市場機会</li>
+                        <li>強固なマージンと現金創出</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- 全幅セクション：まとめ -->
+            <div class="section full-width">
+                <h2 class="section-title">✨ 持続可能で収益性の高い成長に向けた好位置</h2>
+                
+                <div class="feature-list" style="flex-wrap: wrap; justify-content: space-around;">
+                    <div class="feature-item" style="flex: 0 0 30%;">
+                        <div class="feature-icon">🚀</div>
+                        <div class="feature-text">画期的なOmnipod 5プラットフォームの拡大；2型糖尿病向けに初めて承認されたAID</div>
+                    </div>
+                    <div class="feature-item" style="flex: 0 0 30%;">
+                        <div class="feature-icon">🔄</div>
+                        <div class="feature-text">イノベーションのカスケードを通じて市場リーダーシップと競争的な堀を拡大</div>
+                    </div>
+                    <div class="feature-item" style="flex: 0 0 30%;">
+                        <div class="feature-icon">📈</div>
+                        <div class="feature-text">米国の1型および2型市場での成長をリード</div>
+                    </div>
+                    <div class="feature-item" style="flex: 0 0 30%;">
+                        <div class="feature-icon">🌍</div>
+                        <div class="feature-text">9つの新しい国際市場でOmnipod 5の採用を推進</div>
+                    </div>
+                    <div class="feature-item" style="flex: 0 0 30%;">
+                        <div class="feature-icon">💰</div>
+                        <div class="feature-text">強力なマージンとキャッシュを生み出し、成長への再投資と価値創造へのコミットメント</div>
+                    </div>
+                </div>
+                
+                <div class="quote" style="margin-top: 30px;">
+                    <p>「私たちは糖尿病を持つ人々の生活を改善するという取り組みによって推進されています」</p>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>© 2025 Insulet Corporation. Omnipod、Omnipodロゴ、Podderはインスレット社の商標または登録商標です。無断複写・転載を禁じます。</p>
+            <p>免責事項：本資料には将来の見通しに関する記述が含まれています。実際の結果は様々な要因により、これらの予測と大きく異なる可能性があります。</p>
+            <p>データソース：インスレット社 2025年第1四半期決算発表（2025年5月8日）、インベスタープレゼンテーション資料（2025年5月）</p>
+        </footer>
+    </div>
+</body>
+</html>
+    </div>
+
+    <footer class="template-footer">
+        <div class="template-footer-content">
+            <div class="template-footer-logo">Monty Trader</div>
+            <div class="template-footer-social">
+                <a href="https://x.com/monty_investor" target="_blank">@monty_investor</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleLanguage() {
+            const jaElements = document.querySelectorAll('.ja');
+            const enElements = document.querySelectorAll('.en');
+            const button = document.querySelector('.language-switch button');
+            
+            jaElements.forEach(el => el.classList.toggle('hidden'));
+            enElements.forEach(el => el.classList.toggle('hidden'));
+            
+            button.textContent = button.textContent === 'English' ? '日本語' : 'English';
+        }
+    </script>
+</body>
+</html> 
