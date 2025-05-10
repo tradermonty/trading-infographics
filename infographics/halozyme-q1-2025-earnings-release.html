@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ハロザイム社 2025年第1四半期決算結果</title>
+    <link rel="icon" type="image/png" href="../images/monty.png">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Yomogi&family=Zen+Kurenaido&family=Kaisei+Decol:wght@400;700&display=swap');
+        
+        :root {
+            --fashion-1: #593C47;
+            --fashion-2: #F2E63D;
+            --fashion-3: #F2C53D;
+            --fashion-4: #F25C05;
+            --fashion-5: #F24405;
+            --text-dark: #334155;
+            --text-title: #1e40af;
+            --bg-light: #fff;
+            --shadow: rgba(0, 0, 0, 0.1);
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Kaisei Decol', serif;
+            background-color: #f8f9fa;
+            color: var(--text-dark);
+            line-height: 1.4;
+            padding: 0;
+            margin: 0;
+        }
+
+        .fixed-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: linear-gradient(135deg, var(--fashion-1), var(--fashion-5));
+            padding: 10px 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .fixed-header:hover {
+            background: linear-gradient(135deg, var(--fashion-5), var(--fashion-1));
+        }
+
+        .fixed-header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .header-logo {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .fixed-header h1 {
+            font-family: 'Zen Kurenaido', sans-serif;
+            font-size: 24px;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            background: linear-gradient(to right, white, var(--fashion-2));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin: 0;
+            pointer-events: none;
+        }
+
+        .template-main-content {
+            margin-top: 60px;
+            padding: 20px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .template-footer {
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(135deg, var(--fashion-1), var(--fashion-5));
+            color: white;
+            margin-top: 40px;
+        }
+
+        .template-footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .template-footer-logo {
+            font-family: 'Zen Kurenaido', sans-serif;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .template-footer-social {
+            display: flex;
+            gap: 15px;
+        }
+
+        .template-footer-social a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .template-footer-social a:hover {
+            color: var(--fashion-2);
+            transform: translateY(-2px);
+        }
+
+        .template-hidden {
+            display: none !important;
+            visibility: hidden;
+            opacity: 0;
+        }
+
+        .language-switch {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1001;
+            display: none;
+        }
+        
+        .language-switch button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 20px;
+            background: linear-gradient(135deg, var(--fashion-1), var(--fashion-5));
+            color: white;
+            cursor: pointer;
+            font-family: 'Yomogi', cursive;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .language-switch button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+
+        @media (max-width: 768px) {
+            .fixed-header h1 {
+                font-size: 20px;
+            }
+            
+            .template-main-content {
+                margin-top: 50px;
+                padding: 10px;
+            }
+
+            .language-switch {
+                top: 10px;
+                right: 10px;
+            }
+
+            .template-footer-content {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="language-switch">
+        <button onclick="toggleLanguage()">English</button>
+    </div>
+
+    <div class="fixed-header" onclick="window.location.href='../index.html'">
+        <div class="fixed-header-content">
+            <img src="../images/monty.png" alt="Monty Trader Logo" class="header-logo">
+            <h1 class="ja">モンティの株式トレードインフォグラフィックス集</h1>
+            <h1 class="en hidden">Monty's Stock Trading Infographics Collection</h1>
+        </div>
+    </div>
+
+    <div class="template-main-content">
+        <!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ハロザイム社 2025年第1四半期決算結果</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Yomogi&family=Zen+Kurenaido&family=Kaisei+Decol:wght@400;500;700&display=swap');
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Kaisei Decol', serif;
+            background-color: #fffef8;
+            color: #334155;
+            line-height: 1.4;
+            padding: 20px;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            position: relative;
+        }
+        
+        .header {
+            grid-column: 1 / 4;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 20px;
+            border-bottom: 3px dashed #593C47;
+        }
+        
+        .title-container {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .title {
+            font-family: 'Zen Kurenaido', sans-serif;
+            font-size: 32px;
+            font-weight: bold;
+            background: linear-gradient(45deg, #593C47, #F24405);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 5px;
+            display: inline-block;
+        }
+        
+        .subtitle {
+            font-family: 'Yomogi', cursive;
+            font-size: 16px;
+            color: #475569;
+        }
+        
+        .date {
+            font-family: 'Yomogi', cursive;
+            text-align: right;
+            color: #475569;
+        }
+        
+        .section {
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+            border: 2px solid #F2C53D;
+        }
+        
+        .section.highlight {
+            background: linear-gradient(135deg, rgba(242, 230, 60, 0.1), rgba(242, 91, 4, 0.1));
+            border: 2px solid #F25C05;
+        }
+        
+        .section.double-width {
+            grid-column: span 2;
+        }
+        
+        .section.triple-width {
+            grid-column: span 3;
+        }
+        
+        .section-title {
+            font-family: 'Zen Kurenaido', sans-serif;
+            font-size: 18px;
+            font-weight: bold;
+            color: #1e40af;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            border-bottom: 2px solid #F2C53D;
+            padding-bottom: 5px;
+        }
+        
+        .section-title i {
+            margin-right: 8px;
+            font-size: 20px;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+        
+        .key-figure {
+            font-family: 'Kaisei Decol', serif;
+            font-size: 24px;
+            font-weight: bold;
+            color: #593C47;
+            margin: 5px 0;
+            display: flex;
+            align-items: center;
+        }
+        
+        .key-figure span {
+            font-size: 14px;
+            color: #475569;
+            margin-left: 8px;
+        }
+        
+        .growth {
+            font-family: 'Yomogi', cursive;
+            font-size: 16px;
+            font-weight: bold;
+            color: #F24405;
+            display: inline-block;
+            background: #F2E63D;
+            padding: 2px 8px;
+            border-radius: 20px;
+            margin-left: 10px;
+        }
+        
+        .product-block {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .product {
+            background: rgba(242, 230, 60, 0.2);
+            border-radius: 8px;
+            padding: 8px 12px;
+            font-size: 14px;
+            position: relative;
+        }
+        
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        
+        .table th, .table td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px dashed #593C47;
+        }
+        
+        .table th {
+            background-color: rgba(242, 196, 60, 0.2);
+            color: #593C47;
+        }
+        
+        .arrow {
+            position: absolute;
+            width: 50px;
+            height: 20px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 50 20' fill='none' stroke='%23F25C05' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2 10 L40 10 M30 2 L40 10 L30 18'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            z-index: 1;
+        }
+        
+        .hand-circle {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80' fill='none' stroke='%23F24405' stroke-width='2' stroke-linecap='round' stroke-dasharray='2 4'%3E%3Ccircle cx='40' cy='40' r='38' /%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            z-index: 0;
+            opacity: 0.5;
+        }
+        
+        .marker {
+            background: linear-gradient(transparent 60%, #F2C53D 40%);
+            padding: 0 2px;
+        }
+        
+        .grid-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .grid-icon {
+            font-size: 24px;
+            color: #593C47;
+            margin-bottom: 5px;
+        }
+        
+        .grid-label {
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .tag {
+            display: inline-block;
+            background: #593C47;
+            color: white;
+            padding: 3px 8px;
+            border-radius: 20px;
+            font-size: 12px;
+            margin-right: 5px;
+        }
+        
+        .footer {
+            grid-column: 1 / 4;
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 15px;
+            border-top: 2px dashed #593C47;
+            font-family: 'Yomogi', cursive;
+            font-size: 14px;
+            color: #475569;
+        }
+        
+        /* 手書き風の装飾 */
+        .hand-drawn-box {
+            position: relative;
+            padding: 10px;
+        }
+        
+        .hand-drawn-box::before {
+            content: "";
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border: 2px solid #593C47;
+            border-radius: 15px;
+            z-index: -1;
+            transform: rotate(-0.5deg);
+        }
+        
+        /* メディアクエリ */
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            
+            .header, .section.double-width, .section.triple-width, .footer {
+                grid-column: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="title-container">
+                <h1 class="title">ハロザイム社 2025年第1四半期決算結果</h1>
+                <p class="subtitle">財務実績とビジネスハイライト</p>
+            </div>
+            <div class="date">2025年5月6日発表</div>
+        </div>
+
+        <!-- 企業概要 -->
+        <div class="section triple-width" style="background-color: rgba(89, 60, 71, 0.1); margin-bottom: 20px;">
+            <h2 class="section-title">🏢 企業概要</h2>
+            <p style="margin-bottom: 15px;">ハロザイム・セラピューティクス（NASDAQ: HALO）は、革新的な薬剤送達技術を開発するバイオ医薬品企業です。同社の主力製品であるENHANZE®技術は、rHuPH20酵素を活用して皮下注射での薬剤送達を促進し、患者の治療体験を向上させます。</p>
+            <div class="hand-drawn-box" style="margin-top: 10px; background-color: rgba(242, 196, 60, 0.2);">
+                <p><strong>主な事業：</strong> 世界的な製薬会社（ロシュ、武田、ファイザー、ヤンセン、アッヴィ、イーライリリー、ブリストル・マイヤーズスクイブなど）とのENHANZE®技術ライセンス、自社製品の開発・製造・販売</p>
+                <p><strong>本社：</strong> 米国カリフォルニア州サンディエゴ（事業所：ニュージャージー州ユーイング、ミネソタ州ミネトンカ）</p>
+                <p><strong>創業：</strong> 1998年</p>
+            </div>
+        </div>
+        
+        <!-- 主要な財務指標 -->
+        <div class="section highlight triple-width">
+            <h2 class="section-title">📊 2025年Q1 主要業績</h2>
+            <div style="display: flex; flex-wrap: wrap; justify-content: space-between;">
+                <div class="card" style="flex: 1; min-width: 200px; margin: 0 10px;">
+                    <h3>総収益</h3>
+                    <div class="key-figure">2億6,500万ドル <span class="growth">+35% YoY</span></div>
+                    <p>ロイヤリティ収益と製品販売の大幅増加による</p>
+                </div>
+                <div class="card" style="flex: 1; min-width: 200px; margin: 0 10px;">
+                    <h3>ロイヤリティ収益</h3>
+                    <div class="key-figure">1億6,820万ドル <span class="growth">+39% YoY</span></div>
+                    <p>主力製品の市場拡大により好調</p>
+                </div>
+                <div class="card" style="flex: 1; min-width: 200px; margin: 0 10px;">
+                    <h3>純利益</h3>
+                    <div class="key-figure">1億1,810万ドル <span class="growth">+54% YoY</span></div>
+                    <p>収益増加と事業効率化による</p>
+                </div>
+            </div>
+            <div style="display: flex; flex-wrap: wrap; justify-content: space-between; margin-top: 15px;">
+                <div class="card" style="flex: 1; min-width: 200px; margin: 0 10px;">
+                    <h3>調整後EBITDA</h3>
+                    <div class="key-figure">1億6,200万ドル <span class="growth">+40% YoY</span></div>
+                </div>
+                <div class="card" style="flex: 1; min-width: 200px; margin: 0 10px;">
+                    <h3>GAAP希薄化後EPS</h3>
+                    <div class="key-figure">0.93ドル <span class="growth">+55% YoY</span></div>
+                </div>
+                <div class="card" style="flex: 1; min-width: 200px; margin: 0 10px;">
+                    <h3>非GAAP希薄化後EPS</h3>
+                    <div class="key-figure">1.11ドル <span class="growth">+41% YoY</span></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 2025年財務ガイダンス引き上げ -->
+        <div class="section highlight triple-width">
+            <h2 class="section-title">📈 2025年財務ガイダンス引き上げ</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>前回ガイダンス</th>
+                        <th>新ガイダンス</th>
+                        <th>増加率（YoY）</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>総収益</td>
+                        <td>11億5,000万-12億2,500万ドル</td>
+                        <td>12億-12億8,000万ドル</td>
+                        <td>18-26%</td>
+                    </tr>
+                    <tr>
+                        <td>ロイヤリティ収益</td>
+                        <td>7億2,500万-7億5,000万ドル</td>
+                        <td>7億5,000万-7億8,500万ドル</td>
+                        <td>31-37%</td>
+                    </tr>
+                    <tr>
+                        <td>調整後EBITDA</td>
+                        <td>7億5,500万-8億500万ドル</td>
+                        <td>7億9,000万-8億4,000万ドル</td>
+                        <td>25-33%</td>
+                    </tr>
+                    <tr>
+                        <td>非GAAP希薄化後EPS</td>
+                        <td>4.95-5.35ドル</td>
+                        <td>5.30-5.70ドル</td>
+                        <td>25-35%</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="hand-drawn-box" style="margin-top: 15px; background-color: rgba(242, 196, 60, 0.2);">
+                <p style="font-weight: bold;">🔔 新たな2億5,000万ドルの自社株買い発表！</p>
+                <p>株主価値向上への継続的なコミットメント</p>
+            </div>
+        </div>
+        
+        <!-- 主力製品情報 -->
+        <div class="section double-width">
+            <h2 class="section-title">💊 主力ブロックバスター製品</h2>
+            <div class="card">
+                <h3>現在の主力3製品</h3>
+                <ul style="list-style-type: none; padding-left: 20px;">
+                    <li style="margin-bottom: 10px;">
+                        <span class="marker">DARZALEX SC</span> - 販売シェア95%、2025年Q1は32億ドルの売上（+22% YoY）
+                    </li>
+                    <li style="margin-bottom: 10px;">
+                        <span class="marker">Phesgo</span> - 100%皮下投与製剤、2025年Q1は約6億7,500万ドルの売上（+52% YoY）
+                    </li>
+                    <li style="margin-bottom: 10px;">
+                        <span class="marker">VYVGART Hytrulo</span> - 急速に成長中、2028年に約70億ドルの売上予測
+                    </li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>新規承認製品</h3>
+                <ul style="list-style-type: none; padding-left: 20px;">
+                    <li style="margin-bottom: 8px;">
+                        <span class="tag">米国＆欧州</span> Ocrevus Zunovo
+                    </li>
+                    <li style="margin-bottom: 8px;">
+                        <span class="tag">米国＆欧州</span> Tecentriq Hybreza
+                    </li>
+                    <li style="margin-bottom: 8px;">
+                        <span class="tag">米国</span> Opdivo Qvantig
+                    </li>
+                    <li style="margin-bottom: 8px;">
+                        <span class="tag">欧州</span> Rybrevant SC
+                    </li>
+                </ul>
+                <p>➡️ これら製品は補償・償還の拡大とともに今後の成長を牽引</p>
+            </div>
+        </div>
+        
+        <!-- 成長の触媒 -->
+        <div class="section">
+            <h2 class="section-title">🚀 成長触媒</h2>
+            <div class="card">
+                <h3>前例のない成長機会</h3>
+                <p>今後数か月で予定される11の追加成長触媒：</p>
+                <ul style="list-style-type: none; padding-left: 10px; margin-top: 10px;">
+                    <li style="margin-bottom: 8px;">✅ 新規欧州・米国製品承認</li>
+                    <li style="margin-bottom: 8px;">✅ 新規適応症承認</li>
+                    <li style="margin-bottom: 8px;">✅ 主要な償還マイルストーン</li>
+                </ul>
+                <div class="hand-drawn-box" style="margin-top: 15px; text-align: center;">
+                    <p style="font-weight: bold;">2025年〜2028年の見通し</p>
+                    <p style="font-size: 14px; color: #F24405;">すべての主要財務指標で約2倍の成長を予測</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 長期成長パイプライン -->
+        <div class="section triple-width">
+            <h2 class="section-title">🔬 長期成長パイプライン</h2>
+            <div style="display: flex; flex-wrap: wrap; gap: 15px;">
+                <div class="card" style="flex: 1; min-width: 200px;">
+                    <h3>フェーズ3進行中</h3>
+                    <ul style="list-style-type: none; padding-left: 10px;">
+                        <li style="margin-bottom: 8px;">
+                            <span class="marker">BMS</span>：nivolumab + relatlimab SC（メラノーマ）
+                        </li>
+                        <li style="margin-bottom: 8px;">
+                            <span class="marker">武田薬品</span>：20%免疫グロブリンSC
+                        </li>
+                    </ul>
+                </div>
+                <div class="card" style="flex: 1; min-width: 200px;">
+                    <h3>開発中の新技術</h3>
+                    <p>初のHVAI開発契約をENHANZEパートナーと締結</p>
+                    <p style="margin-top: 10px;">異なるENHANZEパートナーがSVAIの臨床試験を開始</p>
+                </div>
+                <div class="card" style="flex: 1; min-width: 200px;">
+                    <h3>知的財産保護</h3>
+                    <p>Merck社に対する特許侵害訴訟を提起（2025年4月）</p>
+                    <p style="margin-top: 10px;">MDASEテクノロジーの保護強化</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 市場予測 -->
+        <div class="section double-width">
+            <h2 class="section-title">📊 2028年までの市場予測</h2>
+            <div style="display: flex; flex-wrap: wrap; gap: 15px;">
+                <div class="card" style="flex: 1; min-width: 200px;">
+                    <h3>承認済/近日発売製品（2028年予測）</h3>
+                    <ul style="list-style-type: none; padding-left: 10px;">
+                        <li style="margin-bottom: 8px;">Ocrevus Zunovo: <span class="marker">93億ドル</span></li>
+                        <li style="margin-bottom: 8px;">Tecentriq Hybreza: <span class="marker">42億ドル</span></li>
+                        <li style="margin-bottom: 8px;">Opdivo Qvantig: <span class="marker">86億ドル</span></li>
+                        <li style="margin-bottom: 8px;">Rybrevant SC: <span class="marker">50億ドル</span></li>
+                    </ul>
+                    <p style="text-align: right; font-weight: bold; color: #F24405;">合計：約250億ドル</p>
+                </div>
+                <div class="card" style="flex: 1; min-width: 200px;">
+                    <h3>2027年までのロイヤリティ収益予測</h3>
+                    <div class="key-figure">約10億ドル</div>
+                    <p>2013-2020年発売製品：約200億ドル（2028年）</p>
+                    <p>2023-2025年発売製品：約350億ドル（2028年）</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 事業戦略 -->
+        <div class="section">
+            <h2 class="section-title">🔄 事業戦略と資本配分</h2>
+            <div class="card">
+                <h3>自社株買いプログラム</h3>
+                <p>2019年から15.5億ドルを自社株買いに使用</p>
+                <ul style="list-style-type: none; padding-left: 10px; margin-top: 10px;">
+                    <li style="margin-bottom: 8px;">✅ 平均して年間約2.5億ドル</li>
+                    <li style="margin-bottom: 8px;">✅ 2019-2024年の平均購入価格：33.72ドル/株</li>
+                    <li style="margin-bottom: 8px;">✅ 希薄化後加重平均発行済株式数を10%削減（2019-2024年）</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>出典：ハロザイム・セラピューティクス社 2025年第1四半期決算報告書（2025年5月6日）</p>
+            <p style="margin-top: 5px;">NASDAQ: HALO</p>
+        </div>
+    </div>
+</body>
+</html>
+    </div>
+
+    <footer class="template-footer">
+        <div class="template-footer-content">
+            <div class="template-footer-logo">Monty Trader</div>
+            <div class="template-footer-social">
+                <a href="https://x.com/monty_investor" target="_blank">@monty_investor</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleLanguage() {
+            const jaElements = document.querySelectorAll('.ja');
+            const enElements = document.querySelectorAll('.en');
+            const button = document.querySelector('.language-switch button');
+            
+            jaElements.forEach(el => el.classList.toggle('hidden'));
+            enElements.forEach(el => el.classList.toggle('hidden'));
+            
+            button.textContent = button.textContent === 'English' ? '日本語' : 'English';
+        }
+    </script>
+</body>
+</html> 

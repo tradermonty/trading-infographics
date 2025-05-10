@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutor Perini 投資家プレゼンテーション</title>
+    <link rel="icon" type="image/png" href="../images/monty.png">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Yomogi&family=Zen+Kurenaido&family=Kaisei+Decol:wght@400;700&display=swap');
+        
+        :root {
+            --fashion-1: #593C47;
+            --fashion-2: #F2E63D;
+            --fashion-3: #F2C53D;
+            --fashion-4: #F25C05;
+            --fashion-5: #F24405;
+            --text-dark: #334155;
+            --text-title: #1e40af;
+            --bg-light: #fff;
+            --shadow: rgba(0, 0, 0, 0.1);
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Kaisei Decol', serif;
+            background-color: #f8f9fa;
+            color: var(--text-dark);
+            line-height: 1.4;
+            padding: 0;
+            margin: 0;
+        }
+
+        .fixed-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: linear-gradient(135deg, var(--fashion-1), var(--fashion-5));
+            padding: 10px 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .fixed-header:hover {
+            background: linear-gradient(135deg, var(--fashion-5), var(--fashion-1));
+        }
+
+        .fixed-header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .header-logo {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .fixed-header h1 {
+            font-family: 'Zen Kurenaido', sans-serif;
+            font-size: 24px;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            background: linear-gradient(to right, white, var(--fashion-2));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin: 0;
+            pointer-events: none;
+        }
+
+        .template-main-content {
+            margin-top: 60px;
+            padding: 20px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .template-footer {
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(135deg, var(--fashion-1), var(--fashion-5));
+            color: white;
+            margin-top: 40px;
+        }
+
+        .template-footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .template-footer-logo {
+            font-family: 'Zen Kurenaido', sans-serif;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .template-footer-social {
+            display: flex;
+            gap: 15px;
+        }
+
+        .template-footer-social a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .template-footer-social a:hover {
+            color: var(--fashion-2);
+            transform: translateY(-2px);
+        }
+
+        .template-hidden {
+            display: none !important;
+            visibility: hidden;
+            opacity: 0;
+        }
+
+        .language-switch {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1001;
+            display: none;
+        }
+        
+        .language-switch button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 20px;
+            background: linear-gradient(135deg, var(--fashion-1), var(--fashion-5));
+            color: white;
+            cursor: pointer;
+            font-family: 'Yomogi', cursive;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .language-switch button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+
+        @media (max-width: 768px) {
+            .fixed-header h1 {
+                font-size: 20px;
+            }
+            
+            .template-main-content {
+                margin-top: 50px;
+                padding: 10px;
+            }
+
+            .language-switch {
+                top: 10px;
+                right: 10px;
+            }
+
+            .template-footer-content {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="language-switch">
+        <button onclick="toggleLanguage()">English</button>
+    </div>
+
+    <div class="fixed-header" onclick="window.location.href='../index.html'">
+        <div class="fixed-header-content">
+            <img src="../images/monty.png" alt="Monty Trader Logo" class="header-logo">
+            <h1 class="ja">モンティの株式トレードインフォグラフィックス集</h1>
+            <h1 class="en hidden">Monty's Stock Trading Infographics Collection</h1>
+        </div>
+    </div>
+
+    <div class="template-main-content">
+        <!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutor Perini投資家プレゼンテーション グラフィックレコーディング</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Yomogi&family=Zen+Kurenaido&family=Kaisei+Decol:wght@400;700&display=swap');
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            background-color: #fafafa;
+            font-family: 'Kaisei Decol', serif;
+            color: #334155;
+            line-height: 1.4;
+        }
+        
+        .container {
+            width: 100%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px dashed #593C47;
+        }
+        
+        .title-box {
+            width: 70%;
+        }
+        
+        .date-box {
+            text-align: right;
+            width: 30%;
+            padding: 10px;
+            background: rgba(242, 230, 60, 0.15);
+            border-radius: 12px;
+            border: 2px solid #F2C53D;
+        }
+        
+        h1 {
+            font-family: 'Zen Kurenaido', sans-serif;
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #593C47;
+            text-shadow: 1px 1px 0 #F2C53D, 2px 2px 0 #F25C05;
+            position: relative;
+        }
+        
+        h1::after {
+            content: "✏️";
+            position: absolute;
+            right: -30px;
+            top: -5px;
+        }
+        
+        h2 {
+            font-family: 'Yomogi', cursive;
+            font-size: 24px;
+            color: #1e40af;
+            margin: 20px 0 15px;
+            padding-left: 40px;
+            position: relative;
+        }
+        
+        h2::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 50%;
+            width: 35px;
+            height: 35px;
+            transform: translateY(-50%);
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+        
+        .overview h2::before {
+            content: "🏢";
+        }
+        
+        .strength h2::before {
+            content: "💪";
+        }
+        
+        .segment h2::before {
+            content: "🔍";
+        }
+        
+        .geography h2::before {
+            content: "🌎";
+        }
+        
+        .projects h2::before {
+            content: "🏗️";
+        }
+        
+        .advantage h2::before {
+            content: "🏆";
+        }
+        
+        .backlog h2::before {
+            content: "📊";
+        }
+        
+        .guidance h2::before {
+            content: "📈";
+        }
+        
+        .invest h2::before {
+            content: "💰";
+        }
+        
+        h3 {
+            font-size: 18px;
+            color: #475569;
+            margin-bottom: 15px;
+            border-bottom: 2px dotted #F25C05;
+            padding-bottom: 5px;
+            display: inline-block;
+        }
+        
+        p {
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+        
+        .content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .column {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .card {
+            background-color: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            position: relative;
+        }
+        
+        .card::before {
+            content: "";
+            position: absolute;
+            top: -5px;
+            left: 20px;
+            width: 30px;
+            height: 10px;
+            background-color: #F2C53D;
+            border-radius: 5px;
+        }
+        
+        .highlight {
+            background: linear-gradient(transparent 60%, #F2C53D 60%);
+            font-weight: bold;
+            display: inline;
+        }
+        
+        .marker {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .marker::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 10px;
+            background-color: rgba(242, 92, 5, 0.3);
+            z-index: -1;
+        }
+        
+        .key-figure {
+            font-family: 'Yomogi', cursive;
+            font-size: 24px;
+            color: #F24405;
+            text-align: center;
+            margin: 15px 0;
+        }
+        
+        .hand-arrow {
+            font-size: 30px;
+            text-align: center;
+            margin: 15px 0;
+            color: #593C47;
+        }
+        
+        .bubble {
+            background-color: #F2E63D;
+            border-radius: 20px;
+            padding: 15px;
+            position: relative;
+            margin: 20px 0;
+        }
+        
+        .bubble::after {
+            content: "";
+            position: absolute;
+            bottom: -15px;
+            left: 50px;
+            width: 30px;
+            height: 30px;
+            background-color: #F2E63D;
+            transform: rotate(45deg);
+            z-index: -1;
+        }
+        
+        .segment-icons {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 0;
+            text-align: center;
+        }
+        
+        .segment-icon {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 30%;
+        }
+        
+        .segment-icon span {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+        
+        .chart {
+            width: 100%;
+            height: 200px;
+            background-color: rgba(242, 230, 60, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            position: relative;
+            margin: 20px 0;
+        }
+        
+        .pie-segment {
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            top: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: conic-gradient(
+                #593C47 0% 50%, 
+                #F2C53D 50% 85%, 
+                #F25C05 85% 100%
+            );
+        }
+        
+        .pie-center {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background-color: white;
+            border-radius: 50%;
+            top: 35px;
+            left: 35px;
+        }
+        
+        .pie-label {
+            position: absolute;
+            font-size: 12px;
+        }
+        
+        .label-1 {
+            top: 10px;
+            left: 20px;
+        }
+        
+        .label-2 {
+            top: 80px;
+            right: 0;
+        }
+        
+        .label-3 {
+            bottom: 20px;
+            left: 30px;
+        }
+        
+        .map-us {
+            width: 100%;
+            height: 180px;
+            background-color: rgba(242, 196, 60, 0.2);
+            border-radius: 10px;
+            position: relative;
+            margin: 20px 0;
+        }
+        
+        .map-us::after {
+            content: "🗺️";
+            position: absolute;
+            font-size: 100px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0.5;
+        }
+        
+        .map-point {
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            background-color: #F24405;
+            border-radius: 50%;
+        }
+        
+        .point-1 { top: 40px; left: 50px; }
+        .point-2 { top: 60px; left: 150px; }
+        .point-3 { top: 100px; right: 80px; }
+        .point-4 { bottom: 30px; left: 80px; }
+        
+        .project-list {
+            list-style-type: none;
+        }
+        
+        .project-list li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+            border-bottom: 1px dashed #593C47;
+        }
+        
+        .project-list li::before {
+            content: "▶";
+            position: absolute;
+            left: 0;
+            color: #F25C05;
+        }
+        
+        .strength-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .strength-item {
+            background-color: rgba(242, 196, 60, 0.1);
+            padding: 10px;
+            border-radius: 8px;
+            border-left: 3px solid #F25C05;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 2px dashed #593C47;
+            font-size: 12px;
+            color: #475569;
+        }
+        
+        @media (max-width: 768px) {
+            .content {
+                flex-direction: column;
+            }
+            
+            .column {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="title-box">
+                <h1>Tutor Perini 投資家プレゼンテーション</h1>
+                <p style="color: #593C47; font-family: 'Yomogi', cursive;">建設業界のリーダーとしての強みと成長戦略 📝</p>
+            </div>
+            <div class="date-box">
+                <p>📆 2025年5月</p>
+                <p>🏢 NYSE: TPC</p>
+            </div>
+        </div>
+        
+        <div class="content">
+            <div class="column">
+                <section class="overview">
+                    <h2>会社概要</h2>
+                    <div class="card">
+                        <p><span class="highlight">多様な総合請負・設計施工サービス</span>を公共・民間顧客に提供する業界リーダー企業</p>
+                        <p><span class="marker">130年以上</span>のプロジェクト実績があり、米国全土と海外で事業展開</p>
+                        <p class="key-figure">従業員数：約7,500人 🌐</p>
+                        <p>本社：ロサンゼルス</p>
+                        <div class="bubble">
+                            <p>土木セグメントのインフラプロジェクトが収益性を牽引！</p>
+                            <p>1.2兆ドルの超党派インフラ法により、インフラ支出が大幅に増加中 🚀</p>
+                        </div>
+                    </div>
+                </section>
+                
+                <section class="segment">
+                    <h2>事業セグメント</h2>
+                    <div class="card">
+                        <div class="segment-icons">
+                            <div class="segment-icon">
+                                <span>🏗️</span>
+                                <p>土木事業</p>
+                                <p>$2.2B</p>
+                            </div>
+                            <div class="segment-icon">
+                                <span>🏢</span>
+                                <p>建築事業</p>
+                                <p>$1.7B</p>
+                            </div>
+                            <div class="segment-icon">
+                                <span>⚡</span>
+                                <p>専門工事</p>
+                                <p>$0.6B</p>
+                            </div>
+                        </div>
+                        
+                        <h3>土木事業の専門分野</h3>
+                        <ul class="project-list">
+                            <li>大量輸送システム</li>
+                            <li>軍事施設</li>
+                            <li>拘置施設</li>
+                            <li>橋梁・トンネル</li>
+                            <li>高速道路</li>
+                        </ul>
+                        
+                        <h3>建築事業の専門分野</h3>
+                        <ul class="project-list">
+                            <li>ヘルスケア施設</li>
+                            <li>ホスピタリティ・カジノ</li>
+                            <li>教育施設</li>
+                            <li>自治体/政府施設</li>
+                            <li>オフィスビル</li>
+                        </ul>
+                        
+                        <h3>専門工事の専門分野</h3>
+                        <ul class="project-list">
+                            <li>電気工事</li>
+                            <li>機械設備（HVAC）</li>
+                            <li>配管工事</li>
+                        </ul>
+                    </div>
+                </section>
+                
+                <section class="advantage">
+                    <h2>垂直統合による競争優位性</h2>
+                    <div class="card">
+                        <p>土木・建築・専門工事の<span class="highlight">ワンストップショップの強み</span>：</p>
+                        <ul class="project-list">
+                            <li>スケジュール管理の向上</li>
+                            <li>価格の透明性</li>
+                            <li>協働的な入札アプローチ</li>
+                        </ul>
+                        <div class="hand-arrow">↓</div>
+                        <p class="key-figure">大規模で複雑なプロジェクトを受注する能力 💯</p>
+                    </div>
+                </section>
+            </div>
+            
+            <div class="column">
+                <section class="geography">
+                    <h2>地理的展開</h2>
+                    <div class="card">
+                        <p>全米50州と特定の国際市場でのビジネス展開</p>
+                        <div class="map-us">
+                            <div class="map-point point-1" title="カリフォルニア"></div>
+                            <div class="map-point point-2" title="テキサス"></div>
+                            <div class="map-point point-3" title="ニューヨーク"></div>
+                            <div class="map-point point-4" title="フロリダ"></div>
+                        </div>
+                        <h3>国際プロジェクト展開</h3>
+                        <ul class="project-list">
+                            <li>カナダ</li>
+                            <li>ウルグアイ</li>
+                            <li>中東</li>
+                            <li>インド太平洋地域</li>
+                        </ul>
+                        <p>グアムでは約65年の継続的存在感を持つ唯一の主要な米国/国際請負業者 🌏</p>
+                    </div>
+                </section>
+                
+                <section class="projects">
+                    <h2>代表的なプロジェクト</h2>
+                    <div class="card">
+                        <h3>大規模プロジェクト実績</h3>
+                        <ul class="project-list">
+                            <li>マンハッタン刑務所（JV）- $3.76B</li>
+                            <li>カリフォルニア高速鉄道（JV）- $3.7B</li>
+                            <li>ロサンゼルスMTAパープルライン - $3.6B</li>
+                            <li>ブルックリン刑務所 - $2.96B</li>
+                            <li>シティセンターガイドウェイ（HI）- $1.66B</li>
+                        </ul>
+                        <div class="bubble">
+                            <p>市場でのリーダーシップと規模が、大規模で複雑なプロジェクト受注を可能に！</p>
+                        </div>
+                    </div>
+                </section>
+                
+                <section class="strength">
+                    <h2>中核的強み</h2>
+                    <div class="card">
+                        <div class="strength-grid">
+                            <div class="strength-item">コスト見積もり</div>
+                            <div class="strength-item">自社施工能力</div>
+                            <div class="strength-item">多様な建設経験</div>
+                            <div class="strength-item">建設リスク管理</div>
+                            <div class="strength-item">プロジェクト管理人材</div>
+                            <div class="strength-item">豊富な機器群</div>
+                            <div class="strength-item">広範な国内展開</div>
+                            <div class="strength-item">堅固な財務基盤</div>
+                        </div>
+                        <div class="hand-arrow">↓</div>
+                        <h3>メリット</h3>
+                        <ul class="project-list">
+                            <li>コスト・スケジュールの確実性向上</li>
+                            <li>持続可能な競争優位性</li>
+                            <li>高い利益率の機会</li>
+                            <li>少ない競合での大型プロジェクト</li>
+                            <li>固定価格での収益性ある実行</li>
+                        </ul>
+                    </div>
+                </section>
+            </div>
+            
+            <div class="column">
+                <section class="backlog">
+                    <h2>受注残高の記録</h2>
+                    <div class="card">
+                        <p class="key-figure">2025年Q1末の受注残高：$19.4B 📊</p>
+                        <p>前年同期比で<span class="highlight">94%増加</span>、今後数年間の強力な収益成長と収益性を推進</p>
+                        
+                        <div class="chart">
+                            <div class="pie-segment">
+                                <div class="pie-center"></div>
+                            </div>
+                            <div class="pie-label label-1">土木 50% ($9.7B)</div>
+                            <div class="pie-label label-2">建築 35% ($6.7B)</div>
+                            <div class="pie-label label-3">専門工事 15% ($3.0B)</div>
+                        </div>
+                        
+                        <p>土木セグメントと専門工事セグメントの受注残高は<span class="marker">過去最高を記録</span>！</p>
+                        <p>今後数年間にわたる見込みプロジェクトの強固なパイプライン</p>
+                    </div>
+                </section>
+                
+                <section class="guidance">
+                    <h2>2025年ガイダンス引き上げ</h2>
+                    <div class="card">
+                        <h3>2025年5月7日時点</h3>
+                        <p class="key-figure">EPS予想範囲：$1.60～$1.95 📈</p>
+                        <p>(当初ガイダンス $1.50～$1.90から引き上げ)</p>
+                        
+                        <h3>前提条件</h3>
+                        <ul class="project-list">
+                            <li>一般管理費：$310M～$320M</li>
+                            <li>減価償却費：$55M ($0.81/株)</li>
+                            <li>金利費用：$55M ($0.81/株)</li>
+                            <li>実効税率：21%～23%</li>
+                            <li>非支配持分：$65M～$75M</li>
+                            <li>加重平均希薄化後株式数：約53M株</li>
+                            <li>資本的支出：$140M～$150M</li>
+                        </ul>
+                    </div>
+                </section>
+                
+                <section class="invest">
+                    <h2>Tutor Periniへの投資理由</h2>
+                    <div class="card">
+                        <p><span class="marker">成功プロジェクトの強力な実績</span>を持つ市場リーダー</p>
+                        <p>1.2兆ドルの超党派インフラ法による<span class="highlight">米国インフラプロジェクトへの巨額投資の恩恵</span>を受ける絶好のポジション</p>
+                        <p class="key-figure">過去最高の受注残高 $19.4B 💰</p>
+                        <p>2025年は収益性の回復を見込み、Q1で$0.53のEPSと好調なスタート</p>
+                        <p>2026年と2027年にはさらに強力な収益と利益を予想（2025年ガイダンスの2倍以上）</p>
+                        <div class="bubble">
+                            <p>株主価値の創出に焦点を当てた強力なキャッシュ生成</p>
+                            <p>2024年の記録的な営業キャッシュフロー$504M</p>
+                            <p>大幅に強化された貸借対照表 - 2023年12月から2025年3月までに総債務を$494M（55%）削減</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>出典: Tutor Perini Corporation投資家プレゼンテーション 2025年5月</p>
+            <p>🏗️ NYSE: TPC | 📧 Jorge.Casado@tutorperini.com | 📞 (818) 408-5746</p>
+        </div>
+    </div>
+</body>
+</html>
+    </div>
+
+    <footer class="template-footer">
+        <div class="template-footer-content">
+            <div class="template-footer-logo">Monty Trader</div>
+            <div class="template-footer-social">
+                <a href="https://x.com/monty_investor" target="_blank">@monty_investor</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleLanguage() {
+            const jaElements = document.querySelectorAll('.ja');
+            const enElements = document.querySelectorAll('.en');
+            const button = document.querySelector('.language-switch button');
+            
+            jaElements.forEach(el => el.classList.toggle('hidden'));
+            enElements.forEach(el => el.classList.toggle('hidden'));
+            
+            button.textContent = button.textContent === 'English' ? '日本語' : 'English';
+        }
+    </script>
+</body>
+</html> 

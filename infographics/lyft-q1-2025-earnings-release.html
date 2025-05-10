@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lyft Q1 2025 財務結果</title>
+    <link rel="icon" type="image/png" href="../images/monty.png">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Yomogi&family=Zen+Kurenaido&family=Kaisei+Decol:wght@400;700&display=swap');
+        
+        :root {
+            --fashion-1: #593C47;
+            --fashion-2: #F2E63D;
+            --fashion-3: #F2C53D;
+            --fashion-4: #F25C05;
+            --fashion-5: #F24405;
+            --text-dark: #334155;
+            --text-title: #1e40af;
+            --bg-light: #fff;
+            --shadow: rgba(0, 0, 0, 0.1);
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Kaisei Decol', serif;
+            background-color: #f8f9fa;
+            color: var(--text-dark);
+            line-height: 1.4;
+            padding: 0;
+            margin: 0;
+        }
+
+        .fixed-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: linear-gradient(135deg, var(--fashion-1), var(--fashion-5));
+            padding: 10px 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .fixed-header:hover {
+            background: linear-gradient(135deg, var(--fashion-5), var(--fashion-1));
+        }
+
+        .fixed-header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .header-logo {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .fixed-header h1 {
+            font-family: 'Zen Kurenaido', sans-serif;
+            font-size: 24px;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            background: linear-gradient(to right, white, var(--fashion-2));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin: 0;
+            pointer-events: none;
+        }
+
+        .template-main-content {
+            margin-top: 60px;
+            padding: 20px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .template-footer {
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(135deg, var(--fashion-1), var(--fashion-5));
+            color: white;
+            margin-top: 40px;
+        }
+
+        .template-footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .template-footer-logo {
+            font-family: 'Zen Kurenaido', sans-serif;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .template-footer-social {
+            display: flex;
+            gap: 15px;
+        }
+
+        .template-footer-social a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .template-footer-social a:hover {
+            color: var(--fashion-2);
+            transform: translateY(-2px);
+        }
+
+        .template-hidden {
+            display: none !important;
+            visibility: hidden;
+            opacity: 0;
+        }
+
+        .language-switch {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1001;
+            display: none;
+        }
+        
+        .language-switch button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 20px;
+            background: linear-gradient(135deg, var(--fashion-1), var(--fashion-5));
+            color: white;
+            cursor: pointer;
+            font-family: 'Yomogi', cursive;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .language-switch button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+
+        @media (max-width: 768px) {
+            .fixed-header h1 {
+                font-size: 20px;
+            }
+            
+            .template-main-content {
+                margin-top: 50px;
+                padding: 10px;
+            }
+
+            .language-switch {
+                top: 10px;
+                right: 10px;
+            }
+
+            .template-footer-content {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="language-switch">
+        <button onclick="toggleLanguage()">English</button>
+    </div>
+
+    <div class="fixed-header" onclick="window.location.href='../index.html'">
+        <div class="fixed-header-content">
+            <img src="../images/monty.png" alt="Monty Trader Logo" class="header-logo">
+            <h1 class="ja">モンティの株式トレードインフォグラフィックス集</h1>
+            <h1 class="en hidden">Monty's Stock Trading Infographics Collection</h1>
+        </div>
+    </div>
+
+    <div class="template-main-content">
+        <!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lyft Q1 2025 財務結果 グラフィックレコーディング</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Yomogi&family=Zen+Kurenaido&family=Kaisei+Decol:wght@400;700&display=swap');
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Kaisei Decol', serif;
+            background-color: #f8f9fa;
+            color: #334155;
+            line-height: 1.4;
+            padding: 2rem;
+        }
+        
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            border-bottom: 2px dashed #593C47;
+            padding-bottom: 1rem;
+        }
+        
+        .title {
+            font-family: 'Zen Kurenaido', sans-serif;
+            font-size: 32px;
+            font-weight: bold;
+            background: linear-gradient(90deg, #F25C05, #F24405);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            position: relative;
+        }
+        
+        .date {
+            font-family: 'Yomogi', cursive;
+            color: #475569;
+            font-size: 18px;
+            text-align: right;
+        }
+        
+        .content {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+        
+        .card {
+            background-color: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+            border: 2px solid;
+            border-color: #593C47;
+        }
+        
+        .card-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .card-title {
+            font-family: 'Zen Kurenaido', sans-serif;
+            font-size: 18px;
+            color: #1e40af;
+            font-weight: bold;
+            margin-left: 0.5rem;
+        }
+        
+        .card-content {
+            font-size: 14px;
+        }
+        
+        .highlight {
+            font-weight: bold;
+            color: #F25C05;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .highlight::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background-color: #F2E63D;
+            border-radius: 3px;
+            z-index: -1;
+            opacity: 0.5;
+        }
+        
+        .arrow {
+            position: absolute;
+            width: 100px;
+            height: 30px;
+            border-top: 2px dashed #593C47;
+            border-right: 2px dashed #593C47;
+            transform-origin: top right;
+            transform: rotate(30deg);
+        }
+        
+        .icon {
+            font-size: 24px;
+            color: #593C47;
+            margin-right: 8px;
+            display: inline-block;
+        }
+        
+        .metric {
+            font-family: 'Kaisei Decol', serif;
+            font-weight: bold;
+            font-size: 18px;
+            color: #1e40af;
+            margin: 0.5rem 0;
+            display: flex;
+            align-items: center;
+        }
+        
+        .metric-value {
+            margin-left: 0.5rem;
+            background-color: rgba(242, 230, 61, 0.2);
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+        }
+        
+        .note {
+            font-family: 'Yomogi', cursive;
+            font-size: 14px;
+            color: #593C47;
+            margin-top: 0.5rem;
+            font-style: italic;
+        }
+        
+        .quote {
+            font-family: 'Yomogi', cursive;
+            border-left: 3px solid #F2C53D;
+            padding-left: 1rem;
+            margin: 1rem 0;
+            font-style: italic;
+        }
+        
+        .banner {
+            background-color: rgba(242, 197, 61, 0.2);
+            border-radius: 8px;
+            padding: 0.5rem 1rem;
+            margin: 1rem 0;
+            position: relative;
+            font-weight: bold;
+        }
+        
+        .banner::before {
+            content: '✨';
+            position: absolute;
+            left: -10px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        
+        .bubble {
+            position: relative;
+            background-color: rgba(242, 197, 61, 0.2);
+            border-radius: 16px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .bubble::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 30px;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-top: 10px solid rgba(242, 197, 61, 0.2);
+        }
+        
+        .divider {
+            border-top: 2px dashed #593C47;
+            margin: 1.5rem 0;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 2rem;
+            font-size: 12px;
+            color: #475569;
+            border-top: 2px dashed #593C47;
+            padding-top: 1rem;
+        }
+        
+        .grid-item-full {
+            grid-column: 1 / -1;
+        }
+        
+        .handwritten {
+            font-family: 'Yomogi', cursive;
+        }
+        
+        .connection-line {
+            position: absolute;
+            border-top: 2px dashed #593C47;
+            z-index: 1;
+        }
+        
+        /* グラスモーフィズム効果 */
+        .glass {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        /* 装飾要素 */
+        .decoration {
+            position: absolute;
+            z-index: -1;
+            opacity: 0.1;
+        }
+        
+        .decoration-1 {
+            top: 10%;
+            left: 5%;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background-color: #F2E63D;
+        }
+        
+        .decoration-2 {
+            bottom: 15%;
+            right: 8%;
+            width: 150px;
+            height: 150px;
+            background-color: #F25C05;
+            transform: rotate(45deg);
+        }
+        
+        /* 成長グラフの視覚化 */
+        .growth-bar {
+            height: 24px;
+            background: linear-gradient(90deg, #F2E63D, #F25C05);
+            border-radius: 12px;
+            margin: 8px 0;
+            position: relative;
+        }
+        
+        .growth-bar-label {
+            position: absolute;
+            right: 8px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+            font-weight: bold;
+            font-size: 12px;
+        }
+        
+        .lyft-logo {
+            color: #F24405;
+            font-weight: bold;
+            font-family: Arial, sans-serif;
+            font-size: 24px;
+            display: inline-block;
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 装飾背景要素 -->
+        <div class="decoration decoration-1"></div>
+        <div class="decoration decoration-2"></div>
+        
+        <!-- ヘッダー -->
+        <div class="header">
+            <div>
+                <span class="lyft-logo">lyft</span>
+                <h1 class="title">Lyft Q1 2025 財務結果</h1>
+                <p class="handwritten">過去最高の四半期パフォーマンス 🚗💨</p>
+            </div>
+            <div class="date">
+                <p>2025年5月8日発表</p>
+                <p>サンフランシスコ</p>
+            </div>
+        </div>
+        
+        <!-- メインコンテンツ -->
+        <div class="content">
+            <!-- 企業概要 -->
+            <div class="card glass grid-item-full">
+                <div class="card-header">
+                    <span class="icon">🏢</span>
+                    <h2 class="card-title">企業概要</h2>
+                </div>
+                <div class="card-content">
+                    <p><span class="lyft-logo">lyft</span>は2012年に米国で設立された配車サービス大手企業です。<span class="highlight">「人々に奉仕し、繋げる」</span>という目的を掲げ、ライドシェア、自転車、スクーターをワンアプリで提供しています。</p>
+                    <p class="handwritten" style="margin-top: 8px;">数百万人のドライバーが何十億もの乗車で収入を得る機会を選択しています</p>
+                    <div class="bubble handwritten" style="margin-top: 12px;">
+                        <p>米国とカナダで展開中、FREENOW買収により欧州9カ国に拡大予定</p>
+                        <p>NASDAQ上場: <strong>LYFT</strong></p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- ハイライト -->
+            <div class="card glass">
+                <div class="card-header">
+                    <span class="icon">📊</span>
+                    <h2 class="card-title">Q1 ハイライト</h2>
+                </div>
+                <div class="card-content">
+                    <p class="handwritten">「過去最高の年初め - 記録的なQ1の売上と利用者成長」</p>
+                    <div class="metric">
+                        <span>総取引額:</span>
+                        <span class="metric-value">42億ドル</span>
+                        <span>↑13% YoY</span>
+                    </div>
+                    <div class="metric">
+                        <span>収益:</span>
+                        <span class="metric-value">15億ドル</span>
+                        <span>↑14% YoY</span>
+                    </div>
+                    <div class="metric">
+                        <span>純利益:</span>
+                        <span class="metric-value">260万ドル</span>
+                        <span>(前年: -3,150万ドル)</span>
+                    </div>
+                    <div class="banner">
+                        現金創出額は過去12ヶ月で約10億ドルに接近！
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 運営成果 -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="icon">📈</span>
+                    <h2 class="card-title">運営成果</h2>
+                </div>
+                <div class="card-content">
+                    <div class="growth-bar" style="width: 83%;">
+                        <span class="growth-bar-label">ライド数: 2.18億 (+16% YoY)</span>
+                    </div>
+                    <div class="growth-bar" style="width: 78%;">
+                        <span class="growth-bar-label">アクティブユーザー: 2,420万 (+11% YoY)</span>
+                    </div>
+                    <div class="growth-bar" style="width: 80%;">
+                        <span class="growth-bar-label">調整後EBITDA: 1.07億ドル (+79% YoY)</span>
+                    </div>
+                    <div class="growth-bar" style="width: 85%;">
+                        <span class="growth-bar-label">フリーキャッシュフロー: 2.81億ドル (大幅増)</span>
+                    </div>
+                    <p class="note">🚀 3月最終週のライド数は過去最高を記録！</p>
+                </div>
+            </div>
+            
+            <!-- イノベーション -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="icon">💡</span>
+                    <h2 class="card-title">製品イノベーション</h2>
+                </div>
+                <div class="card-content">
+                    <div class="bubble handwritten">
+                        <strong>ドライバー向け：</strong> 「Earnings Assistant」パイロット開始
+                        <p>業界初のAI搭載ツール！ドライバーが道路での時間を最大化できるようサポート</p>
+                    </div>
+                    <div class="bubble handwritten">
+                        <strong>ライダー向け：</strong> 「Lyft Silver」サービス開始
+                        <p>高齢者向けに設計された新サービス。2030年までに7000万人以上のアメリカ人が65歳以上に！</p>
+                    </div>
+                    <p class="note">🌟 デュアルアプリ利用ドライバーのLyft選好度は23%ポイントアップ！</p>
+                </div>
+            </div>
+            
+            <!-- CEOコメント -->
+            <div class="card glass grid-item-full">
+                <div class="card-header">
+                    <span class="icon">💬</span>
+                    <h2 class="card-title">CEOコメント - David Risher</h2>
+                </div>
+                <div class="card-content">
+                    <div class="quote">
+                        「Q1はLyftの16四半期連続の二桁成長を記録し、顧客重視戦略の回復力と勢いを示しています。3月の最終週には、ライド数が過去最高を記録し、デュアルアプリドライバーのLyft選好度は23%ポイント向上しました。Lyft SilverによるLyftの新たな人口統計への拡大と、計画中のFREENOW買収によるヨーロッパ進出により、持続可能な市場リーダーシップのための基盤を整えています。」
+                    </div>
+                </div>
+            </div>
+            
+            <!-- CFOコメント -->
+            <div class="card glass grid-item-full">
+                <div class="card-header">
+                    <span class="icon">💰</span>
+                    <h2 class="card-title">CFOコメント - Erin Brewer</h2>
+                </div>
+                <div class="card-content">
+                    <div class="quote">
+                        「Lyftの優れたQ1パフォーマンス – ライド数16%増、力強い利益拡大、過去12ヶ月の営業キャッシュフロー10億ドルに迫る – は、規律ある成長という勝利の方程式を示しています。この財務力により、株式買戻しプログラムの承認額を7.5億ドルに増加しながら、最も有望な成長イニシアチブへの投資能力を維持できています。」
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 戦略的拡大 -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="icon">🌐</span>
+                    <h2 class="card-title">戦略的拡大</h2>
+                </div>
+                <div class="card-content">
+                    <p><span class="highlight">FREENOW買収計画</span> - 戦略的で効率的な国際展開</p>
+                    <ul style="list-style: none; margin-top: 8px;">
+                        <li>✅ 対象市場をほぼ2倍に拡大</li>
+                        <li>✅ ビジネスモデルの多様化</li>
+                        <li>✅ 年間総取引額を約10億ユーロ増加</li>
+                        <li>✅ マルチイヤーターゲットをサポート</li>
+                    </ul>
+                    <div class="banner handwritten">
+                        欧州9カ国に拡大！150以上の都市で展開予定
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 自動運転 -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="icon">🤖</span>
+                    <h2 class="card-title">自動運転の進展</h2>
+                </div>
+                <div class="card-content">
+                    <p>Lyftとマイ・モビリティが<span class="highlight">自動運転車両のローンチ準備中</span></p>
+                    <div class="banner handwritten">
+                        この夏、アトランタで開始予定！
+                    </div>
+                    <p>Lyftの戦略は明確:</p>
+                    <ul style="list-style: none; margin-top: 8px;">
+                        <li>🚘 世界クラスのフリート管理</li>
+                        <li>🔄 洗練されたマーケットプレイスエンジン</li>
+                        <li>📱 大規模な需要プラットフォーム</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- 株主還元 -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="icon">📈</span>
+                    <h2 class="card-title">株主還元</h2>
+                </div>
+                <div class="card-content">
+                    <div class="bubble handwritten">
+                        <strong>株式買戻しプログラム拡大</strong>
+                        <p>承認額を7.5億ドルに増額</p>
+                    </div>
+                    <div class="divider"></div>
+                    <p>買戻し加速スケジュール:</p>
+                    <div class="metric">
+                        <span>12ヶ月以内:</span>
+                        <span class="metric-value">5億ドル</span>
+                    </div>
+                    <div class="metric">
+                        <span>うち3ヶ月以内:</span>
+                        <span class="metric-value">2億ドル</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Q2 見通し -->
+            <div class="card glass grid-item-full">
+                <div class="card-header">
+                    <span class="icon">🔮</span>
+                    <h2 class="card-title">Q2 2025 見通し</h2>
+                </div>
+                <div class="card-content" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;">
+                    <div>
+                        <div class="metric">
+                            <span>ライド成長率:</span>
+                            <span class="metric-value">10代半ば %</span>
+                            <span>(前年同期比)</span>
+                        </div>
+                        <p class="note">業界トップのサービスレベルとライダー・ドライバーのエンゲージメントに牽引</p>
+                    </div>
+                    <div>
+                        <div class="metric">
+                            <span>総取引額:</span>
+                            <span class="metric-value">44.1億〜45.7億ドル</span>
+                        </div>
+                        <p class="note">前年同期比10%〜14%増</p>
+                    </div>
+                    <div>
+                        <div class="metric">
+                            <span>調整後EBITDA:</span>
+                            <span class="metric-value">1.15億〜1.3億ドル</span>
+                        </div>
+                        <p class="note">総取引額に対する調整後EBITDAマージン: 約2.6%〜2.8%</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- フッター -->
+        <div class="footer">
+            <p>出典: Lyft, Inc. Q1 2025 Earnings Release (2025年5月8日)</p>
+            <p>© 2025 Lyft, Inc. All Rights Reserved.</p>
+        </div>
+    </div>
+</body>
+</html>
+
+    </div>
+
+    <footer class="template-footer">
+        <div class="template-footer-content">
+            <div class="template-footer-logo">Monty Trader</div>
+            <div class="template-footer-social">
+                <a href="https://x.com/monty_investor" target="_blank">@monty_investor</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleLanguage() {
+            const jaElements = document.querySelectorAll('.ja');
+            const enElements = document.querySelectorAll('.en');
+            const button = document.querySelector('.language-switch button');
+            
+            jaElements.forEach(el => el.classList.toggle('hidden'));
+            enElements.forEach(el => el.classList.toggle('hidden'));
+            
+            button.textContent = button.textContent === 'English' ? '日本語' : 'English';
+        }
+    </script>
+</body>
+</html> 
