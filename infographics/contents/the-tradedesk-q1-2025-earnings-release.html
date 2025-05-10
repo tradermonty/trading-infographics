@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TheTradeDesk 2025年第1四半期決算 - グラフィックレコーディング</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Yomogi&family=Zen+Kurenaido&family=Kaisei+Decol:wght@400;700&display=swap');
+        
+        :root {
+            --fashion-1: #593C47;
+            --fashion-2: #F2E63D;
+            --fashion-3: #F2C53D;
+            --fashion-4: #F25C05;
+            --fashion-5: #F24405;
+            --blue-light: #8ecdf9;
+            --blue-medium: #4080E0;
+            --blue-dark: #1e40af;
+            --gray-dark: #334155;
+            --gray-medium: #475569;
+            --gray-light: #CBD5E1;
+            --white: #ffffff;
+            --bg-color: #f6f9fc;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Kaisei Decol', serif;
+            background-color: var(--bg-color);
+            color: var(--gray-dark);
+            line-height: 1.4;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            padding: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            border-bottom: 2px dashed var(--fashion-3);
+            padding-bottom: 20px;
+        }
+        
+        .title-area {
+            flex: 1;
+        }
+        
+        h1 {
+            font-family: 'Zen Kurenaido', sans-serif;
+            font-size: 32px;
+            margin-bottom: 10px;
+            position: relative;
+            display: inline-block;
+            background: linear-gradient(to right, var(--fashion-1), var(--fashion-5));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: bold;
+        }
+        
+        .subtitle {
+            font-family: 'Yomogi', cursive;
+            font-size: 16px;
+            color: var(--gray-medium);
+            margin-top: 5px;
+        }
+        
+        .date-source {
+            text-align: right;
+            font-size: 14px;
+            color: var(--gray-medium);
+        }
+        
+        .main-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .column {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            padding: 20px;
+            margin-bottom: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            border-bottom: 2px solid var(--blue-light);
+            padding-bottom: 10px;
+        }
+        
+        .card-icon {
+            background: var(--blue-medium);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 12px;
+            color: white;
+            font-size: 20px;
+        }
+        
+        h2 {
+            font-family: 'Zen Kurenaido', sans-serif;
+            font-size: 18px;
+            color: var(--blue-dark);
+            margin: 0;
+            flex: 1;
+        }
+        
+        .highlight {
+            font-weight: bold;
+            color: var(--fashion-5);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .highlight::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background-color: var(--fashion-3);
+            opacity: 0.4;
+            z-index: -1;
+        }
+        
+        .big-number {
+            font-size: 26px;
+            font-weight: bold;
+            color: var(--blue-dark);
+            margin: 10px 0;
+            display: inline-block;
+        }
+        
+        .percentage {
+            color: var(--fashion-4);
+            font-weight: bold;
+        }
+        
+        .positive {
+            color: #22c55e;
+        }
+        
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .metric-item {
+            background: rgba(242, 198, 61, 0.1);
+            border-radius: 8px;
+            padding: 12px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .metric-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--fashion-3);
+            border-radius: 8px 8px 0 0;
+        }
+        
+        .metric-label {
+            font-size: 12px;
+            color: var(--gray-medium);
+            margin-bottom: 5px;
+        }
+        
+        .metric-value {
+            font-size: 16px;
+            font-weight: bold;
+            color: var(--fashion-1);
+        }
+        
+        .bubble-note {
+            position: relative;
+            background: rgba(242, 230, 61, 0.2);
+            border-radius: 12px;
+            padding: 15px;
+            margin: 20px 0;
+            border-left: 4px solid var(--fashion-2);
+        }
+        
+        .bubble-note::before {
+            content: '✏️';
+            position: absolute;
+            top: -10px;
+            left: 10px;
+            background: white;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .timeline {
+            position: relative;
+            margin: 20px 0;
+            padding-left: 30px;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 10px;
+            width: 2px;
+            background: var(--blue-light);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -26px;
+            top: 0;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--blue-medium);
+            border: 3px solid white;
+            box-shadow: 0 0 0 2px var(--blue-light);
+        }
+        
+        .progress-bar {
+            background: var(--gray-light);
+            border-radius: 20px;
+            height: 14px;
+            margin: 10px 0;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .progress-value {
+            background: linear-gradient(to right, var(--fashion-3), var(--fashion-4));
+            height: 100%;
+            border-radius: 20px;
+            position: relative;
+        }
+        
+        .progress-label {
+            position: absolute;
+            right: 5px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+            font-size: 10px;
+            font-weight: bold;
+        }
+        
+        .chart-container {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px 0;
+            position: relative;
+            height: 180px;
+            overflow: hidden;
+        }
+        
+        .bar {
+            flex: 1;
+            margin: 0 5px;
+            background: linear-gradient(to top, var(--fashion-4), var(--fashion-3));
+            border-radius: 6px 6px 0 0;
+            position: relative;
+            align-self: flex-end;
+            min-width: 30px;
+            max-width: 60px;
+        }
+        
+        .bar-label {
+            position: absolute;
+            bottom: -25px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            font-size: 12px;
+            color: var(--gray-medium);
+        }
+        
+        .bar-value {
+            position: absolute;
+            top: -25px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            font-size: 12px;
+            font-weight: bold;
+            color: var(--fashion-5);
+        }
+        
+        .circle-chart {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        
+        .pie-segment {
+            position: relative;
+            width: 120px;
+            height: 120px;
+            margin: 10px;
+            text-align: center;
+        }
+        
+        .pie-value {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 18px;
+            font-weight: bold;
+            color: var(--fashion-1);
+        }
+        
+        .pie-label {
+            margin-top: 5px;
+            font-size: 14px;
+            color: var(--gray-medium);
+        }
+        
+        .hand-drawn-arrow {
+            position: relative;
+            margin: 20px 0;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .hand-drawn-arrow::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--fashion-4);
+            transform: translateY(-50%);
+        }
+        
+        .hand-drawn-arrow::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: 0;
+            width: 12px;
+            height: 12px;
+            border-top: 3px solid var(--fashion-4);
+            border-right: 3px solid var(--fashion-4);
+            transform: translateY(-50%) rotate(45deg);
+        }
+        
+        .growth-stats {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin: 20px 0;
+        }
+        
+        .growth-item {
+            text-align: center;
+            padding: 15px;
+            flex: 1;
+            min-width: 140px;
+        }
+        
+        .growth-value {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--blue-dark);
+            margin-bottom: 5px;
+        }
+        
+        .growth-label {
+            font-size: 14px;
+            color: var(--gray-medium);
+        }
+        
+        .focus-areas {
+            margin: 20px 0;
+        }
+        
+        .focus-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+        
+        .focus-icon {
+            width: 30px;
+            height: 30px;
+            background: var(--fashion-2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 12px;
+            flex-shrink: 0;
+        }
+        
+        .focus-text {
+            flex: 1;
+        }
+        
+        .hand-drawn-box {
+            border: 2px solid var(--fashion-3);
+            border-radius: 12px;
+            padding: 15px;
+            margin: 15px 0;
+            position: relative;
+        }
+        
+        .hand-drawn-box::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            bottom: -2px;
+            left: 15px;
+            width: 2px;
+            background: var(--fashion-3);
+            transform: rotate(3deg);
+        }
+        
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 12px;
+            color: var(--gray-medium);
+            border-top: 1px dashed var(--fashion-2);
+            padding-top: 20px;
+        }
+        
+        .footer-logo {
+            margin-bottom: 10px;
+        }
+        
+        .glossy-effect {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .glossy-effect::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(
+                to right,
+                rgba(255, 255, 255, 0) 0%,
+                rgba(255, 255, 255, 0.3) 50%,
+                rgba(255, 255, 255, 0) 100%
+            );
+            transform: skewX(-25deg);
+            animation: shine 3s infinite;
+        }
+        
+        @keyframes shine {
+            0% {
+                left: -100%;
+            }
+            100% {
+                left: 200%;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .column {
+                flex: 100%;
+            }
+            
+            .metrics-grid {
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            }
+            
+            h1 {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="title-area">
+                <h1>TheTradeDesk 2025年第1四半期 決算発表</h1>
+                <div class="subtitle">アドテクノロジープラットフォームのパフォーマンスと成長戦略</div>
+            </div>
+            <div class="date-source">
+                <div>2025年5月8日発表</div>
+                <div>データソース: TheTradeDesk IR</div>
+            </div>
+        </header>
+        
+        <div class="card glossy-effect" style="margin-bottom: 25px;">
+            <div class="card-header">
+                <div class="card-icon">🏢</div>
+                <h2>企業概要</h2>
+            </div>
+            <p>
+                <span class="highlight">TheTradeDesk社</span>は、広告主向けに自己サービス型クラウドベースのプラットフォームを提供するテクノロジー企業です。主要なデータ・在庫・パブリッシャーとの統合により、広告キャンペーンの最大到達範囲と意思決定能力を確保しています。2009年に創業、2016年に株式公開し、現在は北米、欧州、アジア太平洋地域を含む<span class="highlight">35のオフィス</span>で<span class="highlight">3,500人以上の従業員</span>を擁しています。
+            </p>
+            
+            <div style="display: flex; flex-wrap: wrap; gap: 15px; margin-top: 15px;">
+                <div style="flex: 1; min-width: 200px; background-color: rgba(242, 230, 61, 0.1); padding: 12px; border-radius: 8px;">
+                    <div style="font-weight: bold; margin-bottom: 5px; color: var(--fashion-1);">ミッション</div>
+                    <p style="font-size: 14px;">オープンインターネット上での広告購入を最適化し、広告主がデジタル広告キャンペーンを効果的に管理できるよう支援</p>
+                </div>
+                <div style="flex: 1; min-width: 200px; background-color: rgba(242, 92, 5, 0.1); padding: 12px; border-radius: 8px;">
+                    <div style="font-weight: bold; margin-bottom: 5px; color: var(--fashion-1);">独自の強み</div>
+                    <p style="font-size: 14px;">広告主側に立った<span class="highlight">オープンで透明性の高いプラットフォーム</span>を提供し、企業が自社のデータを最大限に活用できる環境を構築</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="main-content">
+            <div class="column">
+                <div class="card glossy-effect">
+                    <div class="card-header">
+                        <div class="card-icon">📊</div>
+                        <h2>主要業績ハイライト</h2>
+                    </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">🛒</div>
+                        <h2>ショッパーマーケティング</h2>
+                    </div>
+                    
+                    <p>小売データは<span class="highlight">マーケターが待ち望んでいたソリューション</span>です。</p>
+                    
+                    <div class="focus-areas">
+                        <div class="focus-item">
+                            <div class="focus-icon">👤</div>
+                            <div class="focus-text">決定論的で将来性のあるデータ</div>
+                        </div>
+                        <div class="focus-item">
+                            <div class="focus-icon">📊</div>
+                            <div class="focus-text">顧客の生涯データ</div>
+                        </div>
+                        <div class="focus-item">
+                            <div class="focus-icon">📈</div>
+                            <div class="focus-text">マーケットシェアの増加</div>
+                        </div>
+                        <div class="focus-item">
+                            <div class="focus-icon">🔄</div>
+                            <div class="focus-text">頻度管理の全体最適化</div>
+                        </div>
+                    </div>
+                    
+                    <div class="bubble-note">
+                        <p>主要小売業各社との提携により、小売データを活用したターゲティング広告を実現</p>
+                    </div>
+                </div>
+                    <p>2025年第1四半期の<span class="highlight">売上高は6億1600万ドル</span>を達成し、前年同期比<span class="percentage">25%増</span>と好調な成長を維持しています。</p>
+                    
+                    <div class="metrics-grid">
+                        <div class="metric-item">
+                            <div class="metric-label">売上高</div>
+                            <div class="metric-value">$616M</div>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-label">純利益</div>
+                            <div class="metric-value">$51M</div>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-label">調整後EBITDA</div>
+                            <div class="metric-value">$208M</div>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-label">1株当たり利益</div>
+                            <div class="metric-value">$0.10</div>
+                        </div>
+                    </div>
+                    
+                    <div class="bubble-note">
+                        <p>2013年以降、<span class="highlight">連続して利益を計上</span>。強固な財務基盤を維持しています。</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">📈</div>
+                        <h2>収益成長の軌跡</h2>
+                    </div>
+                    
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div>2011年5月: <span class="highlight">$0.08/日</span>の売上げからスタート</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div>2016年: 初めて<span class="highlight">月間$1億</span>を達成</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div>2021年: 初めて<span class="highlight">年間$10億</span>の売上げを突破</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div>2023年: 初めて<span class="highlight">月間$10億</span>を達成</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div>2024年: 初めて<span class="highlight">年間調整後EBITDA $10億</span>を達成</div>
+                        </div>
+                    </div>
+                    
+                    <div class="chart-container">
+                        <div class="bar" style="height: 35%;">
+                            <div class="bar-value">$0.5B</div>
+                            <div class="bar-label">2018</div>
+                        </div>
+                        <div class="bar" style="height: 45%;">
+                            <div class="bar-value">$0.8B</div>
+                            <div class="bar-label">2020</div>
+                        </div>
+                        <div class="bar" style="height: 60%;">
+                            <div class="bar-value">$1.2B</div>
+                            <div class="bar-label">2021</div>
+                        </div>
+                        <div class="bar" style="height: 80%;">
+                            <div class="bar-value">$1.6B</div>
+                            <div class="bar-label">2022</div>
+                        </div>
+                        <div class="bar" style="height: 90%;">
+                            <div class="bar-value">$1.9B</div>
+                            <div class="bar-label">2023</div>
+                        </div>
+                        <div class="bar" style="height: 100%;">
+                            <div class="bar-value">$2.4B</div>
+                            <div class="bar-label">2024</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">🎯</div>
+                        <h2>企業の強み</h2>
+                    </div>
+                    
+                    <div class="focus-areas">
+                        <div class="focus-item">
+                            <div class="focus-icon">1</div>
+                            <div class="focus-text"><span class="highlight">オブジェクティブ</span> - 中立的な立場で広告主の利益を最優先</div>
+                        </div>
+                        <div class="focus-item">
+                            <div class="focus-icon">2</div>
+                            <div class="focus-text"><span class="highlight">独立性</span> - 囲い込まれたプラットフォームとは異なるアプローチ</div>
+                        </div>
+                        <div class="focus-item">
+                            <div class="focus-icon">3</div>
+                            <div class="focus-text"><span class="highlight">透明性</span> - データと取引の透明性を重視</div>
+                        </div>
+                    </div>
+                    
+                    <div class="bubble-note">
+                        <p>「TheTradeDesk はオープンインターネットへの投資」 - CEOジェフ・グリーン</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="column">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">💡</div>
+                        <h2>技術的優位性</h2>
+                    </div>
+                    
+                    <p><span class="highlight">表現力（Expressiveness）</span>は当社の技術的優位性の中核です。</p>
+                    
+                    <div class="hand-drawn-box">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 15px;">
+                            <div style="flex: 1; text-align: center; padding: 10px; background: rgba(89, 60, 71, 0.1); border-radius: 8px; margin-right: 10px;">
+                                <div style="font-weight: bold; margin-bottom: 5px;">ラインアイテム</div>
+                                <div style="font-size: 12px;">レポート粒度、最適化オプション、データ活用能力に制限あり</div>
+                            </div>
+                            <div style="flex: 1; text-align: center; padding: 10px; background: rgba(242, 92, 5, 0.1); border-radius: 8px;">
+                                <div style="font-weight: bold; margin-bottom: 5px;">ビッドファクター</div>
+                                <div style="font-size: 12px;">表現力と詳細なレポートを可能にする唯一の構造</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bubble-note">
+                        <p>当社のビッドファクターを利用した広告主は<span class="highlight">予約コストを半分に削減</span>できました。</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">📱</div>
+                        <h2>事業概要</h2>
+                    </div>
+                    
+                    <p>TheTradeDesk は<span class="highlight">広告主向けプラットフォーム</span>を提供しています。主な顧客は広告代理店、ブランド企業、テクノロジー企業です。</p>
+                    
+                    <div class="hand-drawn-box">
+                        <p>「私たちは、広告主にソフトウェアプラットフォームを提供し、彼らの独自の強みを発揮する余地を作ります。私たちは破壊者ではなく、イネーブラーです。」</p>
+                    </div>
+                    
+                    <div class="circle-chart">
+                        <div>
+                            <svg width="120" height="120" viewBox="0 0 120 120">
+                                <circle cx="60" cy="60" r="50" fill="none" stroke="#E2E8F0" stroke-width="15"/>
+                                <circle cx="60" cy="60" r="50" fill="none" stroke="#F25C05" stroke-width="15" stroke-dasharray="314" stroke-dashoffset="0" transform="rotate(-90 60 60)"/>
+                                <text x="60" y="60" text-anchor="middle" dy="7" font-size="20" font-weight="bold" fill="#593C47">100%</text>
+                            </svg>
+                            <div class="pie-label">顧客維持率</div>
+                        </div>
+                        <div>
+                            <svg width="120" height="120" viewBox="0 0 120 120">
+                                <circle cx="60" cy="60" r="50" fill="none" stroke="#E2E8F0" stroke-width="15"/>
+                                <circle cx="60" cy="60" r="50" fill="none" stroke="#F2C53D" stroke-width="15" stroke-dasharray="314" stroke-dashoffset="80" transform="rotate(-90 60 60)"/>
+                                <text x="60" y="60" text-anchor="middle" dy="7" font-size="20" font-weight="bold" fill="#593C47">75%</text>
+                            </svg>
+                            <div class="pie-label">調整後EBITDA利益率</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">🚀</div>
+                        <h2>成長戦略の柱</h2>
+                    </div>
+                    
+                    <div class="hand-drawn-box">
+                        <div class="growth-stats">
+                            <div class="growth-item">
+                                <div class="growth-value">1</div>
+                                <div class="growth-label">コネクテッドTV</div>
+                            </div>
+                            <div class="growth-item">
+                                <div class="growth-value">2</div>
+                                <div class="growth-label">ショッパーマーケティング</div>
+                            </div>
+                            <div class="growth-item">
+                                <div class="growth-value">3</div>
+                                <div class="growth-label">Kokai技術</div>
+                            </div>
+                        </div>
+                        <div class="growth-stats">
+                            <div class="growth-item">
+                                <div class="growth-value">4</div>
+                                <div class="growth-label">グローバル展開</div>
+                            </div>
+                            <div class="growth-item">
+                                <div class="growth-value">5</div>
+                                <div class="growth-label">UID2.0</div>
+                            </div>
+                            <div class="growth-item">
+                                <div class="growth-value">6</div>
+                                <div class="growth-label">データマーケットプレイス</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bubble-note">
+                        <p>コネクテッドTVは最大かつ最も急成長している分野であり、今後も最重要領域として注力していきます。</p>
+                    </div>
+                    
+                    <div class="progress-bar">
+                        <div class="progress-value" style="width: 12%;">
+                            <span class="progress-label">12%</span>
+                        </div>
+                    </div>
+                    <div style="font-size: 12px; text-align: center; margin-top: 5px;">国際売上比率 (今後の成長機会)</div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">💼</div>
+                        <h2>業界データ</h2>
+                    </div>
+                    
+                    <p>TheTradeDesk は全ての主要業界で多様化した顧客基盤を持っています。</p>
+                    
+                    <div class="focus-areas">
+                        <div class="focus-item">
+                            <div class="focus-icon">🍔</div>
+                            <div class="focus-text">食品・飲料 <span class="percentage">18%</span></div>
+                        </div>
+                        <div class="focus-item">
+                            <div class="focus-icon">🚗</div>
+                            <div class="focus-text">自動車 <span class="percentage">12%</span></div>
+                        </div>
+                        <div class="focus-item">
+                            <div class="focus-icon">🏥</div>
+                            <div class="focus-text">医療・健康 <span class="percentage">11%</span></div>
+                        </div>
+                        <div class="focus-item">
+                            <div class="focus-icon">🏠</div>
+                            <div class="focus-text">ホーム・ガーデン <span class="percentage">8%</span></div>
+                        </div>
+                        <div class="focus-item">
+                            <div class="focus-icon">💻</div>
+                            <div class="focus-text">テクノロジー <span class="percentage">8%</span></div>
+                        </div>
+                    </div>
+                    
+                    <div class="bubble-note">
+                        <p>グローバル広告市場の約60%は北米以外で、当社の国際展開余地は大きいです。</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">🔐</div>
+                        <h2>Unified ID 2.0</h2>
+                    </div>
+                    
+                    <p>業界全体のアプローチであるUnified ID 2.0 (UID2)は、<span class="highlight">関連性のある広告の価値を維持しながら</span>、ユーザーのコントロールとプライバシーを最優先に考えます。</p>
+                    
+                    <div class="hand-drawn-box">
+                        <div style="text-align: center; margin-bottom: 10px;">
+                            <span style="font-weight: bold;">単なるクッキーの代替ではなく、アップグレード</span>
+                        </div>
+                        <div class="focus-areas">
+                            <div class="focus-item">
+                                <div class="focus-icon">🔒</div>
+                                <div class="focus-text">安全でプライバシーを意識</div>
+                            </div>
+                            <div class="focus-item">
+                                <div class="focus-icon">👁️</div>
+                                <div class="focus-text">透明性とコントロール</div>
+                            </div>
+                            <div class="focus-item">
+                                <div class="focus-icon">🔄</div>
+                                <div class="focus-text">オープンソースと相互運用性</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="column">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">📺</div>
+                        <h2>コネクテッドTV戦略</h2>
+                    </div>
+                    
+                    <p>「TVの未来は<span class="highlight">広告収入型</span>です。多くの消費者にとって、広告なしのサービスは高すぎるからです。」</p>
+                    
+                    <div class="metrics-grid">
+                        <div class="metric-item">
+                            <div class="metric-label">CTV世帯数</div>
+                            <div class="metric-value">90M+</div>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-label">CTV端末数</div>
+                            <div class="metric-value">120M+</div>
+                        </div>
+                    </div>
+                    
+                    <div class="hand-drawn-box">
+                        <p><span class="highlight">従来のTV広告</span>: 幅広いメトリクスを対象にした$10 CPM</p>
+                        <div class="hand-drawn-arrow"></div>
+                        <p><span class="highlight">コネクテッドTV広告</span>: 価値の高い顧客とそのホームをリアルタイムでピンポイントにターゲティングした$20 CPM</p>
+                    </div>
+                    
+                    <div class="focus-areas">
+                        <div class="focus-item">
+                            <div class="focus-icon">📊</div>
+                            <div class="focus-text">複数画面での視聴データ</div>
+                        </div>
+                        <div class="focus-item">
+                            <div class="focus-icon">📱</div>
+                            <div class="focus-text">デバイス間のアトリビューション</div>
+                        </div>
+                        <div class="focus-item">
+                            <div class="focus-icon">👥</div>
+                            <div class="focus-text">リーチと頻度</div>
+                        </div>
+                    </div>
+                </div>
+                

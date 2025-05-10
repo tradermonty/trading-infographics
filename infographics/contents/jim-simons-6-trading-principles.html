@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ジム・サイモンズの投資哲学：感情的取引を超える6つの真実</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Yomogi&family=Zen+Kurenaido&family=Kaisei+Decol:wght@400;700&display=swap');
+    
+    :root {
+      --fashion-1: #593C47;
+      --fashion-2: #F2E63D;
+      --fashion-3: #F2C53D;
+      --fashion-4: #F25C05;
+      --fashion-5: #F24405;
+      --text-main: #334155;
+      --text-heading: #1e40af;
+      --text-subheading: #475569;
+      --bg-color: #f9f7f3;
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'Kaisei Decol', 'Yomogi', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      line-height: 1.4;
+      padding: 20px;
+    }
+    
+    .container {
+      max-width: 100%;
+      margin: 0 auto;
+      position: relative;
+    }
+    
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 30px;
+      padding-bottom: 15px;
+      border-bottom: 3px solid var(--fashion-1);
+      position: relative;
+    }
+    
+    .header:after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -10px;
+      height: 3px;
+      width: 100%;
+      background: var(--fashion-3);
+      border-radius: 3px;
+    }
+    
+    .title {
+      font-family: 'Yomogi', cursive;
+      font-size: 32px;
+      font-weight: bold;
+      background: linear-gradient(45deg, var(--fashion-1), var(--fashion-5));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+      display: inline-block;
+      position: relative;
+    }
+    
+    .title:after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -5px;
+      height: 3px;
+      width: 100%;
+      background: var(--fashion-2);
+      border-radius: 3px;
+    }
+    
+    .date {
+      font-family: 'Zen Kurenaido', sans-serif;
+      font-size: 16px;
+      color: var(--text-subheading);
+      text-align: right;
+    }
+    
+    .intro {
+      font-family: 'Kaisei Decol', serif;
+      font-size: 16px;
+      color: var(--text-main);
+      background-color: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(10px);
+      padding: 20px;
+      border-radius: 12px;
+      margin-bottom: 30px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+      border: 2px dashed var(--fashion-3);
+      position: relative;
+    }
+    
+    .intro:before {
+      content: "📌";
+      position: absolute;
+      top: -10px;
+      left: 20px;
+      font-size: 24px;
+    }
+    
+    .highlight {
+      background: linear-gradient(transparent 60%, var(--fashion-2) 40%);
+      font-weight: bold;
+    }
+    
+    .columns {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+    
+    .column {
+      flex: 1;
+      min-width: 300px;
+    }
+    
+    .card {
+      background-color: rgba(255, 255, 255, 0.9);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--fashion-1);
+      transition: transform 0.3s ease;
+    }
+    
+    .card:hover {
+      transform: translateY(-5px);
+    }
+    
+    .card:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(90deg, var(--fashion-3), var(--fashion-4));
+    }
+    
+    .section-title {
+      font-family: 'Zen Kurenaido', sans-serif;
+      font-size: 18px;
+      color: var(--fashion-1);
+      margin-bottom: 15px;
+      padding-bottom: 5px;
+      border-bottom: 2px solid var(--fashion-3);
+      display: flex;
+      align-items: center;
+    }
+    
+    .section-title:before {
+      margin-right: 8px;
+      font-size: 20px;
+    }
+    
+    .principle-number {
+      font-family: 'Yomogi', cursive;
+      font-size: 28px;
+      color: var(--fashion-5);
+      font-weight: bold;
+      margin-right: 10px;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .principle-number:after {
+      content: "";
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      background-color: var(--fashion-2);
+      border-radius: 50%;
+      left: -5px;
+      top: -5px;
+      z-index: -1;
+      opacity: 0.4;
+    }
+    
+    .principle-title {
+      font-family: 'Kaisei Decol', serif;
+      font-size: 18px;
+      font-weight: bold;
+      color: var(--fashion-1);
+      margin-bottom: 15px;
+    }
+    
+    .quote {
+      font-family: 'Yomogi', cursive;
+      font-style: italic;
+      padding: 15px;
+      background-color: rgba(242, 230, 60, 0.1);
+      border-left: 4px solid var(--fashion-3);
+      margin: 15px 0;
+      position: relative;
+    }
+    
+    .quote:before {
+      content: """;
+      font-size: 50px;
+      position: absolute;
+      left: 5px;
+      top: -10px;
+      color: var(--fashion-3);
+      opacity: 0.5;
+    }
+    
+    .icon {
+      font-size: 24px;
+      margin-right: 10px;
+    }
+    
+    .arrow {
+      position: relative;
+      width: 100%;
+      height: 30px;
+      margin: 20px 0;
+      text-align: center;
+    }
+    
+    .arrow:after {
+      content: "→";
+      font-size: 30px;
+      color: var(--fashion-4);
+    }
+    
+    .handdrawn-box {
+      border: 3px solid var(--fashion-1);
+      border-radius: 15px;
+      padding: 15px;
+      margin: 15px 0;
+      position: relative;
+      border-style: dashed;
+    }
+    
+    .key-point {
+      font-weight: bold;
+      color: var(--fashion-5);
+      display: inline-block;
+    }
+    
+    .footer {
+      text-align: right;
+      font-size: 14px;
+      color: var(--text-subheading);
+      margin-top: 30px;
+      padding-top: 15px;
+      border-top: 1px dashed var(--fashion-1);
+    }
+    
+    .connect-line {
+      position: absolute;
+      border-top: 2px dashed var(--fashion-4);
+      transform: rotate(-40deg);
+      width: 50px;
+      top: 50%;
+      right: -25px;
+    }
+    
+    @media (max-width: 768px) {
+      .columns {
+        flex-direction: column;
+      }
+      
+      .column {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1 class="title">ジム・サイモンズの投資哲学：感情的取引を超える6つの真実</h1>
+      <div class="date">2025年5月9日 | 出典: Goshawk Trades</div>
+    </div>
+    
+    <div class="intro">
+      <p>最も高くつく自己妨害の形：<span class="highlight">感情的な意思決定</span>。これがあなたが一貫して利益を出せない理由であり、取引を実行できない理由であり、drawdown（含み損）に対処できない理由です。</p>
+      <p>ジム・サイモンズから学ぶ6つの厳しい真実が、「伝統的なトレード」への私のこだわりを打ち砕きました。</p>
+    </div>
+    
+    <div class="columns">
+      <div class="column">
+        <div class="card">
+          <div class="principle-number">1</div>
+          <h3 class="principle-title">📊 数学は感情に勝る</h3>
+          <div class="handdrawn-box">
+            <p>「私たちはモデルを覆すことはない」</p>
+            <p>多くのトレーダーが恐怖と欲望に基づいて意思決定をする一方、サイモンズは自動的に実行するシステムを構築しました。</p>
+          </div>
+          <div class="quote">
+            「ルールは、コンピュータを決して上書きしないということだ。誰も『コンピュータがこうしたいと言っている』などと言って来ない。それは狂気だ。私たちはそうすべきではない。」
+          </div>
+          <p>過去を振り返って、上司が何かについて気が変わるかどうかを考えることはできない。だからシステムに従い続けるのだ。そしてそれは機能してきた。</p>
+        </div>
+        
+        <div class="card">
+          <div class="principle-number">2</div>
+          <h3 class="principle-title">🔍 直感よりアルファを重視</h3>
+          <div class="handdrawn-box">
+            <p>裁量トレードの胸が締め付けられるような経験の後、サイモンズはモデルとアルファだけに集中しました。</p>
+            <p>データに基づいて決断し、推測を排除しました。</p>
+          </div>
+          <div class="quote">
+            「約10年の経験の後、このファンダメンタルによる胸の痛むようなビジネスは... ファンダメンタルトレードをしていると、ある朝来て、自分が天才だと感じる。ポジションはすべて自分の思い通りになり、『神よ、私は本当に賢い』と思う。一晩で稼いだ金額を見て。」
+          </div>
+          <p>「そして次の日、来てみると、ポジションは自分に不利に動き、自分をバカだと感じる。」</p>
+          <p>「私たちはそれにかなり優れていたが、それは生きていく方法には思えなかった。だからモデルを構築し、モデルに従った。1988年までに、100％モデルでいくことを決めた。それ以来ずっとそうだ。」</p>
+        </div>
+      </div>
+      
+      <div class="column">
+        <div class="card">
+          <div class="principle-number">3</div>
+          <h3 class="principle-title">📈 巨大なサンプルサイズの力</h3>
+          <div class="handdrawn-box">
+            <p>ルネサンス・テクノロジーズは、他社が単純なチャートを使っている時に<span class="key-point">テラバイト規模</span>の市場データを分析していました。</p>
+            <p>統計学者が理解していることを彼らは知っていました：大きなサンプルはノイズに隠れた真のパターンを明らかにします。</p>
+          </div>
+          <div class="quote">
+            「すべてを見るんだ。天気、ドレスの丈、個人的な意見。ドレスの丈は試さなかったけどね。どんなものを？すべてだよ。すべてが分析の対象となる。」
+          </div>
+          <p>「毎日テラバイト単位のデータを取り込み、保存し、処理して分析の準備をする。そして異常値を探す。効率的市場仮説のような異常値を探しているんだ。」</p>
+          <p>「しかし、一つの異常値はただのランダムなものかもしれない。十分なデータがあれば、それがランダムではないと判断できる。十分長く持続している異常値は、ランダムである確率が低いということだ。しかしこれらは時間が経つと消えていく。異常値は洗い流されるので、常に注意を払い続ける必要がある。」</p>
+        </div>
+        
+        <div class="card">
+          <div class="principle-number">4</div>
+          <h3 class="principle-title">🔄 一つの戦略は持続しない</h3>
+          <div class="handdrawn-box">
+            <p>どんなアルファも時間とともに薄れていきます。</p>
+            <p>このため、<span class="key-point">研究が一貫した焦点</span>となっています。</p>
+            <p>最高のトレーダーは「完璧な」戦略を一つ見つけるのではなく、常に研究し、複数の戦略を組み合わせています。</p>
+          </div>
+          <div class="quote">
+            「最高の人材を雇い、研究は常に進行している。常に新しい予測シグナルを見つけようと研究している。」
+          </div>
+          <p>「予測シグナルは何が起こるかを教えてくれる。50％以上の確率でね。これらのシグナルをより多く持ち、お互いに相関していないほど良い。高い相関があれば、それは実質的に一つのシグナルだ。多ければ多いほど良い。」</p>
+        </div>
+      </div>
+      
+      <div class="column">
+        <div class="card">
+          <div class="principle-number">5</div>
+          <h3 class="principle-title">⚠️ 手動バックテストは時限爆弾</h3>
+          <div class="handdrawn-box">
+            <p>手動バックテストには結果を歪める人間のバイアスが満ちています。</p>
+            <p>ルネサンスは、<span class="key-point">感情ゼロで</span>数十年の価格データを分析する厳格なコンピュータテストを構築しました。</p>
+          </div>
+          <div class="quote">
+            「当時、データを持ち込むために、私たちは女性たちをニューヨーク連邦準備銀行に送り、金利数値の履歴をコピーさせた。1970年代には、データを買うことはできなかった。」
+          </div>
+          <p>明確な基準、客観的な条件、そして何千もの歴史的サンプルが必要です。</p>
+          <p>「元のモデルを構築するためには、多くのデータを収集する必要があった。」</p>
+        </div>
+        
+        <div class="card">
+          <div class="principle-number">6</div>
+          <h3 class="principle-title">🤖 モデルが人間の判断を上回る</h3>
+          <div class="handdrawn-box">
+            <p>投資会社は「モデルがある」と言います。彼らが通常意味するのは：</p>
+            <p>「モデルがあり、それがトレーダーに何をすべきかアドバイスする。トレーダーがそのアドバイスを気に入れば採用し、気に入らなければ採用しない。」</p>
+          </div>
+          <div class="quote">
+            「それは科学ではない。どうするかをシミュレーションすることはできない。13年前にベッドから出たとき、どう感じていたか、歴史的シミュレーションを見ているときに？」
+          </div>
+          <p>科学的アプローチは、人間の感情や気分に左右されないモデルに基づく一貫した取引を意味します。</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer">
+      <p>出典: <a href="https://x.com/GoshawkTrades" target="_blank" style="color: var(--fashion-5); text-decoration: none; font-weight: bold;">Goshawk Trades (@GoshawkTrades)</a> | 2025年5月9日 | <a href="https://x.com/GoshawkTrades/status/1920226601557737664" target="_blank" style="color: var(--fashion-5); text-decoration: none; font-weight: bold;">元の投稿を見る</a></p>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Adtalem Global Education 第3四半期 2025年度決算</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Yomogi&family=Zen+Kurenaido&family=Kaisei+Decol:wght@400;700&display=swap');
+    
+    :root {
+      --fashion-1: #593C47;
+      --fashion-2: #F2E63D;
+      --fashion-3: #F2C53D;
+      --fashion-4: #F25C05;
+      --fashion-5: #F24405;
+      --bg-color: #FFFEF8;
+      --text-color-dark: #334155;
+      --text-color-mid: #475569;
+      --text-color-light: #94A3B8;
+      --heading-color: #1e40af;
+    }
+    
+    .company-profile {
+      background: linear-gradient(135deg, rgba(89, 60, 71, 0.1), rgba(242, 198, 61, 0.1));
+      border-radius: 12px;
+      padding: 15px 20px;
+      margin-bottom: 24px;
+      position: relative;
+      overflow: hidden;
+      border-left: 4px solid var(--fashion-1);
+    }
+    
+    .company-profile__title {
+      font-family: 'Zen Kurenaido', sans-serif;
+      font-size: 18px;
+      color: var(--heading-color);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+    }
+    
+    .company-profile__content {
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Kaisei Decol', serif;
+      background-color: var(--bg-color);
+      color: var(--text-color-dark);
+      line-height: 1.4;
+      padding: 24px;
+    }
+    
+    .container {
+      max-width: 100%;
+      margin: 0 auto;
+      position: relative;
+    }
+    
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 30px;
+      border-bottom: 3px dashed var(--fashion-3);
+      padding-bottom: 20px;
+      position: relative;
+    }
+    
+    .header__title {
+      font-family: 'Zen Kurenaido', sans-serif;
+      font-size: 32px;
+      font-weight: bold;
+      background: linear-gradient(90deg, var(--fashion-1), var(--fashion-5));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 8px;
+      position: relative;
+    }
+    
+    .header__title::after {
+      content: "";
+      display: block;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(90deg, var(--fashion-3), var(--fashion-4));
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      border-radius: 5px;
+    }
+    
+    .header__date {
+      font-family: 'Yomogi', cursive;
+      font-size: 16px;
+      color: var(--text-color-mid);
+      text-align: right;
+    }
+    
+    .header__logo {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 120px;
+      height: auto;
+      opacity: 0.8;
+    }
+    
+    .main-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    
+    @media (max-width: 768px) {
+      .main-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    .card {
+      background: rgba(255, 255, 255, 0.7);
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+      backdrop-filter: blur(5px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(90deg, var(--fashion-2), var(--fashion-4));
+    }
+    
+    .card__title {
+      font-family: 'Zen Kurenaido', sans-serif;
+      font-size: 18px;
+      color: var(--heading-color);
+      margin-bottom: 12px;
+      padding-bottom: 8px;
+      border-bottom: 2px dashed var(--fashion-3);
+      display: flex;
+      align-items: center;
+    }
+    
+    .card__icon {
+      margin-right: 8px;
+      font-size: 22px;
+    }
+    
+    .card__content {
+      font-size: 14px;
+    }
+    
+    .highlight {
+      background: linear-gradient(transparent 60%, var(--fashion-2) 60%);
+      font-weight: bold;
+      padding: 0 4px;
+    }
+    
+    .big-number {
+      font-family: 'Kaisei Decol', serif;
+      font-weight: bold;
+      font-size: 24px;
+      color: var(--fashion-5);
+      margin: 8px 0;
+      text-align: center;
+    }
+    
+    .big-number span {
+      font-size: 16px;
+      color: var(--text-color-mid);
+    }
+    
+    .keyword {
+      display: inline-block;
+      background-color: var(--fashion-1);
+      color: white;
+      padding: 2px 8px;
+      border-radius: 20px;
+      font-size: 12px;
+      margin: 4px 2px;
+    }
+    
+    .arrow {
+      position: relative;
+      width: 60%;
+      margin: 15px auto;
+      height: 30px;
+    }
+    
+    .arrow::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      height: 5px;
+      background-color: var(--fashion-4);
+      transform: translateY(-50%);
+    }
+    
+    .arrow::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      right: -10px;
+      transform: translateY(-50%);
+      width: 0;
+      height: 0;
+      border-top: 10px solid transparent;
+      border-bottom: 10px solid transparent;
+      border-left: 15px solid var(--fashion-4);
+    }
+    
+    .metrics {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 15px;
+      justify-content: space-around;
+    }
+    
+    .metric {
+      text-align: center;
+      padding: 10px;
+      background: rgba(242, 230, 61, 0.2);
+      border-radius: 8px;
+      flex: 1;
+      min-width: 120px;
+      position: relative;
+    }
+    
+    .metric__title {
+      font-size: 12px;
+      color: var(--text-color-mid);
+      margin-bottom: 5px;
+    }
+    
+    .metric__value {
+      font-size: 18px;
+      font-weight: bold;
+      color: var(--fashion-5);
+    }
+    
+    .metric__change {
+      font-size: 12px;
+      color: #16a34a;
+    }
+    
+    .metric__change--negative {
+      color: #dc2626;
+    }
+    
+    .segment {
+      margin-top: 15px;
+      position: relative;
+    }
+    
+    .segment:not(:last-child)::after {
+      content: "";
+      position: absolute;
+      bottom: -10px;
+      left: 20%;
+      right: 20%;
+      height: 2px;
+      background: repeating-linear-gradient(90deg, var(--fashion-3), var(--fashion-3) 5px, transparent 5px, transparent 10px);
+    }
+    
+    .segment__title {
+      font-family: 'Zen Kurenaido', sans-serif;
+      font-size: 16px;
+      color: var(--fashion-1);
+      margin-bottom: 5px;
+      display: flex;
+      align-items: center;
+    }
+    
+    .segment__icon {
+      width: 20px;
+      height: 20px;
+      margin-right: 5px;
+    }
+    
+    .segment__data {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      font-size: 13px;
+    }
+    
+    .segment__label {
+      color: var(--text-color-mid);
+    }
+    
+    .segment__value {
+      font-weight: bold;
+    }
+    
+    .notes {
+      margin-top: 30px;
+      font-size: 12px;
+      color: var(--text-color-light);
+      border-top: 1px dashed var(--fashion-3);
+      padding-top: 15px;
+    }
+    
+    .notes__title {
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+    
+    .handdrawn-box {
+      border: 2px solid var(--fashion-1);
+      border-radius: 10px;
+      position: relative;
+      padding: 20px 15px 15px;
+      margin: 25px 0 15px;
+    }
+    
+    .handdrawn-box__title {
+      position: absolute;
+      top: -12px;
+      left: 20px;
+      background-color: var(--fashion-2);
+      padding: 2px 10px;
+      font-family: 'Yomogi', cursive;
+      border-radius: 20px;
+      font-size: 14px;
+      transform: rotate(-2deg);
+      box-shadow: 2px 2px 0 rgba(0,0,0,0.1);
+    }
+    
+    .bullet-list {
+      list-style: none;
+      padding-left: 5px;
+    }
+    
+    .bullet-list li {
+      position: relative;
+      padding-left: 20px;
+      margin-bottom: 8px;
+      font-size: 13px;
+    }
+    
+    .bullet-list li::before {
+      content: "•";
+      position: absolute;
+      left: 5px;
+      color: var(--fashion-4);
+      font-weight: bold;
+      font-size: 16px;
+    }
+    
+    .footer {
+      margin-top: 40px;
+      text-align: center;
+      font-size: 12px;
+      color: var(--text-color-light);
+      padding-top: 15px;
+      border-top: 3px dashed var(--fashion-3);
+    }
+    
+    .banner {
+      background: linear-gradient(135deg, var(--fashion-3), var(--fashion-4));
+      padding: 10px 20px;
+      border-radius: 8px;
+      color: white;
+      font-weight: bold;
+      text-align: center;
+      margin: 20px 0;
+      transform: rotate(-1deg);
+      box-shadow: 3px 3px 0 rgba(0,0,0,0.1);
+    }
+    
+    .guidance-box {
+      background-color: rgba(242, 198, 61, 0.2);
+      border-radius: 8px;
+      padding: 15px;
+      margin-top: 20px;
+    }
+    
+    .guidance-box__title {
+      font-family: 'Zen Kurenaido', sans-serif;
+      font-size: 16px;
+      color: var(--fashion-5);
+      margin-bottom: 10px;
+      text-align: center;
+    }
+    
+    .guidance-data {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+    
+    .guidance-item {
+      text-align: center;
+    }
+    
+    .guidance-item__title {
+      font-size: 13px;
+      color: var(--text-color-mid);
+      margin-bottom: 5px;
+    }
+    
+    .guidance-item__value {
+      font-size: 16px;
+      font-weight: bold;
+      color: var(--fashion-1);
+    }
+    
+    .quote-box {
+      background-color: rgba(89, 60, 71, 0.1);
+      border-left: 4px solid var(--fashion-1);
+      padding: 10px 15px;
+      margin: 15px 0;
+      font-style: italic;
+      font-size: 13px;
+      position: relative;
+    }
+    
+    .quote-box::before {
+      content: """;
+      position: absolute;
+      top: -5px;
+      left: 5px;
+      font-size: 40px;
+      color: rgba(89, 60, 71, 0.3);
+      font-family: serif;
+    }
+    
+    .quote-box p {
+      margin-left: 20px;
+    }
+    
+    .handdrawn-circle {
+      display: inline-block;
+      width: 40px;
+      height: 40px;
+      line-height: 40px;
+      text-align: center;
+      border-radius: 50%;
+      background-color: var(--fashion-2);
+      color: var(--fashion-1);
+      font-weight: bold;
+      margin-right: 10px;
+      transform: rotate(-5deg);
+      box-shadow: 2px 2px 0 rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <div>
+        <h1 class="header__title">Adtalem Global Education<br>第3四半期 2025年度決算</h1>
+        <p>業績ハイライト & 成長戦略</p>
+      </div>
+      <div class="header__date">
+        <p>2025年5月8日発表</p>
+        <p>2025年3月31日終了四半期</p>
+      </div>
+    </header>
+    
+    <div class="company-profile">
+      <h2 class="company-profile__title">
+        <span class="card__icon">🏢</span>
+        企業概要
+      </h2>
+      <div class="company-profile__content">
+        <p>Adtalem Global Educationは、米国内最大の医療教育機関であり、高品質な学術プログラムを通じて次世代の医療専門家を育成しています。5つの高等教育機関、27のキャンパス、94,000人以上の学生、約350,000人の卒業生コミュニティを持ち、世界中の医療分野に貢献しています。Chamberlain University（看護学）、Walden University（多様な医療プログラム）、およびMedical & Veterinary部門（医学・獣医学）の3つの事業セグメントで構成され、柔軟性とパーソナライズされた教育アプローチにより、医療人材不足の解消に取り組んでいます。</p>
+      </div>
+    </div>
+    
+    <div class="main-grid">
+      <div class="card">
+        <h2 class="card__title">
+          <span class="card__icon">📊</span>
+          業績ハイライト
+        </h2>
+        <div class="card__content">
+          <div class="metrics">
+            <div class="metric">
+              <div class="metric__title">総学生数</div>
+              <div class="metric__value">94,223</div>
+              <div class="metric__change">+9.8% YoY</div>
+            </div>
+            <div class="metric">
+              <div class="metric__title">売上高</div>
+              <div class="metric__value">$466.1M</div>
+              <div class="metric__change">+12.9% YoY</div>
+            </div>
+          </div>
+          
+          <div class="metrics">
+            <div class="metric">
+              <div class="metric__title">調整後EBITDA</div>
+              <div class="metric__value">$127.8M</div>
+              <div class="metric__change">+19.3% YoY</div>
+            </div>
+            <div class="metric">
+              <div class="metric__title">調整後EPS</div>
+              <div class="metric__value">$1.92</div>
+              <div class="metric__change">+28.0% YoY</div>
+            </div>
+          </div>
+          
+          <div class="banner">
+            <span>💡 目標を上回る業績で通期見通しを引き上げ</span>
+          </div>
+          
+          <div class="quote-box">
+            <p>「今日のモダンな学生のために、柔軟でパーソナライズされた技術を活用したキャリア関連プログラムを提供することに注力し、7四半期連続の入学者数の成長を実現しました」</p>
+            <p style="text-align: right; margin-top: 5px;">- スティーブ・ビアード会長兼CEO</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="card">
+        <h2 class="card__title">
+          <span class="card__icon">🏫</span>
+          セグメント別パフォーマンス
+        </h2>
+        <div class="card__content">
+          <div class="segment">
+            <h3 class="segment__title">
+              <span class="handdrawn-circle">C</span>
+              Chamberlain University
+            </h3>
+            <div class="segment__data">
+              <div class="segment__label">学生数:</div>
+              <div class="segment__value">40,564名 <span style="color:#16a34a">(+6.8% YoY)</span></div>
+            </div>
+            <div class="segment__data">
+              <div class="segment__label">売上高:</div>
+              <div class="segment__value">$192.6M <span style="color:#16a34a">(+13.1% YoY)</span></div>
+            </div>
+            <div class="segment__data">
+              <div class="segment__label">調整後EBITDA:</div>
+              <div class="segment__value">$56.8M <span style="color:#16a34a">(+12.6% YoY)</span></div>
+            </div>
+            <div class="bullet-list">
+              <li>9四半期連続の総入学者数の成長</li>
+              <li>大学史上最高の総入学者数を記録</li>
+              <li>「You've Got This, We've Got You」新ブランドキャンペーン開始</li>
+            </div>
+          </div>
+          
+          <div class="segment">
+            <h3 class="segment__title">
+              <span class="handdrawn-circle">W</span>
+              Walden University
+            </h3>
+            <div class="segment__data">
+              <div class="segment__label">学生数:</div>
+              <div class="segment__value">48,526名 <span style="color:#16a34a">(+13.5% YoY)</span></div>
+            </div>
+            <div class="segment__data">
+              <div class="segment__label">売上高:</div>
+              <div class="segment__value">$178.4M <span style="color:#16a34a">(+18.5% YoY)</span></div>
+            </div>
+            <div class="segment__data">
+              <div class="segment__label">調整後EBITDA:</div>
+              <div class="segment__value">$54.0M <span style="color:#16a34a">(+50.6% YoY)</span></div>
+            </div>
+            <div class="bullet-list">
+              <li>7四半期連続の総入学者数の成長</li>
+              <li>デジタルプラットフォーム強化による学生体験の向上</li>
+              <li>第72回卒業式で約6,000名が卒業（約80%が医療関連学位）</li>
+            </div>
+          </div>
+          
+          <div class="segment">
+            <h3 class="segment__title">
+              <span class="handdrawn-circle">M</span>
+              Medical & Veterinary
+            </h3>
+            <div class="segment__data">
+              <div class="segment__label">学生数:</div>
+              <div class="segment__value">5,133名 <span style="color:#16a34a">(+1.2% YoY)</span></div>
+            </div>
+            <div class="segment__data">
+              <div class="segment__label">売上高:</div>
+              <div class="segment__value">$95.0M <span style="color:#16a34a">(+3.6% YoY)</span></div>
+            </div>
+            <div class="segment__data">
+              <div class="segment__label">調整後EBITDA:</div>
+              <div class="segment__value">$22.9M <span style="color:#dc2626">(-15.3% YoY)</span></div>
+            </div>
+            <div class="bullet-list">
+              <li>AUC & RUSM：2024-2025年卒業生の初回レジデンシー取得率95%達成</li>
+              <li>RUSVM：2025年の獣医インターンシップ・レジデンシーマッチプログラムで1位を獲得</li>
+              <li>医学校教育にAI能力を統合するためにHippocratic AIとのパートナーシップを拡大</li>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="card">
+        <h2 class="card__title">
+          <span class="card__icon">📈</span>
+          成長戦略 & 資本配分
+        </h2>
+        <div class="card__content">
+          <div class="handdrawn-box">
+            <div class="handdrawn-box__title">Growth with Purpose 戦略</div>
+            <div class="bullet-list">
+              <li><span class="highlight">マーケティング</span>：ブランド価値の強化と認知度向上</li>
+              <li><span class="highlight">入学</span>：デジタルイノベーションによる学生体験向上</li>
+              <li><span class="highlight">定着</span>：予測分析活用で学習成果を改善</li>
+              <li><span class="highlight">価格設定</span>：適切な価値提案</li>
+              <li><span class="highlight">プログラム</span>：医療従事者の育成に注力</li>
+            </div>
+          </div>
+          
+          <div class="handdrawn-box">
+            <div class="handdrawn-box__title">財務状況 & 資本配分</div>
+            <div class="bullet-list">
+              <li>安定したキャッシュフロー創出：$287M（直近12ヶ月）</li>
+              <li>現金および現金同等物：$219M（2025年3月31日時点）</li>
+              <li>2025年1月17日にタームローンB残高$100Mを返済</li>
+              <li>2024年1月承認の$300M自社株買いプログラムを2025年5月5日に完了</li>
+              <li>新たに$150Mの自社株買いプログラムを2028年5月まで承認</li>
+              <li>純レバレッジ比率：0.8倍（2025年3月31日時点）</li>
+            </div>
+          </div>
+          
+          <div class="guidance-box">
+            <div class="guidance-box__title">2025年度通期見通し（引き上げ）</div>
+            <div class="guidance-data">
+              <div class="guidance-item">
+                <div class="guidance-item__title">売上高</div>
+                <div class="guidance-item__value">$1,760M〜$1,775M</div>
+                <div class="metric__change">前年比+11%〜+12%</div>
+              </div>
+              <div class="guidance-item">
+                <div class="guidance-item__title">調整後EPS</div>
+                <div class="guidance-item__value">$6.40〜$6.60</div>
+                <div class="metric__change">前年比+28%〜+32%</div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="banner" style="margin-top: 25px;">
+            <span>🌟 成長と目的を両立した戦略で持続的な成長を実現</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <footer class="footer">
+      <p>出典：2025年5月8日発表 Adtalem Global Education Inc. 第3四半期2025年度決算発表</p>
+      <p>©2025 Adtalem Global Education Inc. All rights reserved</p>
+    </footer>
+  </div>
+</body>
+</html>
