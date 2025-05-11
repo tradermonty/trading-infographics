@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vibe Codingを最大限に活用する方法 - グラフィックレコーディング</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Yomogi&family=Zen+Kurenaido&family=Kaisei+Decol:wght@400;700&display=swap');
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Kaisei Decol', serif;
+            background-color: #FFFDF7;
+            color: #334155;
+            line-height: 1.4;
+            padding: 20px;
+            overflow-x: hidden;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23593C47' fill-opacity='0.02' fill-rule='evenodd'/%3E%3C/svg%3E");
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(5px);
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 4px 20px rgba(89, 60, 71, 0.1);
+        }
+        
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            border-bottom: 3px dashed #593C47;
+            padding-bottom: 20px;
+        }
+        
+        .title {
+            font-family: 'Yomogi', cursive;
+            font-size: 32px;
+            font-weight: bold;
+            background: linear-gradient(45deg, #593C47, #F24405);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 1px 1px 2px rgba(242, 68, 4, 0.2);
+            line-height: 1.2;
+            position: relative;
+        }
+        
+        .title::after {
+            content: "✨";
+            position: absolute;
+            top: -10px;
+            right: -30px;
+            transform: rotate(15deg);
+        }
+        
+        .date-source {
+            font-family: 'Zen Kurenaido', sans-serif;
+            font-size: 16px;
+            color: #475569;
+            text-align: right;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+        
+        .grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .column {
+            flex: 1;
+            min-width: calc(33% - 20px);
+        }
+        
+        .card {
+            background-color: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(to bottom, #F25C05, #F24405);
+            border-radius: 4px 0 0 4px;
+        }
+        
+        .section-title {
+            font-family: 'Kaisei Decol', serif;
+            font-size: 18px;
+            color: #1e40af;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+        
+        .section-title::before {
+            content: "";
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            margin-right: 8px;
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+        
+        .underline {
+            background: linear-gradient(transparent 60%, #F2E63D 60%);
+            display: inline;
+        }
+        
+        .keyword {
+            font-weight: bold;
+            color: #593C47;
+            border-bottom: 2px dashed #F25C05;
+            padding: 0 2px;
+        }
+        
+        .highlight {
+            background-color: rgba(242, 196, 60, 0.2);
+            padding: 3px 6px;
+            border-radius: 4px;
+        }
+        
+        .arrow {
+            display: flex;
+            justify-content: center;
+            margin: 15px 0;
+            position: relative;
+        }
+        
+        .arrow svg {
+            width: 40px;
+            height: 30px;
+            fill: #F25C05;
+        }
+        
+        .speech-bubble {
+            background-color: #F2E63D;
+            border-radius: 16px;
+            padding: 15px;
+            margin: 10px 0;
+            position: relative;
+            max-width: 90%;
+        }
+        
+        .speech-bubble::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 20px;
+            border-width: 10px 10px 0;
+            border-style: solid;
+            border-color: #F2E63D transparent;
+        }
+        
+        .step {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .step-num {
+            background-color: #593C47;
+            color: white;
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 10px;
+            font-family: 'Yomogi', cursive;
+            font-size: 14px;
+        }
+        
+        .note {
+            background-color: rgba(242, 230, 60, 0.2);
+            border-left: 3px solid #F2C53D;
+            padding: 10px;
+            margin: 15px 0;
+            font-size: 13px;
+            font-style: italic;
+        }
+        
+        .icon {
+            font-size: 20px;
+            margin-right: 5px;
+            vertical-align: middle;
+        }
+        
+        .connector {
+            border-left: 2px dashed #593C47;
+            height: 30px;
+            margin: 5px 0 5px 13px;
+        }
+        
+        .tag {
+            display: inline-block;
+            background-color: #F2C53D;
+            color: #593C47;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+            margin-right: 5px;
+            margin-bottom: 5px;
+        }
+        
+        .hand-drawn {
+            border: 2px solid #593C47;
+            border-radius: 12px;
+            padding: 15px;
+            position: relative;
+            margin: 20px 0;
+        }
+        
+        .hand-drawn::before {
+            content: "✏️";
+            position: absolute;
+            top: -10px;
+            left: 10px;
+            background-color: white;
+            padding: 0 5px;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px dashed #593C47;
+            font-size: 14px;
+            color: #475569;
+            font-family: 'Zen Kurenaido', sans-serif;
+        }
+        
+        /* カスタムアイコン設定 */
+        .icon-module::before {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24' stroke='%23593C47' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='3' width='7' height='7'%3E%3C/rect%3E%3Crect x='14' y='3' width='7' height='7'%3E%3C/rect%3E%3Crect x='14' y='14' width='7' height='7'%3E%3C/rect%3E%3Crect x='3' y='14' width='7' height='7'%3E%3C/rect%3E%3C/svg%3E");
+        }
+        
+        .icon-stack::before {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24' stroke='%23593C47' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolygon points='12 2 2 7 12 12 22 7 12 2'%3E%3C/polygon%3E%3Cpolyline points='2 17 12 22 22 17'%3E%3C/polyline%3E%3Cpolyline points='2 12 12 17 22 12'%3E%3C/polyline%3E%3C/svg%3E");
+        }
+        
+        .icon-tools::before {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24' stroke='%23593C47' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z'%3E%3C/path%3E%3C/svg%3E");
+        }
+        
+        .icon-refactor::before {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24' stroke='%23593C47' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='23 4 23 10 17 10'%3E%3C/polyline%3E%3Cpolyline points='1 20 1 14 7 14'%3E%3C/polyline%3E%3Cpath d='M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15'%3E%3C/path%3E%3C/svg%3E");
+        }
+        
+        .icon-experiment::before {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24' stroke='%23593C47' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M10 2v7.31'%3E%3C/path%3E%3Cpath d='M14 9.3V2'%3E%3C/path%3E%3Cpath d='M8.5 2h7'%3E%3C/path%3E%3Cpath d='M14 9.3a6.5 6.5 0 1 1-4 0'%3E%3C/path%3E%3Cpath d='M5.58 16.5h12.85'%3E%3C/path%3E%3C/svg%3E");
+        }
+        
+        .icon-noncode::before {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24' stroke='%23593C47' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='4' y='4' width='16' height='16' rx='2' ry='2'%3E%3C/rect%3E%3Crect x='9' y='9' width='6' height='6'%3E%3C/rect%3E%3Cline x1='9' y1='1' x2='9' y2='4'%3E%3C/line%3E%3Cline x1='15' y1='1' x2='15' y2='4'%3E%3C/line%3E%3Cline x1='9' y1='20' x2='9' y2='23'%3E%3C/line%3E%3Cline x1='15' y1='20' x2='15' y2='23'%3E%3C/line%3E%3Cline x1='20' y1='9' x2='23' y2='9'%3E%3C/line%3E%3Cline x1='20' y1='14' x2='23' y2='14'%3E%3C/line%3E%3Cline x1='1' y1='9' x2='4' y2='9'%3E%3C/line%3E%3Cline x1='1' y1='14' x2='4' y2='14'%3E%3C/line%3E%3C/svg%3E");
+        }
+
+        .conclusion-box {
+            background-color: rgba(242, 196, 60, 0.15);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 30px 0;
+            position: relative;
+            border: 2px solid #F24405;
+        }
+        
+        .conclusion-box::before {
+            content: "まとめ 🎯";
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            background-color: white;
+            padding: 0 10px;
+            font-family: 'Yomogi', cursive;
+            color: #F24405;
+            font-weight: bold;
+        }
+        
+        .page-nav {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .page-nav a {
+            display: inline-block;
+            background-color: #593C47;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-family: 'Zen Kurenaido', sans-serif;
+            transition: background-color 0.3s;
+        }
+        
+        .page-nav a:hover {
+            background-color: #F24405;
+        }
+        
+        .page-nav .active {
+            background-color: #F25C05;
+            font-weight: bold;
+        }
+        
+        @media (max-width: 900px) {
+            .column {
+                min-width: calc(50% - 20px);
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .column {
+                min-width: 100%;
+            }
+            
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .date-source {
+                align-items: flex-start;
+                margin-top: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1 class="title">Vibe Coding を最大限に活用する方法</h1>
+            <div class="date-source">
+                <div>パート2: 高度なテクニックとツール</div>
+                <div>情報源: "How To Get The Most Out Of Vibe Coding"</div>
+                <div>および "バイブコーディングツール解説"</div>
+                <div><a href="https://youtu.be/BJjsfNO5JTo?si=7CCgwit73isX4bIh" target="_blank" style="color: #F25C05; text-decoration: underline;">📺 元動画を見る</a></div>
+            </div>
+        </header>
+        
+        <div class="grid">
+            <div class="column">
+                <div class="card">
+                    <h2 class="section-title icon-module">モジュール性と小さなファイル</h2>
+                    <div class="speech-bubble">
+                        「小さなファイルとモジュール性はあなたの味方です」
+                    </div>
+                    <p>人間と同様に、LLMにとっても<span class="keyword">小さなファイルとモジュール性</span>は重要です。</p>
+                    <div class="arrow">
+                        <svg viewBox="0 0 24 24"><path d="M7,10L12,15L17,10H7Z"></path></svg>
+                    </div>
+                    <p>LLMが明確なAPI境界内で作業できる、<span class="highlight">よりモジュール化されたサービスベースのアーキテクチャ</span>へのシフトが進む可能性があります。</p>
+                </div>
+                
+                <div class="card">
+                    <h2 class="section-title icon-stack">技術スタックの選択</h2>
+                    <div class="note">
+                        AIのパフォーマンスは技術スタックに依存する可能性があります！
+                    </div>
+                    <div class="hand-drawn">
+                        <div>✅ <span class="keyword">Ruby on Rails</span>: 歴史があり確立された規約と豊富なトレーニングデータ</div>
+                        <div>⚠️ <span class="keyword">Rust や Elixir</span>: トレーニングデータが少なく、現時点では成功率が低い可能性</div>
+                    </div>
+                    <div class="speech-bubble">
+                        「Railsは20年の歴史を持つフレームワークで、確立された規約が多数あります...それは、オンラインに高品質でRailsコードベースの一貫したトレーニングデータが豊富にあることを意味します」
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h2 class="section-title icon-tools">その他の入力方法とツール</h2>
+                    <div>
+                        <div class="tag">📸 スクリーンショット</div>
+                        <span>UIバグの表示やデザインのインスピレーション共有に</span>
+                    </div>
+                    <div>
+                        <div class="tag">🎤 音声</div>
+                        <span>Aquaのようなツールで音声指示、入力速度が約<span class="keyword">140語/分</span>に</span>
+                    </div>
+                    <div class="speech-bubble">
+                        「AIは文法や句読点の小さなミスに非常に寛容なので、文字起こしが完璧でなくても問題ありません」
+                    </div>
+                </div>
+            </div>
+            
+            <div class="column">
+                <div class="card">
+                    <h2 class="section-title icon-refactor">リファクタリング</h2>
+                    <div class="step">
+                        <div class="step-num">1</div>
+                        <div>コードが機能し、テストが実装されたら<span class="keyword">頻繁にリファクタリング</span></div>
+                    </div>
+                    <div class="connector"></div>
+                    <div class="step">
+                        <div class="step-num">2</div>
+                        <div>LLMに重複コードやリファクタリングに適した部分を特定させる</div>
+                    </div>
+                    <div class="note">
+                        回帰をテストが捕捉してくれると分かっているので、安心してリファクタリングできます！🛠️
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h2 class="section-title icon-experiment">実験とモデルの切り替え</h2>
+                    <div class="speech-bubble">
+                        「常に実験を続けてください。この分野の最先端は週ごとに変化しているようです」
+                    </div>
+                    <p>新しいモデルがリリースされるたびに試して、<span class="underline">各タスクに最適なモデル</span>を見つけましょう。</p>
+                    <div class="hand-drawn">
+                        <div>✅ あるモデルが失敗したら別のモデルを試す</div>
+                        <div>✅ Claude 3.7 Sonnet, GPT 4.1, GPT, Gemini など</div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h2 class="section-title icon-noncode">非コーディングタスクへの活用</h2>
+                    <p>LLMはコーディングだけでなく、<span class="keyword">非コーディングタスク</span>にも活用できます：</p>
+                    <div>
+                        <div class="tag">🌐 DNS設定</div>
+                        <div class="tag">☁️ ホスティング設定</div>
+                        <div class="tag">🖼️ 画像生成</div>
+                    </div>
+                    <div class="speech-bubble">
+                        「LLMはコーディングだけでなく、サイドプロジェクトを構築する際の多くの非コーディング作業にも活用しています」
+                    </div>
+                </div>
+            </div>
+            
+            <div class="column">
+                <div class="card">
+                    <h2 class="section-title icon-tools">関連ツール一覧</h2>
+                    <div class="hand-drawn">
+                        <div><span class="keyword">コーディング経験者向け</span></div>
+                        <div>✅ <span class="highlight">Cursor</span>: 高速。特にフロントエンド・フルスタック作業に最適</div>
+                        <div>✅ <span class="highlight">Windsurf</span>: 思考に時間をかける。Cursorと併用するとよい</div>
+                        <div>✅ <span class="highlight">Claude Code</span>: Aquaとの連携が効果的</div>
+                    </div>
+                    <div class="hand-drawn">
+                        <div><span class="keyword">初心者向け</span></div>
+                        <div>✅ <span class="highlight">Replit</span>: 使いやすいビジュアルインターフェース提供</div>
+                        <div>✅ <span class="highlight">Lovable</span>: UIのコード試行に適しているが、精密なバックエンド変更は困難</div>
+                    </div>
+                    <div class="note">
+                        異なるツールを同時に起動し、複数の生成結果から選択するアプローチが効果的です
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h2 class="section-title icon-tools">ツール活用のベストプラクティス</h2>
+                    <div class="step">
+                        <div class="step-num">1</div>
+                        <div><span class="keyword">複数ツールの併用</span>: CursorとWindsurfを同時に起動</div>
+                    </div>
+                    <div class="connector"></div>
+                    <div class="step">
+                        <div class="step-num">2</div>
+                        <div>Aquaなどの<span class="highlight">音声入力ツール</span>と連携し入力速度を向上</div>
+                    </div>
+                    <div class="connector"></div>
+                    <div class="step">
+                        <div class="step-num">3</div>
+                        <div>各ツールに適した<span class="keyword">タスク分担</span>を行う</div>
+                    </div>
+                    <div class="note">
+                        ツールの選択は技術スタックやプロジェクトの性質、自身のコーディング経験に応じて最適化しましょう
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h2 class="section-title icon-experiment">効果的なワークフロー</h2>
+                    <div class="hand-drawn">
+                        <div>✅ <span class="keyword">計画</span>: LLMと協力して包括的な計画を立てる</div>
+                        <div>✅ <span class="keyword">実装</span>: セクションごとに実装し、すぐにテスト</div>
+                        <div>✅ <span class="keyword">検証</span>: テストスイートで機能を確認</div>
+                        <div>✅ <span class="keyword">バージョン管理</span>: 各ステップでコミット</div>
+                        <div>✅ <span class="keyword">リファクタリング</span>: テスト実装後に頻繁に行う</div>
+                    </div>
+                    <div class="note">
+                        LLMの能力を最大限に引き出すには、従来のソフトウェア開発の優れた慣行を組み合わせることが重要です
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="conclusion-box">
+            <p>Vibe Codingは<span class="keyword">AIを活用した強力なプログラミング手法</span>であり、適切に活用することで開発効率を大幅に向上させることができます。その成功の鍵は、単にAIにコードを生成させるだけでなく、<span class="underline">計画策定、バージョン管理、テスト、体系的なデバッグ</span>などの従来のソフトウェア開発におけるベストプラクティスを組み合わせる点にあります。また、利用するツールやLLMモデルの特性を理解し、継続的に新しい手法やツールを試していく姿勢が重要となります。</p>
+        </div>
+        
+        <div class="page-nav">
+            <a href="vibe-coding-part1.html">パート1: 基本戦略</a>
+            <a href="#" class="active">パート2: 高度なテクニックとツール</a>
+        </div>
+        
+        <div class="footer">
+            <p>このグラフィックレコーディングは「How To Get The Most Out Of Vibe Coding | Startup School」と「バイブコーディングツール解説」からの情報を基に作成</p>
+            <p>出典: <a href="https://youtu.be/BJjsfNO5JTo?si=7CCgwit73isX4bIh" target="_blank" style="color: #593C47;">https://youtu.be/BJjsfNO5JTo</a></p>
+            <p>作成日: 2024年5月10日</p>
+        </div>
+    </div>
+</body>
+</html>
