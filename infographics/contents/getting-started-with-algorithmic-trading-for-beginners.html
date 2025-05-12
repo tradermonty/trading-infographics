@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>はじめてのバイブコーディングで作る自動トレードシステム超入門</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Yomogi&family=Zen+Kurenaido&family=Kaisei+Decol:wght@400;700&display=swap');
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Kaisei Decol', serif;
+            background-color: #f8f9fa;
+            color: #334155;
+            line-height: 1.4;
+            padding: 20px;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23593c47' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(89, 60, 71, 0.1);
+            overflow: hidden;
+            padding: 40px;
+        }
+        
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 40px;
+            border-bottom: 3px solid #F25C05;
+            padding-bottom: 20px;
+            position: relative;
+        }
+        
+        header::after {
+            content: "";
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: #F2C53D;
+            border-radius: 3px;
+        }
+        
+        h1 {
+            font-family: 'Zen Kurenaido', sans-serif;
+            font-size: 32px;
+            font-weight: 700;
+            background: linear-gradient(to right, #593C47, #F25C05);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            position: relative;
+            margin-bottom: 10px;
+            width: 80%;
+        }
+        
+        h1::after {
+            content: "";
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(to right, #F2C53D, #F25C05);
+            border-radius: 3px;
+        }
+        
+        .subtitle {
+            font-family: 'Kaisei Decol', serif;
+            font-size: 16px;
+            color: #475569;
+            font-weight: normal;
+            font-style: italic;
+            margin-top: 15px;
+            padding-left: 5px;
+            border-left: 4px solid #F2C53D;
+        }
+        
+        .header-right {
+            font-family: 'Kaisei Decol', serif;
+            font-size: 14px;
+            color: #475569;
+            text-align: right;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        
+        .section {
+            margin-bottom: 35px;
+        }
+        
+        h2 {
+            font-family: 'Yomogi', cursive;
+            font-size: 20px;
+            color: #593C47;
+            margin-bottom: 15px;
+            padding: 8px 15px;
+            background-color: rgba(242, 198, 61, 0.2);
+            border-radius: 30px;
+            display: inline-block;
+            position: relative;
+        }
+        
+        h2::before {
+            content: "✏️";
+            margin-right: 8px;
+        }
+        
+        h2::after {
+            content: "";
+            position: absolute;
+            bottom: 3px;
+            left: 15px;
+            width: calc(100% - 30px);
+            height: 2px;
+            background: rgba(242, 92, 5, 0.4);
+            border-radius: 2px;
+        }
+        
+        h3 {
+            font-family: 'Zen Kurenaido', sans-serif;
+            font-size: 18px;
+            color: #1e40af;
+            margin-bottom: 10px;
+            border-bottom: 2px dashed #F2C53D;
+            padding-bottom: 5px;
+        }
+        
+        h3::before {
+            content: "📌";
+            margin-right: 8px;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+            height: 100%;
+            border: 2px solid transparent;
+            background-clip: padding-box;
+        }
+        
+        .card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: -1;
+            margin: -2px;
+            border-radius: inherit;
+            background: linear-gradient(to right, #F2E63D, #F25C05);
+        }
+        
+        .grid-col-1 {
+            grid-column: span 1;
+        }
+        
+        .grid-col-2 {
+            grid-column: span 2;
+        }
+        
+        .grid-col-3 {
+            grid-column: span 3;
+        }
+        
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 14px;
+        }
+        
+        .table th {
+            background-color: rgba(242, 92, 5, 0.1);
+            color: #593C47;
+            font-weight: bold;
+            padding: 10px;
+            text-align: left;
+            border-bottom: 2px solid #F2C53D;
+        }
+        
+        .table td {
+            padding: 10px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .table tr:nth-child(even) {
+            background-color: rgba(242, 230, 61, 0.05);
+        }
+        
+        .highlight {
+            background: linear-gradient(transparent 60%, rgba(242, 230, 61, 0.4) 40%);
+            font-weight: bold;
+        }
+        
+        .bubble {
+            background-color: white;
+            padding: 15px;
+            border-radius: 15px;
+            position: relative;
+            margin: 15px 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            border-left: 4px solid #F2C53D;
+        }
+        
+        .bubble::before {
+            content: "";
+            position: absolute;
+            top: 15px;
+            left: -15px;
+            border-width: 8px;
+            border-style: solid;
+            border-color: transparent #F2C53D transparent transparent;
+        }
+        
+        .note {
+            background-color: rgba(242, 198, 61, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border-left: 4px solid #F2C53D;
+        }
+        
+        .note::before {
+            content: "💡";
+            margin-right: 8px;
+            font-size: 18px;
+        }
+        
+        .step {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .step-number {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 30px;
+            height: 30px;
+            background-color: #593C47;
+            color: white;
+            border-radius: 50%;
+            margin-right: 15px;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        
+        .step-content {
+            flex: 1;
+        }
+        
+        .arrow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 15px 0;
+            position: relative;
+        }
+        
+        .arrow::before {
+            content: "";
+            width: 80%;
+            height: 2px;
+            background: #F25C05;
+            position: absolute;
+        }
+        
+        .arrow::after {
+            content: "↓";
+            color: #F25C05;
+            font-size: 20px;
+            background: white;
+            padding: 0 10px;
+            position: relative;
+        }
+        
+        .tag {
+            display: inline-block;
+            padding: 4px 10px;
+            background-color: rgba(242, 92, 5, 0.1);
+            color: #593C47;
+            border-radius: 20px;
+            margin-right: 5px;
+            margin-bottom: 5px;
+            font-size: 12px;
+        }
+        
+        .code-block {
+            background-color: #2d2d2d;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: monospace;
+            margin: 15px 0;
+            white-space: pre-wrap;
+            overflow-x: auto;
+            font-size: 14px;
+        }
+        
+        .rounded-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(242, 198, 61, 0.2);
+            border-radius: 50%;
+            margin-right: 10px;
+            font-size: 20px;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 2px dashed #F2C53D;
+            font-size: 14px;
+            color: #475569;
+            text-align: center;
+        }
+        
+        .hand-drawn {
+            font-family: 'Yomogi', cursive;
+        }
+        
+        .arrow-connector {
+            position: relative;
+            padding: 0 30px;
+            height: 2px;
+            background: #F25C05;
+            margin: 20px auto;
+            width: 60%;
+        }
+        
+        .arrow-connector::after {
+            content: "";
+            position: absolute;
+            right: 0;
+            top: -4px;
+            width: 0;
+            height: 0;
+            border-left: 10px solid #F25C05;
+            border-top: 5px solid transparent;
+            border-bottom: 5px solid transparent;
+        }
+        
+        .keyword {
+            color: #F24405;
+            font-weight: bold;
+            position: relative;
+        }
+        
+        .keyword::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: rgba(242, 198, 61, 0.4);
+            border-radius: 2px;
+        }
+        
+        @media (max-width: 1024px) {
+            .grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+            
+            header {
+                flex-direction: column;
+            }
+            
+            .header-right {
+                text-align: left;
+                margin-top: 15px;
+            }
+            
+            h1 {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div>
+                <h1>はじめてのバイブコーディングで作る自動トレードシステム超入門</h1>
+                <div class="subtitle">― AIに手伝ってもらって、できるだけ楽してプログラミングする方法 ―</div>
+            </div>
+            <div class="header-right">
+                <div>📅 2025.05.11</div>
+            </div>
+        </header>
+        
+        <div class="section">
+            <div class="bubble">
+                <h3>読んでほしい人</h3>
+                <p><span class="highlight">プログラミング未経験だけど、「AIを使った自動トレードって面白そうだな」</span>とちょっと興味を持っている人。</p>
+            </div>
+            
+            <div class="note">
+                <h3>目的</h3>
+                <p>1. 「バイブコーディングって結局なんなの？」を気軽に理解してもらう</p>
+                <p>2. 自分にもできるか判断する材料を提供する</p>
+                <p>3. 自動トレードシステム（コンピューターが勝手に株を売買してくれる仕組み）を作れるイメージを持ってもらう</p>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>そもそもバイブコーディングって何？</h2>
+            
+            <div class="grid">
+                <div class="card grid-col-3">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>疑問</th>
+                                <th>ザックリいうとこんな感じ…</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>そもそもバイブコーディングって何？</strong></td>
+                                <td>「AIに<span class="highlight">日本語で話しかけるだけでプログラムを書いたり、バグを直したり</span>できる方法」。AIを相棒にして一緒に作業するイメージ。</td>
+                            </tr>
+                            <tr>
+                                <td><strong>普通のプログラミングとの違いは？</strong></td>
+                                <td>キーボードでガリガリコードを書くより、「こんなことをしたい！」というアイデアや設計を考えるほうが中心になる。<span class="highlight">面倒な部分はAIに任せる。</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>何ができるの？</strong></td>
+                                <td>✔︎ 簡単なプログラムをサクッと自動作成<br>✔︎ ウェブサイトの雛形を作る<br>✔︎ テストを自動で書く<br>✔︎ すでにあるコードの整理整頓<br>✔︎ わかりやすい説明書を作る…<br><span class="highlight">AIがアシスタント的に働いてくれる</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>プログラミングの勉強になる？</strong></td>
+                                <td><span class="highlight">すぐに質問に答えてくれる便利な先生</span>になる。分からないことをAIに聞けば、具体的な例を挙げて教えてくれる。書いたコードの説明やエラーの原因もすぐに教えてくれる。</td>
+                            </tr>
+                            <tr>
+                                <td><strong>自動トレードシステムは作れる？</strong></td>
+                                <td>作れる。ざっくりした流れは、<br>①証券会社のAPIの使い方をAIに聞いて基本のコードを作る<br>②売買のルールを日本語で指示してコード化<br>③過去のデータで動きを確認<br>④毎日自動で動かすためにネット上に置く</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>なんで今「バイブ」なのか</h2>
+            
+            <div class="grid">
+                <div class="card grid-col-1">
+                    <div class="rounded-icon">🤖</div>
+                    <h3>AIがすごく賢くなった</h3>
+                    <p>×</p>
+                    <p><span class="highlight">ブラウザだけで簡単に使える無料の開発環境</span>（GitHubとか）が増えた</p>
+                    <div class="arrow-connector"></div>
+                    <p>プログラミングを始めるためのハードルが大きく下がった</p>
+                </div>
+                
+                <div class="card grid-col-1">
+                    <div class="rounded-icon">💬</div>
+                    <h3>色んなやり方で指示できる</h3>
+                    <ul>
+                        <li>日本語の文章で説明すればOK</li>
+                        <li>スマホで撮った画面写真を送って「ここ変じゃない？」と聞けば修正方法を教えてくれる</li>
+                        <li>話すだけでもOKなツール（例えば「<span class="highlight">スマホに向かって『株価データを取ってくるコードを書いて』と話すと、AIがそのコードを書いてくれる</span>ようなツール」）もある</li>
+                    </ul>
+                </div>
+                
+                <div class="card grid-col-1">
+                    <div class="rounded-icon">🔄</div>
+                    <h3>失敗してもノーダメージ</h3>
+                    <p>間違えてもすぐ元に戻せるので、安心して試せる</p>
+                    <div class="arrow-connector"></div>
+                    <h3>学習が早い</h3>
+                    <p>同じことを何回も繰り返すような作業（for文とか）を楽にする方法を段階的に覚えられる</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>初めてのバイブコーディング、まずはこの5ステップ</h2>
+            
+            <div class="grid">
+                <div class="card grid-col-3">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>ステップ</th>
+                                <th>やること</th>
+                                <th>使うツール</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><span class="step-number">1</span> <strong>ゴールを決める</strong></td>
+                                <td>「こんな感じの自動トレードを作りたい」とAIに伝える</td>
+                                <td>ChatGPT（無料）</td>
+                            </tr>
+                            <tr>
+                                <td><span class="step-number">2</span> <strong>設計する</strong></td>
+                                <td>「例えば移動平均線がクロスしたら買う、損切り2%」みたいなルールを書いてまとめる</td>
+                                <td>同上</td>
+                            </tr>
+                            <tr>
+                                <td><span class="step-number">3</span> <strong>コードを自動で作る</strong></td>
+                                <td>初心者にも優しいPythonという言語で証券会社（Alpaca）のサンプルコードをAIに作ってもらう</td>
+                                <td>GitHub Codespaces（ブラウザで使える無料ツール）</td>
+                            </tr>
+                            <tr>
+                                <td><span class="step-number">4</span> <strong>動きをテスト</strong></td>
+                                <td>過去のデータを使って、AIに頼んで結果をグラフで表示してもらう</td>
+                                <td>同上</td>
+                            </tr>
+                            <tr>
+                                <td><span class="step-number">5</span> <strong>毎日自動実行</strong></td>
+                                <td>毎日自動で売買を仮想で実行するように設定する</td>
+                                <td>GitHub（ブラウザで使える無料ツール）</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>どんなツールが使えるの？初心者向けから上級者向けまで簡単に紹介</h2>
+            
+            <div class="grid">
+                <div class="card grid-col-1">
+                    <h3>初心者向け</h3>
+                    <div class="tag">無料</div>
+                    <div class="tag">日本語OK</div>
+                    <p><span class="highlight">ChatGPT</span>：簡単な日本語でAIと会話できるツール。質問に答えてもらったり、コードを書いてもらったり、基本的なことを気軽に試せる。</p>
+                </div>
+                
+                <div class="card grid-col-1">
+                    <h3>中級者向け</h3>
+                    <div class="tag">有料</div>
+                    <div class="tag">コード補完</div>
+                    <p><span class="highlight">GitHub Copilot</span>：コードを書いていると次に書くべき内容を予測してくれるAIツール。コードを書くスピードがぐっと上がる。</p>
+                </div>
+                
+                <div class="card grid-col-1">
+                    <h3>上級者向け</h3>
+                    <div class="tag">有料</div>
+                    <div class="tag">高機能</div>
+                    <p><span class="highlight">Cursor</span>：より複雑なコードの作成や、細かい修正作業をAIがサポートしてくれる。プログラミングに慣れてきた人がさらに効率を上げるのに便利。</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>よくある質問</h2>
+            
+            <div class="grid">
+                <div class="card grid-col-3">
+                    <div class="bubble">
+                        <h3>Q. 全くプログラムが初めてでも大丈夫？</h3>
+                        <p><strong>A.</strong> 文法の細かい勉強を飛ばしてもAIが手伝ってくれる。でも基礎（数字とか文字の使い方、ifや繰り返し、関数の意味）は軽く知っておいた方が後で楽。</p>
+                    </div>
+                    
+                    <div class="bubble">
+                        <h3>Q. AIは何を使えばいい？</h3>
+                        <p><strong>A.</strong> 最初はChatGPT（無料）でOK。慣れたらGPT-4oやGitHub Copilot（次のコードを予測してくれるツール）を使ってみるといい。ちなみに僕自身はCursorというツールをよく使ってます。</p>
+                    </div>
+                    
+                    <div class="bubble">
+                        <h3>Q. 日本から米国株を取引できるサービスは？</h3>
+                        <p><strong>A.</strong> AlpacaかInteractive Brokersがおすすめ。Alpacaは簡単で無料口座あり、Interactive Brokersは手数料安いけど少し複雑。</p>
+                    </div>
+                    
+                    <div class="bubble">
+                        <h3>Q. 実際のお金を使うのは怖い…</h3>
+                        <p><strong>A.</strong> まず仮想でテストして、少額でリアル取引を始めて、慣れてきたら徐々に増やしていくのが安全。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>さあ、始めてみよう！</h2>
+            
+            <div class="grid">
+                <div class="card grid-col-3">
+                    <p class="hand-drawn">最初の一歩として、今日ChatGPTにこんな感じで話しかけてみてください。</p>
+                    
+                    <div class="code-block">私はトレードシステムを作りたい初心者です。
+まず何をしたらいいか簡単に教えて。</div>
+                    
+                    <p class="hand-drawn">そこからあなたのバイブコーディングが始まります。</p>
+                </div>
+            </div>
+        </div>
+        
+        <footer class="footer">
+            <p>グラフィックレコーディング ©︎ 2025.05.11</p>
+        </footer>
+    </div>
+</body>
+</html>
