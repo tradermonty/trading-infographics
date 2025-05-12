@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NRG第1四半期決算＆LS Power買収計画</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Yomogi&family=Zen+Kurenaido&family=Kaisei+Decol:wght@400;700&display=swap');
+    
+    :root {
+      --fashion-1: #593C47;
+      --fashion-2: #F2E63D;
+      --fashion-3: #F2C53D;
+      --fashion-4: #F25C05;
+      --fashion-5: #F24405;
+      --gray-600: #475569;
+      --gray-700: #334155;
+      --blue-800: #1e40af;
+      --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'Kaisei Decol', serif;
+      line-height: 1.4;
+      color: var(--gray-700);
+      background-color: #f8f9fa;
+      padding: 20px;
+    }
+    
+    .container {
+      max-width: 100%;
+      margin: 0 auto;
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      position: relative;
+    }
+    
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 30px;
+      background: linear-gradient(135deg, var(--fashion-1), #735662);
+      color: white;
+      position: relative;
+    }
+    
+    .header::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 10px;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 30' preserveAspectRatio='none'%3E%3Cpath d='M0,0 Q300,30 600,0 T1200,0' fill='%23ffffff'/%3E%3C/svg%3E") no-repeat;
+      background-size: 100% 100%;
+    }
+    
+    .title-box {
+      flex: 1;
+    }
+    
+    .main-title {
+      font-size: 32px;
+      font-weight: bold;
+      font-family: 'Yomogi', cursive;
+      margin: 0;
+      background: linear-gradient(45deg, var(--fashion-2), var(--fashion-3), var(--fashion-4));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+    
+    .date {
+      font-size: 14px;
+      font-family: 'Zen Kurenaido', sans-serif;
+      margin-top: 5px;
+      color: var(--fashion-2);
+    }
+    
+    .logo {
+      display: flex;
+      align-items: center;
+      font-weight: bold;
+      font-size: 24px;
+      color: white;
+      margin-left: 20px;
+    }
+    
+    .logo-box {
+      background-color: #0052FF;
+      padding: 8px;
+      border-radius: 4px;
+      display: inline-block;
+      margin-right: 5px;
+    }
+    
+    .content {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 20px;
+    }
+    
+    .column {
+      flex: 1;
+      min-width: 300px;
+      padding: 15px;
+    }
+    
+    .card {
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      padding: 20px;
+      margin-bottom: 20px;
+      position: relative;
+      border: 2px dashed var(--fashion-3);
+    }
+    
+    .card::before {
+      content: "";
+      position: absolute;
+      top: -8px;
+      left: 20px;
+      width: 40px;
+      height: 16px;
+      background-color: var(--fashion-2);
+      border-radius: 8px;
+      z-index: -1;
+    }
+    
+    .card-title {
+      font-size: 18px;
+      color: var(--blue-800);
+      margin-bottom: 15px;
+      font-family: 'Zen Kurenaido', sans-serif;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+    }
+    
+    .card-title::before {
+      content: "📌";
+      margin-right: 8px;
+      font-size: 1.2em;
+    }
+    
+    .highlight {
+      background: linear-gradient(transparent 60%, var(--fashion-3) 60%);
+      font-weight: bold;
+    }
+    
+    .key-metric {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+      font-family: 'Kaisei Decol', serif;
+    }
+    
+    .key-metric-value {
+      font-size: 20px;
+      font-weight: bold;
+      color: var(--fashion-5);
+      margin-right: 10px;
+    }
+    
+    .glass-card {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(10px);
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+    
+    .arrow {
+      display: inline-block;
+      margin: 0 10px;
+      color: var(--fashion-4);
+      font-weight: bold;
+    }
+    
+    .acquisition-flow {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin: 20px 0;
+      flex-wrap: wrap;
+    }
+    
+    .acquisition-step {
+      background-color: var(--fashion-3);
+      color: var(--fashion-1);
+      border-radius: 12px;
+      padding: 10px 15px;
+      font-weight: bold;
+      flex: 1;
+      min-width: 120px;
+      margin: 5px;
+      text-align: center;
+      box-shadow: var(--shadow);
+    }
+    
+    .hand-drawn-box {
+      border: 2px solid var(--fashion-1);
+      border-radius: 15px;
+      padding: 15px;
+      margin: 10px 0;
+      position: relative;
+    }
+    
+    .hand-drawn-box::before {
+      content: "";
+      position: absolute;
+      top: -10px;
+      left: 20px;
+      width: 60px;
+      height: 20px;
+      background-color: white;
+    }
+    
+    .hand-drawn-title {
+      position: absolute;
+      top: -10px;
+      left: 25px;
+      background-color: white;
+      padding: 0 10px;
+      font-weight: bold;
+      color: var(--fashion-4);
+    }
+    
+    .benefits-list {
+      list-style-type: none;
+    }
+    
+    .benefits-list li {
+      margin-bottom: 10px;
+      padding-left: 25px;
+      position: relative;
+    }
+    
+    .benefits-list li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: var(--fashion-4);
+      font-weight: bold;
+    }
+    
+    .data-chart {
+      width: 100%;
+      height: 160px;
+      background: linear-gradient(135deg, var(--fashion-2), var(--fashion-3));
+      border-radius: 8px;
+      margin-top: 15px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .chart-bar {
+      position: absolute;
+      bottom: 0;
+      width: 40px;
+      background-color: var(--fashion-5);
+      border-radius: 4px 4px 0 0;
+    }
+    
+    .comment-bubble {
+      background-color: var(--fashion-2);
+      border-radius: 12px;
+      padding: 10px 15px;
+      margin: 10px 0;
+      position: relative;
+      max-width: 80%;
+    }
+    
+    .comment-bubble::after {
+      content: "";
+      position: absolute;
+      bottom: -10px;
+      left: 20px;
+      border-width: 10px 10px 0;
+      border-style: solid;
+      border-color: var(--fashion-2) transparent transparent;
+    }
+    
+    .timeline {
+      position: relative;
+      margin: 20px 0;
+      padding-left: 30px;
+    }
+    
+    .timeline::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 10px;
+      width: 2px;
+      height: 100%;
+      background-color: var(--fashion-3);
+    }
+    
+    .timeline-item {
+      position: relative;
+      margin-bottom: 20px;
+    }
+    
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: -22px;
+      top: 5px;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background-color: var(--fashion-5);
+    }
+    
+    .timeline-date {
+      font-weight: bold;
+      color: var(--fashion-1);
+      margin-bottom: 5px;
+    }
+    
+    .footer {
+      padding: 20px;
+      text-align: center;
+      font-size: 12px;
+      color: var(--gray-600);
+      border-top: 1px dashed var(--fashion-3);
+    }
+    
+    @media (max-width: 768px) {
+      .column {
+        flex: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="title-box">
+        <h1 class="main-title">NRG第1四半期決算＆LS Power買収計画</h1>
+        <div class="date">2025年5月12日 発表</div>
+      </div>
+      <div class="logo">
+        <div class="logo-box">nrg</div>
+      </div>
+    </div>
+    
+    <div class="content">
+      <!-- 左カラム -->
+      <div class="column">
+        <div class="card">
+          <h2 class="card-title">第1四半期業績ハイライト</h2>
+          <div class="key-metric">
+            <span class="key-metric-value">$1,126M</span>
+            <span>調整済EBITDA (前年比+30%)</span>
+          </div>
+          <div class="key-metric">
+            <span class="key-metric-value">$2.68</span>
+            <span>調整済EPS (前年比+84%)</span>
+          </div>
+          <div class="key-metric">
+            <span class="key-metric-value">$293M</span>
+            <span>FCFbG (フリーキャッシュフロー)</span>
+          </div>
+          
+          <div class="hand-drawn-box">
+            <div class="hand-drawn-title">主な成長要因 📈</div>
+            <ul class="benefits-list">
+              <li>マージン拡大: <span class="highlight">+$0.65/株</span></li>
+              <li>好天候効果: <span class="highlight">+$0.50/株</span></li>
+              <li>トップ10%の安全性能を維持</li>
+              <li>ホームVPPを全テキサス州で展開開始</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="card">
+          <h2 class="card-title">2025年通期ガイダンス (変更なし)</h2>
+          <div class="key-metric">
+            <span class="key-metric-value">$6.75-$7.75</span>
+            <span>調整済EPS</span>
+          </div>
+          <div class="key-metric">
+            <span class="key-metric-value">$3,725M-$3,975M</span>
+            <span>調整済EBITDA</span>
+          </div>
+          <div class="key-metric">
+            <span class="key-metric-value">$1,975M-$2,225M</span>
+            <span>FCFbG</span>
+          </div>
+          
+          <div class="comment-bubble">
+            2025年は成長戦略の実行に集中！資本配分計画に変更なし
+          </div>
+        </div>
+        
+        <div class="glass-card">
+          <h2 class="card-title">スマートホーム事業の成長</h2>
+          <div class="key-metric">
+            <span class="key-metric-value">+6%</span>
+            <span>顧客数 (210万件超)</span>
+          </div>
+          <div class="key-metric">
+            <span class="key-metric-value">+4%</span>
+            <span>顧客あたり月次サービスマージン</span>
+          </div>
+          <div class="key-metric">
+            <span class="key-metric-value">89.9%</span>
+            <span>顧客維持率 (+80bps)</span>
+          </div>
+          
+          <div class="data-chart">
+            <div class="chart-bar" style="height: 70%; left: 20%;"></div>
+            <div class="chart-bar" style="height: 85%; left: 40%;"></div>
+            <div class="chart-bar" style="height: 90%; left: 60%;"></div>
+            <div class="chart-bar" style="height: 95%; left: 80%;"></div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 中央カラム -->
+      <div class="column">
+        <div class="card">
+          <h2 class="card-title">LS Power社からの戦略的買収</h2>
+          
+          <div class="key-metric">
+            <span class="key-metric-value">$12.0B</span>
+            <span>取引総額 (Enterprise Value)</span>
+          </div>
+          
+          <div class="acquisition-flow">
+            <div class="acquisition-step">買収発表</div>
+            <span class="arrow">→</span>
+            <div class="acquisition-step">承認取得</div>
+            <span class="arrow">→</span>
+            <div class="acquisition-step">2026年Q1完了予定</div>
+          </div>
+          
+          <div class="hand-drawn-box">
+            <div class="hand-drawn-title">買収内容 🔍</div>
+            <ul class="benefits-list">
+              <li><span class="highlight">13GW</span> の天然ガス発電施設</li>
+              <li><span class="highlight">6GW</span> の法人・産業用VPPプラットフォーム</li>
+              <li>複数市場（PJM、ERCOT）での戦略的資産</li>
+              <li>新規建設コストの<span class="highlight">約50%</span>での取得</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="card">
+          <h2 class="card-title">買収の資金調達と構成</h2>
+          
+          <div class="key-metric">
+            <span class="key-metric-value">$6.4B</span>
+            <span>現金</span>
+          </div>
+          <div class="key-metric">
+            <span class="key-metric-value">$2.8B</span>
+            <span>株式（LS Power社へ2,425万株）</span>
+          </div>
+          <div class="key-metric">
+            <span class="key-metric-value">$3.2B</span>
+            <span>負債引受（クロージング時）</span>
+          </div>
+          <div class="key-metric">
+            <span class="key-metric-value">-$0.4B</span>
+            <span>税制上の利益（NPV）</span>
+          </div>
+          
+          <div class="comment-bubble">
+            LS Power社は買収後、NRGの約11%の株式を保有。これは同社の買収価格に対する強い信頼の表れ！
+          </div>
+        </div>
+        
+        <div class="glass-card">
+          <h2 class="card-title">電力需要超サイクルへの対応</h2>
+          
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-date">データセンター戦略</div>
+              <div>複数サイトでコロケーションとグリッド接続大型負荷を推進中</div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-date">タービン予約</div>
+              <div>2029年運転開始予定として追加1.2GW（計2.4GW）のタービン予約を確保</div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-date">テキサス州プロジェクト</div>
+              <div>1.5GWのテキサス州プロジェクトがTEFのデューデリジェンス審査中</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 右カラム -->
+      <div class="column">
+        <div class="card">
+          <h2 class="card-title">買収による戦略的メリット</h2>
+          
+          <div class="hand-drawn-box">
+            <div class="hand-drawn-title">成長加速 🚀</div>
+            <ul class="benefits-list">
+              <li>調整済EPS長期CAGRが<span class="highlight">>10%→>14%</span>へ向上</li>
+              <li>2026年に約<span class="highlight">18%のEPS増加</span>（$1.30/株）</li>
+              <li>中長期的には<span class="highlight">$1.85/株</span>の増加</li>
+              <li>FCFbGは<span class="highlight">20%以上の増加</span>（$3.25/株）</li>
+            </ul>
+          </div>
+          
+          <div class="hand-drawn-box">
+            <div class="hand-drawn-title">発電能力の変革 ⚡</div>
+            <ul class="benefits-list">
+              <li>発電容量を<span class="highlight">倍増</span>（25GWへ）</li>
+              <li>中核市場で<span class="highlight">複製不可能な資産</span>を獲得</li>
+              <li>柔軟で近代的な天然ガス資産によるリスク管理強化</li>
+              <li>住宅負荷に対する長期所有発電へのシフト</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="card">
+          <h2 class="card-title">資本配分と株主還元</h2>
+          
+          <div class="key-metric">
+            <span class="key-metric-value">$1B/年</span>
+            <span>自社株買い（レバレッジ目標達成まで）</span>
+          </div>
+          <div class="key-metric">
+            <span class="key-metric-value">7-9%/年</span>
+            <span>配当成長率</span>
+          </div>
+          <div class="key-metric">
+            <span class="key-metric-value">$9.1B</span>
+            <span>2025-2029年の総株主還元額</span>
+          </div>
+          
+          <div class="hand-drawn-box">
+            <div class="hand-drawn-title">信用格付 📊</div>
+            <ul class="benefits-list">
+              <li>現在の信用格付を維持（見通し安定的）</li>
+              <li>投資適格レバレッジ目標を<span class="highlight">&lt;3.0x</span>に引き上げ</li>
+              <li>24-36か月以内に目標達成見込み</li>
+              <li>目標達成後は80/20の資本配分フレームワークに復帰</li>
+            </ul>
+          </div>
+          
+          <div class="comment-bubble">
+            堅実な財務基盤を維持しながら、株主に対する継続的な価値還元を約束！
+          </div>
+        </div>
+        
+        <div class="glass-card">
+          <h2 class="card-title">今後の見通し</h2>
+          
+          <div class="hand-drawn-box">
+            <div class="hand-drawn-title">さらなる成長機会 🌱</div>
+            <ul class="benefits-list">
+              <li>電力・容量価格の上昇に対する<span class="highlight">レバレッジ拡大</span></li>
+              <li>データセンター／大型負荷向けプレミアムPPA</li>
+              <li>潜在的な開発サイト<span class="highlight">36+ヶ所</span>（21ヶ所から増加）</li>
+              <li>East地域での<span class="highlight">1+GW</span>の容量アップレート可能性</li>
+              <li>8GWの統合C&I VPPプラットフォーム</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer">
+      © 2025 NRG Energy, Inc. 本資料は2025年5月12日のNRG Energy社の発表資料に基づく情報を視覚化したものです。
+    </div>
+  </div>
+</body>
+</html>
