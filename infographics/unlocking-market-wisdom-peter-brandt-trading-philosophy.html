@@ -594,18 +594,21 @@
         .concept-map {
             display: flex;
             justify-content: center;
+            align-items: center;
             position: relative;
             margin: 30px 0;
+            min-height: 320px;
+            flex-wrap: wrap;
         }
         
         .concept-center {
             position: relative;
             background-color: var(--fashion-3);
             color: var(--fashion-1);
-            padding: 15px;
+            padding: 10px;
             border-radius: 50%;
-            width: 150px;
-            height: 150px;
+            width: 120px;
+            height: 120px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -621,35 +624,43 @@
             border: 2px solid var(--fashion-4);
             border-radius: 10px;
             padding: 10px;
-            width: 130px;
+            width: 110px;
             text-align: center;
             box-shadow: var(--shadow);
             z-index: 1;
-        }
-        
-        .concept-item:nth-child(1) {
-            top: -50px;
-            left: calc(50% - 65px);
+            font-size: 14px;
         }
         
         .concept-item:nth-child(2) {
-            top: 20px;
-            right: -50px;
+            top: 35px;
+            left: 50%;
+            transform: translate(-50%, -55%);
         }
         
         .concept-item:nth-child(3) {
-            bottom: -30px;
+            top: 65px;
             right: 0;
+            left: auto;
+            transform: translate(10%, 0);
         }
         
         .concept-item:nth-child(4) {
-            bottom: -30px;
-            left: 0;
+            bottom: 35px;
+            right: 30px;
+            left: auto;
+            transform: translate(10%, 20%);
         }
         
         .concept-item:nth-child(5) {
-            top: 20px;
-            left: -50px;
+            bottom: 35px;
+            left: 30px;
+            transform: translate(-10%, 20%);
+        }
+        
+        .concept-item:nth-child(6) {
+            top: 65px;
+            left: 0;
+            transform: translate(-10%, 0);
         }
         
         .connecting-line {
@@ -662,6 +673,22 @@
         @media (max-width: 1000px) {
             .column {
                 flex: 1 1 100%;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .concept-center {
+                width: 90px;
+                height: 90px;
+                font-size: 13px;
+            }
+            .concept-item {
+                width: 80px;
+                font-size: 12px;
+                padding: 6px;
+            }
+            .concept-map {
+                min-height: 200px;
             }
         }
     </style>
@@ -1008,7 +1035,7 @@
         </footer>
     </div>
 </body>
-</html><!DOCTYPE html>
+</html>
 
     </div>
 
