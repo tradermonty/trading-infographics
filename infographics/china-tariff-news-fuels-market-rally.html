@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>中国関税ニュースによる株式市場の急騰</title>
+    <link rel="icon" type="image/png" href="../images/monty.png">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Yomogi&family=Zen+Kurenaido&family=Kaisei+Decol:wght@400;700&display=swap');
+        
+        :root {
+            --fashion-1: #593C47;
+            --fashion-2: #F2E63D;
+            --fashion-3: #F2C53D;
+            --fashion-4: #F25C05;
+            --fashion-5: #F24405;
+            --text-dark: #334155;
+            --text-title: #1e40af;
+            --bg-light: #fff;
+            --shadow: rgba(0, 0, 0, 0.1);
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Kaisei Decol', serif;
+            background-color: #f8f9fa;
+            color: var(--text-dark);
+            line-height: 1.4;
+            padding: 0;
+            margin: 0;
+        }
+
+        .fixed-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: linear-gradient(135deg, var(--fashion-1), var(--fashion-5));
+            padding: 10px 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .fixed-header:hover {
+            background: linear-gradient(135deg, var(--fashion-5), var(--fashion-1));
+        }
+
+        .fixed-header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .header-logo {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .fixed-header h1 {
+            font-family: 'Zen Kurenaido', sans-serif;
+            font-size: 24px;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            background: linear-gradient(to right, white, var(--fashion-2));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin: 0;
+            pointer-events: none;
+        }
+
+        .template-main-content {
+            margin-top: 60px;
+            padding: 20px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .template-footer {
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(135deg, var(--fashion-1), var(--fashion-5));
+            color: white;
+            margin-top: 40px;
+        }
+
+        .template-footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .template-footer-logo {
+            font-family: 'Zen Kurenaido', sans-serif;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .template-footer-social {
+            display: flex;
+            gap: 15px;
+        }
+
+        .template-footer-social a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .template-footer-social a:hover {
+            color: var(--fashion-2);
+            transform: translateY(-2px);
+        }
+
+        .template-hidden {
+            display: none !important;
+            visibility: hidden;
+            opacity: 0;
+        }
+
+        .language-switch {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1001;
+            display: none;
+        }
+        
+        .language-switch button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 20px;
+            background: linear-gradient(135deg, var(--fashion-1), var(--fashion-5));
+            color: white;
+            cursor: pointer;
+            font-family: 'Yomogi', cursive;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .language-switch button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+
+        @media (max-width: 768px) {
+            .fixed-header h1 {
+                font-size: 20px;
+            }
+            
+            .template-main-content {
+                margin-top: 50px;
+                padding: 10px;
+            }
+
+            .language-switch {
+                top: 10px;
+                right: 10px;
+            }
+
+            .template-footer-content {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="language-switch">
+        <button onclick="toggleLanguage()">English</button>
+    </div>
+
+    <div class="fixed-header" onclick="window.location.href='../index.html'">
+        <div class="fixed-header-content">
+            <img src="../images/monty.png" alt="Monty Trader Logo" class="header-logo">
+            <h1 class="ja">モンティの株式トレードインフォグラフィックス集</h1>
+            <h1 class="en hidden">Monty's Stock Trading Infographics Collection</h1>
+        </div>
+    </div>
+
+    <div class="template-main-content">
+        <!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>中国関税ニュースによる株式市場の急騰 - グラフィックレコーディング</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Yomogi&family=Zen+Kurenaido&family=Kaisei+Decol:wght@400;700&display=swap');
+        
+        :root {
+            --color-1: #593C47;
+            --color-2: #F2E63D;
+            --color-3: #F2C53D;
+            --color-4: #F25C05;
+            --color-5: #F24405;
+            --text-dark: #334155;
+            --text-subtitle: #475569;
+            --text-section: #1e40af;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Kaisei Decol', serif;
+            line-height: 1.4;
+            color: var(--text-dark);
+            background-color: #F8F9FA;
+            overflow-x: hidden;
+            width: 100%;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-image: url('data:image/svg+xml;utf8,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" fill="white" /><path d="M0 0L100 100M100 0L0 100" stroke="%23F2E63D" stroke-width="0.5" stroke-opacity="0.2" /></svg>');
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 30px;
+            border-bottom: 3px dotted var(--color-4);
+            padding-bottom: 15px;
+            position: relative;
+        }
+        
+        .title-container {
+            flex: 1;
+        }
+        
+        .title {
+            font-family: 'Zen Kurenaido', sans-serif;
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, var(--color-1), var(--color-4));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+            display: inline-block;
+            position: relative;
+        }
+        
+        .title::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--color-3), var(--color-5));
+            border-radius: 3px;
+        }
+        
+        .subtitle {
+            font-family: 'Yomogi', cursive;
+            font-size: 16px;
+            color: var(--text-subtitle);
+            margin-bottom: 5px;
+        }
+        
+        .date-source {
+            text-align: right;
+            font-family: 'Yomogi', cursive;
+            margin-top: 10px;
+            margin-left: 20px;
+            padding: 10px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 12px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            border: 1px dashed var(--color-3);
+            width: 220px;
+        }
+        
+        .date, .source {
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+        
+        .grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .column {
+            flex: 1 1 calc(33% - 20px);
+            min-width: 300px;
+        }
+        
+        .card {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--color-2), var(--color-5));
+            border-radius: 5px 5px 0 0;
+        }
+        
+        .section-title {
+            font-family: 'Zen Kurenaido', sans-serif;
+            font-size: 18px;
+            color: var(--text-section);
+            margin-bottom: 15px;
+            padding-left: 30px;
+            position: relative;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 8px;
+        }
+        
+        .section-title::before {
+            content: "✏️";
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        
+        .news-icon::before {
+            content: "📰";
+        }
+        
+        .bullmarket-icon::before {
+            content: "🐂";
+        }
+        
+        .nasdaq-icon::before {
+            content: "📊";
+        }
+        
+        .bear-icon::before {
+            content: "🔍";
+        }
+        
+        .bonds-icon::before {
+            content: "💹";
+        }
+        
+        .energy-icon::before {
+            content: "⚡";
+        }
+        
+        .gold-icon::before {
+            content: "💰";
+        }
+        
+        .bitcoin-icon::before {
+            content: "₿";
+        }
+        
+        .conclusion-icon::before {
+            content: "📝";
+        }
+        
+        .summary-text {
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+        
+        .keyword {
+            font-weight: bold;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .highlight-yellow {
+            background: linear-gradient(transparent 60%, var(--color-2) 40%);
+            padding: 0 2px;
+        }
+        
+        .highlight-orange {
+            background: linear-gradient(transparent 60%, var(--color-3) 40%);
+            padding: 0 2px;
+        }
+        
+        .highlight-red {
+            background: linear-gradient(transparent 60%, var(--color-4) 40%);
+            padding: 0 2px;
+        }
+        
+        .quote {
+            font-family: 'Yomogi', cursive;
+            font-size: 13px;
+            font-style: italic;
+            color: #64748b;
+            border-left: 3px solid var(--color-3);
+            padding-left: 12px;
+            margin: 10px 0;
+            background-color: rgba(242, 230, 61, 0.1);
+            padding: 8px 12px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .quote-short {
+            max-height: 80px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            position: relative;
+        }
+        
+        .quote-short::after {
+            content: "...";
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            background-color: rgba(242, 230, 61, 0.1);
+            padding: 0 5px;
+        }
+        
+        .connector {
+            position: relative;
+            padding-left: 20px;
+            margin: 15px 0;
+        }
+        
+        .connector::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 50%;
+            width: 15px;
+            height: 2px;
+            background-color: var(--color-4);
+        }
+        
+        .arrow {
+            position: relative;
+            padding-left: 30px;
+            margin: 15px 0;
+        }
+        
+        .arrow::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: var(--color-4);
+            font-size: 20px;
+        }
+        
+        .banner {
+            background-color: rgba(242, 196, 61, 0.2);
+            border-radius: 8px;
+            padding: 10px 15px;
+            margin: 15px 0;
+            border: 1px dashed var(--color-3);
+            position: relative;
+        }
+        
+        .banner::before {
+            content: "📌";
+            position: absolute;
+            left: -10px;
+            top: -10px;
+        }
+        
+        .bubble {
+            position: relative;
+            background-color: white;
+            border-radius: 15px;
+            padding: 10px 15px;
+            margin: 20px 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border: 2px solid var(--color-1);
+        }
+        
+        .bubble::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 20px;
+            border-width: 10px 10px 0;
+            border-style: solid;
+            border-color: var(--color-1) transparent;
+        }
+        
+        .simple-chart {
+            display: flex;
+            height: 150px;
+            align-items: flex-end;
+            margin: 20px 0;
+            padding-bottom: 20px;
+            border-bottom: 2px dashed #cbd5e1;
+            position: relative;
+        }
+        
+        .chart-bar {
+            flex: 1;
+            margin: 0 5px;
+            background: linear-gradient(to top, var(--color-2), var(--color-4));
+            border-radius: 5px 5px 0 0;
+            position: relative;
+            min-width: 40px;
+        }
+        
+        .bar-nasdaq {
+            height: 90%;
+        }
+        
+        .bar-russell {
+            height: 75%;
+        }
+        
+        .bar-sp {
+            height: 60%;
+        }
+        
+        .bar-dow {
+            height: 50%;
+        }
+        
+        .chart-label {
+            position: absolute;
+            bottom: -25px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            font-size: 12px;
+            font-family: 'Kaisei Decol', serif;
+        }
+        
+        .performance-indicators {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 20px 0;
+        }
+        
+        .indicator {
+            flex: 1 1 calc(50% - 10px);
+            min-width: 120px;
+            padding: 10px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            font-family: 'Zen Kurenaido', sans-serif;
+            border: 1px solid #e2e8f0;
+            position: relative;
+        }
+        
+        .up::before {
+            content: "↑";
+            position: absolute;
+            left: 5px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #22c55e;
+            font-size: 18px;
+        }
+        
+        .down::before {
+            content: "↓";
+            position: absolute;
+            left: 5px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #ef4444;
+            font-size: 18px;
+        }
+        
+        .conclusion-card {
+            border: 2px solid var(--color-1);
+            background-color: rgba(255, 255, 255, 0.95);
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 3px dotted var(--color-4);
+            font-size: 12px;
+            color: var(--text-subtitle);
+        }
+        
+        /* 手書き風の要素 */
+        .hand-drawn-circle {
+            display: inline-block;
+            position: relative;
+        }
+        
+        .hand-drawn-circle::after {
+            content: "";
+            position: absolute;
+            left: -5px;
+            top: -5px;
+            width: calc(100% + 10px);
+            height: calc(100% + 10px);
+            border: 2px solid var(--color-4);
+            border-radius: 50%;
+            transform: rotate(-2deg);
+        }
+        
+        .scribble-underline {
+            position: relative;
+        }
+        
+        .scribble-underline::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -3px;
+            width: 100%;
+            height: 4px;
+            background-image: url('data:image/svg+xml;utf8,<svg width="100" height="4" xmlns="http://www.w3.org/2000/svg"><path d="M0 2 C 20 0, 40 4, 60 2 C 80 0, 100 4, 120 2" stroke="%23F25C05" stroke-width="2" fill="none" /></svg>');
+            background-repeat: repeat-x;
+            background-size: 120px 4px;
+        }
+        
+        .hand-drawn-box {
+            border: 2px solid var(--color-1);
+            border-radius: 12px;
+            position: relative;
+            overflow: visible;
+        }
+        
+        .hand-drawn-box::before {
+            content: "";
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border: 1px dashed var(--color-3);
+            border-radius: 15px;
+            z-index: -1;
+        }
+        
+        /* グラスモーフィズム効果 */
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        /* 手書き風マーカー装飾 */
+        .marker-1 {
+            background: linear-gradient(transparent 60%, rgba(242, 230, 61, 0.6) 40%);
+            padding: 0 2px;
+        }
+        
+        .marker-2 {
+            background: linear-gradient(transparent 60%, rgba(242, 196, 61, 0.6) 40%);
+            padding: 0 2px;
+        }
+        
+        .marker-3 {
+            background: linear-gradient(transparent 60%, rgba(242, 91, 4, 0.4) 40%);
+            padding: 0 2px;
+        }
+        
+        .emphasis {
+            font-family: 'Yomogi', cursive;
+            font-weight: bold;
+            font-size: 1.1em;
+            color: var(--color-5);
+        }
+        
+        /* メモ風装飾 */
+        .note {
+            position: relative;
+            padding: 15px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 0 12px 12px 12px;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+            margin: 20px 0;
+        }
+        
+        .note::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 25px;
+            height: 25px;
+            background-color: var(--color-3);
+            border-radius: 0 0 25px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="title-container">
+                <h1 class="title">中国関税ニュースによる株式市場の急騰</h1>
+                <p class="subtitle">ブルマーケットは続く...</p>
+            </div>
+            <div class="date-source">
+                <p class="date">📅 2025年5月12日</p>
+                <p class="source">📊 出典: crowdedmarket report.com</p>
+                <p class="source">著者: Jason Shapiro</p>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>出典: crowdedmarket report.com の Jason Shapiro による抜粋 | 2025年5月12日 | グラフィックレコーディング風インフォグラフィック</p>
+        </div>
+    </div>
+</body>
+</html>        
+        <div class="grid">
+            <div class="column">
+                <div class="card">
+                    <h2 class="section-title news-icon">中国関税ニュースの影響</h2>
+                    <p class="summary-text">
+                        週末の<span class="highlight-yellow keyword">中国関税</span>に関するニュースは市場にとって<span class="highlight-red keyword">極めてポジティブ</span>な材料であり、市場は<span class="highlight-orange keyword">寄り付きからギャップアップ</span>し、午前3時にはさらなる好材料を受けて一段高となりました。
+                    </p>
+                    <div class="quote">
+                        "明らかに週末に中国関税についてのニュースがあり、かなり良いニュースに思えたことでギャップアップしました。そして午前3時にはニュースの詳細が発表され、すべて強気な内容だったことで、さらに上昇しました"
+                    </div>
+                    <div class="arrow">
+                        <span class="marker-1">いくつかの売り圧も見られたが、市場はそれを吸収し、終日上昇基調を維持</span>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h2 class="section-title bullmarket-icon">ブルマーケットの継続</h2>
+                    <p class="summary-text">
+                        筆者は現在の市場を<span class="highlight-red keyword">ブルマーケット</span>と認識しており、この傾向は<span class="highlight-orange keyword">続く</span>と予想しています。
+                    </p>
+                    <div class="bubble">
+                        <span class="emphasis">"私の意見では、私たちは強気相場の領域にいると思います"</span>
+                    </div>
+                    <div class="banner">
+                        「市場は毎日上昇するわけではないが、上昇トレンドは続くだろう」
+                    </div>
+                    <div class="quote">
+                        "おそらく明日も、そしてその先も続くでしょう。もちろん市場は毎日上昇するわけではありませんが、これらのマクロベア（弱気派）が諦めるか追い出されるまでは、数週間前から話していたように、新高値へのスクイーズリスクがあると思います"
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h2 class="section-title nasdaq-icon">指数のパフォーマンス</h2>
+                    <p class="summary-text">
+                        <span class="highlight-yellow keyword">ナスダック</span>が他の指数よりも顕著なパフォーマンスを示しました。また、<span class="highlight-orange keyword">ラッセル2000指数</span>がS&P 500やダウ平均よりも大きく上昇し、最近の低迷からの回復を見せています。
+                    </p>
+                    <div class="simple-chart">
+                        <div class="chart-bar bar-nasdaq">
+                            <span class="chart-label">ナスダック</span>
+                        </div>
+                        <div class="chart-bar bar-russell">
+                            <span class="chart-label">ラッセル</span>
+                        </div>
+                        <div class="chart-bar bar-sp">
+                            <span class="chart-label">S&P 500</span>
+                        </div>
+                        <div class="chart-bar bar-dow">
+                            <span class="chart-label">ダウ平均</span>
+                        </div>
+                    </div>
+                    <div class="note">
+                        <p>💡 <span class="scribble-underline">ラッセルの注目ポイント</span>：</p>
+                        <p>"ラッセルは今日、ダウやS&Pよりも大きく上昇しました。かなり長い間、ラッセルがこのようなパフォーマンスを見せることはなく、最安値からは非常に良い動きをしています"</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="column">
+                <div class="card">
+                    <h2 class="section-title bear-icon">マクロベアのポジション</h2>
+                    <p class="summary-text">
+                        マクロ経済の見方に基づいて弱気なポジションを取っている投資家（<span class="highlight-red keyword">マクロベア</span>）が、市場の上昇によって<span class="highlight-yellow keyword">苦境に立たされて</span>おり、<span class="highlight-orange keyword">ショートスクイーズ</span>によってさらに株価が押し上げられる可能性があります。
+                    </p>
+                    <div class="connector">
+                        <span class="marker-2">マクロの専門家やヘッジファンドは依然としてアンダーウェイト</span>
+                    </div>
+                    <div class="quote">
+                        "マクロの専門家やヘッジファンドはまだかなりアンダーウェイトで、現在はパフォーマンスが低迷しています。彼らにとって痛手であり、これからもスクイーズされ続けるでしょう"
+                    </div>
+                    <div class="arrow">
+                        <span class="marker-3">過度なショートポジションが、ショートスクイーズを引き起こす</span>
+                    </div>
+                    <div class="quote">
+                        "人々はショートポジションを取りすぎていて、彼らはスクイーズされ、これからも続くと思います"
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h2 class="section-title bonds-icon">債券市場の動向</h2>
+                    <p class="summary-text">
+                        <span class="highlight-yellow keyword">経済成長期待の上昇</span>を受けて債券価格が下落しており、以前の<span class="highlight-orange keyword">債券プット</span>が発動された水準に再び接近しています。ただし、株式やドルが上昇している状況下では、これは大きな問題ではないと見られています。
+                    </p>
+                    <div class="quote">
+                        "債券は下落しました。注目すべき点として、債券はかつて債券プットが発動された水準に再び近づいています"
+                    </div>
+                    <div class="note">
+                        <p>💡 <span class="hand-drawn-circle">理由</span>：</p>
+                        <p>"関税問題が解消されることで経済成長の期待が高まり、債券が下落しているのです。そのため、それほど大きな問題ではないと思います"</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h2 class="section-title energy-icon">エネルギー価格と経済成長期待</h2>
+                    <p class="summary-text">
+                        <span class="highlight-yellow keyword">エネルギー価格</span>はそれほど上昇しませんでしたが、これは必ずしも経済成長の鈍化を示すものではなく、<span class="highlight-orange keyword">インフレ抑制</span>に繋がる可能性があり、悪い兆候ではないと見られています。
+                    </p>
+                    <div class="bubble">
+                        <span class="emphasis">"エネルギーは今日それほど上昇しませんでしたが、それは必ずしも悪いことでしょうか"</span>
+                    </div>
+                    <div class="connector">
+                        <span class="marker-2">エネルギー価格が抑制されることで、インフレ圧力も抑制される</span>
+                    </div>
+                    <div class="quote">
+                        "つまり、資産価格が上昇する一方でエネルギー価格が抑えられ、インフレも抑制されるなら、それも悪くないと思います"
+                    </div>
+                </div>
+            </div>
+            
+            <div class="column">
+                <div class="card">
+                    <h2 class="section-title gold-icon">リスクオフ資産の動き</h2>
+                    <div class="performance-indicators">
+                        <div class="indicator down">
+                            金 ↓
+                        </div>
+                        <div class="indicator up">
+                            銀 ↑
+                        </div>
+                        <div class="indicator down">
+                            円 ↓
+                        </div>
+                        <div class="indicator down">
+                            スイスフラン ↓
+                        </div>
+                    </div>
+                    <p class="summary-text">
+                        <span class="highlight-yellow keyword">金は下落</span>したが、<span class="highlight-orange keyword">銀は上昇</span>しました。銀は成長コモディティとしての側面が強いため、市場全体の楽観的な見方と整合性があります。円やスイスフランといった<span class="highlight-red keyword">リスクオフ通貨</span>も下落しました。
+                    </p>
+                    <div class="quote">
+                        "リスクオフ関連では、金は大きく下落しましたが、銀は実際にかなり良いパフォーマンスを見せました"
+                    </div>
+                    <div class="note">
+                        <p>💡 <span class="scribble-underline">銀の特徴</span>：</p>
+                        <p>"人々は銀が安全性よりも経済成長に関連するコモディティだと主張します。だからこそ好調だったのであり、理にかなっています"</p>
+                    </div>
+                    <div class="quote">
+                        "リスクオフ取引として積み上げられていた通貨、例えばスイスフランは下落しています。円も下落していますね、これも理にかなっています。ユーロも下落しており、これも合理的です"
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h2 class="section-title bitcoin-icon">ビットコインの動向</h2>
+                    <p class="summary-text">
+                        <span class="highlight-yellow keyword">ビットコイン</span>は、最近<span class="highlight-orange keyword">リスクオフ資産</span>と見なされる傾向があったため、ドルの上昇を受けて下落しました。しかし、これも市場全体の動きとしては異常ではないと見られています。
+                    </p>
+                    <div class="quote">
+                        "今日のビットコインについては、世界的に大きな問題ではないと思います。ビットコインは上昇相場では大幅なアウトパフォームを示していましたが、突然、ドルが急落する中で質への逃避先として見られるようになりました。今日はドルが大幅に上昇したため、ビットコインは下落したのです"
+                    </div>
+                    <div class="connector">
+                        <span class="marker-3">ドル高の影響でビットコインは下落</span>
+                    </div>
+                </div>
+                
+                <div class="card conclusion-card">
+                    <h2 class="section-title conclusion-icon">結論</h2>
+                    <p class="summary-text">
+                        この日の市場の動きは、<span class="highlight-red keyword">中国関税に関する好材料</span>を素直に反映したものであり、全体的に<span class="highlight-yellow keyword">整合性の取れた</span>ものでした。筆者は、マクロ経済の専門家やヘッジファンドがアンダーウェイトであり続ける限り、<span class="highlight-orange keyword">ブルマーケットは継続</span>し、ショートスクイーズによってさらに株価が上昇する可能性が高いと見ています。
+                    </p>
+                    <div class="banner">
+                        個別の資産クラスの動きも、この全体的な見方と矛盾しない
+                    </div>
+                    <div class="hand-drawn-box glass-effect" style="padding: 15px; margin-top: 15px;">
+                        <p style="text-align: center; font-weight: bold; font-family: 'Zen Kurenaido', sans-serif; font-size: 16px;">
+                            🔑 <span class="marker-1">ブルマーケットの継続要因</span>
+                        </p>
+                        <ul style="list-style-type: none; padding-left: 20px;">
+                            <li style="margin-bottom: 8px;">✅ 中国関税ニュースの好影響</li>
+                            <li style="margin-bottom: 8px;">✅ マクロ投資家のアンダーウェイト</li>
+                            <li style="margin-bottom: 8px;">✅ ショートスクイーズの継続</li>
+                            <li style="margin-bottom: 8px;">✅ 市場全体の整合性のある動き</li>
+                        </ul>
+                    </div>
+                </div>
+    </div>
+
+    <footer class="template-footer">
+        <div class="template-footer-content">
+            <div class="template-footer-logo">Monty Trader</div>
+            <div class="template-footer-social">
+                <a href="https://x.com/monty_investor" target="_blank">@monty_investor</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleLanguage() {
+            const jaElements = document.querySelectorAll('.ja');
+            const enElements = document.querySelectorAll('.en');
+            const button = document.querySelector('.language-switch button');
+            
+            jaElements.forEach(el => el.classList.toggle('hidden'));
+            enElements.forEach(el => el.classList.toggle('hidden'));
+            
+            button.textContent = button.textContent === 'English' ? '日本語' : 'English';
+        }
+    </script>
+</body>
+</html> 
