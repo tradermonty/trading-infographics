@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>エクセリキシス社 2025年第1四半期決算</title>
+    <link rel="icon" type="image/png" href="../images/monty.png">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Yomogi&family=Zen+Kurenaido&family=Kaisei+Decol:wght@400;700&display=swap');
+        
+        :root {
+            --fashion-1: #593C47;
+            --fashion-2: #F2E63D;
+            --fashion-3: #F2C53D;
+            --fashion-4: #F25C05;
+            --fashion-5: #F24405;
+            --text-dark: #334155;
+            --text-title: #1e40af;
+            --bg-light: #fff;
+            --shadow: rgba(0, 0, 0, 0.1);
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Kaisei Decol', serif;
+            background-color: #f8f9fa;
+            color: var(--text-dark);
+            line-height: 1.4;
+            padding: 0;
+            margin: 0;
+        }
+
+        .fixed-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: linear-gradient(135deg, var(--fashion-1), var(--fashion-5));
+            padding: 10px 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .fixed-header:hover {
+            background: linear-gradient(135deg, var(--fashion-5), var(--fashion-1));
+        }
+
+        .fixed-header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .header-logo {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .fixed-header h1 {
+            font-family: 'Zen Kurenaido', sans-serif;
+            font-size: 24px;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            background: linear-gradient(to right, white, var(--fashion-2));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin: 0;
+            pointer-events: none;
+        }
+
+        .template-main-content {
+            margin-top: 60px;
+            padding: 20px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .template-footer {
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(135deg, var(--fashion-1), var(--fashion-5));
+            color: white;
+            margin-top: 40px;
+        }
+
+        .template-footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .template-footer-logo {
+            font-family: 'Zen Kurenaido', sans-serif;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .template-footer-social {
+            display: flex;
+            gap: 15px;
+        }
+
+        .template-footer-social a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .template-footer-social a:hover {
+            color: var(--fashion-2);
+            transform: translateY(-2px);
+        }
+
+        .template-hidden {
+            display: none !important;
+            visibility: hidden;
+            opacity: 0;
+        }
+
+        .language-switch {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1001;
+            display: none;
+        }
+        
+        .language-switch button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 20px;
+            background: linear-gradient(135deg, var(--fashion-1), var(--fashion-5));
+            color: white;
+            cursor: pointer;
+            font-family: 'Yomogi', cursive;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .language-switch button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+
+        @media (max-width: 768px) {
+            .fixed-header h1 {
+                font-size: 20px;
+            }
+            
+            .template-main-content {
+                margin-top: 50px;
+                padding: 10px;
+            }
+
+            .language-switch {
+                top: 10px;
+                right: 10px;
+            }
+
+            .template-footer-content {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="language-switch">
+        <button onclick="toggleLanguage()">English</button>
+    </div>
+
+    <div class="fixed-header" onclick="window.location.href='../index.html'">
+        <div class="fixed-header-content">
+            <img src="../images/monty.png" alt="Monty Trader Logo" class="header-logo">
+            <h1 class="ja">モンティの株式トレードインフォグラフィックス集</h1>
+            <h1 class="en hidden">Monty's Stock Trading Infographics Collection</h1>
+        </div>
+    </div>
+
+    <div class="template-main-content">
+        <!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>エクセリキシス社 2025年第1四半期決算</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Yomogi&family=Zen+Kurenaido&family=Kaisei+Decol:wght@400;700&display=swap');
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'Kaisei Decol', serif;
+      background-color: #f8f9fa;
+      color: #334155;
+      line-height: 1.4;
+      padding: 20px;
+    }
+    
+    .container {
+      max-width: 100%;
+      margin: 0 auto;
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      position: relative;
+    }
+    
+    .header {
+      background: linear-gradient(to right, #593C47, #F24405);
+      padding: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 3px dashed #F2C53D;
+    }
+    
+    .title-area {
+      width: 70%;
+    }
+    
+    .date-area {
+      width: 30%;
+      text-align: right;
+      font-family: 'Zen Kurenaido', sans-serif;
+      color: white;
+      font-size: 16px;
+    }
+    
+    h1 {
+      font-family: 'Yomogi', cursive;
+      font-size: 32px;
+      font-weight: bold;
+      color: white;
+      margin-bottom: 5px;
+      background: linear-gradient(to right, #F2E63D, #F2C53D);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    }
+    
+    .subtitle {
+      font-family: 'Zen Kurenaido', sans-serif;
+      font-size: 16px;
+      color: #F2E63D;
+    }
+    
+    .content {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 20px;
+    }
+    
+    .column {
+      width: 33.33%;
+      padding: 15px;
+    }
+    
+    .section {
+      background-color: rgba(255, 255, 255, 0.9);
+      border-radius: 12px;
+      padding: 15px;
+      margin-bottom: 20px;
+      border: 2px solid;
+      border-color: #593C47;
+      position: relative;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    }
+    
+    .key-section {
+      background-color: rgba(242, 230, 61, 0.1);
+      border-color: #F25C05;
+    }
+    
+    .section-title {
+      font-family: 'Yomogi', cursive;
+      font-size: 18px;
+      color: #1e40af;
+      margin-bottom: 10px;
+      border-bottom: 2px dashed #F25C05;
+      padding-bottom: 5px;
+      display: flex;
+      align-items: center;
+    }
+    
+    .section-title .icon {
+      margin-right: 8px;
+      font-size: 20px;
+    }
+    
+    .highlight {
+      background: linear-gradient(transparent 60%, #F2C53D 40%);
+      font-weight: bold;
+      padding: 0 2px;
+    }
+    
+    .data-point {
+      margin-bottom: 10px;
+      display: flex;
+      align-items: flex-start;
+    }
+    
+    .data-point .icon {
+      margin-right: 8px;
+      min-width: 20px;
+      text-align: center;
+    }
+    
+    .data-label {
+      font-weight: bold;
+      color: #593C47;
+      margin-right: 5px;
+    }
+    
+    .data-value {
+      font-family: 'Kaisei Decol', serif;
+    }
+    
+    .big-number {
+      font-size: 22px;
+      font-weight: bold;
+      color: #F24405;
+      text-align: center;
+      margin: 10px 0;
+      font-family: 'Zen Kurenaido', sans-serif;
+    }
+    
+    .speech-bubble {
+      position: relative;
+      background: #F2E63D;
+      border-radius: 10px;
+      padding: 10px 15px;
+      margin: 15px 0;
+      font-family: 'Yomogi', cursive;
+      color: #593C47;
+    }
+    
+    .speech-bubble:after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 30px;
+      border: 10px solid transparent;
+      border-top-color: #F2E63D;
+    }
+    
+    .note {
+      background-color: rgba(242, 196, 61, 0.2);
+      border-left: 4px solid #F2C53D;
+      padding: 8px 12px;
+      margin: 10px 0;
+      font-size: 14px;
+      border-radius: 0 8px 8px 0;
+    }
+    
+    .arrow {
+      text-align: center;
+      margin: 15px 0;
+      font-size: 24px;
+      color: #F25C05;
+    }
+    
+    .banner {
+      background: linear-gradient(to right, #593C47, #F24405);
+      color: white;
+      padding: 8px 15px;
+      border-radius: 30px;
+      font-family: 'Yomogi', cursive;
+      display: inline-block;
+      margin: 10px 0;
+      transform: rotate(-1deg);
+      box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.2);
+    }
+    
+    .bullet-list {
+      margin-left: 25px;
+      margin-bottom: 15px;
+    }
+    
+    .bullet-list li {
+      margin-bottom: 5px;
+      position: relative;
+    }
+    
+    .bullet-list li::before {
+      content: "✦";
+      color: #F25C05;
+      position: absolute;
+      left: -20px;
+    }
+    
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 15px 0;
+      font-size: 14px;
+    }
+    
+    .comparison-table th {
+      background-color: #593C47;
+      color: white;
+      text-align: left;
+      padding: 8px;
+    }
+    
+    .comparison-table td {
+      border-bottom: 1px solid #ddd;
+      padding: 8px;
+    }
+    
+    .comparison-table tr:nth-child(even) {
+      background-color: rgba(242, 230, 61, 0.1);
+    }
+    
+    .footer {
+      background: linear-gradient(to right, #F25C05, #F24405);
+      color: white;
+      padding: 15px;
+      text-align: center;
+      font-family: 'Zen Kurenaido', sans-serif;
+      font-size: 14px;
+      border-top: 3px dashed #F2C53D;
+    }
+    
+    .dashed-line {
+      border-top: 2px dashed #593C47;
+      margin: 15px 0;
+    }
+    
+    .connector {
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      right: -15px;
+      top: 50%;
+      transform: translateY(-50%);
+      border-right: 3px dashed #F25C05;
+      border-top: 3px dashed #F25C05;
+    }
+    
+    @media (max-width: 768px) {
+      .column {
+        width: 100%;
+      }
+      
+      .header {
+        flex-direction: column;
+      }
+      
+      .title-area, .date-area {
+        width: 100%;
+        text-align: center;
+      }
+      
+      .date-area {
+        margin-top: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="title-area">
+        <h1>エクセリキシス社 2025年第1四半期決算</h1>
+        <div class="subtitle">売上好調で年間ガイダンス上方修正 🚀</div>
+      </div>
+      <div class="date-area">
+        2025年5月13日発表 📊
+      </div>
+    </div>
+    
+    <div class="content">
+      <!-- 会社概要 -->
+      <div style="width: 100%; padding: 0 15px 20px 15px;">
+        <div class="section" style="background-color: rgba(89, 60, 71, 0.1); border-color: #593C47;">
+          <div class="section-title">
+            <span class="icon">🏢</span>会社概要
+          </div>
+          <div style="display: flex; flex-wrap: wrap; align-items: center;">
+            <div style="flex: 1; min-width: 300px;">
+              <div class="data-point">
+                <span class="icon">🔬</span>
+                <div>
+                  <span class="data-value">エクセリキシス社（NASDAQ: EXEL）は、革新的ながん治療薬の開発と商業化に特化したグローバルなオンコロジー企業です。主力製品である<span class="highlight">CABOMETYX®（カボザンチニブ）</span>は、複数のがん種に対する承認を取得しています。</span>
+                </div>
+              </div>
+              <div class="data-point">
+                <span class="icon">🎯</span>
+                <div>
+                  <span class="data-value">創業30周年を迎え、小分子、抗体薬物複合体、その他のバイオ治療薬を含む差別化された製品パイプラインを開発中。複数フランチャイズを持つ総合的ながん治療会社を目指しています。</span>
+                </div>
+              </div>
+            </div>
+            <div style="text-align: center; margin: 0 auto; padding: 10px;">
+              <div style="font-family: 'Zen Kurenaido', sans-serif; font-size: 18px; color: #593C47; font-weight: bold; margin-bottom: 5px;">創業</div>
+              <div style="background: linear-gradient(to right, #F25C05, #F24405); color: white; border-radius: 50%; width: 80px; height: 80px; display: flex; align-items: center; justify-content: center; margin: 0 auto; font-family: 'Kaisei Decol', serif; font-size: 24px; font-weight: bold; box-shadow: 2px 2px 5px rgba(0,0,0,0.2);">30年</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 左カラム -->
+      <div class="column">
+        <div class="section key-section">
+          <div class="section-title">
+            <span class="icon">💰</span>第1四半期 決算ハイライト
+          </div>
+          <div class="big-number">総収益: $555.4百万</div>
+          <div class="speech-bubble">
+            前年同期比 $425.2百万から<span class="highlight">30.6%増加</span>！
+          </div>
+          <div class="data-point">
+            <span class="icon">📈</span>
+            <div>
+              <span class="data-label">カボザンチニブ製品売上高:</span>
+              <span class="data-value">$513.3百万</span>
+            </div>
+          </div>
+          <div class="data-point">
+            <span class="icon">📊</span>
+            <div>
+              <span class="data-label">GAAP EPS:</span>
+              <span class="data-value">$0.55</span>
+            </div>
+          </div>
+          <div class="data-point">
+            <span class="icon">💹</span>
+            <div>
+              <span class="data-label">非GAAP EPS:</span>
+              <span class="data-value">$0.62</span>
+            </div>
+          </div>
+          <div class="note">
+            <span class="icon">📝</span> 好調な需要増加により、年間予測を$100百万上方修正
+          </div>
+        </div>
+        
+        <div class="section">
+          <div class="section-title">
+            <span class="icon">🔍</span>財務詳細
+          </div>
+          <div class="data-point">
+            <span class="icon">💲</span>
+            <div>
+              <span class="data-label">製品純売上高:</span>
+              <span class="data-value">$513.3百万</span>
+              <div class="note">前年同期: $378.5百万（35.6%増）</div>
+            </div>
+          </div>
+          <div class="data-point">
+            <span class="icon">🤝</span>
+            <div>
+              <span class="data-label">提携収益:</span>
+              <span class="data-value">$42.2百万</span>
+              <div class="note">前年同期: $46.7百万（9.6%減）</div>
+            </div>
+          </div>
+          <div class="dashed-line"></div>
+          <div class="data-point">
+            <span class="icon">🧪</span>
+            <div>
+              <span class="data-label">研究開発費:</span>
+              <span class="data-value">$212.2百万</span>
+              <div class="note">前年同期: $227.7百万（6.8%減）</div>
+            </div>
+          </div>
+          <div class="data-point">
+            <span class="icon">🏢</span>
+            <div>
+              <span class="data-label">販売管理費:</span>
+              <span class="data-value">$137.2百万</span>
+              <div class="note">前年同期: $114.0百万（20.4%増）</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 中央カラム -->
+      <div class="column">
+        <div class="section">
+          <div class="section-title">
+            <span class="icon">📅</span>重要なマイルストーン
+          </div>
+          <div class="banner">CABOMETYX®の新たな承認取得！</div>
+          <div class="data-point">
+            <span class="icon">✅</span>
+            <div>
+              <span class="data-value">2025年3月、米FDAがCABOMETYX®を進行性神経内分泌腫瘍（NET）治療薬として承認</span>
+            </div>
+          </div>
+          <div class="arrow">↓</div>
+          <div class="data-point">
+            <span class="icon">🏥</span>
+            <div>
+              <span class="data-value">承認から数時間以内に市場展開を開始</span>
+            </div>
+          </div>
+          <div class="note">
+            業界初：腫瘍原発部位、グレード、ソマトスタチン受容体発現、機能状態に関わらず承認された唯一の治療薬
+          </div>
+        </div>
+        
+        <div class="section">
+          <div class="section-title">
+            <span class="icon">🔬</span>臨床開発の進捗
+          </div>
+          <div class="data-point">
+            <span class="icon">🎯</span>
+            <div>
+              <span class="data-label">ザンザリンチニブ:</span>
+              <span class="data-value">2025年後半に重要な試験結果発表予定</span>
+            </div>
+          </div>
+          <ul class="bullet-list">
+            <li>STELLAR-303試験（大腸がん）</li>
+            <li>STELLAR-304試験（非明細胞腎細胞がん）</li>
+            <li>STELLAR-305試験（頭頸部がん）</li>
+          </ul>
+          <div class="data-point">
+            <span class="icon">🔄</span>
+            <div>
+              <span class="data-label">新規試験:</span>
+              <span class="data-value">2025年上半期にSTELLAR-311（神経内分泌腫瘍）を開始予定</span>
+            </div>
+          </div>
+          <div class="note">
+            <span class="icon">🤝</span> メルク社とのパートナーシップによる腎細胞がん治療におけるザンザリンチニブとベルズチファンの試験も計画中
+          </div>
+        </div>
+      </div>
+      
+      <!-- 右カラム -->
+      <div class="column">
+        <div class="section key-section">
+          <div class="section-title">
+            <span class="icon">📋</span>2025年通期予測（上方修正）
+          </div>
+          <div class="speech-bubble">
+            総収益と製品売上高予測を$100百万上方修正！
+          </div>
+          <table class="comparison-table">
+            <tr>
+              <th>項目</th>
+              <th>現在の予測</th>
+              <th>前回予測</th>
+            </tr>
+            <tr>
+              <td>総収益</td>
+              <td>$2.25B-$2.35B</td>
+              <td>$2.15B-$2.25B</td>
+            </tr>
+            <tr>
+              <td>製品売上高</td>
+              <td>$2.05B-$2.15B</td>
+              <td>$1.95B-$2.05B</td>
+            </tr>
+            <tr>
+              <td>研究開発費</td>
+              <td>$925M-$975M</td>
+              <td>$925M-$975M</td>
+            </tr>
+            <tr>
+              <td>販売管理費</td>
+              <td>$475M-$525M</td>
+              <td>$475M-$525M</td>
+            </tr>
+            <tr>
+              <td>実効税率</td>
+              <td>21%-23%</td>
+              <td>21%-23%</td>
+            </tr>
+          </table>
+          <div class="note">
+            CABOMETYX®の需要増加とNET適応症追加による売上増加を反映
+          </div>
+        </div>
+        
+        <div class="section">
+          <div class="section-title">
+            <span class="icon">💼</span>企業戦略
+          </div>
+          <div class="data-point">
+            <span class="icon">🔑</span>
+            <div>
+              <span class="data-label">目標:</span>
+              <span class="data-value">複数フランチャイズを持つ総合的ながん治療会社へ</span>
+            </div>
+          </div>
+          <div class="data-point">
+            <span class="icon">📉</span>
+            <div>
+              <span class="data-label">自社株買い:</span>
+              <span class="data-value">2025年3月31日時点で$494.5百万実施</span>
+            </div>
+          </div>
+          <div class="note">
+            2023年3月からの自社株買いにより、加重平均希薄化後株式数が326.3百万株から288.2百万株に減少
+          </div>
+          <div class="data-point">
+            <span class="icon">🧬</span>
+            <div>
+              <span class="data-label">パイプライン拡大:</span>
+              <span class="data-value">XB628のIND申請が承認され、第1相試験を開始</span>
+            </div>
+          </div>
+          <div class="data-point">
+            <span class="icon">⏱️</span>
+            <div>
+              <span class="data-label">今後の予定:</span>
+              <span class="data-value">2025年にXB371のIND申請を予定</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer">
+      <p>出典: Exelixis, Inc. 2025年第1四半期決算発表 (2025年5月13日)</p>
+      <p>© 2025 Exelixis, Inc. CABOMETYX® and COMETRIQ® はExelixis, Inc.の登録商標です</p>
+    </div>
+  </div>
+</body>
+</html>
+
+    </div>
+
+    <footer class="template-footer">
+        <div class="template-footer-content">
+            <div class="template-footer-logo">Monty Trader</div>
+            <div class="template-footer-social">
+                <a href="https://x.com/monty_investor" target="_blank">@monty_investor</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleLanguage() {
+            const jaElements = document.querySelectorAll('.ja');
+            const enElements = document.querySelectorAll('.en');
+            const button = document.querySelector('.language-switch button');
+            
+            jaElements.forEach(el => el.classList.toggle('hidden'));
+            enElements.forEach(el => el.classList.toggle('hidden'));
+            
+            button.textContent = button.textContent === 'English' ? '日本語' : 'English';
+        }
+    </script>
+</body>
+</html> 
