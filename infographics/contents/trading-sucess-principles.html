@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>なぜほとんどの人がトレードに失敗するのか？</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Yomogi&family=Zen+Kurenaido&family=Kaisei+Decol:wght@400;700&display=swap');
+    
+    :root {
+      --fashion-1: #593C47;
+      --fashion-2: #F2E63D;
+      --fashion-3: #F2C53D;
+      --fashion-4: #F25C05;
+      --fashion-5: #F24405;
+      --gray-600: #475569;
+      --gray-700: #334155;
+      --blue-800: #1e40af;
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'Kaisei Decol', serif;
+      background-color: #f8f9fa;
+      color: var(--gray-700);
+      line-height: 1.4;
+      padding: 2rem;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23593c47' fill-opacity='0.02' fill-rule='evenodd'/%3E%3C/svg%3E");
+      position: relative;
+    }
+    
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem;
+      border-bottom: 3px solid var(--fashion-3);
+      margin-bottom: 2rem;
+      position: relative;
+    }
+    
+    .header:after {
+      content: "";
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background-image: url("data:image/svg+xml,%3Csvg width='100' height='5' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 2.5C10 0 20 5 30 2.5S50 0 60 2.5 80 5 90 2.5 100 0 100 2.5' stroke='%23F2C53D' fill='none' stroke-width='1'/%3E%3C/svg%3E");
+      background-repeat: repeat-x;
+    }
+    
+    .title {
+      font-family: 'Yomogi', cursive;
+      font-size: 32px;
+      font-weight: bold;
+      background: linear-gradient(45deg, var(--fashion-1), var(--fashion-5));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+      position: relative;
+    }
+    
+    .title::after {
+      content: "📊";
+      position: absolute;
+      right: -40px;
+      top: -5px;
+      font-size: 24px;
+    }
+    
+    .subtitle {
+      font-family: 'Zen Kurenaido', sans-serif;
+      font-size: 16px;
+      color: var(--gray-600);
+      margin-top: 0.5rem;
+    }
+    
+    .source {
+      font-size: 14px;
+      color: var(--gray-600);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+    }
+    
+    .content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+    
+    .column {
+      flex: 1;
+      min-width: 300px;
+    }
+    
+    .card {
+      background-color: rgba(255, 255, 255, 0.9);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+      position: relative;
+      backdrop-filter: blur(5px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .card::before {
+      content: "";
+      position: absolute;
+      top: -5px;
+      left: 20px;
+      width: 30px;
+      height: 30px;
+      background-image: url("data:image/svg+xml,%3Csvg width='30' height='30' viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M15 5C8.373 5 3 10.373 3 17c0 4.127 2.779 7.766 6.651 9.5 1.015 0.458 2.438 0.1 1.791-1.5C7.773 19.108 7 14 15 14c4.5 0 6 5 3 9.5C17.592 24.8 19 26 20.5 26c4.052 0 7.5-3.152 7.5-7 0-7.732-6.921-14-15-14z' fill='%23F25C05' fill-opacity='0.15'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      transform: rotate(-15deg);
+    }
+    
+    .section-title {
+      font-family: 'Zen Kurenaido', sans-serif;
+      font-size: 18px;
+      color: var(--blue-800);
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px dashed var(--fashion-2);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .section-title::before {
+      content: "✏️";
+      font-size: 18px;
+    }
+    
+    .highlight {
+      font-weight: bold;
+      background: linear-gradient(transparent 60%, var(--fashion-2) 40%);
+      padding: 0 2px;
+    }
+    
+    .key-point {
+      font-family: 'Yomogi', cursive;
+      color: var(--fashion-5);
+      font-weight: bold;
+      padding: 0.25rem 0.5rem;
+      border: 2px solid var(--fashion-5);
+      border-radius: 8px;
+      display: inline-block;
+      margin: 0.5rem 0;
+      transform: rotate(-2deg);
+    }
+    
+    .bubble {
+      position: relative;
+      background: var(--fashion-3);
+      border-radius: 10px;
+      padding: 1rem;
+      margin: 1rem 0;
+      color: var(--fashion-1);
+      font-family: 'Yomogi', cursive;
+    }
+    
+    .bubble:after {
+      content: '';
+      position: absolute;
+      left: 20px;
+      bottom: -15px;
+      border-width: 15px 15px 0;
+      border-style: solid;
+      border-color: var(--fashion-3) transparent;
+    }
+    
+    .arrow {
+      text-align: center;
+      font-size: 24px;
+      margin: 1rem 0;
+      color: var(--fashion-4);
+    }
+    
+    .hand-drawn-box {
+      border: 3px solid var(--fashion-1);
+      border-radius: 15px;
+      padding: 1rem;
+      margin: 1rem 0;
+      position: relative;
+      border-style: solid;
+      border-image-source: url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,0 C20,10 40,0 60,10 C80,20 100,10 100,0 L100,100 C80,90 60,100 40,90 C20,80 0,90 0,100 Z' fill='none' stroke='%23593C47' stroke-width='3' /%3E%3C/svg%3E");
+      border-image-slice: 20;
+      border-image-width: 3;
+      border-image-outset: 0;
+      border-image-repeat: round;
+    }
+    
+    .comparison {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      margin: 1rem 0;
+    }
+    
+    .comparison-box {
+      flex: 1;
+      padding: 1rem;
+      border-radius: 8px;
+    }
+    
+    .wrong {
+      background-color: rgba(242, 68, 5, 0.1);
+      border-left: 4px solid var(--fashion-5);
+    }
+    
+    .correct {
+      background-color: rgba(242, 196, 60, 0.1);
+      border-left: 4px solid var(--fashion-3);
+    }
+    
+    .math {
+      font-family: 'Kaisei Decol', serif;
+      text-align: center;
+      margin: 1rem 0;
+      color: var(--fashion-1);
+    }
+    
+    .footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      margin-top: 2rem;
+      border-top: 2px solid var(--fashion-2);
+      font-size: 14px;
+      color: var(--gray-600);
+    }
+    
+    .wavy-divider {
+      height: 10px;
+      background-image: url("data:image/svg+xml,%3Csvg width='100' height='10' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 5C20 0 30 10 50 5S80 0 100 5' stroke='%23F25C05' fill='none' stroke-width='1.5'/%3E%3C/svg%3E");
+      background-repeat: repeat-x;
+      margin: 2rem 0;
+    }
+    
+    .icon-row {
+      display: flex;
+      justify-content: space-around;
+      margin: 1.5rem 0;
+    }
+    
+    .icon-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 12px;
+      width: 60px;
+      text-align: center;
+    }
+    
+    .icon {
+      font-size: 24px;
+      margin-bottom: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div>
+        <h1 class="title">なぜほとんどの人がトレードに失敗するのか？</h1>
+        <p class="subtitle">成功への道 - プロトレーダーの観点から</p>
+      </div>
+      <div class="source">
+        <p>2025年5月13日</p>
+        <p>原著：Yumi @samuraipips358</p>
+      </div>
+    </div>
+    
+    <div class="content">
+      <!-- 左カラム -->
+      <div class="column">
+        <div class="card">
+          <h2 class="section-title">問題の所在</h2>
+          <p>ほとんどの人がトレードに<span class="highlight">失敗してしまう</span>。</p>
+          <p>これは<span class="highlight">偶然ではなく必然</span>であり、一定のパターンに基づいています。</p>
+          
+          <div class="bubble">
+            「どんなチャート分析方法を使っても」「エッジのあるシステムを持っていても」人々は失敗する
+          </div>
+          
+          <p>このパターンから抜け出すことが<span class="highlight">成功への鍵</span>となります。</p>
+        </div>
+        
+        <div class="card">
+          <h2 class="section-title">失敗の主な原因</h2>
+          <div class="key-point">「利益だけを考える」からです</div>
+          
+          <p>ほとんどの人はトレードを始める理由：</p>
+          <ul style="list-style: none; padding-left: 20px;">
+            <li>👉 「どれだけ稼げるか」に焦点</li>
+            <li>👉 「もっと稼ぎたい」という欲求</li>
+          </ul>
+          
+          <div class="hand-drawn-box">
+            <p><strong>問題行動のパターン：</strong></p>
+            <p>📌 「稼ぎたい金額」でポジションサイズを決定</p>
+            <p>📌 「ストップロスを設定しない」</p>
+            <p>📌 損切りを躊躇する</p>
+            <p>📌 損切りせずに「助かる」ことを祈る</p>
+          </div>
+          
+          <div class="arrow">↓</div>
+          
+          <p>稼ぎたい金額に基づいてポジションサイズを決めると、同時に<span class="highlight">その金額を失うリスク</span>も取ることになります。</p>
+          
+          <p>市場には<span class="highlight">ランダム性が満ち溢れている</span>ため、勝ち続けることは不可能です。</p>
+        </div>
+      </div>
+      
+      <!-- 中央カラム -->
+      <div class="column">
+        <div class="card">
+          <h2 class="section-title">リスク管理の真の目的</h2>
+          
+          <p>多くの人が気づく次のステップ：</p>
+          <div class="key-point">「リスク管理が最も重要」</div>
+          
+          <p>しかし、これだけでは問題の本質に至っていません。</p>
+          
+          <div class="bubble">
+            リスク管理の真の目的は「エッジのあるシステムを長期間安全に運用し、必要なサンプルサイズを構築し、エッジを引き出すこと」
+          </div>
+          
+          <p>言い換えれば：</p>
+          <p>あなたが引き受けるコストは、<span class="highlight">大きなサンプルサイズを通じてポジティブな期待値</span>を生み出し、<span class="highlight">「真に必要なコスト」として機能</span>しなければなりません。</p>
+          
+          <div class="comparison">
+            <div class="comparison-box wrong">
+              <p><strong>❌ 間違った理解</strong></p>
+              <p>「損失はコスト」という言葉を単なる慰めとして使う</p>
+            </div>
+            <div class="comparison-box correct">
+              <p><strong>✅ 正しい理解</strong></p>
+              <p>損失が「本当に必要なコスト」として機能する</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="card">
+          <h2 class="section-title">ビジネスとしてのトレード</h2>
+          
+          <p>あなたの損失が真に必要なコストになるかどうかは「そのコストで、どの程度の確率でどれだけの利益を目指すか」によります。</p>
+          
+          <div class="bubble">
+            あなたはレストランの経営者のようなもの。人件費、家賃、食材費を適切に管理しながら、それらを上回る利益を目指す
+          </div>
+          
+          <div class="icon-row">
+            <div class="icon-box">
+              <div class="icon">🍽️</div>
+              <p>レストラン</p>
+            </div>
+            <div class="icon-box">
+              <div class="icon">💰</div>
+              <p>適切なコスト</p>
+            </div>
+            <div class="icon-box">
+              <div class="icon">📈</div>
+              <p>長期的利益</p>
+            </div>
+          </div>
+          
+          <p>一日の売上があなたの成功を決めるわけではありません。</p>
+          <p>その日の客が少なくても、それはあなたの失敗を定義するものではありません。</p>
+        </div>
+      </div>
+      
+      <!-- 右カラム -->
+      <div class="column">
+        <div class="card">
+          <h2 class="section-title">トレードで必要なもの</h2>
+          
+          <div class="key-point">「小さなエッジと大きなサンプルサイズ」</div>
+          
+          <p>完璧な戦略やシステムは不要です。ランダム性に支配されたこの市場で、そのようなものを探し続けても見つかりません。</p>
+          
+          <div class="hand-drawn-box">
+            <p><strong>ポジティブな期待値の例：</strong></p>
+            <div class="math">
+              <p>ウィンレート55%でリスクリワード1:1</p>
+              <p>または</p>
+              <p>ウィンレート40%でリスクリワード1:2</p>
+            </div>
+          </div>
+          
+          <p>重要なのは、<span class="highlight">大きなサンプルサイズを通じてポジティブな期待値</span>があるかどうかです。</p>
+          
+          <p>ポジティブな期待値を持つシステムを準備したら、トレーダーの仕事はそのパフォーマンスを引き出すことです。</p>
+        </div>
+        
+        <div class="card">
+          <h2 class="section-title">確率的思考の重要性</h2>
+          
+          <p>市場の世界はランダム性に満ちています。どんな戦略も1回の結果で負ける可能性があり、最も適当なエントリーでさえ時々勝つことがあります。</p>
+          
+          <div class="bubble">
+            確率の法則を活用するには、十分なサンプルサイズが必要です
+          </div>
+          
+          <p>そして、それを収集する過程で出会う問題こそが、実はあなたの成功を妨げる本質的な問題です。</p>
+          
+          <div class="wavy-divider"></div>
+          
+          <p>トレードで出会う根本的な問題は<span class="highlight">一貫性</span>にあり、その核心は「<span class="highlight">勝ち負けに価値がある</span>という信念」です。</p>
+          
+          <p>その信念が目の前の勝ち負けに対して強い感情を呼び起こし、トレードで本当に必要なことをあなたに妨げるのです。</p>
+        </div>
+        
+        <div class="card">
+          <h2 class="section-title">トレードでの成功の本質</h2>
+          
+          <p>多くのトレーダーは目の前の勝ち負けに過剰反応し、目の前のトレードに勝つことが成功を決めると考えますが、それがいかに間違っているかを理解すべきです。</p>
+          
+          <div class="key-point">成功への道は「一貫性」と「確率的思考」</div>
+          
+          <p>トレードでの成功は、ほとんどの人が想像するものとはまったく異なります。</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer">
+      <p>出典：<a href="https://x.com/samuraipips358/status/1922260539050164275?s=61" target="_blank">Yumi @samuraipips358</a></p>
+      <div style="margin: 1rem 0; padding: 1rem; background-color: rgba(242, 196, 60, 0.1); border-radius: 8px; text-align: left;">
+        <h3 style="font-family: 'Zen Kurenaido', sans-serif; color: var(--fashion-1); margin-bottom: 0.5rem; font-size: 16px;">📚 著者の書籍：</h3>
+        <p style="margin-bottom: 0.5rem;"><strong>電子書籍：</strong> <a href="https://payhip.com/YumiSakura" target="_blank">payhip.com/YumiSakura</a></p>
+        <p style="margin-bottom: 0.5rem;"><strong>『THE PATH TO SUCCESS IN TRADING』：</strong> <a href="https://a.co/d/fXmRhIa" target="_blank">a.co/d/fXmRhIa</a></p>
+        <p><strong>『Trading Psychology』：</strong> <a href="https://a.co/d/d0QJMxK" target="_blank">a.co/d/d0QJMxK</a></p>
+      </div>
+      <p>このグラフィックレコーディングは2025年5月13日に作成されました。</p>
+    </div>
+  </div>
+</body>
+</html>
