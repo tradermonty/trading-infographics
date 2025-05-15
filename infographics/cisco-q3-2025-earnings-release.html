@@ -1,0 +1,1145 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cisco Q3 FY2025 決算報告</title>
+    <link rel="icon" type="image/png" href="../images/monty.png">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Yomogi&family=Zen+Kurenaido&family=Kaisei+Decol:wght@400;700&display=swap');
+        
+        :root {
+            --fashion-1: #593C47;
+            --fashion-2: #F2E63D;
+            --fashion-3: #F2C53D;
+            --fashion-4: #F25C05;
+            --fashion-5: #F24405;
+            --text-dark: #334155;
+            --text-title: #1e40af;
+            --bg-light: #fff;
+            --shadow: rgba(0, 0, 0, 0.1);
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Kaisei Decol', serif;
+            background-color: #f8f9fa;
+            color: var(--text-dark);
+            line-height: 1.4;
+            padding: 0;
+            margin: 0;
+        }
+
+        .fixed-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: linear-gradient(135deg, var(--fashion-1), var(--fashion-5));
+            padding: 10px 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .fixed-header:hover {
+            background: linear-gradient(135deg, var(--fashion-5), var(--fashion-1));
+        }
+
+        .fixed-header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .header-logo {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .fixed-header h1 {
+            font-family: 'Zen Kurenaido', sans-serif;
+            font-size: 24px;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            background: linear-gradient(to right, white, var(--fashion-2));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin: 0;
+            pointer-events: none;
+        }
+
+        .template-main-content {
+            margin-top: 60px;
+            padding: 20px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .template-footer {
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(135deg, var(--fashion-1), var(--fashion-5));
+            color: white;
+            margin-top: 40px;
+        }
+
+        .template-footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .template-footer-logo {
+            font-family: 'Zen Kurenaido', sans-serif;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .template-footer-social {
+            display: flex;
+            gap: 15px;
+        }
+
+        .template-footer-social a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .template-footer-social a:hover {
+            color: var(--fashion-2);
+            transform: translateY(-2px);
+        }
+
+        .template-hidden {
+            display: none !important;
+            visibility: hidden;
+            opacity: 0;
+        }
+
+        .language-switch {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1001;
+            display: none;
+        }
+        
+        .language-switch button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 20px;
+            background: linear-gradient(135deg, var(--fashion-1), var(--fashion-5));
+            color: white;
+            cursor: pointer;
+            font-family: 'Yomogi', cursive;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .language-switch button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+
+        @media (max-width: 768px) {
+            .fixed-header h1 {
+                font-size: 20px;
+            }
+            
+            .template-main-content {
+                margin-top: 50px;
+                padding: 10px;
+            }
+
+            .language-switch {
+                top: 10px;
+                right: 10px;
+            }
+
+            .template-footer-content {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="language-switch">
+        <button onclick="toggleLanguage()">English</button>
+    </div>
+
+    <div class="fixed-header" onclick="window.location.href='../index.html'">
+        <div class="fixed-header-content">
+            <img src="../images/monty.png" alt="Monty Trader Logo" class="header-logo">
+            <h1 class="ja">モンティの株式トレードインフォグラフィックス集</h1>
+            <h1 class="en hidden">Monty's Stock Trading Infographics Collection</h1>
+        </div>
+    </div>
+
+    <div class="template-main-content">
+        <!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cisco Q3 FY2025 決算報告</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Kaisei+Decol:wght@400;500;700&family=Yomogi&family=Zen+Kurenaido&display=swap');
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'Kaisei Decol', serif;
+      background-color: #f8f9fa;
+      color: #334155;
+      line-height: 1.4;
+      overflow-x: hidden;
+    }
+    
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+      position: relative;
+    }
+    
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 2rem;
+      position: relative;
+      padding-bottom: 1rem;
+    }
+    
+    .header:after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: #F25C05;
+      border-radius: 2px;
+      background-image: url("data:image/svg+xml,%3Csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='100%25' height='100%25' fill='none' stroke='%23F25C05' stroke-width='4' stroke-dasharray='6, 14' stroke-dashoffset='0' stroke-linecap='square'/%3E%3C/svg%3E");
+    }
+    
+    .title-section {
+      flex: 1;
+    }
+    
+    .date-section {
+      text-align: right;
+      font-size: 14px;
+      color: #475569;
+      font-family: 'Zen Kurenaido', sans-serif;
+    }
+    
+    h1 {
+      font-size: 32px;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+      font-family: 'Yomogi', cursive;
+      background: linear-gradient(to right, #593C47, #F24405);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline-block;
+    }
+    
+    h2 {
+      font-size: 18px;
+      color: #1e40af;
+      margin-bottom: 1rem;
+      font-family: 'Zen Kurenaido', sans-serif;
+      display: flex;
+      align-items: center;
+      border-bottom: 2px dashed #F2C53D;
+      padding-bottom: 0.5rem;
+    }
+    
+    h2:before {
+      content: "✏️";
+      margin-right: 0.5rem;
+    }
+    
+    .content {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    
+    .column {
+      flex: 1;
+      min-width: 300px;
+    }
+    
+    .card {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+      position: relative;
+      border: 1px solid rgba(89, 60, 71, 0.1);
+      backdrop-filter: blur(5px);
+    }
+    
+    .card:before {
+      content: "";
+      position: absolute;
+      top: -5px;
+      left: -5px;
+      right: -5px;
+      bottom: -5px;
+      border: 2px dashed rgba(242, 196, 61, 0.5);
+      border-radius: 15px;
+      z-index: -1;
+      pointer-events: none;
+    }
+    
+    .highlight-text {
+      font-weight: bold;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .highlight-text:after {
+      content: "";
+      position: absolute;
+      bottom: 2px;
+      left: 0;
+      width: 100%;
+      height: 6px;
+      background-color: rgba(242, 230, 61, 0.5);
+      z-index: -1;
+      border-radius: 3px;
+    }
+    
+    .key-figure {
+      font-size: 24px;
+      font-weight: bold;
+      color: #593C47;
+      margin: 0.5rem 0;
+      font-family: 'Kaisei Decol', serif;
+      display: flex;
+      align-items: center;
+    }
+    
+    .key-figure:before {
+      content: "📊";
+      margin-right: 0.5rem;
+      font-size: 20px;
+    }
+    
+    .arrow-up {
+      position: relative;
+      color: #139A43;
+      padding-left: 20px;
+    }
+    
+    .arrow-up:before {
+      content: "↑";
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    
+    .arrow-down {
+      position: relative;
+      color: #D32F2F;
+      padding-left: 20px;
+    }
+    
+    .arrow-down:before {
+      content: "↓";
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    
+    .bubble {
+      position: relative;
+      background: #fff;
+      border: 2px solid #F25C05;
+      border-radius: 15px;
+      padding: 12px;
+      margin: 1rem 0;
+      font-family: 'Yomogi', cursive;
+    }
+    
+    .bubble:after, .bubble:before {
+      content: "";
+      position: absolute;
+      bottom: -10px;
+      left: 20px;
+      border-style: solid;
+      border-width: 10px 10px 0;
+      border-color: #fff transparent;
+    }
+    
+    .bubble:before {
+      bottom: -13px;
+      border-width: 12px 12px 0;
+      border-color: #F25C05 transparent;
+    }
+    
+    .tag {
+      display: inline-block;
+      background: #F2C53D;
+      color: #593C47;
+      padding: 2px 8px;
+      border-radius: 12px;
+      font-size: 12px;
+      margin-right: 5px;
+      margin-bottom: 5px;
+      transform: rotate(-2deg);
+    }
+    
+    .tag:nth-child(even) {
+      transform: rotate(2deg);
+      background: #F25C05;
+      color: white;
+    }
+    
+    .financial-chart {
+      margin: 1rem 0;
+      position: relative;
+    }
+    
+    .chart-bar {
+      height: 30px;
+      background: linear-gradient(to right, #F2E63D, #F24405);
+      border-radius: 5px;
+      margin-bottom: 8px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      padding-left: 10px;
+      color: #593C47;
+      font-weight: bold;
+    }
+    
+    .chart-label {
+      position: absolute;
+      left: 10px;
+      color: #593C47;
+      font-weight: bold;
+      z-index: 2;
+    }
+    
+    .chart-value {
+      position: absolute;
+      right: 10px;
+      color: #593C47;
+      font-weight: bold;
+    }
+    
+    .note {
+      font-size: 12px;
+      color: #666;
+      font-style: italic;
+      margin-top: 1rem;
+    }
+    
+    .footer {
+      text-align: center;
+      margin-top: 2rem;
+      font-size: 12px;
+      color: #666;
+      border-top: 1px dashed #ccc;
+      padding-top: 1rem;
+    }
+    
+    .icon-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin: 1rem 0;
+    }
+    
+    .icon-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      width: 80px;
+    }
+    
+    .icon-item span {
+      font-size: 24px;
+      margin-bottom: 5px;
+    }
+    
+    .icon-item p {
+      font-size: 12px;
+    }
+    
+    .connection-line {
+      position: absolute;
+      z-index: -1;
+      border-top: 2px dashed #F25C05;
+    }
+    
+    .handwritten-arrow {
+      position: absolute;
+      font-size: 24px;
+      color: #F24405;
+      transform: rotate(30deg);
+    }
+    
+    .table-container {
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+    
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+    }
+    
+    th, td {
+      padding: 8px;
+      text-align: left;
+      border-bottom: 1px dashed #ccc;
+    }
+    
+    th {
+      background-color: rgba(242, 196, 61, 0.2);
+      font-weight: bold;
+    }
+    
+    tr:nth-child(even) {
+      background-color: rgba(89, 60, 71, 0.05);
+    }
+    
+    tr:hover {
+      background-color: rgba(242, 230, 61, 0.1);
+    }
+    
+    .quote {
+      font-style: italic;
+      border-left: 3px solid #F25C05;
+      padding-left: 1rem;
+      margin: 1rem 0;
+      color: #593C47;
+    }
+    
+    .callout {
+      background: rgba(242, 230, 61, 0.2);
+      border-left: 4px solid #F2C53D;
+      padding: 1rem;
+      margin: 1rem 0;
+      border-radius: 0 8px 8px 0;
+    }
+    
+    .ribbon {
+      position: absolute;
+      top: -5px;
+      right: 10px;
+      background: #F24405;
+      color: white;
+      padding: 2px 10px;
+      font-size: 12px;
+      border-radius: 0 0 5px 5px;
+      transform: rotate(3deg);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    .ribbon:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -8px;
+      width: 8px;
+      height: 5px;
+      background: #A42E00;
+      border-radius: 5px 0 0 0;
+    }
+    
+    .ai-section {
+      background: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)), 
+                  url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50 50 L80 30 L80 70 Z' fill='%23F2E63D30'/%3E%3Cpath d='M50 50 L20 30 L20 70 Z' fill='%23F25C0530'/%3E%3Cpath d='M50 50 L30 20 L70 20 Z' fill='%23593C4730'/%3E%3Cpath d='M50 50 L30 80 L70 80 Z' fill='%23F2C53D30'/%3E%3C/svg%3E");
+      padding: 1.5rem;
+      border-radius: 12px;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      border: 1px solid rgba(242, 196, 61, 0.3);
+    }
+    
+    .progress-container {
+      width: 100%;
+      height: 20px;
+      background-color: #f1f1f1;
+      border-radius: 10px;
+      margin: 10px 0;
+      overflow: hidden;
+    }
+    
+    .progress-bar {
+      height: 100%;
+      background: linear-gradient(to right, #F2E63D, #F24405);
+      border-radius: 10px;
+      position: relative;
+    }
+    
+    .progress-text {
+      position: absolute;
+      right: 5px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 12px;
+      color: #593C47;
+      font-weight: bold;
+    }
+    
+    /* モバイル対応 */
+    @media (max-width: 768px) {
+      .header {
+        flex-direction: column;
+      }
+      
+      .date-section {
+        text-align: left;
+        margin-top: 0.5rem;
+      }
+      
+      .content {
+        flex-direction: column;
+      }
+      
+      .column {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="header">
+    <div class="title-section">
+      <h1>Cisco Q3 FY2025 決算報告</h1>
+      <p>2025年度第3四半期（2025年1月～4月）の業績ハイライト</p>
+    </div>
+    <div class="date-section">
+      <p>📅 発表日: 2025年5月14日</p>
+      <p>🔍 期間: 2025年1月～4月</p>
+    </div>
+  </div>
+  
+  <div class="card" style="margin-bottom: 2rem; background: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)), url('data:image/svg+xml,%3Csvg width=\"100\" height=\"100\" viewBox=\"0 0 100 100\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cpath d=\"M20 50 L40 30 L40 70 Z\" fill=\"%23F25C0520\"%3E%3C/path%3E%3Cpath d=\"M80 50 L60 30 L60 70 Z\" fill=\"%23F25C0520\"%3E%3C/path%3E%3C/svg%3E'); border: 2px dashed #F25C05;">
+    <h2>Cisco企業概要</h2>
+    <div style="display: flex; align-items: center; margin-bottom: 1rem;">
+      <div style="flex: 0 0 80px; text-align: center;">
+        <span style="font-size: 48px; color: #F25C05;">🌐</span>
+      </div>
+      <div style="flex: 1;">
+        <p>Cisco（NASDAQ: CSCO）は、40年以上にわたり世界を安全に接続してきたグローバルテクノロジーリーダーです。AI時代において組織の接続と保護を革新する企業として、AI搭載ソリューションとサービスを通じて、顧客やパートナー、コミュニティがイノベーションを実現し、生産性を向上させ、デジタルレジリエンスを強化できるよう支援しています。革新的なネットワーキング、セキュリティ、コラボレーション、クラウドソリューションを提供し、企業、政府機関、サービスプロバイダー向けに包括的なITインフラストラクチャを構築しています。</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="content">
+    <!-- 左カラム -->
+    <div class="column">
+      <div class="card">
+        <h2>業績サマリー</h2>
+        <div class="bubble">
+          <p>「Ciscoはまた強力な四半期結果を達成し、テクノロジーへの明確な需要を示しました」</p>
+          <p style="text-align: right; margin-top: 0.5rem;">- Chuck Robbins, CEO</p>
+        </div>
+        
+        <div class="key-figure">
+          収益: <span class="highlight-text">141億ドル</span>
+          <span class="arrow-up">前年同期比11%増</span>
+        </div>
+        
+        <div class="key-figure">
+          製品受注: <span class="highlight-text">前年同期比20%増</span>
+          <span>(Splunk除く場合9%増)</span>
+        </div>
+        
+        <div class="key-figure">
+          EPS(一株当たり利益):
+        </div>
+        <ul style="list-style: none; margin-left: 2rem;">
+          <li>GAAP: <span class="highlight-text">0.62ドル</span> <span class="arrow-up">前年同期比35%増</span></li>
+          <li>非GAAP: <span class="highlight-text">0.96ドル</span> <span class="arrow-up">前年同期比9%増</span></li>
+        </ul>
+        
+        <div class="tag-container" style="margin-top: 1rem;">
+          <span class="tag">全地域で成長</span>
+          <span class="tag">全顧客市場で成長</span>
+          <span class="tag">ガイダンス上限超え</span>
+        </div>
+      </div>
+      
+      <div class="card ai-section">
+        <h2>AI分野での躍進</h2>
+        <div class="ribbon">注目分野</div>
+        
+        <div class="key-figure">
+          AIインフラ受注: <span class="highlight-text">6億ドル超</span>
+        </div>
+        <p>ウェブスケール顧客からのAIインフラ受注が6億ドルを超え、年度目標の10億ドルを1四半期前倒しで達成 📈</p>
+        
+        <h3 style="margin-top: 1rem; color: #593C47; font-size: 16px;">AI戦略イニシアチブ</h3>
+        <div class="icon-container">
+          <div class="icon-item">
+            <span>🤝</span>
+            <p>HUMAIN (サウジ)</p>
+          </div>
+          <div class="icon-item">
+            <span>🌐</span>
+            <p>AI Infrastructure Partnership</p>
+          </div>
+          <div class="icon-item">
+            <span>💻</span>
+            <p>G42 (UAE)</p>
+          </div>
+        </div>
+        
+        <div class="callout">
+          <p>🔍 AI関連受注は3四半期連続で三桁成長率を達成</p>
+        </div>
+        
+        <h3 style="margin-top: 1rem; color: #593C47; font-size: 16px;">AIの三つの柱</h3>
+        <div class="icon-container">
+          <div class="icon-item">
+            <span>🧠</span>
+            <p>AI学習インフラ</p>
+          </div>
+          <div class="icon-item">
+            <span>🔄</span>
+            <p>AI推論</p>
+          </div>
+          <div class="icon-item">
+            <span>🔌</span>
+            <p>AI接続</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="card">
+        <h2>業績ポイント＆CEOコメント</h2>
+        
+        <div class="bubble">
+          <p>「AIに関して見られるモメンタムは、私たちの安全なネットワーキングポートフォリオ、信頼できるグローバルパートナーシップ、お客様にもたらす価値によって促進されています」</p>
+          <p style="text-align: right; margin-top: 0.5rem;">- Chuck Robbins, CEO</p>
+        </div>
+        
+        <ul style="list-style: none; margin: 1rem 0;">
+          <li style="padding-left: 25px; position: relative; margin-bottom: 0.5rem;">
+            <span style="position: absolute; left: 0; top: 0;">✅</span>
+            <span class="highlight-text">Splunkとの統合</span>が進み、競合からの最大規模の案件を獲得
+          </li>
+          <li style="padding-left: 25px; position: relative; margin-bottom: 0.5rem;">
+            <span style="position: absolute; left: 0; top: 0;">✅</span>
+            NVIDIAとの<span class="highlight-text">パートナーシップ拡大</span>によるクロスポートフォリオ統合アーキテクチャ構築
+          </li>
+          <li style="padding-left: 25px; position: relative; margin-bottom: 0.5rem;">
+            <span style="position: absolute; left: 0; top: 0;">✅</span>
+            中東での<span class="highlight-text">AI基盤投資</span>と、公共・民間セクターでのAIイノベーション拡大のためのパートナーシップ
+          </li>
+          <li style="padding-left: 25px; position: relative;">
+            <span style="position: absolute; left: 0; top: 0;">✅</span>
+            <span class="highlight-text">Hypershield</span>の継続的な勢い。多くの顧客がN9300 Smart Switchとバンドル採用
+          </li>
+        </ul>
+        
+        <div class="quote">
+          <p>「Q3での堅実な実行により、ガイダンス範囲を上回る収益、マージン、EPSを達成しました。イノベーションは将来の成長に向けて私たちを良いポジションに置き、経営規律は強力なキャッシュフローを生み出し、株主への大きなリターンをもたらしています」</p>
+          <p style="text-align: right; margin-top: 0.5rem;">- Scott Herren, CFO</p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- 中央カラム -->
+    <div class="column">
+      <div class="card">
+        <h2>収益内訳（カテゴリー別）</h2>
+        
+        <div class="table-container">
+          <table>
+            <tr>
+              <th>カテゴリー</th>
+              <th>収益（百万ドル）</th>
+              <th>前年同期比</th>
+            </tr>
+            <tr>
+              <td>ネットワーキング</td>
+              <td>7,068</td>
+              <td class="arrow-up">8%</td>
+            </tr>
+            <tr>
+              <td>セキュリティ</td>
+              <td>2,013</td>
+              <td class="arrow-up">54%</td>
+            </tr>
+            <tr>
+              <td>コラボレーション</td>
+              <td>1,031</td>
+              <td class="arrow-up">4%</td>
+            </tr>
+            <tr>
+              <td>オブザーバビリティ</td>
+              <td>261</td>
+              <td class="arrow-up">24%</td>
+            </tr>
+            <tr>
+              <td>サービス</td>
+              <td>3,775</td>
+              <td class="arrow-up">3%</td>
+            </tr>
+            <tr style="font-weight: bold; background-color: rgba(242, 196, 61, 0.3);">
+              <td>Cisco合計</td>
+              <td>14,149</td>
+              <td class="arrow-up">11%</td>
+            </tr>
+          </table>
+        </div>
+        
+        <div class="financial-chart" style="margin-top: 20px; max-width: 100%;">
+          <!-- 最大値を14,149Mとした場合の比率で計算、ネットワーキングを基準に設計 -->
+          <div class="chart-bar" style="width: 100%; position: relative; height: 35px; margin-bottom: 10px;">
+            <div style="position: absolute; left: 10px; top: 50%; transform: translateY(-50%); z-index: 2; color: #593C47; font-weight: bold;">ネットワーキング</div>
+            <div style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); z-index: 2; color: #593C47; font-weight: bold;">7,068M</div>
+          </div>
+          
+          <div class="chart-bar" style="width: 28.5%; position: relative; height: 35px; margin-bottom: 10px;">
+            <div style="position: absolute; left: 10px; top: 50%; transform: translateY(-50%); z-index: 2; color: #593C47; font-weight: bold;">セキュリティ</div>
+            <div style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); z-index: 2; color: #593C47; font-weight: bold;">2,013M</div>
+          </div>
+          
+          <div style="display: flex; align-items: center; margin-bottom: 10px;">
+            <div class="chart-bar" style="width: 14.6%; min-width: 70px; position: relative; height: 35px;">
+              <div style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); z-index: 2; color: #593C47; font-weight: bold;">1,031M</div>
+            </div>
+            <div style="margin-left: 10px; font-weight: bold; color: #593C47; font-size: 14px;">コラボレーション</div>
+          </div>
+          
+          <div style="display: flex; align-items: center; margin-bottom: 10px;">
+            <div class="chart-bar" style="width: 3.7%; min-width: 70px; position: relative; height: 35px;">
+              <div style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); z-index: 2; color: #593C47; font-weight: bold;">261M</div>
+            </div>
+            <div style="margin-left: 10px; font-weight: bold; color: #593C47; font-size: 14px;">オブザーバビリティ</div>
+          </div>
+          
+          <div class="chart-bar" style="width: 53.4%; position: relative; height: 35px; margin-bottom: 10px;">
+            <div style="position: absolute; left: 10px; top: 50%; transform: translateY(-50%); z-index: 2; color: #593C47; font-weight: bold;">サービス</div>
+            <div style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); z-index: 2; color: #593C47; font-weight: bold;">3,775M</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="card">
+        <h2>地域別収益</h2>
+        
+        <div class="table-container">
+          <table>
+            <tr>
+              <th>地域</th>
+              <th>収益（百万ドル）</th>
+              <th>粗利益率</th>
+            </tr>
+            <tr>
+              <td>アメリカ</td>
+              <td>8,380</td>
+              <td>67.7%</td>
+            </tr>
+            <tr>
+              <td>EMEA (欧州・中東・アフリカ)</td>
+              <td>3,736</td>
+              <td>71.2%</td>
+            </tr>
+            <tr>
+              <td>APJC (アジア太平洋・日本・中国)</td>
+              <td>2,034</td>
+              <td>67.2%</td>
+            </tr>
+            <tr style="font-weight: bold; background-color: rgba(242, 196, 61, 0.3);">
+              <td>合計</td>
+              <td>14,149</td>
+              <td>68.6%</td>
+            </tr>
+          </table>
+        </div>
+        
+        <div class="financial-chart">
+          <div class="chart-bar" style="width: 90%; position: relative; height: 35px;">
+            <div style="position: absolute; left: 10px; top: 50%; transform: translateY(-50%); z-index: 2; color: #593C47; font-weight: bold;">アメリカ</div>
+            <div style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); z-index: 2; color: #593C47; font-weight: bold;">8,380M</div>
+          </div>
+          <div class="chart-bar" style="width: 45%; position: relative; height: 35px;">
+            <div style="position: absolute; left: 10px; top: 50%; transform: translateY(-50%); z-index: 2; color: #593C47; font-weight: bold;">EMEA</div>
+            <div style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); z-index: 2; color: #593C47; font-weight: bold;">3,736M</div>
+          </div>
+          <div class="chart-bar" style="width: 25%; position: relative; height: 35px;">
+            <div style="position: absolute; left: 10px; top: 50%; transform: translateY(-50%); z-index: 2; color: #593C47; font-weight: bold;">APJC</div>
+            <div style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); z-index: 2; color: #593C47; font-weight: bold;">2,034M</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="card">
+        <h2>収益性指標</h2>
+        
+        <div class="table-container">
+          <table>
+            <tr>
+              <th>指標</th>
+              <th>GAAP</th>
+              <th>非GAAP</th>
+            </tr>
+            <tr>
+              <td>粗利益率</td>
+              <td>65.6%</td>
+              <td>68.6%</td>
+            </tr>
+            <tr>
+              <td>製品粗利益率</td>
+              <td>64.4%</td>
+              <td>67.6%</td>
+            </tr>
+            <tr>
+              <td>サービス粗利益率</td>
+              <td>68.7%</td>
+              <td>71.3%</td>
+            </tr>
+            <tr>
+              <td>営業費用</td>
+              <td>60.8億ドル</td>
+              <td>48.2億ドル</td>
+            </tr>
+            <tr>
+              <td>営業利益率</td>
+              <td>22.6%</td>
+              <td>34.5%</td>
+            </tr>
+            <tr>
+              <td>税率</td>
+              <td>15.5%</td>
+              <td>17.5%</td>
+            </tr>
+          </table>
+        </div>
+        
+        <div class="callout">
+          <p>📝 営業利益率が34.5%（非GAAP）と高水準を維持</p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- 右カラム -->
+    <div class="column">
+      <div class="card">
+        <h2>製品受注状況</h2>
+        
+        <div class="table-container">
+          <table>
+            <tr>
+              <th>項目</th>
+              <th>前年同期比</th>
+              <th>Splunk除く</th>
+            </tr>
+            <tr style="font-weight: bold; background-color: rgba(242, 196, 61, 0.3);">
+              <td>製品受注合計</td>
+              <td class="arrow-up">20%</td>
+              <td class="arrow-up">9%</td>
+            </tr>
+            <tr>
+              <td colspan="3" style="background-color: #f1f1f1;">地域セグメント</td>
+            </tr>
+            <tr>
+              <td>アメリカ</td>
+              <td class="arrow-up">27%</td>
+              <td class="arrow-up">12%</td>
+            </tr>
+            <tr>
+              <td>EMEA</td>
+              <td class="arrow-up">4%</td>
+              <td class="arrow-up">1%</td>
+            </tr>
+            <tr>
+              <td>APJC</td>
+              <td class="arrow-up">21%</td>
+              <td class="arrow-up">10%</td>
+            </tr>
+            <tr>
+              <td colspan="3" style="background-color: #f1f1f1;">顧客市場</td>
+            </tr>
+            <tr>
+              <td>エンタープライズ</td>
+              <td class="arrow-up">22%</td>
+              <td class="arrow-up">6%</td>
+            </tr>
+            <tr>
+              <td>公共セクター</td>
+              <td class="arrow-up">8%</td>
+              <td class="arrow-up">3%</td>
+            </tr>
+            <tr>
+              <td>サービスプロバイダー＆クラウド</td>
+              <td class="arrow-up">32%</td>
+              <td class="arrow-up">27%</td>
+            </tr>
+          </table>
+        </div>
+        
+        <div class="callout">
+          <p>🔍 サービスプロバイダー＆クラウド分野が最も高成長（Splunk除いても27%成長）</p>
+        </div>
+      </div>
+      
+      <div class="card">
+        <h2>財務ハイライト</h2>
+        
+        <div class="key-figure">
+          ソフトウェア収益: <span class="highlight-text">56.2億ドル</span>
+          <span class="arrow-up">前年同期比25%増</span>
+        </div>
+        
+        <div class="key-figure">
+          サブスクリプション収益比率: <span class="highlight-text">56%</span>
+        </div>
+        
+        <div class="key-figure">
+          ARR (年間定期収益): <span class="highlight-text">306億ドル</span>
+          <span class="arrow-up">前年同期比5%増</span>
+        </div>
+        
+        <div class="financial-chart" style="margin-top: 1.5rem;">
+          <p style="margin-bottom: 0.5rem; font-weight: bold;">ARR推移（単位：10億ドル）</p>
+          <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+            <div style="flex: 1; text-align: center;">Q3 FY 2024</div>
+            <div style="flex: 1; text-align: center;">Q2 FY 2025</div>
+            <div style="flex: 1; text-align: center;">Q3 FY 2025</div>
+          </div>
+          <div style="display: flex; height: 150px; gap: 20px;">
+            <div style="flex: 1; display: flex; flex-direction: column; align-items: center;">
+              <div style="height: 40%; background-color: #F2E63D; width: 70px; border-radius: 5px 5px 0 0; display: flex; justify-content: center; align-items: center; color: #593C47; font-weight: bold; position: relative;">
+                <span>15.5B</span>
+                <span style="position: absolute; top: -20px; font-size: 11px; color: #593C47;">製品</span>
+              </div>
+              <div style="height: 60%; background-color: #F25C05; width: 70px; border-radius: 0 0 5px 5px; display: flex; justify-content: center; align-items: center; color: white; font-weight: bold; position: relative;">
+                <span>13.7B</span>
+                <span style="position: absolute; bottom: -20px; font-size: 11px; color: #593C47;">サービス</span>
+              </div>
+              <div style="margin-top: 25px; font-size: 12px;">合計: 29.2B</div>
+            </div>
+            <div style="flex: 1; display: flex; flex-direction: column; align-items: center;">
+              <div style="height: 43%; background-color: #F2E63D; width: 70px; border-radius: 5px 5px 0 0; display: flex; justify-content: center; align-items: center; color: #593C47; font-weight: bold;">
+                <span>16.3B</span>
+              </div>
+              <div style="height: 57%; background-color: #F25C05; width: 70px; border-radius: 0 0 5px 5px; display: flex; justify-content: center; align-items: center; color: white; font-weight: bold;">
+                <span>13.7B</span>
+              </div>
+              <div style="margin-top: 25px; font-size: 12px;">合計: 30.1B</div>
+            </div>
+            <div style="flex: 1; display: flex; flex-direction: column; align-items: center;">
+              <div style="height: 44%; background-color: #F2E63D; width: 70px; border-radius: 5px 5px 0 0; display: flex; justify-content: center; align-items: center; color: #593C47; font-weight: bold;">
+                <span>16.8B</span>
+              </div>
+              <div style="height: 56%; background-color: #F25C05; width: 70px; border-radius: 0 0 5px 5px; display: flex; justify-content: center; align-items: center; color: white; font-weight: bold;">
+                <span>13.9B</span>
+              </div>
+              <div style="margin-top: 25px; font-size: 12px;">合計: 30.6B</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="key-figure">
+          RPO (残存履行義務): <span class="highlight-text">417億ドル</span>
+          <span class="arrow-up">前年同期比7%増</span>
+        </div>
+        
+        <div class="callout">
+          <p>💰 株主還元: 四半期で31億ドル (配当16.3億ドル + 自社株買い15億ドル)</p>
+        </div>
+      </div>
+      
+      <div class="card">
+        <h2>将来の見通し (FY2025 Q4)</h2>
+        
+        <div class="key-figure">
+          収益予想: <span class="highlight-text">145億～147億ドル</span>
+        </div>
+        
+        <div class="key-figure">
+          非GAAP EPS予想: <span class="highlight-text">0.96～0.98ドル</span>
+        </div>
+        
+        <div class="key-figure">
+          非GAAP粗利益率予想: <span class="highlight-text">67.5%～68.5%</span>
+        </div>
+        
+        <div class="key-figure">
+          非GAAP営業利益率予想: <span class="highlight-text">33.5%～34.5%</span>
+        </div>
+        
+        <div class="note">※ 予測値には現在の貿易政策に基づく関税の影響を含む</div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="footer">
+    <p>© 2025 Cisco and/or its affiliates. All rights reserved. Cisco Confidential</p>
+    <p>出典: Cisco Q3 FY2025 Conference Call (2025年5月14日)</p>
+  </div>
+</div>
+
+</body>
+</html>
+    </div>
+
+    <footer class="template-footer">
+        <div class="template-footer-content">
+            <div class="template-footer-logo">Monty Trader</div>
+            <div class="template-footer-social">
+                <a href="https://x.com/monty_investor" target="_blank">@monty_investor</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleLanguage() {
+            const jaElements = document.querySelectorAll('.ja');
+            const enElements = document.querySelectorAll('.en');
+            const button = document.querySelector('.language-switch button');
+            
+            jaElements.forEach(el => el.classList.toggle('hidden'));
+            enElements.forEach(el => el.classList.toggle('hidden'));
+            
+            button.textContent = button.textContent === 'English' ? '日本語' : 'English';
+        }
+    </script>
+</body>
+</html> 
