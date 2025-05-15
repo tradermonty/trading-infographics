@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>トレーダーの感情理解</title>
+    <link rel="icon" type="image/png" href="../images/monty.png">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Yomogi&family=Zen+Kurenaido&family=Kaisei+Decol:wght@400;700&display=swap');
+        
+        :root {
+            --fashion-1: #593C47;
+            --fashion-2: #F2E63D;
+            --fashion-3: #F2C53D;
+            --fashion-4: #F25C05;
+            --fashion-5: #F24405;
+            --text-dark: #334155;
+            --text-title: #1e40af;
+            --bg-light: #fff;
+            --shadow: rgba(0, 0, 0, 0.1);
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Kaisei Decol', serif;
+            background-color: #f8f9fa;
+            color: var(--text-dark);
+            line-height: 1.4;
+            padding: 0;
+            margin: 0;
+        }
+
+        .fixed-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: linear-gradient(135deg, var(--fashion-1), var(--fashion-5));
+            padding: 10px 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .fixed-header:hover {
+            background: linear-gradient(135deg, var(--fashion-5), var(--fashion-1));
+        }
+
+        .fixed-header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .header-logo {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .fixed-header h1 {
+            font-family: 'Zen Kurenaido', sans-serif;
+            font-size: 24px;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            background: linear-gradient(to right, white, var(--fashion-2));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin: 0;
+            pointer-events: none;
+        }
+
+        .template-main-content {
+            margin-top: 60px;
+            padding: 20px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .template-footer {
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(135deg, var(--fashion-1), var(--fashion-5));
+            color: white;
+            margin-top: 40px;
+        }
+
+        .template-footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .template-footer-logo {
+            font-family: 'Zen Kurenaido', sans-serif;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .template-footer-social {
+            display: flex;
+            gap: 15px;
+        }
+
+        .template-footer-social a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .template-footer-social a:hover {
+            color: var(--fashion-2);
+            transform: translateY(-2px);
+        }
+
+        .template-hidden {
+            display: none !important;
+            visibility: hidden;
+            opacity: 0;
+        }
+
+        .language-switch {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1001;
+            display: none;
+        }
+        
+        .language-switch button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 20px;
+            background: linear-gradient(135deg, var(--fashion-1), var(--fashion-5));
+            color: white;
+            cursor: pointer;
+            font-family: 'Yomogi', cursive;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .language-switch button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+
+        @media (max-width: 768px) {
+            .fixed-header h1 {
+                font-size: 20px;
+            }
+            
+            .template-main-content {
+                margin-top: 50px;
+                padding: 10px;
+            }
+
+            .language-switch {
+                top: 10px;
+                right: 10px;
+            }
+
+            .template-footer-content {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="language-switch">
+        <button onclick="toggleLanguage()">English</button>
+    </div>
+
+    <div class="fixed-header" onclick="window.location.href='../index.html'">
+        <div class="fixed-header-content">
+            <img src="../images/monty.png" alt="Monty Trader Logo" class="header-logo">
+            <h1 class="ja">モンティの株式トレードインフォグラフィックス集</h1>
+            <h1 class="en hidden">Monty's Stock Trading Infographics Collection</h1>
+        </div>
+    </div>
+
+    <div class="template-main-content">
+        <!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>トレーダーの感情理解：優れたトレーダーは感情がないのではなく、価値観が異なる</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Yomogi&family=Zen+Kurenaido&family=Kaisei+Decol:wght@400;700&display=swap');
+    
+    :root {
+      --fashion-1: #593C47;
+      --fashion-2: #F2E63D;
+      --fashion-3: #F2C53D;
+      --fashion-4: #F25C05;
+      --fashion-5: #F24405;
+      --text-primary: #334155;
+      --text-secondary: #475569;
+      --heading-color: #1e40af;
+      --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      --radius: 12px;
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'Kaisei Decol', serif;
+      background-color: #F8F9FA;
+      color: var(--text-primary);
+      line-height: 1.4;
+      padding: 20px;
+    }
+    
+    .container {
+      max-width: 100%;
+      margin: 0 auto;
+      background-color: white;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 30px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .container::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23593C47' fill-opacity='0.03' fill-rule='evenodd'/%3E%3C/svg%3E");
+      z-index: 0;
+    }
+    
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .title {
+      font-family: 'Zen Kurenaido', sans-serif;
+      font-size: 32px;
+      font-weight: bold;
+      background: linear-gradient(90deg, var(--fashion-1), var(--fashion-4));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+      position: relative;
+      display: inline-block;
+    }
+    
+    .title::after {
+      content: "";
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, var(--fashion-3), var(--fashion-5));
+      border-radius: 3px;
+    }
+    
+    .meta {
+      font-size: 14px;
+      color: var(--text-secondary);
+      text-align: right;
+    }
+    
+    .meta a {
+      color: var(--fashion-4);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    
+    .meta a:hover {
+      color: var(--fashion-5);
+      text-decoration: underline;
+    }
+    
+    .content {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .column {
+      flex: 1 1 30%;
+      min-width: 300px;
+    }
+    
+    .card {
+      background-color: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(10px);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 20px;
+      margin-bottom: 20px;
+      border: 2px solid transparent;
+      border-image: linear-gradient(45deg, var(--fashion-2), var(--fashion-4)) 1;
+      position: relative;
+    }
+    
+    .section-title {
+      font-family: 'Yomogi', cursive;
+      font-size: 18px;
+      color: var(--heading-color);
+      margin-bottom: 15px;
+      position: relative;
+      padding-left: 28px;
+      display: flex;
+      align-items: center;
+    }
+    
+    .section-title::before {
+      content: "✏️";
+      position: absolute;
+      left: 0;
+      font-size: 20px;
+    }
+    
+    .subtitle {
+      font-size: 16px;
+      color: var(--text-secondary);
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+    
+    .text {
+      font-size: 14px;
+      color: var(--text-primary);
+      margin-bottom: 15px;
+      position: relative;
+    }
+    
+    .highlight {
+      background: linear-gradient(transparent 60%, var(--fashion-2) 60%);
+      font-weight: bold;
+    }
+    
+    .callout {
+      background-color: rgba(242, 230, 61, 0.2);
+      border-left: 4px solid var(--fashion-3);
+      padding: 10px 15px;
+      margin: 15px 0;
+      border-radius: 0 var(--radius) var(--radius) 0;
+    }
+    
+    .arrow {
+      position: relative;
+      margin: 20px 0;
+      text-align: center;
+    }
+    
+    .arrow::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 30%;
+      right: 30%;
+      height: 2px;
+      background: var(--fashion-4);
+      transform: translateY(-50%);
+    }
+    
+    .arrow::after {
+      content: "▼";
+      position: relative;
+      color: var(--fashion-4);
+      background-color: white;
+      padding: 0 10px;
+      z-index: 1;
+    }
+    
+    .bubble {
+      position: relative;
+      background: rgba(89, 60, 71, 0.1);
+      border-radius: 15px;
+      padding: 15px;
+      margin: 15px 0;
+    }
+    
+    .bubble::after {
+      content: "";
+      position: absolute;
+      bottom: -10px;
+      left: 20px;
+      border-width: 10px 10px 0;
+      border-style: solid;
+      border-color: rgba(89, 60, 71, 0.1) transparent;
+    }
+    
+    .versus {
+      display: flex;
+      justify-content: space-between;
+      margin: 20px 0;
+    }
+    
+    .versus-item {
+      flex: 1;
+      padding: 15px;
+      position: relative;
+      border-radius: var(--radius);
+    }
+    
+    .versus-item:first-child {
+      background-color: rgba(242, 68, 5, 0.1);
+      margin-right: 10px;
+    }
+    
+    .versus-item:last-child {
+      background-color: rgba(242, 196, 61, 0.1);
+      margin-left: 10px;
+    }
+    
+    .versus-title {
+      font-weight: bold;
+      margin-bottom: 10px;
+      text-align: center;
+      font-family: 'Yomogi', cursive;
+      color: var(--heading-color);
+    }
+    
+    .icon {
+      font-size: 24px;
+      margin-right: 5px;
+      vertical-align: middle;
+    }
+    
+    .connection {
+      position: relative;
+      height: 40px;
+      margin: 0 -20px;
+    }
+    
+    .connection::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: repeating-linear-gradient(90deg, var(--fashion-4), var(--fashion-4) 5px, transparent 5px, transparent 10px);
+      transform: translateY(-50%);
+    }
+    
+    .handdrawn-box {
+      border: 2px solid var(--fashion-1);
+      border-radius: var(--radius);
+      padding: 15px;
+      position: relative;
+      margin: 20px 0;
+    }
+    
+    .handdrawn-box::before {
+      content: "";
+      position: absolute;
+      top: -10px;
+      left: 20px;
+      background-color: white;
+      padding: 0 10px;
+      font-family: 'Yomogi', cursive;
+      color: var(--fashion-1);
+      font-weight: bold;
+    }
+    
+    .tag {
+      display: inline-block;
+      background-color: var(--fashion-3);
+      color: white;
+      padding: 2px 8px;
+      border-radius: 20px;
+      font-size: 12px;
+      margin-right: 5px;
+      margin-bottom: 5px;
+    }
+    
+    .step {
+      counter-increment: step-counter;
+      position: relative;
+      padding-left: 40px;
+      margin-bottom: 15px;
+    }
+    
+    .step::before {
+      content: counter(step-counter);
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 30px;
+      height: 30px;
+      background-color: var(--fashion-1);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+    }
+    
+    .footer {
+      margin-top: 30px;
+      padding-top: 15px;
+      border-top: 1px dashed var(--fashion-1);
+      font-size: 12px;
+      color: var(--text-secondary);
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .footer a {
+      color: var(--fashion-4);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    
+    .footer a:hover {
+      color: var(--fashion-5);
+      text-decoration: underline;
+    }
+    
+    @media (max-width: 768px) {
+      .column {
+        flex: 1 1 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1 class="title">トレーダーの感情理解</h1>
+      <div class="meta">
+        出典: <a href="https://x.com/samuraipips358/status/1922985707510882740?s=61" target="_blank">Yumi @samuraipips358</a><br>
+        2024年5月15日
+      </div>
+    </div>
+    
+    <div class="content">
+      <div class="column">
+        <div class="card">
+          <h2 class="section-title">誤解：優れたトレーダーには感情がない？</h2>
+          <div class="bubble">
+            <p class="text">"<span class="highlight">優れたトレーダーには感情がない</span>"という考えは<span class="highlight">間違い</span>です。</p>
+          </div>
+          <p class="text">実際には「感情がないわけではなく、<span class="highlight">価値を置く点が異なる</span>」のです。</p>
+          
+          <div class="versus">
+            <div class="versus-item">
+              <h3 class="versus-title">未熟なトレーダー 😟</h3>
+              <p class="text">勝ち負けに大きな価値を置く</p>
+              <p class="text">→ 目の前の結果に感情が左右される</p>
+            </div>
+            <div class="versus-item">
+              <h3 class="versus-title">優れたトレーダー 😌</h3>
+              <p class="text">プロセスの実行に価値を置く</p>
+              <p class="text">→ ルールを守れたかに感情が向く</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="card">
+          <h2 class="section-title">優れたトレーダーの本質</h2>
+          <p class="text">優れたトレーダーは、<span class="highlight">目の前の1回の損失を悪いことだとは考えません</span>。</p>
+          <div class="callout">
+            <p>ルールに従って損切りするからこそ、最終的に利益が残ると<span class="highlight">論理的に理解</span>しています。</p>
+          </div>
+          <div class="connection"></div>
+          <p class="text">彼らが<span class="highlight">強い嫌悪感</span>を抱くのは...</p>
+          <ul style="list-style-type: none; padding-left: 20px;">
+            <li>✅ ルールを破ること</li>
+            <li>✅ プロセスを忠実に実行できないこと</li>
+          </ul>
+          <div class="arrow"></div>
+          <p class="text">感情自体がなくなったわけではなく、<span class="highlight">価値を置く対象が変わった</span>ために現れる感情が変化したのです。</p>
+        </div>
+      </div>
+      
+      <div class="column">
+        <div class="card">
+          <h2 class="section-title">感情コントロールの誤解</h2>
+          <div class="handdrawn-box">
+            <p class="text">未熟なトレーダーは...</p>
+            <p class="text">✓ 優れたトレーダーは「<span class="highlight">感情を排除した</span>」と考える</p>
+            <p class="text">✓ 瞑想や感情コントロール技術を学ぶ</p>
+            <p class="text">✓ これが<span class="highlight">根本的な解決策ではない</span>と理解していない</p>
+          </div>
+          
+          <div class="bubble">
+            <p class="text">トレードを破壊する強い感情が現れる理由：</p>
+          </div>
+          <p class="text">❌ 感情コントロール能力の欠如</p>
+          <p class="text">⭕ <span class="highlight">トレードの本質を理解していない</span></p>
+          <p class="text">⭕ 必要な準備ができていない</p>
+          <p class="text">⭕ 無謀なポジションサイズ</p>
+          <p class="text">⭕ 目の前のトレードで勝とうとしている</p>
+        </div>
+        
+        <div class="card">
+          <h2 class="section-title">必要な準備と理解</h2>
+          <p class="text"><span class="highlight">「トレードとは何か」を真に理解すること</span>が必要です。</p>
+          <div class="step">
+            <p class="text">確率的思考を学ぶ</p>
+          </div>
+          <div class="step">
+            <p class="text">それをトレードに応用する方法を学ぶ</p>
+          </div>
+          <div class="step">
+            <p class="text">必要な準備が何かを学び実践する</p>
+          </div>
+          <div class="step">
+            <p class="text">必要な行動と一貫性を理解する</p>
+          </div>
+          <div class="callout">
+            <p class="subtitle">「必要な準備」とは？</p>
+            <p class="text">トレード前の狭い意味での準備ではなく、<span class="highlight">「トレーダーとしての資質を育てる」</span>ための広範な準備を指します。</p>
+          </div>
+          <p class="text">例えば：</p>
+          <div class="tag">確率的思考の適用</div>
+          <div class="tag">戦略のエッジを大サンプルで検証</div>
+          <div class="tag">大数の法則の実践</div>
+        </div>
+      </div>
+      
+      <div class="column">
+        <div class="card">
+          <h2 class="section-title">トレーダーの感情の正しい在り方</h2>
+          <p class="text"><span class="highlight">トレードを誤解している限り</span>、その誤解に適した感情が現れ続けます。</p>
+          <div class="arrow"></div>
+          <p class="text">これは感情コントロールだけで克服できる問題ではありません。</p>
+          <p class="text">長年続けているだけで感情がいつか消えるわけでもありません。</p>
+          
+          <div class="bubble">
+            <p class="text"><span class="highlight">トレードを真に理解すると...</span></p>
+          </div>
+          <p class="text">✅ 必要な行動を通じて感情が変化</p>
+          <p class="text">✅ 理解に適した感情になる</p>
+          <p class="text">✅ 目の前の1トレードに不安や恐怖を感じなくなる</p>
+          <p class="text">✅ <span class="highlight">強い嫌悪感によって</span>ルールを破れなくなる</p>
+          
+          <div class="callout">
+            <p class="text">これが<span class="highlight">感情の正しい現れ方</span>です。</p>
+          </div>
+        </div>
+        
+        <div class="card">
+          <h2 class="section-title">トレーダーの成長プロセス</h2>
+          <div class="handdrawn-box">
+            <p class="subtitle">誤解からの脱却</p>
+            <p class="text">❌ 「感情を排除する」という間違った目標</p>
+            <p class="text">⭕ <span class="highlight">「価値を置く対象を変える」</span>という正しい方向性</p>
+          </div>
+          <div class="connection"></div>
+          <div class="handdrawn-box">
+            <p class="subtitle">真の理解へ</p>
+            <p class="text">✅ 確率的思考</p>
+            <p class="text">✅ 大数の法則の実践</p>
+            <p class="text">✅ <span class="highlight">プロセス重視の姿勢</span></p>
+          </div>
+          <div class="connection"></div>
+          <div class="handdrawn-box">
+            <p class="subtitle">感情の変化</p>
+            <p class="text">✅ 感情そのものは消えない</p>
+            <p class="text">✅ <span class="highlight">価値観の変化により感情の現れ方が変わる</span></p>
+            <p class="text">✅ ルールを守ることに価値を見出す</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer">
+      <p>出典: <a href="https://x.com/samuraipips358/status/1922985707510882740?s=61" target="_blank">Yumi @samuraipips358</a> | 電子書籍: <a href="https://payhip.com/YumiSakura" target="_blank">payhip.com/YumiSakura</a> | 書籍: <a href="https://a.co/d/fXmRhIa" target="_blank">『THE PATH TO SUCCESS IN TRADING』</a> <a href="https://a.co/d/d0QJMxK" target="_blank">『Trading Psychology』</a></p>
+    </div>
+  </div>
+</body>
+</html>
+    </div>
+
+    <footer class="template-footer">
+        <div class="template-footer-content">
+            <div class="template-footer-logo">Monty Trader</div>
+            <div class="template-footer-social">
+                <a href="https://x.com/monty_investor" target="_blank">@monty_investor</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleLanguage() {
+            const jaElements = document.querySelectorAll('.ja');
+            const enElements = document.querySelectorAll('.en');
+            const button = document.querySelector('.language-switch button');
+            
+            jaElements.forEach(el => el.classList.toggle('hidden'));
+            enElements.forEach(el => el.classList.toggle('hidden'));
+            
+            button.textContent = button.textContent === 'English' ? '日本語' : 'English';
+        }
+    </script>
+</body>
+</html> 
