@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><span class="title-icon">🔬</span>Quantum Computing Inc.<br>2025年第1四半期決算</title>
+    <link rel="icon" type="image/png" href="../images/monty.png">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Yomogi&family=Zen+Kurenaido&family=Kaisei+Decol:wght@400;700&display=swap');
+        
+        :root {
+            --fashion-1: #593C47;
+            --fashion-2: #F2E63D;
+            --fashion-3: #F2C53D;
+            --fashion-4: #F25C05;
+            --fashion-5: #F24405;
+            --text-dark: #334155;
+            --text-title: #1e40af;
+            --bg-light: #fff;
+            --shadow: rgba(0, 0, 0, 0.1);
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Kaisei Decol', serif;
+            background-color: #f8f9fa;
+            color: var(--text-dark);
+            line-height: 1.4;
+            padding: 0;
+            margin: 0;
+        }
+
+        .fixed-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: linear-gradient(135deg, var(--fashion-1), var(--fashion-5));
+            padding: 10px 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .fixed-header:hover {
+            background: linear-gradient(135deg, var(--fashion-5), var(--fashion-1));
+        }
+
+        .fixed-header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .header-logo {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .fixed-header h1 {
+            font-family: 'Zen Kurenaido', sans-serif;
+            font-size: 24px;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            background: linear-gradient(to right, white, var(--fashion-2));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin: 0;
+            pointer-events: none;
+        }
+
+        .template-main-content {
+            margin-top: 60px;
+            padding: 20px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .template-footer {
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(135deg, var(--fashion-1), var(--fashion-5));
+            color: white;
+            margin-top: 40px;
+        }
+
+        .template-footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .template-footer-logo {
+            font-family: 'Zen Kurenaido', sans-serif;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .template-footer-social {
+            display: flex;
+            gap: 15px;
+        }
+
+        .template-footer-social a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .template-footer-social a:hover {
+            color: var(--fashion-2);
+            transform: translateY(-2px);
+        }
+
+        .template-hidden {
+            display: none !important;
+            visibility: hidden;
+            opacity: 0;
+        }
+
+        .language-switch {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1001;
+            display: none;
+        }
+        
+        .language-switch button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 20px;
+            background: linear-gradient(135deg, var(--fashion-1), var(--fashion-5));
+            color: white;
+            cursor: pointer;
+            font-family: 'Yomogi', cursive;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .language-switch button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+
+        @media (max-width: 768px) {
+            .fixed-header h1 {
+                font-size: 20px;
+            }
+            
+            .template-main-content {
+                margin-top: 50px;
+                padding: 10px;
+            }
+
+            .language-switch {
+                top: 10px;
+                right: 10px;
+            }
+
+            .template-footer-content {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="language-switch">
+        <button onclick="toggleLanguage()">English</button>
+    </div>
+
+    <div class="fixed-header" onclick="window.location.href='../index.html'">
+        <div class="fixed-header-content">
+            <img src="../images/monty.png" alt="Monty Trader Logo" class="header-logo">
+            <h1 class="ja">モンティの株式トレードインフォグラフィックス集</h1>
+            <h1 class="en hidden">Monty's Stock Trading Infographics Collection</h1>
+        </div>
+    </div>
+
+    <div class="template-main-content">
+        <!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quantum Computing Inc. 2025年第1四半期決算 グラフィックレコード</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Yomogi&family=Zen+Kurenaido&family=Kaisei+Decol:wght@400;700&display=swap');
+        
+        :root {
+            --fashion-1: #593C47;
+            --fashion-2: #F2E63D;
+            --fashion-3: #F2C53D;
+            --fashion-4: #F25C05;
+            --fashion-5: #F24405;
+            --text-dark: #334155;
+            --text-title: #1e40af;
+            --text-subtitle: #475569;
+            --bg-light: #ffffff;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Kaisei Decol', serif;
+            line-height: 1.4;
+            color: var(--text-dark);
+            background-color: #f8f9fa;
+            padding: 20px;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: var(--bg-light);
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .header {
+            padding: 20px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 3px solid var(--fashion-3);
+            background-color: #fcfcfc;
+            position: relative;
+        }
+        
+        .header:after {
+            content: "";
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: repeating-linear-gradient(45deg, var(--fashion-3), var(--fashion-3) 10px, transparent 10px, transparent 20px);
+            opacity: 0.5;
+        }
+        
+        .title {
+            font-family: 'Yomogi', cursive;
+            font-size: 32px;
+            font-weight: bold;
+            background: linear-gradient(45deg, var(--fashion-1), var(--fashion-5));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+        }
+        
+        .title-icon {
+            margin-right: 10px;
+            font-size: 36px;
+        }
+        
+        .date-source {
+            font-family: 'Zen Kurenaido', sans-serif;
+            font-size: 14px;
+            color: var(--text-subtitle);
+            text-align: right;
+        }
+        
+        .main-content {
+            display: flex;
+            padding: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .column {
+            width: 33.33%;
+            padding: 0 15px;
+        }
+        
+        .card {
+            background-color: var(--bg-light);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--fashion-2), var(--fashion-4));
+        }
+        
+        .glass-card {
+            backdrop-filter: blur(10px);
+            background-color: rgba(255, 255, 255, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .section-title {
+            font-family: 'Zen Kurenaido', sans-serif;
+            font-size: 18px;
+            color: var(--text-title);
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px dashed var(--fashion-3);
+            display: flex;
+            align-items: center;
+        }
+        
+        .section-title i {
+            margin-right: 8px;
+            color: var(--fashion-4);
+        }
+        
+        .subtitle {
+            font-family: 'Zen Kurenaido', sans-serif;
+            font-size: 16px;
+            color: var(--text-subtitle);
+            margin-bottom: 10px;
+        }
+        
+        .content-text {
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+        
+        .highlight {
+            font-weight: bold;
+            color: var(--fashion-5);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .highlight:after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            background-color: var(--fashion-2);
+            z-index: -1;
+            opacity: 0.5;
+        }
+        
+        .marker {
+            background: linear-gradient(transparent 50%, var(--fashion-3) 50%);
+            padding: 0 2px;
+        }
+        
+        .bubble {
+            background-color: #f8f9fa;
+            border-radius: 20px;
+            padding: 10px 15px;
+            margin: 10px 0;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .bubble:before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: -10px;
+            border-width: 10px 10px 10px 0;
+            border-style: solid;
+            border-color: transparent #f8f9fa transparent transparent;
+            transform: translateY(-50%);
+        }
+        
+        .data-box {
+            border: 2px solid var(--fashion-3);
+            border-radius: 8px;
+            padding: 10px;
+            margin: 15px 0;
+            background-color: rgba(242, 230, 61, 0.1);
+        }
+        
+        .data-box-title {
+            background-color: var(--fashion-3);
+            color: var(--fashion-1);
+            padding: 5px 10px;
+            border-radius: 4px;
+            margin: -20px auto 10px;
+            display: inline-block;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        
+        .arrow {
+            position: relative;
+            margin: 15px 0;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .arrow:before {
+            content: "";
+            position: absolute;
+            width: 80%;
+            height: 2px;
+            background-color: var(--fashion-4);
+            top: 50%;
+            left: 10%;
+            transform: translateY(-50%);
+        }
+        
+        .arrow:after {
+            content: "";
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            border-top: 2px solid var(--fashion-4);
+            border-right: 2px solid var(--fashion-4);
+            transform: rotate(45deg);
+            right: 10%;
+            top: calc(50% - 6px);
+        }
+        
+        .circle-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--fashion-2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        
+        .data-group {
+            display: flex;
+            margin: 15px 0;
+            flex-wrap: wrap;
+        }
+        
+        .data-item {
+            flex: 1 0 50%;
+            min-width: 120px;
+            margin-bottom: 10px;
+        }
+        
+        .data-label {
+            font-size: 12px;
+            color: var(--text-subtitle);
+        }
+        
+        .data-value {
+            font-size: 16px;
+            font-weight: bold;
+            color: var(--fashion-5);
+        }
+        
+        .data-chart {
+            margin: 20px 0;
+            position: relative;
+            height: 120px;
+        }
+        
+        .chart-bar {
+            position: absolute;
+            bottom: 0;
+            width: 40px;
+            background: linear-gradient(to top, var(--fashion-5), var(--fashion-3));
+            border-radius: 5px 5px 0 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .chart-bar-label {
+            position: absolute;
+            top: -20px;
+            font-size: 12px;
+            transform: rotate(-30deg);
+            transform-origin: bottom left;
+            white-space: nowrap;
+        }
+        
+        .chart-bar-value {
+            position: absolute;
+            top: -40px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        
+        .compare-blocks {
+            display: flex;
+            justify-content: space-between;
+            margin: 15px 0;
+        }
+        
+        .compare-block {
+            flex: 1;
+            padding: 10px;
+            border-radius: 8px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .compare-block:first-child {
+            background-color: rgba(242, 230, 61, 0.2);
+            margin-right: 15px;
+        }
+        
+        .compare-block:last-child {
+            background-color: rgba(242, 92, 5, 0.2);
+        }
+        
+        .compare-block:first-child:after {
+            content: "→";
+            position: absolute;
+            right: -15px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 20px;
+            color: var(--fashion-4);
+        }
+        
+        .compare-label {
+            font-size: 12px;
+            margin-bottom: 5px;
+        }
+        
+        .compare-value {
+            font-size: 16px;
+            font-weight: bold;
+        }
+        
+        .footer {
+            padding: 20px;
+            text-align: center;
+            background-color: #f8f9fa;
+            border-top: 1px dashed var(--fashion-3);
+            font-size: 12px;
+            color: var(--text-subtitle);
+        }
+
+        /* 手書き風の要素 */
+        .hand-drawn {
+            border: 2px solid var(--fashion-1);
+            border-radius: 12px;
+            position: relative;
+        }
+        
+        .hand-drawn:before {
+            content: "";
+            position: absolute;
+            top: 3px;
+            right: 3px;
+            bottom: 3px;
+            left: 3px;
+            border: 1px dashed rgba(89, 60, 71, 0.3);
+            border-radius: 10px;
+            pointer-events: none;
+        }
+        
+        .banner {
+            position: relative;
+            margin: 20px 0;
+            padding: 10px 15px;
+            background-color: var(--fashion-2);
+            color: var(--fashion-1);
+            text-align: center;
+            font-weight: bold;
+            border-radius: 4px;
+            box-shadow: 3px 3px 0 rgba(89, 60, 71, 0.5);
+        }
+        
+        .banner:before, .banner:after {
+            content: "";
+            position: absolute;
+            width: 0;
+            height: 0;
+        }
+        
+        .banner:before {
+            left: -10px;
+            top: 0;
+            border-top: 20px solid transparent;
+            border-right: 10px solid var(--fashion-2);
+        }
+        
+        .banner:after {
+            right: -10px;
+            top: 0;
+            border-top: 20px solid transparent;
+            border-left: 10px solid var(--fashion-2);
+        }
+        
+        .note {
+            transform: rotate(-2deg);
+            background-color: rgba(242, 230, 61, 0.2);
+            padding: 10px 15px;
+            border: 1px solid var(--fashion-3);
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+            margin: 15px 5px;
+            position: relative;
+        }
+        
+        .note:before {
+            content: "📌";
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 20px;
+        }
+        
+        .progress {
+            height: 20px;
+            background-color: #f0f0f0;
+            border-radius: 10px;
+            margin: 10px 0;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--fashion-3), var(--fashion-5));
+            border-radius: 10px;
+            position: relative;
+        }
+        
+        .progress-text {
+            position: absolute;
+            right: 5px;
+            top: 0;
+            line-height: 20px;
+            font-size: 12px;
+            color: var(--text-dark);
+        }
+
+        /* レスポンシブ対応 */
+        @media (max-width: 992px) {
+            .column {
+                width: 50%;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .column {
+                width: 100%;
+            }
+            
+            .header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .date-source {
+                text-align: center;
+                margin-top: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="title"><span class="title-icon">🔬</span>Quantum Computing Inc.<br>2025年第1四半期決算</h1>
+            <div class="date-source">
+                <div>2025年5月15日発表</div>
+                <div>NASDAQ: QUBT</div>
+            </div>
+        </div>
+        
+        <div class="card" style="margin: 20px 30px 0; background-color: rgba(89, 60, 71, 0.08); border-left: 4px solid var(--fashion-1);">
+            <h2 class="section-title"><i>🏢</i> 会社概要</h2>
+            <div class="content-text">
+                <span class="highlight">Quantum Computing Inc. (NASDAQ: QUBT)</span>は、先進的な<span class="marker">統合フォトニクスと量子光学技術</span>を専門とする企業です。同社は現在の世界に<span class="highlight">アクセスしやすく手頃な価格の量子マシン</span>を提供しています。QCiの製品は室温・低電力で動作し、コスト効率に優れています。同社のコアテクノロジーとポートフォリオは、<span class="marker">高性能コンピューティング、人工知能、サイバーセキュリティ</span>の分野と、リモートセンシングアプリケーションにおいて独自の能力を提供しています。アリゾナ州テンペに量子フォトニックチップファウンドリを有し、データコム、テレコム、量子対応アプリケーション市場向けの製品開発を推進しています。
+            </div>
+        </div>
+        
+        <div class="main-content">
+            <!-- 左カラム -->
+            <div class="column">
+                <div class="card hand-drawn">
+                    <h2 class="section-title"><i>📊</i> 決算ハイライト</h2>
+                    <div class="subtitle">CEOメッセージ</div>
+                    <div class="bubble">
+                        「QCiは第1四半期に堅調な業務・財務進展を遂げ、バランスシートを強化し主要な戦略的取り組みを前進させました」<br>
+                        <span class="highlight">- Dr. Yuping Huang</span>（暫定CEO）
+                    </div>
+                    
+                    <div class="data-box">
+                        <div class="data-box-title">主要業績指標</div>
+                        <div class="data-group">
+                            <div class="data-item">
+                                <div class="data-label">売上高</div>
+                                <div class="data-value">$39,000</div>
+                            </div>
+                            <div class="data-item">
+                                <div class="data-label">前年同期比</div>
+                                <div class="data-value">↑ 44%</div>
+                            </div>
+                            <div class="data-item">
+                                <div class="data-label">売上総利益率</div>
+                                <div class="data-value">33%</div>
+                            </div>
+                            <div class="data-item">
+                                <div class="data-label">純利益</div>
+                                <div class="data-value">$17.0M</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="arrow"></div>
+                    
+                    <div class="note">
+                        <strong>注目ポイント： </strong>純利益の増加は、主に2022年6月のQPhotonとの合併による<span class="marker">ワラント負債の時価評価に関連する2,360万ドルの非現金利益</span>によるものです
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h2 class="section-title"><i>💰</i> 財務状況</h2>
+                    
+                    <div class="compare-blocks">
+                        <div class="compare-block">
+                            <div class="compare-label">総資産（2024年12月末）</div>
+                            <div class="compare-value">$153.6M</div>
+                        </div>
+                        <div class="compare-block">
+                            <div class="compare-label">総資産（2025年3月末）</div>
+                            <div class="compare-value">$242.5M</div>
+                        </div>
+                    </div>
+                    
+                    <div class="content-text">
+                        <span class="highlight">現金および現金同等物</span>は2024年末から<span class="marker">$87.5M増加</span>し、2025年3月31日時点で<span class="highlight">$166.4M</span>に
+                    </div>
+                    
+                    <div class="data-box">
+                        <div class="data-box-title">資金調達</div>
+                        <div class="content-text">
+                            第1四半期中に普通株の私募による<span class="highlight">$93.6M</span>の純調達を実施
+                        </div>
+                    </div>
+                    
+                    <div class="compare-blocks">
+                        <div class="compare-block">
+                            <div class="compare-label">総負債（2024年12月末）</div>
+                            <div class="compare-value">$46.3M</div>
+                        </div>
+                        <div class="compare-block">
+                            <div class="compare-label">総負債（2025年3月末）</div>
+                            <div class="compare-value">$21.7M</div>
+                        </div>
+                    </div>
+                    
+                    <div class="content-text">
+                        総負債は<span class="marker">$24.6M減少</span>（主にワラント負債の時価変動による非現金変化）
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 中央カラム -->
+            <div class="column">
+                <div class="card glass-card">
+                    <h2 class="section-title"><i>🏭</i> 量子フォトニックチップファウンドリの進展</h2>
+                    
+                    <div class="banner">主要マイルストーン達成！</div>
+                    
+                    <div class="content-text">
+                        <strong>アリゾナ州テンペ</strong>の量子フォトニックチップファウンドリの<span class="highlight">建設完了</span>
+                    </div>
+                    
+                    <div class="content-text">
+                        米国内での<span class="marker">TFLN（薄膜リチウムニオブ酸塩）製造サービス</span>のスケールアップにおける重要な節目
+                    </div>
+                    
+                    <div class="note">
+                        現在、プロセス設計キット（PDK）を確立し、顧客注文の処理を開始中
+                    </div>
+                    
+                    <div class="data-box">
+                        <div class="data-box-title">注文状況</div>
+                        <div class="content-text" style="text-align: center;">
+                            ファウンドリサービスに対して<span class="highlight">5件</span>の初期注文を受注済み ✓
+                        </div>
+                    </div>
+                    
+                    <div class="bubble">
+                        「データコム、テレコム、量子対応アプリケーションの拡大市場にサービスを提供する<span class="highlight">複数年にわたる重要な機会</span>の第一歩です」
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h2 class="section-title"><i>🔬</i> 量子マシン採用の進展</h2>
+                    
+                    <div class="content-text">
+                        <strong>Sanders Tri-Institutional Therapeutics Discovery Institute（Sanders TDI）</strong>とのコラボレーションを発表（2025年1月15日）
+                    </div>
+                    
+                    <div class="bubble">
+                        Sanders TDIはQCiのDirac-3量子最適化マシンへのクラウドベースアクセスを活用し、<span class="marker">計算化学および生体分子モデリング研究</span>をサポート
+                    </div>
+                    
+                    <div class="note">
+                        このコラボレーションは、QCiの量子システムの<span class="highlight">実世界のバイオメディカルアプリケーション</span>における採用の拡大を示しています
+                    </div>
+                    
+                    <div class="data-box">
+                        <div class="data-box-title">戦略的リーダーシップの強化</div>
+                        <div class="content-text">
+                            <span class="highlight">Eric Schwartz</span>氏を取締役会に任命（2025年3月26日）
+                        </div>
+                        <div class="content-text">
+                            企業金融、M&A、企業戦略における<span class="marker">20年以上の経験</span>を持ち、製品化および製造拡大プロセスを通じて企業を導いた実績
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 右カラム -->
+            <div class="column">
+                <div class="card hand-drawn">
+                    <h2 class="section-title"><i>📈</i> 四半期業績比較</h2>
+                    
+                    <div class="data-chart">
+                        <div class="chart-bar" style="left: 20px; height: 30px;">
+                            <div class="chart-bar-label">売上高 2024 Q1</div>
+                            <div class="chart-bar-value">$27K</div>
+                        </div>
+                        <div class="chart-bar" style="left: 100px; height: 43px;">
+                            <div class="chart-bar-label">売上高 2025 Q1</div>
+                            <div class="chart-bar-value">$39K</div>
+                        </div>
+                        <div class="chart-bar" style="left: 180px; height: 50px;">
+                            <div class="chart-bar-label">運営費用 2024 Q1</div>
+                            <div class="chart-bar-value">$6.3M</div>
+                        </div>
+                        <div class="chart-bar" style="left: 260px; height: 83px;">
+                            <div class="chart-bar-label">運営費用 2025 Q1</div>
+                            <div class="chart-bar-value">$8.3M</div>
+                        </div>
+                    </div>
+                    
+                    <div class="data-box">
+                        <div class="data-box-title">EPS（1株当たり利益）</div>
+                        <div class="compare-blocks">
+                            <div class="compare-block">
+                                <div class="compare-label">2024 Q1</div>
+                                <div class="compare-value">($0.08)</div>
+                            </div>
+                            <div class="compare-block">
+                                <div class="compare-label">2025 Q1</div>
+                                <div class="compare-value">$0.13</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="content-text">
+                        <span class="highlight">運営費用の増加理由：</span>主に従業員関連費用の増加によるもの
+                    </div>
+                </div>
+                
+                <div class="card glass-card">
+                    <h2 class="section-title"><i>🚀</i> 戦略的展開とパートナーシップ</h2>
+                    
+                    <div class="content-text">
+                        <strong>NASAとの戦略的パートナーシップ強化：</strong>
+                    </div>
+                    
+                    <div class="bubble">
+                        Analytical Mechanics Associates（AMA）を通じて<span class="highlight">約$406,000</span>の下請け契約を獲得（2025年4月30日）
+                    </div>
+                    
+                    <div class="content-text">
+                        NASAのLangley Research Centerをサポートし、QCiのDirac-3量子コンピュータを使用して<span class="marker">宇宙ベースのLIDARデータから太陽光ノイズを除去する量子ベースの技術</span>を開発
+                    </div>
+                    
+                    <div class="note">
+                        <strong>商用量子ソリューションの採用拡大：</strong>四半期終了後、2件の追加顧客注文を獲得
+                    </div>
+                    
+                    <div class="data-group">
+                        <div class="data-item">
+                            <div class="data-label">2025年4月1日</div>
+                            <div class="data-value">量子フォトニック振動計</div>
+                            <div class="data-label">オランダ・デルフト工科大学</div>
+                        </div>
+                        <div class="data-item">
+                            <div class="data-label">2025年4月22日</div>
+                            <div class="data-value">EmuCoreリザバーコンピューティングデバイス</div>
+                            <div class="data-label">大手自動車メーカー</div>
+                        </div>
+                    </div>
+                    
+                    <div class="banner">グローバルな学術・産業市場で採用拡大中！</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            出典: Quantum Computing Inc. 2025年第1四半期決算発表（2025年5月15日） | NASDAQ: QUBT | https://quantumcomputinginc.com/investor-relations
+        </div>
+    </div>
+</body>
+</html>
+    </div>
+
+    <footer class="template-footer">
+        <div class="template-footer-content">
+            <div class="template-footer-logo">Monty Trader</div>
+            <div class="template-footer-social">
+                <a href="https://x.com/monty_investor" target="_blank">@monty_investor</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleLanguage() {
+            const jaElements = document.querySelectorAll('.ja');
+            const enElements = document.querySelectorAll('.en');
+            const button = document.querySelector('.language-switch button');
+            
+            jaElements.forEach(el => el.classList.toggle('hidden'));
+            enElements.forEach(el => el.classList.toggle('hidden'));
+            
+            button.textContent = button.textContent === 'English' ? '日本語' : 'English';
+        }
+    </script>
+</body>
+</html> 
