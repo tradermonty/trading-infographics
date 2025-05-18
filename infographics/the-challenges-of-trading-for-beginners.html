@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>初心者トレーダーへの教訓：確率の世界への旅</title>
+    <link rel="icon" type="image/png" href="../images/monty.png">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Yomogi&family=Zen+Kurenaido&family=Kaisei+Decol:wght@400;700&display=swap');
+        
+        :root {
+            --fashion-1: #593C47;
+            --fashion-2: #F2E63D;
+            --fashion-3: #F2C53D;
+            --fashion-4: #F25C05;
+            --fashion-5: #F24405;
+            --text-dark: #334155;
+            --text-title: #1e40af;
+            --bg-light: #fff;
+            --shadow: rgba(0, 0, 0, 0.1);
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Kaisei Decol', serif;
+            background-color: #f8f9fa;
+            color: var(--text-dark);
+            line-height: 1.4;
+            padding: 0;
+            margin: 0;
+        }
+
+        .fixed-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: linear-gradient(135deg, var(--fashion-1), var(--fashion-5));
+            padding: 10px 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .fixed-header:hover {
+            background: linear-gradient(135deg, var(--fashion-5), var(--fashion-1));
+        }
+
+        .fixed-header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .header-logo {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .fixed-header h1 {
+            font-family: 'Zen Kurenaido', sans-serif;
+            font-size: 24px;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            background: linear-gradient(to right, white, var(--fashion-2));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin: 0;
+            pointer-events: none;
+        }
+
+        .template-main-content {
+            margin-top: 60px;
+            padding: 20px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .template-footer {
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(135deg, var(--fashion-1), var(--fashion-5));
+            color: white;
+            margin-top: 40px;
+        }
+
+        .template-footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .template-footer-logo {
+            font-family: 'Zen Kurenaido', sans-serif;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .template-footer-social {
+            display: flex;
+            gap: 15px;
+        }
+
+        .template-footer-social a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .template-footer-social a:hover {
+            color: var(--fashion-2);
+            transform: translateY(-2px);
+        }
+
+        .template-hidden {
+            display: none !important;
+            visibility: hidden;
+            opacity: 0;
+        }
+
+        .language-switch {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1001;
+            display: none;
+        }
+        
+        .language-switch button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 20px;
+            background: linear-gradient(135deg, var(--fashion-1), var(--fashion-5));
+            color: white;
+            cursor: pointer;
+            font-family: 'Yomogi', cursive;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .language-switch button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+
+        @media (max-width: 768px) {
+            .fixed-header h1 {
+                font-size: 20px;
+            }
+            
+            .template-main-content {
+                margin-top: 50px;
+                padding: 10px;
+            }
+
+            .language-switch {
+                top: 10px;
+                right: 10px;
+            }
+
+            .template-footer-content {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="language-switch">
+        <button onclick="toggleLanguage()">English</button>
+    </div>
+
+    <div class="fixed-header" onclick="window.location.href='../index.html'">
+        <div class="fixed-header-content">
+            <img src="../images/monty.png" alt="Monty Trader Logo" class="header-logo">
+            <h1 class="ja">モンティの株式トレードインフォグラフィックス集</h1>
+            <h1 class="en hidden">Monty's Stock Trading Infographics Collection</h1>
+        </div>
+    </div>
+
+    <div class="template-main-content">
+        <!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>初心者トレーダーへの教訓：確率の世界への旅</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Yomogi&family=Zen+Kurenaido&family=Kaisei+Decol:wght@400;700&display=swap');
+        
+        :root {
+            --fashion-1: #593C47;
+            --fashion-2: #F2E63D;
+            --fashion-3: #F2C53D;
+            --fashion-4: #F25C05;
+            --fashion-5: #F24405;
+            --background: #FFFDF7;
+            --text-main: #334155;
+            --text-heading: #1e40af;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Kaisei Decol', serif;
+            background-color: var(--background);
+            color: var(--text-main);
+            line-height: 1.4;
+            padding: 20px;
+            max-width: 100%;
+            margin: 0 auto;
+        }
+        
+        .container {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            position: relative;
+            padding: 20px;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23f5f5f5' fill-opacity='0.3' fill-rule='evenodd'/%3E%3C/svg%3E");
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            border-bottom: 3px solid var(--fashion-3);
+            position: relative;
+            margin-bottom: 30px;
+        }
+        
+        .header::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 30px;
+            width: 85%;
+            height: 3px;
+            background-color: var(--fashion-4);
+            border-radius: 50%;
+        }
+        
+        .title {
+            font-family: 'Zen Kurenaido', sans-serif;
+            font-size: 32px;
+            font-weight: bold;
+            background: linear-gradient(45deg, var(--fashion-1), var(--fashion-5));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .title::before {
+            content: "✏️";
+            position: absolute;
+            top: -10px;
+            left: -30px;
+            font-size: 24px;
+            transform: rotate(-15deg);
+        }
+        
+        .date {
+            font-family: 'Yomogi', cursive;
+            font-size: 14px;
+            color: #475569;
+        }
+        
+        .content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 10px;
+        }
+        
+        .column {
+            flex: 1;
+            min-width: 300px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .card {
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(5px);
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid transparent;
+        }
+        
+        .card:nth-child(1) { border-color: var(--fashion-2); }
+        .card:nth-child(2) { border-color: var(--fashion-3); }
+        .card:nth-child(3) { border-color: var(--fashion-4); }
+        .card:nth-child(4) { border-color: var(--fashion-5); }
+        .card:nth-child(5) { border-color: var(--fashion-1); }
+        
+        .card::before {
+            content: "";
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            z-index: -1;
+            border-radius: 12px;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.5));
+        }
+        
+        .section-title {
+            font-family: 'Zen Kurenaido', sans-serif;
+            font-size: 18px;
+            color: var(--text-heading);
+            margin-bottom: 15px;
+            position: relative;
+            padding-left: 30px;
+            padding-bottom: 5px;
+            border-bottom: 2px dashed var(--fashion-4);
+        }
+        
+        .section-title::before {
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        
+        .card:nth-child(1) .section-title::before { content: "🎯"; }
+        .card:nth-child(2) .section-title::before { content: "💰"; }
+        .card:nth-child(3) .section-title::before { content: "🎮"; }
+        .card:nth-child(4) .section-title::before { content: "📉"; }
+        .card:nth-child(5) .section-title::before { content: "🔑"; }
+        
+        .subtitle {
+            font-size: 16px;
+            color: #475569;
+            margin-bottom: 10px;
+            font-family: 'Kaisei Decol', serif;
+            font-weight: bold;
+        }
+        
+        .highlight {
+            background: linear-gradient(transparent 60%, var(--fashion-2) 60%);
+            font-weight: bold;
+        }
+        
+        .emphasis {
+            color: var(--fashion-5);
+            font-weight: bold;
+            position: relative;
+        }
+        
+        .emphasis::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: var(--fashion-5);
+            border-radius: 3px;
+        }
+        
+        .bullet-list {
+            list-style: none;
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+        
+        .bullet-list li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 8px;
+        }
+        
+        .bullet-list li::before {
+            content: "•";
+            color: var(--fashion-4);
+            font-size: 18px;
+            position: absolute;
+            left: 0;
+            top: -2px;
+        }
+        
+        .numbered-list {
+            list-style: none;
+            margin-left: 20px;
+            margin-bottom: 15px;
+            counter-reset: item;
+        }
+        
+        .numbered-list li {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 10px;
+            counter-increment: item;
+        }
+        
+        .numbered-list li::before {
+            content: counter(item);
+            position: absolute;
+            left: 0;
+            top: 0;
+            background-color: var(--fashion-3);
+            color: var(--fashion-1);
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 12px;
+        }
+        
+        .note {
+            background-color: rgba(242, 198, 61, 0.2);
+            border-left: 4px solid var(--fashion-3);
+            padding: 10px;
+            margin: 15px 0;
+            position: relative;
+        }
+        
+        .note::before {
+            content: "📝";
+            position: absolute;
+            left: -10px;
+            top: -10px;
+        }
+        
+        .arrow {
+            position: relative;
+            text-align: center;
+            margin: 15px 0;
+            font-weight: bold;
+            color: var(--fashion-1);
+        }
+        
+        .arrow::after {
+            content: "↓";
+            font-size: 24px;
+            color: var(--fashion-4);
+            display: block;
+            margin-top: 5px;
+        }
+        
+        .concept-map {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 20px 0;
+            position: relative;
+        }
+        
+        .concept-bubble {
+            background-color: white;
+            border: 2px solid var(--fashion-3);
+            border-radius: 20px;
+            padding: 10px 15px;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            font-weight: bold;
+            box-shadow: var(--shadow);
+        }
+        
+        .concept-bubble::before {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 10px solid transparent;
+            border-top-color: var(--fashion-3);
+        }
+        
+        .concept-bubble::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 8px solid transparent;
+            border-top-color: white;
+        }
+        
+        .concept-map::after {
+            content: "";
+            position: absolute;
+            top: 20px;
+            bottom: 20px;
+            left: 50%;
+            width: 2px;
+            background-color: var(--fashion-4);
+            z-index: 0;
+        }
+        
+        .hand-drawn-box {
+            border: 3px solid;
+            border-color: var(--fashion-1);
+            border-radius: 15px;
+            padding: 15px;
+            position: relative;
+            margin: 20px 0;
+            background-color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .hand-drawn-box::before {
+            content: "";
+            position: absolute;
+            top: -8px;
+            left: 20px;
+            width: 30px;
+            height: 15px;
+            background-color: var(--background);
+            border: 3px solid var(--fashion-1);
+            border-bottom: none;
+            border-radius: 10px 10px 0 0;
+            transform: rotate(5deg);
+        }
+        
+        .vs-container {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 0;
+            position: relative;
+        }
+        
+        .vs-container::after {
+            content: "VS";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: var(--fashion-5);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 16px;
+            z-index: 1;
+            box-shadow: var(--shadow);
+        }
+        
+        .vs-side {
+            width: 45%;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .vs-side:first-child {
+            background-color: rgba(242, 230, 61, 0.2);
+            border: 2px dashed var(--fashion-2);
+        }
+        
+        .vs-side:last-child {
+            background-color: rgba(242, 91, 4, 0.2);
+            border: 2px dashed var(--fashion-4);
+        }
+        
+        .ribbon {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            width: 30px;
+            height: 60px;
+            background-color: var(--fashion-5);
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 80%, 0 100%);
+        }
+        
+        .footer {
+            margin-top: 30px;
+            padding: 20px;
+            text-align: center;
+            font-size: 14px;
+            color: #475569;
+            border-top: 1px dashed var(--fashion-3);
+        }
+        
+        .footer a {
+            color: var(--fashion-5);
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            .content {
+                flex-direction: column;
+            }
+            
+            .column {
+                min-width: 100%;
+            }
+            
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            
+            .vs-container {
+                flex-direction: column;
+                gap: 40px;
+            }
+            
+            .vs-container::after {
+                top: 50%;
+            }
+            
+            .vs-side {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="title">初心者トレーダーへの教訓：確率の世界への旅</h1>
+            <div class="date">2025年5月作成 | 出典：Yumi @samuraipips358</div>
+        </header>
+        
+        <div class="content">
+            <div class="column">
+                <div class="card">
+                    <h2 class="section-title">トレーディングの真実</h2>
+                    <div class="vs-container">
+                        <div class="vs-side">
+                            <p><span class="highlight">業界の宣伝</span> 😄</p>
+                            <p>「トレードは簡単に<span class="emphasis">お金を稼げる</span>世界」</p>
+                        </div>
+                        <div class="vs-side">
+                            <p><span class="highlight">現実</span> 🧐</p>
+                            <p>「お金を<span class="emphasis">稼ぐことは簡単</span>だが<span class="emphasis">成功することは簡単ではない</span>」</p>
+                        </div>
+                    </div>
+                    
+                    <div class="note">
+                        <p>誰でも簡単にトレードを始められ、簡単にお金を稼ぐことができます。これは単一のトレードの結果がランダムであり、どんなに場当たり的なトレードであっても利益を得る可能性があるからです。</p>
+                        <p>多くの初心者トレーダーが「自分のスキルでお金を稼いだ」という<span class="emphasis">錯覚</span>を経験します。</p>
+                    </div>
+                    
+                    <div class="arrow">
+                        <p>しかし…</p>
+                    </div>
+                    
+                    <p>あなたが未熟なトレーダーである限り、簡単に稼いだお金は市場によって<span class="highlight">簡単に取り戻され</span>、さらに余分に取られてしまいます。</p>
+                    <p>今日運良くお金を稼げたとしても、1ヶ月間運良くお金を稼げたとしても、<span class="emphasis">数年間にわたって運良くお金を稼ぎ続けることは困難</span>です。</p>
+                </div>
+                
+                <div class="card">
+                    <h2 class="section-title">初心者の認識：勝ち負けゲーム</h2>
+                    <p>初心者トレーダーはトレードを「<span class="highlight">勝ち負けゲーム</span>」として認識し、勝つことが良いこと、負けることが悪いことだと考えます。</p>
+                    
+                    <div class="concept-map">
+                        <div class="concept-bubble">価値判断：「負ける = 悪いこと」</div>
+                        <div class="concept-bubble">損失を避けようとする</div>
+                        <div class="concept-bubble">失ったお金を取り戻すことに必死になる</div>
+                    </div>
+                    
+                    <div class="hand-drawn-box">
+                        <h3 class="subtitle">初心者に共通する行動 🚩</h3>
+                        <ul class="bullet-list">
+                            <li>損切りを先延ばしにする</li>
+                            <li>損失ポジションに追加して平均取得価格を下げる</li>
+                            <li>短期的な結果に基づいてルールを書き換える</li>
+                        </ul>
+                    </div>
+                    
+                    <p>これは「<span class="emphasis">確率のゲーム</span>」ではなく、「<span class="emphasis">勝ち負けゲーム = 感情のゲーム</span>」です。</p>
+                    <p>このゲームでは、損失を避け利益を追求するため、<span class="highlight">被るダメージが必然的に大きく、得る利益が小さくなる構造</span>が生まれます。これはリスク・リワード比の低い戦略を繰り返し使用するのと同じです。</p>
+                </div>
+            </div>
+            
+            <div class="column">
+                <div class="card">
+                    <h2 class="section-title">なぜ資金を失うのか</h2>
+                    <p>資金を失う理由の論理的な流れは以下の通りです：</p>
+                    
+                    <ol class="numbered-list">
+                        <li>取引コスト（スプレッド、手数料）がある限り、<span class="emphasis">エッジのないトレードは負の期待値</span>から始まります。</li>
+                        <li>不十分なルールと検証によるトレードは、「<span class="highlight">コイントス</span>」よりも実質的に勝率が低く、損失を小さく抑え利益を伸ばす構造がないため、期待値はさらに低下します。</li>
+                        <li>損失への恐怖から損切りを遅らせたり、利益を失う恐怖から未実現利益を早期に確定させたりすると、勝率が上がっても、<span class="emphasis">一度の損失や下落</span>が口座に致命的な打撃を与える可能性があります。</li>
+                        <li>連敗への恐怖からルールを変更する — <span class="highlight">エッジが現れる前にルールを放棄するため</span>、結果がプラスに収束するチャンスを捨てています。</li>
+                    </ol>
+                    
+                    <div class="note">
+                        <p>結果として、「<span class="emphasis">負の期待値 × トレード回数 × レバレッジ</span>」の掛け算が働き、口座残高は必然的にゼロに収束します。</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h2 class="section-title">成功の条件</h2>
+                    <p>成功の条件はシンプルですが、簡単ではありません：</p>
+                    
+                    <div class="hand-drawn-box">
+                        <ul class="bullet-list">
+                            <li><span class="highlight">テストによって裏付けられた統計的エッジを持つルールを作成する</span></li>
+                            <li><span class="highlight">損切りを含むプロセス全体を一貫して実行する</span></li>
+                            <li><span class="highlight">大数の法則が機能しエッジが現れるのに十分なサンプルサイズを集める</span></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="concept-map">
+                        <div class="concept-bubble">「損切りは失敗ではなく、長期的な利益を達成するための必要なコストと構成要素」</div>
+                        <div class="concept-bubble">損失の認識が変わる</div>
+                        <div class="concept-bubble">行動が変わる</div>
+                    </div>
+                    
+                    <p>市場から「<span class="emphasis">利益をつかみ取る</span>」のではなく、「<span class="emphasis">確率構造を機能させる</span>」ことが重要です。</p>
+                    
+                    <div class="note">
+                        <p>初心者を卒業する道は「<span class="emphasis">勝ち負けゲーム</span>」の延長線上にはなく、「<span class="emphasis">確率のゲーム</span>」にあります。マインドセット全体を根本的に変え、<span class="highlight">長期的な視点に切り替えることが鍵</span>です。</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="column">
+                <div class="card">
+                    <h2 class="section-title">初心者から卒業するための思考転換</h2>
+                    
+                    <div class="vs-container">
+                        <div class="vs-side">
+                            <h3 class="subtitle">勝ち負けゲーム 🎮</h3>
+                            <ul class="bullet-list">
+                                <li>短期的な結果に焦点</li>
+                                <li>感情に基づく判断</li>
+                                <li>損失を恐れる</li>
+                                <li>低リスク・リワード比</li>
+                            </ul>
+                        </div>
+                        <div class="vs-side">
+                            <h3 class="subtitle">確率のゲーム 🎲</h3>
+                            <ul class="bullet-list">
+                                <li>長期的な結果に焦点</li>
+                                <li>統計に基づく判断</li>
+                                <li>損失を必要コストと捉える</li>
+                                <li>高リスク・リワード比</li>
+                            </ul>
+                            <div class="ribbon"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="hand-drawn-box">
+                        <h3 class="subtitle">トレード成功の本質 🔑</h3>
+                        <p>「<span class="highlight">エッジがあるルール</span>」×「<span class="highlight">ルールの一貫した実行</span>」×「<span class="highlight">十分なサンプルサイズ</span>」= 成功</p>
+                        <p>複利の力を活かす長期的な視点が不可欠です。</p>
+                    </div>
+                    
+                    <div class="note">
+                        <p>トレードは<span class="emphasis">初心者が簡単に成功できる世界ではありません</span>。しかし、正しい思考法と忍耐力を持って取り組めば、長期的な成功は可能です。初心者から卒業する鍵は、感情ではなく確率に基づいた行動にあります。</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h2 class="section-title">まとめ：成功への道</h2>
+                    
+                    <div class="concept-map">
+                        <div class="concept-bubble">トレードは確率のゲーム</div>
+                        <div class="concept-bubble">統計的エッジと一貫した実行が必要</div>
+                        <div class="concept-bubble">感情的な判断から脱却する</div>
+                        <div class="concept-bubble">長期的な視点で取り組む</div>
+                    </div>
+                    
+                    <p><span class="highlight">「市場から利益をつかみ取る」のではなく「確率構造を機能させる」</span>という考え方に転換することで、初心者トレーダーから卒業し、持続可能な成功への道を歩み始めることができます。</p>
+                    
+                    <div class="hand-drawn-box">
+                        <h3 class="subtitle">著者の書籍 📚</h3>
+                        <p>さらに詳しく学びたい方は、著者のトレーディングに関する書籍をご覧ください：</p>
+                        <ul class="bullet-list">
+                            <li>E-book: <a href="https://payhip.com/YumiSakura" target="_blank">payhip.com/YumiSakura</a></li>
+                            <li>ペーパーバック「THE PATH TO SUCCESS IN TRADING」: <a href="https://a.co/d/fXmRhIa" target="_blank">a.co/d/fXmRhIa</a></li>
+                            <li>ペーパーバック「Trading Psychology」: <a href="https://a.co/d/d0QJMxK" target="_blank">a.co/d/d0QJMxK</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <footer class="footer">
+            <p>© 2025 | 原文: <a href="https://x.com/samuraipips358/status/1923710272612728930" target="_blank">Yumi @samuraipips358</a> | グラフィックレコーディング風インフォグラフィック</p>
+            <p>初心者トレーダーにとって、トレードは簡単に始められても成功は容易ではありません。確率のゲームとして長期的視点で取り組みましょう。</p>
+        </footer>
+    </div>
+</body>
+</html>
+    </div>
+
+    <footer class="template-footer">
+        <div class="template-footer-content">
+            <div class="template-footer-logo">Monty Trader</div>
+            <div class="template-footer-social">
+                <a href="https://x.com/monty_investor" target="_blank">@monty_investor</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleLanguage() {
+            const jaElements = document.querySelectorAll('.ja');
+            const enElements = document.querySelectorAll('.en');
+            const button = document.querySelector('.language-switch button');
+            
+            jaElements.forEach(el => el.classList.toggle('hidden'));
+            enElements.forEach(el => el.classList.toggle('hidden'));
+            
+            button.textContent = button.textContent === 'English' ? '日本語' : 'English';
+        }
+    </script>
+</body>
+</html> 
