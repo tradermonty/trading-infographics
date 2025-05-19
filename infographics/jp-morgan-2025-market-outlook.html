@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JPモルガン プライベートクライアント 2025年市場展望</title>
+    <link rel="icon" type="image/png" href="../images/monty.png">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Yomogi&family=Zen+Kurenaido&family=Kaisei+Decol:wght@400;700&display=swap');
+        
+        :root {
+            --fashion-1: #593C47;
+            --fashion-2: #F2E63D;
+            --fashion-3: #F2C53D;
+            --fashion-4: #F25C05;
+            --fashion-5: #F24405;
+            --text-dark: #334155;
+            --text-title: #1e40af;
+            --bg-light: #fff;
+            --shadow: rgba(0, 0, 0, 0.1);
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Kaisei Decol', serif;
+            background-color: #f8f9fa;
+            color: var(--text-dark);
+            line-height: 1.4;
+            padding: 0;
+            margin: 0;
+        }
+
+        .fixed-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: linear-gradient(135deg, var(--fashion-1), var(--fashion-5));
+            padding: 10px 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .fixed-header:hover {
+            background: linear-gradient(135deg, var(--fashion-5), var(--fashion-1));
+        }
+
+        .fixed-header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .header-logo {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .fixed-header h1 {
+            font-family: 'Zen Kurenaido', sans-serif;
+            font-size: 24px;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            background: linear-gradient(to right, white, var(--fashion-2));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin: 0;
+            pointer-events: none;
+        }
+
+        .template-main-content {
+            margin-top: 60px;
+            padding: 20px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .template-footer {
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(135deg, var(--fashion-1), var(--fashion-5));
+            color: white;
+            margin-top: 40px;
+        }
+
+        .template-footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .template-footer-logo {
+            font-family: 'Zen Kurenaido', sans-serif;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .template-footer-social {
+            display: flex;
+            gap: 15px;
+        }
+
+        .template-footer-social a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .template-footer-social a:hover {
+            color: var(--fashion-2);
+            transform: translateY(-2px);
+        }
+
+        .template-hidden {
+            display: none !important;
+            visibility: hidden;
+            opacity: 0;
+        }
+
+        .language-switch {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1001;
+            display: none;
+        }
+        
+        .language-switch button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 20px;
+            background: linear-gradient(135deg, var(--fashion-1), var(--fashion-5));
+            color: white;
+            cursor: pointer;
+            font-family: 'Yomogi', cursive;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .language-switch button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+
+        @media (max-width: 768px) {
+            .fixed-header h1 {
+                font-size: 20px;
+            }
+            
+            .template-main-content {
+                margin-top: 50px;
+                padding: 10px;
+            }
+
+            .language-switch {
+                top: 10px;
+                right: 10px;
+            }
+
+            .template-footer-content {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="language-switch">
+        <button onclick="toggleLanguage()">English</button>
+    </div>
+
+    <div class="fixed-header" onclick="window.location.href='../index.html'">
+        <div class="fixed-header-content">
+            <img src="../images/monty.png" alt="Monty Trader Logo" class="header-logo">
+            <h1 class="ja">モンティの株式トレードインフォグラフィックス集</h1>
+            <h1 class="en hidden">Monty's Stock Trading Infographics Collection</h1>
+        </div>
+    </div>
+
+    <div class="template-main-content">
+        <!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JP モルガンの2025年市場展望 - グラフィックレコーディング</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Yomogi&family=Zen+Kurenaido&family=Kaisei+Decol:wght@400;700&display=swap');
+    
+    :root {
+      --color-1: #593C47;
+      --color-2: #F2E63D;
+      --color-3: #F2C53D;
+      --color-4: #F25C05;
+      --color-5: #F24405;
+      --gray-600: #475569;
+      --gray-700: #334155;
+      --blue-800: #1e40af;
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'Kaisei Decol', serif;
+      background-color: #f9f9f9;
+      background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23593c47' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+      padding: 24px;
+      line-height: 1.4;
+      color: var(--gray-700);
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      background-color: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(8px);
+      border-radius: 24px;
+      box-shadow: 0 4px 24px rgba(89, 60, 71, 0.1);
+      padding: 32px;
+      border: 2px dashed var(--color-1);
+    }
+    
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 32px;
+      border-bottom: 3px solid var(--color-3);
+      padding-bottom: 16px;
+      position: relative;
+    }
+    
+    .header::after {
+      content: "✂️";
+      position: absolute;
+      right: -12px;
+      bottom: -12px;
+      font-size: 24px;
+      transform: rotate(-20deg);
+    }
+    
+    .title {
+      font-family: 'Zen Kurenaido', sans-serif;
+      font-size: 32px;
+      font-weight: bold;
+      color: var(--color-1);
+      text-shadow: 1px 1px 0 var(--color-2);
+      position: relative;
+      display: inline-block;
+    }
+    
+    .title::after {
+      content: "";
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 100%;
+      height: 6px;
+      background: linear-gradient(to right, var(--color-3), var(--color-4));
+      border-radius: 3px;
+    }
+    
+    .date {
+      font-family: 'Yomogi', cursive;
+      font-size: 16px;
+      color: var(--gray-600);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .date::before {
+      content: "📅";
+    }
+    
+    .main-content {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    
+    .card {
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 2px 12px rgba(89, 60, 71, 0.1);
+      padding: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 8px;
+      height: 100%;
+      background-color: var(--color-4);
+    }
+    
+    .big-theme {
+      grid-column: 1 / -1;
+      background-color: rgba(242, 230, 61, 0.2);
+      border: 2px solid var(--color-3);
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 24px;
+      position: relative;
+    }
+    
+    .big-theme::after {
+      content: "✨";
+      position: absolute;
+      right: 16px;
+      top: -12px;
+      font-size: 24px;
+    }
+    
+    .theme-title {
+      font-family: 'Zen Kurenaido', sans-serif;
+      font-size: 24px;
+      color: var(--color-5);
+      margin-bottom: 16px;
+      text-align: center;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .theme-title::after {
+      content: "";
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: var(--color-5);
+      border-radius: 1.5px;
+    }
+    
+    .theme-list {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    
+    .theme-item {
+      font-family: 'Kaisei Decol', serif;
+      font-size: 18px;
+      position: relative;
+      padding: 8px 16px;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(89, 60, 71, 0.1);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .section-title {
+      font-family: 'Yomogi', cursive;
+      font-size: 20px;
+      color: var(--blue-800);
+      margin-bottom: 16px;
+      position: relative;
+      padding-left: 30px;
+    }
+    
+    .section-title::before {
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    
+    .ai-title::before {
+      content: "🤖";
+    }
+    
+    .trump-title::before {
+      content: "🇺🇸";
+    }
+    
+    .private-title::before {
+      content: "⏳";
+    }
+    
+    .sports-title::before {
+      content: "🏀";
+    }
+    
+    .summary-title::before {
+      content: "📝";
+    }
+    
+    .company-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 16px 0;
+    }
+    
+    .company {
+      font-family: 'Kaisei Decol', serif;
+      font-size: 16px;
+      color: white;
+      background-color: var(--color-1);
+      padding: 4px 12px;
+      border-radius: 16px;
+      display: inline-block;
+    }
+    
+    .highlight {
+      font-family: 'Yomogi', cursive;
+      color: var(--color-5);
+      font-weight: bold;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .highlight::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 6px;
+      background-color: rgba(242, 196, 61, 0.4);
+      border-radius: 3px;
+      z-index: -1;
+    }
+    
+    .arrow-list {
+      list-style: none;
+      margin: 12px 0;
+    }
+    
+    .arrow-list li {
+      position: relative;
+      padding-left: 24px;
+      margin-bottom: 8px;
+      font-family: 'Kaisei Decol', serif;
+    }
+    
+    .arrow-list li::before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      color: var(--color-4);
+      font-weight: bold;
+    }
+    
+    .bubble {
+      background-color: rgba(242, 196, 61, 0.2);
+      border: 2px solid var(--color-3);
+      border-radius: 16px;
+      padding: 12px 16px;
+      margin: 16px 0;
+      position: relative;
+    }
+    
+    .bubble::after {
+      content: "";
+      position: absolute;
+      bottom: -12px;
+      left: 24px;
+      width: 0;
+      height: 0;
+      border-left: 12px solid transparent;
+      border-right: 12px solid transparent;
+      border-top: 12px solid var(--color-3);
+    }
+    
+    .icon-row {
+      display: flex;
+      gap: 16px;
+      margin: 16px 0;
+      flex-wrap: wrap;
+    }
+    
+    .icon-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'Kaisei Decol', serif;
+    }
+    
+    .footer {
+      margin-top: 40px;
+      text-align: center;
+      font-family: 'Kaisei Decol', serif;
+      font-size: 14px;
+      color: var(--gray-600);
+      border-top: 1px dashed var(--color-1);
+      padding-top: 16px;
+    }
+    
+    .summary {
+      grid-column: 1 / -1;
+      border: 3px solid var(--color-3);
+      border-radius: 16px;
+      padding: 24px;
+      margin-top: 24px;
+      position: relative;
+      background-color: white;
+    }
+    
+    .summary::before {
+      content: "まとめ";
+      position: absolute;
+      top: -14px;
+      left: 24px;
+      background-color: white;
+      padding: 0 12px;
+      font-family: 'Yomogi', cursive;
+      font-size: 18px;
+      color: var(--color-1);
+      border: 2px solid var(--color-3);
+      border-radius: 12px;
+    }
+    
+    .bullet-point {
+      margin-bottom: 8px;
+      position: relative;
+      padding-left: 24px;
+    }
+    
+    .bullet-point::before {
+      content: "•";
+      position: absolute;
+      left: 8px;
+      color: var(--color-4);
+      font-size: 20px;
+    }
+    
+    .handwritten {
+      font-family: 'Yomogi', cursive;
+    }
+    
+    .emphasis {
+      font-weight: bold;
+      color: var(--color-5);
+      font-size: 110%;
+    }
+    
+    .stock-down {
+      color: #e11d48;
+      font-weight: bold;
+    }
+    
+    .stock-up {
+      color: #16a34a;
+      font-weight: bold;
+    }
+    
+    @media (max-width: 900px) {
+      .main-content {
+        grid-template-columns: 1fr;
+      }
+      
+      .header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <h1 class="title">JPモルガン プライベートクライアント 2025年市場展望</h1>
+      <div class="date">2025年5月</div>
+    </header>
+    
+    <div class="main-content">
+      <div class="big-theme">
+        <h2 class="theme-title">市場を再形成する３つの大きなテーマ</h2>
+        <div class="theme-list">
+          <div class="theme-item">🤖 AIの生産性向上は<span class="handwritten emphasis">現実のものに</span></div>
+          <div class="theme-item">🇺🇸 トランプ2.0: 関税 vs 減税政策</div>
+          <div class="theme-item">⏳ 進化する非公開市場: より流動性が高まる</div>
+        </div>
+      </div>
+      
+      <div class="card">
+        <h3 class="section-title ai-title">AIの設備投資 ≠ 1999年ドットコムバブル</h3>
+        <p>JPモルガンによると、AI投資は過熱しておらず、生産性の向上は<span class="highlight">現実のもの</span>。勝者が明確に出現しています。</p>
+        
+        <div class="company-list">
+          <span class="company">$PLTR</span>
+          <span class="company">$MSFT</span>
+          <span class="company">$META</span>
+          <span class="company">$NVDA</span>
+          <span class="company">$AAPL</span>
+          <span class="company">$GOOGL</span>
+        </div>
+        
+        <div class="bubble">
+          <p>LLMのコストは2023年から<span class="stock-down">80〜99%低下</span>。</p>
+          <p>企業のROIが<span class="stock-up">ついに効果を発揮</span>。</p>
+        </div>
+      </div>
+      
+      <div class="card">
+        <h3 class="section-title trump-title">トランプ2.0の減税: パンデミック刺激策より大規模</h3>
+        <p>議会は2017年の減税を延長するために<span class="highlight">6兆ドルの赤字拡大</span>に向けて調整中（<span class="handwritten emphasis">巨額</span>な法案）。</p>
+        
+        <ul class="arrow-list">
+          <li><span class="stock-up">株式は短期的には強気</span>📈</li>
+          <li><span class="stock-down">債券市場はあまり喜ばず</span>💥</li>
+          <li>メディケイド＆EV税額控除は削減対象に⏳</li>
+        </ul>
+      </div>
+      
+      <div class="card">
+        <h3 class="section-title private-title">PEの高齢化が非公開資本を変化させる</h3>
+        <p>売上1億ドル以上の米国企業の<span class="highlight">87%はまだ非公開</span>。投資家が高齢化した非公開投資から撤退するなか、エバーグリーンファンドが人気を集めています。</p>
+        
+        <div class="bubble">
+          <p>エバーグリーンファンドの特徴:</p>
+          <p>• 継続的な投資の提供</p>
+          <p>• 一部償還が可能</p>
+          <p>• ブラインドプールリスクの軽減</p>
+        </div>
+      </div>
+      
+      <div class="card">
+        <h3 class="section-title sports-title">スポーツ取引が熱い資本に</h3>
+        <p>セルティックスの売却（<span class="highlight">61億ドル</span>）が新たな評価記録を樹立。</p>
+        <p>ペイトン・マニングのOmaha社の評価額は<span class="highlight">8億ドル以上</span>。</p>
+        
+        <p class="handwritten">重要な理由:</p>
+        <div class="icon-row">
+          <div class="icon-item">⚽️ ブランド資産と粘着性</div>
+          <div class="icon-item">📺 ストリーミングの収益化</div>
+          <div class="icon-item">📉 従来の資産との相関性の低さ</div>
+        </div>
+      </div>
+      
+      <div class="summary">
+        <h3 class="section-title summary-title">要約: 変動性が新たな常態に</h3>
+        
+        <div class="bullet-point">公共政策の転換 = 新たな勝者と<span class="highlight">米国の高関税</span></div>
+        <div class="bullet-point">非公開市場 = より流動的で成熟した市場に</div>
+        <div class="bullet-point">AI = より安価に、より速く、<span class="handwritten emphasis">現実世界に影響を与える</span>！</div>
+      </div>
+    </div>
+    
+    <footer class="footer">
+      <p>出典: JK @jonbking のツイート (https://x.com/jonbking/status/1924530977927528759)</p>
+      <p>JPモルガン プライベートクライアント 2025年市場展望の要約</p>
+    </footer>
+  </div>
+</body>
+</html>
+    </div>
+
+    <footer class="template-footer">
+        <div class="template-footer-content">
+            <div class="template-footer-logo">Monty Trader</div>
+            <div class="template-footer-social">
+                <a href="https://x.com/monty_investor" target="_blank">@monty_investor</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleLanguage() {
+            const jaElements = document.querySelectorAll('.ja');
+            const enElements = document.querySelectorAll('.en');
+            const button = document.querySelector('.language-switch button');
+            
+            jaElements.forEach(el => el.classList.toggle('hidden'));
+            enElements.forEach(el => el.classList.toggle('hidden'));
+            
+            button.textContent = button.textContent === 'English' ? '日本語' : 'English';
+        }
+    </script>
+</body>
+</html> 
