@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mark Ritchie II氏のトレードプロセス</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Yomogi&family=Zen+Kurenaido&family=Kaisei+Decol:wght@400;700&display=swap');
+        
+        :root {
+            --fashion-1: #593C47;
+            --fashion-2: #F2E63D;
+            --fashion-3: #F2C53D;
+            --fashion-4: #F25C05;
+            --fashion-5: #F24405;
+            --text-dark: #334155;
+            --text-title: #1e40af;
+            --text-subtitle: #475569;
+            --card-bg: rgba(255, 255, 255, 0.8);
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Kaisei Decol', serif;
+            background-color: #f8f9fa;
+            color: var(--text-dark);
+            line-height: 1.4;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23593c47' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            padding: 30px;
+        }
+        
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            border-bottom: 2px dashed var(--fashion-1);
+            padding-bottom: 20px;
+        }
+        
+        .title {
+            font-family: 'Zen Kurenaido', sans-serif;
+            font-size: 32px;
+            font-weight: bold;
+            background: linear-gradient(45deg, var(--fashion-1), var(--fashion-4));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .title::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='5' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,2.5 C5,0 10,5 15,2.5 C20,0 25,5 30,2.5 C35,0 40,5 45,2.5 C50,0 55,5 60,2.5 C65,0 70,5 75,2.5 C80,0 85,5 90,2.5 C95,0 100,5 105,2.5' stroke='%23F25C05' stroke-width='2' fill='none'/%3E%3C/svg%3E");
+            background-repeat: repeat-x;
+        }
+        
+        .date-source {
+            font-family: 'Kaisei Decol', serif;
+            font-size: 14px;
+            text-align: right;
+            color: var(--text-subtitle);
+        }
+        
+        .content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .column {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            margin-bottom: 20px;
+            padding: 20px;
+            position: relative;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+        
+        .card::before {
+            content: "";
+            position: absolute;
+            top: -5px;
+            left: 10px;
+            width: 20px;
+            height: 20px;
+            background-color: var(--fashion-2);
+            border-radius: 50%;
+            transform: rotate(-5deg);
+            z-index: -1;
+            opacity: 0.5;
+        }
+        
+        .section-title {
+            font-family: 'Yomogi', cursive;
+            font-size: 18px;
+            color: var(--text-title);
+            margin-bottom: 15px;
+            padding-left: 30px;
+            position: relative;
+        }
+        
+        .section-title::before {
+            content: "✏️";
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        
+        .subtitle {
+            font-family: 'Zen Kurenaido', sans-serif;
+            font-size: 16px;
+            color: var(--text-subtitle);
+            margin-bottom: 10px;
+        }
+        
+        .highlight {
+            position: relative;
+            display: inline;
+        }
+        
+        .highlight::after {
+            content: "";
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: a0px;
+            background-color: var(--fashion-3);
+            opacity: 0.5;
+            z-index: -1;
+        }
+        
+        .quote {
+            font-family: 'Yomogi', cursive;
+            position: relative;
+            margin: 20px 0;
+            padding: 15px 20px;
+            background-color: rgba(242, 230, 61, 0.2);
+            border-left: 3px solid var(--fashion-3);
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .quote::before {
+            content: """;
+            position: absolute;
+            top: -10px;
+            left: 5px;
+            font-size: 40px;
+            color: var(--fashion-4);
+            opacity: 0.5;
+        }
+        
+        .handdrawn-box {
+            border: 2px solid var(--fashion-1);
+            border-radius: 10px;
+            padding: 15px;
+            margin: 15px 0;
+            position: relative;
+            border-style: dashed;
+        }
+        
+        .handdrawn-box::before {
+            content: "📌";
+            position: absolute;
+            top: -12px;
+            left: 10px;
+            background-color: white;
+            padding: 0 5px;
+        }
+        
+        .arrow {
+            display: flex;
+            justify-content: center;
+            margin: 10px 0;
+            position: relative;
+        }
+        
+        .arrow svg {
+            width: 100px;
+            height: 30px;
+        }
+        
+        .point-list {
+            list-style: none;
+            padding-left: 5px;
+        }
+        
+        .point-list li {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 10px;
+        }
+        
+        .point-list li::before {
+            content: "🔍";
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        
+        .bubble {
+            position: relative;
+            background-color: rgba(242, 92, 5, 0.1);
+            border-radius: 20px;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        
+        .bubble::after {
+            content: "";
+            position: absolute;
+            bottom: -15px;
+            left: 20px;
+            width: 0;
+            height: 0;
+            border-left: 15px solid transparent;
+            border-right: 15px solid transparent;
+            border-top: 15px solid rgba(242, 92, 5, 0.1);
+        }
+        
+        .emphasis {
+            font-weight: bold;
+            color: var(--fashion-5);
+        }
+        
+        .marker {
+            background: linear-gradient(transparent 50%, rgba(242, 230, 61, 0.5) 50%);
+            padding: 0 2px;
+        }
+        
+        .flow-steps {
+            counter-reset: step;
+            padding-left: 0;
+            list-style-type: none;
+        }
+        
+        .flow-steps li {
+            position: relative;
+            padding-left: 40px;
+            margin-bottom: 15px;
+            counter-increment: step;
+        }
+        
+        .flow-steps li::before {
+            content: counter(step);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 30px;
+            height: 30px;
+            background-color: var(--fashion-1);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Yomogi', cursive;
+        }
+        
+        .connection-line {
+            position: relative;
+            height: 30px;
+            margin: 0 auto;
+            width: 2px;
+            background-color: var(--fashion-4);
+        }
+        
+        .connection-line::before {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: -4px;
+            width: 0;
+            height: 0;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-top: 8px solid var(--fashion-4);
+        }
+        
+        .footer {
+            margin-top: 30px;
+            text-align: center;
+            font-size: 14px;
+            color: var(--text-subtitle);
+            padding-top: 20px;
+            border-top: 1px dashed var(--fashion-1);
+        }
+        
+        .handdrawn-circle {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 25px;
+            height: 25px;
+            border: 2px dashed var(--fashion-4);
+            border-radius: 50%;
+            margin-right: 10px;
+            font-family: 'Yomogi', cursive;
+            font-weight: bold;
+            color: var(--fashion-4);
+        }
+        
+        .concept-map {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 20px 0;
+        }
+        
+        .concept-node {
+            background-color: rgba(242, 196, 61, 0.2);
+            border: 2px solid var(--fashion-3);
+            border-radius: 15px;
+            padding: 10px 15px;
+            margin: 10px;
+            position: relative;
+            max-width: 200px;
+            text-align: center;
+        }
+        
+        .concept-map-container {
+            position: relative;
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            margin: 20px 0;
+        }
+        
+        @media (max-width: 768px) {
+            .content {
+                flex-direction: column;
+            }
+            
+            .column {
+                flex: 1 1 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1 class="title">Mark Ritchie II氏のトレードプロセス</h1>
+            <div class="date-source">
+                2025年5月18日<br>
+                情報源：Kyna Kosling著「Mark Ritchie II on Process」
+            </div>
+        </header>
+        
+        <div class="content">
+            <!-- 左列 -->
+            <div class="column">
+                <div class="card">
+                    <h2 class="section-title">概要</h2>
+                    <p>著名なトレーダー、Mark Ritchie II氏のトレードプロセスを紹介。特に<span class="marker">マニュアルでの銘柄スクリーニング</span>と<span class="marker">計画の重要性</span>に焦点を当て、<span class="emphasis">規律とリスク管理の徹底</span>が成功の根幹をなす要素として強調されています。</p>
+                    
+                    <div class="quote">
+                        「リスク管理をしなければ、規律のないことをしていれば、あなたはただ起こるべくして起こる事故のようなものだ。」
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h2 class="section-title">規律とリスク管理の徹底 🛡️</h2>
+                    <div class="handdrawn-box">
+                        <p>Mark Ritchie II氏は<span class="highlight">規律とリスク管理を最優先事項</span>としています。Mark Minervini氏も彼の<span class="emphasis">強い規律</span>に言及し、これは氏のトレードスタイルの特徴です。</p>
+                    </div>
+                    
+                    <div class="bubble">
+                        規律を守ることで、感情に流されず、計画に基づいた意思決定が可能になります！
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h2 class="section-title">マニュアルスクリーニングの重要性 📊</h2>
+                    <ul class="flow-steps">
+                        <li>毎日600〜1,000のチャートをマニュアルで確認</li>
+                        <li>相対的な強さを持つ銘柄に焦点</li>
+                        <li>ウォッチリスト作成が主目的</li>
+                    </ul>
+                    
+                    <div class="quote">
+                        「私が銘柄を選ぶのではなく、銘柄に私を選んでほしい。」
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 中央列 -->
+            <div class="column">
+                <div class="card">
+                    <h2 class="section-title">マニュアルスクリーニングの多面的なメリット 🔄</h2>
+                    
+                    <div class="handdrawn-circle">学</div>
+                    <h3 class="subtitle">学習（Studying）</h3>
+                    <p>「正常」な状態を認識し、異常や違反を特定するための「目」を養う。過去の大勝銘柄に共通する特徴や、時代を超えた原則を学ぶことができます。</p>
+                    
+                    <div class="connection-line"></div>
+                    
+                    <div class="handdrawn-circle">状</div>
+                    <h3 class="subtitle">状況認識（Situational awareness）</h3>
+                    <p>多数のチャートを見ることで、市場全体の健康状態や、どのセクターやテーマに資金が流れているかという「感覚」を得ることができます。Dan Zanger氏も同様に多くのチャートをチェックしていたことが言及されています。</p>
+                    
+                    <div class="connection-line"></div>
+                    
+                    <div class="handdrawn-circle">集</div>
+                    <h3 class="subtitle">集中（Focus）</h3>
+                    <p>自分のトレードスタイルにとって重要な、相対的に強い銘柄群に焦点を絞ることで、<span class="marker">世界の範囲を小さくする</span>ことが重要です。</p>
+                    
+                    <div class="connection-line"></div>
+                    
+                    <div class="handdrawn-circle">自</div>
+                    <h3 class="subtitle">自信と規律（Confidence and discipline）</h3>
+                    <p>プロセスを繰り返すことで、そのプロセスと自身に対する自信が生まれます。この自信が、プロセスに固執する規律を保つことを可能にします。</p>
+                    
+                    <div class="quote">
+                        「私がこれを正しく実行している限り、私には明るい未来がある — なぜならエッジがあるからだ。そして私がそれを維持し続け、回転させる限り、収益性は必然となる。」
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 右列 -->
+            <div class="column">
+                <div class="card">
+                    <h2 class="section-title">計画の重要性 📝</h2>
+                    <div class="bubble">
+                        「悪い計画でも、計画がないよりは良い。そして、実行されない良い計画よりも、実行される悪い計画の方が良い。」
+                    </div>
+                    
+                    <ul class="point-list">
+                        <li>トレードは単一ではなく、<span class="emphasis">何十年にもわたる多くのアイデアと決定の積み重ね</span>です。</li>
+                        <li>個々のトレードの成否に固執するのではなく、<span class="marker">計画の質</span>にこだわり、その計画に固執することを非交渉事項とすることが重要です。</li>
+                        <li>長期的に見れば、計画を実行し続けることで成功は不可避となります。</li>
+                        <li>結果が不確実な状況では、<span class="emphasis">確率論的に考える</span>ことが不可欠です。</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <h2 class="section-title">資本の効率性（Efficiency of capital）💹</h2>
+                    <div class="handdrawn-box">
+                        <p>特に小規模な口座の場合、エッジをより速く回転させる（ターンオーバーさせる）ことがアウトパフォーマンスにつながります。</p>
+                        <p>リスクの数倍に達した時点で銘柄が停滞している場合、<span class="marker">（部分的に）利益確定</span>し、その資金を新しい機会に回すことを検討します。</p>
+                    </div>
+                    
+                    <p>フルタイムトレーダーは、自身の時間価値と、トレード資金を受動的に運用した場合に得られたであろう収益を上回るパフォーマンスを上げる必要があります。</p>
+                </div>
+                
+                <div class="card">
+                    <h2 class="section-title">再エントリーの計画 🔄</h2>
+                    <p>リスク管理を重視するトレーダーはタイトなストップロスを用いることが多く、これは最終的な勝者となる銘柄から早期に振り落とされる可能性があることを意味します。</p>
+                    
+                    <div class="handdrawn-box">
+                        <p class="emphasis">「正しくない動きをしている銘柄からは退出する」</p>
+                        <p>その銘柄をブラックリストに入れるのではなく、再びセットアップした場合に再エントリーするための計画を持つことが重要です。</p>
+                    </div>
+                    
+                    <div class="bubble">
+                        <span class="marker">「まずリスクを考える」（think risk first）</span>ことが繰り返し強調されています！
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card">
+            <h2 class="section-title">結論 📊</h2>
+            <div class="concept-map-container">
+                <div class="concept-node">徹底した規律</div>
+                <div class="concept-node">リスク管理</div>
+                <div class="concept-node">マニュアルスクリーニング</div>
+                <div class="concept-node">長期的視点での計画</div>
+            </div>
+            
+            <p>Mark Ritchie II氏の成功は、上記の要素に基づいています。個々のトレードの結果に一喜一憂するのではなく、<span class="emphasis">確立されたプロセスと計画に忠実であり続けることが</span>、不確実性の高いトレーディングの世界で長期的な成功を収めるための鍵であると、本記事は示唆しています。</p>
+        </div>
+        
+        <footer class="footer">
+            情報源： Kyna Kosling著「<a href="https://tradingresourcehub.substack.com/p/mark-ritchie-ii-on-process" target="_blank" style="color: var(--fashion-4); text-decoration: none; border-bottom: 1px dashed var(--fashion-4);">Mark Ritchie II on Process - by Kyna Kosling</a>」（The Trading Resource Hub掲載）<br>
+            グラフィックレコーディング：2025年5月18日作成
+        </footer>
+    </div>
+</body>
+</html>
