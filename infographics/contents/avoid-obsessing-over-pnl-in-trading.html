@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>トレーディング成功への道：損益監視の罠</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Yomogi&family=Zen+Kurenaido&family=Kaisei+Decol:wght@400;700&display=swap');
+    
+    :root {
+      --fashion-1: #593C47;
+      --fashion-2: #F2E63D;
+      --fashion-3: #F2C53D;
+      --fashion-4: #F25C05;
+      --fashion-5: #F24405;
+      --text-main: #334155;
+      --text-heading: #1e40af;
+      --text-subtitle: #475569;
+      --bg-light: #fff;
+      --shadow: rgba(0, 0, 0, 0.1);
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Kaisei Decol', serif;
+      color: var(--text-main);
+      line-height: 1.4;
+      background-color: #f8f9fa;
+      padding: 20px;
+      overflow-x: hidden;
+    }
+    
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      background: var(--bg-light);
+      border-radius: 12px;
+      box-shadow: 0 4px 12px var(--shadow);
+      padding: 30px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 30px;
+      padding-bottom: 15px;
+      border-bottom: 2px dashed #593C47;
+    }
+    
+    .header-left {
+      flex: 2;
+    }
+    
+    .header-right {
+      flex: 1;
+      text-align: right;
+      font-family: 'Zen Kurenaido', sans-serif;
+      color: var(--text-subtitle);
+      font-size: 14px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+    }
+    
+    h1 {
+      font-family: 'Yomogi', cursive;
+      font-size: 32px;
+      font-weight: bold;
+      margin-bottom: 10px;
+      background: linear-gradient(to right, var(--fashion-1), var(--fashion-4));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      display: inline-block;
+      position: relative;
+    }
+    
+    h1::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 8px;
+      background: var(--fashion-3);
+      bottom: 0;
+      left: 0;
+      z-index: -1;
+      opacity: 0.5;
+      transform: rotate(-1deg);
+    }
+    
+    h2 {
+      font-family: 'Zen Kurenaido', sans-serif;
+      font-size: 16px;
+      color: var(--text-subtitle);
+      margin-bottom: 20px;
+    }
+    
+    .content {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    
+    .column {
+      flex: 1;
+      min-width: 300px;
+    }
+    
+    .section {
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(10px);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 8px var(--shadow);
+      position: relative;
+      border: 2px solid transparent;
+    }
+    
+    .section::before {
+      content: '';
+      position: absolute;
+      top: -8px;
+      left: 15px;
+      width: 40%;
+      height: 16px;
+      background: var(--fashion-2);
+      z-index: -1;
+      border-radius: 6px;
+      transform: rotate(-1deg);
+      opacity: 0.6;
+    }
+    
+    .section.important {
+      border: 2px dashed var(--fashion-4);
+    }
+    
+    .section-title {
+      font-family: 'Yomogi', cursive;
+      font-size: 18px;
+      color: var(--text-heading);
+      margin-bottom: 15px;
+      padding-bottom: 5px;
+      border-bottom: 2px dotted var(--fashion-3);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .icon {
+      font-size: 22px;
+      display: inline-block;
+    }
+    
+    p {
+      margin-bottom: 15px;
+      font-size: 14px;
+    }
+    
+    .highlight {
+      background: linear-gradient(transparent 60%, var(--fashion-2) 60%);
+      display: inline;
+      padding: 0 2px;
+    }
+    
+    .keyword {
+      font-weight: bold;
+      color: var(--fashion-1);
+      position: relative;
+      z-index: 1;
+    }
+    
+    .keyword::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 8px;
+      background: var(--fashion-3);
+      bottom: 0;
+      left: 0;
+      z-index: -1;
+      opacity: 0.5;
+    }
+    
+    .arrow {
+      position: relative;
+      width: 60px;
+      height: 20px;
+      display: inline-block;
+      margin: 0 10px;
+    }
+    
+    .arrow::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 4px;
+      background: var(--fashion-4);
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+    }
+    
+    .arrow::after {
+      content: '';
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      border-top: 4px solid var(--fashion-4);
+      border-right: 4px solid var(--fashion-4);
+      top: 50%;
+      right: 5px;
+      transform: translateY(-50%) rotate(45deg);
+    }
+    
+    .bubble {
+      background: var(--fashion-2);
+      border-radius: 20px;
+      padding: 10px 15px;
+      position: relative;
+      margin: 15px 0;
+      font-family: 'Yomogi', cursive;
+      display: inline-block;
+    }
+    
+    .bubble::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 20px;
+      width: 0;
+      height: 0;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      border-top: 10px solid var(--fashion-2);
+    }
+    
+    .note {
+      background: rgba(242, 230, 60, 0.2);
+      border-left: 4px solid var(--fashion-3);
+      padding: 10px 15px;
+      margin: 15px 0;
+      position: relative;
+    }
+    
+    .note::before {
+      content: '📝';
+      position: absolute;
+      top: -12px;
+      left: -12px;
+      font-size: 24px;
+    }
+    
+    .vs-container {
+      display: flex;
+      gap: 20px;
+      margin: 20px 0;
+      position: relative;
+    }
+    
+    .vs-item {
+      flex: 1;
+      padding: 15px;
+      border-radius: 10px;
+      position: relative;
+    }
+    
+    .vs-item.bad {
+      background: rgba(242, 68, 4, 0.1);
+      border: 2px dashed var(--fashion-5);
+    }
+    
+    .vs-item.good {
+      background: rgba(242, 196, 60, 0.1);
+      border: 2px dashed var(--fashion-3);
+    }
+    
+    .vs-label {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--bg-light);
+      padding: 0 10px;
+      font-family: 'Yomogi', cursive;
+      font-weight: bold;
+    }
+    
+    .vs-item.bad .vs-label {
+      color: var(--fashion-5);
+    }
+    
+    .vs-item.good .vs-label {
+      color: var(--fashion-3);
+    }
+    
+    .vs-center {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 36px;
+      height: 36px;
+      background: var(--bg-light);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 18px;
+      color: var(--fashion-1);
+      box-shadow: 0 2px 6px var(--shadow);
+      z-index: 2;
+    }
+    
+    .conclusion {
+      background: linear-gradient(to right, rgba(89, 60, 71, 0.1), rgba(242, 68, 4, 0.1));
+      border-radius: 12px;
+      padding: 20px;
+      margin-top: 30px;
+      position: relative;
+    }
+    
+    .conclusion::before {
+      content: '🎯';
+      position: absolute;
+      top: -15px;
+      left: 20px;
+      font-size: 30px;
+    }
+    
+    .hand-drawn-box {
+      position: relative;
+    }
+    
+    .hand-drawn-box::before {
+      content: '';
+      position: absolute;
+      top: -5px;
+      left: -5px;
+      right: -5px;
+      bottom: -5px;
+      border: 2px solid var(--fashion-1);
+      border-radius: 15px;
+      z-index: -1;
+      transform: rotate(-0.5deg);
+    }
+    
+    .hand-drawn-box::after {
+      content: '';
+      position: absolute;
+      top: -3px;
+      left: -3px;
+      right: -3px;
+      bottom: -3px;
+      border: 2px solid var(--fashion-4);
+      border-radius: 15px;
+      z-index: -2;
+      transform: rotate(0.5deg);
+    }
+    
+    .checklist {
+      list-style: none;
+      margin: 15px 0;
+    }
+    
+    .checklist li {
+      margin-bottom: 8px;
+      padding-left: 30px;
+      position: relative;
+    }
+    
+    .checklist li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: var(--fashion-4);
+      font-weight: bold;
+      font-size: 18px;
+    }
+    
+    .footer {
+      margin-top: 30px;
+      text-align: right;
+      font-size: 12px;
+      color: var(--text-subtitle);
+      border-top: 2px dashed var(--fashion-1);
+      padding-top: 15px;
+    }
+    
+    .footer a {
+      color: var(--fashion-4);
+      text-decoration: none;
+      position: relative;
+      transition: all 0.3s;
+    }
+    
+    .footer a:hover {
+      color: var(--fashion-5);
+    }
+    
+    .footer a::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      background: var(--fashion-3);
+      bottom: -2px;
+      left: 0;
+      transform: scaleX(0);
+      transform-origin: bottom right;
+      transition: transform 0.3s;
+    }
+    
+    .footer a:hover::after {
+      transform: scaleX(1);
+      transform-origin: bottom left;
+    }
+    
+    @media (max-width: 768px) {
+      .content {
+        flex-direction: column;
+      }
+      
+      .column {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="header-left">
+        <h1>トレーディング成功への道：損益監視の罠</h1>
+        <h2>一貫性を守る確率思考トレーディングの秘訣</h2>
+      </div>
+      <div class="header-right">
+        <div>📅 2024年5月</div>
+        <div>出典: Yumi @samuraipips358</div>
+      </div>
+    </div>
+    
+    <div class="content">
+      <div class="column">
+        <div class="section important">
+          <h3 class="section-title"><span class="icon">⚠️</span> 損益監視の危険性</h3>
+          <div class="bubble">
+            トレーディングで最も時間と感情エネルギーを浪費するものは、損益への執着です
+          </div>
+          <p>多くのトレーダーは「<span class="highlight">今いくら儲かっているか？</span>」や「<span class="highlight">どれだけの損失を抱えているか？</span>」に関心を持ち、この情報に感情が左右されています。</p>
+          <p>最悪なのは、<span class="keyword">一貫性を損なうリスク</span>が大幅に増加することです。</p>
+          
+          <div class="note">
+            損益をチェックし始めた瞬間、目先の損益に大きな価値を置くことになり、<span class="keyword">一貫性を維持することが極めて困難</span>になります。
+          </div>
+          
+          <div class="vs-container">
+            <div class="vs-item bad">
+              <div class="vs-label">❌ 損益監視</div>
+              <p>「この金額に対して今すべきことは？」という考えに基づく行動</p>
+            </div>
+            <div class="vs-center">VS</div>
+            <div class="vs-item good">
+              <div class="vs-label">✅ ルールベース</div>
+              <p>あなたのルールに基づいた行動</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="section">
+          <h3 class="section-title"><span class="icon">💡</span> 金額ではなく、%やRで考える</h3>
+          <p>金額を見る必要はなく、その情報なしでトレードすることは可能です。</p>
+          <div class="hand-drawn-box">
+            <ul class="checklist">
+              <li>トレード毎のリスクを％で管理する</li>
+              <li>それに基づいてポジションサイズを計算</li>
+              <li>トレードに参入</li>
+              <li>ストップロスを設定</li>
+            </ul>
+          </div>
+          <p>常に<span class="keyword">一貫した計算されたリスク（％）</span>でトレードしているので、絶えず変動する金額を神経質に監視し続ける必要はありません。</p>
+        </div>
+      </div>
+      
+      <div class="column">
+        <div class="section">
+          <h3 class="section-title"><span class="icon">📊</span> チャートに基づく判断</h3>
+          <p>何よりも、あなたが判断の基にすべき情報は<span class="keyword">チャート自体</span>であり、「いくら勝っているか負けているか？」ではありません。</p>
+          
+          <div class="bubble">
+            トレードで最も重要なのは一貫した行動です
+          </div>
+          
+          <p>なぜなら<span class="highlight">ルールに基づいた行動を一貫して繰り返す</span>ことで、同一条件下での大きなサンプルサイズを構築し、大数の法則が働き、あなたのエッジが現れるからです。</p>
+          
+          <div class="note">
+            ルールを守れない理由は「目先の損益が重要」という誤った信念であり、一貫性よりもこれを重視しているからです。
+          </div>
+        </div>
+        
+        <div class="section">
+          <h3 class="section-title"><span class="icon">🧠</span> 感情と価値観の関係</h3>
+          <p>あなたの感情は<span class="keyword">あなたが価値を置くものに基づいて</span>現れます。</p>
+          <p>現在のトレードに価値を置けば置くほど、現在の損失を恐れるようになり、「絶対に負けたくない」という感情がルールに従うことよりも優先されます。</p>
+          
+          <div class="hand-drawn-box">
+            <p>損益を常に監視することは「<span class="highlight">目先の損益に価値がある</span>」という信念の表れであり、この行動を続けるほど、この信念は強化されます。</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="column">
+        <div class="section important">
+          <h3 class="section-title"><span class="icon">🚫</span> 損益監視がもたらす害</h3>
+          <p>損益や金額を継続的に監視することは、<span class="keyword">あなたが思っている以上に有害</span>です。</p>
+          
+          <div class="bubble">
+            確率的思考でトレードしたいなら...
+          </div>
+          
+          <p>これからは「％」や「R」で考え、トレードの決定に金銭的価値を全く使用せず、「<span class="highlight">チャート自体のみ</span>」に依存しましょう。</p>
+          
+          <div class="note">
+            一貫性を損なうリスクを高める行動に関わらないことが重要です。
+          </div>
+        </div>
+        
+        <div class="section">
+          <h3 class="section-title"><span class="icon">🎯</span> トレード成功の方程式</h3>
+          <div class="hand-drawn-box">
+            <p><span class="keyword">一貫した行動</span> + <span class="keyword">大きなサンプルサイズ</span> = <span class="keyword">大数の法則が働く</span> → <span class="keyword">エッジの出現</span></p>
+          </div>
+          
+          <p>チャートに集中し、金額ではなく％やRで考えることで、感情に左右されず一貫した行動が可能になります。</p>
+          
+          <div class="vs-container">
+            <div class="vs-item bad">
+              <div class="vs-label">❌ 避けるべき</div>
+              <p>・損益の継続的監視<br>・金額ベースの判断<br>・感情主導の行動</p>
+            </div>
+            <div class="vs-center">→</div>
+            <div class="vs-item good">
+              <div class="vs-label">✅ 目指すべき</div>
+              <p>・%/Rでの思考<br>・チャートベースの判断<br>・ルールに基づく一貫性</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="conclusion">
+      <h3 class="section-title"><span class="icon">✨</span> まとめ：確率思考トレーダーへの道</h3>
+      <p>トレーディングでの成功は、<span class="keyword">一貫した行動</span>にかかっています。損益や金額の監視をやめ、%やRで考え、チャート自体に基づいて判断することで、感情に左右されない確率思考のトレーダーになることができます。</p>
+      <p>ルールに従い続けることで、大数の法則があなたのエッジを顕在化させ、長期的な成功につながります。</p>
+    </div>
+    
+    <div class="footer">
+      <div>グラフィックレコーディング・インフォグラフィック | 原文: Yumi @samuraipips358 | <a href="https://x.com/samuraipips358/status/1923347701959204976" target="_blank">https://x.com/samuraipips358/status/1923347701959204976</a></div>
+      <div style="margin-top: 10px;">
+        <strong>著者の書籍:</strong> 
+        <a href="https://payhip.com/YumiSakura" target="_blank">E-book</a> | 
+        <a href="https://a.co/d/fXmRhIa" target="_blank">THE PATH TO SUCCESS IN TRADING</a> | 
+        <a href="https://a.co/d/d0QJMxK" target="_blank">Trading Psychology</a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>コアウィーブ2025年第1四半期決算 - グラフィックレコーディング</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Yomogi&family=Zen+Kurenaido&family=Kaisei+Decol:wght@400;700&display=swap');
+        
+        :root {
+            --fashion-1: #593C47;
+            --fashion-2: #F2E63D;
+            --fashion-3: #F2C53D;
+            --fashion-4: #F25C05;
+            --fashion-5: #F24405;
+            --text-dark: #334155;
+            --text-heading: #1e40af;
+            --text-subheading: #475569;
+            --border-radius: 12px;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Kaisei Decol', serif;
+            color: var(--text-dark);
+            line-height: 1.4;
+            background-color: #f8f9fa;
+            padding: 20px;
+            font-size: 14px;
+        }
+        
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            overflow: hidden;
+            padding: 20px;
+            position: relative;
+        }
+        
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 2px dashed var(--fashion-1);
+            position: relative;
+        }
+        
+        .header-left {
+            flex: 1;
+        }
+        
+        .header-right {
+            text-align: right;
+            font-family: 'Zen Kurenaido', sans-serif;
+            color: var(--text-subheading);
+        }
+        
+        h1 {
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 5px;
+            font-family: 'Yomogi', cursive;
+            background: linear-gradient(45deg, var(--fashion-1), var(--fashion-5));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+            display: inline-block;
+            z-index: 1;
+        }
+        
+        h1::after {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 10px;
+            bottom: 5px;
+            left: 0;
+            background-color: var(--fashion-2);
+            z-index: -1;
+            opacity: 0.4;
+            transform: rotate(-1deg);
+        }
+        
+        h2 {
+            font-size: 18px;
+            font-weight: bold;
+            color: var(--text-heading);
+            margin-bottom: 15px;
+            font-family: 'Kaisei Decol', serif;
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding-left: 28px;
+        }
+        
+        h2::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            width: 24px;
+            height: 24px;
+            background-color: var(--fashion-3);
+            border-radius: 50%;
+            z-index: 0;
+        }
+        
+        h2 i {
+            position: absolute;
+            left: 5px;
+            z-index: 1;
+            color: var(--fashion-1);
+        }
+        
+        h3 {
+            font-size: 16px;
+            color: var(--text-subheading);
+            margin-bottom: 10px;
+            font-family: 'Zen Kurenaido', sans-serif;
+        }
+        
+        .content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .column {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            overflow: hidden;
+            border: 1.5px solid #e2e8f0;
+        }
+        
+        .card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 6px;
+            height: 100%;
+            background-color: var(--fashion-4);
+        }
+        
+        .highlight-box {
+            background-color: rgba(242, 230, 61, 0.15);
+            border: 2px dashed var(--fashion-3);
+            border-radius: var(--border-radius);
+            padding: 15px;
+            margin: 15px 0;
+            position: relative;
+        }
+        
+        .highlight-box::after {
+            content: "★";
+            position: absolute;
+            top: -10px;
+            right: 10px;
+            background-color: var(--fashion-3);
+            color: white;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+        }
+        
+        .key-figure {
+            display: flex;
+            align-items: baseline;
+            margin-bottom: 10px;
+            font-family: 'Kaisei Decol', serif;
+        }
+        
+        .key-figure-value {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--fashion-5);
+            margin-right: 8px;
+        }
+        
+        .key-figure-label {
+            font-size: 14px;
+            color: var(--text-subheading);
+        }
+        
+        .arrow-up {
+            color: #10b981;
+        }
+        
+        .arrow-down {
+            color: #ef4444;
+        }
+        
+        .hand-drawn-arrow {
+            position: relative;
+            display: block;
+            width: 100%;
+            height: 40px;
+            margin: 15px 0;
+        }
+        
+        .hand-drawn-arrow svg {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .icon-box {
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            background-color: var(--fashion-2);
+            border-radius: 4px;
+            text-align: center;
+            line-height: 24px;
+            margin-right: 8px;
+            position: relative;
+            top: 2px;
+        }
+        
+        .timeline {
+            border-left: 3px dashed var(--fashion-1);
+            padding-left: 20px;
+            margin-left: 10px;
+            position: relative;
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 20px;
+        }
+        
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            left: -30px;
+            top: 5px;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background-color: var(--fashion-3);
+            border: 3px solid white;
+        }
+        
+        .marker-highlight {
+            background: linear-gradient(transparent 60%, var(--fashion-2) 60%);
+            font-weight: bold;
+            padding: 0 2px;
+        }
+        
+        .speech-bubble {
+            position: relative;
+            background-color: white;
+            border: 2px solid var(--fashion-1);
+            border-radius: 10px;
+            padding: 10px;
+            margin: 20px 0;
+        }
+        
+        .speech-bubble::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 20px;
+            width: 20px;
+            height: 10px;
+            background-color: white;
+            border-right: 2px solid var(--fashion-1);
+            border-bottom: 2px solid var(--fashion-1);
+            transform: rotate(45deg);
+        }
+        
+        .hand-drawn-bracket {
+            position: relative;
+            padding: 0 20px;
+            margin: 15px 0;
+        }
+        
+        .hand-drawn-bracket::before,
+        .hand-drawn-bracket::after {
+            content: "";
+            position: absolute;
+            width: 15px;
+            height: calc(100% + 10px);
+            top: -5px;
+            border: 2px solid var(--fashion-4);
+        }
+        
+        .hand-drawn-bracket::before {
+            left: 0;
+            border-right: none;
+        }
+        
+        .hand-drawn-bracket::after {
+            right: 0;
+            border-left: none;
+        }
+        
+        .dot-divider {
+            display: flex;
+            justify-content: center;
+            margin: 30px 0;
+        }
+        
+        .dot-divider span {
+            width: 8px;
+            height: 8px;
+            background-color: var(--fashion-4);
+            border-radius: 50%;
+            margin: 0 5px;
+        }
+        
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            font-family: 'Zen Kurenaido', sans-serif;
+        }
+        
+        .data-table th {
+            background-color: rgba(89, 60, 71, 0.1);
+            padding: 8px;
+            text-align: left;
+            font-weight: bold;
+            color: var(--fashion-1);
+        }
+        
+        .data-table td {
+            padding: 8px;
+            border-bottom: 1px dashed #e2e8f0;
+        }
+        
+        .data-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        footer {
+            margin-top: 30px;
+            padding-top: 15px;
+            border-top: 2px dashed var(--fashion-1);
+            font-size: 12px;
+            color: var(--text-subheading);
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        /* ガラスモーフィズム */
+        .glassmorphism {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* 図形の背景装飾 */
+        .shape-bg {
+            position: absolute;
+            z-index: -1;
+            opacity: 0.07;
+        }
+        
+        .circle-bg {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background-color: var(--fashion-3);
+            top: 10%;
+            right: 5%;
+        }
+        
+        .square-bg {
+            width: 120px;
+            height: 120px;
+            background-color: var(--fashion-4);
+            bottom: 15%;
+            left: 10%;
+            transform: rotate(15deg);
+        }
+        
+        .triangle-bg {
+            width: 0;
+            height: 0;
+            border-left: 100px solid transparent;
+            border-right: 100px solid transparent;
+            border-bottom: 170px solid var(--fashion-2);
+            top: 40%;
+            right: 15%;
+        }
+        
+        /* レスポンシブデザイン */
+        @media (max-width: 768px) {
+            .content {
+                flex-direction: column;
+            }
+            
+            .column {
+                flex: 100%;
+            }
+            
+            h1 {
+                font-size: 24px;
+            }
+            
+            h2 {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 背景の図形装飾 -->
+        <div class="shape-bg circle-bg"></div>
+        <div class="shape-bg square-bg"></div>
+        <div class="shape-bg triangle-bg"></div>
+        
+        <!-- ヘッダー -->
+        <header>
+            <div class="header-left">
+                <h1>コアウィーブ 2025年第1四半期決算</h1>
+                <h3>〜AIハイパースケーラーとしての力強い成長〜</h3>
+            </div>
+            <div class="header-right">
+                <p>発表日: 2025年5月14日</p>
+                <p>データ出典: CoreWeave IR</p>
+                <p>NASDAQ: CRWV</p>
+            </div>
+        </header>
+        
+        <!-- 企業情報 -->
+        <div class="card" style="margin-bottom: 30px; border-left: 4px solid var(--fashion-1); padding-left: 15px;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                    <p><strong>企業概要:</strong> CoreWeave, Inc.（NASDAQ: CRWV）は、AIワークロード向けに特化した<span class="marker-highlight">クラウドプラットフォーム</span>を提供する「AIハイパースケーラー™」です。最先端のソフトウェアと高性能インフラストラクチャを組み合わせることで、大規模なAIトレーニングと推論をサポートしています。</p>
+                    <p>2017年の設立以来、米国およびヨーロッパ全域にデータセンターのフットプリントを拡大し続け、世界をリードするAI企業に<span class="marker-highlight">目的に特化したクラウドサービス</span>を提供しています。</p>
+                </div>
+                <div style="min-width: 100px; text-align: center;">
+                    <div style="font-weight: bold; font-size: 20px; color: var(--fashion-5);">$80.30</div>
+                    <div style="color: #10b981; font-weight: bold;">+$14.53 (+22.09%)</div>
+                    <div style="font-size: 12px; color: var(--text-subheading);">2025/5/14時点</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- メインコンテンツ -->
+        <div class="content">
+            <!-- 左カラム -->
+            <div class="column">
+                <div class="card glassmorphism">
+                    <h2><i>📊</i> 第1四半期ハイライト</h2>
+                    <div class="highlight-box">
+                        <div class="key-figure">
+                            <span class="key-figure-value">$9億8200万</span>
+                            <span class="key-figure-label">収益</span>
+                        </div>
+                        <div class="key-figure">
+                            <span class="key-figure-value">+420% <i class="arrow-up">↑</i></span>
+                            <span class="key-figure-label">前年同期比</span>
+                        </div>
+                    </div>
+                    
+                    <p>CoreWeaveは2025年第1四半期に<span class="marker-highlight">力強い成長</span>を達成し、収益は前年比420%増の$9億8200万ドルに達しました。これは、同社の目的に特化したAIクラウドプラットフォームへの需要が<span class="marker-highlight">急速に拡大</span>していることを示しています。</p>
+                    
+                    <div class="hand-drawn-arrow">
+                        <svg viewBox="0 0 300 40" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M10,20 C50,40 100,0 150,20 C200,40 250,0 290,20 L295,20 L280,30 L295,20 L280,10" stroke="#F25C05" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </div>
+                    
+                    <div class="key-figure">
+                        <span class="key-figure-value">$1億6300万</span>
+                        <span class="key-figure-label">調整後営業利益</span>
+                    </div>
+                    <div class="key-figure">
+                        <span class="key-figure-value">17%</span>
+                        <span class="key-figure-label">調整後営業利益率</span>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h2><i>💰</i> 収益成長の軌跡</h2>
+                    <p>CoreWeaveの四半期収益は急速に成長しています：</p>
+                    
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <strong>2024年Q1:</strong> $1億8900万
+                        </div>
+                        <div class="timeline-item">
+                            <strong>2024年Q2:</strong> $3億9500万
+                        </div>
+                        <div class="timeline-item">
+                            <strong>2024年Q3:</strong> $5億8400万
+                        </div>
+                        <div class="timeline-item">
+                            <strong>2024年Q4:</strong> $7億4700万
+                        </div>
+                        <div class="timeline-item">
+                            <strong>2025年Q1:</strong> $9億8200万 <i class="arrow-up">↑</i>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h2><i>🌐</i> グローバル展開</h2>
+                    <p>CoreWeaveは、AIワークロードに最適化された33のデータセンターを米国とヨーロッパ全域に展開しています。</p>
+                    
+                    <div class="key-figure">
+                        <span class="key-figure-value">33</span>
+                        <span class="key-figure-label">データセンター</span>
+                    </div>
+                    
+                    <div class="key-figure">
+                        <span class="key-figure-value">~420MW</span>
+                        <span class="key-figure-label">アクティブパワー</span>
+                    </div>
+                    
+                    <div class="key-figure">
+                        <span class="key-figure-value">~1.6GW</span>
+                        <span class="key-figure-label">契約済み電力容量</span>
+                    </div>
+                    
+                    <div class="speech-bubble">
+                        <p>「私たちのインフラストラクチャとソフトウェアサービスは、大規模なインフラストラクチャの運用の複雑さを抽象化し、市場で大きく差別化されています」</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 中央カラム -->
+            <div class="column">
+                <div class="card">
+                    <h2><i>🚀</i> 戦略的マイルストーン</h2>
+                    
+                    <div class="hand-drawn-bracket">
+                        <p><span class="icon-box">💼</span><strong>OpenAIとの戦略的契約締結</strong><br>
+                        契約金額は最大<span class="marker-highlight">$119億ドル</span>に達し、バックログ収益に大きく貢献</p>
+                    </div>
+                    
+                    <div class="hand-drawn-bracket">
+                        <p><span class="icon-box">🔄</span><strong>大型AI企業との$40億ドル拡張契約</strong><br>
+                        これはQ1終了後に締結され、将来のバックログに追加される予定</p>
+                    </div>
+                    
+                    <div class="hand-drawn-bracket">
+                        <p><span class="icon-box">🔍</span><strong>Weights & Biasesの買収完了</strong><br>
+                        1,400以上の顧客を持つAI開発者向け業界トッププラットフォーム</p>
+                    </div>
+                    
+                    <div class="hand-drawn-bracket">
+                        <p><span class="icon-box">📈</span><strong>テクノロジーベンチマークで新記録</strong><br>
+                        GB200 Grace Blackwellシステムを業界で初めて大規模展開</p>
+                    </div>
+                </div>
+                
+                <div class="card glassmorphism">
+                    <h2><i>💵</i> 収益バックログ</h2>
+                    
+                    <div class="key-figure">
+                        <span class="key-figure-value">$259億</span>
+                        <span class="key-figure-label">収益バックログ</span>
+                    </div>
+                    
+                    <div class="key-figure">
+                        <span class="key-figure-value">+63% <i class="arrow-up">↑</i></span>
+                        <span class="key-figure-label">前年同期比</span>
+                    </div>
+                    
+                    <p>収益バックログには、将来実行される残りの契約義務（RPO）$146億と、顧客との契約に基づき将来認識される見込みのその他の金額$112億が含まれています。</p>
+                    
+                    <div class="data-table">
+                        <table>
+                            <tr>
+                                <th>内訳（単位：千ドル）</th>
+                                <th>2025年</th>
+                                <th>2024年</th>
+                            </tr>
+                            <tr>
+                                <td>残りの契約履行義務</td>
+                                <td>$14,665,098</td>
+                                <td>$15,911,178</td>
+                            </tr>
+                            <tr>
+                                <td>その他将来収益見込額</td>
+                                <td>$11,191,596</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td><strong>収益バックログ合計</strong></td>
+                                <td><strong>$25,856,694</strong></td>
+                                <td><strong>$15,911,178</strong></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h2><i>💡</i> CEOコメント</h2>
+                    
+                    <div class="speech-bubble">
+                        <p>「我々は2025年に複数の面で素晴らしいスタートを切りました。当社の強力な第1四半期の財務実績は、IPO、OpenAIとの主要な戦略的契約、その他の顧客獲得、Weights & Biasesの買収、そして多くの技術的成果を含む一連のマイルストーンを締めくくるものです」</p>
+                        <p style="text-align:right;">— Michael Intrator<br>共同創業者兼CEO</p>
+                    </div>
+                    
+                    <div class="speech-bubble">
+                        <p>「当社のプラットフォームへの需要は堅調かつ加速しており、AI企業が最先端アプリケーションに必要な高性能AIクラウドインフラを求めています。私たちはその需要を取り込むために可能な限り迅速に拡大しています。未来はCoreWeaveの上で走ります」</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 右カラム -->
+            <div class="column">
+                <div class="card">
+                    <h2><i>📝</i> 業績詳細</h2>
+                    
+                    <div class="hand-drawn-bracket">
+                        <p><span class="icon-box">💹</span><strong>調整後EBITDA</strong><br>
+                        <span class="key-figure-value">$6億610万</span><br>
+                        2024年Q1の約6倍、調整後EBITDA率は<span class="marker-highlight">62%</span></p>
+                    </div>
+                    
+                    <div class="hand-drawn-bracket">
+                        <p><span class="icon-box">💸</span><strong>設備投資</strong><br>
+                        <span class="key-figure-value">$19億</span><br>
+                        データセンター容量の拡大と次世代GPUの導入</p>
+                    </div>
+                    
+                    <div class="hand-drawn-bracket">
+                        <p><span class="icon-box">📉</span><strong>純損失</strong><br>
+                        <span class="key-figure-value">$3億1464万</span><br>
+                        IPO完了時に認識された一時的な株式報酬費用$1億7700万を含む</p>
+                    </div>
+                </div>
+                
+                <div class="card glassmorphism">
+                    <h2><i>🔮</i> 2025年第2四半期および通期見通し</h2>
+                    
+                    <h3>第2四半期ガイダンス</h3>
+                    <div class="key-figure">
+                        <span class="key-figure-value">$10.6億〜11億</span>
+                        <span class="key-figure-label">収益</span>
+                    </div>
+                    
+                    <div class="key-figure">
+                        <span class="key-figure-value">$1.4億〜1.7億</span>
+                        <span class="key-figure-label">調整後営業利益</span>
+                    </div>
+                    
+                    <div class="key-figure">
+                        <span class="key-figure-value">$30億〜35億</span>
+                        <span class="key-figure-label">設備投資</span>
+                    </div>
+                    
+                    <div class="dot-divider">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    
+                    <h3>2025年通期ガイダンス</h3>
+                    <div class="key-figure">
+                        <span class="key-figure-value">$49億〜51億</span>
+                        <span class="key-figure-label">収益</span>
+                    </div>
+                    
+                    <div class="key-figure">
+                        <span class="key-figure-value">$8億〜8.3億</span>
+                        <span class="key-figure-label">調整後営業利益</span>
+                    </div>
+                    
+                    <div class="key-figure">
+                        <span class="key-figure-value">$200億〜230億</span>
+                        <span class="key-figure-label">設備投資</span>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h2><i>📈</i> 戦略的焦点</h2>
+                    
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <strong>容量の拡大：</strong> Q1には約300MWの契約電力を追加
+                        </div>
+                        <div class="timeline-item">
+                            <strong>インフラ資金調達：</strong> 顧客契約に基づく成功報酬型資本支出
+                        </div>
+                        <div class="timeline-item">
+                            <strong>プラットフォームの差別化：</strong> 最先端技術の迅速な採用による競争優位性
+                        </div>
+                        <div class="timeline-item">
+                            <strong>市場開拓の拡大：</strong> 新しい市場への進出と既存顧客との関係強化
+                        </div>
+                    </div>
+                    
+                    <div class="speech-bubble">
+                        <p>「CoreWeaveの独自のポジションは、とてつもないAIコンピューティングニーズに対応する能力から来ています。私たちは、クラウドの未来をAIの未来と同じものだと考えています」</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- フッター -->
+        <footer>
+            <div>© 2025 CoreWeave, Inc. - グラフィックレコーディング形式で作成</div>
+            <div>PRNewsWireリリースおよびIR資料より</div>
+        </footer>
+    </div>
+</body>
+</html>
