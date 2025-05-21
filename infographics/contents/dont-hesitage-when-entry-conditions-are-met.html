@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>エントリーの条件が整ったら迷わず実行</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Yomogi&family=Zen+Kurenaido&family=Kaisei+Decol:wght@400;700&display=swap');
+    
+    :root {
+      --fashion-1: #593C47;
+      --fashion-2: #F2E63D;
+      --fashion-3: #F2C53D;
+      --fashion-4: #F25C05;
+      --fashion-5: #F24405;
+      --gray-500: #6b7280;
+      --gray-600: #4b5563;
+      --gray-700: #374151;
+      --blue-700: #1e40af;
+      --slate-600: #475569;
+      --slate-700: #334155;
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'Kaisei Decol', 'Yomogi', 'Zen Kurenaido', sans-serif;
+      background-color: #f8f9fa;
+      line-height: 1.4;
+      color: var(--slate-700);
+      padding: 20px;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      padding: 30px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .container::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 8px;
+      background: linear-gradient(90deg, var(--fashion-4), var(--fashion-5));
+    }
+    
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+      border-bottom: 2px dashed var(--fashion-3);
+      padding-bottom: 15px;
+    }
+    
+    .title {
+      font-size: 32px;
+      font-weight: 700;
+      background: linear-gradient(90deg, var(--fashion-1), var(--fashion-4));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-family: 'Kaisei Decol', serif;
+      position: relative;
+      padding-bottom: 5px;
+    }
+    
+    .title::after {
+      content: "📈✨";
+      position: absolute;
+      font-size: 24px;
+      right: -40px;
+      top: 0;
+      -webkit-text-fill-color: initial;
+    }
+    
+    .date {
+      font-size: 14px;
+      color: var(--slate-600);
+      font-family: 'Zen Kurenaido', sans-serif;
+    }
+    
+    .content {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    
+    .column {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .message-box {
+      border: 3px solid var(--fashion-3);
+      border-radius: 12px;
+      padding: 15px;
+      margin-bottom: 25px;
+      position: relative;
+      background-color: rgba(242, 230, 60, 0.1);
+    }
+    
+    .message-box::before {
+      content: "💡";
+      position: absolute;
+      top: -15px;
+      left: 20px;
+      background-color: white;
+      padding: 0 10px;
+      font-size: 20px;
+    }
+    
+    .section {
+      margin-bottom: 25px;
+      position: relative;
+    }
+    
+    .section-title {
+      font-size: 18px;
+      color: var(--blue-700);
+      margin-bottom: 12px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      font-family: 'Kaisei Decol', serif;
+    }
+    
+    .section-title::before {
+      margin-right: 8px;
+      font-size: 20px;
+    }
+    
+    .section-title.reason::before {
+      content: "🚫";
+    }
+    
+    .section-title.probability::before {
+      content: "🎲";
+    }
+    
+    .section-title.core::before {
+      content: "🔍";
+    }
+    
+    .section-title.action::before {
+      content: "✅";
+    }
+    
+    .sub-title {
+      font-size: 16px;
+      color: var(--slate-600);
+      margin-bottom: 8px;
+      font-weight: bold;
+      font-family: 'Kaisei Decol', serif;
+    }
+    
+    .highlight {
+      background: linear-gradient(transparent 60%, var(--fashion-2) 60%);
+      padding: 0 2px;
+      font-weight: bold;
+    }
+    
+    .callout {
+      background-color: rgba(89, 60, 71, 0.1);
+      border-left: 4px solid var(--fashion-1);
+      padding: 12px;
+      margin: 12px 0;
+      border-radius: 0 8px 8px 0;
+    }
+    
+    .note {
+      font-size: 14px;
+      font-style: italic;
+      color: var(--gray-600);
+    }
+    
+    .bullet-list {
+      list-style-type: none;
+      margin-left: 5px;
+    }
+    
+    .bullet-list li {
+      position: relative;
+      padding-left: 25px;
+      margin-bottom: 8px;
+      line-height: 1.5;
+    }
+    
+    .bullet-list li::before {
+      content: "•";
+      position: absolute;
+      left: 5px;
+      color: var(--fashion-4);
+      font-size: 18px;
+      font-weight: bold;
+    }
+    
+    .arrow {
+      text-align: center;
+      font-size: 24px;
+      color: var(--fashion-4);
+      margin: 15px 0;
+    }
+    
+    .conclusion {
+      background: linear-gradient(135deg, rgba(242, 91, 5, 0.1), rgba(242, 68, 4, 0.2));
+      border-radius: 12px;
+      padding: 20px;
+      margin-top: 20px;
+      position: relative;
+      backdrop-filter: blur(5px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+    
+    .conclusion::before {
+      content: "結論";
+      position: absolute;
+      top: -10px;
+      left: 20px;
+      background-color: var(--fashion-5);
+      color: white;
+      padding: 2px 12px;
+      border-radius: 12px;
+      font-weight: bold;
+      font-size: 14px;
+    }
+    
+    .tag {
+      display: inline-block;
+      background-color: var(--fashion-3);
+      color: var(--fashion-1);
+      padding: 3px 8px;
+      border-radius: 12px;
+      font-size: 12px;
+      margin-right: 5px;
+      margin-bottom: 5px;
+    }
+    
+    .footer {
+      margin-top: 30px;
+      padding-top: 15px;
+      border-top: 2px dashed var(--fashion-3);
+      text-align: right;
+      font-size: 12px;
+      color: var(--gray-500);
+    }
+    
+    /* 手書き風の要素 */
+    .hand-drawn {
+      border: 2px solid var(--fashion-1);
+      border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+    
+    .arrow-connector {
+      display: flex;
+      justify-content: center;
+      margin: 15px 0;
+      position: relative;
+    }
+    
+    .arrow-connector svg {
+      width: 80px;
+    }
+    
+    .vs-box {
+      display: flex;
+      justify-content: space-between;
+      margin: 20px 0;
+    }
+    
+    .vs-item {
+      flex: 1;
+      padding: 12px;
+      border-radius: 8px;
+      text-align: center;
+    }
+    
+    .vs-item.wrong {
+      background-color: rgba(242, 68, 4, 0.1);
+      border-left: 3px solid var(--fashion-5);
+    }
+    
+    .vs-item.right {
+      background-color: rgba(242, 196, 60, 0.1);
+      border-left: 3px solid var(--fashion-3);
+    }
+    
+    .vs-divider {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 0 15px;
+      font-weight: bold;
+      color: var(--fashion-1);
+    }
+    
+    .emotion {
+      font-size: 24px;
+      margin-bottom: 8px;
+    }
+    
+    .key-point {
+      font-weight: bold;
+      color: var(--fashion-5);
+    }
+    
+    .wavy-underline {
+      position: relative;
+      display: inline-block;
+    }
+    
+    .wavy-underline::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -3px;
+      width: 100%;
+      height: 4px;
+      background: repeating-linear-gradient(
+        45deg,
+        var(--fashion-4),
+        var(--fashion-4) 5px,
+        transparent 5px,
+        transparent 10px
+      );
+    }
+
+    @media (max-width: 768px) {
+      .content {
+        flex-direction: column;
+      }
+      
+      .column {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1 class="title">エントリーの条件が整ったら迷わず実行</h1>
+      <div class="date">2023年5月21日 | @samuraipips358</div>
+    </header>
+    
+    <div class="content">
+      <div class="column">
+        <div class="message-box">
+          <p>「最近負け続けているから怖い」「様子見してからにしよう」などと考えないでください。</p>
+          <p>条件が整っているなら、それ以上考えることはありません。</p>
+          <p>深く考えずにエントリーしましょう。</p>
+        </div>
+        
+        <div class="section">
+          <h2 class="section-title probability">確率の基本理解</h2>
+          <p>多くのトレーダーはエントリー条件が整っても躊躇します。これは<span class="highlight">確率の基本的な理解が不足している</span>からです。</p>
+          
+          <div class="callout">
+            <p>確率の本質を理解するための2つの重要なポイント：</p>
+            <ul class="bullet-list">
+              <li>前回のトレード結果は今回のトレード結果と無関係</li>
+              <li>ランダム性は勝敗の順序を考慮しない</li>
+            </ul>
+          </div>
+          
+          <p>ランダム性を真に理解し、<span class="wavy-underline">確率がサンプルサイズの大きさによって本来の性質を現す</span>ことを把握すれば、最近の結果に関わらず、条件を満たす「すべての」セットアップを躊躇なく実行できるようになります。</p>
+        </div>
+        
+        <div class="vs-box">
+          <div class="vs-item wrong">
+            <div class="emotion">😖</div>
+            <p>短期的な結果に一喜一憂</p>
+          </div>
+          <div class="vs-divider">VS</div>
+          <div class="vs-item right">
+            <div class="emotion">😎</div>
+            <p>長期的な視点で評価</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="column">
+        <div class="section">
+          <h2 class="section-title reason">トレーダーが躊躇する一般的な理由</h2>
+          <ul class="bullet-list">
+            <li>SNSの投稿やニュースを確認して自信を失う</li>
+            <li>連敗中にシステムやルールの有効性を疑い始める</li>
+            <li>「もう少し待てばより良いエントリーポイントが得られるかも」と考える</li>
+            <li>「今回は特別なパターンかもしれない」と自分のルールを完全に信頼できない</li>
+            <li>単一のトレードを特別視し、結果に過剰な意味を持たせる</li>
+            <li>「エントリーした瞬間に反転したらどうしよう」など根拠のない負のシナリオを想像して躊躇する</li>
+            <li>元のルールにない追加の「確認」を突然探し始め、タイミングを逃す</li>
+          </ul>
+        </div>
+        
+        <div class="section">
+          <h2 class="section-title core">根本的な原因</h2>
+          <div class="hand-drawn">
+            <ul class="bullet-list">
+              <li>短期的な結果に価値を置きすぎ、長期的な視点が欠如している</li>
+              <li>確率的思考の理解とストラテジーへの信頼が不足している</li>
+            </ul>
+          </div>
+          <p>ルールは次のトレードで勝つために存在するのではありません。<span class="key-point">同じ条件で一貫性を持ってトレードを繰り返し、大きなサンプルサイズを構築し、大数の法則を適用して優位性を抽出するために存在します。</span></p>
+          <p>一貫性がなければ、何も意味がありません。</p>
+        </div>
+      </div>
+      
+      <div class="column">
+        <div class="section">
+          <h2 class="section-title action">行動のガイドライン</h2>
+          <p>エントリー条件が整ったら、それ以上考えることはありません。エントリー判断で常に考慮する要素があるなら、最初からそれをエントリー条件の一部として含めるべきです。</p>
+          
+          <div class="callout">
+            <p>短期的な結果は<span class="highlight">ランダム性に大きく影響される</span>ため、最近の結果に基づいて次のエントリーを判断することは、決断がランダム性に影響され、非常に不安定になることを意味します。</p>
+          </div>
+          
+          <p>エントリー基準は「<span class="key-point">例外なく毎回使用する</span>」ものでなければなりません。最近の結果に基づいてそれらを変更してはいけません。</p>
+          
+          <p>トレーダーとして、目の前の即時的な結果のためではなく、先にある長期的な結果のためにトレードすべきです。</p>
+        </div>
+        
+        <div class="conclusion">
+          <p>結論はシンプルです。</p>
+          <p>エントリーの条件が整ったら、<span class="highlight">迷わず実行してください</span>。</p>
+          <p>それ以上考える必要はありません。</p>
+          <p>考えるべき時は<span class="wavy-underline">ルールを構築している段階であり</span>、それらを一貫して守る段階ではありません。</p>
+        </div>
+        
+        <div class="section">
+          <div class="tags">
+            <span class="tag">トレード心理学</span>
+            <span class="tag">確率思考</span>
+            <span class="tag">一貫性</span>
+            <span class="tag">ルール遵守</span>
+            <span class="tag">長期視点</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <footer class="footer">
+      <p>出典: Twitter/X @samuraipips358 | グラフィックレコーディング風インフォグラフィック</p>
+    </footer>
+  </div>
+</body>
+</html>
