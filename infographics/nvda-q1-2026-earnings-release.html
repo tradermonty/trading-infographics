@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>インフォグラフィック</title>
+    <link rel="icon" type="image/png" href="../images/monty.png">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Yomogi&family=Zen+Kurenaido&family=Kaisei+Decol:wght@400;700&display=swap');
+        
+        :root {
+            --fashion-1: #593C47;
+            --fashion-2: #F2E63D;
+            --fashion-3: #F2C53D;
+            --fashion-4: #F25C05;
+            --fashion-5: #F24405;
+            --text-dark: #334155;
+            --text-title: #1e40af;
+            --bg-light: #fff;
+            --shadow: rgba(0, 0, 0, 0.1);
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Kaisei Decol', serif;
+            background-color: #f8f9fa;
+            color: var(--text-dark);
+            line-height: 1.4;
+            padding: 0;
+            margin: 0;
+        }
+
+        .fixed-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: linear-gradient(135deg, var(--fashion-1), var(--fashion-5));
+            padding: 10px 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .fixed-header:hover {
+            background: linear-gradient(135deg, var(--fashion-5), var(--fashion-1));
+        }
+
+        .fixed-header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .header-logo {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .fixed-header h1 {
+            font-family: 'Zen Kurenaido', sans-serif;
+            font-size: 24px;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            background: linear-gradient(to right, white, var(--fashion-2));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin: 0;
+            pointer-events: none;
+        }
+
+        .template-main-content {
+            margin-top: 60px;
+            padding: 20px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .template-footer {
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(135deg, var(--fashion-1), var(--fashion-5));
+            color: white;
+            margin-top: 40px;
+        }
+
+        .template-footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .template-footer-logo {
+            font-family: 'Zen Kurenaido', sans-serif;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .template-footer-social {
+            display: flex;
+            gap: 15px;
+        }
+
+        .template-footer-social a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .template-footer-social a:hover {
+            color: var(--fashion-2);
+            transform: translateY(-2px);
+        }
+
+        .template-hidden {
+            display: none !important;
+            visibility: hidden;
+            opacity: 0;
+        }
+
+        .language-switch {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1001;
+            display: none;
+        }
+        
+        .language-switch button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 20px;
+            background: linear-gradient(135deg, var(--fashion-1), var(--fashion-5));
+            color: white;
+            cursor: pointer;
+            font-family: 'Yomogi', cursive;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .language-switch button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+
+        @media (max-width: 768px) {
+            .fixed-header h1 {
+                font-size: 20px;
+            }
+            
+            .template-main-content {
+                margin-top: 50px;
+                padding: 10px;
+            }
+
+            .language-switch {
+                top: 10px;
+                right: 10px;
+            }
+
+            .template-footer-content {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="language-switch">
+        <button onclick="toggleLanguage()">English</button>
+    </div>
+
+    <div class="fixed-header" onclick="window.location.href='../index.html'">
+        <div class="fixed-header-content">
+            <img src="../images/monty.png" alt="Monty Trader Logo" class="header-logo">
+            <h1 class="ja">モンティの株式トレードインフォグラフィックス集</h1>
+            <h1 class="en hidden">Monty's Stock Trading Infographics Collection</h1>
+        </div>
+    </div>
+
+    <div class="template-main-content">
+        <!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NVIDIA Q1 FY2026 決算インフォグラフィック</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Zen+Kurenaido&family=Yomogi:wght@400&family=Kaisei+Decol:wght@400;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Yomogi', 'Zen Kurenaido', 'Kaisei Decol', sans-serif;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            line-height: 1.4;
+            color: #334155;
+            width: 100%;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 100%;
+            padding: 20px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            border: 2px solid #F2E63D;
+            position: relative;
+        }
+        
+        .header::before {
+            content: "📊";
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            font-size: 24px;
+            background: white;
+            padding: 5px 10px;
+            border-radius: 15px;
+        }
+        
+        .title {
+            font-size: 32px;
+            font-weight: 700;
+            background: linear-gradient(45deg, #593C47, #F24405);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-family: 'Kaisei Decol', sans-serif;
+        }
+        
+        .date {
+            font-size: 16px;
+            color: #475569;
+            background: #F2E63D;
+            padding: 8px 15px;
+            border-radius: 20px;
+            transform: rotate(-2deg);
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .card {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+            border: 2px solid transparent;
+            backdrop-filter: blur(5px);
+        }
+        
+        .card:nth-child(1) { border-color: #F2E63D; }
+        .card:nth-child(2) { border-color: #F2C53D; }
+        .card:nth-child(3) { border-color: #F25C05; }
+        
+        .card-title {
+            font-size: 18px;
+            color: #1e40af;
+            font-weight: 700;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, #F2E63D20, #F2C53D20);
+            border: 2px dashed #F25C05;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            position: relative;
+            transform: rotate(-1deg);
+        }
+        
+        .highlight-box::before {
+            content: "⚡";
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            background: white;
+            padding: 5px;
+            border-radius: 50%;
+        }
+        
+        .number-big {
+            font-size: 36px;
+            font-weight: 700;
+            color: #F24405;
+            text-shadow: 2px 2px 0px #F2E63D50;
+        }
+        
+        .arrow {
+            display: inline-block;
+            font-size: 20px;
+            color: #F25C05;
+            margin: 0 10px;
+        }
+        
+        .underline-marker {
+            background: linear-gradient(180deg, transparent 60%, #F2E63D 60%);
+            padding: 2px 4px;
+            font-weight: 600;
+        }
+        
+        .speech-bubble {
+            background: white;
+            border: 3px solid #593C47;
+            border-radius: 20px;
+            padding: 15px;
+            position: relative;
+            margin: 15px 0;
+        }
+        
+        .speech-bubble::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 30px;
+            width: 0;
+            height: 0;
+            border: 15px solid transparent;
+            border-top-color: #593C47;
+        }
+        
+        .ceo-quote {
+            background: linear-gradient(135deg, #F2E63D10, #F2C53D10);
+            border-left: 5px solid #F24405;
+            padding: 20px;
+            margin: 20px 0;
+            font-style: italic;
+            position: relative;
+        }
+        
+        .ceo-quote::before {
+            content: "💡";
+            position: absolute;
+            top: -5px;
+            left: -10px;
+            background: white;
+            padding: 5px;
+            border-radius: 50%;
+        }
+        
+        .data-visualization {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin: 15px 0;
+        }
+        
+        .bar-chart {
+            flex: 1;
+            height: 20px;
+            background: #e2e8f0;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #F2E63D, #F25C05);
+            border-radius: 10px;
+            position: relative;
+        }
+        
+        .connection-line {
+            border-top: 3px dashed #F2C53D;
+            margin: 20px 0;
+            position: relative;
+        }
+        
+        .connection-line::after {
+            content: "→";
+            position: absolute;
+            right: -10px;
+            top: -15px;
+            color: #F25C05;
+            font-size: 20px;
+            background: white;
+            padding: 2px;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            background: rgba(89, 60, 71, 0.1);
+            border-radius: 15px;
+            font-size: 12px;
+            color: #593C47;
+        }
+        
+        .sticky-note {
+            background: #F2E63D;
+            border-radius: 0 15px 15px 15px;
+            padding: 15px;
+            margin: 15px 0;
+            transform: rotate(1deg);
+            box-shadow: 3px 3px 10px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .sticky-note::before {
+            content: "📌";
+            position: absolute;
+            top: -5px;
+            right: -5px;
+        }
+        
+        @media (max-width: 768px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+            .title {
+                font-size: 24px;
+            }
+            .header {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="title">NVIDIA Q1 FY2026 決算ハイライト ✨</div>
+            <div class="date">2025年5月28日発表</div>
+        </div>
+        
+        <div class="grid">
+            <div class="card">
+                <div class="card-title">💰 売上高</div>
+                <div class="number-big">$44.1B</div>
+                <div class="data-visualization">
+                    <span>前四半期比</span>
+                    <div class="bar-chart">
+                        <div class="bar-fill" style="width: 12%;"></div>
+                    </div>
+                    <span class="underline-marker">+12%</span>
+                </div>
+                <div class="data-visualization">
+                    <span>前年同期比</span>
+                    <div class="bar-chart">
+                        <div class="bar-fill" style="width: 69%;"></div>
+                    </div>
+                    <span class="underline-marker">+69%</span>
+                </div>
+                <div class="sticky-note">
+                    史上最高の四半期売上を達成！ 🚀
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-title">🏢 データセンター事業</div>
+                <div class="number-big">$39.1B</div>
+                <div class="speech-bubble">
+                    全売上の<span class="underline-marker">89%</span>を占める主力事業
+                </div>
+                <div class="data-visualization">
+                    <span>前年同期比</span>
+                    <div class="bar-chart">
+                        <div class="bar-fill" style="width: 73%;"></div>
+                    </div>
+                    <span class="underline-marker">+73%</span>
+                </div>
+                <div class="connection-line"></div>
+                <div style="font-size: 14px;">
+                    📈 AI需要の急拡大が牽引<br>
+                    🌍 世界各国がAIを重要インフラと認識
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-title">⚠️ H20問題の影響</div>
+                <div class="highlight-box">
+                    <div class="number-big" style="color: #593C47;">-$4.5B</div>
+                    <div>在庫・契約関連の損失計上</div>
+                </div>
+                <div style="margin-top: 15px;">
+                    📅 4月9日：米政府がH20製品の中国向け輸出にライセンス要求<br>
+                    💔 Q1売上機会損失：<span class="underline-marker">$2.5B</span>
+                </div>
+                <div class="sticky-note" style="background: #F25C05; color: white;">
+                    地政学リスクが業績に直接影響
+                </div>
+            </div>
+        </div>
+        
+        <div class="ceo-quote">
+            <strong>🎯 Jensen Huang CEO の言葉：</strong><br>
+            "私たちの画期的な<span class="underline-marker">Blackwell NVL72 AIスーパーコンピュータ</span>は、推論用に設計された「思考マシン」で、システムメーカーやクラウドサービスプロバイダー全体で本格的な生産段階に入っています。<br><br>
+            世界中の国々が<span class="underline-marker">AIを電気やインターネットと同じく重要なインフラ</span>として認識しており、NVIDIAはこの深遠な変革の中心に位置しています。"
+        </div>
+        
+        <div class="grid">
+            <div class="card">
+                <div class="card-title">🎮 ゲーミング事業</div>
+                <div class="number-big">$3.8B</div>
+                <div class="data-visualization">
+                    <span>前四半期比</span>
+                    <div class="bar-chart">
+                        <div class="bar-fill" style="width: 48%;"></div>
+                    </div>
+                    <span class="underline-marker">+48%</span>
+                </div>
+                <div style="margin-top: 15px;">
+                    🎯 四半期売上記録更新<br>
+                    🕹️ RTX 5070/5060発表<br>
+                    🎮 Nintendo Switch 2にNVIDIA搭載
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-title">📊 利益率の状況</div>
+                <div style="text-align: center; margin: 20px 0;">
+                    <div style="font-size: 16px; margin-bottom: 10px;">粗利率推移</div>
+                    <div class="data-visualization">
+                        <span>GAAP</span>
+                        <div class="bar-chart">
+                            <div class="bar-fill" style="width: 60.5%;"></div>
+                        </div>
+                        <span>60.5%</span>
+                    </div>
+                    <div class="data-visualization">
+                        <span>Non-GAAP</span>
+                        <div class="bar-chart">
+                            <div class="bar-fill" style="width: 61%;"></div>
+                        </div>
+                        <span>61.0%</span>
+                    </div>
+                </div>
+                <div class="highlight-box">
+                    H20問題除外時：<span class="underline-marker">71.3%</span>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-title">🔮 Q2見通し</div>
+                <div class="number-big">$45.0B</div>
+                <div style="margin-top: 15px;">
+                    📈 売上高予想（±2%）<br>
+                    ⚠️ H20影響：約<span class="underline-marker">$8.0B</span>の減収<br>
+                    📊 粗利率：72.0%（Non-GAAP）
+                </div>
+                <div class="connection-line"></div>
+                <div class="sticky-note">
+                    中国問題にも関わらず<br>成長基調は継続 💪
+                </div>
+            </div>
+        </div>
+        
+        <div class="card" style="margin-top: 30px;">
+            <div class="card-title">🚀 主要な製品・技術発表</div>
+            <div class="grid" style="grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 20px;">
+                <div>
+                    <div style="font-weight: 600; color: #F24405; margin-bottom: 10px;">🤖 AI・データセンター</div>
+                    • Blackwell Ultra発表<br>
+                    • Dynamo推論モデル加速<br>
+                    • サウジアラビアでAIファクトリー建設<br>
+                    • Foxconnと台湾政府との協力<br>
+                    • RTX PRO Servers発表
+                </div>
+                <div>
+                    <div style="font-weight: 600; color: #F24405; margin-bottom: 10px;">🎮 ゲーミング・その他</div>
+                    • DLSS 4が125以上のゲームで利用可能<br>
+                    • RTX Remixモディングプラットフォーム<br>
+                    • Isaac GR00T N1 ヒューマノイドロボット<br>
+                    • General Motorsとの協業発表
+                </div>
+            </div>
+        </div>
+        
+        <div class="highlight-box" style="margin-top: 30px; transform: rotate(0deg);">
+            <div style="text-align: center;">
+                <div style="font-size: 24px; font-weight: 700; color: #593C47; margin-bottom: 15px;">
+                    🎯 キーポイント
+                </div>
+                <div class="grid" style="grid-template-columns: repeat(3, 1fr); gap: 20px;">
+                    <div>
+                        <div class="arrow">📈</div>
+                        <strong>売上成長継続</strong><br>
+                        地政学問題にも関わらず<br>前年比69%増の好調維持
+                    </div>
+                    <div>
+                        <div class="arrow">🏭</div>
+                        <strong>AI産業の中心</strong><br>
+                        世界各国でAIファクトリー<br>建設プロジェクト推進
+                    </div>
+                    <div>
+                        <div class="arrow">🔄</div>
+                        <strong>技術革新加速</strong><br>
+                        Blackwell世代の本格展開<br>次世代AI計算基盤確立
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            📝 出典：NVIDIA Corporation 2025年5月28日発表 Q1 FY2026決算資料<br>
+            🎨 グラフィックレコーディング風インフォグラフィック by Claude
+        </div>
+    </div>
+</body>
+</html>
+    </div>
+
+    <footer class="template-footer">
+        <div class="template-footer-content">
+            <div class="template-footer-logo">Monty Trader</div>
+            <div class="template-footer-social">
+                <a href="https://x.com/monty_investor" target="_blank">@monty_investor</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleLanguage() {
+            const jaElements = document.querySelectorAll('.ja');
+            const enElements = document.querySelectorAll('.en');
+            const button = document.querySelector('.language-switch button');
+            
+            jaElements.forEach(el => el.classList.toggle('hidden'));
+            enElements.forEach(el => el.classList.toggle('hidden'));
+            
+            button.textContent = button.textContent === 'English' ? '日本語' : 'English';
+        }
+    </script>
+</body>
+</html> 
