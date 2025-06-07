@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>トレーディングリスク管理 - グラフィックレコーディング</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Yomogi&family=Zen+Kurenaido&family=Kaisei+Decol:wght@400;700&display=swap');
+        
+        :root {
+            --color-1: #593C47;
+            --color-2: #F2E63D;
+            --color-3: #F2C53D;
+            --color-4: #F25C05;
+            --color-5: #F24405;
+            --text-dark: #334155;
+            --text-medium: #475569;
+            --text-blue: #1e40af;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Yomogi', cursive;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            color: var(--text-dark);
+            line-height: 1.6;
+            width: 100%;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 25px;
+            border: 3px solid var(--color-2);
+            position: relative;
+        }
+        
+        .header::before {
+            content: "📊";
+            position: absolute;
+            top: -15px;
+            left: 20px;
+            font-size: 2em;
+            background: white;
+            padding: 5px;
+            border-radius: 50%;
+        }
+        
+        .title {
+            font-size: 32px;
+            font-weight: 700;
+            background: linear-gradient(45deg, var(--color-1), var(--color-4));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-family: 'Kaisei Decol', serif;
+        }
+        
+        .date-source {
+            font-size: 14px;
+            color: var(--text-medium);
+            text-align: right;
+        }
+        
+        .main-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+        
+        .card {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            position: relative;
+            transform: rotate(-0.5deg);
+            transition: transform 0.3s ease;
+        }
+        
+        .card:nth-child(even) {
+            transform: rotate(0.5deg);
+        }
+        
+        .card:hover {
+            transform: rotate(0deg) scale(1.02);
+        }
+        
+        .card-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            font-size: 18px;
+            color: var(--text-blue);
+            font-weight: 700;
+        }
+        
+        .card-icon {
+            font-size: 24px;
+            margin-right: 10px;
+            background: var(--color-2);
+            border-radius: 50%;
+            padding: 5px;
+        }
+        
+        .highlight {
+            background: linear-gradient(120deg, var(--color-2) 0%, var(--color-2) 100%);
+            background-repeat: no-repeat;
+            background-size: 100% 40%;
+            background-position: 0 85%;
+            padding: 2px 0;
+            font-weight: bold;
+        }
+        
+        .sketch-box {
+            border: 3px solid var(--color-4);
+            border-radius: 15px;
+            padding: 15px;
+            margin: 15px 0;
+            background: rgba(242, 230, 61, 0.1);
+            position: relative;
+            transform: rotate(-1deg);
+        }
+        
+        .sketch-box::before {
+            content: "📝";
+            position: absolute;
+            top: -15px;
+            right: 10px;
+            background: white;
+            padding: 3px;
+            border-radius: 50%;
+        }
+        
+        .arrow-down {
+            width: 0;
+            height: 0;
+            border-left: 15px solid transparent;
+            border-right: 15px solid transparent;
+            border-top: 20px solid var(--color-4);
+            margin: 10px auto;
+            position: relative;
+        }
+        
+        .arrow-down::after {
+            content: '';
+            position: absolute;
+            top: -25px;
+            left: -10px;
+            width: 20px;
+            height: 3px;
+            background: var(--color-4);
+            transform: rotate(45deg);
+        }
+        
+        .connection-line {
+            height: 3px;
+            background: linear-gradient(90deg, var(--color-3), var(--color-4));
+            margin: 20px 0;
+            border-radius: 2px;
+            position: relative;
+        }
+        
+        .connection-line::after {
+            content: "→";
+            position: absolute;
+            right: -20px;
+            top: -10px;
+            color: var(--color-4);
+            font-size: 20px;
+        }
+        
+        .stats-circle {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--color-4), var(--color-5));
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin: 10px auto;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .lesson-bubble {
+            background: rgba(242, 196, 61, 0.3);
+            border: 2px dashed var(--color-3);
+            border-radius: 20px;
+            padding: 15px;
+            margin: 15px 0;
+            position: relative;
+        }
+        
+        .lesson-bubble::before {
+            content: "💡";
+            position: absolute;
+            top: -10px;
+            left: 15px;
+            background: white;
+            padding: 2px;
+            border-radius: 50%;
+        }
+        
+        .timeline {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 20px 0;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 10px;
+            border-left: 5px solid var(--color-4);
+        }
+        
+        .timeline-item {
+            text-align: center;
+            font-size: 12px;
+            flex: 1;
+        }
+        
+        .timeline-year {
+            font-weight: bold;
+            color: var(--color-1);
+            font-size: 14px;
+        }
+        
+        .footer {
+            background: rgba(89, 60, 71, 0.9);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 30px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .key-takeaway {
+            background: linear-gradient(135deg, var(--color-1), var(--color-4));
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px 0;
+            text-align: center;
+            font-weight: bold;
+            position: relative;
+        }
+        
+        .key-takeaway::before {
+            content: "🎯";
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            padding: 5px;
+            border-radius: 50%;
+        }
+        
+        @media (max-width: 768px) {
+            .main-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .title {
+                font-size: 24px;
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="title">トレーディングで学ぶリスク管理の教訓</h1>
+            <div class="date-source">
+                2025年6月<br>
+                出典: TTRH Reader Stories
+            </div>
+        </div>
+        
+        <div class="key-takeaway">
+            <strong>核心メッセージ：</strong> リスクを管理できなければ、どんな大きな失敗も学習の機会に変えることができる 🚀
+        </div>
+        
+        <div class="main-grid">
+            <!-- Story 1: Monty Trader -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-icon">😰</span>
+                    モンティ・トレーダーの現実
+                </div>
+                
+                <div class="sketch-box">
+                    <strong>2022年春の悲劇</strong><br>
+                    一日で<span class="highlight">$20,000以上の損失</span>
+                </div>
+                
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-year">2019</div>
+                        <div>取引開始</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2020-21</div>
+                        <div>強気市場で利益</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2022</div>
+                        <div>弱気市場で大損</div>
+                    </div>
+                </div>
+                
+                <div class="lesson-bubble">
+                    <strong>学んだ教訓:</strong><br>
+                    • 感情的な取引を避ける<br>
+                    • 自動化戦略の導入<br>
+                    • 配当株への分散投資
+                </div>
+                
+                <div class="stats-circle">
+                    5年かけて
+                    安定性を
+                    獲得
+                </div>
+            </div>
+            
+            <!-- Story 2: Colombian Farmer -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-icon">🌱</span>
+                    コロンビア農家の挑戦
+                </div>
+                
+                <div class="sketch-box">
+                    <strong>厳しいスタート</strong><br>
+                    日給<span class="highlight">$5</span>から始まった夢
+                </div>
+                
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-year">2016</div>
+                        <div>YouTube学習開始</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2017-20</div>
+                        <div>6時間/日の勉強</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2021</div>
+                        <div>家を売って資金調達</div>
+                    </div>
+                </div>
+                
+                <div class="stats-circle">
+                    資本の
+                    70%を
+                    失う
+                </div>
+                
+                <div class="lesson-bubble">
+                    <strong>復活の鍵:</strong><br>
+                    • 安定収入源の確保<br>
+                    • パートタイム取引への転換<br>
+                    • 家族のサポート
+                </div>
+                
+                <div class="connection-line"></div>
+                
+                <p style="text-align: center; font-style: italic;">
+                    「お金を失うのは恐ろしいこと。でも諦めなければ道は開ける」
+                </p>
+            </div>
+            
+            <!-- Story 3: 22-Year Journey -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-icon">📈</span>
+                    22年間の学習之旅
+                </div>
+                
+                <div class="sketch-box">
+                    <strong>2003年〜現在</strong><br>
+                    友人の<span class="highlight">株式ティップ</span>から始まった長い旅
+                </div>
+                
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-year">2003-07</div>
+                        <div>ティップ取引時代</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2008</div>
+                        <div>弱気市場で大損</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2018</div>
+                        <div>再び大損・号泣</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2024</div>
+                        <div>+165%の利益</div>
+                    </div>
+                </div>
+                
+                <div class="lesson-bubble">
+                    <strong>転機となった要素:</strong><br>
+                    • システマティックな取引<br>
+                    • プライスアクション重視<br>
+                    • 継続的な学習姿勢<br>
+                    • ジャーナリングの習慣
+                </div>
+                
+                <div class="arrow-down"></div>
+                
+                <div style="text-align: center; background: rgba(242, 68, 5, 0.1); padding: 10px; border-radius: 10px;">
+                    <strong>「失敗こそが最高の学習機会」</strong>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Key Lessons Section -->
+        <div class="card" style="transform: none; margin: 30px 0;">
+            <div class="card-header">
+                <span class="card-icon">🎓</span>
+                共通する重要な教訓
+            </div>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                <div class="lesson-bubble">
+                    <strong>💰 資金管理の重要性</strong><br>
+                    失っても問題ない資金のみでトレード
+                </div>
+                
+                <div class="lesson-bubble">
+                    <strong>📚 継続的な教育</strong><br>
+                    大きく賭ける前にスキルと知識を構築
+                </div>
+                
+                <div class="lesson-bubble">
+                    <strong>🛡️ 安全な立場からの挑戦</strong><br>
+                    プランBを用意して心の余裕を確保
+                </div>
+                
+                <div class="lesson-bubble">
+                    <strong>📝 感情管理と規律</strong><br>
+                    ジャーナリングとシステム化で客観性を保つ
+                </div>
+            </div>
+        </div>
+        
+        <div class="key-takeaway">
+            <strong>Kynaからの最終メッセージ</strong><br>
+            「リスクを伴う取り組みには、常に強いポジションから臨むこと。<br>
+            お金が immediately 必要でない時こそ、最高のパフォーマンスを発揮できる」
+        </div>
+        
+        <div class="footer">
+            <strong>📌 出典情報</strong><br>
+            TTRH (The Trading Rabbit Hole) Reader Stories Series - Part 3<br>
+            3人のトレーダーの実体験に基づく<br>
+            🔗 元記事: <a href="https://tradingresourcehub.substack.com/p/dont-risk-what-you-cant-afford-to-lose" target="_blank" style="color: #F2E63D; text-decoration: underline;">Don't risk what you can't afford to lose</a><br>
+            <small>by Kyna - Trading Resource Hub</small>
+        </div>
+    </div>
+</body>
+</html>
